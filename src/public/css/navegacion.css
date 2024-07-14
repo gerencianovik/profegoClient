@@ -301,6 +301,9 @@
     font-size: 18px;
     cursor: pointer;
 }
+#estudiante button{
+    color: #FEEDD9;
+}
 
 #estudiantes{
     position: absolute;
