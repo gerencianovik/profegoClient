@@ -195,16 +195,15 @@
     border-radius: 50%;
 }
 
-#somosImagen img
-#imagenFunciona img
-#imagenSeguridad img
+#somosImagen img,
+#imagenFunciona img,
+#imagenSeguridad img,
 #imagentestiminio img{
     position: absolute;
     top: 0%;
     left: 0%;
     width: 100%;
     height: 100%;
-    border-radius: 50%;
     background-size: cover;
 }
 
