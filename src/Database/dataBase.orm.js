@@ -96,7 +96,7 @@ const curricularContent = curricularContentModel(sequelize, Sequelize)
 const detailGroups = detailGroupsModel(sequelize, Sequelize)
 const detailAttendance = detailAttendanceModel(sequelize, Sequelize)
 const detailBooking = detailBookingModel(sequelize, Sequelize)
-const detailCurriculalrContent = detailCurricularContentModel(sequelize, Sequelize)
+const detailCurricularContent = detailCurricularContentModel(sequelize, Sequelize)
 const detailMaterial = detailMaterialModel(sequelize, Sequelize)
 const detailRecours = detailRecoursModel(sequelize, Sequelize)
 const detailStudentPage = detailStudentPageModel(sequelize, Sequelize)
@@ -125,122 +125,122 @@ const teacherDetail = teacherDetailModel(sequelize, Sequelize)
 const teacher = teacherModel(sequelize, Sequelize)
 const user = userModel(sequelize, Sequelize)
 //relaciones
-user.hasMany(page)
-page.belongsTo(user)
+user.hasMany(page);
+page.belongsTo(user);
 
-page.hasMany(detailTeachPage)
-detailTeach.belongsTo(page)
+page.hasMany(detailTeachPage);
+detailTeachPage.belongsTo(page);
 
-page.hasMany(detailStudentPage)
-detailStudentPage.belongsTo(page)
+page.hasMany(detailStudentPage);
+detailStudentPage.belongsTo(page);
 
-teacher.hasMany(detailTeachPage)
-detailTeachPage.belongsTo(teacher)
+teacher.hasMany(detailTeachPage);
+detailTeachPage.belongsTo(teacher);
 
-student.hasMany(detailStudentPage)
-detailStudentPage.belongsTo(student)
+student.hasMany(detailStudentPage);
+detailStudentPage.belongsTo(student);
 
-page.hasMany(coursClassType)
-coursClassType.belongsTo(page)
+page.hasMany(coursClassType);
+coursClassType.belongsTo(page);
 
-teacher.hasMany(teacherDetail)
-teacherDetail.belongsTo(teacher)
+teacher.hasMany(teacherDetail);
+teacherDetail.belongsTo(teacher);
 
-page.hasMany(clases)
-clases.belongsTo(page)
+page.hasMany(clases);
+clases.belongsTo(page);
 
-page.hasMany(cours)
-cours.belongsTo(page)
+page.hasMany(cours);
+cours.belongsTo(page);
 
-clases.hasMany(recours)
-recours.belongsTo(clases)
+clases.hasMany(recours);
+recours.belongsTo(clases);
 
-cours.hasMany(recours)
-recours.belongsTo(cours)
+cours.hasMany(recours);
+recours.belongsTo(cours);
 
-multimediaClass.hasMany(detailRecours)
-detailRecours.belongsTo(multimediaClass)
+multimediaClass.hasMany(detailRecours);
+detailRecours.belongsTo(multimediaClass);
 
-multimediaCourse.hasMany(detailRecours)
-detailRecours.belongsTo(multimediaCourse)
+multimediaCourse.hasMany(detailRecours);
+detailRecours.belongsTo(multimediaCourse);
 
-clases.hasMany(material)
-material.belongsTo(clases)
+clases.hasMany(material);
+material.belongsTo(clases);
 
-cours.hasMany(material)
-material.belongsTo(cours)
+cours.hasMany(material);
+material.belongsTo(cours);
 
-diplomasType.hasMany(diplomas)
-diplomas.belongsTo( diplomasType)
+diplomasType.hasMany(diplomas);
+diplomas.belongsTo(diplomasType);
 
-cours.hasMany(diplomas)
-diplomas.belongsTo(cours)
+cours.hasMany(diplomas);
+diplomas.belongsTo(cours);
 
-detailTeachPage.hasMany(clases)
-clases.belongsTo(detailTeachPage)
+detailTeachPage.hasMany(clases);
+clases.belongsTo(detailTeachPage);
 
-detailTeachPage.hasMany(cours)
-cours.belongsTo(detailTeachPage)
+detailTeachPage.hasMany(cours);
+cours.belongsTo(detailTeachPage);
 
-clases.hasMany(members)
-members.belongsTo(clases)
+clases.hasMany(members);
+members.belongsTo(clases);
 
-cours.hasMany(members)
-members.belongsTo(cours)
+cours.hasMany(members);
+members.belongsTo(cours);
 
-members.hasMany(detailGroups)
-detailGroups.belongsTo(members)
+members.hasMany(detailGroups);
+detailGroups.belongsTo(members);
 
-groups.hasMany(detailGroups)
-detailGroups.belongsTo(groups)
+groups.hasMany(detailGroups);
+detailGroups.belongsTo(groups);
 
-groups.hasMany(taskClass)
-taskClass.belongsTo(groups)
+groups.hasMany(taskClass);
+taskClass.belongsTo(groups);
 
-taskClass.hasMany(observation)
-observation.belongsTo(taskClass)
+taskClass.hasMany(observation);
+observation.belongsTo(taskClass);
 
-multimediaTask.hasMany(taskClass)
-taskClass.belongsTo(multimediaTask)
+multimediaTask.hasMany(taskClass);
+taskClass.belongsTo(multimediaTask);
 
-groups.hasMany(attendance)
-attendance.belongsTo(groups)
+groups.hasMany(attendance);
+attendance.belongsTo(groups);
 
-attendance.hasMany(detailAttendance)
-detailAttendance.belongsTo(attendance)
+attendance.hasMany(detailAttendance);
+detailAttendance.belongsTo(attendance);
 
-page.hasMany(material)
-material.belongsTo(page)
+page.hasMany(material);
+material.belongsTo(page);
 
-page.hasMany(policy)
-policy.belongsTo(page)
+page.hasMany(policy);
+policy.belongsTo(page);
 
-specialtyType.hasMany(detailTeach)
-detailTeach.belongsTo(specialtyType)
+specialtyType.hasMany(detailTeach);
+detailTeach.belongsTo(specialtyType);
 
-teacher.hasMany(detailTeach)
-detailTeach.belongsTo(teacher)
+teacher.hasMany(detailTeach);
+detailTeach.belongsTo(teacher);
 
-teachCouch.hasMany(detailTeach)
-detailTeach.belongsTo(teachCouch)
+teachCouch.hasMany(detailTeach);
+detailTeach.belongsTo(teachCouch);
 
-student.hasMany(bill)
-bill.belongsTo(student)
+student.hasMany(bill);
+bill.belongsTo(student);
 
-payType.hasMany(bill)
-bill.belongsTo(payType)
+payType.hasMany(bill);
+bill.belongsTo(payType);
 
-student.hasMany(detailBooking)
-detailBooking.belongsTo(student)
+student.hasMany(detailBooking);
+detailBooking.belongsTo(student);
 
-booking.hasMany(detailBooking)
-detailBooking.belongsTo(booking)
+booking.hasMany(detailBooking);
+detailBooking.belongsTo(booking);
 
-curricularContent.hasMany(detailCurriculalrContent)
-detailCurriculalrContent.belongsTo(curricularContent)
+curricularContent.hasMany(detailCurricularContent);
+detailCurricularContent.belongsTo(curricularContent);
 
-cours.hasMany(curricularContent)
-curricularContent.belongsTo(cours)
+cours.hasMany(curricularContent);
+curricularContent.belongsTo(cours);
 
 assessment.hasMany(ask, {
     foreignKey: 'assessmentIdAssessment',
@@ -252,55 +252,61 @@ ask.belongsTo(assessment, {
     onDelete: 'SET NULL',
     onUpdate: 'CASCADE'
 });
-ask.hasMany(askAswern)
-askAswern.belongsTo(ask)
+ask.hasMany(askAswern);
+askAswern.belongsTo(ask);
 
-aswern.hasMany(askAswern)
-askAswern.belongsTo(aswern)
+aswern.hasMany(askAswern);
+askAswern.belongsTo(aswern);
 
-result.hasMany(askAswern)
-askAswern.belongsTo(result)
+result.hasMany(askAswern);
+askAswern.belongsTo(result);
 
-detailAttendance.hasMany(askAswern)
-askAswern.belongsTo(detailAttendance)
+detailAttendance.hasMany(askAswern);
+askAswern.belongsTo(detailAttendance);
 
-page.hasMany(subjects)
-subjects.belongsTo(page)
+page.hasMany(subjects);
+subjects.belongsTo(page);
 
-subjects.hasMany(clases)
-clases.belongsTo(subjects)
+subjects.hasMany(clases);
+clases.belongsTo(subjects);
 
-clases.hasMany(assessment)
-assessment.belongsTo(clases)
+clases.hasMany(assessment);
+assessment.belongsTo(clases);
 
-cours.hasMany(assessment)
-assessment.belongsTo(cours)
+cours.hasMany(assessment);
+assessment.belongsTo(cours);
 
-page.hasMany(specialtyType)
-specialtyType.belongsTo(page)
+page.hasMany(specialtyType);
+specialtyType.belongsTo(page);
 
-page.hasMany(diplomasType)
-diplomasType.belongsTo(page)
+page.hasMany(diplomasType);
+diplomasType.belongsTo(page);
 
-clases.hasMany(multimediaClass)
-multimediaClass.belongsTo(clases)
+clases.hasMany(multimediaClass);
+multimediaClass.belongsTo(clases);
 
-cours.hasMany(multimediaCourse)
-multimediaCourse.belongsTo(cours)
+cours.hasMany(multimediaCourse);
+multimediaCourse.belongsTo(cours);
 
-material.hasMany(detailMaterial)
-detailMaterial.belongsTo(material)
+material.hasMany(detailMaterial);
+detailMaterial.belongsTo(material);
 
-recours.hasMany(detailRecours)
-detailRecours.belongsTo(recours)
+recours.hasMany(detailRecours);
+detailRecours.belongsTo(recours);
 
-taskClass.hasMany(multimediaTask)
-multimediaTask.belongsTo(taskClass)
+taskClass.hasMany(multimediaTask);
+multimediaTask.belongsTo(taskClass);
 
-page.hasMany(recours)
-recours.belongsTo(page)
+page.hasMany(recours);
+recours.belongsTo(page); // Corrected from 'besTo'
 
-sequelize.sync()
+sequelize.sync({ alter: true }) // alter will update the database schema to match the model
+    .then(() => {
+        console.log('Database synchronized');
+    })
+    .catch((error) => {
+        console.error('Error synchronizing the database:', error);
+    });
 
 // Exportar el objeto sequelize
 module.exports = {
@@ -318,7 +324,7 @@ module.exports = {
     detailGroups,
     detailAttendance,
     detailBooking,
-    detailCurriculalrContent,
+    detailCurricularContent,
     detailMaterial,
     detailRecours,
     detailStudentPage,
