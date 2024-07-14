@@ -1,0 +1,138 @@
+<link rel="stylesheet" href="">
+<div id="contenidoPefil">
+    <div id="titulo">
+        <h1>Postulación como docente o coach</h1>
+        <p>Completa y envía el siguiente formulario para la aprobación de tu postulación.</p>
+    </div>
+    <div id="datos">
+        {{#each listaTeacher}}
+        <form action="/teacher/update/{{idTeacher}}" method="post" enctype="multipart/form-data">
+            <div id="imagenTeacher">
+                <div id="cambioImagen">
+                    <img src="/img/icons/noImagen.png" id="imagenPrevisualizacion" />
+                </div>
+                <input type="file" name="photoPage" class="seleccionArchivos" accept="image/*" id="seleccionArchivos"
+                    style="display: none;" />
+                <button type="button" id="botonImagen">Subir Foto</button>
+            </div>
+            <div id="nombreCompleto">
+                <p>Nombre completo:</p>
+                <input type="text" name="completeNmeTeacher" id="nombre" value="{{completeNmeTeacher}}" required>
+            </div>
+            <div id="Eleccion">
+                <p>Elige:</p>
+                <select name="eleccion" id="eleccion">
+                    <option value="Docente">Docente</option>
+                    <option value="Coach">Coach</option>
+                    <option value="Docente y coach">Docente y coach</option>
+                </select>
+            </div>
+            <div id="fechaNacimiento">
+                <p>Fecha de nacimiento:</p>
+                <input type="text" name="ageTeacher" id="edad" value="{{ageTeacher}}" required>
+            </div>
+            <div id="tituloEspecialidad">
+                <p>Nombre del título</p>
+                <select name="titulosEleccion" id="titulosEleccion">
+                    {{#each listaTitulos}}
+                    <option value="{{idSpecialType}}">{{nameSpecialType}}</option>
+                    {{/each}}
+                    <option value="titulo">otros</option>
+                </select>
+                <div id="titulos"></div>
+            </div>
+            <div id="capacidad">
+                <input type="checkbox" name="" id="si">
+                <p>Estoy capacitado para trabajar con estudiantes que tienen Necesidades Educativas Especiales</p>
+                <div id="espesialidades">
+                    <select name="specialtyTypeIdSpecialType" id="especial">
+                        {{#each listaEspecialidades}}
+                        <option value="{{idSpecialType}}">{{nameSpecialType}}</option>
+                        {{/each}}
+                        <option value="especial">otros</option>
+                    </select>
+                    <div id="especialidad"></div>
+                </div>
+            </div>
+            <div id="documentacion">
+                <p>Documentación requerida</p>
+                <div id="DocumentoTitulo">
+                    <p>Título profesional y/o certificados de aval de enseñanza</p>
+                    <input type="file" name="endorsementCertificateTeacher" class="seleccionArchivos"
+                        accept="application/pdf" id="seleccionTitulo" />
+                    <button type="button" class="botonImagen" data-input-id="seleccionTitulo">Subir Titulo</button>
+                    <iframe id="documentoTituloPrevisualizacion" src=""></iframe>
+                </div>
+                <div id="DocumentoHojaVida">
+                    <p>Hoja de vida actualizada</p>
+                    <input type="file" name="pageVitalTeacher" class="seleccionArchivos" accept="application/pdf"
+                        id="seleccionHojaVida" />
+                    <button type="button" class="botonImagen" data-input-id="seleccionHojaVida">Subir Hoja de
+                        vida</button>
+                    <iframe id="documentoHojaVidaPrevisualizacion" src=""></iframe>
+                </div>
+                <div id="DocumentoAntecedentes">
+                    <p>Certificado de Antecedentes Penales</p>
+                    <input type="file" name="criminalRecordTeacher" class="seleccionArchivos" accept="application/pdf"
+                        id="seleccionAntecedentes" />
+                    <button type="button" class="botonImagen" data-input-id="seleccionAntecedentes">Subir
+                        Antecedentes</button>
+                    <iframe id="documentoAntecedentesPrevisualizacion" src=""></iframe>
+                </div>
+            </div>
+            <div id="materias">
+                <p>Áreas/ asignaturas a enseñar</p>
+                <div id="meterias">
+                    <select name="subjetTeacher" id="meterias">
+                        {{#each listaMaterias}}
+                        <option value="{{nambeSubjects}}">{{nambeSubjects}}</option>
+                        {{/each}}
+                    </select>
+                    <div id="meteriasTotal"></div>
+                </div>
+            </div>
+            <div id="edadRange">
+                <p>Rango de edad de enseñanza</p>
+                <div id="Edad">
+                    <select name="rangeAgeTeacher" id="edad">
+                        <option value="3-5 años">3-5 años</option>
+                        <option value="5-7 años">5-7 años</option>
+                        <option value="7-9 años">7-9 años</option>
+                        <option value="9-12 años">9-12 años</option>
+                        <option value="12-16 años">12-16 años</option>
+                        <option value="16-18 años">16-18 años</option>
+                        <option value="Universitarios">Universitarios</option>
+                        <option value="Docentes">Docentes</option>
+                    </select>
+                    <div id="rangeAgeTeacher"></div>
+                </div>
+            </div>
+            <div id="description">
+                <p>Descripción</p>
+                <textarea name="descriptionTeacher" id="descripcion">{{descriptionTeacher}}</textarea>
+            </div>
+            <div id="Cedula">
+                <h1>Cedula:</h1>
+                <input type="text" name="identificationCardTeacher" id="cedula" required
+                    value="{{identificationCardTeacher}}">
+            </div>
+            <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+            <div id="Celular">
+                <h1>Celular:</h1>
+                <input type="text" name="phoneTeacher" id="celular" value="{{phoneTeacher}}">
+            </div>
+            <div id="Correo">
+                <h1>Coreeo Electrónico:</h1>
+                <input type="text" name="emailTeacher" id="correo" value="{{emailTeacher}}">
+            </div>
+            {{/each}}
+            <div id="boton">
+                <button type="submit">GUARDAR Y ENVÍAR</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/js/preview.js"></script>
+<script src="/js/botonImagen.js"></script>
+<script src="/js/botoncheck.js"></script>

@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="">
+<div id="contenedor">
+    <div id="logoimagen">
+        <div id="imagen">
+            <img src="/img/logo/logo.png">
+        </div>
+    </div>
+    <div id="datos">
+        <div id="titulo">
+            <h1>Iniciar sesión</h1>
+        </div>
+        <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+        <div id="Cedula">
+            <p>Cedula:</p>
+            <input type="text" name="username" id="cedula" required>
+        </div>
+        <div id="Contraseña">
+            <p>Contraseña:</p>
+            <input type="password" name="password" id="contraseña" required>
+        </div>
+        <div id="botonVer">
+            <button type="button" id="ver"><img src=""></button>
+        </div>
+        <div id="botonNoVer">
+            <button type="button" id="nover"><img src=""></button>
+        </div>
+        <div id="olvidarContraseña">
+            <a href=""><p>¿Olvidaste tu contraseña?</p></a>
+        </div>
+        <div id="boton">
+            <button type="submit">Ingresar</button>
+        </div>
+        <div id="noCuenta">
+            <p>¿No tienes una cuenta? <a href="/RegisterStudents">Regístrate aquí</a></p>
+        </div>
+    </div>
+</div>
