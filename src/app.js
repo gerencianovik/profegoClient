@@ -10,13 +10,15 @@ const flash = require('connect-flash');
 const MySQLStore = require('express-mysql-session')(session);
 const bodyparser = require('body-parser');
 const fileUpload = require("express-fileupload");
-const helmet = require('helmet');  // Solo requerir helmet una vez
+const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
-const csurf = require('csurf');
+const csrf = require('csurf');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
-const minifyHTML = require('express-minify-html');
+const { minify } = require('html-minifier-terser');
 const winston = require('winston');
+
+const { Loader } = require('@googlemaps/js-api-loader')
 
 // Importar módulos locales
 const { MYSQLHOST, MYSQLUSER, MYSQLPASSWORD, MYSQLDATABASE, MYSQLPORT } = require('./keys');
@@ -30,11 +32,12 @@ app.use(helmet({
     contentSecurityPolicy: {
         directives: {
             ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-            "script-src": ["'self'", "'unsafe-inline'"],
-            "img-src": ["'self'", "data:", "blob:"],
-            "frame-src": ["'self'", "blob:"], // Permitir blobs en frames
-            "object-src": ["'none'"], // Desactivar objetos
-            "default-src": ["'self'"] // Default para todo lo demás
+            "script-src": ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://maps.googleapis.com"],
+            "img-src": ["'self'", "data:", "blob:", "https://maps.gstatic.com", "https://*.googleapis.com"],
+            "frame-src": ["'self'", "blob:", "https://www.google.com"],
+            "connect-src": ["'self'", "https://maps.googleapis.com"],
+            "object-src": ["'none'"],
+            "default-src": ["'self'"]
         }
     },
 }));
@@ -90,17 +93,27 @@ app.use(passport.session());
 // Middleware de seguridad y rendimiento
 app.use(helmet.referrerPolicy({ policy: 'strict-origin-when-cross-origin' }));
 app.use(compression());
-app.use(minifyHTML({
-    override: true,
-    htmlMinifier: {
-        removeComments: true,
-        collapseWhitespace: true,
-        collapseBooleanAttributes: true,
-        removeAttributeQuotes: true,
-        removeEmptyAttributes: true,
-        minifyJS: true
-    }
-}));
+
+// Middleware para minificar HTML
+app.use(async (req, res, next) => {
+    const originalSend = res.send.bind(res);
+    res.send = async function (body) {
+        if (typeof body === 'string') {
+            try {
+                body = await minify(body, {
+                    removeComments: true,
+                    collapseWhitespace: true,
+                    minifyCSS: true,
+                    minifyJS: true,
+                });
+            } catch (err) {
+                console.error('Error minifying HTML:', err);
+            }
+        }
+        return originalSend(body);
+    };
+    next();
+});
 
 const loginLimiter = rateLimit({
     windowMs: 15 * 60 * 1000,
@@ -109,6 +122,7 @@ const loginLimiter = rateLimit({
 });
 app.use('/loginTeachers', loginLimiter);
 app.use('/loginStudents', loginLimiter);
+
 // Middleware de manejo de errores
 app.use((err, req, res, next) => {
     if (res.headersSent) {
@@ -131,16 +145,25 @@ app.use((err, req, res, next) => {
 app.use((req, res, next) => {
     app.locals.message = req.flash('message');
     app.locals.success = req.flash('success');
-    app.locals.user = req.user;
+    app.locals.user = req.user || null;
     next();
 });
 
 // Middleware de protección CSRF
-const csrfMiddleware = csurf({ cookie: true });
+const csrfMiddleware = csrf({ cookie: true });
+app.use(cookieParser());
 app.use(csrfMiddleware);
+
 app.use((req, res, next) => {
     res.locals.csrfToken = req.csrfToken();
     next();
+  });
+app.use((err, req, res, next) => {
+    if (err.code !== 'EBADCSRFTOKEN') return next(err);
+
+    // Manejo del error CSRF aquí
+    res.status(403);
+    res.send('La validación del token CSRF ha fallado. Por favor, recarga la página.');
 });
 
 // Configurar archivos estáticos
@@ -167,7 +190,8 @@ app.use(morgan('combined', { stream: { write: message => logger.info(message.tri
 
 // Rutas - Definir tus rutas aquí
 app.use(require('./router/index.router'));
-app.use('/teacher', require('./router/teacher.router'))
+app.use(require('./router/envio.router'));
+app.use('/teacher', require('./router/teacher.router'));
 
 // Exportar la aplicación
 module.exports = app;

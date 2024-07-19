@@ -1,8 +1,10 @@
 const express = require("express");
-const router = require("./index.router");
+const router = express.Router();
 const isLoggedIn = require("../lib/auth");
-const { mostrar } = require("../controller/teacher.controller");
+const { mostrar, update, lista } = require("../controller/teacher.controller");
 
 router.get('/update/:id', isLoggedIn, mostrar)
+router.post('/update/:id', isLoggedIn, update)
+router.get('/lista/:id', isLoggedIn, lista)
 
 module.exports = router

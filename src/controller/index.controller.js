@@ -5,7 +5,7 @@ const indexCtl = {}
 
 indexCtl.mostrar = async (req, res) => {
     try {
-        const [pagina] = await sql.promise().execute('CREATE OR REPLACE VIEW pagePolicy AS SELECT p.*, o.* FROM pages p JOIN policies o on o.pageIdPage = p.idPage');
+        const [pagina] = await sql.promise().execute('SELECT * FROM pagePolicy');
         res.render('inicio', { listaPagina: pagina, csrfToken: req.csrfToken() })
     } catch (error) {
         console.error('Error en la consulta SQL:', error.message);

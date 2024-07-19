@@ -1,0 +1,73 @@
+<link rel="stylesheet" href="">
+{{#each listaPagina}}
+<form action="/clases/add/{{idPage}}" method="post" enctype="multipart/form-data">
+    {{/each}}
+    <div id="tiutlo">{{#each listaPagina}}
+        <p>Agregar Clase <input type="text" name="idClases" id="idClases" value="{{idPage}}"></p>{{/each}}
+    </div>
+    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+    <div id="imagen">
+        <div id="cambioImagen">
+            <img src="/img/icons/noImagen.png" id="imagenPrevisualizacion" />
+        </div>
+        <input type="file" name="photoClases" id="seleccionArchivos" accept="image/*" />
+        <button type="button" id="botonImagen">Imagen</button>
+    </div>
+    <div id="imagen">
+        <div id="cambioVideo">
+            <video src="/video/clase/noVideo.mp4" controls></video>
+        </div>
+        <input type="file" name="videoClases" id="seleccionArchivos" accept="image/*" />
+    </div>
+    <div id="nombre">
+        <p>Nombre de la Clase:</p>
+        <input type="text" name="nameClases" id="nameClases" required>
+    </div>
+    <div id="descripcion">
+        <p>Descripción de la Clase:</p>
+        <textarea name="descriptionClases" id="descriptionClases" required></textarea>
+    </div>
+    <div id="materias">
+        <select name="materias" id="materias">
+            {{#each listaMaterias}}
+            <option value="{{idSubject}}">{{nambeSubjects}}</option>
+            {{/each}}
+        </select>
+    </div>
+    <div id="materiales">
+        <select name="materiales" id="materiales">
+            {{#each listaMateriales}}
+            <option value="{{idMaterial}}">{{nameMaterial}}</option>
+            {{/each}}
+        </select>
+    </div>
+    <div id="recursos">
+        <select name="recursos" id="recursos">
+            {{#each listaRecursos}}
+            <option value="{{idRecours}}">{{nameRecours}}</option>
+            {{/each}}
+        </select>
+    </div>
+    <div id="fecha">
+        <p>Fecha de la Clase:</p>
+        <input type="text" name="dateClases" id="dateClases" required>
+    </div>
+    <div id="costo">
+        <p>Costo:</p>
+        <input type="text" name="costClases" id="costClases" required>
+    </div>
+    <div id="cupos">
+        <p>Cupos:</p>
+        <input type="text" name="shareClases" id="shareClases">
+    </div>
+    <div id="Hora">
+        <p>Tiempo de la Clase:</p>
+        <input type="text" name="hourClases" id="hourClases">
+    </div>
+    <div id="boton">
+        <button type="submit">Guardar</button>
+    </div>
+</form>
+
+<script src="/js/preview.js"></script>
+<script src="/js/botonImagen.js"></script>

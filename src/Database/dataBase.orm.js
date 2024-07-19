@@ -298,7 +298,13 @@ taskClass.hasMany(multimediaTask);
 multimediaTask.belongsTo(taskClass);
 
 page.hasMany(recours);
-recours.belongsTo(page); // Corrected from 'besTo'
+recours.belongsTo(page);
+
+specialtyType.hasMany(teacherDetail)
+teacherDetail.belongsTo(specialtyType)
+
+teacher.hasMany(teachCouch)
+teachCouch.belongsTo(teacher)
 
 sequelize.sync({ alter: true }) // alter will update the database schema to match the model
     .then(() => {

@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="">
+{{#each listaPagina}}
+<form action="/cours/list/{{idPage}}" method="get">
+{{/each}}
+    <div id="contenedor">
+        <div id="titulo">
+            <p>Lista de Cursos</p>
+        </div>
+        <div id="Datos">
+            <div class="row">
+                {{#each lista}}
+                <div id="tarjeta">
+                    <div id="foto">
+                        <p><img src="/img/cours/{{photoCours}}" alt=""></p>
+                    </div>
+                    <div id="video">
+                        <p><video src="/video/cours/{{videoCours}}" controls></video></p>
+                    </div>
+                    <div id="Nombre">
+                        <p>{{nameCours}}</p>
+                    </div>
+                    <div id="descripcion">
+                        <p>{{descriptionCours}}</p>
+                    </div>
+                    <div id="costo">
+                        <p>{{costCours}}</p>
+                    </div>
+                    <div id="estado">
+                        <p>{{stateCours}}</p>
+                    </div>
+                    <div id="calificacion">
+                        <p>{{calificationCours}}</p>
+                    </div>
+                    <div id="actualizar">
+                        <a href=""><button type="button">Actualizar</button></a>
+                    </div>
+                    <div id="desavilitar">
+                        <a href=""><button type="button">Desabilitar</button></a>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</form>

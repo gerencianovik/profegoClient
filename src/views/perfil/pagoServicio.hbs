@@ -1,0 +1,114 @@
+<link rel="stylesheet" href="">
+<div id="contenedor">
+    <form action="/teacher/PagoInscripcion/{{}}" method="post">
+        <div id="datosPlataforma">
+            <div id="logo">
+                <img src="/img/page/{{}}" alt="">
+            </div>
+            <div id="plataforma">
+                <div id="nombrePagina">
+                    <p>{{}}</p>
+                </div>
+                <div id="ruc">
+                    <p>{{}}</p>
+                </div>
+                <div id="celular">
+                    <p>{{}}</p>
+                </div>
+                <div id="direccion">
+                    <p>{{}}</p>
+                </div>
+                <div id="email">
+                    <p>{{}}</p>
+                </div>
+            </div>
+        </div>
+        <div id="factura">
+            <div id="titulo">
+                <p>Factura:</p>
+            </div>
+            <div id="fecha">
+                <input type="text" name="fecha" id="fecha">
+            </div>
+            <div id="puntoEmision">
+                <p>Punto de emisión</p>
+                <input type="text" name="emision" id="emision" value="">
+            </div>
+            <div id="#FacturaNumero">
+                <p>#Factura</p>
+                <input type="text" name="numeroFactura" id="numeroFactura">
+            </div>
+        </div>
+        <div id="teacher">
+            <div id="tituloTeacher">
+                <p>Cliente</p>
+            </div>
+            <div id="nombreTeacher">
+                <input type="text" name="nameTeacher" id="nameTeacher">
+            </div>
+            <div id="cedulaTeacher">
+                <input type="text" name="cedulaTeacher" id="cedulaTeacher">
+            </div>
+            <div id="direccion">
+                <input type="text" name="direccionTeacher" id="direccionTeacher">
+            </div>
+            <div id="celularTeacher">
+                <input type="text" name="celularTeacher" id="celularTeacher">
+            </div>
+            <div id="correoTeacher">
+                <input type="text" name="correoTeacher" id="correoTeacher">
+            </div>
+        </div>
+        <div id="tabla">
+            <div id="cantidad">
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Cantidad</td>
+                            <td>Descripción del servicio</td>
+                            <td>Precio</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" name="cantidad" id="cantidad"></td>
+                            <td><input type="text" name="descripcion" id="descripcion"></td>
+                            <td><input type="text" name="precio" id="precio"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="total">
+                    <p>Total:</p>
+                    <input type="text" name="total" id="total">
+                </div>
+            </div>
+        </div>
+        <div id="politicasCancelacion">
+            <h1>Políticas de Cancelación y Reembolsos:</h1>
+            <ul>
+                <li>Cancelaciones realizadas hasta 5 días antes de la fecha de la clase recibirán un reembolso completo.
+                </li>
+                <li>Cancelaciones realizadas entre 4 y 2 días antes de la fecha de la clase recibirán un reembolso del
+                    50%.</li>
+                <li>No se realizarán reembolsos por cancelaciones hechas 1 día u horas antes de la fecha de la clase o
+                    posteriormente.</li>
+            </ul>
+        </div>
+        <div id="tiposDePagos">
+            <h1>Tipo de pago : Tarjeta de Crédito/Débito</h1>
+            <p>Por favor, complete el pago a través de nuestro portal seguro para confirmar su inscripcioón. Aceptamos
+                las siguientes tarjetas:</p>
+        </div>
+        <div id="miPago">
+            <h1>Mi pago</h1>
+            <p>Estado: {{}}</p>
+        </div>
+        <div id="imagen">
+            <img src="">
+        </div>
+        <div id="mensajeGracias">
+            <h1>¡Gracias por elegir a <p>ProfeGo!</p>
+            </h1>
+        </div>
+    </form>
+</div>

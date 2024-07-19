@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="">
+{{#each lista}}
+<form action="/recours/update/{{idRecours}}" method="post">
+    <div id="contenedor">
+        <div id="titulo">
+            <p>Actualizar Recurso N° <input type="text" name="idRecours" id="numero" required
+                    value="{{idRecours}}"></p>
+        </div>
+        <input type="hidden" name="_csrf" value="{{ ../csrfToken }}">
+        <div id="nombre">
+            <p>Nombre del Recurso:</p>
+            <input type="text" name="nameRecours" id="nameRecours" required value="{{nameRecours}}">
+        </div>
+        <div id="descripcion">
+            <p>Descripcion del Recurso:</p>
+            <textarea type="text" name="descriptionRecourse" id="descriptionRecourse" required>{{descriptionRecourse}}</textarea>
+        </div>
+        <div id="cantidad">
+            <p>Cantidad del Recurso:</p>
+            <input type="text" name="quantyRecours" id="quantyRecours" required value="{{quantyRecours}}">
+        </div>
+        <div id="valor">
+            <p>Precio del Recurso</p>
+            <input type="text" name="valueRecours" id="valueRecours" required value="{{valueRecours}}">
+        </div>
+        <div id="estado">
+            <p>Estado:</p>
+            <div id="Activar">
+                <input type="text" name="stateRecours" id="idestado" readonly value="{{stateRecours}}">
+                <button type="button" id="activarBtn">Activar</button>
+            </div>
+            <div id="desActivar">
+                <button type="button" id="desactivarBtn">Desabilitar</button>
+            </div>
+        </div>
+        {{/each}}
+        <div id="boton">
+            <button type="submit">Actualizar</button>
+        </div>
+    </div>
+</form>
+
+<script src="/js/estados.js"></script>

@@ -3,7 +3,9 @@
 {{else}}
 <nav id="nav">
     <div id="logo">
-        <img src="/img/logo/logo.ico">
+        {{#each listaPagina}}
+        <img src="/img/logo/{{photoPage}}">
+        {{/each}}
     </div>
     <div id="nosotros">
         <div id="nosots">

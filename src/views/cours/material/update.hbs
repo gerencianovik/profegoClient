@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="">
+{{#each lista}}
+<form action="/material/update/{{idMaterial}}" method="post">
+    <div id="contenedor">
+        <div id="titulo">
+            <p>Actualizar Material N° <input type="text" name="idMaterial" id="numero" required value="{{idMaterial}}">
+            </p>
+        </div>
+        <div id="nombre">
+            <p>Nombre del Material:</p>
+            <input type="text" name="nameMaterial" id="nameMaterial" required value="{{nameMaterial}}">
+        </div>
+        <div id="descripcion">
+            <p>Descripcion del Material:</p>
+            <textarea type="text" name="descriptionMaterial" id="descriptionMaterial"
+                required>{{descriptionMaterial}}</textarea>
+        </div>
+        <div id="cantidad">
+            <p>Cantidad del Material:</p>
+            <input type="text" name="quantyMaterailClass" id="quantyMaterailClass" required
+                value="{{quantyMaterailClass}}">
+        </div>
+        <div id="valor">
+            <p>Precio del Material</p>
+            <input type="text" name="valueMaterial" id="valueMaterial" required value="{{valueMaterial}}">
+        </div>
+        <div id="estado">
+            <p>Estado:</p>
+            <div id="Activar">
+                <input type="text" name="stateMaterial" id="idestado" readonly value="{{stateMaterial}}">
+                <button type="button" id="activarBtn">Activar</button>
+            </div>
+            <div id="desActivar">
+                <button type="button" id="desactivarBtn">Desabilitar</button>
+            </div>
+        </div>
+        <div id="boton">
+            <button type="submit">Actualizar</button>
+        </div>
+    </div>
+</form>
+{{/each}}
+
+<script src="/js/estados.js"></script>

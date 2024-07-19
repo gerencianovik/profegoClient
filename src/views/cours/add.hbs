@@ -1,0 +1,83 @@
+<link rel="stylesheet" href="">
+{{#each listaPagina}}
+<form action="/cours/add/{{idPage}}" method="post" enctype="multipart/form-data">
+    {{/each}}
+    <div id="tiutlo">{{#each listaPagina}}
+        <p>Agregar Curso <input type="text" name="idCours" id="idCours" value="{{idPage}}"></p>{{/each}}
+    </div>
+    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+    <div id="imagen">
+        <div id="cambioImagen">
+            <img src="/img/icons/noImagen.png" id="imagenPrevisualizacion" />
+        </div>
+        <input type="file" name="photoCours" id="seleccionArchivos" accept="image/*" />
+        <button type="button" id="botonImagen">Imagen</button>
+    </div>
+    <div id="imagen">
+        <div id="cambioVideo">
+            <video src="/video/clase/noVideo.mp4" controls></video>
+        </div>
+        <input type="file" name="videoCours" id="seleccionArchivos" accept="image/*" />
+    </div>
+    <div id="nombre">
+        <p>Nombre del Curso:</p>
+        <input type="text" name="nameCours" id="nameCours" required>
+    </div>
+    <div id="descripcion">
+        <p>Descripción del Curso:</p>
+        <textarea name="descriptionCours" id="descriptionCours" required></textarea>
+    </div>
+    <div id="adaptadoNee">
+        <div id="imagenNee">
+            <img src="">
+        </div>
+        <input type="checkbox" name="adactacion" id="adactacion" value="si">
+    </div>
+    <div id="modalidad">
+        <p>Modalidad del Curso:</p>
+        <select name="modalidad" id="modalidad">
+            <option value=""></option>
+        </select>
+    </div>
+    <div id="tipoCurso">
+        <p>Tipo de Curso:</p>
+        <select name="tipoCurso" id="tipoCurso">
+            <option value=""></option>
+        </select>
+    </div>
+    <div id="edades">
+        <input type="checkbox" name="edades" id="edad" value="{{}}">
+    </div>
+    <div id="direccion">
+        <div id="map" style="width: 100%; height: 400px;"></div>
+        <input type="text" name="ubicacionCurso" id="ubicacion" placeholder="Dirección" value="{{addressTeacher}}"
+            data-lat="{{lat}}" data-lng="{{lng}}" required>
+        <input type="text" name="ubicacion" id="ubicaciones">
+    </div>
+    <div id="fecha">
+        <p>Fecha de Inicio del Curso:</p>
+        <input type="text" name="dateCoursinit" id="dateCours" required>
+    </div>
+    <div id="fechaFinal">
+        <p>Fecha de Fin del Curso:</p>
+        <input type="text" name="dateCoursfin" id="dateCours" required>
+    </div>
+    <div id="costo">
+        <p>Costo:</p>
+        <input type="text" name="costCours" id="costCours" required>
+    </div>
+    <div id="cupos">
+        <p>Cupos:</p>
+        <input type="text" name="shareCours" id="shareCours">
+    </div>
+    <div id="Hora">
+        <p>Tiempo de la Clase:</p>
+        <input type="text" name="hourCours" id="hourCours">
+    </div>
+    <div id="boton">
+        <button type="submit">Guardar</button>
+    </div>
+</form>
+
+<script src="/js/preview.js"></script>
+<script src="/js/botonImagen.js"></script>

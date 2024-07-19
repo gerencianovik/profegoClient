@@ -60,6 +60,85 @@ passport.use(
 );
 
 passport.use(
+    'local.studentSignin',
+    new LocalStrategy(
+        {
+            usernameField: 'username',
+            passwordField: 'password',
+            passReqToCallback: true,
+        },
+        async (req, username, password, done) => {
+            if (!validateInput(username) || !validateInput(password)) {
+                return done(null, false, req.flash("message", "Entrada inválida."));
+            }
+
+            const users = await sql.query('select * from estudents')
+            for (let i = 0; i < users.length; i++) {
+                const user = await orm.student.findOne({ where: { usernameEstudent: users[i].usernameEstudent} });
+                let decryptedUsername = descifrarDatos(user.usernameEstudent)
+                if (decryptedUsername == username) {
+                    const validPassword = await bcrypt.compare(password, user.passwordEstudent);
+                    if (validPassword) {
+                        return done(null, user, req.flash("success", "Bienvenido" + " " + user.decryptedUsername));
+                    } else {
+                        return done(null, false, req.flash("message", "Datos incorrecta"));
+                    }
+                }
+            }
+            return done(null, false, req.flash("message", "El nombre de usuario no existe."));
+        }
+    )
+);
+
+passport.use(
+    'local.studentSignup',
+    new LocalStrategy(
+        {
+            usernameField: 'username',
+            passwordField: 'password',
+            passReqToCallback: true,
+        },
+        async (req, username, password, done) => {
+            try {
+                if (!validateInput(username) || !validateInput(password)) {
+                    return done(null, false, req.flash("message", "Entrada inválida."));
+                }
+                const existingUser = await orm.student.findOne({ where: { usernameEstudent: cifrarDatos(username) } });
+                if (existingUser) {
+                    return done(null, false, req.flash('message', 'La cedula del usuario ya existe.'));
+                } else {
+                    const hashedPassword = await helpers.hashPassword(password);
+                    const {
+                        idEstudent,
+                        completeNameEstudent,
+                        emailEstudent,
+                        celularEstudent
+                    } = req.body;
+
+                    let newClient = {
+                        idEstudent: idEstudent,
+                        identificationCardTeacher: cifrarDatos(username),
+                        celularEstudent: cifrarDatos(celularEstudent),
+                        emailEstudent: cifrarDatos(emailEstudent),
+                        completeNameEstudent: cifrarDatos(completeNameEstudent),
+                        usernameEstudent: cifrarDatos(username),
+                        passwordEstudent: hashedPassword,
+                        stateEstudent: 'Activar',
+                        createTeahcer: new Date().toLocaleString()
+                    };
+
+                    const guardar = await orm.student.create(newClient);
+                    newClient.id = guardar.insertId
+                    return done(null, newClient);
+                }
+            } catch (error) {
+                return done(error);
+            }
+        }
+    )
+);
+
+passport.use(
     'local.teacherSignup',
     new LocalStrategy(
         {

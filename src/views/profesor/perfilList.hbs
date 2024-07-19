@@ -1,0 +1,66 @@
+<link rel="stylesheet" href="">
+<div id="contenedor">
+    {{#each listaTeacher}}
+    <form action="/teacher/lista/{{idTeacher}}" method="get">
+        <div id="contenedor">
+            <div id="titulo">
+                <p>Perfil de {{completeNmeTeacher}}</p>
+            </div>
+            <div id="imagenTeahcer">
+                <img src="/img/usuario/{{photoTeacher}}">
+            </div>
+            <div id="direccion">
+                <div id="map" style="width: 100%; height: 400px;"></div>
+               <input type="text" name="addressTeacher" id="ubicacion" placeholder="Dirección" value="{{addressTeacher}}" data-lat="{{lat}}" data-lng="{{lng}}" required>
+            </div>
+            <div id="tituloDocente">
+                {{#each ../listaChouch}}
+                <p>{{stateTeachCouch}}</p>
+                {{/each}}
+            </div>
+            <div id="fecha">
+                <p>{{ageTeacher}}</p>
+            </div>
+            <div id="titulo">
+                {{#each ../listaMaterias}}
+                <p>{{nameSpecialType}}</p>
+                {{/each}}
+            </div>
+            <div id="titulo">
+                <iframe id="documentoTituloPrevisualizacion" src="/archivos/teacher/{{endorsementCertificateTeacher}}"></iframe>
+            </div>
+            <div id="hojavida">
+                <iframe id="documentoHojaVidaPrevisualizacion" src="/archivos/teacher/{{pageVitalTeacher}}"></iframe>
+            </div>
+            <div id="criminal">
+                <iframe id="documentoAntecedentesPrevisualizacion" src="/archivos/teacher/{{criminalRecordTeacher}}"></iframe>
+            </div>
+            <div id="materias">
+                <p>{{subjetTeacher}}</p>
+            </div>
+            <div id="edad">
+                <p>{{rangeAgeTeacher}}</p>
+            </div>
+            <div id="descripcion">
+                <p>{{descriptionTeacher}}</p>
+            </div>
+            <div id="cedula">
+                <p>{{identificationCardTeacher}}</p>
+            </div>
+            <div id="celular">
+                <p>{{phoneTeacher}}</p>
+            </div>
+            <div id="correo">
+                <p>{{emailTeacher}}</p>
+            </div>
+            <div id="estado">
+                <p>{{stateTeacher}}</p>
+            </div>
+        </div>
+    </form>
+    {{/each}}
+</div>
+
+<script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Q9PaOYlXpeqtj_0tHE19Zcoim25iSFg&callback=initMap"></script>
+<script src="/js/mapa.js"></script>

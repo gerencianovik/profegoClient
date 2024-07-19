@@ -10,6 +10,10 @@ const page = (sequelize, type) =>{
             type: type.STRING,
             comment: 'Imagen de Pagina'
         },
+        rucPage: {
+            type: type.STRING,
+            comment: 'ruc pagina'
+        },
         namePage: {
             type: type.STRING,
             comment: 'Nombre de Pagina'
