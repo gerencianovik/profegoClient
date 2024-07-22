@@ -60,6 +60,7 @@ const guardarYSubirArchivo = async (archivo, filePath, columnName, idTeacher, ur
 teacher.mostrar = async (req, res) => {
     try {
         const ids = req.params.id;
+        const [pagina] = await sql.promise().execute('SELECT * FROM pagePolicy');
         const [rows] = await sql.promise().query('SELECT * FROM teachers WHERE idTeacher = ?', [ids]);
         const [listaTitulo] = await sql.promise().query('SELECT * FROM specialtyTypes WHERE specialType = "titulo"');
         const [listaTitulosEspecial] = await sql.promise().query('SELECT * FROM specialtyTypes WHERE specialType = "especial"');
@@ -82,6 +83,7 @@ teacher.mostrar = async (req, res) => {
         }));
 
         res.render('profesor/perfilUpdate', {
+            listaPagina: pagina,
             listaTeacher: datos,
             listaEspecialidades: listaTitulosEspecial,
             listaTitulos: listaTitulo,
@@ -223,6 +225,7 @@ teacher.update = async (req, res) => {
 teacher.lista = async (req, res) => {
     try {
         const ids = req.params.id;
+        const [pagina] = await sql.promise().execute('SELECT * FROM pagePolicy');
         const [rows] = await sql.promise().query('SELECT * FROM teachers WHERE idTeacher = ?', [ids]);
         const [listaMaterias] = await sql.promise().query('SELECT t.*, s.* FROM teacherDetails t JOIN specialtyTypes s ON t.specialtyTypeIdSpecialType = s.idSpecialType WHERE teacherIdTeacher = ?', [ids]);
         const [teachCouch] = await sql.promise().query('SELECT * FROM teachCouches WHERE teacherIdTeacher = ?', [ids])
@@ -247,6 +250,7 @@ teacher.lista = async (req, res) => {
             stateTeachCouch: descifrarDatos(row.stateTeachCouch)
         }));
         res.render('profesor/perfilList', {
+            listaPagina: pagina,
             listaTeacher: datos,
             listaChouch: datosCouch,
             listaMaterias: listaMaterias,

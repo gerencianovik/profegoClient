@@ -61,6 +61,30 @@ indexCtl.registro = passport.authenticate("local.teacherSignup", {
     failureMessage: true
 })
 
+indexCtl.registroEstudiante = passport.authenticate("local.studentSignup", {
+    successRedirect: "/closeSection",
+    failureRedirect: "/RegisterStudents",
+    failureFlash: true,
+    failureMessage: true
+})
+
+indexCtl.loginEstudiante = (req, res, next) => {
+    passport.authenticate("local.studentSignin", (err, user, info) => {
+        if (err) {
+            return next(err);
+        }
+        if (!user) {
+            return res.redirect("/RegisterStudents");
+        }
+        req.logIn(user, (err) => {
+            if (err) {
+                return next(err);
+            }
+            return res.redirect("/Eleccion/" + req.user.idEstudent);
+        });
+    })(req, res, next);
+};
+
 indexCtl.login = (req, res, next) => {
     passport.authenticate("local.teacherSignin", (err, user, info) => {
         if (err) {

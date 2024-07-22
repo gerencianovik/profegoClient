@@ -26,8 +26,8 @@
             </div>
             <div id="direccion">
                 <div id="map" style="width: 100%; height: 400px;"></div>
-               <input type="text" name="addressTeacher" id="ubicacion" placeholder="Dirección" value="{{addressTeacher}}" data-lat="{{lat}}" data-lng="{{lng}}" required>
-               <input type="text" name="ubicacion" id="ubicaciones">
+                <input id="pac-input" class="controls" type="text" placeholder="Buscar" />
+                <input type="text" name="ubicacion" id="ubicacion">
             </div>
             <div id="Eleccion">
                 <p>Elige:</p>
@@ -72,7 +72,8 @@
                         accept="application/pdf" id="seleccionTitulo" />
                     <button type="button" class="botonImagen" data-input-id="seleccionTitulo">Subir Titulo</button>
                     {{#if endorsementCertificateTeacher}}
-                    <iframe id="documentoTituloPrevisualizacion" src="/archivos/teacher/{{endorsementCertificateTeacher}}"></iframe>
+                    <iframe id="documentoTituloPrevisualizacion"
+                        src="/archivos/teacher/{{endorsementCertificateTeacher}}"></iframe>
                     {{else}}
                     <iframe id="documentoTituloPrevisualizacion" src=""></iframe>
                     {{/if}}
@@ -84,7 +85,8 @@
                     <button type="button" class="botonImagen" data-input-id="seleccionHojaVida">Subir Hoja de
                         vida</button>
                     {{#if pageVitalTeacher}}
-                    <iframe id="documentoHojaVidaPrevisualizacion" src="/archivos/teacher/{{pageVitalTeacher}}"></iframe>
+                    <iframe id="documentoHojaVidaPrevisualizacion"
+                        src="/archivos/teacher/{{pageVitalTeacher}}"></iframe>
                     {{else}}
                     <iframe id="documentoHojaVidaPrevisualizacion" src=""></iframe>
                     {{/if}}
@@ -96,7 +98,8 @@
                     <button type="button" class="botonImagen" data-input-id="seleccionAntecedentes">Subir
                         Antecedentes</button>
                     {{#if criminalRecordTeacher}}
-                    <iframe id="documentoAntecedentesPrevisualizacion" src="/archivos/teacher/{{criminalRecordTeacher}}"></iframe>
+                    <iframe id="documentoAntecedentesPrevisualizacion"
+                        src="/archivos/teacher/{{criminalRecordTeacher}}"></iframe>
                     {{else}}
                     <iframe id="documentoAntecedentesPrevisualizacion" src=""></iframe>
                     {{/if}}
@@ -163,6 +166,8 @@
 <script src="/js/EdadSeleccion.js"></script>
 <script src="/js/seleccionMaterias.js"></script>
 <script src="/js/seleccionTitulo.js"></script>
-<script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Q9PaOYlXpeqtj_0tHE19Zcoim25iSFg&callback=initMap"></script>
-<script src="/js/mapa.js"></script>
+<<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Q9PaOYlXpeqtj_0tHE19Zcoim25iSFg&callback=initAutocomplete&libraries=places&v=weekly"
+    defer>
+    </script>
+    <script src="/js/mapa.js"></script>

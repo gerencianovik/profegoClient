@@ -14,6 +14,7 @@ const Clases = (sequelize, type) =>{
             type: type.STRING,
             comment: 'Video de la Clase'
         },
+        ubicacionClase: type.STRING,
         nameClases: {
             type: type.STRING,
             comment: 'Nombre de la Clase'
@@ -22,7 +23,12 @@ const Clases = (sequelize, type) =>{
             type: type.TEXT,
             comment: 'Descripcion de la Clase'
         },
-        dateClases: {
+        dateClasesInit: {
+            type: type.STRING,
+            comment: 'Date de la Clase'
+        },
+        neeClass: type.STRING,
+        dateClasesFin: {
             type: type.STRING,
             comment: 'Date de la Clase'
         },

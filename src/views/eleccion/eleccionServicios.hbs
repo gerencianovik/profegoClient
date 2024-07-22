@@ -1,7 +1,9 @@
 <link rel="stylesheet" href="">
+{{#each listaTeacher}}
+<form action="/teacher/eleccion/{{idTeacher}}" method="get"></form>
 <div id="contenedor">
     <div id="titulo">
-        <h1>¡Bienvenido {{}}!</h1>
+        <h1>¡Bienvenido {{completeNmeTeacher}}!</h1>
         <p>Elige entre servicios que puedes crear o los existentes.
             ¡Tu enseñanza, tu elección!</p>
     </div>
@@ -64,44 +66,46 @@
         </div>
         <div id="catalogo">
             <h1>Catálogo de servicios existentes</h1>
-            <p>¿Te gustaría impartir alguno de los servicios creados por el equipo de ProfeGo? Explora y selecciona los mejores programas para ti o crea los tuyos propios.</p>
+            <p>¿Te gustaría impartir alguno de los servicios creados por el equipo de ProfeGo? Explora y selecciona los
+                mejores programas para ti o crea los tuyos propios.</p>
         </div>
     </div>
     <div id="curso">
+        {{#each ../listaCursos}}
         <div id="imagenCursoClase">
             <img src="">
         </div>
         <div id="datos">
             <div id="nombreCurso">
-                <p>{{}}</p>
+                <p>{{nameCours}}</p>
             </div>
             <div id="ubicacion">
                 <div id="imagenUbicacion">
                     <div id="mapa"></div>
-                    <input type="text" name="cordenadas" id="ubicacion" value="{{}}">
+                    <input type="text" name="cordenadas" id="ubicacion" value="{{ubicacionCurso}}">
                 </div>
             </div>
             <div id="modalidad">
                 <div id="imagenModalidad">
                     <img src="">
                 </div>
-                <p>{{}}</p>
+                <p>{{nameCoursClassType}}</p>
             </div>
             <div id="costo">
                 <div id="imagenCosto">
                     <img src="">
                 </div>
-                <p>{{}}</p>
+                <p>{{costCours}}</p>
             </div>
             <div id="necesidadesEducativas">
                 <div id="imagenNececidades">
                     <img src="">
                 </div>
-                <p>{{}}</p>
+                <p>{{neeCours}}</p>
             </div>
             <div id="descripcion">
                 <h1>Descripción:</h1>
-                <p>{{}}</p>
+                <p>{{descriptionCours}}</p>
             </div>
             <div id="detalle">
                 <a href=""><button type="button">Ver detalle</button></a>
@@ -110,42 +114,44 @@
                 <a href=""><button type="button">Impartir</button></a>
             </div>
         </div>
+        {{/each}}
     </div>
     <div id="clase">
+        {{#each ../listaClases}}
         <div id="imagenCursoClase">
             <img src="">
         </div>
         <div id="datos">
             <div id="nombreCurso">
-                <p>{{}}</p>
+                <p>{{nameClases}}</p>
             </div>
             <div id="ubicacion">
                 <div id="imagenUbicacion">
                     <div id="mapa"></div>
-                    <input type="text" name="cordenadas" id="ubicacion" value="{{}}">
+                    <input type="text" name="cordenadas" id="ubicacion" value="{{ubicacionClase}}">
                 </div>
             </div>
             <div id="modalidad">
                 <div id="imagenModalidad">
                     <img src="">
                 </div>
-                <p>{{}}</p>
+                <p>{{nameCoursClassType}}</p>
             </div>
             <div id="necesidadesEducativas">
                 <div id="imagenNececidades">
                     <img src="">
                 </div>
-                <p>{{}}</p>
+                <p>{{neeClass}}</p>
             </div>
             <div id="costo">
                 <div id="imagenCosto">
                     <img src="">
                 </div>
-                <p>{{}}</p>
+                <p>{{costClases}}</p>
             </div>
             <div id="descripcion">
                 <h1>Descripción:</h1>
-                <p>{{}}</p>
+                <p>{{descriptionClases}}</p>
             </div>
             <div id="detalle">
                 <a href=""><button type="button">Ver detalle</button></a>
@@ -155,4 +161,6 @@
             </div>
         </div>
     </div>
+    {{/each}}
 </div>
+{{/each}}

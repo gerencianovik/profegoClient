@@ -306,6 +306,12 @@ teacherDetail.belongsTo(specialtyType)
 teacher.hasMany(teachCouch)
 teachCouch.belongsTo(teacher)
 
+coursClassType.hasMany(cours)
+cours.belongsTo(coursClassType)
+
+coursClassType.hasMany(clases)
+clases.belongsTo(coursClassType)
+
 sequelize.sync({ alter: true }) // alter will update the database schema to match the model
     .then(() => {
         console.log('Database synchronized');

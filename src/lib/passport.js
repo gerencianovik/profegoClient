@@ -7,7 +7,57 @@ const orm = require('../Database/dataBase.orm');
 const sql = require('../Database/dataBase.sql');
 const helpers = require('./helpers');
 const bcrypt = require('bcrypt');
+const FormData = require('form-data');
 const { cifrarDatos, descifrarDatos } = require('./encrypDates');
+
+
+const guardarYSubirArchivo = async (archivo, filePath, columnName, idEstudent, url, req) => {
+    const validaciones = {
+        imagen: [".PNG", ".JPG", ".JPEG", ".GIF", ".TIF", ".png", ".jpg", ".jpeg", ".gif", ".tif", ".ico", ".ICO"],
+        pdf: [".pdf", ".PDF"]
+    };
+    const tipoArchivo = columnName === 'photoEstudent' ? 'imagen' : 'pdf';
+    const validacion = path.extname(archivo.name);
+
+    if (!validaciones[tipoArchivo].includes(validacion)) {
+        throw new Error('Archivo no compatible.');
+    }
+
+    return new Promise((resolve, reject) => {
+        archivo.mv(filePath, async (err) => {
+            if (err) {
+                return reject(new Error('Error al guardar el archivo.'));
+            } else {
+                try {
+                    await sql.promise().query(`UPDATE students SET ${columnName} = ? WHERE idEstudent = ?`, [archivo.name, idEstudent]);
+
+                    const formData = new FormData();
+                    formData.append('image', fs.createReadStream(filePath), {
+                        filename: archivo.name,
+                        contentType: archivo.mimetype,
+                    });
+
+                    const response = await axios.post(url, formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            'X-CSRF-Token': req.csrfToken(),
+                            'Cookie': req.headers.cookie
+                        },
+                    });
+
+                    if (response.status !== 200) {
+                        throw new Error('Error al subir archivo al servidor externo.');
+                    }
+
+                    resolve();
+                } catch (uploadError) {
+                    console.error('Error al subir archivo al servidor externo:', uploadError.message);
+                    reject(new Error('Error al subir archivo al servidor externo.'));
+                }
+            }
+        });
+    });
+};
 
 // Validación de entrada
 const validateInput = (input) => {
@@ -43,7 +93,7 @@ passport.use(
 
             const users = await sql.query('select * from teachers')
             for (let i = 0; i < users.length; i++) {
-                const user = await orm.teacher.findOne({ where: { identificationCardTeacher: users[i].identificationCardTeacher} });
+                const user = await orm.teacher.findOne({ where: { identificationCardTeacher: users[i].identificationCardTeacher } });
                 let decryptedUsername = descifrarDatos(user.identificationCardTeacher)
                 if (decryptedUsername == username) {
                     const validPassword = await bcrypt.compare(password, user.passwordTeacher);
@@ -74,7 +124,7 @@ passport.use(
 
             const users = await sql.query('select * from estudents')
             for (let i = 0; i < users.length; i++) {
-                const user = await orm.student.findOne({ where: { usernameEstudent: users[i].usernameEstudent} });
+                const user = await orm.student.findOne({ where: { usernameEstudent: users[i].usernameEstudent } });
                 let decryptedUsername = descifrarDatos(user.usernameEstudent)
                 if (decryptedUsername == username) {
                     const validPassword = await bcrypt.compare(password, user.passwordEstudent);
@@ -124,10 +174,21 @@ passport.use(
                         usernameEstudent: cifrarDatos(username),
                         passwordEstudent: hashedPassword,
                         stateEstudent: 'Activar',
-                        createTeahcer: new Date().toLocaleString()
+                        createStudent: new Date().toLocaleString()
                     };
 
                     const guardar = await orm.student.create(newClient);
+
+                    if (req.files) {
+                        const { photoEstudent } = req.files;
+
+                        // Guardar y subir foto del profesor
+                        if (photoEstudent) {
+                            const photoFilePath = path.join(__dirname, '/../public/img/usuario/', photoEstudent.name);
+                            await guardarYSubirArchivo(photoEstudent, photoFilePath, 'photoEstudent', idEstudent, 'http://localhost:9000/imagenEstudiante', req);
+                        }
+                    }
+
                     newClient.id = guardar.insertId
                     return done(null, newClient);
                 }

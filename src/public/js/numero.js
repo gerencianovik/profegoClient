@@ -21,6 +21,8 @@ class obtenerNumero {
 
 let numeros = new obtenerNumero();
 
+window.onload =  numeros.aumento();
+
 window.onload = function() {
     numeros.aumento();
 };

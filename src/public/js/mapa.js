@@ -1,67 +1,93 @@
-let map;
-let marker = null; // Mantén el marcador como una variable global inicializada en null
+let marker
+function initAutocomplete() {
+  const map = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: -0.13097336766634235, lng: -78.45333414939553 },
+    zoom: 13,
+    mapTypeId: "hybrid",
+  });
+  // Create the search box and link it to the UI element.
+  const input = document.getElementById("pac-input");
+  const searchBox = new google.maps.places.SearchBox(input);
 
-async function initMap() {
-  // Esperar hasta que el DOM esté cargado completamente
-  await new Promise(resolve => {
-    window.addEventListener('DOMContentLoaded', resolve);
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+  // Bias the SearchBox results towards current map's viewport.
+  map.addListener("bounds_changed", () => {
+    searchBox.setBounds(map.getBounds());
   });
 
-  // Iterar sobre cada formulario de profesor para inicializar el mapa correctamente
-  document.querySelectorAll('#contenedor form').forEach(form => {
-    const ubicacionInput = form.querySelector('#ubicacion');
-    const addressTeacherInput = form.querySelector('[name="addressTeacher"]');
-    let lat = -0.13097336766634235; // Valor predeterminado si no hay coordenadas disponibles
-    let lng = -78.45333414939553; // Valor predeterminado si no hay coordenadas disponibles
+  let markers = [];
 
-    // Verificar si hay coordenadas disponibles en addressTeacher
-    if (addressTeacherInput.value) {
-      const coordenadas = addressTeacherInput.value.split(',');
-      lat = parseFloat(coordenadas[0].trim());
-      lng = parseFloat(coordenadas[1].trim());
+  // Listen for the event fired when the user selects a prediction and retrieve
+  // more details for that place.
+  searchBox.addListener("places_changed", () => {
+    const places = searchBox.getPlaces();
+
+    if (places.length == 0) {
+      return;
     }
 
-    const position = { lat: lat, lng: lng };
-
-    const map = new google.maps.Map(form.querySelector('#map'), {
-      zoom: 20,
-      center: position,
-      mapId: "Ubicacion",
+    // Clear out the old markers.
+    markers.forEach((marker) => {
+      marker.setMap(null);
     });
+    markers = [];
 
-    // No inicialices un nuevo marcador aquí, usarás el marcador global
+    // For each place, get the icon, name and location.
+    const bounds = new google.maps.LatLngBounds();
 
-    map.addListener('click', (e) => {
-      placeMarkerAndPanTo(e.latLng, map, ubicacionInput, addressTeacherInput);
+    places.forEach((place) => {
+      if (!place.geometry || !place.geometry.location) {
+        console.log("Returned place contains no geometry");
+        return;
+      }
+
+      const icon = {
+        url: place.icon,
+        size: new google.maps.Size(71, 71),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(17, 34),
+        scaledSize: new google.maps.Size(25, 25),
+      };
+
+      // Create a marker for each place.
+      markers.push(
+        new google.maps.Marker({
+          map,
+          icon,
+          title: place.name,
+          position: place.geometry.location,
+        }),
+      );
+      if (place.geometry.viewport) {
+        // Only geocodes have viewport.
+        bounds.union(place.geometry.viewport);
+      } else {
+        bounds.extend(place.geometry.location);
+      }
     });
+    map.fitBounds(bounds);
+  });
+  map.addListener('click', (e) => {
+    placeMarkerAndPanTo(e.latLng, map);
   });
 }
 
-function placeMarkerAndPanTo(latLng, map, ubicacionInput, addressTeacherInput) {
-  const ubicacion = {
-    lat: latLng.lat(),
-    lng: latLng.lng(),
-  };
-
-  // Si ya hay un marcador, elimínalo del mapa
+function placeMarkerAndPanTo(latLng, map) {
   if (marker) {
     marker.setMap(null);
   }
 
   // Coloca un nuevo marcador en la ubicación clicada
   marker = new google.maps.Marker({
-    position: ubicacion,
+    position: latLng,
     map: map,
     title: "Estás aquí",
   });
 
   // Centra el mapa en la nueva ubicación
-  map.panTo(ubicacion);
+  map.panTo(latLng);
 
-  // Actualiza el input con las nuevas coordenadas
-  ubicacionInput.value = `${ubicacion.lat}, ${ubicacion.lng}`;
-  addressTeacherInput.value = `${ubicacion.lat}, ${ubicacion.lng}`; // Actualiza el campo addressTeacher con las nuevas coordenadas
+  document.getElementById('ubicacion').value = latLng;
 }
 
-// Inicializa el mapa al cargar la página
-initMap();
+window.initAutocomplete = initAutocomplete;
