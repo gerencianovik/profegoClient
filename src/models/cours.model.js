@@ -52,6 +52,7 @@ const cours = (sequelize, type) =>{
             comment: 'Calificacion de Curso'
         },
         neeCours: type.STRING,
+        tipoCurso: type.STRING,
         createCours: {
             type: type.STRING,
             comment: 'Crear de Curso'

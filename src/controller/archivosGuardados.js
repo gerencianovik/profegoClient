@@ -65,7 +65,7 @@ guardadoImgenCtl.sendImagenClass = (req, res) => {
     const imageFile = req.files.image;
 
     // Crear el filePath donde se guardará la imagen
-    const filePath = __dirname + '/../public/img/class/' + imageFile.name;
+    const filePath = __dirname + '/../public/img/clase/' + imageFile.name;
 
     // Guardar la imagen en el filePath
     imageFile.mv(filePath, (err) => {
@@ -89,7 +89,7 @@ guardadoImgenCtl.sendVideoClass = (req, res) => {
     const imageFile = req.files.image;
 
     // Crear el filePath donde se guardará la imagen
-    const filePath = __dirname + '/../public/video/class/' + imageFile.name;
+    const filePath = __dirname + '/../public/video/clases/' + imageFile.name;
 
     // Guardar la imagen en el filePath
     imageFile.mv(filePath, (err) => {

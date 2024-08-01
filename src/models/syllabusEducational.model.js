@@ -33,6 +33,10 @@ const syllabusEducational = (sequelize, type) =>{
         observationsyllabusEducational: {
             type: type.STRING,
             comment: 'Observaciones de Contenido Curricular'
+        },
+        stateSyllabusEducational: {
+            type: type.STRING,
+            comment: 'estado de Contenido Curricular'
         }
     }, {
         timestamps: false,

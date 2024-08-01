@@ -1,0 +1,82 @@
+<link rel="stylesheet" href="styles.css"> <!-- Asegúrate de proporcionar la ruta correcta -->
+{{#each listaSilabusCurso}}
+<form action="/silabus/courso/{{idCurso}}" method="get"></form>
+<div id="contenedor">
+    <div id="titulo">
+        <p>Lista de Contenidos Curriculares</p>
+    </div>
+    <div id="Datos">
+        <div class="row">
+            {{#each ../listaSyllabi}}
+            <div id="tarjeta">
+                <div id="nombre">
+                    <p>{{namesyllabusEducational}}</p>
+                </div>
+                <div id="objetivo">
+                    <p>{{objetivesyllabusEducational}}</p>
+                </div>
+                <div id="modulo">
+                    <p>{{moduleCurrucularContentCourse}}</p>
+                </div>
+                <div id="tema">
+                    <p>{{themesyllabusEducational}}</p>
+                </div>
+                <div id="tiempo">
+                    <p>{{timesyllabusEducational}}</p>
+                </div>
+                <div id="fecha">
+                    <p>{{datesyllabusEducational}}</p>
+                </div>
+                <div id="observaciones">
+                    <p>{{observationsyllabusEducational}}</p>
+                </div>
+                <div id="actualizar">
+                    <a href="/syllabus/detail/{{idsyllabusEducational}}"><button type="button">Detalle</button></a>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
+{{/each}}
+
+{{#each listaSilabusClase}}
+<form action="/silabus/clases/{{idClases}}" method="get"></form>
+<div id="contenedor">
+    <div id="titulo">
+        <p>Lista de Contenidos Curriculares</p>
+    </div>
+    <div id="Datos">
+        <div class="row">
+            {{#each ../listaSyllabi}}
+            <div id="tarjeta">
+                <div id="nombre">
+                    <p>{{namesyllabusEducational}}</p>
+                </div>
+                <div id="objetivo">
+                    <p>{{objetivesyllabusEducational}}</p>
+                </div>
+                <div id="modulo">
+                    <p>{{moduleCurrucularContentCourse}}</p>
+                </div>
+                <div id="tema">
+                    <p>{{themesyllabusEducational}}</p>
+                </div>
+                <div id="tiempo">
+                    <p>{{timesyllabusEducational}}</p>
+                </div>
+                <div id="fecha">
+                    <p>{{datesyllabusEducational}}</p>
+                </div>
+                <div id="observaciones">
+                    <p>{{observationsyllabusEducational}}</p>
+                </div>
+                <div id="actualizar">
+                    <a href="/syllabus/detail/{{idsyllabusEducational}}"><button type="button">Detalle</button></a>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
+{{/each}}

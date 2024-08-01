@@ -1,0 +1,57 @@
+<link rel="stylesheet" href="styles.css"> <!-- Asegúrate de proporcionar la ruta correcta -->
+{{#each detailSilabus}}
+<form action="/silabus/detail/{{idSilabus}}" method="get"></form>
+<div id="contenedor">
+    <div id="titulo">
+        <h1>Detalle del Contenido Curricular</h1>
+    </div>
+
+    <!-- Detalle del Contenido Curricular -->
+    <div id="detalleContenidoCurricular">
+        <h2>Información del Contenido Curricular</h2>
+        <div id="nombre">
+            <p><strong>Nombre:</strong> {{namesyllabusEducational}}</p>
+        </div>
+        <div id="objetivo">
+            <p><strong>Objetivo:</strong> {{objetivesyllabusEducational}}</p>
+        </div>
+        <div id="modulo">
+            <p><strong>Módulo:</strong> {{moduleCurrucularContentCourse}}</p>
+        </div>
+        <div id="tema">
+            <p><strong>Tema:</strong> {{themesyllabusEducational}}</p>
+        </div>
+        <div id="tiempo">
+            <p><strong>Tiempo:</strong> {{timesyllabusEducational}}</p>
+        </div>
+        <div id="fecha">
+            <p><strong>Fecha:</strong> {{datesyllabusEducational}}</p>
+        </div>
+        <div id="observaciones">
+            <p><strong>Observaciones:</strong> {{observationsyllabusEducational}}</p>
+        </div>
+    </div>
+
+    <!-- Detalle del Contenido Curricular del Curso -->
+    <div id="detalleContenidoCurricularCurso">
+        <h2>Información del Detalle del Contenido Curricular del Curso</h2>
+        <div id="subTemas">
+            <p><strong>Subtemas:</strong> {{subTopicsDetailCurricularContent}}</p>
+        </div>
+        <div id="actividades">
+            <p><strong>Actividades:</strong> {{activitisDetailCurricularContent}}</p>
+        </div>
+        <div id="habilidades">
+            <p><strong>Habilidades:</strong> {{abilitisDetailCurricularContent}}</p>
+        </div>
+    </div>
+
+    <!-- Acciones -->
+    <div id="acciones">
+        <a href="/syllabusEducational/aprovar/{{idsyllabusEducational}}"><button
+                type="button">Aprobar</button></a>
+        <a href="/syllabusEducational/rechazar/{{idsyllabusEducational}}"><button
+                type="button">Rechazar</button></a>
+    </div>
+</div>
+{{/each}}

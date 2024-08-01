@@ -6,7 +6,7 @@ const { sendImagenCours, sendVideoCours, sendImagenClass, sendVideoClass, sendIm
 
 router.post('/imagenCours', sendImagenCours)
 router.post('/videoCours', sendVideoCours)
-router.post('/imagenClass', sendImagenClass)
-router.post('/videoCours', sendVideoClass)
+router.post('/imagenClase', sendImagenClass)
+router.post('/videoClases', sendVideoClass)
 router.post('/imagenPagina', sendImagenPagina)
 module.exports = router

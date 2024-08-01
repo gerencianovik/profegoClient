@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="">
 {{#each listaPagina}}
 <form action="/clases/list/{{idPage}}" method="get">
-{{/each}}
+    {{/each}}
     <div id="contenedor">
         <div id="titulo">
             <p>Lista de Clases</p>
@@ -16,38 +16,40 @@
                     <div id="video">
                         <p><video src="/video/clases/{{videoClases}}" controls></video></p>
                     </div>
-                    <div id="Nombre">
-                        <p>{{nameClases}}</p>
-                    </div>
-                    <div id="descripcion">
-                        <p>{{descriptionClases}}</p>
-                    </div>
-                    <div id="fehca">
-                        <p>{{dateClases}}</p>
-                    </div>
-                    <div id="hora">
-                        <p>{{hourClases}}</p>
-                    </div>
-                    <div id="cupos">
-                        <p>{{shareClases}}</p>
-                    </div>
-                    <div id="costo">
-                        <p>{{costClases}}</p>
-                    </div>
-                    <div id="estado">
-                        <p>{{stateClases}}</p>
-                    </div>
-                    <div id="calificacion">
-                        <p>{{calificationClases}}</p>
-                    </div>
+                    <a href="/clases/detailList/{{idClases}}">
+                        <div id="Nombre">
+                            <p>{{nameClases}}</p>
+                        </div>
+                        <div id="descripcion">
+                            <p>{{descriptionClases}}</p>
+                        </div>
+                        <div id="fehca">
+                            <p>{{dateClases}}</p>
+                        </div>
+                        <div id="hora">
+                            <p>{{hourClases}}</p>
+                        </div>
+                        <div id="cupos">
+                            <p>{{shareClases}}</p>
+                        </div>
+                        <div id="costo">
+                            <p>{{costClases}}</p>
+                        </div>
+                        <div id="estado">
+                            <p>{{stateClases}}</p>
+                        </div>
+                        <div id="calificacion">
+                            <p>{{calificationClases}}</p>
+                        </div>
+                    </a>
                     <div id="actualizar">
                         <a href="/clases/update/{{idClases}}"><button type="button">Actualizar</button></a>
                     </div>
                     <div id="materialesDeClase">
-                        <a href=""><button type="button">Materiales</button></a>
+                        <a href="/material/add/{{idCours}}"><button type="button">Materiales</button></a>
                     </div>
                     <div id="recursosDeClase">
-                        <a href=""><button type="button">Recursos</button></a>
+                        <a href="/recours/add/{{idCours}}"><button type="button">Recursos</button></a>
                     </div>
                     <div id="desavilitar">
                         <a href="/clases/delete/{{idClases}}"><button type="button">Desabilitar</button></a>

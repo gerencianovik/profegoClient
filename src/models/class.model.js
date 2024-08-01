@@ -52,6 +52,10 @@ const Clases = (sequelize, type) =>{
             type: type.STRING,
             comment: 'Calificacion de la Clase'
         },
+        tipoClases: {
+            type: type.STRING,
+            comment: 'tipo de clases'
+        },
         createClases: {
             type: type.STRING,
             comment: 'Crear de la Clase'

@@ -8,6 +8,9 @@
         {{#each listaTeacher}}
         <form action="/teacher/update/{{idTeacher}}" method="post" enctype="multipart/form-data">
             <input type="hidden" name="_csrf" value="{{ ../csrfToken }}">
+            {{#each ../listaPagina}}
+            <input type="text" name="idPagina" id="idPagina" value="{{idPage}}">
+            {{/each}}
             <div id="imagenTeacher">
                 <div id="cambioImagen">
                     {{#if photoTeacher}}

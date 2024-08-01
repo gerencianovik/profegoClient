@@ -1,9 +1,10 @@
 <link rel="stylesheet" href="">
-<form action="/cours/update/{{idPage}}" method="post" enctype="multipart/form-data">
-    <div id="tiutlo">{{#each lista}}
-        <p>Agregar Clase <input type="text" name="idClases" id="idClases"></p>{{/each}}
+{{#each lista}}
+<form action="/cours/update/{{idCours}}" method="post" enctype="multipart/form-data">
+    <div id="tiutlo">
+        <p>Agregar Clase <input type="text" name="idCours" id="idCours" value="{{idCours}}"></p>
     </div>
-    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+    <input type="hidden" name="_csrf" value="{{ ../csrfToken }}">
     <div id="imagen">
         <div id="cambioImagen">
             <img src="/img/icons/{{photoCours}}" id="imagenPrevisualizacion" />
@@ -12,50 +13,53 @@
     </div>
     <div id="imagen">
         <div id="cambioVideo">
-            <video src="/video/clase/{{videoCours}}" controls></video>
+            <video src="/video/cours/{{videoCours}}" controls></video>
         </div>
         <input type="file" name="videoCours" id="seleccionArchivos" accept="image/*" />
     </div>
     <div id="nombre">
-        <p>Nombre de la Clase:</p>
-        <input type="text" name="nameCours" id="nameCours" required>
+        <p>Nombre del Curso:</p>
+        <input type="text" name="nameCours" id="nameCours" required value="{{nameCours}}">
     </div>
     <div id="descripcion">
-        <p>Descripción de la Clase:</p>
-        <textarea name="descriptionCours" id="descriptionCours" required></textarea>
+        <p>Descripción del Curso:</p>
+        <textarea name="descriptionCours" id="descriptionCours" required>{{descriptionCours}}</textarea>
     </div>
-    <div id="fecha">
-        <p>Fecha Inicio Curso:</p>
-        <input type="text" name="dateCoursInit" id="dateCours" required>
+    <div id="fechaInicio">
+        <p>Fecha inicio:</p>
+        <input type="text" name="dateCoursInit" id="dateCours"  value="{{dateCoursInit}}">
     </div>
-    <div id="fechaFinal">
-        <p>Fecha de Fin del Curso:</p>
-        <input type="text" name="dateCoursfin" id="dateCours" required>
+    <div id="fechaFin">
+        <p>Fecha Fin:</p>
+        <input type="text" name="dateCoursFin" id="dateCours" required value="{{dateCoursFin}}">
     </div>
     <div id="costo">
         <p>Costo:</p>
-        <input type="text" name="costCours" id="costCours" required>
+        <input type="text" name="costCours" id="costCours" required value="{{costCours}}">
     </div>
     <div id="cupos">
         <p>Cupos:</p>
-        <input type="text" name="shareCours" id="shareCours">
+        <input type="text" name="shareCours" id="shareCours" value="{{shareCours}}">
     </div>
     <div id="Hora">
-        <p>Tiempo de la Clase:</p>
-        <input type="text" name="hourCours" id="hourCours">
+        <p>Tiempo del Curso:</p>
+        <input type="text" name="hourCours" id="hourCours" value="{{hourCours}}">
     </div>
     <div id="estado">
-            <p>Estado:</p>
-            <div id="Activar">
-                <input type="text" name="stateCours" id="stateCours" readonly>
-                <button type="button">Activar</button>
-            </div>
-            <div id="desActivar">
-                <button type="button">Desabilitar</button>
-                <input type="text" name="stateCours" id="stateCours" readonly>
-            </div>
+        <p>Estado:</p>
+        <div id="Activar">
+            <input type="text" name="stateCours" id="idestado" readonly value="{{stateCours}}">
+            <button type="button" id="activarBtn">Activar</button>
         </div>
+        <div id="desActivar">
+            <button type="button" id="desactivarBtn">Desabilitar</button>
+        </div>
+    </div>
+    {{/each}}
     <div id="boton">
         <button type="submit">Actualizar</button>
     </div>
 </form>
+
+<script src="/js/preview.js"></script>
+<script src="/js/estados.js"></script>

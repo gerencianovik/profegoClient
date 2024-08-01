@@ -157,7 +157,7 @@ app.use(csrfMiddleware);
 app.use((req, res, next) => {
     res.locals.csrfToken = req.csrfToken();
     next();
-  });
+});
 app.use((err, req, res, next) => {
     if (err.code !== 'EBADCSRFTOKEN') return next(err);
 
@@ -192,6 +192,11 @@ app.use(morgan('combined', { stream: { write: message => logger.info(message.tri
 app.use(require('./router/index.router'));
 app.use(require('./router/envio.router'));
 app.use('/teacher', require('./router/teacher.router'));
+app.use('/clases', require('./router/class.router'));
+app.use('/cours', require('./router/cours.router'));
+app.use('/recours', require('./router/recoursCours.router'));
+app.use('/material', require('./router/materialCours.router'));
+app.use('/silabus', require('./router/silabus.router'))
 
 // Exportar la aplicación
 module.exports = app;

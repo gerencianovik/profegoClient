@@ -112,10 +112,11 @@ teacher.update = async (req, res) => {
             descriptionTeacher,
             identificationCardTeacher,
             phoneTeacher,
-            emailTeacher
+            emailTeacher,
+            idPagina,
         } = req.body;
 
-        console.log(ubicacion)
+        console.log(id)
         const updateTeacher = {
             completeNmeTeacher: cifrarDatos(completeNmeTeacher),
             addressTeacher: cifrarDatos(ubicacion),
@@ -134,9 +135,17 @@ teacher.update = async (req, res) => {
             teacherIdTeacher: id
         };
 
+        const newUnion = {
+            crearDetailTeacherPage: Date().toLocaleString(),
+            pageIdPage: idPagina,
+            teacherIdTeacher: id
+        }
+
         // Actualizar profesor
         const teacherResult = await orm.teacher.findOne({ where: { idTeacher: id } });
         await teacherResult.update(updateTeacher);
+
+        await orm.detailTeachPage.create(newUnion)
 
         const existingTeachCouch = await orm.teachCouch.findOne({ where: { teacherIdTeacher: id } });
 
@@ -147,8 +156,7 @@ teacher.update = async (req, res) => {
             });
         } else {
             await orm.teachCouch.create(newchouTeacher);
-        }
-
+    }
         // Insertar títulos escogidos con validación
         const tituloPromises = tituloEscogidas.map(async (titulo, i) => {
             const [results] = await sql.promise().query(

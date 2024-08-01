@@ -10,6 +10,10 @@ const teacher = (sequelize, type) => {
             type: type.STRING,
             comment: 'Foto de Profesor'
         },
+        addressTeacher: {
+            type: type.STRING,
+            comment: 'direccion del profesor'
+        },
         completeNmeTeacher: {
             type: type.STRING,
             comment: 'Nombre completo de Profesor'
@@ -21,10 +25,6 @@ const teacher = (sequelize, type) => {
         ageTeacher: {
             type: type.STRING,
             comment: 'Edad de Profesor'
-        },
-        addressTeacher: {
-            type: type.STRING,
-            comment: 'direccion del profesor'
         },
         criminalRecordTeacher: {
             type: type.STRING,

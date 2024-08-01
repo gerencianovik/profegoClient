@@ -14,7 +14,9 @@
                 <input type="file" name="photoEstudent" id="seleccionArchivos" accept="image/*" />
                 <button type="button" id="botonImagen">Subir Imagen</button>
             </div>
-            <input type="text" name="idEstudent" id="numero" readonly>
+            {{#each lista}}
+            <input type="text" name="idEstudent" id="numero" readonly value="{{Maximo}}">
+            {{/each}}
             <input type="hidden" name="_csrf" value="{{ csrfToken }}">
             <div id="Nombrecompleto">
                 <h1>Nombre Completo:</h1>
@@ -55,3 +57,4 @@
 <script src="/js/numero.js"></script>
 <script src="/js/preview.js"></script>
 <script src="/js/botonImagen.js"></script>
+<script src="/js/comparar.js"></script>

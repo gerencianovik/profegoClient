@@ -1,9 +1,9 @@
 <link rel="stylesheet" href="">
-{{#each listaPagina}}
-<form action="/cours/add/{{idPage}}" method="post" enctype="multipart/form-data">
-    {{/each}}
-    <div id="tiutlo">{{#each listaPagina}}
-        <p>Agregar Curso <input type="text" name="idCours" id="idCours" value="{{idPage}}"></p>{{/each}}
+{{#each listaCurso}}
+<form action="/cours/add/{{idCours}}" method="post" enctype="multipart/form-data">
+{{/each}}
+    <div id="tiutlo">{{#each maximo}}
+        <p>Agregar Curso <input type="text" name="idCours" id="numero" value="{{Maximo}}"></p>{{/each}}
     </div>
     <input type="hidden" name="_csrf" value="{{ csrfToken }}">
     <div id="imagen">
@@ -19,6 +19,12 @@
         </div>
         <input type="file" name="videoCours" id="seleccionArchivos" accept="image/*" />
     </div>
+    <div id="direccion">
+        <div id="map" style="width: 100%; height: 400px;"></div>
+        <input id="pac-input" class="controls" type="text" placeholder="Buscar" />
+        <input type="text" name="ubicacion" id="ubicacion">
+    </div>
+    <input type="checkbox" name="neeCours" id="check">
     <div id="nombre">
         <p>Nombre del Curso:</p>
         <input type="text" name="nameCours" id="nameCours" required>
@@ -27,40 +33,36 @@
         <p>Descripción del Curso:</p>
         <textarea name="descriptionCours" id="descriptionCours" required></textarea>
     </div>
-    <div id="adaptadoNee">
-        <div id="imagenNee">
-            <img src="">
-        </div>
-        <input type="checkbox" name="adactacion" id="adactacion" value="si">
-    </div>
-    <div id="modalidad">
-        <p>Modalidad del Curso:</p>
-        <select name="modalidad" id="modalidad">
-            <option value=""></option>
-        </select>
-    </div>
-    <div id="tipoCurso">
-        <p>Tipo de Curso:</p>
+    <div id="seleccion">
+        <p>Curso para:</p>
         <select name="tipoCurso" id="tipoCurso">
-            <option value=""></option>
+            <option value="Curso">Curso</option>
+            <option value="Couch">Curso de Couch</option>
         </select>
     </div>
-    <div id="edades">
-        <input type="checkbox" name="edades" id="edad" value="{{}}">
+    <div id="edad">
+        <p>Edad dirigida del Curso</p>
+        <div id="Edad">
+            <select name="rangeAgeTeacher" id="edadRango">
+                <option value="3-5 años">3-5 años</option>
+                <option value="5-7 años">5-7 años</option>
+                <option value="7-9 años">7-9 años</option>
+                <option value="9-12 años">9-12 años</option>
+                <option value="12-16 años">12-16 años</option>
+                <option value="16-18 años">16-18 años</option>
+                <option value="Universitarios">Universitarios</option>
+                <option value="Docentes">Docentes</option>
+            </select>
+            <div id="rangeAgeTeacher"></div>
+        </div>
     </div>
-    <div id="direccion">
-        <div id="map" style="width: 100%; height: 400px;"></div>
-        <input type="text" name="ubicacionCurso" id="ubicacion" placeholder="Dirección" value="{{addressTeacher}}"
-            data-lat="{{lat}}" data-lng="{{lng}}" required>
-        <input type="text" name="ubicacion" id="ubicaciones">
+    <div id="fechaInicio">
+        <p>Fecha inicio:</p>
+        <input type="text" name="dateCoursInit" id="dateCours" required>
     </div>
-    <div id="fecha">
-        <p>Fecha de Inicio del Curso:</p>
-        <input type="text" name="dateCoursinit" id="dateCours" required>
-    </div>
-    <div id="fechaFinal">
-        <p>Fecha de Fin del Curso:</p>
-        <input type="text" name="dateCoursfin" id="dateCours" required>
+    <div id="fechaFin">
+        <p>Fecha inicio:</p>
+        <input type="text" name="dateCoursFin" id="dateCours" required>
     </div>
     <div id="costo">
         <p>Costo:</p>
@@ -81,3 +83,10 @@
 
 <script src="/js/preview.js"></script>
 <script src="/js/botonImagen.js"></script>
+<script src="/js/numero.js"></script>
+<script src="/js/checket.js"></script>
+<script src="/js/EdadSeleccion.js"></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Q9PaOYlXpeqtj_0tHE19Zcoim25iSFg&callback=initAutocomplete&libraries=places&v=weekly"
+    defer></script>
+<script src="/js/mapa.js"></script>
