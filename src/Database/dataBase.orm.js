@@ -359,6 +359,17 @@ detailBooking.belongsTo(clases)
 teacher.hasMany(booking)
 booking.belongsTo(teacher)
 
+
+page.hasMany(groups)
+groups.belongsTo(page)
+
+teacher.hasMany(groups)
+groups.belongsTo(teacher)
+
+
+subjects.hasMany(groups)
+groups.belongsTo(subjects)
+
 // Exportar el objeto sequelize
 module.exports = {
     ask,
