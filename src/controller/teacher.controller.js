@@ -237,6 +237,7 @@ teacher.lista = async (req, res) => {
         const [rows] = await sql.promise().query('SELECT * FROM teachers WHERE idTeacher = ?', [ids]);
         const [listaMaterias] = await sql.promise().query('SELECT t.*, s.* FROM teacherDetails t JOIN specialtyTypes s ON t.specialtyTypeIdSpecialType = s.idSpecialType WHERE teacherIdTeacher = ?', [ids]);
         const [teachCouch] = await sql.promise().query('SELECT * FROM teachCouches WHERE teacherIdTeacher = ?', [ids])
+        const [detalle] = await sql.promise().query('SELECT * FROM teacherDetails WHERE teacherIdTeacher = ?', [ids])
 
         const datos = rows.map(row => ({
             idTeacher: row.idTeacher,
@@ -262,6 +263,7 @@ teacher.lista = async (req, res) => {
             listaTeacher: datos,
             listaChouch: datosCouch,
             listaMaterias: listaMaterias,
+            listaDetalle: detalle,
             csrfToken: req.csrfToken()
         });
     } catch (error) {

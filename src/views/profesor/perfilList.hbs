@@ -1,66 +1,104 @@
-<link rel="stylesheet" href="">
-<div id="contenedor">
+<link rel="stylesheet" href="/css/teacher/lista.css">
+<div id="contenidoPefil">
+    <div id="fondo">
+        <img src="/img/fondo/Postulación.png">
+    </div>
     {{#each listaTeacher}}
+    <div id="titulos">
+        <p>Perfil de {{completeNmeTeacher}}</p>
+    </div>
     <form action="/teacher/lista/{{idTeacher}}" method="get">
-        <div id="contenedor">
-            <div id="titulo">
-                <p>Perfil de {{completeNmeTeacher}}</p>
-            </div>
-            <div id="imagenTeahcer">
-                <img src="/img/usuario/{{photoTeacher}}">
+        <div id="datos">
+            <div id="imagenTeacher">
+                <div id="cambioImagen">
+                    <img src="/img/usuario/{{photoTeacher}}" id="imagenPrevisualizacion">
+                </div>
             </div>
             <div id="direccion">
-                <div id="map" style="width: 100%; height: 400px;"></div>
-               <input type="text" name="addressTeacher" id="ubicacion" placeholder="Dirección" value="{{addressTeacher}}" data-lat="{{lat}}" data-lng="{{lng}}" required>
+                <div id="map"></div>
+                <input type="text" name="addressTeacher" id="ubicacion" placeholder="Dirección"
+                    value="{{addressTeacher}}" required>
             </div>
-            <div id="tituloDocente">
-                {{#each ../listaChouch}}
-                <p>{{stateTeachCouch}}</p>
-                {{/each}}
+            <div id="Eleccion">
+                <p>Especialidad:</p>
+                <div class="row">
+                    {{#each ../listaChouch}}
+                    <div id="tarjeta" class="col">
+                        <h5>{{stateTeachCouch}}</h5>
+                    </div>
+                    {{/each}}
+                </div>
             </div>
-            <div id="fecha">
-                <p>{{ageTeacher}}</p>
+            <div id="fechaNacimiento">
+                <p>Fecha Nacimineto:</p>
+                <h5>{{ageTeacher}}</h5>
             </div>
-            <div id="titulo">
-                {{#each ../listaMaterias}}
-                <p>{{nameSpecialType}}</p>
-                {{/each}}
+            <div id="tituloEspecialidad">
+                <p>Titulos:</p>
+                <div class="row">
+                    {{#each ../listaMaterias}}
+                    <div id="tarjeta" class="col">
+                        <h5>{{nameSpecialType}}</h5>
+                    </div>
+                    {{/each}}
+                </div>
             </div>
-            <div id="titulo">
-                <iframe id="documentoTituloPrevisualizacion" src="/archivos/teacher/{{endorsementCertificateTeacher}}"></iframe>
-            </div>
-            <div id="hojavida">
-                <iframe id="documentoHojaVidaPrevisualizacion" src="/archivos/teacher/{{pageVitalTeacher}}"></iframe>
-            </div>
-            <div id="criminal">
-                <iframe id="documentoAntecedentesPrevisualizacion" src="/archivos/teacher/{{criminalRecordTeacher}}"></iframe>
+            <div id="documentacion">
+                <div id="DocumentoTitulo">
+                    <iframe id="documentoTituloPrevisualizacion"
+                        src="/archivos/teacher/{{endorsementCertificateTeacher}}"></iframe>
+                </div>
+                <div id="DocumentoHojaVida">
+                    <iframe id="documentoHojaVidaPrevisualizacion"
+                        src="/archivos/teacher/{{pageVitalTeacher}}"></iframe>
+                </div>
+                <div id="DocumentoAntecedentes">
+                    <iframe id="documentoAntecedentesPrevisualizacion"
+                        src="/archivos/teacher/{{criminalRecordTeacher}}"></iframe>
+                </div>
             </div>
             <div id="materias">
-                <p>{{subjetTeacher}}</p>
+                <div class="row">
+                    {{#each ../listaDetalle}}
+                    <div id="tarjeta" class="col">
+                        <h5>{{subjetTeacher}}</h5>
+                    </div>
+                    {{/each}}
+                </div>
             </div>
-            <div id="edad">
-                <p>{{rangeAgeTeacher}}</p>
+            <div id="edadRange">
+                <div class="row">
+                    {{#each ../listaDetalle}}
+                    <div id="tarjeta" class="col">
+                        <h5>{{rangeAgeTeacher}}</h5>
+                    </div>
+                    {{/each}}
+                </div>
             </div>
-            <div id="descripcion">
+            <div id="description">
                 <p>{{descriptionTeacher}}</p>
             </div>
-            <div id="cedula">
+            <div id="Cedula">
                 <p>{{identificationCardTeacher}}</p>
             </div>
-            <div id="celular">
+            <div id="Celular">
                 <p>{{phoneTeacher}}</p>
             </div>
-            <div id="correo">
+            <div id="Correos">
                 <p>{{emailTeacher}}</p>
             </div>
             <div id="estado">
                 <p>{{stateTeacher}}</p>
+            </div>
+            <div id="boton">
+                <a href="/teacher/update/{{idTeacher}}"><button type="button">Actualizar Sus Datos</button></a>
             </div>
         </div>
     </form>
     {{/each}}
 </div>
 
-<script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Q9PaOYlXpeqtj_0tHE19Zcoim25iSFg&callback=initMap"></script>
-<script src="/js/mapa.js"></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Q9PaOYlXpeqtj_0tHE19Zcoim25iSFg&callback=initAutocomplete&libraries=places&v=weekly"
+    defer></script>
+<script src="/js/mapaDetalle.js"></script>
