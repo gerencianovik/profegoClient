@@ -128,9 +128,10 @@ classes.mandar = async (req, res) => {
 classes.lista = async (req, res) => {
     try {
         const id = req.params.id
-        const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = ?', [id]);
-        const [row] = await sql.promise().query('SELECT * FROM clases')
-        res.render('clases/list', { lista: row, listaPagina: pagina })
+        const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = "1"',);
+        const [teacher] = await sql.promise().query('SELECT * FROM teachers where idTeacher = ?', [id]);
+        const [row] = await sql.promise().query('SELECT * FROM Clases')
+        res.render('clases/list', { lista: row, listaPagina: pagina, teacherLista: teacher })
     } catch (error) {
         console.error('Error en la consulta:', error.message);
         res.status(500).send('Error al realizar la consulta');

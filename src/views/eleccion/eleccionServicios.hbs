@@ -1,62 +1,67 @@
-<link rel="stylesheet" href="">
+<link rel="stylesheet" href="/css/eleccion/servicios.css">
 {{#each listaTeacher}}
 <form action="/teacher/eleccion/{{idTeacher}}" method="get"></form>
-<div id="contenedor">
-    <div id="titulo">
-        <h1>¡Bienvenido {{completeNmeTeacher}}!</h1>
-        <p>Elige entre servicios que puedes crear o los existentes.
-            ¡Tu enseñanza, tu elección!</p>
+<div id="contenedorServicio">
+    <div id="fondos">
+        <img src="/img/fondo/teacherinicio.png">
     </div>
-    <div id="imagen1">
-        <img src="">
+    <div id="contenedorImagenTitulos">
+        <div id="titulo">
+            <h1>¡Bienvenido {{completeNmeTeacher}}!</h1>
+            <p>Elige entre servicios que puedes crear o los existentes.<br>
+                ¡Tu enseñanza, tu elección!</p>
+        </div>
+        <div id="imagens">
+            <img src="/img/fondo/guntosEstudiantes.png">
+        </div>
     </div>
     <div id="botonClase">
-        <div id="clase">
+        <div id="clasesBoton">
             <a href="/clases/list/{{idTeacher}}"><button type="button">Clases</button></a>
         </div>
         <div id="encontraras">
             <p>¿Qué encontrarás?</p>
             <div id="boton1">
                 <div id="imagenBoton1">
-                    <a href=""><img src=""></a>
-                    <p>Clases particulares </p>
+                    <a href=""><img src="/img/fondo/casaLibro.png"></a>
                 </div>
+                <p>Clases particulares </p>
             </div>
             <div id="boton2">
                 <div id="imagenBoton2">
-                    <a href=""><img src=""></a>
-                    <p>Clases grupales</p>
+                    <a href=""><img src="/img/fondo/casaAbc.png"></a>
                 </div>
+                <p>Clases grupales</p>
             </div>
             <div id="boton3">
                 <div id="imagenBoton3">
-                    <a href=""><img src=""></a>
-                    <p>Coaching individual para docentes.</p>
+                    <a href=""><img src="/img/fondo/casaBrillos.png"></a>
                 </div>
+                <p>Coaching individual para docentes.</p>
             </div>
         </div>
     </div>
     <div id="botonCuros">
-        <div id="curos">
+        <div id="botoncuros">
             <a href="/cours/list/{{idTeacher}}"><button type="button">Cursos</button></a>
         </div>
         <div id="encontraras">
             <p>¿Qué encontrarás?</p>
             <div id="boton1">
                 <div id="imagenBoton1">
-                    <a href=""><img src=""></a>
+                    <a href=""><img src="/img/fondo/compuLista.png"></a>
                     <p>Cursos</p>
                 </div>
             </div>
             <div id="boton2">
                 <div id="imagenBoton2">
-                    <a href=""><img src=""></a>
+                    <a href=""><img src="/img/fondo/compuMusica.png"></a>
                     <p>Coaching grupal para docentes</p>
                 </div>
             </div>
         </div>
     </div>
-    <div id="servicios">
+    <!--<div id="servis">
         <p>¡Elige tu mejor modalidad, en línea o a domicilio!</p>
         <div id="imagen2">
             <img src="">
@@ -64,12 +69,12 @@
         <div id="imagen3">
             <img src="">
         </div>
-        <div id="catalogo">
+        <div id="catalogos">
             <h1>Catálogo de servicios existentes</h1>
             <p>¿Te gustaría impartir alguno de los servicios creados por el equipo de ProfeGo? Explora y selecciona los
                 mejores programas para ti o crea los tuyos propios.</p>
         </div>
-    </div>
+    </div>-->
     <div id="curso">
         {{#each ../listaCursos}}
         <div id="imagenCursoClase">
@@ -160,7 +165,7 @@
                 <a href=""><button type="button">Impartir</button></a>
             </div>
         </div>
+        {{/each}}
     </div>
-    {{/each}}
 </div>
 {{/each}}
