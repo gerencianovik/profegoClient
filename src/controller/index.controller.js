@@ -13,6 +13,16 @@ indexCtl.mostrar = async (req, res) => {
     }
 };
 
+indexCtl.somos = async (req, res) => {
+    try {
+        const [pagina] = await sql.promise().execute('SELECT * FROM pagePolicy');
+        res.render('somos', { listaPagina: pagina, csrfToken: req.csrfToken() })
+    } catch (error) {
+        console.error('Error en la consulta SQL:', error.message);
+        res.status(500).send('Error interno del servidor');
+    }
+};
+
 indexCtl.mostrarRegistroStudents = async (req, res) => {
     try {
         const [rows] = await sql.promise().query('SELECT MAX(idEstudent) AS Maximo FROM students');

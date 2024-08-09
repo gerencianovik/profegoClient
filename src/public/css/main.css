@@ -1,0 +1,16 @@
+body {
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    border-color: transparent;
+}
+
+h1,
+select,
+p,
+input,
+textarea,
+a {
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    border-color: transparent;
+}
