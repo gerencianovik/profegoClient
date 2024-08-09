@@ -1,0 +1,159 @@
+#contenedor {
+    position: absolute;
+    left: 0%;
+    height: 0%;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#Nuestra {
+    position: absolute;
+    top: 7%;
+    text-align: center;
+    font-size: 20px;
+    width: 90%;
+    left: 5%;
+}
+
+#Nuestra h1 {
+    color: #F39325;
+}
+
+#consejosServicios {
+    position: absolute;
+    top: 70%;
+    text-align: center;
+    width: 100%;
+    font-size: 20px;
+}
+
+#docentesConsejo {
+    position: absolute;
+    top: 90%;
+    width: 45%;
+    left: 2.5%;
+}
+
+#estudiantesConsejos {
+    position: absolute;
+    top: 90%;
+    width: 45%;
+    left: 52.5%;
+}
+
+#politicasPrivacidad {
+    position: absolute;
+    width: 94%;
+    top: 260%;
+    left: 3%;
+}
+
+#terminosCondiciones {
+    position: absolute;
+    width: 100%;
+    top: 340%;
+}
+
+#Nuestra img,
+#docentesConsejo img,
+#estudiantesConsejos img,
+#politicasPrivacidad img,
+#terminosCondiciones img {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#footer {
+    position: absolute;
+    top: 460%;
+    width: 100%;
+    height: 60%;
+    background-color: #ffefdaa0;
+    left: 0%;
+}
+
+#tarjetaNosotros,
+#tarjetaUnete,
+#tarjetaLegal {
+    position: absolute;
+    width: 12%;
+    top: 0%;
+    left: 4%;
+    height: 100%;
+}
+
+#tarjetaNosotros h1,
+#tarjetaUnete h1,
+#tarjetaLegal h1 {
+    color: #004D77;
+}
+
+#tarjetaNosotros p,
+#tarjetaUnete p,
+#tarjetaLegal p {
+    color: #004D77;
+}
+
+#nosotrosFooter {
+    position: relative;
+    padding: 20px;
+    background: transparent;
+    /* Fondo blanco para que el borde resalte */
+    border-bottom: 5px solid transparent;
+    /* Ajusta el grosor del borde aquí */
+    border-image: linear-gradient(to right, #F39325, #FEEDD9);
+    border-image-slice: 1;
+    border-image-width: 0 0 5px 0;
+}
+
+#tarjetaUnete {
+    left: 19%;
+}
+
+#tarjetaLegal {
+    left: 35%;
+}
+
+#logoImagen {
+    position: absolute;
+    top: 7%;
+    left: 74%;
+    width: 25%;
+    height: 69%;
+}
+
+
+#logoImagen img {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#final {
+    position: absolute;
+    top: 90%;
+    width: 100%;
+    height: 10%;
+    background-color: #FFEFDA;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+#final p {
+    text-align: center;
+    width: 40%;
+    color: #004D77;
+}
+
+#final #finalFinal {
+    position: absolute;
+    top: 0%;
+    left: 79%;
+    width: 20%;
+}

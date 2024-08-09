@@ -23,6 +23,36 @@ indexCtl.somos = async (req, res) => {
     }
 };
 
+indexCtl.funciona = async (req, res) => {
+    try {
+        const [pagina] = await sql.promise().execute('SELECT * FROM pagePolicy');
+        res.render('funciona', { listaPagina: pagina, csrfToken: req.csrfToken() })
+    } catch (error) {
+        console.error('Error en la consulta SQL:', error.message);
+        res.status(500).send('Error interno del servidor');
+    }
+};
+
+indexCtl.seguridad = async (req, res) => {
+    try {
+        const [pagina] = await sql.promise().execute('SELECT * FROM pagePolicy');
+        res.render('seguridad', { listaPagina: pagina, csrfToken: req.csrfToken() })
+    } catch (error) {
+        console.error('Error en la consulta SQL:', error.message);
+        res.status(500).send('Error interno del servidor');
+    }
+};
+
+indexCtl.contactos = async (req, res) => {
+    try {
+        const [pagina] = await sql.promise().execute('SELECT * FROM pagePolicy');
+        res.render('contactos', { listaPagina: pagina, csrfToken: req.csrfToken() })
+    } catch (error) {
+        console.error('Error en la consulta SQL:', error.message);
+        res.status(500).send('Error interno del servidor');
+    }
+};
+
 indexCtl.mostrarRegistroStudents = async (req, res) => {
     try {
         const [rows] = await sql.promise().query('SELECT MAX(idEstudent) AS Maximo FROM students');

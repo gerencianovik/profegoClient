@@ -1,0 +1,186 @@
+#contenedor {
+    position: absolute;
+    left: 0%;
+    height: 0%;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#estudiantesFunciona{
+    position: absolute;
+    top: 7%;
+    left: 10%;
+    width: 80%;
+    height: 170%;
+    text-align: center;
+    font-size: 20px;
+}
+
+#estudiantesFunciona h1{
+    color: #F39325;
+}
+
+#estudiantesFunciona img{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+#docentesFunciona{
+    position: absolute;
+    top: 205%;
+    left: 10%;
+    width: 80%;
+    height: 260%;
+}
+
+#docentesFunciona img{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+#importante{
+    position: absolute;
+    width: 100%;
+    height: 25%;
+    top: 470%;
+    text-align: center;
+    font-size: 20px;
+}
+
+#importante p{
+    position: absolute;
+    width: 38%;
+    top: 50px;
+    left: 30%;
+}
+
+#importante img{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+#calidificacion{
+    position: absolute;
+    top: 500%;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    text-align: center;
+    font-size: 20px;
+}
+
+#calidificacion h1{
+    color: #F39325;
+}
+
+.highlight {
+    font-weight: bold;
+}
+
+#calidificacion img{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+#footer{
+    position: absolute;
+    top: 632%;
+    width: 100%;
+    height: 60%;
+    background-color: #ffefdaa0;
+    left: 0%;
+}
+
+#tarjetaNosotros,
+#tarjetaUnete,
+#tarjetaLegal{
+    position: absolute;
+    width: 12%;
+    top: 0%;
+    left: 4%;
+    height: 100%;
+}
+
+#tarjetaNosotros h1,
+#tarjetaUnete h1,
+#tarjetaLegal h1{
+    color: #004D77;
+}
+
+#tarjetaNosotros p,
+#tarjetaUnete p,
+#tarjetaLegal p{
+    color: #004D77;
+}
+
+#nosotrosFooter{
+    position: relative;
+    padding: 20px;
+    background: transparent; /* Fondo blanco para que el borde resalte */
+    border-bottom: 5px solid transparent; /* Ajusta el grosor del borde aquí */
+    border-image: linear-gradient(to right, #F39325, #FEEDD9);
+    border-image-slice: 1;
+    border-image-width: 0 0 5px 0;
+}
+
+#tarjetaUnete{
+    left: 19%;
+}
+
+#tarjetaLegal{
+    left: 35%;
+}
+
+#logoImagen {
+    position: absolute;
+    top: 7%;
+    left: 74%;
+    width: 25%;
+    height: 69%;
+}
+
+
+#logoImagen img{
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#final{
+    position: absolute;
+    top: 90%;
+    width: 100%;
+    height: 10%;
+    background-color: #FFEFDA;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+#final p{
+    text-align: center;
+    width: 40%;
+    color: #004D77;
+}
+
+#final #finalFinal{
+    position: absolute;
+    top: 0%;
+    left: 79%;
+    width: 20%;
+}
