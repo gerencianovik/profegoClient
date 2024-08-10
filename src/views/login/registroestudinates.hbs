@@ -1,54 +1,67 @@
-<link rel="stylesheet" href="">
+<link rel="stylesheet" href="/css/login/registroEstudiantes.css">
 <div id="contenedor">
-    <div id="complementos"></div>
+    <div id="fondo">
+        <img src="/img/icons/registro.png" alt="">
+    </div>
+    <div id="complementos">
+        <h3>Antes de registrarte presta atención a las siguientes consideraciones:</h3>
+        <p><img src="/img/icons/Mayoredad.png">Soy mayor de 18 años.</p>
+        <p><img src="/img/icons/CVIcon.png">Tengo mi hoja de vida, certificado de aval de enseñanza y/o título
+            profesional y Certificado de Antecedentes Penales actualizados y al alcance.</p>
+        <p><img src="/img/icons/iconAlerta.png">Se deducirá un único cargo de $15 de tu primera clase como inscripción a
+            esta tu plataforma. Recuerda esto se realizará por ¡una sola vez!</p>
+    </div>
     <form action="/RegisterStudents" method="post" enctype="multipart/form-data">
         <div id="datos">
             <div id="registro">
                 <h1>Registro</h1>
                 <p>¡Estás a un paso de unirte a nuestra comunidad!</p>
             </div>
-            <div id="imagen">
+            <div id="imagens">
                 <div id="cambioImagen">
                     <img src="/img/icons/noImagen.png" id="imagenPrevisualizacion" />
                 </div>
                 <input type="file" name="photoEstudent" id="seleccionArchivos" accept="image/*" />
-                <button type="button" id="botonImagen">Subir Imagen</button>
+                <button type="button" id="botonImagen"><img src="/img/icons/Subir.png"></button>
             </div>
             {{#each lista}}
             <input type="text" name="idEstudent" id="numero" readonly value="{{Maximo}}">
             {{/each}}
             <input type="hidden" name="_csrf" value="{{ csrfToken }}">
-            <div id="Nombrecompleto">
-                <h1>Nombre Completo:</h1>
-                <input type="text" name="completeNameEstudent" id="nombre" required>
-            </div>
-            <div id="Correo">
-                <h1>Correo electrónico:</h1>
-                <input type="text" name="emailEstudent" id="email" required>
-            </div>
-            <div id="Usuario">
-                <h1>Cedula:</h1>
-                <input type="text" name="username" id="usuario">
-            </div>
-            <div id="Celular">
-                <h1>Celular:</h1>
-                <input type="text" name="celularEstudent" id="celular">
-            </div>
-            <div id="Contraseña">
-                <h1>Contraseña:</h1>
-                <input type="password" name="password" id="contraseña">
-            </div>
-            <div id="RepetirContraseña">
-                <h1>Repite la contraseña:</h1>
-                <input type="password" name="" id="contraseñaRepetir">
-            </div>
-            <div id="politicas">
-                <input type="checkbox" name="" id="valirdar">
-                <p>He leído y acepto las <a href="/politicas">Políticas de Privacidad y los Términos y Condiciones</a>
-                    de uso de los estudiantes de ProfeGo</p>
-            </div>
-            <div id="boton">
-                <button type="submit">Guardar</button>
+            <div id="datosRegistro">
+                <div id="Nombrecompleto">
+                    <h1>Nombre Completo:</h1>
+                    <input type="text" name="completeNameEstudent" id="nombre" required>
+                </div>
+                <div id="Correo">
+                    <h1>Correo electrónico:</h1>
+                    <input type="text" name="emailEstudent" id="email" required>
+                </div>
+                <div id="Cedula">
+                    <h1>Cedula:</h1>
+                    <input type="text" name="username" id="usuario">
+                </div>
+                <div id="Celular">
+                    <h1>Celular:</h1>
+                    <input type="text" name="celularEstudent" id="celular">
+                </div>
+                <div id="Contraseña">
+                    <h1>Contraseña:</h1>
+                    <input type="password" name="password" id="contraseña">
+                </div>
+                <div id="RepetirContraseña">
+                    <h1>Repite la contraseña:</h1>
+                    <input type="password" name="" id="contraseñaRepetir">
+                </div>
+                <div id="politicas">
+                    <input type="checkbox" name="" id="valirdar">
+                    <p id="validacion">He leído y acepto las <a href="/politicas">Políticas de Privacidad y los Términos y
+                            Condiciones</a>
+                        de uso de los estudiantes de ProfeGo</p>
+                </div>
+                <div id="boton">
+                    <button type="submit">Guardar</button>
+                </div>
             </div>
         </div>
     </form>

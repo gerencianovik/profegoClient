@@ -14,3 +14,7 @@ a {
     font-style: normal;
     border-color: transparent;
 }
+
+#numero{
+    display: none;
+}

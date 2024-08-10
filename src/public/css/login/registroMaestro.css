@@ -92,7 +92,6 @@ a{
     height: 100%;
     left: 5%;
     position: absolute;
-    top: 37%;
 }
 
 #Cedula {
@@ -102,7 +101,7 @@ a{
 #Celular {
     width: 45%;
     position: absolute;
-    top: 17%;
+    top: 26%;
     left: 56%;
 }
 
@@ -165,7 +164,7 @@ a{
     width: 40%;
     height: 7%;
     position: absolute;
-    top: 55%;
+    top: 65%;
     left: 30%;
 }
 
@@ -175,39 +174,4 @@ a{
     background: #004D77;
     color: white;
     border-radius: 10px;
-}
-
-#imagens{
-    position: absolute;
-    top: 10%;
-    width: 50%;
-    height: 25%;
-    left: 25%;
-}
-
-#imagens img{
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-
-#seleccionArchivos{
-    display: none;
-}
-
-#botonImagen {
-    position: absolute;
-    top: 58%;
-    width: 35%;
-    height: 25%;
-    left: 30%;
-    background-color: transparent;
-    border-color: transparent;
-}
-
-#botonImagen img{
-    width: 100%;
-    height: 100%;
 }

@@ -1,38 +1,93 @@
-<link rel="stylesheet" href="">
-<div id="contenedor">
-    <div id="logoimagen">
-        <div id="imagen">
-            <img src="/img/logo/logo.png">
-        </div>
+<link rel="stylesheet" href="/css/login/loginProfe.css">
+<div id="contenedorLogin">
+    <div id="fondo">
+        <img src="/img/fondo/fondo1.png">
     </div>
     <div id="datos">
-        <div id="titulo">
-            <h1>Iniciar sesión</h1>
+        <form action="/loginStudents" method="post">
+            <div id="titulo">
+                <h1>Iniciar sesión</h1>
+                <p>¡Hola de nuevo a ProfeGo!</p>
+            </div>
+            <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+            <div id="Cedula">
+                <p>Cedula:</p>
+                <input type="text" name="username" id="cedula" required>
+            </div>
+            <div id="Contraseña">
+                <p>Contraseña:</p>
+                <input type="password" name="password" id="contrasena" required>
+            </div>
+            <div id="botonVer">
+                <button type="button" id="ver"><img src="/img/icons/login/ojoCerrado.png"></button>
+                <button type="button" id="nover"><img src="/img/icons/login/ojoAbierto.png"></button>
+            </div>
+            <div id="olvidarContraseña">
+                <a href="">
+                    <p>¿Olvidaste tu contraseña?</p>
+                </a>
+            </div>
+            <div id="boton">
+                <button type="submit">Ingresar</button>
+            </div>
+            <div id="noCuenta">
+                <p>¿No tienes una cuenta? <a href="/RegisterTeachers">Regístrate aquí</a></p>
+            </div>
+        </form>
+        <div id="colores">
+    <p></p>
+</div>
+    </div>
+</div>
+<div id="footer">
+    <div id="tarjetaNosotros">
+        <div id="nosotrosFooter">
+            <h1>Nosotros</h1>
         </div>
-        <input type="hidden" name="_csrf" value="{{ csrfToken }}">
-        <div id="Cedula">
-            <p>Cedula:</p>
-            <input type="text" name="username" id="cedula" required>
+        <div id="datosNosotros">
+            <p>¿Quiénes Somos?<br>
+             <br>
+            <br>
+                ¿Cómo funciona?<br>
+                 <br>
+            <br>
+                Testimonios<br>
+                 <br>
+            <br>
+                Preguntas frecuentes<br>
+                 <br>
+            <br>
+                Contacto</p>
         </div>
-        <div id="Contraseña">
-            <p>Contraseña:</p>
-            <input type="password" name="password" id="contrasena" required>
+    </div>
+    <div id="tarjetaUnete">
+        <div id="nosotrosFooter">
+            <h1>Únete</h1>
         </div>
-        <div id="botonVer">
-            <button type="button" id="ver"><img src="/img/icons/login/ojoCerrado.png"></button>
-            <button type="button" id="nover"><img src="/img/icons/login/ojoAbierto.png"></button>
+        <div id="datosNosotros">
+            <p>Regístrate como estudiante <br>
+             <br>
+            <br>
+                Sé docente o coach</p>
         </div>
-        <div id="olvidarContraseña">
-            <a href="">
-                <p>¿Olvidaste tu contraseña?</p>
-            </a>
+    </div>
+    <div id="tarjetaLegal">
+        <div id="nosotrosFooter">
+            <h1>Únete</h1>
         </div>
-        <div id="boton">
-            <button type="submit">Ingresar</button>
+        <div id="datosNosotros">
+            <p>Términos y condiciones <br>
+            <br>
+            <br>
+                Políticas de privacidad</p>
         </div>
-        <div id="noCuenta">
-            <p>¿No tienes una cuenta? <a href="/RegisterStudents">Regístrate aquí</a></p>
-        </div>
+    </div>
+    <div id="logoImagen">
+        <img src="/img/logo/LogoPrincipal.png">
+    </div>
+    <div id="final">
+        <p>Interconexión segura, rápida e ideal entre docentes y estudiantes.</p>
+        <p id="finalFinal">ProfeGo® EDUCONECTA S.A.S</p>
     </div>
 </div>
 
