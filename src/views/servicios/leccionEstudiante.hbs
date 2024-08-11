@@ -1,0 +1,157 @@
+<link rel="stylesheet" href="/css/eleccion/servicios.css">
+{{#each listaTeacher}}
+<form action="/student/eleccion/{{idEstudent}}" method="get"></form>
+<div id="contenedorServicio">
+    <div id="fondos">
+        <img src="/img/fondo/teacherinicio.png">
+    </div>
+    <div id="contenedorImagenTitulos">
+        <div id="titulo">
+            <h1>¡Bienvenido!</h1>
+            <p>Elige entre servicios que puedes crear o los existentes.<br>
+                ¡Tu enseñanza, tu elección!</p>
+        </div>
+        <div id="imagens">
+            <img src="/img/fondo/guntosEstudiantes.png">
+        </div>
+    </div>
+    <div id="botonClase">
+        <div id="clasesBoton">
+            <a href="/clases/list/{{idEstudent}}"><button type="button">Clases</button></a>
+        </div>
+        <div id="encontraras">
+            <p>¿Qué encontrarás?</p>
+            <div id="boton1">
+                <div id="imagenBoton1">
+                    <a href=""><img src="/img/fondo/casaLibro.png"></a>
+                </div>
+                <p>Clases particulares </p>
+            </div>
+            <div id="boton2">
+                <div id="imagenBoton2">
+                    <a href=""><img src="/img/fondo/casaAbc.png"></a>
+                </div>
+                <p>Clases grupales</p>
+            </div>
+            <div id="boton3">
+                <div id="imagenBoton3">
+                    <a href=""><img src="/img/fondo/casaBrillos.png"></a>
+                </div>
+                <p>Coaching individual para docentes.</p>
+            </div>
+        </div>
+    </div>
+    <div id="botonCuros">
+        <div id="botoncuros">
+            <a href="/cours/list/{{idEstudent}}"><button type="button">Cursos</button></a>
+        </div>
+        <div id="encontraras">
+            <p>¿Qué encontrarás?</p>
+            <div id="boton1">
+                <div id="imagenBoton1">
+                    <a href=""><img src="/img/fondo/compuLista.png"></a>
+                    <p>Cursos</p>
+                </div>
+            </div>
+            <div id="boton2">
+                <div id="imagenBoton2">
+                    <a href=""><img src="/img/fondo/compuMusica.png"></a>
+                    <p>Coaching grupal para docentes</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="curso">
+        {{#each ../listaCursos}}
+        <div id="imagenCursoClase">
+            <img src="">
+        </div>
+        <div id="datos">
+            <div id="nombreCurso">
+                <p>{{nameCours}}</p>
+            </div>
+            <div id="ubicacion">
+                <div id="imagenUbicacion">
+                    <div id="mapa"></div>
+                    <input type="text" name="cordenadas" id="ubicacion" value="{{ubicacionCurso}}">
+                </div>
+            </div>
+            <div id="modalidad">
+                <div id="imagenModalidad">
+                    <img src="">
+                </div>
+                <p>{{nameCoursClassType}}</p>
+            </div>
+            <div id="costo">
+                <div id="imagenCosto">
+                    <img src="">
+                </div>
+                <p>{{costCours}}</p>
+            </div>
+            <div id="necesidadesEducativas">
+                <div id="imagenNececidades">
+                    <img src="">
+                </div>
+                <p>{{neeCours}}</p>
+            </div>
+            <div id="descripcion">
+                <h1>Descripción:</h1>
+                <p>{{descriptionCours}}</p>
+            </div>
+            <div id="detalle">
+                <a href=""><button type="button">Ver detalle</button></a>
+            </div>
+            <div id="impartir">
+                <a href=""><button type="button">Impartir</button></a>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    <div id="clase">
+        {{#each ../listaClases}}
+        <div id="imagenCursoClase">
+            <img src="">
+        </div>
+        <div id="datos">
+            <div id="nombreCurso">
+                <p>{{nameClases}}</p>
+            </div>
+            <div id="ubicacion">
+                <div id="imagenUbicacion">
+                    <div id="mapa"></div>
+                    <input type="text" name="cordenadas" id="ubicacion" value="{{ubicacionClase}}">
+                </div>
+            </div>
+            <div id="modalidad">
+                <div id="imagenModalidad">
+                    <img src="">
+                </div>
+                <p>{{nameCoursClassType}}</p>
+            </div>
+            <div id="necesidadesEducativas">
+                <div id="imagenNececidades">
+                    <img src="">
+                </div>
+                <p>{{neeClass}}</p>
+            </div>
+            <div id="costo">
+                <div id="imagenCosto">
+                    <img src="">
+                </div>
+                <p>{{costClases}}</p>
+            </div>
+            <div id="descripcion">
+                <h1>Descripción:</h1>
+                <p>{{descriptionClases}}</p>
+            </div>
+            <div id="detalle">
+                <a href=""><button type="button">Ver detalle</button></a>
+            </div>
+            <div id="impartir">
+                <a href=""><button type="button">Impartir</button></a>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+{{/each}}

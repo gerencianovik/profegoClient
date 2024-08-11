@@ -1,4 +1,4 @@
-#nav{
+#nav {
     position: absolute;
     top: 0%;
     left: 0%;
@@ -9,7 +9,7 @@
     max-height: 8%;
 }
 
-#logo{
+#logo {
     position: absolute;
     top: 0%;
     left: 0%;
@@ -19,7 +19,7 @@
     max-height: 100%;
 }
 
-#logo img{
+#logo img {
     position: absolute;
     top: 0%;
     width: 100%;
@@ -32,7 +32,7 @@
 
 #nosotros,
 #servicios,
-#contactos{
+#contactos {
     position: absolute;
     top: 20%;
     left: 7.5%;
@@ -41,21 +41,20 @@
     max-width: 10%;
     max-height: 60%;
     text-align: center;
-    background: linear-gradient(to right, #004D77 35%, #18574F 70%);
     border-radius: 5px;
 }
 
-#servicios{
+#servicios {
     left: 20%;
 }
 
-#contactos{
+#contactos {
     left: 32.5%;
 }
 
 #nosots,
 #servisiosTitulo,
-#contactosTitulo{
+#contactosTitulo {
     position: absolute;
     top: -40%;
     width: 100%;
@@ -65,29 +64,39 @@
 
 #nosots p,
 #servisiosTitulo p,
-#contactosTitulo p{
+#contactosTitulo p {
     width: 100%;
     height: 50%;
     position: absolute;
     top: 0%;
     font-size: 20px;
     left: 0%;
-    color: #FEEDD9;
+    color: #004D77;
 }
-#bajar{
+
+#bajar {
     position: absolute;
     left: 77%;
     top: 35%;
 }
 
-#bajar button{
+#bajar button {
+    width: 100%;
+    height: 100%;
     background: transparent;
     border-color: transparent;
 }
 
+#bajar button img {
+    width: 100%;
+    background-size: cover;
+    height: 100%;
+    background-attachment: fixed;
+}
+
 #subNav1,
 #subNav2,
-#subNav3{
+#subNav3 {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -99,7 +108,7 @@
     background: linear-gradient(to right, #FEEDD9 25%, white 45%);
 }
 
-#contenedorImagenInformacion{
+#contenedorImagenInformacion {
     position: absolute;
     left: 0%;
     top: 0%;
@@ -107,33 +116,34 @@
     height: 100%;
 }
 
-#contenedorImagen{
+#contenedorImagen {
     position: absolute;
-    width: 30%;
+    width: 31%;
     height: 100%;
     top: 0%;
     left: 0%;
+    background: #F39325;
 }
 
-#imagen{
+#imagen {
     position: absolute;
     top: 5%;
     left: 5%;
     width: 95%;
     height: 40%;
-  
+
 }
 
-#contenedorImagen img{
+#contenedorImagen img {
     width: 100%;
     height: 100%;
     border-radius: 10px;
     background-size: cover;
     background-attachment: fixed;
-    
+
 }
 
-#nosotros1{
+#nosotros1 {
     position: absolute;
     top: 50%;
     left: 0%;
@@ -142,51 +152,60 @@
     text-align: center;
 }
 
-#contenedorInformacion1{
+#nosotros1 h1 {
+    color: white;
+}
+
+#contenedorInformacion1 {
     position: absolute;
     top: 0%;
     left: 31%;
     width: 69%;
     height: 100%;
     border-left: 6px solid rgba(0, 0, 0, 0.034);
+    background: #FFEFDA;
 }
 
-#somos{
+#somos {
     position: absolute;
     top: 0%;
     left: 0%;
     width: 100%;
-    height: 25%;
+    height: 20%;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
 }
 
-#funciona{
+#funciona {
     position: absolute;
-    top: 25%;
+    top: 21%;
     left: 0%;
     width: 100%;
-    height: 25%;
+    height: 20%;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
 }
 
-#seguridad{
+#seguridad {
     position: absolute;
-    top: 50%;
+    top: 42%;
     left: 0%;
     width: 100%;
-    height: 25%;
+    height: 20%;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
 }
 
-#testimonio{
+#testimonio {
     position: absolute;
-    top: 75%;
+    top: 63%;
     left: 0%;
     width: 100%;
-    height: 25%;
+    height: 20%;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
 }
 
 #somosImagen,
 #imagenFunciona,
 #imagenSeguridad,
-#imagentestiminio{
+#imagentestiminio {
     position: absolute;
     width: 20%;
     height: 80%;
@@ -198,7 +217,7 @@
 #somosImagen img,
 #imagenFunciona img,
 #imagenSeguridad img,
-#imagentestiminio img{
+#imagentestiminio img {
     position: absolute;
     top: 0%;
     left: 0%;
@@ -210,7 +229,7 @@
 #informacion,
 #informacion1,
 #informacion2,
-#informacion3{
+#informacion3 {
     position: absolute;
     width: 75%;
     height: 100%;
@@ -221,61 +240,61 @@
 
 #informacion h1,
 #informacion1 h1,
-#informacion2 h1{
+#informacion2 h1 {
     position: absolute;
-    top: -20%;
+    top: 0%;
     width: 100%;
+    font-size: 25px;
 }
-#informacion3 h1{
+
+#informacion3 h1 {
     position: absolute;
-    top: -5%;
+    top: 0%;
     width: 100%;
+    font-size: 25px;
 }
 
 #informacion p,
 #informacion1 p,
 #informacion2 p,
-#informacion3 p{
+#informacion3 p {
     position: absolute;
     top: 30%;
-    width:95%;
+    width: 95%;
     height: 53%;
     text-align: justify;
 }
 
-#estudientesImagenes{
+#estudientesImagenes {
     position: absolute;
     left: 70%;
-    top: 15%;
+    top: 22%;
     width: 100%;
     height: 100%;
-    max-width: 15%;
-    max-height: 70%;
-    border-radius: 50%;
+    max-width: 10%;
+    max-height: 52%;
 }
 
-#docentesCouch{
+#docentesCouch {
     position: absolute;
     left: 70%;
-    top: 15%;
+    top: 22%;
     width: 100%;
     height: 100%;
-    max-width: 15%;
-    max-height: 70%;
-    border-radius: 50%;
+    max-width: 10%;
+    max-height: 52%;
 }
 
 #estudientesImagenes img,
-#docentesCouch img{
+#docentesCouch img {
     width: 100%;
     height: 100%;
     max-width: 100%;
     max-height: 100%;
-    border-radius: 50%;
 }
 
 #estudiante,
-#couch{
+#couch {
     position: absolute;
     left: 0%;
     top: 25%;
@@ -283,28 +302,18 @@
     height: 50%;
 }
 
-#estudiante{
-    background: linear-gradient(to left, #004D77 35%, #18574F 70%);
-}
-
-#couch{
-    background: linear-gradient(to right, #F39325 47%, #FEEDD9 88%);
-}
-
 #estudiante button,
-#couch button{
+#couch button {
     width: 100%;
     height: 100%;
     background-color: transparent;
     border-color: transparent;
     font-size: 18px;
     cursor: pointer;
-}
-#estudiante button{
-    color: #FEEDD9;
+    color: #165851;
 }
 
-#estudiantes{
+#estudiantes {
     position: absolute;
     top: 0%;
     left: 60%;
@@ -314,7 +323,8 @@
     max-height: 100%;
     text-align: center;
 }
-#docentes{
+
+#docentes {
     position: absolute;
     top: 0%;
     left: 80%;
@@ -323,4 +333,101 @@
     max-width: 19.5%;
     max-height: 100%;
     text-align: center;
+}
+
+#subNav4 {
+    display: block;
+    position: absolute;
+    left: 62%;
+    top: 11%;
+    width: 16%;
+    height: 19%;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #FFEFDA;
+}
+
+#subNav5 {
+    display: block;
+    position: absolute;
+    left: 81%;
+    top: 11%;
+    width: 16%;
+    height: 19%;
+    background-color: #FFEFDA;
+    text-align: center;
+    border-radius: 10px;
+}
+#subNav4 #login a,
+#subNav5 #login a{
+    position: absolute;
+    top: 36%;
+    left: 27%;
+    text-decoration: auto;
+    color: #F39325;
+}
+#subNav4 #registro a,
+#subNav5 #registro a{
+    position: absolute;
+    top: 36%;
+    left: 27%;
+    text-decoration: auto;
+    color: white;
+}
+
+#subNav5 #login a{
+    color: #004D77;
+}
+#subNav5 #registro a{
+    color: white;
+}
+
+#subNav4 #login,
+#subNav5 #login {
+    width: 80%;
+    height: 40%;
+    background-color: white;
+    border: 1px solid #F39325;
+    position: absolute;
+    left: 10%;
+    top: 5%;
+    border-radius: 10px;
+}
+
+#subNav5 #login {
+    border: 1px solid #004D77;
+}
+
+#subNav4 #registro,
+#subNav5 #registro {
+    width: 80%;
+    height: 40%;
+    background-color: #F39325;
+    border: 1px solid #F39325;
+    position: absolute;
+    left: 10%;
+    top: 55%;
+    border-radius: 10px;
+}
+#subNav5 #registro{
+    background-color: #004D77;
+    border: 1px solid #004D77;
+}
+
+#eleccionCursoCLases {
+    position: absolute;
+    width: 12%;
+    height: 55%;
+    left: 45%;
+    top: 20%;
+}
+
+#eleccionCursoCLases button {
+    width: 100%;
+    height: 100%;
+    color: #004D77;
+    font-size: 20px;
+
+    background-color: transparent;
+    border-color: transparent;
 }

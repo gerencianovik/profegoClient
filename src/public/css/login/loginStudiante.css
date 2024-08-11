@@ -1,0 +1,305 @@
+#contenedorLogin {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#fondo {
+    position: absolute;
+    top: 7%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 93%;
+}
+
+#fondo img {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#logoimagen {
+    position: absolute;
+    width: 40%;
+    height: 100%;
+}
+
+#imagenLogin {
+    position: absolute;
+    width: 40%;
+    left: 30%;
+    height: 30%;
+    top: 5%;
+}
+
+#imagenLogin img,
+#imagensecundaria img {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#imagensecundaria {
+    position: absolute;
+    width: 60%;
+    left: 20%;
+    height: 60%;
+    top: 40%;
+}
+
+#datos {
+    position: absolute;
+    left: 30%;
+    width: 40%;
+    top: 10%;
+    height: 90%;
+    text-align: center;
+    background-color: white;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+#datos p {
+    color: #18574F;
+    font-size: 20px;
+}
+
+#datos img,
+#botonVer button img,
+#botonNoVer button img {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#titulo {
+    position: absolute;
+    top: 2%;
+    width: 100%;
+    height: 5%;
+}
+
+#titulo h1 {
+    color: #F39325;
+    font-size: 30px;
+}
+
+#Cedula {
+    position: absolute;
+    width: 50%;
+    height: 10%;
+    top: 22%;
+    left: 25%;
+}
+
+#Contraseña {
+    position: absolute;
+    width: 50%;
+    height: 10%;
+    top: 43%;
+    left: 25%;
+}
+
+#Cedula p,
+#Contraseña p {
+    text-align: left;
+    width: 100%;
+    font-size: 20px;
+}
+
+#Cedula input,
+#Contraseña input {
+    width: 100%;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 4px solid;
+    border-color: #F39325;
+    height: 100%;
+    text-align: center;
+}
+
+#botonVer,
+#botonNoVer {
+    position: absolute;
+    top: 57%;
+    left: 70%;
+    width: 5%;
+    height: 5%;
+}
+
+#botonVer button,
+#botonNoVer button {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border-color: transparent;
+}
+
+#boton button {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    border-color: transparent;
+    font-size: 20px;
+    color: white;
+    background-color: #F39325;
+}
+
+#olvidarContraseña {
+    position: absolute;
+    width: 67%;
+    text-align: right;
+    top: 66%;
+    left: 10%;
+}
+
+#boton {
+    position: absolute;
+    top: 75%;
+    width: 40%;
+    height: 10%;
+    left: 30%;
+    border-radius: 10px;
+    border: 5px solid #F39325;
+}
+
+#noCuenta {
+    position: absolute;
+    top: 87%;
+    width: 100%;
+    text-align: center;
+}
+
+#noCuenta p {
+    font-size: 20px;
+    color: #18574F;
+}
+
+#noCuenta a {
+    font-size: 20px;
+    color: #F39325;
+    text-decoration: none;
+}
+
+#olvidarContraseña a {
+    font-size: 15px;
+    color: #004D77;
+    text-decoration: none;
+}
+
+#colores {
+    width: 100%;
+    background-color: #004D77;
+    position: absolute;
+    top: 100%;
+    height: 7%;
+}
+
+#footer {
+    position: absolute;
+    top: 110%;
+    width: 100%;
+    height: 60%;
+    background-color: #ffefdaa0;
+    left: 0%;
+}
+
+#tarjetaNosotros,
+#tarjetaUnete,
+#tarjetaLegal {
+    position: absolute;
+    width: 12%;
+    top: 0%;
+    left: 4%;
+    height: 100%;
+}
+
+#tarjetaNosotros h1,
+#tarjetaUnete h1,
+#tarjetaLegal h1 {
+    color: #004D77;
+}
+
+#tarjetaNosotros p,
+#tarjetaUnete p,
+#tarjetaLegal p {
+    color: #004D77;
+}
+
+#nosotrosFooter {
+    position: relative;
+    padding: 20px;
+    background: transparent;
+    /* Fondo blanco para que el borde resalte */
+    border-bottom: 5px solid transparent;
+    /* Ajusta el grosor del borde aquí */
+    border-image: linear-gradient(to right, #F39325, #FEEDD9);
+    border-image-slice: 1;
+    border-image-width: 0 0 5px 0;
+}
+
+#tarjetaUnete {
+    left: 19%;
+}
+
+#tarjetaLegal {
+    left: 35%;
+}
+
+#logoImagen {
+    position: absolute;
+    top: 7%;
+    left: 74%;
+    width: 25%;
+    height: 69%;
+}
+
+
+#logoImagen img {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#final {
+    position: absolute;
+    top: 90%;
+    width: 100%;
+    height: 10%;
+    background-color: #FFEFDA;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+#final p {
+    text-align: center;
+    width: 40%;
+    color: #004D77;
+}
+
+#final #finalFinal {
+    position: absolute;
+    top: 0%;
+    left: 79%;
+    width: 20%;
+}

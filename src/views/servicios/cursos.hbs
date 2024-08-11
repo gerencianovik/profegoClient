@@ -1,0 +1,88 @@
+<link rel="stylesheet" href="/css/cursos/lista.css">
+<form action="/general" method="get">
+    <div id="contenedor">
+        <div id="fondo">
+            <img src="/img/icons/fondoLista.png">
+        </div>
+        <div id="titulo">
+            <p>Mis Servicios</p>
+        </div>
+        <div id="contenedorCursoGeneral">
+            <div id="Cursos">
+                <div id="imagenesCursos">
+                    <img src="/img/icons/cursTLS.png">
+                    <p>Curso</p>
+                </div>
+                <div class="row">
+                    {{#each listaCursos}}
+                    <div id="video">
+                        <video src="/video/cours/{{videoCours}}" controls></video>
+                        <p>Ver la información completa</p>
+                    </div>
+                    <div id="tarjeta">
+                        <a href="/cours/detailList/{{idCours}}">
+                            <div id="foto">
+                                <p><img src="/img/cours/{{photoCours}}" alt=""></p>
+                            </div>
+                            <div id="pasos">
+                                <div id="Nombre">
+                                    <p>{{nameCours}}</p>
+                                </div>
+                                <div id="descripcion">
+                                    <p>{{descriptionCours}}</p>
+                                </div>
+                                <div id="fehca">
+                                    <p>{{dateCours}}</p>
+                                </div>
+                                <div id="hora">
+                                    <p>{{hourCours}}</p>
+                                </div>
+                                <div id="cupos">
+                                    <p>{{shareCours}}</p>
+                                </div>
+                                <div id="costo">
+                                    <p>{{costCours}}</p>
+                                </div>
+                                <div id="estado">
+                                    <p>{{stateCours}}</p>
+                                </div>
+                                <div id="calificacion">
+                                    <p>{{calificationCours}}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+        <div id="filtros">
+            <div id="filtrosBoton">
+                <button type="button" id="fil">Filtrar por <img src="/img/icons/filtro.png"></button>
+            </div>
+            <div id="serviciosFiltros">
+                <div id="serviciosGneneral">
+                    <div id="titulo1">
+                        <a href="/filtro/clases">Clases</a>
+                    </div>
+                    <div id="titulo2">
+                        <a href="/filtro/cursos">Cursos</a>
+                    </div>
+                    <div id="titulo3">
+                        <a href="/filtro/coaching">Coaching</a>
+                    </div>
+                </div>
+                <div id="modalidadFiltro">
+                    <div id="titulo1">
+                        <a href="/filtro/Online">Online</a>
+                    </div>
+                    <div id="titulo2">
+                        <a href="/filtro/Domicilio">Domicilio o presencial</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script src="/js/filtro.js"></script>

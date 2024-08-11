@@ -1,36 +1,237 @@
 <link rel="stylesheet" href="/css/inicio.css">
 <div id="contenedor">
     <div id="primerTitulo">
-        <h1>La mejor educación a tu alcance en </h1>
-        <p>¡Explora, aprende e inspira!</p>
-    </div>
-    <div id="Clases">
-        <div id="datos">
-            <h1>Clases</h1>
-            <p>Individuales <br>
-                Grupales</p>
-        </div>
-        <div id="imagenClases">
-            <img src="/img/icons/">
-        </div>
-    </div>
-    <div id="Cursos">
-        <div id="datos">
-            <h1>Cursos</h1>
-        </div>
-        <div id="imagenCurso">
-            <img src="/img/icons/">
-        </div>
-    </div>
-    <div id="Coaching">
-        <div id="datos">
-            <h1>Coaching para docentes</h1>
-        </div>
-        <div id="imagenCouching">
-            <img src="/img/icons/">
-        </div>
+        <img src="/img/icons/inicioimagen1.png">
+        <p id="primerparte">La mejor educación a tu alcance, solo en </p>
+        <img src="/img/icons/Logoprincipal.png" id="logoPrincipal">
+        <p id="segundaparte">¡Aprende hoy,<br>
+            lidera mañana!</p>
     </div>
     <div id="buscador">
-        
+        <form action="/buscar" method="post">
+            <div id="busca">
+                <img src="/img/icons/busca.png">
+            </div>
+            <div id="ayudar">
+                <h1>Queremos ayudarte a encontrar lo que buscas</h1> <img src="/img/icons/busqueda.png">
+            </div>
+            <div id="Quebuscas">
+                <p>¿Qué buscas?</p>
+                <select name="docentes" id="docenetes">
+                    <option value="">Busco docente</option>
+                    {{#each docenetes}}
+                    <option value="{{idTeacher}}">{{nameTeacher}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div id="ServicoMateria">
+                <p>Servicio o materia</p>
+                <select name="materia" id="materia">
+                    <option value="">Ej: Matemática</option>
+                    {{#each materia}}
+                    <option value="{{idSubjet}}">{{idSubjet}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+            <div id="edad">
+                <p>Niveo o edad</p>
+                <select name="rangeAgeTeacher" id="edadRango">
+                    <option value="3-5 años">3-5 años</option>
+                    <option value="5-7 años">5-7 años</option>
+                    <option value="7-9 años">7-9 años</option>
+                    <option value="9-12 años">9-12 años</option>
+                    <option value="12-16 años">12-16 años</option>
+                    <option value="16-18 años">16-18 años</option>
+                    <option value="Universitarios">Universitarios</option>
+                    <option value="Docentes">Docentes</option>
+                </select>
+            </div>
+            <div id="donde">
+                <p>¿Dónde?</p>
+                <select name="donde" id="dondes">
+                    {{#each tipo}}
+                    <option value="{{idTypeCoursClass}}">{{idTypeCoursClass}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div id="BotonBusacar">
+                <button type="submit">Buscar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="masPopular">
+    <div id="tituloPopular">
+        <h1>Lo más popular en <span class="highlight">ProfeGo</span></h1>
+        <p>Descubre los servicios más solicitados</p>
+    </div>
+    <div id="tarjetaClaseParticular">
+        <div id="imagenClase">
+            <img src="/img/icons/claseParticular.png">
+        </div>
+        <h1>Clases particulares</h1>
+        <div id="datos">
+            <p>Clases de Inglés</p>
+            <p>Clases de Matemáticas</p>
+            <p>Clases de Química</p>
+        </div>
+    </div>
+    <div id="tarjetaClaseGrupales">
+        <div id="imagenClase">
+            <img src="/img/icons/claseGrupal.png">
+        </div>
+        <h1>Clases grupales</h1>
+        <div id="datos">
+            <p>Clases de Francés</p>
+            <p>Clases de Matemáticas</p>
+            <p>Clases de Química</p>
+        </div>
+    </div>
+    <div id="tarjetaCursos">
+        <div id="imagenClase">
+            <img src="/img/icons/cursoTarjeta.png">
+        </div>
+        <h1>Clases grupales</h1>
+        <div id="datos">
+            <p>Clases de Francés</p>
+            <p>Clases de Matemáticas</p>
+            <p>Clases de Química</p>
+        </div>
+    </div>
+    <div id="tarjetaCoaching">
+        <div id="imagenClase">
+            <img src="/img/icons/couchingTarjeta.png">
+        </div>
+        <h1>Clases grupales</h1>
+        <div id="datos">
+            <p>Clases de Francés</p>
+            <p>Clases de Matemáticas</p>
+            <p>Clases de Química</p>
+        </div>
+    </div>
+</div>
+<div id="cotendorPorqueElegir">
+    <img src="/img/icons/fondos2.png">
+    <div id="textodiv">
+        <h1>¿Por qué elegir a ProfeGo?</h1>
+        <p>Aprendizaje flexible, asequible y seguro con los mejores docentes y coaches</p>
+    </div>
+    <div id="cajon1">
+        <h1>Profesores expertos <img src="/img/icons/conetenido1.png"></h1>
+        <p>Aprende de profesionales calificados y apasionados por enseñar.</p>
+    </div>
+    <div id="cajon2">
+        <h1>Diversidad <img src="/img/icons/contenido2.png"></h1>
+        <p>Desde ciencias y matemáticas hasta idiomas y artes, tenemos algo para todos.</p>
+    </div>
+    <div id="cajon3">
+        <h1>Seguridad <img src="/img/icons/contenido3.png"></h1>
+        <p>Pagos seguros, profesionales verificados, datos protegidos y soporte continuo todo el tiempo.</p>
+    </div>
+    <div id="cajon4">
+        <h1>Flexibilidad <img src="/img/icons/contenido4.png"></h1>
+        <p>Accede a nuestros servicios en cualquier momento y lugar, adaptándose a tu ritmo de vida.</p>
+    </div>
+</div>
+
+<div id="contenedorCifras">
+    <img src="/img/icons/mediaNube.png">
+    <div id="tituloCifras">
+        <h1>Nuesto impacto en cifras</h1>
+        <p>¡La comunidad educativa favorita de muchos te espera!</p>
+    </div>
+    <div id="contendorDocentes">
+        <h1>+ 200</h1>
+        <p>Docentes y
+            Coaches</p>
+    </div>
+    <div id="contendorServiciosEducativos">
+        <h1>+ 1000</h1>
+        <p>Servicios educativos</p>
+    </div>
+    <div id="contendorServicioscontratados">
+        <h1>+ 3000</h1>
+        <p>Servicios contratados</p>
+    </div>
+    <div id="ValoracionComunidad">
+        <h1><img src="/img/icons/estrella.png"> 5</h1>
+        <p>Valoración de nuestra comunidad</p>
+    </div>
+</div>
+
+<div id="opinionesDestacadas">
+    <div id="tituloPopular">
+        <h1>Opiniones destacadas</h1>
+        <p>Conoce las experiencias de quiénes han confiado en nosotros</p>
+    </div>
+    <div id="tarjeta">
+        <div id="imagenClase">
+            <img src="/img/icons/couchingTarjeta.png">
+        </div>
+        <div id="datos">
+            <p>Clases de Francés</p>
+        </div>
+    </div>
+</div>
+
+<div id="informate">
+    <img src="/img/icons/imagenUltima.png">
+    <div id="informacionDocente">
+        <p>¿Quiéres ser docente o coach en ProfeGo?</p>
+        <a href="/detalleInformate"><button type="button">¡Informáte aquí!</button></a>
+    </div>
+</div>
+
+<div id="footer">
+    <div id="tarjetaNosotros">
+        <div id="nosotrosFooter">
+            <h1>Nosotros</h1>
+        </div>
+        <div id="datosNosotros">
+            <p>¿Quiénes Somos?<br>
+             <br>
+            <br>
+                ¿Cómo funciona?<br>
+                 <br>
+            <br>
+                Testimonios<br>
+                 <br>
+            <br>
+                Preguntas frecuentes<br>
+                 <br>
+            <br>
+                Contacto</p>
+        </div>
+    </div>
+    <div id="tarjetaUnete">
+        <div id="nosotrosFooter">
+            <h1>Únete</h1>
+        </div>
+        <div id="datosNosotros">
+            <p>Regístrate como estudiante <br>
+             <br>
+            <br>
+                Sé docente o coach</p>
+        </div>
+    </div>
+    <div id="tarjetaLegal">
+        <div id="nosotrosFooter">
+            <h1>Únete</h1>
+        </div>
+        <div id="datosNosotros">
+            <p>Términos y condiciones <br>
+            <br>
+            <br>
+                Políticas de privacidad</p>
+        </div>
+    </div>
+    <div id="logoImagen">
+        <img src="/img/logo/LogoPrincipal.png">
+    </div>
+    <div id="final">
+        <p>Interconexión segura, rápida e ideal entre docentes y estudiantes.</p>
+        <p id="finalFinal">ProfeGo® EDUCONECTA S.A.S</p>
     </div>
 </div>

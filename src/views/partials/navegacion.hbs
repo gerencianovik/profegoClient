@@ -5,28 +5,31 @@
         {{#each listaTeacher}}
         <a href="/teacher/eleccion/{{idTeacher}}"><button type="button">Eleccion Servicios</button></a>
         {{/each}}
+         {{#each listaEstudents}}
+        <a href="/teacher/eleccion/{{idEstudent}}"><button type="button">Eleccion Servicios</button></a>
+        {{/each}}
     </div>
     {{else}}
     <div id="estudiantes">
-        <div id="estudientesImagenes">
-            <img src="/img/icons/estudiantes.png">
+        <div id="bajar">
+            <button type="button" id="bajar3"><img src="/img/icons/estudiantes.png"></button>
         </div>
         <div id="estudiante">
-            <a href="/loginStudents"><button type="button">ESTUDIANTES</button></a>
+            <button type="button">ESTUDIANTES</button>
         </div>
     </div>
     <div id="docentes">
-        <div id="docentesCouch">
-            <img src="/img/icons/couchingDocmentes.png">
+        <div id="bajar">
+            <button type="button" id="bajar4"><img src="/img/icons/estudiantes.png"></button>
         </div>
         <div id="couch">
-            <a href="/loginTeachers"><button type="button">DOCENTE O COACH</button></a>
+            <button type="button">DOCENTE/COACH</button>
         </div>
     </div>
     {{/if}}
     <div id="logo">
         {{#each listaPagina}}
-        <a href="/"><img src="/img/page/{{photoPage}}"></a>
+        <a href="/"><img src="/img/logo/{{photoPage}}"></a>
         {{/each}}
     </div>
     <div id="nosotros">
@@ -34,7 +37,7 @@
             <p>Nosotros</p>
         </div>
         <div id="bajar">
-            <button type="button" id="bajar"><img src="/img/icons/baja.png"></button>
+            <button type="button" id="bajar0"><img src="/img/icons/baja.png"></button>
         </div>
     </div>
     <div id="servicios">
@@ -54,6 +57,22 @@
         </div>
     </div>
 </nav>
+<div id="subNav4">
+    <div id="login">
+        <a href="/loginStudents">Iniciar sesión</a>
+    </div>
+    <div id="registro">
+        <a href="/RegisterStudents">Crear Cuenta</a>
+    </div>
+</div>
+<div id="subNav5">
+    <div id="login">
+        <a href="/loginTeachers">Iniciar sesión</a>
+    </div>
+    <div id="registro">
+        <a href="/RegisterTeachers">Crear Cuenta</a>
+    </div>
+</div>
 
 <div id="subNav3">
     <div id="contenedorImagenInformacion">
@@ -72,8 +91,7 @@
                     <img src="/img/icons/contactos.png">
                 </div>
                 <div id="informacion">
-                    <h1>Contactos</h1>
-                    <p>Ponte en comunicación con nosotros para más información y asistencia personalizada.</p>
+                    <a href="/contactos"><h1>Contactos</h1></a>
                 </div>
             </div>
             <div id="funciona">
@@ -82,7 +100,6 @@
                 </div>
                 <div id="informacion1">
                     <h1>Preguntas frecuentes</h1>
-                    <p>Encuentra respuestas rápidas y detalladas a las dudas más comunes.</p>
                 </div>
             </div>
         </div>
@@ -96,8 +113,7 @@
             </div>
             <div id="nosotros1">
                 <h1>SERVICIOS</h1>
-                <p>Explora nuestros servicios, desde clases grupales y particulares hasta cursos, coaching para
-                    docentes
+                <p>Explora nuestros servicios, desde clases grupales y particulares hasta cursos, coaching para docentes
                     y mucho más.</p>
             </div>
         </div>
@@ -108,9 +124,6 @@
                 </div>
                 <div id="informacion">
                     <h1>Clases particulares</h1>
-                    <p>Explora nuestra variedad de clases particulares, disponibles en línea o a domicilio,
-                        adaptadas a
-                        tu ritmo y necesidades educativas.</p>
                 </div>
             </div>
             <div id="funciona">
@@ -119,9 +132,6 @@
                 </div>
                 <div id="informacion1">
                     <h1>Clases grupales</h1>
-                    <p>Descubre nuestras clases grupales ideales para grupos de estudio y para aquellos que
-                        desean
-                        aprender junto a otros amigos, tanto en línea como presencial. </p>
                 </div>
             </div>
             <div id="seguridad">
@@ -130,8 +140,6 @@
                 </div>
                 <div id="informacion2">
                     <h1>Cursos</h1>
-                    <p>Conoce nuestros cursos diseñados para brindar conocimientos en profundidad y habilidades
-                        prácticas tanto en línea como presencial.</p>
                 </div>
             </div>
             <div id="testimonio">
@@ -140,8 +148,6 @@
                 </div>
                 <div id="informacion3">
                     <h1>Coaching para docentes</h1>
-                    <p>¿Eres docente? Infórmate sobre nuestros programas de Coaching para mejorar habilidades
-                        pedagógicas y estrategias educativas, adaptados a tus necesidades profesionales.</p>
                 </div>
             </div>
         </div>
@@ -156,9 +162,7 @@
             <div id="nosotros1">
                 <h1>NOSOTROS</h1>
                 <p>Descubre quiénes somos,
-                    por qué elegirnos y cuáles
-                    son nuestros estándares
-                    de calidad en la educación.</p>
+                    por qué elegirnos y cuáles son nuestros estándares de calidad en la educación.</p>
             </div>
         </div>
         <div id="contenedorInformacion1">
@@ -167,10 +171,7 @@
                     <img src="/img/icons/somos.png">
                 </div>
                 <div id="informacion">
-                    <h1>¿Quiénes somos?</h1>
-                    <p>Conoce nuestra historia, nuestros valores, nuestras ventajas y nuestra pasión por brindar
-                        la
-                        mejor educación.</p>
+                    <a href="/somos" style="text-decoration: none; color:black"><h1>¿Quiénes somos?</h1></a>
                 </div>
             </div>
             <div id="funciona">
@@ -178,9 +179,7 @@
                     <img src="/img/icons/funciona.png">
                 </div>
                 <div id="informacion1">
-                    <h1>¿Cómo funciona?</h1>
-                    <p>Descubre todos los pasos para aprovechar al máximo esta plataforma educativa hecha para ti.
-                    </p>
+                    <a href="/funciona" style="text-decoration: none; color:black"><h1>¿Cómo funciona?</h1></a>
                 </div>
             </div>
             <div id="seguridad">
@@ -188,10 +187,7 @@
                     <img src="/img/icons/seguridad.png">
                 </div>
                 <div id="informacion2">
-                    <h1>Nuestra seguridad</h1>
-                    <p>Infórmate sobre nuestro meticuloso proceso de selección de docentes, coaches y nuestras
-                        medidas
-                        de seguridad para el bienestar de nuestra comunidad.</p>
+                    <a href="/seguridad" style="text-decoration: none; color:black"><h1>Nuestra seguridad</h1></a>
                 </div>
             </div>
             <div id="testimonio">
@@ -199,9 +195,7 @@
                     <img src="/img/icons/testimonio.png">
                 </div>
                 <div id="informacion3">
-                    <h1>Testimonios</h1>
-                    <p>Consulta las opiniones que nuestra comunidad tiene sobre nuestros docentes y servicios.
-                    </p>
+                    <a href="/testimonio" style="text-decoration: none; color:black"><h1>Testimonios</h1></a>
                 </div>
             </div>
         </div>

@@ -27,4 +27,28 @@ eleccionServicios.mostrarEleccion = async (req, res) => {
     res.render('eleccion/eleccionServicios', { listaPagina: pagina, listaTeacher: datos, listaCursos:cursos, listaClases: clases, csrfToken: req.csrfToken() });
 }
 
+eleccionServicios.mostrarEleccionEstudiante = async (req, res) => {
+    const ids = req.params.id;
+    const [pagina] = await sql.promise().execute('SELECT * FROM pagePolicy');
+    const [rows] = await sql.promise().query('SELECT * FROM students WHERE idEstudent = ?', [ids]);
+    const [cursos] = await sql.promise().execute('SELECT * FROM cours');
+    const [clases] = await sql.promise().execute('SELECT * FROM Clases');
+    const datos = rows.map(row => ({
+        idEstudent: row.idEstudent,
+        photoEstudent: row.photoEstudent,
+        completeNameEstudent: row.completeNameEstudent ? descifrarDatos(row.completeNameEstudent) : '',
+        emailEstudent: row.emailEstudent ? descifrarDatos(row.emailEstudent) : '',
+        celularEstudent: row.celularEstudent ? descifrarDatos(row.celularEstudent) : '',
+        usernameEstudent: row.usernameEstudent ? descifrarDatos(row.usernameEstudent) : '',
+    }));
+    res.render('servicios/leccionEstudiante', { listaPagina: pagina, listaTeacher: datos, listaCursos:cursos, listaClases: clases, csrfToken: req.csrfToken() });
+}
+
+eleccionServicios.clasesCursos = async(req, res) =>{
+    const [pagina] = await sql.promise().execute('SELECT * FROM pagePolicy');
+    const [cursos] = await sql.promise().execute('SELECT * FROM cours');
+    const [clases] = await sql.promise().execute('SELECT * FROM Clases');
+    res.render('servicios/cursos', { listaPagina: pagina, listaCursos:cursos, listaClases: clases, csrfToken: req.csrfToken() });
+}
+
 module.exports = eleccionServicios

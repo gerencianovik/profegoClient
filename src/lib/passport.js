@@ -122,7 +122,7 @@ passport.use(
                 return done(null, false, req.flash("message", "Entrada inválida."));
             }
 
-            const users = await sql.query('select * from estudents')
+            const users = await sql.query('select * from students')
             for (let i = 0; i < users.length; i++) {
                 const user = await orm.student.findOne({ where: { usernameEstudent: users[i].usernameEstudent } });
                 let decryptedUsername = descifrarDatos(user.usernameEstudent)

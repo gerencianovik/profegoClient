@@ -197,6 +197,8 @@ app.use('/cours', require('./router/cours.router'));
 app.use('/recours', require('./router/recoursCours.router'));
 app.use('/material', require('./router/materialCours.router'));
 app.use('/silabus', require('./router/silabus.router'))
-
+app.use('/tareas', require('./router/tareas.router'))
+app.use('/students', require('./router/students.router'))
+app.use(require('./router/eleccion.router'))
 // Exportar la aplicación
 module.exports = app;

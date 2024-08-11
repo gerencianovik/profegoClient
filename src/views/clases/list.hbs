@@ -1,6 +1,9 @@
 <link rel="stylesheet" href="">
-{{#each listaPagina}}
-<form action="/clases/list/{{idPage}}" method="get">
+{{#each teacherLista}}
+<form action="/clases/list/{{idTeacher}}" method="get">
+<div id="mas">
+    <a href="/clases/add/{{idTeacher}}"><button type="button"><img src="/img/icons/mas.png"></button></a>
+</div>
     {{/each}}
     <div id="contenedor">
         <div id="titulo">

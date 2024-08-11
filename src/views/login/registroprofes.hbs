@@ -1,6 +1,16 @@
-<link rel="stylesheet" href="">
+<link rel="stylesheet" href="/css/login/registroMaestro.css">
 <div id="contenedor">
-    <div id="complementos"></div>
+    <div id="fondo">
+        <img src="/img/icons/registro.png" alt="">
+    </div>
+    <div id="complementos">
+        <h3>Antes de registrarte presta atención a las siguientes consideraciones:</h3>
+        <p><img src="/img/icons/Mayoredad.png">Soy mayor de 18 años.</p>
+        <p><img src="/img/icons/CVIcon.png">Tengo mi hoja de vida, certificado de aval de enseñanza y/o título
+            profesional y Certificado de Antecedentes Penales actualizados y al alcance.</p>
+        <p><img src="/img/icons/iconAlerta.png">Se deducirá un único cargo de $15 de tu primera clase como inscripción a
+            esta tu plataforma. Recuerda esto se realizará por ¡una sola vez!</p>
+    </div>
     <form action="/RegisterTeachers" method="post">
         <div id="datos">
             <div id="registro">
@@ -11,50 +21,53 @@
             {{#each lista}}
             <input type="text" name="idTeacher" id="numero" readonly value="{{Maximo}}">
             {{/each}}
-            <div id="Nombrecompleto">
-                <h1>Nombre Completo:</h1>
-                <input type="text" name="completeNmeTeacher" id="nombre" required>
-            </div>
-            <div id="Correo">
-                <h1>Correo electrónico:</h1>
-                <input type="text" name="emailTeacher" id="email" required>
-            </div>
-            <div id="Usuario">
-                <h1>Usuario:</h1>
-                <input type="text" name="usernameTeahcer" id="usuario">
-            </div>
-            <div id="Cedula">
-                <h1>Cedula:</h1>
-                <input type="text" name="username" id="cedula" required>
-            </div>
-            <div id="Celular">
-                <h1>Celular:</h1>
-                <input type="text" name="phoneTeacher" id="celular">
-            </div>
-            <div id="Contraseña">
-                <h1>Contraseña:</h1>
-                <input type="password" name="password" id="contrasena">
-            </div>
-            <div id="botonVer">
-                <button type="button" id="ver"><img src="/img/icons/login/ojoCerrado.png"></button>
-                <button type="button" id="nover"><img src="/img/icons/login/ojoAbierto.png"></button>
-            </div>
-            <div id="RepetirContraseña">
-                <h1>Repite la contraseña:</h1>
-                <input type="password" name="" id="contraseñaRepetir">
-            </div>
-            <div id="botonVer">
-                <button type="button" id="ver1"><img src="/img/icons/login/ojoCerrado.png"></button>
-                <button type="button" id="nover1"><img src="/img/icons/login/ojoAbierto.png"></button>
-            </div>
-            <div id="mensajesa"></div>
-            <div id="politicas">
-                <input type="checkbox" name="" id="valirdar">
-                <p>He leído y acepto las <a href="/politicas">Políticas de Privacidad y los Términos y Condiciones</a>
-                    de uso de los estudiantes de ProfeGo</p>
-            </div>
-            <div id="boton">
-                <button type="submit">Guardar</button>
+            <div id="datosRegistro">
+                <div id="Nombrecompleto">
+                    <h1>Nombre Completo:</h1>
+                    <input type="text" name="completeNmeTeacher" id="nombre" required>
+                </div>
+                <div id="Correo">
+                    <h1>Correo electrónico:</h1>
+                    <input type="text" name="emailTeacher" id="email" required>
+                </div>
+                <div id="Usuario">
+                    <h1>Usuario:</h1>
+                    <input type="text" name="usernameTeahcer" id="usuario">
+                </div>
+                <div id="Cedula">
+                    <h1>Cedula:</h1>
+                    <input type="text" name="username" id="cedula" required>
+                </div>
+                <div id="Celular">
+                    <h1>Celular:</h1>
+                    <input type="text" name="phoneTeacher" id="celular">
+                </div>
+                <div id="Contraseña">
+                    <h1>Contraseña:</h1>
+                    <input type="password" name="password" id="contrasena">
+                </div>
+                <div id="botonVer">
+                    <button type="button" id="ver"><img src="/img/icons/login/ojoCerrado.png"></button>
+                    <button type="button" id="nover"><img src="/img/icons/login/ojoAbierto.png"></button>
+                </div>
+                <div id="RepetirContraseña">
+                    <h1>Repite la contraseña:</h1>
+                    <input type="password" name="" id="contraseñaRepetir">
+                </div>
+                <div id="botonVer1">
+                    <button type="button" id="ver1"><img src="/img/icons/login/ojoCerrado.png"></button>
+                    <button type="button" id="nover1"><img src="/img/icons/login/ojoAbierto.png"></button>
+                </div>
+                <div id="mensajesa"></div>
+                <div id="politicas">
+                    <input type="checkbox" name="" id="valirdar">
+                    <p id="validacion">He leído y acepto las <a href="/politicas">Políticas de Privacidad y los Términos y
+                            Condiciones</a>
+                        de uso de los estudiantes de ProfeGo</p>
+                </div>
+                <div id="boton">
+                    <button type="submit">Guardar</button>
+                </div>
             </div>
         </div>
     </form>

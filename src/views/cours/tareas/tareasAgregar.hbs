@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="">
+<div id="contenedor">
+    <form action="/task/curso/{{idCours}}" method="post">
+        <div id="titulo">
+            <h1>Tareas <input type="text" name="idTask" id="numero" value="{{maximo}}"></h1>
+        </div>
+        <div id="datos">
+            <div id="nombre">
+                <p>Nombre Tarea:</p>
+                <input type="text" name="nameTask" id="nameTask">
+            </div>
+            <div id="descriptionTask">
+                <p>Descipción Tarea:</p>
+                <input type="text" name="descriptionTask" id="descriptionTask">
+            </div>
+            <div id="Boton">
+                <button type="submit">Guardar</button>
+            </div>
+        </div>
+    </form>
+</div>
