@@ -25,6 +25,5 @@ precionar.si.addEventListener('change', () => {
     precionar.presionar();
 });
 
-window.onload = () => {
-    precionar.inicio();
-};
+window.onload = precionar.inicio();
+

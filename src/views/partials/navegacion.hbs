@@ -1,9 +1,33 @@
 <link rel="stylesheet" href="/css/navegacion.css">
-{{#if user}}
-{{else}}
 <nav id="nav">
+    {{#if user}}
+    <div id="eleccionCursoCLases">
+        {{#each listaTeacher}}
+        <a href="/teacher/eleccion/{{idTeacher}}"><button type="button">Eleccion Servicios</button></a>
+        {{/each}}
+    </div>
+    {{else}}
+    <div id="estudiantes">
+        <div id="estudientesImagenes">
+            <img src="/img/icons/estudiantes.png">
+        </div>
+        <div id="estudiante">
+            <a href="/loginStudents"><button type="button">ESTUDIANTES</button></a>
+        </div>
+    </div>
+    <div id="docentes">
+        <div id="docentesCouch">
+            <img src="/img/icons/couchingDocmentes.png">
+        </div>
+        <div id="couch">
+            <a href="/loginTeachers"><button type="button">DOCENTE O COACH</button></a>
+        </div>
+    </div>
+    {{/if}}
     <div id="logo">
-        <img src="/img/logo/logo.ico">
+        {{#each listaPagina}}
+        <a href="/"><img src="/img/page/{{photoPage}}"></a>
+        {{/each}}
     </div>
     <div id="nosotros">
         <div id="nosots">
@@ -27,22 +51,6 @@
         </div>
         <div id="bajar">
             <button type="button" id="bajar2"><img src="/img/icons/baja.png"></button>
-        </div>
-    </div>
-    <div id="estudiantes">
-        <div id="estudientesImagenes">
-            <img src="/img/icons/estudiantes.png">
-        </div>
-        <div id="estudiante">
-            <a href="/loginStudents"><button type="button">ESTUDIANTES</button></a>
-        </div>
-    </div>
-    <div id="docentes">
-        <div id="docentesCouch">
-            <img src="/img/icons/couchingDocmentes.png">
-        </div>
-        <div id="couch">
-            <a href="/loginTeachers"><button type="button">DOCENTE O COACH</button></a>
         </div>
     </div>
 </nav>
@@ -171,7 +179,8 @@
                 </div>
                 <div id="informacion1">
                     <h1>¿Cómo funciona?</h1>
-                    <p>Descubre todos los pasos para aprovechar al máximo esta plataforma educativa hecha para ti.</p>
+                    <p>Descubre todos los pasos para aprovechar al máximo esta plataforma educativa hecha para ti.
+                    </p>
                 </div>
             </div>
             <div id="seguridad">
@@ -198,6 +207,5 @@
         </div>
     </div>
 </div>
-{{/if}}
 
 <script src="/js/navegacion.js"></script>

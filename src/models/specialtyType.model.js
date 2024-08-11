@@ -10,6 +10,10 @@ const specialtyType = (sequelize, type) =>{
             type: type.STRING,
             comment: 'Nombre de Tipo de Espesialidad'
         },
+        specialType:{
+            type: type.STRING,
+            comment: 'Estado de Tipo de Espesialidad'
+        },
         stateSpecialType:{
             type: type.STRING,
             comment: 'Estado de Tipo de Espesialidad'

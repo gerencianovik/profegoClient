@@ -1,12 +1,16 @@
 <link rel="stylesheet" href="">
 <div id="contenedor">
     <div id="complementos"></div>
-    <form action="/RegisterStudents" method="post">
+    <form action="/RegisterTeachers" method="post">
         <div id="datos">
             <div id="registro">
                 <h1>Registro</h1>
                 <p>¡Estás a un paso de unirte a nuestra comunidad!</p>
             </div>
+            <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+            {{#each lista}}
+            <input type="text" name="idTeacher" id="numero" readonly value="{{Maximo}}">
+            {{/each}}
             <div id="Nombrecompleto">
                 <h1>Nombre Completo:</h1>
                 <input type="text" name="completeNmeTeacher" id="nombre" required>
@@ -23,22 +27,31 @@
                 <h1>Cedula:</h1>
                 <input type="text" name="username" id="cedula" required>
             </div>
-            <input type="hidden" name="_csrf" value="{{ csrfToken }}">
             <div id="Celular">
                 <h1>Celular:</h1>
                 <input type="text" name="phoneTeacher" id="celular">
             </div>
             <div id="Contraseña">
                 <h1>Contraseña:</h1>
-                <input type="password" name="password" id="contraseña">
+                <input type="password" name="password" id="contrasena">
+            </div>
+            <div id="botonVer">
+                <button type="button" id="ver"><img src="/img/icons/login/ojoCerrado.png"></button>
+                <button type="button" id="nover"><img src="/img/icons/login/ojoAbierto.png"></button>
             </div>
             <div id="RepetirContraseña">
                 <h1>Repite la contraseña:</h1>
                 <input type="password" name="" id="contraseñaRepetir">
             </div>
+            <div id="botonVer">
+                <button type="button" id="ver1"><img src="/img/icons/login/ojoCerrado.png"></button>
+                <button type="button" id="nover1"><img src="/img/icons/login/ojoAbierto.png"></button>
+            </div>
+            <div id="mensajesa"></div>
             <div id="politicas">
                 <input type="checkbox" name="" id="valirdar">
-                <p>He leído y acepto las <a href="/politicas">Políticas de Privacidad y los Términos y Condiciones</a> de uso de los estudiantes de ProfeGo</p>
+                <p>He leído y acepto las <a href="/politicas">Políticas de Privacidad y los Términos y Condiciones</a>
+                    de uso de los estudiantes de ProfeGo</p>
             </div>
             <div id="boton">
                 <button type="submit">Guardar</button>
@@ -46,3 +59,7 @@
         </div>
     </form>
 </div>
+
+<script src="/js/verNoVer.js"></script>
+<script src="/js/comparar.js"></script>
+<script src="/js/numero.js"></script>

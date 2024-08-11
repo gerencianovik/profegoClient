@@ -5,19 +5,35 @@ let sequelize;
 
 // Usar URI de conexión si está disponible
 if (MYSQL_URI) {
-    sequelize = new Sequelize(MYSQL_URI);
+    sequelize = new Sequelize(MYSQL_URI, {
+        dialect: 'mysql',
+        dialectOptions: {
+            charset: 'utf8mb4', // Soporte para caracteres especiales
+        },
+        pool: {
+            max: 20, // Número máximo de conexiones
+            min: 5,  // Número mínimo de conexiones
+            acquire: 30000, // Tiempo máximo en ms para obtener una conexión
+            idle: 10000 // Tiempo máximo en ms que una conexión puede estar inactiva
+        },
+        logging: false // Desactiva el logging para mejorar el rendimiento
+    });
 } else {
     // Configuración para parámetros individuales
     sequelize = new Sequelize(MYSQLDATABASE, MYSQLUSER, MYSQLPASSWORD, {
         host: MYSQLHOST,
         port: MYSQLPORT,
         dialect: 'mysql',
+        dialectOptions: {
+            charset: 'utf8mb4', // Soporte para caracteres especiales
+        },
         pool: {
-            max: 10,
-            min: 2,
-            acquire: 30000,
-            idle: 10000
-        }
+            max: 20, // Número máximo de conexiones
+            min: 5,  // Número mínimo de conexiones
+            acquire: 30000, // Tiempo máximo en ms para obtener una conexión
+            idle: 10000 // Tiempo máximo en ms que una conexión puede estar inactiva
+        },
+        logging: false // Desactiva el logging para mejorar el rendimiento
     });
 }
 
@@ -30,12 +46,15 @@ sequelize.authenticate()
         console.error("No se pudo conectar a la base de datos:", err.message);
     });
 
-sequelize.sync({ force: false })
+// Sincronización de la base de datos
+const syncOptions = process.env.NODE_ENV === 'development' ? { force: true } : { alter: true };
+
+sequelize.sync(syncOptions)
     .then(() => {
-        console.log("Tablas sincronizadas");
+        console.log('Base de Datos sincronizadas');
     })
-    .catch((err) => {
-        console.error("Error al sincronizar las tablas:", err.message);
+    .catch((error) => {
+        console.error('Error al sincronizar la Base de Datos:', error);
     });
 
 //extracionModelos
@@ -48,7 +67,7 @@ const billModel = require('../models/bill.model')
 const bookingModel = require('../models/booking.model')
 const classModel = require('../models/class.model')
 const coursModel = require('../models/cours.model')
-const coursClassTypeModel = require ('../models/coursClassType.model')
+const coursClassTypeModel = require('../models/coursClassType.model')
 const curricularContentModel = require('../models/syllabusEducational.model')
 const detailGroupsModel = require('../models/datailGroups.model')
 const detailAttendanceModel = require('../models/detailAttendance.model')
@@ -59,6 +78,7 @@ const detailRecoursModel = require('../models/detailRecours.model')
 const detailStudentPageModel = require('../models/detailStudentPage.model')
 const detailTeacherModel = require('../models/detailTeach.model')
 const detailTeachPageModel = require('../models/detailTeachPage.model')
+const detailClaseModel = require('../models/detalleClases')
 const diplomasModel = require('../models/diplomas.model')
 const diplimasTypeModel = require('../models/diplomasType.model')
 const groupsModel = require('../models/groups.model')
@@ -76,10 +96,11 @@ const resultModel = require('../models/result.model')
 const specialtyTypeModel = require('../models/specialtyType.model')
 const studentModel = require('../models/student.model')
 const subjectsModel = require('../models/subjects.model')
-const taskClassModel = require('../models/taskClass.model')
+const taskClassModel = require('../models/task.model')
 const teachCouchModel = require('../models/teachCouch.model')
 const teacherDetailModel = require('../models/teacherDetail')
 const teacherModel = require('../models/teacher')
+const detailCoursModel = require('../models/detailCours.model')
 const userModel = require('../models/user.model');
 //zincronia tablas
 const ask = askModel(sequelize, Sequelize)
@@ -120,10 +141,12 @@ const specialtyType = specialtyTypeModel(sequelize, Sequelize)
 const student = studentModel(sequelize, Sequelize)
 const subjects = subjectsModel(sequelize, Sequelize)
 const taskClass = taskClassModel(sequelize, Sequelize)
-const  teachCouch = teachCouchModel(sequelize, Sequelize)
+const teachCouch = teachCouchModel(sequelize, Sequelize)
 const teacherDetail = teacherDetailModel(sequelize, Sequelize)
 const teacher = teacherModel(sequelize, Sequelize)
 const user = userModel(sequelize, Sequelize)
+const detailCours = detailCoursModel(sequelize, Sequelize)
+const detailClase = detailClaseModel(sequelize, Sequelize)
 //relaciones
 user.hasMany(page);
 page.belongsTo(user);
@@ -242,6 +265,9 @@ detailCurricularContent.belongsTo(curricularContent);
 cours.hasMany(curricularContent);
 curricularContent.belongsTo(cours);
 
+clases.hasMany(curricularContent);
+curricularContent.belongsTo(clases);
+
 assessment.hasMany(ask, {
     foreignKey: 'assessmentIdAssessment',
     sourceKey: 'idAssessment'
@@ -300,13 +326,49 @@ multimediaTask.belongsTo(taskClass);
 page.hasMany(recours);
 recours.belongsTo(page); // Corrected from 'besTo'
 
-sequelize.sync({ alter: true }) // alter will update the database schema to match the model
-    .then(() => {
-        console.log('Database synchronized');
-    })
-    .catch((error) => {
-        console.error('Error synchronizing the database:', error);
-    });
+specialtyType.hasMany(teacherDetail)
+teacherDetail.belongsTo(specialtyType)
+
+teacher.hasMany(teachCouch)
+teachCouch.belongsTo(teacher)
+
+coursClassType.hasMany(cours)
+cours.belongsTo(coursClassType)
+
+coursClassType.hasMany(clases)
+clases.belongsTo(coursClassType)
+
+cours.hasMany(detailCours)
+detailCours.belongsTo(cours)
+
+cours.hasMany(taskClass)
+taskClass.belongsTo(cours)
+
+clases.hasMany(taskClass)
+taskClass.belongsTo(clases)
+
+clases.hasMany(detailClase)
+detailClase.belongsTo(clases)
+
+cours.hasMany(detailBooking)
+detailBooking.belongsTo(cours)
+
+clases.hasMany(detailBooking)
+detailBooking.belongsTo(clases)
+
+teacher.hasMany(booking)
+booking.belongsTo(teacher)
+
+
+page.hasMany(groups)
+groups.belongsTo(page)
+
+teacher.hasMany(groups)
+groups.belongsTo(teacher)
+
+
+subjects.hasMany(groups)
+groups.belongsTo(subjects)
 
 // Exportar el objeto sequelize
 module.exports = {
@@ -351,5 +413,7 @@ module.exports = {
     teachCouch,
     teacherDetail,
     teacher,
+    detailCours,
+    detailClase,
     user
 };

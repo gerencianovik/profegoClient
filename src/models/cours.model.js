@@ -10,6 +10,7 @@ const cours = (sequelize, type) =>{
             type: type.STRING,
             comment: 'Foto de Curso'
         },
+        ubicacionCurso: type.STRING,
         videoCours: {
             type: type.STRING,
             comment: 'Video de Curso'
@@ -22,7 +23,11 @@ const cours = (sequelize, type) =>{
             type: type.TEXT,
             comment: 'Descripcion de Curso'
         },
-        dateCours: {
+        dateCoursInit: {
+            type: type.STRING,
+            comment: 'Date de Curso'
+        },
+        dateCoursFin: {
             type: type.STRING,
             comment: 'Date de Curso'
         },
@@ -46,6 +51,8 @@ const cours = (sequelize, type) =>{
             type: type.STRING,
             comment: 'Calificacion de Curso'
         },
+        neeCours: type.STRING,
+        tipoCurso: type.STRING,
         createCours: {
             type: type.STRING,
             comment: 'Crear de Curso'

@@ -1,0 +1,92 @@
+<link rel="stylesheet" href="">
+{{#each listaPagina}}
+<form action="/clases/add/{{idPage}}" method="post" enctype="multipart/form-data">
+    {{/each}}
+    <div id="tiutlo">{{#each maximaClase}}
+        <p>Agregar Clase <input type="text" name="idClases" id="idClases" value="{{maximo}}"></p>{{/each}}
+    </div>
+    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+    <div id="imagen">
+        <div id="cambioImagen">
+            <img src="/img/icons/noImagen.png" id="imagenPrevisualizacion" />
+        </div>
+        <input type="file" name="photoClases" id="seleccionArchivos" accept="image/*" />
+        <button type="button" id="botonImagen">Imagen</button>
+    </div>
+    <div id="imagen">
+        <div id="cambioVideo">
+            <video src="/video/clase/noVideo.mp4" controls></video>
+        </div>
+        <input type="file" name="videoClases" id="seleccionArchivos" accept="image/*" />
+    </div>
+    <div id="direccion">
+        <div id="map" style="width: 100%; height: 400px;"></div>
+        <input id="pac-input" class="controls" type="text" placeholder="Buscar" />
+        <input type="text" name="ubicacion" id="ubicacion">
+    </div>
+    <input type="checkbox" name="neeClass" id="check">
+    <div id="nombre">
+        <p>Nombre de la Clase:</p>
+        <input type="text" name="nameClases" id="nameClases" required>
+    </div>
+    <div id="descripcion">
+        <p>Descripción de la Clase:</p>
+        <textarea name="descriptionClases" id="descriptionClases" required></textarea>
+    </div>
+    <div id="seleccion">
+        <p>Clase para:</p>
+        <select name="tipoClases" id="tipoClases">
+            <option value="Curso">Individual</option>
+            <option value="Couch">Grupal</option>
+        </select>
+    </div>
+   <div id="edad">
+        <p>Edad dirigida de la Clase</p>
+        <div id="Edad">
+            <select name="rangeAgeTeacher" id="edadRango">
+                <option value="3-5 años">3-5 años</option>
+                <option value="5-7 años">5-7 años</option>
+                <option value="7-9 años">7-9 años</option>
+                <option value="9-12 años">9-12 años</option>
+                <option value="12-16 años">12-16 años</option>
+                <option value="16-18 años">16-18 años</option>
+                <option value="Universitarios">Universitarios</option>
+                <option value="Docentes">Docentes</option>
+            </select>
+            <div id="rangeAgeTeacher"></div>
+        </div>
+    </div>
+    <div id="fechaInicio">
+        <p>Fecha inicio:</p>
+        <input type="text" name="dateClasesInit" id="dateCours" required>
+    </div>
+    <div id="fechaFin">
+        <p>Fecha inicio:</p>
+        <input type="text" name="dateClasesFin" id="dateCours" required>
+    </div>
+    <div id="costo">
+        <p>Costo:</p>
+        <input type="text" name="costClases" id="costClases" required>
+    </div>
+    <div id="cupos">
+        <p>Cupos:</p>
+        <input type="text" name="shareClases" id="shareClases">
+    </div>
+    <div id="Hora">
+        <p>Tiempo de la Clase:</p>
+        <input type="text" name="hourClases" id="hourClases">
+    </div>
+    <div id="boton">
+        <button type="submit">Guardar</button>
+    </div>
+</form>
+
+<script src="/js/preview.js"></script>
+<script src="/js/botonImagen.js"></script>
+<script src="/js/numero.js"></script>
+<script src="/js/checket.js"></script>
+<script src="/js/EdadSeleccion.js"></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Q9PaOYlXpeqtj_0tHE19Zcoim25iSFg&callback=initAutocomplete&libraries=places&v=weekly"
+    defer></script>
+<script src="/js/mapa.js"></script>

@@ -1,5 +1,5 @@
 const estudent = (sequelize, type) =>{
-    return sequelize.define('estudent',{
+    return sequelize.define('student',{
         idEstudent: {
             type: type.INTEGER,
             autoIncrement: true,
@@ -33,6 +33,14 @@ const estudent = (sequelize, type) =>{
         stateEstudent: {
             type: type.STRING,
             comment: 'Estado de Estudinates'
+        },
+        createStudent: {
+            type: type.STRING,
+            comment: 'Creacion de Estudiante'
+        },
+        updateStudent: {
+            type: type.STRING,
+            comment: 'Actualizacion de Estudiante'
         },
     }, {
         timestamps: false,

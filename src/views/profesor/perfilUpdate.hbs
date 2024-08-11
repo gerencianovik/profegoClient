@@ -1,23 +1,39 @@
-<link rel="stylesheet" href="">
+<link rel="stylesheet" href="/css/teacher/update.css">
 <div id="contenidoPefil">
-    <div id="titulo">
+    <div id="fondo">
+        <img src="/img/fondo/Postulación.png">
+    </div>
+    <div id="titulos">
         <h1>Postulación como docente o coach</h1>
         <p>Completa y envía el siguiente formulario para la aprobación de tu postulación.</p>
     </div>
     <div id="datos">
         {{#each listaTeacher}}
         <form action="/teacher/update/{{idTeacher}}" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="_csrf" value="{{ ../csrfToken }}">
+            {{#each ../listaPagina}}
+            <input type="text" name="idPagina" id="idPagina" value="{{idPage}}">
+            {{/each}}
             <div id="imagenTeacher">
                 <div id="cambioImagen">
-                    <img src="/img/icons/noImagen.png" id="imagenPrevisualizacion" />
+                    {{#if photoTeacher}}
+                    <img src="/img/user/{{photoTeacher}}" id="imagenPrevisualizacion" />
+                    {{else}}
+                    <img src="/img/icons/sinImagenTeacher.png" id="imagenPrevisualizacion" />
+                    {{/if}}
                 </div>
-                <input type="file" name="photoPage" class="seleccionArchivos" accept="image/*" id="seleccionArchivos"
+                <input type="file" name="photoTeacher" class="seleccionArchivos" accept="image/*" id="seleccionArchivos"
                     style="display: none;" />
-                <button type="button" id="botonImagen">Subir Foto</button>
+                <button type="button" id="botonImagen"><img src="/img/icons/Subir.png"></button>
             </div>
             <div id="nombreCompleto">
                 <p>Nombre completo:</p>
                 <input type="text" name="completeNmeTeacher" id="nombre" value="{{completeNmeTeacher}}" required>
+            </div>
+            <div id="direccion">
+                <div id="map"></div>
+                <input id="pac-input" class="controls" type="text" placeholder="Buscar" />
+                <input type="text" name="ubicacion" id="ubicacion">
             </div>
             <div id="Eleccion">
                 <p>Elige:</p>
@@ -34,7 +50,7 @@
             <div id="tituloEspecialidad">
                 <p>Nombre del título</p>
                 <select name="titulosEleccion" id="titulosEleccion">
-                    {{#each listaTitulos}}
+                    {{#each ../listaTitulos}}
                     <option value="{{idSpecialType}}">{{nameSpecialType}}</option>
                     {{/each}}
                     <option value="titulo">otros</option>
@@ -46,7 +62,7 @@
                 <p>Estoy capacitado para trabajar con estudiantes que tienen Necesidades Educativas Especiales</p>
                 <div id="espesialidades">
                     <select name="specialtyTypeIdSpecialType" id="especial">
-                        {{#each listaEspecialidades}}
+                        {{#each ../listaEspecialidades}}
                         <option value="{{idSpecialType}}">{{nameSpecialType}}</option>
                         {{/each}}
                         <option value="especial">otros</option>
@@ -55,38 +71,52 @@
                 </div>
             </div>
             <div id="documentacion">
-                <p>Documentación requerida</p>
+                <h1>Documentación requerida</h1><p id="pdf">Sube tus archivos en formato .pdf  (Recomendado)</p>
                 <div id="DocumentoTitulo">
                     <p>Título profesional y/o certificados de aval de enseñanza</p>
                     <input type="file" name="endorsementCertificateTeacher" class="seleccionArchivos"
                         accept="application/pdf" id="seleccionTitulo" />
-                    <button type="button" class="botonImagen" data-input-id="seleccionTitulo">Subir Titulo</button>
+                    <button type="button" class="botonImagen" data-input-id="seleccionTitulo"><img src="/img/icons/Subir.png"></button>
+                    {{#if endorsementCertificateTeacher}}
+                    <iframe id="documentoTituloPrevisualizacion"
+                        src="/archivos/teacher/{{endorsementCertificateTeacher}}"></iframe>
+                    {{else}}
                     <iframe id="documentoTituloPrevisualizacion" src=""></iframe>
+                    {{/if}}
                 </div>
                 <div id="DocumentoHojaVida">
                     <p>Hoja de vida actualizada</p>
                     <input type="file" name="pageVitalTeacher" class="seleccionArchivos" accept="application/pdf"
                         id="seleccionHojaVida" />
-                    <button type="button" class="botonImagen" data-input-id="seleccionHojaVida">Subir Hoja de
-                        vida</button>
+                    <button type="button" class="botonImagen" data-input-id="seleccionHojaVida"><img src="/img/icons/Subir.png"></button>
+                    {{#if pageVitalTeacher}}
+                    <iframe id="documentoHojaVidaPrevisualizacion"
+                        src="/archivos/teacher/{{pageVitalTeacher}}"></iframe>
+                    {{else}}
                     <iframe id="documentoHojaVidaPrevisualizacion" src=""></iframe>
+                    {{/if}}
                 </div>
                 <div id="DocumentoAntecedentes">
                     <p>Certificado de Antecedentes Penales</p>
                     <input type="file" name="criminalRecordTeacher" class="seleccionArchivos" accept="application/pdf"
                         id="seleccionAntecedentes" />
-                    <button type="button" class="botonImagen" data-input-id="seleccionAntecedentes">Subir
-                        Antecedentes</button>
+                    <button type="button" class="botonImagen" data-input-id="seleccionAntecedentes"><img src="/img/icons/Subir.png"></button>
+                    {{#if criminalRecordTeacher}}
+                    <iframe id="documentoAntecedentesPrevisualizacion"
+                        src="/archivos/teacher/{{criminalRecordTeacher}}"></iframe>
+                    {{else}}
                     <iframe id="documentoAntecedentesPrevisualizacion" src=""></iframe>
+                    {{/if}}
                 </div>
             </div>
             <div id="materias">
                 <p>Áreas/ asignaturas a enseñar</p>
                 <div id="meterias">
-                    <select name="subjetTeacher" id="meterias">
-                        {{#each listaMaterias}}
+                    <select name="subjetTeacher" id="materiasEleccion">
+                        {{#each ../listaMaterias}}
                         <option value="{{nambeSubjects}}">{{nambeSubjects}}</option>
                         {{/each}}
+                        <option value="materias">otros</option>
                     </select>
                     <div id="meteriasTotal"></div>
                 </div>
@@ -94,7 +124,7 @@
             <div id="edadRange">
                 <p>Rango de edad de enseñanza</p>
                 <div id="Edad">
-                    <select name="rangeAgeTeacher" id="edad">
+                    <select name="rangeAgeTeacher" id="edadRango">
                         <option value="3-5 años">3-5 años</option>
                         <option value="5-7 años">5-7 años</option>
                         <option value="7-9 años">7-9 años</option>
@@ -112,17 +142,17 @@
                 <textarea name="descriptionTeacher" id="descripcion">{{descriptionTeacher}}</textarea>
             </div>
             <div id="Cedula">
-                <h1>Cedula:</h1>
+                <p>Cedula:</p>
                 <input type="text" name="identificationCardTeacher" id="cedula" required
                     value="{{identificationCardTeacher}}">
             </div>
-            <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+
             <div id="Celular">
-                <h1>Celular:</h1>
+                <p>Celular:</p>
                 <input type="text" name="phoneTeacher" id="celular" value="{{phoneTeacher}}">
             </div>
-            <div id="Correo">
-                <h1>Coreeo Electrónico:</h1>
+            <div id="Correos">
+                <p>Coreeo Electrónico:</p>
                 <input type="text" name="emailTeacher" id="correo" value="{{emailTeacher}}">
             </div>
             {{/each}}
@@ -136,3 +166,12 @@
 <script src="/js/preview.js"></script>
 <script src="/js/botonImagen.js"></script>
 <script src="/js/botoncheck.js"></script>
+<script src="/js/seleccionEspecialidad.js"></script>
+<script src="/js/EdadSeleccion.js"></script>
+<script src="/js/seleccionMaterias.js"></script>
+<script src="/js/seleccionTitulo.js"></script>
+<<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Q9PaOYlXpeqtj_0tHE19Zcoim25iSFg&callback=initAutocomplete&libraries=places&v=weekly"
+    defer>
+    </script>
+    <script src="/js/mapa.js"></script>

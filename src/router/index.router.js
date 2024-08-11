@@ -1,18 +1,17 @@
 const express = require('express');
-const { mostrar, login, registro, CerrarSesion, mostrarLoginTeacher, mostrarRegistroTeacher, mostrarRegistroStudents, mostrarLoginStudents } = require('../controller/index.controller');
+const { mostrar, login, registro, CerrarSesion, mostrarLoginTeacher, mostrarRegistroTeacher, mostrarRegistroStudents, mostrarLoginStudents, loginEstudiante, registroEstudiante } = require('../controller/index.controller');
 const router = express.Router();
 
 router.get('/', mostrar)
 router.post('/', login)
 router.get('/loginStudents', mostrarLoginStudents)
-router.post('/loginStudents', login)
+router.post('/loginStudents', loginEstudiante)
 router.get('/loginTeachers', mostrarLoginTeacher)
 router.post('/loginTeachers', login)
 router.get('/RegisterTeachers', mostrarRegistroTeacher)
 router.post('/RegisterTeachers', registro)
 router.get('/RegisterStudents', mostrarRegistroStudents)
-router.post('/RegisterStudents', registro)
-router.post('/login', registro)
+router.post('/RegisterStudents', registroEstudiante)
 router.get('/closeSection', CerrarSesion)
 
 module.exports = router

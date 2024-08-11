@@ -1,0 +1,85 @@
+<link rel="stylesheet" href="">
+{{#each listaCurso}}
+<form action="/material/cursos/{{idCours}}" method="post">
+    <div id="mas">
+        <a href="/material/curso/{{idCours}}">+</a>
+    </div>
+    <div id="contenedor">
+        <div id="titulo">
+            <p>Lista de Material de Curso </p>
+        </div>
+        <div id="Datos">
+            <div class="row">
+                {{#each ../lista}}
+                <div id="tarjeta">
+                    <div id="nombre">
+                        <p>{{nameMaterial}}</p>
+                    </div>
+                    <div id="descripcion">
+                        <p>{{descriptionMaterial}}</p>
+                    </div>
+                    <div id="cantidad">
+                        <p>{{quantyMaterailClass}}</p>
+                    </div>
+                    <div id="valor">
+                        <p>{{valueMaterialCourse}}</p>
+                    </div>
+                    <div id="estado">
+                        <p>{{stateMaterial}}</p>
+                    </div>
+                    <div id="actualizar">
+                        <a href="/material/updateCurso/{{idMaterial}}"><button type="button">Actualizar</button></a>
+                    </div>
+                    <div id="desavilitar">
+                        <a href="/material/updateClase/{{idMaterial}}"><button type="button">Desabilitar</button></a>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</form>
+{{/each}}
+
+<link rel="stylesheet" href="">
+{{#each listaClase}}
+<form action="/material/clases/{{idClases}}" method="post">
+    <div id="mas">
+        <a href="/material/clase/{{idClases}}">+</a>
+    </div>
+    <div id="contenedor">
+        <div id="titulo">
+            <p>Lista de Material de Curso </p>
+        </div>
+        <div id="Datos">
+            <div class="row">
+                {{#each ../lista}}
+                <div id="tarjeta">
+                    <div id="nombre">
+                        <p>{{nameMaterial}}</p>
+                    </div>
+                    <div id="descripcion">
+                        <p>{{descriptionMaterial}}</p>
+                    </div>
+                    <div id="cantidad">
+                        <p>{{quantyMaterailClass}}</p>
+                    </div>
+                    <div id="valor">
+                        <p>{{valueMaterialCourse}}</p>
+                    </div>
+                    <div id="estado">
+                        <p>{{stateMaterial}}</p>
+                    </div>
+                    <div id="actualizar">
+                        <a href="/material/updateClase/{{idMaterial}}"><button type="button">Actualizar</button></a>
+                    </div>
+                    <div id="desavilitar">
+                        <a href="/material/delete/{{idMaterial}}"><button type="button">Desabilitar</button></a>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</form>
+{{/each}}
