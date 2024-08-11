@@ -145,13 +145,13 @@ materialCours.lista = async (req, res) => {
             const [resultadoCurso] = await sql.promise().query('SELECT * FROM cours WHERE idCours = ?', [id]);
             curso = resultadoCurso;
 
-            const [resultadoRecursos] = await sql.promise().query('SELECT * FROM materials WHERE courIdCours = ? OR pageIdPage = ?', [id, id]);
+            const [resultadoRecursos] = await sql.promise().query('SELECT * FROM materials WHERE courIdCours = ?', [id, id]);
             row = resultadoRecursos;
         } else if (tipoEleccion == 'clases') {
             const [resultadoClase] = await sql.promise().query('SELECT * FROM Clases WHERE idClases = ?', [id]);
             clase = resultadoClase;
 
-            const [resultadoRecursos] = await sql.promise().query('SELECT * FROM materials WHERE ClaseIdClases = ? OR pageIdPage = ?', [id, id]);
+            const [resultadoRecursos] = await sql.promise().query('SELECT * FROM materials WHERE ClaseIdClases = ?', [id, id]);
             row = resultadoRecursos;
         } else {
             const [resultadoRecursos] = await sql.promise().query('SELECT * FROM materials');

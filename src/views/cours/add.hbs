@@ -1,83 +1,92 @@
-<link rel="stylesheet" href="">
+<link rel="stylesheet" href="/css/cursos/add.css">
 {{#each listaCurso}}
 <form action="/cours/add/{{idCours}}" method="post" enctype="multipart/form-data">
-{{/each}}
-    <div id="tiutlo">{{#each maximo}}
-        <p>Agregar Curso <input type="text" name="idCours" id="numero" value="{{Maximo}}"></p>{{/each}}
-    </div>
-    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
-    <div id="imagen">
-        <div id="cambioImagen">
-            <img src="/img/icons/noImagen.png" id="imagenPrevisualizacion" />
+    {{/each}}
+    <div id="contenedor">
+        <div id="fondo">
+            <img src="/img/icons/fondoLista.png">
         </div>
-        <input type="file" name="photoCours" id="seleccionArchivos" accept="image/*" />
-        <button type="button" id="botonImagen">Imagen</button>
-    </div>
-    <div id="imagen">
-        <div id="cambioVideo">
-            <video src="/video/clase/noVideo.mp4" controls></video>
+        <div id="titulo">{{#each MaximoCurso}}
+            <p>Agregar Curso <input type="text" name="idCours" id="numero" value="{{Maximo}}"></p>{{/each}}
         </div>
-        <input type="file" name="videoCours" id="seleccionArchivos" accept="image/*" />
-    </div>
-    <div id="direccion">
-        <div id="map" style="width: 100%; height: 400px;"></div>
-        <input id="pac-input" class="controls" type="text" placeholder="Buscar" />
-        <input type="text" name="ubicacion" id="ubicacion">
-    </div>
-    <input type="checkbox" name="neeCours" id="check">
-    <div id="nombre">
-        <p>Nombre del Curso:</p>
-        <input type="text" name="nameCours" id="nameCours" required>
-    </div>
-    <div id="descripcion">
-        <p>Descripción del Curso:</p>
-        <textarea name="descriptionCours" id="descriptionCours" required></textarea>
-    </div>
-    <div id="seleccion">
-        <p>Curso para:</p>
-        <select name="tipoCurso" id="tipoCurso">
-            <option value="Curso">Curso</option>
-            <option value="Couch">Curso de Couch</option>
-        </select>
-    </div>
-    <div id="edad">
-        <p>Edad dirigida del Curso</p>
-        <div id="Edad">
-            <select name="rangeAgeTeacher" id="edadRango">
-                <option value="3-5 años">3-5 años</option>
-                <option value="5-7 años">5-7 años</option>
-                <option value="7-9 años">7-9 años</option>
-                <option value="9-12 años">9-12 años</option>
-                <option value="12-16 años">12-16 años</option>
-                <option value="16-18 años">16-18 años</option>
-                <option value="Universitarios">Universitarios</option>
-                <option value="Docentes">Docentes</option>
-            </select>
-            <div id="rangeAgeTeacher"></div>
+        <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+        <div id="central">
+            <div id="imagens">
+                <div id="cambioImagen">
+                    <img src="/img/icons/noImagen.png" id="imagenPrevisualizacion" />
+                </div>
+                <input type="file" name="photoCours" id="seleccionArchivos" accept="image/*" />
+                <button type="button" id="botonImagen"><img src="/img/icons/Subir.png"></button>
+            </div>
+            <div id="direccion">
+                <div id="map"></div>
+                <input id="pac-input" class="controls" type="text" placeholder="Buscar" />
+                <input type="text" name="ubicacion" id="ubicacion">
+            </div>
+            <p id="check"><input type="checkbox" name="neeCours"> Adaptado para NEE</p>
+            <div id="nombre">
+                <p>Nombre del Curso:</p>
+                <input type="text" name="nameCours" id="nameCours" required>
+            </div>
         </div>
-    </div>
-    <div id="fechaInicio">
-        <p>Fecha inicio:</p>
-        <input type="text" name="dateCoursInit" id="dateCours" required>
-    </div>
-    <div id="fechaFin">
-        <p>Fecha inicio:</p>
-        <input type="text" name="dateCoursFin" id="dateCours" required>
-    </div>
-    <div id="costo">
-        <p>Costo:</p>
-        <input type="text" name="costCours" id="costCours" required>
-    </div>
-    <div id="cupos">
-        <p>Cupos:</p>
-        <input type="text" name="shareCours" id="shareCours">
-    </div>
-    <div id="Hora">
-        <p>Tiempo de la Clase:</p>
-        <input type="text" name="hourCours" id="hourCours">
-    </div>
-    <div id="boton">
-        <button type="submit">Guardar</button>
+        <div id="videosS">
+            <div id="cambioVideo">
+                <video src="/video/clase/noVideo.mp4" controls></video>
+            </div>
+            <input type="file" name="videoCours" id="idVideo" accept="image/*" />
+        </div>
+        <div id="datosGenerales">
+            <div id="descripcion">
+                <p>Descripción del Curso:</p>
+                <textarea name="descriptionCours" id="descriptionCours" required></textarea>
+            </div>
+            <div id="seleccion">
+                <p>Curso para:</p>
+                <select name="tipoCurso" id="tipoCurso">
+                    <option value="Curso">Curso</option>
+                    <option value="Couch">Curso de Couch</option>
+                </select>
+            </div>
+            <div id="edad">
+                <p>Edad dirigida del Curso</p>
+                <div id="Edad">
+                    <select name="rangeAgeTeacher" id="edadRango">
+                        <option value="3-5 años">3-5 años</option>
+                        <option value="5-7 años">5-7 años</option>
+                        <option value="7-9 años">7-9 años</option>
+                        <option value="9-12 años">9-12 años</option>
+                        <option value="12-16 años">12-16 años</option>
+                        <option value="16-18 años">16-18 años</option>
+                        <option value="Universitarios">Universitarios</option>
+                        <option value="Docentes">Docentes</option>
+                    </select>
+                    <div id="rangeAgeTeacher"></div>
+                </div>
+            </div>
+            <div id="fechaInicio">
+                <p>Fecha inicio:</p>
+                <input type="date" name="dateCoursInit" id="dateCours" required>
+            </div>
+            <div id="fechaFin">
+                <p>Fecha inicio:</p>
+                <input type="date" name="dateCoursFin" id="dateCours" required>
+            </div>
+            <div id="costo">
+                <p>Costo:</p>
+                <input type="text" name="costCours" id="costCours" required>
+            </div>
+            <div id="cupos">
+                <p>Cupos:</p>
+                <input type="text" name="shareCours" id="shareCours">
+            </div>
+            <div id="Hora">
+                <p>Tiempo de la Clase:</p>
+                <input type="text" name="hourCours" id="hourCours">
+            </div>
+        </div>
+        <div id="boton">
+            <button type="submit">Guardar</button>
+        </div>
     </div>
 </form>
 

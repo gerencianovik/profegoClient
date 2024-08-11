@@ -55,7 +55,7 @@ const guardarYSubirArchivo = async (archivo, filePath, columnName, idTeacher, ur
     });
 };
 
-tareasCtl.mostrar = async (req, res) => {
+tareasCtl.mostrarTareaCurso = async (req, res) => {
     try {
         const id = req.params.id
         const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = 1');
@@ -68,7 +68,20 @@ tareasCtl.mostrar = async (req, res) => {
     }
 }
 
-tareasCtl.mandar = async (req, res) => {
+tareasCtl.mostrarTareaClase = async (req, res) => {
+    try {
+        const id = req.params.id
+        const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = 1');
+        const [teacher] = await sql.promise().query('SELECT * FROM teachers where idTeacher = ?', [id]);
+        const [maxCours] = await sql.promise().query('SELECT MAX(idTask) AS Maximo FROM tasks')
+        res.render('clases/tareas/tareasAgregar', { listaPagina: pagina, MaximoCurso: maxCours, listaTeacher: teacher, csrfToken: req.csrfToken() });
+    } catch (error) {
+        console.error('Error en la consulta:', error.message);
+        res.status(500).send('Error al realizar la consulta');
+    }
+}
+
+tareasCtl.mandarCurso = async (req, res) => {
     const ids = req.params.id;
     try {
         const errors = validationResult(req);
@@ -124,7 +137,63 @@ tareasCtl.mandar = async (req, res) => {
     }
 }
 
-tareasCtl.lista = async (req, res) => {
+tareasCtl.mandarClase = async (req, res) => {
+    const ids = req.params.id;                                                                                                                                                              
+    try {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+
+        const id = req.user.idUser;
+
+        const { idTask, nameTask, descriptionTask, idMultimediaTask, photoMultimediaTask, videoMultimediaTask, linkMultimediaTask, documentMultimediaTask, otherMultimediaTask } = req.body;
+
+        const newMultimedia = {
+            linkMultimediaTask,
+            otherMultimediaTask,
+            createMultimediaTask: new Date().toLocaleString(),
+            taskIdTask: idTask
+        }
+
+        const newPage = {
+            idTask,
+            nameTask,
+            descriptionTask,
+            CreateTask: new Date().toLocaleString(),
+            stateTask: 'Activar',
+            ClaseIdClases: ids,
+        };
+
+        // Crear el curso
+        await orm.taskClass.create(newPage);
+        await orm.multimediaCourse.create(newMultimedia)
+
+        // Manejo de archivos
+        if (req.files) {
+            const { photoMultimediaTask, videoCours } = req.files;
+
+            if (photoMultimediaTask) {
+                const photoFilePath = path.join(__dirname, '/../public/img/multimedia/', photoMultimediaTask.name);
+                await guardarYSubirArchivo(photoMultimediaTask, photoFilePath, 'photoMultimediaTask', idMultimediaTask, 'http://localhost:5000/imagenMultimedia', req);
+            }
+
+            if (videoMultimediaTask) {
+                const endorsementFilePath = path.join(__dirname, '/../public/video/multimedia/', videoMultimediaTask.name);
+                await guardarYSubirArchivo(videoMultimediaTask, endorsementFilePath, 'videoMultimediaTask', idMultimediaTask, 'http://localhost:5000/cursoMultimedia', req);
+            }
+        }
+
+        req.flash('success', 'Éxito al guardar');
+        res.redirect('/clase/list/' + id);
+    } catch (error) {
+        console.error(error);
+        req.flash('message', 'Error al guardar');
+        res.redirect('/clase/add/' + ids);
+    }
+}
+
+tareasCtl.listaTaskCurso = async (req, res) => {
     try {
         const id = req.params.id
         const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = 1');
@@ -136,12 +205,36 @@ tareasCtl.lista = async (req, res) => {
     }
 }
 
-tareasCtl.detalle = async (req, res) => {
+tareasCtl.listaTaskClase = async (req, res) => {
+    try {
+        const id = req.params.id
+        const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = 1');
+        const [tarea] = await sql.promise().query('SELECT * FROM tasks WHERE ClaseIdClases	= ?', [id])
+        res.render('clases/tareas/tareas', { listaPagina: pagina, listaTarea: tarea, csrfToken: req.csrfToken() });
+    } catch (error) {
+        console.error('Error en la consulta:', error.message);
+        res.status(500).send('Error al realizar la consulta');
+    }
+}
+
+tareasCtl.detalleCurso = async (req, res) => {
     try {
         const id = req.params.id
         const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = 1');
         const [tarea] = await sql.promise().query('SELECT * FROM tasks WHERE idTask	= ?', [id])
         res.render('cours/tareas/tareasEntregadas', { listaPagina: pagina, listaTarea: tarea, csrfToken: req.csrfToken() });
+    } catch (error) {
+        console.error('Error en la consulta:', error.message);
+        res.status(500).send('Error al realizar la consulta');
+    }
+}
+
+tareasCtl.detalleClase = async (req, res) => {
+    try {
+        const id = req.params.id
+        const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = 1');
+        const [tarea] = await sql.promise().query('SELECT * FROM tasks WHERE idTask	= ?', [id])
+        res.render('clases/tareas/tareasEntregadas', { listaPagina: pagina, listaTarea: tarea, csrfToken: req.csrfToken() });
     } catch (error) {
         console.error('Error en la consulta:', error.message);
         res.status(500).send('Error al realizar la consulta');

@@ -113,7 +113,7 @@ recoursCours.mandar = async (req, res) => {
                 // Crear el recurso en la base de datos
                 await orm.recours.create(newResource);
                 req.flash('success', 'Se creó el recurso');
-                res.redirect('/recours/cursos/' + idCours);
+                res.redirect('/recours/cursos/' + ids);
             }
         }
     } catch (error) {
@@ -140,14 +140,14 @@ recoursCours.lista = async (req, res) => {
             const [resultadoCurso] = await sql.promise().query('SELECT * FROM cours WHERE idCours = ?', [id]);
             curso = resultadoCurso;
 
-            const [resultadoRecursos] = await sql.promise().query('SELECT * FROM recours WHERE courIdCours = ? OR pageIdPage = ?', [id, id]);
+            const [resultadoRecursos] = await sql.promise().query('SELECT * FROM recours WHERE courIdCours = ?', [id]);
             row = resultadoRecursos;
 
         } else if (tipoEleccion == 'clases') {
             const [resultadoClase] = await sql.promise().query('SELECT * FROM Clases WHERE idClases = ?', [id]);
             clase = resultadoClase;
 
-            const [resultadoRecursos] = await sql.promise().query('SELECT * FROM recours WHERE ClaseIdClases = ? OR pageIdPage = ?', [id, id]);
+            const [resultadoRecursos] = await sql.promise().query('SELECT * FROM recours WHERE ClaseIdClases = ?', [id, id]);
             row = resultadoRecursos;
         } else {
             const [resultadoRecursos] = await sql.promise().query('SELECT * FROM recours');
@@ -294,6 +294,7 @@ recoursCours.actualizar = async (req, res) => {
 
 recoursCours.desabilitar = async (req, res) => {
     const ids = req.params.id;
+    const id = req.user.idUser
     const parts = req.originalUrl.split('/').filter(part => part !== '');
     let tipoEleccion
     if (parts.length >= 3) {

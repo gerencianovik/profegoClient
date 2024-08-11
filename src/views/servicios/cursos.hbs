@@ -1,10 +1,5 @@
 <link rel="stylesheet" href="/css/cursos/lista.css">
-{{#each listaCurso}}
-<form action="/cours/list/{{idCours}}" method="get">
-    <div id="mas">
-        <a href="/cours/add/{{idCours}}"><button type="button"><img src="/img/icons/mas.png"></button></a>
-    </div>
-    {{/each}}
+<form action="/general" method="get">
     <div id="contenedor">
         <div id="fondo">
             <img src="/img/icons/fondoLista.png">
@@ -19,7 +14,7 @@
                     <p>Curso</p>
                 </div>
                 <div class="row">
-                    {{#each lista}}
+                    {{#each listaCursos}}
                     <div id="video">
                         <video src="/video/cours/{{videoCours}}" controls></video>
                         <p>Ver la información completa</p>
@@ -56,18 +51,6 @@
                                 </div>
                             </div>
                         </a>
-                        <div id="actualizar">
-                            <a href="/cours/update/{{idCours}}"><button type="button">Actualizar</button></a>
-                        </div>
-                        <div id="materialesDeClase">
-                            <a href="/material/cursos/{{idCours}}"><button type="button">Materiales</button></a>
-                        </div>
-                        <div id="recursosDeClase">
-                            <a href="/recours/add/{{idCours}}"><button type="button">Recursos</button></a>
-                        </div>
-                        <div id="desavilitar">
-                            <a href="/cours/delete/{{idCours}}"><button type="button">Desabilitar</button></a>
-                        </div>
                     </div>
                     {{/each}}
                 </div>

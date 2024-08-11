@@ -1,12 +1,16 @@
 const express = require('express');
 const isLoggedIn = require('../lib/auth');
-const { lista, mostrar, mandar, detalle } = require('../controller/tareas.controller');
+const { mostrarTareaCurso, mostrarTareaClase, mandarCurso, mandarClase, listaTaskCurso, listaTaskClase, detalleCurso, detalleClase } = require('../controller/tareas.controller');
 const router = express.Router();
 
 
-router.get('/add/:id', isLoggedIn, mostrar)
-router.post('/add/:id', isLoggedIn, mandar)
-router.get('/list/:id', isLoggedIn, lista)
-router.get('/detail/:id', isLoggedIn, detalle)
+router.get('/curso/:id', isLoggedIn, mostrarTareaCurso)
+router.get('/clase/:id', isLoggedIn, mostrarTareaClase)
+router.post('/curso/:id', isLoggedIn, mandarCurso)
+router.post('/curso/:id', isLoggedIn, mandarClase)
+router.get('/cursos/:id', isLoggedIn, listaTaskCurso)
+router.get('/clases/:id', isLoggedIn, listaTaskClase)
+router.get('/detailCurso/:id', isLoggedIn, detalleCurso)
+router.get('/detailClase/:id', isLoggedIn, detalleClase)
 
 module.exports = router
