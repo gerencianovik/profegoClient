@@ -26,41 +26,44 @@
 
 #primerTitulo #primerparte {
     position: absolute;
-    top: 3%;
-    left: 81%;
+    top: 7%;
+    left: 76.8%;
     width: 19%;
     font-size: 30px;
     color: #FFEFDA;
+    font-weight: 600;
 }
 
 #primerTitulo #logoPrincipal {
     position: absolute;
-    top: 24%;
-    left: 83%;
-    width: 15%;
-    height: 30%;
+    top: 25%;
+    left: 76.1%;
+    width: 19%;
+    height: 30.5%;
 }
 
 #primerTitulo #segundaparte {
     position: absolute;
-    top: 53%;
-    left: 84%;
-    width: 14%;
+    top: 57%;
+    left: 76.8%;
+    width: 20%;
     font-size: 30px;
     color: #FFEFDA;
+    font-weight: 600;
 }
 
 #buscador {
     position: absolute;
-    width: 80%;
-    height: 54%;
-    left: 10%;
-    top: 110%;
+    width: 90.5%;
+    height: 48%;
+    left: 4.5%;
+    top: 116.5%;
     background: #FFEFDA;
+    border-radius: 10px;
 }
 
 #busca {
-    width: 19%;
+    width: 18.5%;
     height: 100%;
     position: absolute;
     top: 0%;
@@ -77,92 +80,115 @@
 
 #ayudar {
     position: absolute;
-    width: 100%;
+    width: 70%;
+    left: 21%;
     text-align: center;
     font-size: 15px;
     color: #147582;
+    top: 3%;
 }
 
 #ayudar img {
     position: absolute;
     width: 4%;
-    top: 14%;
-    left: 78%;
+    top: 18%;
+    left: 85%;
 }
 
 #Quebuscas {
     position: absolute;
-    left: 23%;
-    top: 26%;
+    left: 27%;
+    top: 23%;
     width: 20%;
     height: 20%;
     font-size: 20px;
+    font-weight: bold;
+    color: #147582;
 }
 
 #Quebuscas select {
-    width: 100%;
-    height: 35%;
+    width: 90%;
+    height: 70%;
     font-size: 20px;
     background-color: white;
     border-color: transparent;
+    border-radius: 10px;
+    font-family: 'Josefin Sans';
+    font-style: italic;
 }
 
 #ServicoMateria {
     position: absolute;
-    left: 55%;
-    top: 26%;
+    left: 49%;
+    top: 23%;
     width: 20%;
     height: 20%;
     font-size: 20px;
+    font-weight: bold;
+    color: #147582;
 }
 
 #ServicoMateria select {
-    width: 100%;
-    height: 35%;
+    width: 90%;
+    height: 70%;
     font-size: 20px;
     background-color: white;
     border-color: transparent;
+    border-radius: 10px;
+    font-family: 'Josefin Sans';
+    font-style: italic;
+    color: rgba(0, 0, 0, 0.5);
 }
 
 #edad {
     position: absolute;
-    left: 23%;
-    top: 65%;
+    left: 27%;
+    top: 60%;
     width: 20%;
     height: 20%;
     font-size: 20px;
+    font-weight: bold;
+    color: #147582;
 }
 
 #edad select {
-    width: 100%;
-    height: 35%;
+    width: 90%;
+    height: 70%;
     font-size: 20px;
     background-color: white;
     border-color: transparent;
+    border-radius: 10px;
+    font-family: 'Josefin Sans';
+    font-style: italic;
 }
 
 #donde {
     position: absolute;
-    left: 55%;
-    top: 65%;
+    left: 49%;
+    top: 60%;
     width: 20%;
     height: 20%;
     font-size: 20px;
+    font-weight: bold;
+    color: #147582;
 }
 
 #donde select {
-    width: 100%;
-    height: 35%;
+    width: 90%;
+    height: 70%;
     font-size: 20px;
     background-color: white;
     border-color: transparent;
+    border-radius: 10px;
+    font-family: 'Josefin Sans';
+    font-style: italic;
 }
 
 #BotonBusacar {
     position: absolute;
-    left: 84%;
-    top: 50%;
-    width: 13%;
+    left: 73%;
+    top: 52%;
+    width: 14%;
     height: 18%;
 }
 
@@ -174,6 +200,8 @@
     border-color: transparent;
     background: #F29224;
     color: white;
+    font-family: 'Josefin Sans';
+    font-weight: bold;
 }
 
 #masPopular {
@@ -194,10 +222,11 @@
 
 #tituloPopular h1 {
     color: #165851;
+    font-size: 30px;
 }
 
 .highlight {
-    color: #F19859;
+    color: #F29224;
     font-weight: bold;
 }
 
