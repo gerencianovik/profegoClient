@@ -76,18 +76,17 @@ cours.mandar = async (req, res) => {
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
-        
+
         const id = req.user.idUser;
         let idTeacher;
-        
+
         // Obtener el idTeacher
-        const [teacher] = await sql.promise().query('SELECT * FROM detailteacherpages WHERE pageIdPage = "1"');
-        console.log(teacher)
-        const teacherEntry = teacher.find(t => t.teacherIdTeacher == id);
-        if (!teacherEntry) {
-            return res.status(404).json({ message: 'Teacher not found' });
+        const teacher = await sql.query('SELECT * FROM detailteacherpages WHERE pageIdPage = "1"');
+        console.log(teacher[0].teacherIdTeacher)
+        if (teacher[0].teacherIdTeacher == id) {
+            idTeacher = teacherEntry.idDetailTeacherPagex;
         }
-        idTeacher = teacherEntry.idDetailTeacherPagex;
+
 
         const { idCours, ubicacion, neeCours, edadesEscogidas, tipoCurso, nameCours, descriptionCours, dateCoursInit, dateCoursFin, hourCours, shareCours, costCours } = req.body;
         const newPage = {

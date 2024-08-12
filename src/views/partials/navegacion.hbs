@@ -5,31 +5,33 @@
         {{#each listaTeacher}}
         <a href="/teacher/eleccion/{{idTeacher}}"><button type="button">Eleccion Servicios</button></a>
         {{/each}}
-         {{#each listaEstudents}}
+        {{#each listaEstudents}}
         <a href="/teacher/eleccion/{{idEstudent}}"><button type="button">Eleccion Servicios</button></a>
         {{/each}}
     </div>
     {{else}}
     <div id="estudiantes">
-        <div id="bajar">
-            <button type="button" id="bajar3"><img src="/img/icons/estudiantes.png"></button>
-        </div>
         <div id="estudiante">
-            <button type="button">ESTUDIANTES</button>
+            <button type="button">Estudiante</button>
+        </div>
+        <div id="bajares">
+            <button type="button" id="bajar3"><img src="/img/icons/estudiantes.png"></button>
         </div>
     </div>
     <div id="docentes">
-        <div id="bajar">
-            <button type="button" id="bajar4"><img src="/img/icons/estudiantes.png"></button>
-        </div>
         <div id="couch">
-            <button type="button">DOCENTE/COACH</button>
+            <button type="button">Docente/Coach</button>
+        </div>
+        <div id="bajardocen">
+            <button type="button" id="bajar4"><img src="/img/icons/estudiantes.png"></button>
         </div>
     </div>
     {{/if}}
     <div id="logo">
         {{#each listaPagina}}
         <a href="/"><img src="/img/logo/{{photoPage}}"></a>
+        {{else}}
+        <a href="/"><img src="/img/logo/Variantelogoprofego.png"></a>
         {{/each}}
     </div>
     <div id="nosotros">
@@ -62,7 +64,7 @@
         <a href="/loginStudents">Iniciar sesión</a>
     </div>
     <div id="registro">
-        <a href="/RegisterStudents">Crear Cuenta</a>
+        <a href="/RegisterStudents">Registro</a>
     </div>
 </div>
 <div id="subNav5">
@@ -70,7 +72,7 @@
         <a href="/loginTeachers">Iniciar sesión</a>
     </div>
     <div id="registro">
-        <a href="/RegisterTeachers">Crear Cuenta</a>
+        <a href="/RegisterTeachers">Registro</a>
     </div>
 </div>
 
@@ -81,7 +83,7 @@
                 <img src="/img/icons/centroAyuda.png">
             </div>
             <div id="nosotros1">
-                <h1>CENTRO DE AYUDA</h1>
+                <h1>Centro de ayuda</h1>
                 <p>Encuentra respuestas a tus dudas y ponte en comunicación con nosotros para más información.</p>
             </div>
         </div>
@@ -91,7 +93,9 @@
                     <img src="/img/icons/contactos.png">
                 </div>
                 <div id="informacion">
-                    <a href="/contactos"><h1>Contactos</h1></a>
+                    <a href="/contactos">
+                        <h1>Contactos</h1>
+                    </a>
                 </div>
             </div>
             <div id="funciona">
@@ -112,7 +116,7 @@
                 <img src="/img/icons/imagenServicios.png">
             </div>
             <div id="nosotros1">
-                <h1>SERVICIOS</h1>
+                <h1>Servicios</h1>
                 <p>Explora nuestros servicios, desde clases grupales y particulares hasta cursos, coaching para docentes
                     y mucho más.</p>
             </div>
@@ -160,7 +164,7 @@
                 <img src="/img/icons/imagenNosotros.png">
             </div>
             <div id="nosotros1">
-                <h1>NOSOTROS</h1>
+                <h1>Nosotros</h1>
                 <p>Descubre quiénes somos,
                     por qué elegirnos y cuáles son nuestros estándares de calidad en la educación.</p>
             </div>
@@ -171,7 +175,9 @@
                     <img src="/img/icons/somos.png">
                 </div>
                 <div id="informacion">
-                    <a href="/somos" style="text-decoration: none; color:black"><h1>¿Quiénes somos?</h1></a>
+                    <a href="/somos" style="text-decoration: none; color:black">
+                        <h1>¿Quiénes somos?</h1>
+                    </a>
                 </div>
             </div>
             <div id="funciona">
@@ -179,7 +185,9 @@
                     <img src="/img/icons/funciona.png">
                 </div>
                 <div id="informacion1">
-                    <a href="/funciona" style="text-decoration: none; color:black"><h1>¿Cómo funciona?</h1></a>
+                    <a href="/funciona" style="text-decoration: none; color:black">
+                        <h1>¿Cómo funciona?</h1>
+                    </a>
                 </div>
             </div>
             <div id="seguridad">
@@ -187,7 +195,9 @@
                     <img src="/img/icons/seguridad.png">
                 </div>
                 <div id="informacion2">
-                    <a href="/seguridad" style="text-decoration: none; color:black"><h1>Nuestra seguridad</h1></a>
+                    <a href="/seguridad" style="text-decoration: none; color:black">
+                        <h1>Nuestra seguridad</h1>
+                    </a>
                 </div>
             </div>
             <div id="testimonio">
@@ -195,7 +205,9 @@
                     <img src="/img/icons/testimonio.png">
                 </div>
                 <div id="informacion3">
-                    <a href="/testimonio" style="text-decoration: none; color:black"><h1>Testimonios</h1></a>
+                    <a href="/testimonio" style="text-decoration: none; color:black">
+                        <h1>Testimonios</h1>
+                    </a>
                 </div>
             </div>
         </div>
