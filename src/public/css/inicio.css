@@ -82,17 +82,19 @@
     position: absolute;
     width: 70%;
     left: 21%;
+}
+#ayudar h1{
     text-align: center;
-    font-size: 15px;
+    font-size: 25px;
     color: #147582;
-    top: 3%;
+    margin-top: 3.5%;
 }
 
 #ayudar img {
     position: absolute;
     width: 4%;
-    top: 18%;
-    left: 85%;
+    top: 23%;
+    left: 79%;
 }
 
 #Quebuscas {
@@ -232,6 +234,7 @@
 
 #tituloPopular {
     font-size: 20px;
+    font-weight: 600;
 }
 
 #tarjetaClaseParticular {
@@ -240,7 +243,7 @@
     position: absolute;
     top: 29%;
     border: 5px solid #004D77;
-    left: 4%;
+    left: 4.5%;
     border-radius: 10px;
 }
 
@@ -249,6 +252,7 @@
     width: 50%;
     height: 35%;
     left: 25%;
+    top: 4%;
 }
 
 #imagenClase img {
@@ -264,7 +268,7 @@
 #tarjetaCursos h1,
 #tarjetaCoaching h1 {
     position: absolute;
-    top: 33%;
+    top: 40%;
     width: 100%;
     font-size: 25px;
     text-align: center;
@@ -274,8 +278,9 @@
     width: 90%;
     height: 30%;
     position: absolute;
-    top: 49%;
-    left: 5%;
+    top: 53%;
+    left: 8%;
+    font-weight: 600;
 }
 
 #tarjetaClaseGrupales {
@@ -284,7 +289,7 @@
     position: absolute;
     top: 29%;
     border: 5px solid #004D77;
-    left: 27%;
+    left: 28%;
     border-radius: 10px;
 }
 
@@ -304,15 +309,15 @@
     position: absolute;
     top: 29%;
     border: 5px solid #004D77;
-    left: 76%;
+    left: 76.3%;
     border-radius: 10px;
 }
 
 #cotendorPorqueElegir{
     position: absolute;
-    top: 245%;
+    top: 248%;
     width: 100%;
-    height: 85%;
+    height: 86%;
     left: 0%;
 }
 
@@ -326,17 +331,23 @@
 
 #textodiv{
     position: absolute;
-    width: 23%;
-    top: 31%;
-    left: 5%;
-    font-size: 21px;
+    width: 19%;
+    top: 29%;
+    left: 4.5%;
+    font-size: 18px;
 }
 
 #textodiv h1{
     color: #FFEFDA;
+    font-size: 30px;
+    text-align: center;
+    line-height: 40px;
 }
+
 #textodiv p{
     color: white;
+    font-size: 20px;
+    line-height: 30px;
 }
 
 #cajon1 {
@@ -344,10 +355,12 @@
     width: 24%;
     height: 20%;
     background-color: #F29224;
-    top: 27%;
-    left: 35%;
-    border-radius: 20px;
+    top: 24%;
+    left: 29%;
+    border-radius: 10px;
     text-align: center;
+    opacity: 0.8;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.30);
 }
 
 #cajon1 h1,
@@ -355,6 +368,8 @@
 #cajon3 h1,
 #cajon4 h1{
     color: white;
+    font-size: 25px;
+    margin-top: 4.5%;
 }
 
 #cajon1 p,
@@ -362,6 +377,9 @@
 #cajon3 p,
 #cajon4 p{
     color: white;
+    font-size: 16px;
+    font-weight: 550;
+    margin-top: -2%;
 }
 
 #cajon1 h1 img{
@@ -373,10 +391,12 @@
     width: 24%;
     height: 20%;
     background-color: #F29224;
-    top: 75%;
-    left: 35%;
-    border-radius: 20px;
+    top: 72%;
+    left: 31%;
     text-align: center;
+    opacity: 0.8;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.40);
+    border-radius: 10px;
 }
 
 #cajon2 h1 img{
@@ -390,8 +410,10 @@
     background-color: #F29224;
     top: 57%;
     left: 70%;
-    border-radius: 20px;
     text-align: center;
+    opacity: 0.8;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.40);
+    border-radius: 10px;
 }
 
 #cajon3 h1 img{
@@ -403,10 +425,12 @@
     width: 24%;
     height: 20%;
     background-color: #F29224;
-    top: 10%;
-    left: 70%;
-    border-radius: 20px;
+    top: 11.5%;
+    left: 70.9%;
     text-align: center;
+    opacity: 0.8;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.30);
+    border-radius: 10px;
 }
 
 #cajon4 h1 img{
@@ -415,10 +439,10 @@
 
 #contenedorCifras{
     position: absolute;
-    top: 329%;
+    top: 332%;
     left: 0%;
     width: 100%;
-    height: 50%;
+    height: 64%;
     color: white;
 }
 
@@ -435,36 +459,56 @@
     text-align: center;
 }
 
+#tituloCifras h1{
+    font-size: 30px;
+    margin-top: 5%;
+}
+
+#tituloCifras p{
+    font-size: 20px;
+    margin-top: 0%;
+    font-weight: 600;
+}
+
 #contendorDocentes,
 #contendorServiciosEducativos,
 #contendorServicioscontratados,
 #ValoracionComunidad{
     position: absolute;
     top: 40%;
-    width: 15%;
-    height: 30%;
+    width: 18%;
+    height: 25%;
     text-align: center;
     background-color: #147582;
-    left: 3%;
+    left: 4.5%;
     border-radius: 10px;
     color: #FFEFDA;
 }
 
+#contendorDocentes h1 {
+font-size: 30px;
+}
 #contendorServiciosEducativos{
-    left: 25%;
+    left: 28.5%;
 }
-
+#contendorServiciosEducativos h1 {
+    font-size: 30px;
+}
 #contendorServicioscontratados{
-    left: 50%;
+    left: 52.9%;
 }
-
+#contendorServicioscontratados h1 {
+    font-size: 30px;
+}
 #ValoracionComunidad{
-    left: 75%;
+    left: 77%;
 }
-
+#ValoracionComunidad h1 {
+    font-size: 30px;
+}
 #ValoracionComunidad p{
     position: absolute;
-    top: 46%;
+    top: 40%;
 }
 
 .star {
@@ -475,7 +519,10 @@
 #contendorServiciosEducativos p,
 #contendorServicioscontratados p,
 #ValoracionComunidad p{
-    color: #FFEFDA; 
+    color: white; 
+    font-size: 20px;
+    width: 64%;
+    margin-left: 18.8%;
 }
 
 #ValoracionComunidad img{
@@ -487,7 +534,7 @@
     height: 70%;
     border-color: white;
     position: absolute;
-    top: 375%;
+    top: 386%;
     left: 0%;
 }
 
@@ -497,25 +544,30 @@
     position: absolute;
     top: 29%;
     border: 5px solid #004D77;
-    left: 4%;
+    left: 4.5%;
     border-radius: 10px;
+}
+
+#tarjeta p{
+    font-size: 16px;
 }
 
 #informate{
     position: absolute;
-    top: 453%;
-    width: 100%;
-    height: 82%;
-    left: 0%;
+    top: 468%;
+    width: 90.5%;
+    height: 63%;
+    left: 4.5%;
     background-color: #F29224;
+    border-radius: 10px;
 }
 
 #informate img{
     position: absolute;
-    left: 34%;
-    top: -4%;
-    width: 66%;
-    height: 105%;
+    left: 39%;
+    top: -3%;
+    width: 61%;
+    height: 103%;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -524,12 +576,14 @@
 #informacionDocente{
     position: absolute;
     top: 25%;
-    width: 34%;
+    width: 30%;
     height: 38%;
-    font-size: 40px;
+    font-size: 30px;
     left: 11.5%;
     color: white;
     text-align: center;
+    font-weight: bold;
+    line-height: 40px;
 }
 
 #informacionDocente button {
@@ -539,13 +593,16 @@
     color: white;
     background-color: #004D77;
     border-radius: 10px;
+    font-family: 'Josefin Sans';
+    font-weight: bold;
+    border-color: transparent;
 }
 
 #footer{
     position: absolute;
-    top: 544%;
+    top: 560%;
     width: 100%;
-    height: 60%;
+    height: 47%;
     background-color: #ffefdaa0;
     left: 0%;
 }
@@ -556,7 +613,7 @@
     position: absolute;
     width: 12%;
     top: 0%;
-    left: 4%;
+    left: 4.5%;
     height: 100%;
 }
 
@@ -564,37 +621,46 @@
 #tarjetaUnete h1,
 #tarjetaLegal h1{
     color: #004D77;
+    font-size: 20px;
+    left: 4.5%;
 }
 
 #tarjetaNosotros p,
 #tarjetaUnete p,
 #tarjetaLegal p{
     color: #004D77;
+    left: 4.5%;
+    font-size: 14px;
+    margin-top: 25%;
+    font-weight: 600;
+    line-height: 13px;
 }
 
 #nosotrosFooter{
     position: relative;
-    padding: 20px;
-    background: transparent; /* Fondo blanco para que el borde resalte */
-    border-bottom: 5px solid transparent; /* Ajusta el grosor del borde aquí */
+    padding: 0px;
+    background: transparent; 
+    border-bottom: 5px solid transparent; 
     border-image: linear-gradient(to right, #F39325, #FEEDD9);
     border-image-slice: 1;
     border-image-width: 0 0 5px 0;
+    left: 0%;
+    top: 4.5%;
 }
 
 #tarjetaUnete{
-    left: 19%;
+    left: 21%;
 }
 
 #tarjetaLegal{
-    left: 35%;
+    left: 38%;
 }
 
 #logoImagen {
     position: absolute;
     top: 7%;
-    left: 74%;
-    width: 25%;
+    left: 75%;
+    width: 20%;
     height: 69%;
 }
 
@@ -620,11 +686,12 @@
     text-align: center;
     width: 40%;
     color: #004D77;
+    left: 4.5%;
 }
 
 #final #finalFinal{
     position: absolute;
     top: 0%;
-    left: 79%;
+    left: 77.5%;
     width: 20%;
 }
