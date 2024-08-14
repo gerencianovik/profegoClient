@@ -27,11 +27,11 @@
     position: absolute;
     top: 14.2%;
     width: 30%;
-    height: auto; /* Cambia a auto para ajustar a la altura del contenido */
+    height: auto; 
     display: flex;
-    flex-direction: column; /* Organiza los elementos verticalmente */
-    align-items: flex-start; /* Alinea los elementos al inicio del contenedor */
-    gap: 10px; /* Espacio entre los elementos */
+    flex-direction: column; 
+    align-items: flex-start; 
+    gap: 10px; 
     padding: 10px; 
     left: 3.8%;
 }
@@ -43,26 +43,42 @@
 
 #complementos p {
     font-size: 16px;
-    width: 388px;
+    width: 370px;
     line-height: 120%;
     font-weight: 600;
 }
 
-#complementos img {
-    width: 20px; /* Ajusta el tamaño de la imagen */
-    height: auto; /* Mantiene la proporción de la imagen */
-    vertical-align: middle; /* Alinea la imagen verticalmente con el texto */
+#complementos p {
+    margin: 4.5%; /* Elimina el margen predeterminado del párrafo */
+    padding-left: 3.8px;
+    margin-left: 17%; /* Espacio entre la imagen y el texto */
 }
 
-#complementos p {
-    margin: 2%; /* Elimina el margen predeterminado del párrafo */
-    padding-left: 3.8px; /* Espacio entre la imagen y el texto */
+#complementosedad {
+    width: 65px; /* Ajusta el tamaño de la imagen */
+    height: auto; /* Mantiene la proporción de la imagen */
+    vertical-align: middle;
+    margin-top: -19%;
+}
+
+#complementosdocumentos {
+    width: 52px; /* Ajusta el tamaño de la imagen */
+    height: auto; /* Mantiene la proporción de la imagen */
+    vertical-align: middle;
+    margin-top: -19.5%;
+}
+
+#complementospago {
+    width: 53px; /* Ajusta el tamaño de la imagen */
+    height: auto; /* Mantiene la proporción de la imagen */
+    vertical-align: middle;
+    margin-top: -19.5%;
 }
 
 #datos {
     position: absolute;
     width: 50%;
-    height: 140%;
+    height: 126%;
     background-color: white;
     left: 45%;
     top: 18%;
@@ -78,6 +94,7 @@
     font-size: 20px;
     margin-left: 9.2%;
 }
+
 #datos p{
     text-align: left;
     color: #18574F;
@@ -86,8 +103,9 @@
 #registro h1 {
     font-size: 30px;
     text-align: center;
-    margin-top: 7%;
+    margin-top: 6%;
     color: #F39325;
+    margin-left: -0.4%;
 }
 
 #registro p {
@@ -100,12 +118,12 @@
 a{
     text-decoration: none;
     color: #18574F;
+    font-weight: bold;
 }
 
 #datos input{
     width: 80%;
-    margin-left: 0%;
-    height: 42px;
+    height: 44px;
     border: 3px solid #F39325;
     border-radius: 10px;
     font-size: 20px;
@@ -126,16 +144,16 @@ a{
 #Celular {
     width: 48%;
     position: absolute;
-    top: 27.4%;
+    top: 20.7%;
     left: 46.8%;
 }
 
 #botonVer {
     position: absolute;
-    top: 42.5%;
+    top: 37.3%;
     left: 81%;
     width: 9%;
-    height: 2.5%;
+    height: 3.2%;
 }
 
 #botonVer button{
@@ -153,10 +171,10 @@ a{
 
 #botonVer1 {
     position: absolute;
-    top: 51.5%;
-    left: 81%;
+    top: 47.6%;
+    left: 81.3%;
     width: 9%;
-    height: 2.5%;
+    height: 3.2%;
 }
 
 #botonVer1 button{
@@ -171,25 +189,30 @@ a{
     height: 100%;
 }
 
-
 #valirdar {
     width: 100%;
     max-width: 3%;
     border-radius: 50%;
-    left: 0%;
+    left: 8.9%;
     position: absolute;
+    top:53.1%;
+    border-color: #004D77;
+    border: 3px solid
 }
 
 #validacion{
-    width: 90%;
-    margin-left: 10%;
+    width: 77.5%;
+    margin-left: 14%;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 4%;
 }
 
 #boton{
     width: 40%;
     height: 7%;
     position: absolute;
-    top: 65%;
+    top: 61%;
     left: 30%;
 }
 
@@ -202,11 +225,43 @@ a{
     font-size: 20px;
     font-family: 'Josefin Sans';
     font-weight: bold;
+    border: transparent;
+}
+
+#noCuenta {
+    position: absolute;
+    top: 69%;
+    width: 60%;
+    text-align: center;
+    margin-left: 25.5%;
+}
+
+#noCuenta p {
+    font-size: 20px;
+    color: #18574F;
+    font-weight: 600;
+}
+
+#noCuenta a {
+    font-size: 20px;
+    color: #F39325;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#colores {
+    width: 100%;
+    background-color: #F39325;
+    position: absolute;
+    top: 93.1%;
+    height: 7%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 #footer{
     position: absolute;
-    top: 190%;
+    top: 166%;
     width: 100%;
     height: 47%;
     background-color: #ffefdaa0;
