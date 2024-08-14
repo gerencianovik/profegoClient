@@ -10,43 +10,91 @@
 
 #contactosVista {
     position: absolute;
-    top: 7%;
+    top: 12%;
     text-align: center;
     width: 100%;
-    font-size: 20px;
 }
 
 #contactosVista h1{
-color: #F39325;
+    color: #F39325;
+    font-size: 30px;
 }
 
-#datosNumeros h1{
+#contactosVista p {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+#celular h1{
     color: #18574F;
+    font-size: 30px;
+    text-align: left;
+    margin-left: 18%;
+    margin-top: 9%;
+}
+
+#celular p{
+    font-size: 20px;
+    text-align: left;
+    margin-left: 18%;
+    margin-top: -3%;
+}
+
+#direcciones h1{
+    color: #18574F;
+    font-size: 30px;
+    text-align: left;
+    margin-left: 18%;
+    margin-top: 12%;
+}
+
+#direcciones p{
+    font-size: 20px;
+    text-align: left;
+    margin-left: 18%;
+    margin-top: -3%;
+}
+
+#correos h1{
+    color: #18574F;
+    font-size: 30px;
+    text-align: left;
+    margin-left: 18%;
+    margin-top: 16%;
+}
+
+#correos p{
+    font-size: 20px;
+    text-align: left;
+    margin-left: 18%;
+    margin-top: -3%;
 }
 
 #numeros {
     position: absolute;
-    top: 116%;
-    width: 6%;
-    left: 6%;
+    top: 133%;
+    width: 5%;
+    left: 4.5%;
 }
 
 #datosNumeros {
-    width: 20%;
+    width: 28%;
     position: absolute;
     top: 100%;
-    left: 12%;
-    font-size: 20px;
+    left: 8%;
 }
 
 #envioDatos {
     position: absolute;
-    width: 40%;
-    left: 40%;
-    text-align: center;
-    font-size: 20px;
+    width: 48%;
+    left: 49.3%;
     height: 466px;
-    top: 110%;
+    top: 116.5%;
+}
+
+#envioDatos h1 {
+    font-size: 30px;
+    margin-left: -77.5%;
 }
 
 #envioDatos p{
@@ -62,7 +110,7 @@ color: #F39325;
 }
 
 #nombre {
-    width: 40%;
+    width: 50%;
     height: 20%;
     text-align: left;
     margin-left: 1%;
@@ -76,7 +124,7 @@ color: #F39325;
     text-align: left;
     left: 55%;
     font-size: 20px;
-    top: 16%;
+    top: 10.9%;
 }
 
 #cORREO{
@@ -86,7 +134,7 @@ color: #F39325;
     text-align: left;
     left: 1%;
     font-size: 20px;
-    top: 43%;
+    top: 40%;
 }
 
 #mensjaes{
@@ -95,7 +143,7 @@ color: #F39325;
     text-align: left;
     left: 1%;
     font-size: 20px;
-    top: 68%;
+    top: 70%;
 }
 #nombre input,
 #Teléfono input,
@@ -103,7 +151,7 @@ color: #F39325;
 #mensjaes textarea,
 #botonEnviar button{
     width: 100%;
-    height: 50px;
+    height: 60px;
     font-size: 20px;
     border-radius: 10px;
     background-color: #FFEFDA;
@@ -113,19 +161,22 @@ color: #F39325;
     position: absolute;
     width: 30%;
     height: 35px;
-    left: 66%;
-    top: 99%;
+    left: 65.5%;
+    top: 106%;
 
 }
 
 #botonEnviar button{
     background-color: #18574F;
+    color:white;
+    font-family: 'Josefin Sans';
+    font-size: 20px;
 }
 
 #imagenPreguntas {
     position: absolute;
     width: 100%;
-    top: 116%;
+    top: 118%;
 }
 
 #imagenPreguntas img {
@@ -136,67 +187,74 @@ color: #F39325;
     background-attachment: fixed;
 }
 
-#footer {
+#footer{
     position: absolute;
-    top: 358%;
+    top: 360%;
     width: 100%;
-    height: 60%;
+    height: 47%;
     background-color: #ffefdaa0;
     left: 0%;
 }
 
 #tarjetaNosotros,
 #tarjetaUnete,
-#tarjetaLegal {
+#tarjetaLegal{
     position: absolute;
     width: 12%;
     top: 0%;
-    left: 4%;
+    left: 4.5%;
     height: 100%;
 }
 
 #tarjetaNosotros h1,
 #tarjetaUnete h1,
-#tarjetaLegal h1 {
+#tarjetaLegal h1{
     color: #004D77;
+    font-size: 20px;
+    left: 4.5%;
 }
 
 #tarjetaNosotros p,
 #tarjetaUnete p,
-#tarjetaLegal p {
+#tarjetaLegal p{
     color: #004D77;
+    left: 4.5%;
+    font-size: 14px;
+    margin-top: 25%;
+    font-weight: 600;
+    line-height: 13px;
 }
 
-#nosotrosFooter {
+#nosotrosFooter{
     position: relative;
-    padding: 20px;
-    background: transparent;
-    /* Fondo blanco para que el borde resalte */
-    border-bottom: 5px solid transparent;
-    /* Ajusta el grosor del borde aquí */
+    padding: 0px;
+    background: transparent; 
+    border-bottom: 5px solid transparent; 
     border-image: linear-gradient(to right, #F39325, #FEEDD9);
     border-image-slice: 1;
     border-image-width: 0 0 5px 0;
+    left: 0%;
+    top: 4.5%;
 }
 
-#tarjetaUnete {
-    left: 19%;
+#tarjetaUnete{
+    left: 21%;
 }
 
-#tarjetaLegal {
-    left: 35%;
+#tarjetaLegal{
+    left: 38%;
 }
 
 #logoImagen {
     position: absolute;
     top: 7%;
-    left: 74%;
-    width: 25%;
+    left: 75%;
+    width: 20%;
     height: 69%;
 }
 
 
-#logoImagen img {
+#logoImagen img{
     width: 100%;
     height: 100%;
     background-repeat: no-repeat;
@@ -204,7 +262,7 @@ color: #F39325;
     background-attachment: fixed;
 }
 
-#final {
+#final{
     position: absolute;
     top: 90%;
     width: 100%;
@@ -213,15 +271,16 @@ color: #F39325;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
 }
 
-#final p {
+#final p{
     text-align: center;
     width: 40%;
     color: #004D77;
+    left: 4.5%;
 }
 
-#final #finalFinal {
+#final #finalFinal{
     position: absolute;
     top: 0%;
-    left: 79%;
+    left: 77.5%;
     width: 20%;
 }
