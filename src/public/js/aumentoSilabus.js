@@ -5,9 +5,6 @@ class Silabus {
         this.moduleCurrucularContentCourse = document.getElementById('moduleCurrucularContentCourse');
         this.themesyllabusEducational = document.getElementById('themesyllabusEducational');
         this.timesyllabusEducational = document.getElementById('timesyllabusEducational');
-        this.moduloBoton = document.getElementById('moduloBoton');
-        this.temaBoton = document.getElementById('temaBoton');
-        this.tiempoBoton = document.getElementById('tiempoBoton');
         this._listaValoresModulo = [];
         this._listaValoresTema = [];
         this._listaValoresTiempo = [];
@@ -18,14 +15,14 @@ class Silabus {
         this._listaValoresModulo.push('');
         const listaHTML = this._listaValoresModulo.map(() => {
             return `
-                    <div id="mod">
-                        <input name="moduleCurrucularContentCourse" placeholder="Escriba su Modulo">
-                        <button type="button" class="btn-eliminar"><img src="/img/icons/borrador.png"></button>
-                    </div>
-                `;
+                <div class="mod">
+                    <input name="moduleCurrucularContentCourse" placeholder="Escriba su Modulo">
+                    <button type="button" class="btn-eliminar"><img src="/img/icons/borrador.png"></button>
+                </div>
+            `;
         }).join('');
-        this.moduleCurrucularContentCourse.innerHTML = `<ul>${listaHTML}</ul>`;
-        this.agregarEventosEliminar();
+        this.moduleCurrucularContentCourse.innerHTML = listaHTML;
+        this.agregarEventosEliminar('moduleCurrucularContentCourse', this._listaValoresModulo);
         this.contador.contadorTotalModulo();
     }
 
@@ -33,14 +30,14 @@ class Silabus {
         this._listaValoresTema.push('');
         const listaHTML = this._listaValoresTema.map(() => {
             return `
-                    <div id="tems">
-                        <input name="themesyllabusEducational" placeholder="Escriba su Tema">
-                        <button type="button" class="btn-eliminar"><img src="/img/icons/borrador.png"></button>
-                    </div>
-                `;
+                <div class="tems">
+                    <input name="themesyllabusEducational" placeholder="Escriba su Tema">
+                    <button type="button" class="btn-eliminar"><img src="/img/icons/borrador.png"></button>
+                </div>
+            `;
         }).join('');
-        this.themesyllabusEducational.innerHTML = `<ul>${listaHTML}</ul>`;
-        this.agregarEventosEliminar();
+        this.themesyllabusEducational.innerHTML = listaHTML;
+        this.agregarEventosEliminar('themesyllabusEducational', this._listaValoresTema);
         this.contador.contadorTemaModulo();
     }
 
@@ -48,28 +45,46 @@ class Silabus {
         this._listaValoresTiempo.push('');
         const listaHTML = this._listaValoresTiempo.map(() => {
             return `
-                    <div id="tim">
-                        <input name="timesyllabusEducational" placeholder="Escriba su Tiempo de Duracion">
-                        <button type="button" class="btn-eliminar"><img src="/img/icons/borrador.png"></button>
-                    </div>
-                `;
+                <div class="tim">
+                    <input name="timesyllabusEducational" placeholder="Escriba su Tiempo de Duracion">
+                    <button type="button" class="btn-eliminar"><img src="/img/icons/borrador.png"></button>
+                </div>
+            `;
         }).join('');
-        this.timesyllabusEducational.innerHTML = `<ul>${listaHTML}</ul>`;
-        this.agregarEventosEliminar();
+        this.timesyllabusEducational.innerHTML = listaHTML;
+        this.agregarEventosEliminar('timesyllabusEducational', this._listaValoresTiempo);
         this.contador.contadorDuracionModulo();
     }
 
-    agregarEventosEliminar() {
+    agregarEventosEliminar(name, listaValores) {
         const botonesEliminar = document.querySelectorAll('.btn-eliminar');
-        botonesEliminar.forEach(boton => {
-            boton.addEventListener('click', (event) => {
-                const li = event.target.closest('li');
-                li.remove();
-                this.contador.contadorTotalModulo();
-                this.contador.contadorTemaModulo();
-                this.contador.contadorDuracionModulo();
+        botonesEliminar.forEach((boton, index) => {
+            boton.addEventListener('click', () => {
+                listaValores.splice(index, 1);
+                this.reiniciarHTML(name, listaValores);
+                this.actualizarContadores();
             });
         });
+    }
+
+    reiniciarHTML(name, listaValores) {
+        const targetElement = document.getElementById(name);
+        const listaHTML = listaValores.map(() => {
+            return `
+                <div class="${name}">
+                    <input name="${name}" placeholder="Escriba su ${name === 'moduleCurrucularContentCourse' ? 'Modulo' : name === 'themesyllabusEducational' ? 'Tema' : 'Tiempo'}">
+                    <button type="button" class="btn-eliminar"><img src="/img/icons/borrador.png"></button>
+                </div>
+            `;
+        }).join('');
+        targetElement.innerHTML = listaHTML;
+        this.agregarEventosEliminar(name, listaValores);
+    }
+
+    actualizarContadores() {
+        this.contador.contadorTotalModulo();
+        this.contador.contadorTemaModulo();
+        this.contador.contadorDuracionModulo();
     }
 }
 

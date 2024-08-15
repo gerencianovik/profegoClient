@@ -4,9 +4,9 @@ const { mostrarCurso, mostrarClase, mandarCurso, mandarClase, } = require('../co
 const router = express.Router();
 
 
-router.get('/courso/:id', isLoggedIn, mostrarCurso)
+router.get('/curso/:id', isLoggedIn, mostrarCurso)
 router.get('/clase/:id', isLoggedIn, mostrarClase )
-router.post('/courso/:id', isLoggedIn, mandarCurso )
+router.post('/curso/:id', isLoggedIn, mandarCurso )
 router.get('/clase/:id', isLoggedIn, mandarClase )
 
 

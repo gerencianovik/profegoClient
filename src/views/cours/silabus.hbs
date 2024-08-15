@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="/css/silabus/agregar.css">
 <div id="contenedor">
     {{#each listaPagina}}
-    <form action="/silabus/courso/{{idCours}}" method="post">
+    <form action="/silabus/curso/{{idCours}}" method="post">
         {{/each}}
         <div id="titulo">
             {{#each listaSilabus}}
@@ -50,7 +50,7 @@
             </div>
         </div>
         <div id="boton">
-            <button type="submit"><img src="/img/icons/save.png">Guardar</button>
+            <button type="submit">Guardar<img src="/img/icons/save.png"></button>
         </div>
     </form>
 </div>

@@ -32,28 +32,57 @@ silabusCtl.mandarCurso = async (req, res) => {
     const id = req.params.id;
     const ids = req.user.idUsers;
     try {
-        const { idsyllabusEducational, objetivesyllabusEducational, moduleCurrucularContentCourse, themesyllabusEducational, timesyllabusEducational } = req.body;
+        const {
+            idsyllabusEducational,
+            objetivesyllabusEducational,
+            moduleCurrucularContentCourse,
+            themesyllabusEducational,
+            timesyllabusEducational
+        } = req.body;
 
-        // Iterar sobre los módulos para insertar cada uno en la base de datos
-        for (let i = 0; i < moduleCurrucularContentCourse.length; i++) {
-            const newSilabus = {
-                idsyllabusEducational,
-                objetivesyllabusEducational,
-                moduleCurrucularContentCourse: moduleCurrucularContentCourse[i],
-                themesyllabusEducational: themesyllabusEducational[i],
-                timesyllabusEducational: timesyllabusEducational[i],
-                stateSyllabusEducational: 'Activar',
-                courIdCours: id
-            };
+        const newEnvio = {
+            idsyllabusEducational,
+            objetivesyllabusEducational,
+            stateSyllabusEducational: 'Activar',
+            courIdCours: id
+        };
 
-            await orm.curricularContent.create(newSilabus);
+        // Crear el registro principal en curricularContent
+        await orm.curricularContent.create(newEnvio);
+
+        // Verificar si moduleCurrucularContentCourse es un array o un solo elemento
+        if (Array.isArray(moduleCurrucularContentCourse)) {
+            // Si es un array, iterar y realizar la inserción para cada elemento
+            for (let i = 0; i < moduleCurrucularContentCourse.length; i++) {
+                await sql.promise().query(
+                    'INSERT INTO detailcurricularcontents (moduleCurrucularContentCourse, themesyllabusEducational, timesyllabusEducational, syllabusEducationalIdsyllabusEducational) VALUES (?, ?, ?, ?)',
+                    [
+                        moduleCurrucularContentCourse[i],
+                        themesyllabusEducational[i],
+                        timesyllabusEducational[i],
+                        idsyllabusEducational
+                    ]
+                );
+            }
+        } else {
+            // Si es un solo elemento, realizar una sola inserción
+            await sql.promise().query(
+                'INSERT INTO detailcurricularcontents (moduleCurrucularContentCourse, themesyllabusEducational, timesyllabusEducational, syllabusEducationalIdsyllabusEducational) VALUES (?, ?, ?, ?)',
+                [
+                    moduleCurrucularContentCourse,
+                    themesyllabusEducational,
+                    timesyllabusEducational,
+                    idsyllabusEducational
+                ]
+            );
         }
 
         req.flash('success', 'Se guardó con éxito el contenido');
-        res.redirect('/cursos/detailList/' + ids);
+        return res.redirect('/cours/detailList/' + id);
     } catch (error) {
         console.error('Error en la consulta:', error.message);
-        res.status(500).send('Error al realizar la consulta');
+        req.flash('error', 'Error al realizar la consulta');
+        return res.redirect('/silabus/curso/' + id);
     }
 };
 
@@ -61,28 +90,57 @@ silabusCtl.mandarClase = async (req, res) => {
     const id = req.params.id;
     const ids = req.user.idUsers;
     try {
-        const { idsyllabusEducational, objetivesyllabusEducational, moduleCurrucularContentCourse, themesyllabusEducational, timesyllabusEducational } = req.body;
+        const {
+            idsyllabusEducational,
+            objetivesyllabusEducational,
+            moduleCurrucularContentCourse,
+            themesyllabusEducational,
+            timesyllabusEducational
+        } = req.body;
 
-        // Iterar sobre los módulos para insertar cada uno en la base de datos
-        for (let i = 0; i < moduleCurrucularContentCourse.length; i++) {
-            const newSilabus = {
-                idsyllabusEducational,
-                objetivesyllabusEducational,
-                moduleCurrucularContentCourse: moduleCurrucularContentCourse[i],
-                themesyllabusEducational: themesyllabusEducational[i],
-                timesyllabusEducational: timesyllabusEducational[i],
-                stateSyllabusEducational: 'Activar',
-                ClaseIdClases: id
-            };
+        const newEnvio = {
+            idsyllabusEducational,
+            objetivesyllabusEducational,
+            stateSyllabusEducational: 'Activar',
+            ClaseIdClases: id
+        };
 
-            await orm.curricularContent.create(newSilabus);
+        // Crear el registro principal en curricularContent
+        await orm.curricularContent.create(newEnvio);
+
+        // Verificar si moduleCurrucularContentCourse es un array o un solo elemento
+        if (Array.isArray(moduleCurrucularContentCourse)) {
+            // Si es un array, iterar y realizar la inserción para cada elemento
+            for (let i = 0; i < moduleCurrucularContentCourse.length; i++) {
+                await sql.promise().query(
+                    'INSERT INTO detailCurricularContent (moduleCurrucularContentCourse, themesyllabusEducational, timesyllabusEducational, syllabusEducationalIdsyllabusEducational) VALUES (?, ?, ?, ?)',
+                    [
+                        moduleCurrucularContentCourse[i],
+                        themesyllabusEducational[i],
+                        timesyllabusEducational[i],
+                        idsyllabusEducational
+                    ]
+                );
+            }
+        } else {
+            // Si es un solo elemento, realizar una sola inserción
+            await sql.promise().query(
+                'INSERT INTO detailCurricularContent (moduleCurrucularContentCourse, themesyllabusEducational, timesyllabusEducational, syllabusEducationalIdsyllabusEducational) VALUES (?, ?, ?, ?)',
+                [
+                    moduleCurrucularContentCourse,
+                    themesyllabusEducational,
+                    timesyllabusEducational,
+                    idsyllabusEducational
+                ]
+            );
         }
 
         req.flash('success', 'Se guardó con éxito el contenido');
-        res.redirect('/clases/detailList/' + ids);
+        return res.redirect('/clases/detailList/' + ids);
     } catch (error) {
         console.error('Error en la consulta:', error.message);
-        res.status(500).send('Error al realizar la consulta');
+        req.flash('error', 'Error al realizar la consulta');
+        return res.redirect('/silabus/clase/' + id);
     }
 };
 
