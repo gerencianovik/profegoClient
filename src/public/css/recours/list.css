@@ -1,0 +1,337 @@
+/* Contenedor principal */
+#contenedor {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+}
+
+/* Fondo */
+#fondo {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 90%;
+    position: absolute;
+    left: 0;
+    top: 10%;
+}
+
+#fondo img {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    position: absolute;
+}
+
+/* Botón más */
+#mas {
+    position: absolute;
+    left: 90%;
+    width: 10%;
+    height: 5%;
+    top: 15%;
+}
+
+#mas button {
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    border-color: transparent;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 1px solid #F39325;
+}
+
+#mas img {
+    position: absolute;
+    top: 5%;
+    left: 65%;
+    width: 30%;
+    height: 100%;
+    background-color: transparent;
+}
+
+/* Título */
+#titulo {
+    position: absolute;
+    top: 10%;
+    width: 100%;
+    text-align: center;
+}
+
+#titulo h1 {
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    border-color: transparent;
+    color: #F39325;
+}
+
+/* Contenedor de datos */
+#Datos {
+    position: absolute;
+    top: 22%;
+    left: 2.5%;
+    width: 95%;
+    height: 75%;
+    /* Ajustado para permitir más espacio para las tarjetas */
+    padding: 1%;
+    overflow-y: auto;
+    /* Habilita el desplazamiento vertical */
+    background: white;
+    display: flex;
+    flex-direction: column;
+    /* Coloca las tarjetas en columnas */
+    align-items: center;
+    /* Centra horizontalmente */
+}
+
+/* Fila de tarjetas */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    /* Espacio entre tarjetas */
+    justify-content: center;
+    /* Centra horizontalmente las tarjetas en la fila */
+    margin: 0;
+}
+
+/* Columnas de tarjetas */
+.col {
+    flex: 1 0 calc(19% - 10px);
+    /* Ancho de 20% menos el espacio para gap */
+    max-width: calc(19% - 10px);
+    /* Ajusta para el margen */
+    box-sizing: border-box;
+    /* Incluye padding y borde en el ancho total */
+    display: flex;
+    /* Asegúrate de que las columnas también sean flex */
+    align-items: center;
+    /* Centra verticalmente */
+    justify-content: center;
+    /* Centra horizontalmente */
+}
+
+/* Estilo de las tarjetas */
+#tarjeta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    min-height: 40vh;
+    margin: 0;
+    border-radius: 20px;
+    border: 3px solid #18574F;
+    box-sizing: border-box;
+    /* Incluye padding y borde en el ancho total */
+}
+
+/* Nombre de la tarjeta */
+#tarjeta #nombre {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    margin-top: 8%;
+}
+
+#tarjeta #nombre p {
+    margin: 0;
+    color: #18574F;
+    font-family: 'Josefin Sans';
+    font-size: 35px;
+}
+
+/* Descripción de la tarjeta */
+#tarjeta #descripcion {
+    width: 100%;
+    height: auto;
+    margin-top: 0;
+    color: #000000;
+    text-align: center;
+    font-family: 'Josefin Sans';
+    font-size: 25px;
+}
+
+/* Estado de la tarjeta */
+#tarjeta #estado {
+    width: 80%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    border-color: transparent;
+    font-size: 20px;
+    border-radius: 50px;
+    border: 3px solid #F39325;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+#tarjeta #estado p {
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    margin: 0;
+}
+
+/* Contenedor para actualizar */
+#tarjeta #actualizar-container {
+    width: 100%;
+    max-width: 80%;
+    height: 12%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    border: 3px solid #004D77;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+}
+
+#tarjeta #actualizar {
+    width: 100%;
+}
+
+#tarjeta #actualizar button {
+    margin: 5%;
+    background-color: transparent;
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-size: 20px;
+    width: 80%;
+    color: #18574F;
+    border: 3px solid #F39325;
+    border-radius: 10px;
+}
+
+#actualizar-container a {
+    text-decoration: none;
+}
+
+/* Deshabilitar tarjeta */
+#tarjeta #desavilitar {
+    width: 100%;
+    height: auto;
+}
+
+#desavilitar #color input {
+    width: 10%;
+    height: 10%;
+    border-radius: 50%;
+    border-color: transparent;
+    color: transparent;
+}
+
+/* Activar tarjeta */
+#actitivar {
+    max-width: 100%;
+    width: 100%;
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    border-color: transparent;
+    font-size: 20px;
+    border-radius: 10px;
+    max-height: 30px;
+    height: 100%;
+}
+
+/* Estado */
+#estado {
+    justify-content: center;
+    align-items: center;
+    max-height: 40%;
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+    background-color: transparent;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    border-color: transparent;
+    font-size: 20px;
+    border-radius: 50px;
+    border: 2px solid #F39325;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+#estado p {
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    margin: 0;
+}
+
+/* Imagen izquierda */
+.img-left {
+    margin-top: 3%;
+    width: 25px;
+    height: 25px;
+}
+
+/* Nombre */
+#nombre p {
+    margin: 0;
+    color: #18574F;
+    text-align: center;
+    font-family: 'Josefin Sans';
+    font-size: 35px;
+}
+
+#nombre {
+    margin-top: 8%;
+    text-align: center;
+    font-family: 'Josefin Sans';
+    font-size: 35px;
+}
+
+/* Descripción */
+#descripcion {
+    margin-top: 0;
+    color: #000000;
+    text-align: center;
+    font-family: 'Josefin Sans';
+    font-size: 25px;
+}
+
+/* Asegura que cada tarjeta ocupe al menos un ancho mínimo */
+.col {
+    flex: 1 1 200px;
+    /* Ajuste flexible que asegura un ancho mínimo */
+    min-width: 200px;
+    /* Ancho mínimo para las tarjetas */
+}
+
+#desavilitar button {
+    font-size: 20px;
+    background-color: red;
+    color: white;
+    border: 2px solid #F39325;
+    border-radius: 10px;
+    width: 80%;
+}
+
+#mas {
+    width: 9%;
+    padding-top: 1%;
+    text-align: center;
+    font-size: 20px;
+    border: 1px solid #F39325;
+    margin-top: -1%;
+    border-radius: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #F39325;
+    border-radius: 20px;
+}

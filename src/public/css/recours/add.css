@@ -1,0 +1,119 @@
+#contenedor {
+    width: 100%;
+    height: 120vh; /* Asegura que ocupe toda la altura de la pantalla */
+    position: relative; /* Cambiado a relative para evitar interferencias */
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; 
+    overflow: hidden; 
+    margin-top: 5%;
+    border-color: black;
+}
+
+#datos {
+    width: 35%;
+    height: auto; /* Cambiado a auto para adaptarse al contenido */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    background: linear-gradient(180deg, #004D77 0%, #177483 100%);
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* Coloca el contenido en columna */
+    justify-content: space-between; /* Distribuye el contenido con espacio entre ellos */
+    position: relative; /* Cambiado a relative para mantener su ubicación */
+    margin-top: 5%;
+}
+
+#datos input,
+#datos textarea {
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    border-color: #F39325;
+    border-radius: 5px;
+    margin-bottom: 10px; /* Añade margen inferior */
+    width: calc(100% - 20px); /* Ajustado al 100% del contenedor con margen */
+}
+
+
+
+#datos textarea {
+    height: 100px; /* Altura específica para el textarea */
+}
+#datos input#nameRecours,
+#datos input#quantyRecours,
+#datos input#valueRecours {
+    width: 95%; 
+    height: 30px;/* Aumenta el ancho de los inputs específicos */
+}
+
+#fondo {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    position: absolute;
+    top: 0; /* Asegura que el fondo esté alineado en la parte superior */
+    left: 0; /* Asegura que el fondo esté alineado a la izquierda */
+}
+
+#fondo img {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#titulo {
+    position: absolute;
+    top: 5%;
+    width: 100%;
+    text-align: center;
+}
+
+#titulo h1 {
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    color: #F39325;
+    margin: 0; /* Elimina el margen por defecto */
+}
+
+p {
+    color: white;
+    text-align: left;
+    font-size: 20px;
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    margin-left: 5%;
+    margin-top: 5%;
+}
+
+#boton {
+    margin-top: 10%;
+    display: flex;
+    justify-content: center; /* Centra el botón horizontalmente */
+}
+
+#boton button {
+    border-color: white;
+    color: white;
+    width: 100%;
+    max-width: 40%;
+    height: 10%;
+    border-radius: 10px;
+    background: #F39325;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3%;
+    gap: 10px; /* Espacio entre el texto y la imagen */
+}
+
+#boton button img {
+    width: 25px; /* Ajusta el tamaño de la imagen */
+    height: 25px; /* Ajusta el tamaño de la imagen */
+    margin-left: 10px; /* Añade margen para separar la imagen del texto */
+}

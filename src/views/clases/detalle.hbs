@@ -27,22 +27,12 @@
                 <div id="temario">
                     <div id="tituloTemario">
                         <h1>Temario educativo</h1>
-                    </div>
-                    <div id="objetivo">
-                        <p>Objetivo: {{objetivo}}</p>
-                    </div>
-                    <div id="modulos">
-                        <p>{{modulos}} Módulos</p>
-                    </div>
-                    <div id="clases">
-                        <p>{{clases}}Clases</p>
-                    </div>
-                    <div id="duracion">
-                        <p>{{Duracion}} Duración total</p>
-                    </div>
-                    <div id="crearTemario">
-                        <p>Crear temario educativo</p>
-                        <a href=""><button type="button"><img src=""></button></a>
+                        <p>Objetivo: {{objetivesyllabusEducational}}</p>
+                        <div id="moduloTotal">
+                            <p>{{moduleCurrucularContentCourse}} Módulos</p>
+                            <p>{{themesyllabusEducational}}Clases</p>
+                            <p>{{timesyllabusEducational}} Duración total</p>
+                        </div>
                     </div>
                     {{/each}}
                     <div id="cupos">
@@ -172,7 +162,8 @@
             <img src="">
         </div>
         <div id="boton">
-            <a href="/material/clases/{{idClases}}"><button type="button">Recursos necesarios del estudiante</button></a>
+            <a href="/material/clases/{{idClases}}"><button type="button">Recursos necesarios del
+                    estudiante</button></a>
         </div>
     </div>
     <div id="Tareas">

@@ -1,0 +1,177 @@
+#contenedor {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-top: 2%;
+}
+
+#datos {
+    width: 40%;
+    height: 85%;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    background: linear-gradient(180deg, #004D77 0%, #177483 100%);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    
+}
+
+
+
+
+
+#fondo {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 90%;
+    position: absolute;
+    left: 0%;
+    top: 10%;
+}
+
+#fondo img {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    position: absolute;
+}
+
+#titulo {
+    position: absolute;
+    top: 10%;
+    width: 100%;
+    text-align: center;
+}
+
+#titulo h1 {
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    border-color: transparent;
+    color: #F39325;
+}
+
+p {
+    color: white;
+    text-align: left;
+    font-size: 20px;
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    margin-left: 5%;
+    margin-top: 5%;
+}
+
+#datos input,
+#datos textarea {
+    margin-left: 5%;
+    width: 85%;
+    height: 15%;
+    min-height: 40%;
+    max-height: 40%;
+    left: 10%;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    border-color: #F39325;
+    border-radius: 5px;
+    
+}
+
+
+#boton {
+    margin-top: 20%;
+}
+
+#boton button {
+
+    border-color: white;
+    color: white;
+    position: absolute;
+    max-width: 40%;
+    width: 100%;
+    height: 10%;
+    left: 50%;
+    top: 70%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+    background: #F39325;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0%;
+    gap: 10px;
+}
+
+#boton button img {
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+}
+
+
+#estado {
+    text-align: center;
+    border-color: #F39325; 
+}
+
+/* Estilo general para los botones de estado */
+#estado button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; /* Centra el contenido dentro del botón */
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 2px solid #F39325; /* Añade un borde color #F39325 */
+    background-color: #ffffff;
+    transition: background-color 0.3s, border-color 0.3s;
+    font-size: 16px;
+    margin: 5px; /* Espacio entre los botones */
+    position: relative; /* Necesario para posicionar la bolita de color */
+    width: 120px; /* Ancho fijo para ambos botones */
+    height: 40px; /* Alto fijo para ambos botones */
+}
+
+/* Estilo para el botón activo */
+#estado #activarBtn {
+    background-color: #ffffff;
+}
+
+/* Estilo para el botón inactivo */
+#estado #desactivarBtn {
+    background-color: #ffffff;
+}
+
+/* Estilo para el botón seleccionado */
+#estado button.selected {
+    background-color: #8a2d2d; /* Gris claro */
+    border-color: rgb(130, 26, 26);
+}
+
+/* Estilo para las bolitas de color */
+#estado button .status-indicator {
+    width: 10px; 
+    height: 10px; /* Tamaño de la bolita */
+    border-radius: 50%; /* Hace la bolita redonda */
+    margin-right: 10px; /* Espacio entre la bolita y el texto */
+    display: inline-block; /* Muestra la bolita en línea con el texto */
+    vertical-align: middle; /* Alinea verticalmente la bolita con el texto */
+}
+
+/* Bolita verde para activo */
+#estado #activarBtn .status-indicator {
+    background-color: #5cb85c; /* Verde */
+}
+
+/* Bolita roja para inactivo */
+#estado #desactivarBtn .status-indicator {
+    background-color: #d9534f; /* Rojo */
+}

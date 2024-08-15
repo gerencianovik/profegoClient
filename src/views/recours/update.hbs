@@ -1,40 +1,45 @@
-<link rel="stylesheet" href="">
+<link rel="stylesheet" href="/css/recours/update.css">
 {{#each listaCurso}}
 <form action="/recours/updateCurso/{{idRecours}}" method="post">
     <div id="contenedor">
+        <div id="fondo">
+            <img src="/img/fondos/Tareas.png" alt="Fondo">
+        </div>
         <div id="titulo">
             <p>Actualizar Recurso N° <input type="text" name="idRecours" id="numero" required value="{{idRecours}}"></p>
         </div>
         <input type="hidden" name="_csrf" value="{{ ../csrfToken }}">
-        <div id="nombre">
-            <p>Nombre del Recurso:</p>
-            <input type="text" name="nameRecours" id="nameRecours" required value="{{nameRecours}}">
-        </div>
-        <div id="descripcion">
-            <p>Descripcion del Recurso:</p>
-            <textarea type="text" name="descriptionRecourse" id="descriptionRecourse"
-                required>{{descriptionRecourse}}</textarea>
-        </div>
-        <div id="cantidad">
-            <p>Cantidad del Recurso:</p>
-            <input type="text" name="quantyRecours" id="quantyRecours" required value="{{quantyRecours}}">
-        </div>
-        <div id="valor">
-            <p>Precio del Recurso</p>
-            <input type="text" name="valueRecours" id="valueRecours" required value="{{valueRecours}}">
-        </div>
-        <div id="estado">
-            <p>Estado:</p>
-            <div id="Activar">
-                <input type="text" name="stateRecours" id="idestado" readonly value="{{stateRecours}}">
-                <button type="button" id="activarBtn">Activar</button>
+        <div id="datos">
+            <div id="nombre">
+                <p>Nombre del Recurso:</p>
+                <input type="text" name="nameRecours" id="nameRecours" required value="{{nameRecours}}">
             </div>
-            <div id="desActivar">
-                <button type="button" id="desactivarBtn">Desabilitar</button>
+            <div id="descripcion">
+                <p>Descripcion del Recurso:</p>
+                <textarea type="text" name="descriptionRecourse" id="descriptionRecourse"
+                    required>{{descriptionRecourse}}</textarea>
             </div>
-        </div>
-        <div id="boton">
-            <button type="submit">Actualizar</button>
+            <div id="cantidad">
+                <p>Cantidad del Recurso:</p>
+                <input type="text" name="quantyRecours" id="quantyRecours" required value="{{quantyRecours}}">
+            </div>
+            <div id="valor">
+                <p>Precio del Recurso</p>
+                <input type="text" name="valueRecours" id="valueRecours" required value="{{valueRecours}}">
+            </div>
+            <div id="estado">
+                <p>Estado:</p>
+                <div id="Activar">
+                    <input type="text" name="stateRecours" id="idestado" readonly value="{{stateRecours}}">
+                    <button type="button" id="activarBtn">Activar</button>
+                </div>
+                <div id="desActivar">
+                    <button type="button" id="desactivarBtn">Desabilitar</button>
+                </div>
+            </div>
+            <div id="boton">
+                <button type="submit">Actualizar</button>
+            </div>
         </div>
     </div>
 </form>
@@ -43,39 +48,44 @@
 {{#each listaClase}}
 <form action="/recours/updateClase/{{idRecours}}" method="post">
     <div id="contenedor">
+        <div id="fondo">
+            <img src="/img/fondo/Tareas.png" alt="Fondo">
+        </div>
         <div id="titulo">
             <p>Actualizar Recurso N° <input type="text" name="idRecours" id="numero" required value="{{idRecours}}"></p>
         </div>
         <input type="hidden" name="_csrf" value="{{ ../csrfToken }}">
-        <div id="nombre">
-            <p>Nombre del Recurso:</p>
-            <input type="text" name="nameRecours" id="nameRecours" required value="{{nameRecours}}">
-        </div>
-        <div id="descripcion">
-            <p>Descripcion del Recurso:</p>
-            <textarea type="text" name="descriptionRecourse" id="descriptionRecourse"
-                required>{{descriptionRecourse}}</textarea>
-        </div>
-        <div id="cantidad">
-            <p>Cantidad del Recurso:</p>
-            <input type="text" name="quantyRecours" id="quantyRecours" required value="{{quantyRecours}}">
-        </div>
-        <div id="valor">
-            <p>Precio del Recurso</p>
-            <input type="text" name="valueRecours" id="valueRecours" required value="{{valueRecours}}">
-        </div>
-        <div id="estado">
-            <p>Estado:</p>
-            <div id="Activar">
-                <input type="text" name="stateRecours" id="idestado" readonly value="{{stateRecours}}">
-                <button type="button" id="activarBtn">Activar</button>
+        <div id="datos">
+            <div id="nombre">
+                <p>Nombre del Recurso:</p>
+                <input type="text" name="nameRecours" id="nameRecours" required value="{{nameRecours}}">
             </div>
-            <div id="desActivar">
-                <button type="button" id="desactivarBtn">Desabilitar</button>
+            <div id="descripcion">
+                <p>Descripcion del Recurso:</p>
+                <textarea type="text" name="descriptionRecourse" id="descriptionRecourse"
+                    required>{{descriptionRecourse}}</textarea>
             </div>
-        </div>
-        <div id="boton">
-            <button type="submit">Actualizar</button>
+            <div id="cantidad">
+                <p>Cantidad del Recurso:</p>
+                <input type="text" name="quantyRecours" id="quantyRecours" required value="{{quantyRecours}}">
+            </div>
+            <div id="valor">
+                <p>Precio del Recurso</p>
+                <input type="text" name="valueRecours" id="valueRecours" required value="{{valueRecours}}">
+            </div>
+            <div id="estado">
+                <p>Estado:</p>
+                <div id="Activar">
+                    <input type="text" name="stateRecours" id="idestado" readonly value="{{stateRecours}}">
+                    <button type="button" id="activarBtn">Activar</button>
+                </div>
+                <div id="desActivar">
+                    <button type="button" id="desactivarBtn">Desabilitar</button>
+                </div>
+            </div>
+            <div id="boton">
+                <button type="submit">Actualizar</button>
+            </div>
         </div>
     </div>
 </form>
