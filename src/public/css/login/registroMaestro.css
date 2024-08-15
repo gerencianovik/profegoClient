@@ -195,7 +195,7 @@ a{
     border-radius: 50%;
     left: 8.9%;
     position: absolute;
-    top:53.1%;
+    margin-top: -2%;
     border-color: #004D77;
     border: 3px solid
 }
@@ -212,7 +212,7 @@ a{
     width: 40%;
     height: 7%;
     position: absolute;
-    top: 61%;
+    margin-top: 2.5%;
     left: 30%;
 }
 
@@ -230,7 +230,7 @@ a{
 
 #noCuenta {
     position: absolute;
-    top: 69%;
+    margin-top: 13.2%;
     width: 60%;
     text-align: center;
     margin-left: 25.5%;
@@ -257,6 +257,13 @@ a{
     height: 7%;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+}
+
+#mensajesa p {
+    color: #18574F;
+    font-size: 14px;
+    font-weight: 600;
+    margin-left: 9.6%;
 }
 
 #footer{
