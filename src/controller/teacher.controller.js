@@ -243,31 +243,38 @@ teacher.update = async (req, res) => {
 teacher.lista = async (req, res) => {
     try {
         const ids = req.params.id;
+
+        // Consultas a la base de datos
         const [pagina] = await sql.promise().execute('SELECT * FROM pagePolicy');
         const [rows] = await sql.promise().query('SELECT * FROM teachers WHERE idTeacher = ?', [ids]);
         const [listaMaterias] = await sql.promise().query('SELECT t.*, s.* FROM teacherDetails t JOIN specialtyTypes s ON t.specialtyTypeIdSpecialType = s.idSpecialType WHERE teacherIdTeacher = ?', [ids]);
-        const [teachCouch] = await sql.promise().query('SELECT * FROM teachCouches WHERE teacherIdTeacher = ?', [ids])
-        const [detalle] = await sql.promise().query('SELECT * FROM teacherDetails WHERE teacherIdTeacher = ?', [ids])
+        const [teachCouch] = await sql.promise().query('SELECT * FROM teachCouches WHERE teacherIdTeacher = ?', [ids]);
+        const [detalle] = await sql.promise().query('SELECT * FROM teacherDetails WHERE teacherIdTeacher = ?', [ids]);
 
+        // Mapear datos del profesor
         const datos = rows.map(row => ({
             idTeacher: row.idTeacher,
             photoTeacher: row.photoTeacher,
             endorsementCertificateTeacher: row.endorsementCertificateTeacher,
             pageVitalTeacher: row.pageVitalTeacher,
             criminalRecordTeacher: row.criminalRecordTeacher,
-            completeNmeTeacher: row.completeNmeTeacher ? descifrarDatos(row.completeNmeTeacher) : '',
-            identificationCardTeacher: row.identificationCardTeacher ? descifrarDatos(row.identificationCardTeacher) : '',
-            ageTeacher: row.ageTeacher ? descifrarDatos(row.ageTeacher) : '',
-            descriptionTeacher: row.descriptionTeacher ? descifrarDatos(row.descriptionTeacher) : '',
-            emailTeacher: row.emailTeacher ? descifrarDatos(row.emailTeacher) : '',
-            addressTeacher: row.addressTeacher ? descifrarDatos(row.addressTeacher) : '',
-            phoneTeacher: row.phoneTeacher ? descifrarDatos(row.phoneTeacher) : '',
-            usernameTeahcer: row.usernameTeahcer ? descifrarDatos(row.usernameTeahcer) : '',
+            completeNmeTeacher: row.completeNmeTeacher ? safeDecrypt(row.completeNmeTeacher) : '',
+            identificationCardTeacher: row.identificationCardTeacher ? safeDecrypt(row.identificationCardTeacher) : '',
+            ageTeacher: row.ageTeacher ? safeDecrypt(row.ageTeacher) : '',
+            descriptionTeacher: row.descriptionTeacher ? safeDecrypt(row.descriptionTeacher) : '',
+            emailTeacher: row.emailTeacher ? safeDecrypt(row.emailTeacher) : '',
+            addressTeacher: row.addressTeacher ? safeDecrypt(row.addressTeacher) : '',
+            phoneTeacher: row.phoneTeacher ? safeDecrypt(row.phoneTeacher) : '',
+            usernameTeahcer: row.usernameTeahcer ? safeDecrypt(row.usernameTeahcer) : '',
             stateTeacher: row.stateTeacher
         }));
-        const datosCouch =teachCouch.map(row => ({ 
-            stateTeachCouch: descifrarDatos(row.stateTeachCouch)
+
+        // Mapear datos de los detalles del couch
+        const datosCouch = teachCouch.map(row => ({
+            stateTeachCouch: row.stateTeachCouch ? safeDecrypt(row.stateTeachCouch) : ''
         }));
+
+        // Renderizar la vista con los datos
         res.render('profesor/perfilList', {
             listaPagina: pagina,
             listaTeacher: datos,
@@ -276,6 +283,7 @@ teacher.lista = async (req, res) => {
             listaDetalle: detalle,
             csrfToken: req.csrfToken()
         });
+
     } catch (error) {
         console.error('Error en la consulta SQL:', error.message);
         res.status(500).send('Error interno del servidor');
