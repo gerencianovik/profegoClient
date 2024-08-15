@@ -10,50 +10,71 @@
 
 #Nuestra {
     position: absolute;
-    top: 7%;
+    top: 12%;
     text-align: center;
-    font-size: 20px;
-    width: 90%;
-    left: 5%;
+    width: 92.1%;
+    left: 3.8%;
 }
 
 #Nuestra h1 {
     color: #F39325;
+    font-size: 30px;
+}
+
+#Nuestra p{
+    font-size: 20px;
+    font-weight: 600;
 }
 
 #consejosServicios {
     position: absolute;
-    top: 70%;
+    top: 74%;
     text-align: center;
     width: 100%;
-    font-size: 20px;
+}
+
+#consejosServicios h1{
+    font-size: 30px;
+    color: #F39325;
 }
 
 #docentesConsejo {
     position: absolute;
     top: 90%;
     width: 45%;
-    left: 2.5%;
+    left: 3.8%;
+}
+
+#docentesConsejo h1 {
+    font-size: 25px;
+    color: #004D77;
+    margin-left: -65.4%;
 }
 
 #estudiantesConsejos {
     position: absolute;
     top: 90%;
     width: 45%;
-    left: 52.5%;
+    left: 50.8%;
+}
+
+#estudiantesConsejos h1 {
+    font-size: 25px;
+    color: #004D77;
+    margin-left: -76.4%;
 }
 
 #politicasPrivacidad {
     position: absolute;
-    width: 94%;
-    top: 260%;
-    left: 3%;
+    width: 90.8%;
+    top: 250%;
+    left: 4.5%;
 }
 
 #terminosCondiciones {
     position: absolute;
     width: 100%;
-    top: 340%;
+    top: 332%;
 }
 
 #Nuestra img,
@@ -68,67 +89,74 @@
     background-attachment: fixed;
 }
 
-#footer {
+#footer{
     position: absolute;
-    top: 460%;
+    top: 470%;
     width: 100%;
-    height: 60%;
+    height: 47%;
     background-color: #ffefdaa0;
     left: 0%;
 }
 
 #tarjetaNosotros,
 #tarjetaUnete,
-#tarjetaLegal {
+#tarjetaLegal{
     position: absolute;
     width: 12%;
     top: 0%;
-    left: 4%;
+    left: 4.5%;
     height: 100%;
 }
 
 #tarjetaNosotros h1,
 #tarjetaUnete h1,
-#tarjetaLegal h1 {
+#tarjetaLegal h1{
     color: #004D77;
+    font-size: 20px;
+    left: 4.5%;
 }
 
 #tarjetaNosotros p,
 #tarjetaUnete p,
-#tarjetaLegal p {
+#tarjetaLegal p{
     color: #004D77;
+    left: 4.5%;
+    font-size: 14px;
+    margin-top: 25%;
+    font-weight: 600;
+    line-height: 13px;
 }
 
-#nosotrosFooter {
+#nosotrosFooter{
     position: relative;
-    padding: 20px;
-    background: transparent;
-    /* Fondo blanco para que el borde resalte */
-    border-bottom: 5px solid transparent;
-    /* Ajusta el grosor del borde aquí */
+    padding: 0px;
+    background: transparent; 
+    border-bottom: 5px solid transparent; 
     border-image: linear-gradient(to right, #F39325, #FEEDD9);
     border-image-slice: 1;
     border-image-width: 0 0 5px 0;
+    left: 0%;
+    top: 4.5%;
 }
 
-#tarjetaUnete {
-    left: 19%;
+#tarjetaUnete{
+    left: 21%;
 }
 
-#tarjetaLegal {
-    left: 35%;
+#tarjetaLegal{
+    left: 38%;
 }
 
 #logoImagen {
     position: absolute;
     top: 7%;
-    left: 74%;
-    width: 25%;
+    left: 75%;
+    width: 20%;
     height: 69%;
 }
 
 
-#logoImagen img {
+#logoImagen img{
     width: 100%;
     height: 100%;
     background-repeat: no-repeat;
@@ -136,7 +164,7 @@
     background-attachment: fixed;
 }
 
-#final {
+#final{
     position: absolute;
     top: 90%;
     width: 100%;
@@ -145,15 +173,16 @@
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
 }
 
-#final p {
+#final p{
     text-align: center;
     width: 40%;
     color: #004D77;
+    left: 4.5%;
 }
 
-#final #finalFinal {
+#final #finalFinal{
     position: absolute;
     top: 0%;
-    left: 79%;
+    left: 77.5%;
     width: 20%;
 }

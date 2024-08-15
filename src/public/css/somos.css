@@ -5,15 +5,15 @@
     max-height: 100%;
     position: absolute;
     left: 0%;
-    top: 3%;
+    top: 5%;
 }
 
 #superiorContenedor {
     position: absolute;
     left: 2.5%;
     top: 7%;
-    width: 95.2%;
-    height: 92%;
+    width: 94.8%;
+    height: 78%;
 }
 
 #imagenEsquina {
@@ -43,17 +43,17 @@
 
 #logoPorfe {
     position: absolute;
-    top: 9%;
-    max-width: 20%;
-    max-height: 25%;
-    left: 74%;
+    top: 12%;
+    max-width: 12%;
+    max-height: 23.5%;
+    left: 74.8%;
 }
 
 #imagenContenedorCentarl h1 {
     position: absolute;
-    top: 35%;
-    left: 73%;
-    font-size: 29px;
+    top: 38%;
+    left: 72.5%;
+    font-size: 30px;
     color: white;
 }
 
@@ -61,10 +61,10 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    max-width: 39%;
-    max-height: 52%;
-    top: 42%;
-    left: 59%;
+    max-width: 34%;
+    max-height: 40%;
+    top: 53.6%;
+    left: 63.8%;
 }
 
 
@@ -75,10 +75,10 @@
 
 #imagenNuve p {
     position: absolute;
-    top: 29%;
-    left: 10%;
-    width: 90%;
-    font-size: 22px;
+    top: 22%;
+    left: 12%;
+    width: 82%;
+    font-size: 20px;
     color: white;
 }
 
@@ -87,8 +87,18 @@
     position: absolute;
     width: 40%;
     height: 70%;
-    top: 100%;
-    left: 5%;
+    top: 98%;
+    left: 4.5%;
+}
+
+#mision h1 {
+    font-size: 30px;
+    color:#004D77
+}
+
+#vision h1 {
+    font-size: 30px;
+    color:#004D77
 }
 
 #vision{
@@ -98,16 +108,26 @@
 #mision img,
 #vision img{
     width: 100%;
-    height: 100%;
+    height: 82%;
+
+}
+#mision p {
+    font-size: 20px;
+    color:#000000
+}
+
+#vision p {
+    font-size: 20px;
+    color:#000000
 }
 
 #historia{
     position: absolute;
-    top: 195%;
+    top: 187%;
     width: 100%;
     height: 100%;
     max-width: 100%;
-    max-height: 100%;
+    max-height: 84%;
     left: 0%;
 }
 
@@ -121,32 +141,41 @@
 
 #datosHistoria {
     position: absolute;
-    top: 31%;
+    top: 28%;
     width: 100%;
     height: 100%;
-    max-width: 44%;
+    max-width: 49%;
     max-height: 40%;
-    left: 11%;
-    text-align: center;
-    font-size: 20px;
+    left: 4.5%;
 }
 
 #datosHistoria h1{
     color: #F29224;
+    font-size: 30px;
+    text-align: center;
 }
 
 #datosHistoria h2{
     color: #18574F;
+    font-size: 25px;
+    text-align: center;
+    margin-top:4cqb;
+}
+
+#datosHistoria p{
+    font-size: 20px;
+    line-height: 160%;
+    margin-top:4%;
 }
 
 #contenedorValores{
     position: absolute;
-    top: 310%;
+    top: 286%;
     width: 100%;
     height: 100%;
-    max-width: 80%;
+    max-width: 90.5%;
     max-height: 100%;
-    left: 10%;
+    left: 4.5%;
 }
 
 #contenedorValores h1{
@@ -155,7 +184,7 @@
 }
 #contenedorValores p{
     color: #18574F;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 #contenedorValores img{
@@ -169,9 +198,9 @@
 
 #cotendorPorqueElegir{
     position: absolute;
-    top: 450%;
+    top: 418%;
     width: 100%;
-    height: 85%;
+    height: 86%;
     left: 0%;
 }
 
@@ -185,17 +214,23 @@
 
 #textodiv{
     position: absolute;
-    width: 23%;
-    top: 31%;
-    left: 5%;
-    font-size: 21px;
+    width: 19%;
+    top: 29%;
+    left: 4.5%;
+    font-size: 18px;
 }
 
 #textodiv h1{
     color: #FFEFDA;
+    font-size: 30px;
+    text-align: center;
+    line-height: 40px;
 }
+
 #textodiv p{
     color: white;
+    font-size: 20px;
+    line-height: 30px;
 }
 
 #cajon1 {
@@ -203,10 +238,12 @@
     width: 24%;
     height: 20%;
     background-color: #F29224;
-    top: 27%;
-    left: 35%;
-    border-radius: 20px;
+    top: 24%;
+    left: 29%;
+    border-radius: 10px;
     text-align: center;
+    opacity: 0.8;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.30);
 }
 
 #cajon1 h1,
@@ -214,6 +251,8 @@
 #cajon3 h1,
 #cajon4 h1{
     color: white;
+    font-size: 25px;
+    margin-top: 4.5%;
 }
 
 #cajon1 p,
@@ -221,6 +260,9 @@
 #cajon3 p,
 #cajon4 p{
     color: white;
+    font-size: 16px;
+    font-weight: 550;
+    margin-top: -2%;
 }
 
 #cajon1 h1 img{
@@ -232,10 +274,12 @@
     width: 24%;
     height: 20%;
     background-color: #F29224;
-    top: 75%;
-    left: 35%;
-    border-radius: 20px;
+    top: 72%;
+    left: 31%;
     text-align: center;
+    opacity: 0.8;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.40);
+    border-radius: 10px;
 }
 
 #cajon2 h1 img{
@@ -249,8 +293,10 @@
     background-color: #F29224;
     top: 57%;
     left: 70%;
-    border-radius: 20px;
     text-align: center;
+    opacity: 0.8;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.40);
+    border-radius: 10px;
 }
 
 #cajon3 h1 img{
@@ -262,10 +308,12 @@
     width: 24%;
     height: 20%;
     background-color: #F29224;
-    top: 10%;
-    left: 70%;
-    border-radius: 20px;
+    top: 11.5%;
+    left: 70.9%;
     text-align: center;
+    opacity: 0.8;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.30);
+    border-radius: 10px;
 }
 
 #cajon4 h1 img{
@@ -274,9 +322,9 @@
 
 #footer{
     position: absolute;
-    top: 544%;
+    top: 540%;
     width: 100%;
-    height: 60%;
+    height: 47%;
     background-color: #ffefdaa0;
     left: 0%;
 }
@@ -287,7 +335,7 @@
     position: absolute;
     width: 12%;
     top: 0%;
-    left: 4%;
+    left: 4.5%;
     height: 100%;
 }
 
@@ -295,37 +343,46 @@
 #tarjetaUnete h1,
 #tarjetaLegal h1{
     color: #004D77;
+    font-size: 20px;
+    left: 4.5%;
 }
 
 #tarjetaNosotros p,
 #tarjetaUnete p,
 #tarjetaLegal p{
     color: #004D77;
+    left: 4.5%;
+    font-size: 14px;
+    margin-top: 25%;
+    font-weight: 600;
+    line-height: 13px;
 }
 
 #nosotrosFooter{
     position: relative;
-    padding: 20px;
-    background: transparent; /* Fondo blanco para que el borde resalte */
-    border-bottom: 5px solid transparent; /* Ajusta el grosor del borde aquí */
+    padding: 0px;
+    background: transparent; 
+    border-bottom: 5px solid transparent; 
     border-image: linear-gradient(to right, #F39325, #FEEDD9);
     border-image-slice: 1;
     border-image-width: 0 0 5px 0;
+    left: 0%;
+    top: 4.5%;
 }
 
 #tarjetaUnete{
-    left: 19%;
+    left: 21%;
 }
 
 #tarjetaLegal{
-    left: 35%;
+    left: 38%;
 }
 
 #logoImagen {
     position: absolute;
     top: 7%;
-    left: 74%;
-    width: 25%;
+    left: 75%;
+    width: 20%;
     height: 69%;
 }
 
@@ -351,11 +408,12 @@
     text-align: center;
     width: 40%;
     color: #004D77;
+    left: 4.5%;
 }
 
 #final #finalFinal{
     position: absolute;
     top: 0%;
-    left: 79%;
+    left: 77.5%;
     width: 20%;
 }

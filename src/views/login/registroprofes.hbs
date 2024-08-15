@@ -5,11 +5,14 @@
     </div>
     <div id="complementos">
         <h3>Antes de registrarte presta atención a las siguientes consideraciones:</h3>
-        <p><img src="/img/icons/Mayoredad.png">Soy mayor de 18 años.</p>
-        <p><img src="/img/icons/CVIcon.png">Tengo mi hoja de vida, certificado de aval de enseñanza y/o título
+        <p>Soy mayor de 18 años.</p>
+        <img src="/img/icons/Mayoredad.png" id="complementosedad">
+        <p>Tengo mi hoja de vida, certificado de aval de enseñanza y/o título
             profesional y Certificado de Antecedentes Penales actualizados y al alcance.</p>
-        <p><img src="/img/icons/iconAlerta.png">Se deducirá un único cargo de $15 de tu primera clase como inscripción a
-            esta tu plataforma. Recuerda esto se realizará por ¡una sola vez!</p>
+        <img src="/img/icons/CVIcon.png" id="complementosdocumentos">
+        <p>Comprendo que se deducirá un único cargo de $15 de mi primera clase como inscripción a
+            esta plataforma. Esto se realizará por ¡una sola vez!</p>
+        <img src="/img/icons/iconAlerta.png" id="complementospago">
     </div>
     <form action="/RegisterTeachers" method="post">
         <div id="datos">
@@ -23,27 +26,23 @@
             {{/each}}
             <div id="datosRegistro">
                 <div id="Nombrecompleto">
-                    <h1>Nombre Completo:</h1>
+                    <h1>Nombre completo:</h1>
                     <input type="text" name="completeNmeTeacher" id="nombre" required>
                 </div>
                 <div id="Correo">
                     <h1>Correo electrónico:</h1>
                     <input type="text" name="emailTeacher" id="email" required>
                 </div>
-                <div id="Usuario">
-                    <h1>Usuario:</h1>
-                    <input type="text" name="usernameTeahcer" id="usuario">
-                </div>
                 <div id="Cedula">
-                    <h1>Cedula:</h1>
+                    <h1>Cédula:</h1>
                     <input type="text" name="username" id="cedula" required>
                 </div>
                 <div id="Celular">
-                    <h1>Celular:</h1>
+                    <h1>Teléfono:</h1>
                     <input type="text" name="phoneTeacher" id="celular">
                 </div>
                 <div id="Contraseña">
-                    <h1>Contraseña:</h1>
+                    <h1>Contraseña (mínimo 8 caracteres):</h1>
                     <input type="password" name="password" id="contrasena">
                 </div>
                 <div id="botonVer">
@@ -61,16 +60,78 @@
                 <div id="mensajesa"></div>
                 <div id="politicas">
                     <input type="checkbox" name="" id="valirdar">
-                    <p id="validacion">He leído y acepto las <a href="/politicas">Políticas de Privacidad y los Términos y
-                            Condiciones</a>
-                        de uso de los estudiantes de ProfeGo</p>
+                    <p id="validacion">He leído y acepto las <a href="/politicas">Políticas de Privacidad y los Términos
+                            y
+                            Condiciones de uso de los docentes</a>
+                            de ProfeGo</p>
                 </div>
                 <div id="boton">
-                    <button type="submit">Guardar</button>
+                    <button type="submit">Registrarse</button>
+                </div>
+                <div id="noCuenta">
+                    <p>¿Ya tienes una cuenta? <a href="/loginTeachers">Inicia sesión</a></p>
                 </div>
             </div>
+             <div id="colores">
+            <p></p>
+        </div>
         </div>
     </form>
+</div>
+<div id="footer">
+    <div id="tarjetaNosotros">
+        <div id="nosotrosFooter">
+            <h1>Nosotros</h1>
+        </div>
+        <div id="datosNosotros">
+            <p>¿Quiénes Somos?<br>
+                <br>
+                <br>
+                ¿Cómo funciona?<br>
+                <br>
+                <br>
+                Testimonios<br>
+                <br>
+                <br>
+                Preguntas frecuentes<br>
+                <br>
+                <br>
+                Contacto
+            </p>
+        </div>
+    </div>
+    <div id="tarjetaUnete">
+        <div id="nosotrosFooter">
+            <h1>Únete</h1>
+        </div>
+        <div id="datosNosotros">
+            <p>Regístrate como estudiante <br>
+                <br>
+                <br>
+                Sé docente o coach
+            </p>
+        </div>
+    </div>
+    <div id="tarjetaLegal">
+        <div id="nosotrosFooter">
+            <h1>Legal</h1>
+        </div>
+        <div id="datosNosotros">
+            <p>Términos y condiciones <br>
+                <br>
+                <br>
+                Políticas de privacidad
+            </p>
+        </div>
+    </div>
+    <div id="logoImagen">
+        <img src="/img/logo/LogoPrincipal.png">
+    </div>
+    <div id="final">
+        <p>Interconexión segura, rápida e ideal entre docentes y estudiantes.</p>
+        <p id="finalFinal">ProfeGo® EDUCONECTA S.A.S</p>
+    </div>
+</div>
 </div>
 
 <script src="/js/verNoVer.js"></script>
