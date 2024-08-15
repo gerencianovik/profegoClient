@@ -72,14 +72,14 @@ teacher.mostrar = async (req, res) => {
             endorsementCertificateTeacher: row.endorsementCertificateTeacher,
             pageVitalTeacher: row.pageVitalTeacher,
             criminalRecordTeacher: row.criminalRecordTeacher,
-            completeNmeTeacher: row.completeNmeTeacher ? descifrarDatos(row.completeNmeTeacher) : '',
-            identificationCardTeacher: row.identificationCardTeacher ? descifrarDatos(row.identificationCardTeacher) : '',
-            ageTeacher: row.ageTeacher ? descifrarDatos(row.ageTeacher) : '',
-            descriptionTeacher: row.descriptionTeacher ? descifrarDatos(row.descriptionTeacher) : '',
-            emailTeacher: row.emailTeacher ? descifrarDatos(row.emailTeacher) : '',
-            addressTeacher: row.addressTeacher ? descifrarDatos(row.addressTeacher) : '',
-            phoneTeacher: row.phoneTeacher ? descifrarDatos(row.phoneTeacher) : '',
-            usernameTeahcer: row.usernameTeahcer ? descifrarDatos(row.usernameTeahcer) : ''
+            completeNmeTeacher: row.completeNmeTeacher ? safeDecrypt(row.completeNmeTeacher) : '',
+            identificationCardTeacher: row.identificationCardTeacher ? safeDecrypt(row.identificationCardTeacher) : '',
+            ageTeacher: row.ageTeacher ? safeDecrypt(row.ageTeacher) : '',
+            descriptionTeacher: row.descriptionTeacher ? safeDecrypt(row.descriptionTeacher) : '',
+            emailTeacher: row.emailTeacher ? safeDecrypt(row.emailTeacher) : '',
+            addressTeacher: row.addressTeacher ? safeDecrypt(row.addressTeacher) : '',
+            phoneTeacher: row.phoneTeacher ? safeDecrypt(row.phoneTeacher) : '',
+            usernameTeahcer: row.usernameTeahcer ? safeDecrypt(row.usernameTeahcer) : ''
         }));
 
         res.render('profesor/perfilUpdate', {
@@ -95,6 +95,16 @@ teacher.mostrar = async (req, res) => {
         res.status(500).send('Error interno del servidor');
     }
 };
+
+// Nueva función de descifrado segura
+function safeDecrypt(data) {
+    try {
+        return descifrarDatos(data);
+    } catch (error) {
+        console.error('Error al descifrar datos:', error.message);
+        return ''; // Devolver una cadena vacía si ocurre un error
+    }
+}
 
 teacher.update = async (req, res) => {
     const id = req.params.id;
