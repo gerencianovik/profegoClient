@@ -1,0 +1,59 @@
+<link rel="stylesheet" href="/css/silabus/agregar.css">
+<div id="contenedor">
+    {{#each listaPagina}}
+    <form action="/silabus/courso/{{idCours}}" method="post">
+        {{/each}}
+        <div id="titulo">
+            {{#each listaSilabus}}
+            <h1>Temario educativo <input type="text" name="idsyllabusEducational" id="numero" value="{{Maximo}}"></h1>
+            {{/each}}
+        </div>
+        <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+        <div id="objetivo">
+            <p>Objetivo:</p>
+            <input type="text" name="objetivesyllabusEducational" id="objetivesyllabusEducational"
+                value="{{objetivesyllabusEducational}}">
+        </div>
+        <div id="contenedorContador">
+            <div id="contador">
+                <input type="text" name="ContadorModulos" id="ContadorModulos" readonly>
+                <p>Modulos</p>
+            </div>
+            <div id="Clases">
+                <input type="text" name="contadorClases" id="contadorClases" readonly>
+                <p>Clases</p>
+            </div>
+            <div id="Duracion">
+                <input type="text" name="contadorDuracion" id="contadorDuracion" readonly>
+                <p>Duración total</p>
+            </div>
+        </div>
+        <div id="modulo">
+            <div id="mas">
+                <button type="button" id="moduloBoton"><img src="/img/icons/mas.png"></button>
+            </div>
+            <div id="moduleCurrucularContentCourse">
+            </div>
+        </div>
+        <div id="tema">
+            <div id="mas">
+                <button type="button" id="temaBoton"><img src="/img/icons/mas.png"></button>
+            </div>
+            <div id="themesyllabusEducational">
+            </div>
+        </div>
+        <div id="tiempo">
+            <div id="mas">
+                <button type="button" id="tiempoBoton"><img src="/img/icons/mas.png"></button>
+            </div>
+            <div id="timesyllabusEducational">
+            </div>
+        </div>
+        <div id="boton">
+            <button type="submit"><img src="/img/icons/save.png">Guardar</button>
+        </div>
+    </form>
+</div>
+
+<script src="/js/numero.js"></script>
+<script src="/js/aumentoSilabus.js"></script>
