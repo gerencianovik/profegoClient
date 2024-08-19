@@ -6,10 +6,6 @@ const attendance = (sequelize, type) =>{
             primaryKey: true,
             comment: 'Campo unico de Asistencia'
         },
-        dayAttendance: {
-            type: type.STRING,
-            comment: 'Dia de Asistencia'
-        },
         dateAttendance: {
             type: type.STRING,
             comment: 'Fecha de Asistencia'

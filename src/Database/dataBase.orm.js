@@ -359,6 +359,8 @@ detailBooking.belongsTo(clases)
 teacher.hasMany(booking)
 booking.belongsTo(teacher)
 
+student.hasMany(members)
+members.belongsTo(student)
 
 page.hasMany(groups)
 groups.belongsTo(page)
