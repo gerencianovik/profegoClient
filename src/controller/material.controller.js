@@ -119,7 +119,7 @@ materialCours.mandar = async (req, res) => {
                 }
                 await orm.material.create(newSpeciality)
                 req.flash('success', 'Se creo la materia')
-                res.redirect('/material/cursos/' + ids);
+                res.redirect('/cours/detailList/' + ids);
             } catch (error) {
                 req.flash('message', 'Error al guardar la materia')
                 res.redirect('/material/curso/' + ids);

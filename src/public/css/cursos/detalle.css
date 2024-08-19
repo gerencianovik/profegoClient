@@ -290,7 +290,7 @@
 #Materiales {
     width: 40%;
     background-image: linear-gradient(to top, #177483 32%, #004D77 100%);
-    margin-top: -39%;
+    margin-top: -45%;
     border-radius: 10px;
     margin-left: 59%;
     font-size: 20px;
@@ -329,32 +329,33 @@
     margin-left: 1%;
 }
 
-#imagenTareas img {
+#imagenTareass img {
     width: 10%;
 }
 
-#imagenPruebas img {
+#imagenPruebass img {
     width: 10%;
 }
 
 #tareass {
     display: flex;
     flex-wrap: wrap;
-    /* Permite que los elementos se ajusten a la siguiente fila si es necesario */
     gap: 10px;
-    /* Espacio entre los elementos */
+    margin-top: -10%;
+    margin-left: 14%;
+}
+
+#tareass a {
+    text-decoration: none;
 }
 
 #tareass p {
     flex: 1 1 30%;
-    /* Cada <p> ocupa el 30% del ancho del contenedor */
     margin: 0;
-    /* Elimina el margen predeterminado de los <p> */
     text-align: center;
-    width: 20%;
     border: 2px solid #165851;
     color: #18574F;
-    /* Centra el texto dentro del <p> */
+    border-color: transparent;
 }
 
 #pruebasCursos {
@@ -366,15 +367,19 @@
     /* Espacio entre los elementos */
 }
 
+#pruebasCursos a {
+    text-decoration: none;
+}
+
 #pruebasCursos p {
     flex: 1 1 30%;
     /* Cada <p> ocupa el 30% del ancho del contenedor */
     margin: 0;
     /* Elimina el margen predeterminado de los <p> */
     text-align: center;
-    width: 20%;
     border: 2px solid #165851;
     color: #18574F;
+    border-color: transparent;
     /* Centra el texto dentro del <p> */
 }
 
@@ -384,7 +389,7 @@
     color: #18574F;
 }
 
-#menus{
+#menus {
     position: absolute;
     width: 16%;
     top: 57%;
@@ -400,27 +405,27 @@
     width: 25%;
 }
 
-#imagenMateriales img{
+#imagenMateriales img {
     width: 25%;
 }
 
-#imagenTareas img{
+#imagenTareas img {
     width: 25%;
 }
 
-#imagenPruebas img{
+#imagenPruebas img {
     width: 25%;
 }
 
-#imagenAsistencia img{
+#imagenAsistencia img {
     width: 25%;
 }
 
-#imagenObservacion img{
+#imagenObservacion img {
     width: 25%;
 }
 
-#imagenCurricular img{
+#imagenCurricular img {
     width: 25%;
 }
 
@@ -458,9 +463,107 @@
     border-radius: 50%;
 }
 
-#contenedorBotonPanico button{
+#contenedorBotonPanico button {
     width: 100%;
     height: 100%;
     background-color: red;
     border-radius: 50%;
+}
+
+#calendarios {
+    position: absolute;
+    left: 70%;
+    background-color: white;
+    top: 192%;
+}
+
+#calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 columnas para los días de la semana */
+    gap: 2px;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+#disponibilidad {
+    width: 100%;
+    height: 30px;
+}
+
+#verde{
+    width: 20%;
+}
+
+#verde h1 {
+    width: 20%;
+    background-color: green;
+    height: 15px;
+}
+
+#verde p{
+    position: absolute;
+    top: 2%;
+    left: 6%;
+}
+
+#naranja{
+    width: 20%;
+    position: absolute;
+    left: 34%;
+    top: 0%;
+}
+
+#naranja h1 {
+    width: 20%;
+    background-color: green;
+    height: 15px;
+}
+
+#naranja p{
+    position: absolute;
+    top: 15%;
+    left: 24%;
+}
+
+#naranja h1 {
+    width: 20%;
+    background-color: #F39325;
+    height: 15px;
+}
+
+#rojo{
+    width: 35%;
+    position: absolute;
+    left: 61%;
+    top: 0%;
+}
+
+#rojo h1 {
+    width: 12%;
+    background-color: red;
+    height: 15px;
+}
+
+#rojo p{
+    position: absolute;
+    top: 14%;
+    left: 16%;
+}
+
+.calendar-day {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.calendar-day.highlight {
+    background-color: red; /* Color para los días resaltados */
+    font-weight: bold;
+}
+
+#fehcaInit,
+#fehcaFin{
+    display: none;
 }

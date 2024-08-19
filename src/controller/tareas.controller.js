@@ -59,9 +59,9 @@ tareasCtl.mostrarTareaCurso = async (req, res) => {
     try {
         const id = req.params.id
         const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = 1');
-        const [teacher] = await sql.promise().query('SELECT * FROM teachers where idTeacher = ?', [id]);
+        const [cours] = await sql.promise().query('SELECT * FROM cours where idCours = ?', [id]);
         const [maxCours] = await sql.promise().query('SELECT MAX(idTask) AS Maximo FROM tasks')
-        res.render('cours/tareas/tareasAgregar', { listaPagina: pagina, MaximoCurso: maxCours, listaTeacher: teacher, csrfToken: req.csrfToken() });
+        res.render('cours/tareas/tareasAgregar', { listaPagina: pagina, MaximoCurso: maxCours, listaCurso: cours, csrfToken: req.csrfToken() });
     } catch (error) {
         console.error('Error en la consulta:', error.message);
         res.status(500).send('Error al realizar la consulta');
@@ -72,9 +72,9 @@ tareasCtl.mostrarTareaClase = async (req, res) => {
     try {
         const id = req.params.id
         const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = 1');
-        const [teacher] = await sql.promise().query('SELECT * FROM teachers where idTeacher = ?', [id]);
+        const [curso] = await sql.promise().query('SELECT * FROM cours where idCours = ?', [id]);
         const [maxCours] = await sql.promise().query('SELECT MAX(idTask) AS Maximo FROM tasks')
-        res.render('clases/tareas/tareasAgregar', { listaPagina: pagina, MaximoCurso: maxCours, listaTeacher: teacher, csrfToken: req.csrfToken() });
+        res.render('clases/tareas/tareasAgregar', { listaPagina: pagina, MaximoCurso: maxCours, listaCurso: curso, csrfToken: req.csrfToken() });
     } catch (error) {
         console.error('Error en la consulta:', error.message);
         res.status(500).send('Error al realizar la consulta');
@@ -91,7 +91,7 @@ tareasCtl.mandarCurso = async (req, res) => {
 
         const id = req.user.idUser;
 
-        const { idTask, nameTask, descriptionTask, idMultimediaTask, photoMultimediaTask, videoMultimediaTask, linkMultimediaTask, documentMultimediaTask, otherMultimediaTask } = req.body;
+        const { idTask, nameTask, descriptionTask, fechaEntrega, idMultimediaTask, linkMultimediaTask, otherMultimediaTask } = req.body;
 
         const newMultimedia = {
             linkMultimediaTask,
@@ -104,6 +104,7 @@ tareasCtl.mandarCurso = async (req, res) => {
             idTask,
             nameTask,
             descriptionTask,
+            fechaEntrega,
             CreateTask: new Date().toLocaleString(),
             stateTask: 'Activar',
             courIdCours: ids,
@@ -115,7 +116,7 @@ tareasCtl.mandarCurso = async (req, res) => {
 
         // Manejo de archivos
         if (req.files) {
-            const { photoMultimediaTask, videoCours } = req.files;
+            const { photoMultimediaTask, videoMultimediaTask } = req.files;
 
             if (photoMultimediaTask) {
                 const photoFilePath = path.join(__dirname, '/../public/img/multimedia/', photoMultimediaTask.name);
@@ -129,11 +130,11 @@ tareasCtl.mandarCurso = async (req, res) => {
         }
 
         req.flash('success', 'Éxito al guardar');
-        res.redirect('/cours/list/' + id);
+        res.redirect('/cours/detailList/' + id);
     } catch (error) {
         console.error(error);
         req.flash('message', 'Error al guardar');
-        res.redirect('/cours/add/' + ids);
+        res.redirect('/tareas/curso/' + ids);
     }
 }
 
@@ -147,7 +148,7 @@ tareasCtl.mandarClase = async (req, res) => {
 
         const id = req.user.idUser;
 
-        const { idTask, nameTask, descriptionTask, idMultimediaTask, photoMultimediaTask, videoMultimediaTask, linkMultimediaTask, documentMultimediaTask, otherMultimediaTask } = req.body;
+        const { idTask, nameTask, descriptionTask, fechaEntrega, idMultimediaTask, linkMultimediaTask, otherMultimediaTask } = req.body;
 
         const newMultimedia = {
             linkMultimediaTask,
@@ -159,6 +160,7 @@ tareasCtl.mandarClase = async (req, res) => {
         const newPage = {
             idTask,
             nameTask,
+            fechaEntrega,
             descriptionTask,
             CreateTask: new Date().toLocaleString(),
             stateTask: 'Activar',
@@ -171,7 +173,7 @@ tareasCtl.mandarClase = async (req, res) => {
 
         // Manejo de archivos
         if (req.files) {
-            const { photoMultimediaTask, videoCours } = req.files;
+            const { photoMultimediaTask, videoMultimediaTask } = req.files;
 
             if (photoMultimediaTask) {
                 const photoFilePath = path.join(__dirname, '/../public/img/multimedia/', photoMultimediaTask.name);
@@ -222,7 +224,7 @@ tareasCtl.detalleCurso = async (req, res) => {
         const id = req.params.id
         const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = 1');
         const [tarea] = await sql.promise().query('SELECT * FROM tasks WHERE idTask	= ?', [id])
-        res.render('cours/tareas/tareasEntregadas', { listaPagina: pagina, listaTarea: tarea, csrfToken: req.csrfToken() });
+        res.render('cours/tareas/tareasActualizas', { listaPagina: pagina, listaTarea: tarea, csrfToken: req.csrfToken() });
     } catch (error) {
         console.error('Error en la consulta:', error.message);
         res.status(500).send('Error al realizar la consulta');

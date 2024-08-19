@@ -1,32 +1,44 @@
-<link rel="stylesheet" href="">
+<link rel="stylesheet" href="/css/tareas/actualizar.css">
 <div id="contenedor">
-    <form action="/task/curso/{{idTask}}" method="post">
-        <div id="titulo">
-            <h1>Tareas <input type="text" name="idTask" id="numero" value="{{maximo}}"></h1>
+    {{#each listaTarea}}
+    <form action="/tareas/detailCurso/{{idTask}}" method="post">
+        <div id="fondo">
+            <img src="/img/fondo/Tareas.png">
         </div>
-        <div id="datos">
-            <div id="nombre">
-                <p>Nombre Tarea:</p>
-                <input type="text" name="nameTask" id="nameTask">
+        <input type="hidden" name="_csrf" value="{{ ../csrfToken }}">
+        <div id="datosLogin">
+            <div id="titulo">
+                <h1>Tarea</h1>
             </div>
-            <div id="descriptionTask">
-                <p>Descipción Tarea:</p>
-                <input type="text" name="descriptionTask" id="descriptionTask">
-            </div>
-            <div id="estado">
-                <p>Estado:</p>
-                <div id="Activar">
-                    <input type="text" name="stateCours" id="idestado" readonly value="{{stateCours}}">
-                    <button type="button" id="activarBtn">Activar</button>
+            <div id="datos">
+                <div id="nombre">
+                    <p>Nombre Tarea:</p>
+                    <input type="text" name="nameTask" id="nameTask" value="{{nameTask}}">
                 </div>
-                <div id="desActivar">
-                    <button type="button" id="desactivarBtn">Desabilitar</button>
+                <div id="descriptionTask">
+                    <p>Descipción Tarea:</p>
+                    <input type="text" name="descriptionTask" id="descriptionTask" value="{{descriptionTask}}">
                 </div>
-            </div>
-            <div id="Boton">
-                <button type="submit">Guardar</button>
+                <div id="fechaEntrega">
+                    <p>Fecha máxima de entrega:</p>
+                    <input type="date" name="fechaEntrega" id="fechaEntrega" value="{{fechaEntrega}}">
+                </div>
+                <div id="estado">
+                    <p>Estado:</p>
+                    <div id="Activar">
+                        <input type="text" name="stateCours" id="idestado" readonly value="{{stateTask}}">
+                        <button type="button" id="activarBtn">Activar</button>
+                    </div>
+                    <div id="desActivar">
+                        <button type="button" id="desactivarBtn">Desabilitar</button>
+                    </div>
+                </div>
+                <div id="Boton">
+                    <button type="submit">Actualizar</button>
+                </div>
             </div>
         </div>
     </form>
+    {{/each}}
 </div>
 <script src="/js/estados.js"></script>

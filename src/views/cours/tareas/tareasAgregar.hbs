@@ -1,21 +1,37 @@
-<link rel="stylesheet" href="">
+<link rel="stylesheet" href="/css/tareas/agregar.css">
 <div id="contenedor">
-    <form action="/task/curso/{{idCours}}" method="post">
-        <div id="titulo">
-            <h1>Tareas <input type="text" name="idTask" id="numero" value="{{maximo}}"></h1>
+    {{#each listaCurso}}
+    <form action="/tareas/curso/{{idCours}}" method="post">
+        {{/each}}
+        <div id="fondo">
+            <img src="/img/fondo/Tareas.png">
         </div>
-        <div id="datos">
-            <div id="nombre">
-                <p>Nombre Tarea:</p>
-                <input type="text" name="nameTask" id="nameTask">
+        <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+        <div id="datosLogin">
+            <div id="titulo">
+                {{#each MaximoCurso}}
+                <h1>Tareas <input type="text" name="idTask" id="numero" value="{{Maximo}}"></h1>
+                {{/each}}
             </div>
-            <div id="descriptionTask">
-                <p>Descipción Tarea:</p>
-                <input type="text" name="descriptionTask" id="descriptionTask">
-            </div>
-            <div id="Boton">
-                <button type="submit">Guardar</button>
+            <div id="datos">
+                <div id="nombre">
+                    <p>Nombre Tarea:</p>
+                    <input type="text" name="nameTask" id="nameTask">
+                </div>
+                <div id="descriptionTask">
+                    <p>Descipción Tarea:</p>
+                    <input type="text" name="descriptionTask" id="descriptionTask">
+                </div>
+                <div id="fechaEntrega">
+                    <p>Fecha máxima de entrega:</p>
+                    <input type="date" name="fechaEntrega" id="fechaEntrega">
+                </div>
+                <div id="Boton">
+                    <button type="submit">Guardar</button>
+                </div>
             </div>
         </div>
     </form>
 </div>
+
+<script src="/js/numero.js"></script>
