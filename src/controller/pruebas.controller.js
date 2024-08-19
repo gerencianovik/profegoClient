@@ -55,5 +55,13 @@ const guardarYSubirArchivo = async (archivo, filePath, columnName, idTeacher, ur
     });
 };
 
+pruebaCtl.mostrar = async (req, res) => {
+    try {
+        res.render('pruebas/agregar')
+    } catch (error) {
+        console.error('Error al guardar el recurso:', error);
+        req.flash('message', 'Error al guardar el recurso');
+    }
+}
 
 module.exports = pruebaCtl
