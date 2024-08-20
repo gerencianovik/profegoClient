@@ -5,6 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
 const { validationResult } = require('express-validator');
+const { descifrarDatos, cifrarDatos } = require('../lib/encrypDates.js');
 const observacionesCtl = {}
 
 const guardarYSubirArchivo = async (archivo, filePath, columnName, idTeacher, url, req) => {
@@ -59,9 +60,15 @@ observacionesCtl.mostrar = async (req, res) => {
     try {
         const id = req.params.id
         const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = 1');
-        const [teacher] = await sql.promise().query('SELECT * FROM teachers where idTeacher = ?', [id]);
-        const [maxCours] = await sql.promise().query('SELECT MAX(idTask) AS Maximo FROM tasks')
-        res.render('cours/tareas/tareasAgregar', { listaPagina: pagina, MaximoCurso: maxCours, listaTeacher: teacher, csrfToken: req.csrfToken() });
+        const [curso] = await sql.promise().query('select * from cours where idCours = ?', [id])
+        const [mienbros] = await sql.promise().query('SELECT * FROM students')
+        const [pruena] = await sql.promise().query('select MAX(idObservation) as maximo from observations')
+        const datos = mienbros.map(row => ({
+            idEstudent: row.idEstudent,
+            photoEstudent: row.photoEstudent,
+            completeNameEstudent: row.completeNameEstudent ? descifrarDatos(row.completeNameEstudent) : '',
+        }));
+        res.render('cours/observation/observaciones', { listaPagina: pagina, estudiantes: datos, listaCurso: curso, maximoPrueba: pruena, csrfToken: req.csrfToken() })
     } catch (error) {
         console.error('Error en la consulta:', error.message);
         res.status(500).send('Error al realizar la consulta');
@@ -75,78 +82,21 @@ observacionesCtl.mandar = async (req, res) => {
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
-
-        const id = req.user.idUser;
-
-        const { idTask, nameTask, descriptionTask, idMultimediaTask, photoMultimediaTask, videoMultimediaTask, linkMultimediaTask, documentMultimediaTask, otherMultimediaTask } = req.body;
-
-        const newMultimedia = {
-            linkMultimediaTask,
-            otherMultimediaTask,
-            createMultimediaTask: new Date().toLocaleString(),
-            taskIdTask: idTask
+        const { idEstudent, observations, valorObservacion } = req.body;
+        const newEnvio = {
+            observations,
+            valorObservacion,
+            studentIdEstudent: idEstudent,
+            createObservations: new Date().toLocaleString(),
         }
-
-        const newPage = {
-            idTask,
-            nameTask,
-            descriptionTask,
-            CreateTask: new Date().toLocaleString(),
-            stateTask: 'Activar',
-            courIdCours: ids,
-        };
-
-        // Crear el curso
-        await orm.taskClass.create(newPage);
-        await orm.multimediaCourse.create(newMultimedia)
-
-        // Manejo de archivos
-        if (req.files) {
-            const { photoMultimediaTask, videoCours } = req.files;
-
-            if (photoMultimediaTask) {
-                const photoFilePath = path.join(__dirname, '/../public/img/multimedia/', photoMultimediaTask.name);
-                await guardarYSubirArchivo(photoMultimediaTask, photoFilePath, 'photoMultimediaTask', idMultimediaTask, 'http://localhost:5000/imagenMultimedia', req);
-            }
-
-            if (videoMultimediaTask) {
-                const endorsementFilePath = path.join(__dirname, '/../public/video/multimedia/', videoMultimediaTask.name);
-                await guardarYSubirArchivo(videoMultimediaTask, endorsementFilePath, 'videoMultimediaTask', idMultimediaTask, 'http://localhost:5000/cursoMultimedia', req);
-            }
-        }
-
+        await orm.observation.create(newEnvio)
         req.flash('success', 'Éxito al guardar');
-        res.redirect('/cours/list/' + id);
+        res.redirect('/cours/detailList/' + id);
     } catch (error) {
         console.error(error);
         req.flash('message', 'Error al guardar');
-        res.redirect('/cours/add/' + ids);
+        res.redirect('/observacionValoracion/curso/' + ids);
     }
 }
-
-observacionesCtl.lista = async (req, res) => {
-    try {
-        const id = req.params.id
-        const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = 1');
-        const [tarea] = await sql.promise().query('SELECT * FROM tasks WHERE courIdCours	= ?', [id])
-        res.render('cours/tareas/tareas', { listaPagina: pagina, listaTarea: tarea, csrfToken: req.csrfToken() });
-    } catch (error) {
-        console.error('Error en la consulta:', error.message);
-        res.status(500).send('Error al realizar la consulta');
-    }
-}
-
-observacionesCtl.detalle = async (req, res) => {
-    try {
-        const id = req.params.id
-        const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = 1');
-        const [tarea] = await sql.promise().query('SELECT * FROM tasks WHERE idTask	= ?', [id])
-        res.render('cours/tareas/tareasEntregadas', { listaPagina: pagina, listaTarea: tarea, csrfToken: req.csrfToken() });
-    } catch (error) {
-        console.error('Error en la consulta:', error.message);
-        res.status(500).send('Error al realizar la consulta');
-    }
-}
-
 
 module.exports = observacionesCtl
