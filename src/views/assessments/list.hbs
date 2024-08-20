@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Evaluaciones</title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Ajusta el path según tus necesidades -->
+</head>
+<body>
+    <header>
+        <h1>{{listaPagina.title}}</h1> <!-- Asumiendo que `listaPagina` tiene un campo `title` -->
+        <nav>
+            <a href="/assessments/add/{{listaPagina.idPage}}">Agregar Evaluación</a>
+            <a href="/assessments">Volver a Inicio</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Evaluaciones del Curso</h2>
+
+        {{#if lista.length}}
+            <ul>
+                {{#each lista}}
+                    <li>
+                        <h3>{{this.nameAssessment}}</h3> <!-- Ajusta el campo según tu modelo -->
+                        <p>Descripción: {{this.descriptionAssessment}}</p> <!-- Ajusta el campo según tu modelo -->
+                        <p>Fecha: {{this.dateAssessment}}</p> <!-- Ajusta el campo según tu modelo -->
+                        <p>Calificación: {{this.qualificationAssessment}}</p> <!-- Ajusta el campo según tu modelo -->
+                        <p>Estado: {{this.stateAssessments}}</p> <!-- Ajusta el campo según tu modelo -->
+                        <a href="/assessments/details/{{this.idAssessment}}">Ver Detalles</a>
+                        <a href="/assessments/update/{{this.idAssessment}}">Actualizar</a>
+                        <form action="/assessments/delete/{{this.idAssessment}}" method="POST" style="display:inline;">
+                            <button type="submit">Eliminar</button>
+                        </form>
+                    </li>
+                {{/each}}
+            </ul>
+        {{else}}
+            <p>No hay evaluaciones para mostrar.</p>
+        {{/if}}
+    </main>
+
+    <footer>
+        <p>&copy; {{currentYear}} Mi Aplicación</p>
+    </footer>
+
+    <script src="/js/scripts.js"></script> <!-- Ajusta el path según tus necesidades -->
+</body>
+</html>

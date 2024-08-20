@@ -193,6 +193,7 @@ app.use(require('./router/index.router'));
 app.use(require('./router/envio.router'));
 app.use('/teacher', require('./router/teacher.router'));
 app.use('/clases', require('./router/class.router'));
+app.use('/assessments', require('./router/assessments.router'));
 app.use('/cours', require('./router/cours.router'));
 app.use('/recours', require('./router/recoursCours.router'));
 app.use('/material', require('./router/materialCours.router'));
