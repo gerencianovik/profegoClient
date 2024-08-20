@@ -1,8 +1,10 @@
 <link rel="stylesheet" href="">
-<form action="" method="post">
+{{#each listaCurso}}
+<form action="/pruebas/curso/{{idCours}}" method="post">
+    {{/each}}
     <div id="contenedor">
-        <div id="titulo">
-            <h1>Prueba</h1>
+        <div id="titulo">{{#each maximoPrueba}}
+            <h1>Prueba <input type="text" name="idPrueba" id="numero" value="{{maximo}}"></h1>{{/each}}
         </div>
         <div id="preguntas">
             <p>Pregunta:</p>

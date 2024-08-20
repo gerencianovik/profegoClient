@@ -57,7 +57,11 @@ const guardarYSubirArchivo = async (archivo, filePath, columnName, idTeacher, ur
 
 pruebaCtl.mostrar = async (req, res) => {
     try {
-        res.render('pruebas/agregar')
+        const id = req.params.id
+        const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = 1');
+        const [curso] = await sql.promise().query('select * from cours where idCours = ?', [id])
+        const [pruena] = await sql.promise().query('select MAX(idCours) as maximo from cours')
+        res.render('pruebas/agregar',{listaPagina:pagina, listaCurso:curso, maximoPrueba: pruena, csrfToken: req.csrfToken()})
     } catch (error) {
         console.error('Error al guardar el recurso:', error);
         req.flash('message', 'Error al guardar el recurso');

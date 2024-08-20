@@ -200,5 +200,7 @@ app.use('/silabus', require('./router/silabus.router'))
 app.use('/tareas', require('./router/tareas.router'))
 app.use('/students', require('./router/students.router'))
 app.use(require('./router/eleccion.router'))
+app.use('/pruebas', require('./router/pruebas.router'))
+app.use('/observacionValoracion', require('./router/observaciones.router'))
 // Exportar la aplicación
 module.exports = app;

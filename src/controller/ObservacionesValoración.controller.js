@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
 const { validationResult } = require('express-validator');
-const tareasCtl = {}
+const observacionesCtl = {}
 
 const guardarYSubirArchivo = async (archivo, filePath, columnName, idTeacher, url, req) => {
     const validaciones = {
@@ -55,7 +55,7 @@ const guardarYSubirArchivo = async (archivo, filePath, columnName, idTeacher, ur
     });
 };
 
-tareasCtl.mostrar = async (req, res) => {
+observacionesCtl.mostrar = async (req, res) => {
     try {
         const id = req.params.id
         const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = 1');
@@ -68,7 +68,7 @@ tareasCtl.mostrar = async (req, res) => {
     }
 }
 
-tareasCtl.mandar = async (req, res) => {
+observacionesCtl.mandar = async (req, res) => {
     const ids = req.params.id;
     try {
         const errors = validationResult(req);
@@ -124,7 +124,7 @@ tareasCtl.mandar = async (req, res) => {
     }
 }
 
-tareasCtl.lista = async (req, res) => {
+observacionesCtl.lista = async (req, res) => {
     try {
         const id = req.params.id
         const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = 1');
@@ -136,7 +136,7 @@ tareasCtl.lista = async (req, res) => {
     }
 }
 
-tareasCtl.detalle = async (req, res) => {
+observacionesCtl.detalle = async (req, res) => {
     try {
         const id = req.params.id
         const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = 1');
@@ -149,4 +149,4 @@ tareasCtl.detalle = async (req, res) => {
 }
 
 
-module.exports = tareasCtl
+module.exports = observacionesCtl
