@@ -5,6 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
 const { validationResult } = require('express-validator');
+const { descifrarDatos, cifrarDatos } = require('../lib/encrypDates.js');
 const tareasCtl = {}
 
 const guardarYSubirArchivo = async (archivo, filePath, columnName, idTeacher, url, req) => {
@@ -59,9 +60,15 @@ tareasCtl.mostrar = async (req, res) => {
     try {
         const id = req.params.id
         const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = 1');
-        const [teacher] = await sql.promise().query('SELECT * FROM cours where idCours = ?', [id]);
-        const [maxCours] = await sql.promise().query('SELECT MAX(idAttendance) AS Maximo FROM attendances')
-        res.render('cours/tareas/tareasAgregar', { listaPagina: pagina, MaximoCurso: maxCours, listaTeacher: teacher, csrfToken: req.csrfToken() });
+        const [curso] = await sql.promise().query('select * from cours where idCours = ?', [id])
+        const [mienbros] = await sql.promise().query('SELECT * FROM students')
+        const [pruena] = await sql.promise().query('select MAX(idAttendance) as maximo from attendances')
+        const datos = mienbros.map(row => ({
+            idEstudent: row.idEstudent,
+            photoEstudent: row.photoEstudent,
+            completeNameEstudent: row.completeNameEstudent ? descifrarDatos(row.completeNameEstudent) : '',
+        }));
+        res.render('cours/assignment/asistencia', { listaPagina: pagina, estudiantes: datos, listaCurso: curso, maximoPrueba: pruena, csrfToken: req.csrfToken() })
     } catch (error) {
         console.error('Error en la consulta:', error.message);
         res.status(500).send('Error al realizar la consulta');
@@ -117,30 +124,5 @@ tareasCtl.mandar = async (req, res) => {
         res.redirect('/cours/add/' + ids);
     }
 }
-
-tareasCtl.lista = async (req, res) => {
-    try {
-        const id = req.params.id
-        const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = 1');
-        const [tarea] = await sql.promise().query('SELECT * FROM tasks WHERE courIdCours	= ?', [id])
-        res.render('cours/tareas/tareas', { listaPagina: pagina, listaTarea: tarea, csrfToken: req.csrfToken() });
-    } catch (error) {
-        console.error('Error en la consulta:', error.message);
-        res.status(500).send('Error al realizar la consulta');
-    }
-}
-
-tareasCtl.detalle = async (req, res) => {
-    try {
-        const id = req.params.id
-        const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = 1');
-        const [tarea] = await sql.promise().query('SELECT * FROM tasks WHERE idTask	= ?', [id])
-        res.render('cours/tareas/tareasEntregadas', { listaPagina: pagina, listaTarea: tarea, csrfToken: req.csrfToken() });
-    } catch (error) {
-        console.error('Error en la consulta:', error.message);
-        res.status(500).send('Error al realizar la consulta');
-    }
-}
-
 
 module.exports = tareasCtl

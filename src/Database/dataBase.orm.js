@@ -372,6 +372,17 @@ groups.belongsTo(teacher)
 subjects.hasMany(groups)
 groups.belongsTo(subjects)
 
+page.hasMany(observation)
+observation.belongsTo(page)
+
+cours.hasMany(observation)
+observation.belongsTo(cours)
+
+clases.hasMany(observation)
+observation.belongsTo(clases)
+
+student.hasMany(observation)
+observation.belongsTo(student)
 // Exportar el objeto sequelize
 module.exports = {
     ask,

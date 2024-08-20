@@ -10,6 +10,10 @@ const observation = (sequelize, type) => {
             type: type.TEXT,
             comment: 'observacion de Observation'
         },
+        valorObservacion: {
+            type: type.STRING,
+            comment: 'Valor de Observation'
+        },
         createObservations: {
             type: type.TEXT,
             comment: 'Crear de Observation'
