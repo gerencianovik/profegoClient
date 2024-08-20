@@ -69,7 +69,7 @@ eleccionServicios.mostrarEleccionEstudiante = async (req, res) => {
         celularEstudent: row.celularEstudent ? descifrarDatos(row.celularEstudent) : '',
         usernameEstudent: row.usernameEstudent ? descifrarDatos(row.usernameEstudent) : '',
     }));
-    res.render('servicios/leccionEstudiante', { listaPagina: pagina, listaTeacher: datos, listaCursos: cursos, listaClases: clases, csrfToken: req.csrfToken() });
+    res.render('servicios/leccionEstudiante', { listaPagina: pagina, listaEstudent: datos, listaCursos: cursos, listaClases: clases, csrfToken: req.csrfToken() });
 }
 
 eleccionServicios.clasesCursos = async (req, res) => {
