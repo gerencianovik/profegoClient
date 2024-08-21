@@ -1,25 +1,37 @@
 <link rel="stylesheet" href="">
 <div id="contenedor">
     <div id="titulo">
-        <h1>Prueba</h1>
+        <h1>Evaluacion</h1>
     </div>
-    <div id="preguntas">
-        <p>Pregunta:</p>
-        <input type="text" name="questionAsk" id="questionAsk">
-    </div>
-    <div id="respuesta">
-        <p>Respuesta:</p>
-        <input type="text" name="aswerns" id="aswerns">
-    </div>
-    <div id="tiempo">
-        <p>Tiempo de duracion:</p>
-        <input type="text" name="timeAswerns" id="timeAswerns">
-    </div>
-    <div id="sobre">
-        <p>Porcentaje de Valor de Prueba:</p>
-        <input type="text" name="valueResult" id="valueResult">
-    </div>
-    <div id="boton">
-        <button type="button">Detalle</button>
+    <div id="datos">
+        {{#each pruebas}}
+        <div id="nombre">
+            <p>Nombre de la evaluación:</p>
+            <textarea name="nameAssessment" id="nameAssessment" required>{{nameAssessment}}</textarea>
+        </div>
+        <div id="descripcion">
+            <p>Descripción de la Evaluación:</p>
+            <textarea name="descriptionAssessment" id="descriptionAssessment"
+                required>{{descriptionAssessment}}</textarea>
+        </div>
+        <div id="tiempo">
+            <p>Tiempo de evaluación:</p>
+            <input type="time" name="timeAssessment" id="timeAssessment" required value="{{timeAssessment}}">
+        </div>
+        <div id="fecha">
+            <p>Fecha de evaluación:</p>
+            <input type="date" name="dateAssessment" id="dateAssessment" required value="{{dateAssessment}}">
+        </div>
+        <div id="calificacion">
+            <p>Calificación:</p>
+            <input type="text" name="qualification" id="qualification" required value="{{qualification}}">
+        </div>
+        <div id="preguntas">
+            <a href="/pruebas/preguntas/{{idAssessment}}"><button type="button">Preguntas</button></a>
+        </div>
+        <div id="Actualizar">
+            <a href="/pruebas/cursosUpdate/{{idAssessment}}"><button type="button">Actualizar</button></a>
+        </div>
+        {{/each}}
     </div>
 </div>

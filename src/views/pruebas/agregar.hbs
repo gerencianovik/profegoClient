@@ -1,66 +1,35 @@
-<link rel="stylesheet" href="">
+<link rel="stylesheet" href="/css/assessments/add.css">
 {{#each listaCurso}}
 <form action="/pruebas/curso/{{idCours}}" method="post">
-    {{/each}}
-    <div id="contenedor">
-        <div id="titulo">{{#each maximoPrueba}}
-            <h1>Prueba <input type="text" name="idPrueba" id="numero" value="{{maximo}}"></h1>{{/each}}
+{{/each}}
+    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+
+    <div class="contenedor">
+        <div id="titulo">{{#each Maximo}}
+            <p>Agregar Evaluación <input type="text" name="idEvaluaciones" id="idEvaluaciones" value="{{maximo}}"></p>{{/each}}
         </div>
-        <div id="preguntas">
-            <p>Pregunta:</p>
-            <input type="text" name="questionAsk[]" id="questionAsk">
+        <div id="nombre">
+            <p>Nombre de la evaluación:</p>
+            <textarea name="nameAssessment" id="nameAssessment" required></textarea>
         </div>
-        <div id="respuesta">
-            <p>Respuesta:</p>
-            <input type="text" name="aswerns[]" id="aswerns">
+        <div id="descripcion">
+            <p>Descripción de la Evaluación:</p>
+            <textarea name="descriptionAssessment" id="descriptionAssessment" required></textarea>
         </div>
         <div id="tiempo">
-            <p>Tiempo de duracion:</p>
-            <input type="text" name="timeAswerns" id="timeAswerns">
+            <p>Tiempo de evaluación:</p>
+            <input type="time" name="timeAssessment" id="timeAssessment" required>
         </div>
-        <div id="sobre">
-            <p>Porcentaje de Valor de Prueba:</p>
-            <input type="text" name="valueResult" id="valueResult">
+        <div id="fecha">
+            <p>Fecha de evaluación:</p>
+            <input type="date" name="dateAssessment" id="dateAssessment" required>
+        </div>
+        <div id="calificacion">
+            <p>Calificación:</p>
+            <input type="text" name="qualification" id="qualification" required>
         </div>
         <div id="boton">
-            <button type="button" id="addQuestionBtn">Agregar Pregunta</button>
-        </div>
-        <div id="extraQuestionsContainer"></div>
-        <div id="boton">
-            <button type="submit">Crear Prueba</button>
+            <button type="submit">Guardar</button>
         </div>
     </div>
 </form>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const addQuestionBtn = document.getElementById('addQuestionBtn');
-        const extraQuestionsContainer = document.getElementById('extraQuestionsContainer');
-        addQuestionBtn.addEventListener('click', function () {
-            const questionGroup = document.createElement('div');
-            questionGroup.className = 'question-group';
-            const newQuestionDiv = document.createElement('div');
-            newQuestionDiv.className = 'preguntas';
-            const newQuestionLabel = document.createElement('p');
-            newQuestionLabel.textContent = 'Pregunta:';
-            const newQuestionInput = document.createElement('input');
-            newQuestionInput.type = 'text';
-            newQuestionInput.name = 'questionAsk[]';
-            newQuestionInput.id = 'questionAsk';
-            newQuestionDiv.appendChild(newQuestionLabel);
-            newQuestionDiv.appendChild(newQuestionInput);
-            const newAnswerDiv = document.createElement('div');
-            newAnswerDiv.className = 'respuesta';
-            const newAnswerLabel = document.createElement('p');
-            newAnswerLabel.textContent = 'Respuesta:';
-            const newAnswerInput = document.createElement('input');
-            newAnswerInput.type = 'text';
-            newAnswerInput.name = 'aswerns[]';
-            newAnswerInput.id = 'aswerns';
-            newAnswerDiv.appendChild(newAnswerLabel);
-            newAnswerDiv.appendChild(newAnswerInput);
-            questionGroup.appendChild(newQuestionDiv);
-            questionGroup.appendChild(newAnswerDiv);
-            extraQuestionsContainer.appendChild(questionGroup);
-        });
-    });
-</script>

@@ -1,22 +1,119 @@
-<link rel="stylesheet" href="">
-<div id="contenedor">
-    <div id="titulo">
-        <h1>Prueba</h1>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    #contenedor {
+        width: 50%;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #titulo {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    #preguntas,
+    #respuesta,
+    #tiempo,
+    #sobre,
+    #boton {
+        margin-bottom: 15px;
+    }
+
+    #agregarPregunta {
+        text-align: right;
+        margin-bottom: 15px;
+    }
+
+    input[type="text"] {
+        width: calc(100% - 20px);
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+<form action="" method="post">
+    <div id="contenedor">
+        <div id="titulo">
+            <h1>Prueba</h1>
+        </div>
+        <div id="preguntas">
+            <p>Pregunta:</p>
+            <input type="text" name="questionAsk[]" class="questionAsk">
+        </div>
+        <div id="respuesta">
+            <p>Respuesta:</p>
+            <input type="text" name="aswerns[]" class="aswerns">
+        </div>
+        <div id="agregarPregunta">
+            <button type="button" id="addQuestion">Agregar otra pregunta</button>
+        </div>
+        <div id="tiempo">
+            <p>Tiempo de duración:</p>
+            <input type="text" name="timeAswerns" id="timeAswerns">
+        </div>
+        <div id="sobre">
+            <p>Porcentaje de Valor de Prueba:</p>
+            <input type="text" name="valueResult" id="valueResult">
+        </div>
+        <div id="boton">
+            <button type="submit">Crear Prueba</button>
+        </div>
     </div>
-    <div id="preguntas">
-        <p>Pregunta:</p>
-        <input type="text" name="questionAsk" id="questionAsk">
-    </div>
-    <div id="respuesta">
-        <p>Respuesta:</p>
-        <input type="text" name="aswerns" id="aswerns">
-    </div>
-    <div id="tiempo">
-        <p>Tiempo de duracion:</p>
-        <input type="text" name="timeAswerns" id="timeAswerns">
-    </div>
-    <div id="sobre">
-        <p>Porcentaje de Valor de Prueba:</p>
-        <input type="text" name="valueResult" id="valueResult">
-    </div>
-</div>
+</form>
+<script>
+    document.getElementById('addQuestion').addEventListener('click', function () {
+        const contenedor = document.getElementById('contenedor');
+
+        // Crear nuevo contenedor de pregunta
+        const preguntaDiv = document.createElement('div');
+        preguntaDiv.className = 'preguntaConjunta';
+
+        // Crear el campo de la nueva pregunta
+        const preguntaLabel = document.createElement('p');
+        preguntaLabel.innerText = 'Pregunta:';
+        preguntaDiv.appendChild(preguntaLabel);
+
+        const preguntaInput = document.createElement('input');
+        preguntaInput.type = 'text';
+        preguntaInput.name = 'questionAsk[]';
+        preguntaInput.className = 'questionAsk';
+        preguntaDiv.appendChild(preguntaInput);
+
+        // Crear el campo de la nueva respuesta
+        const respuestaLabel = document.createElement('p');
+        respuestaLabel.innerText = 'Respuesta:';
+        preguntaDiv.appendChild(respuestaLabel);
+
+        const respuestaInput = document.createElement('input');
+        respuestaInput.type = 'text';
+        respuestaInput.name = 'aswerns[]';
+        respuestaInput.className = 'aswerns';
+        preguntaDiv.appendChild(respuestaInput);
+
+        // Insertar el nuevo bloque antes de la sección de "Agregar pregunta"
+        const agregarPreguntaDiv = document.getElementById('agregarPregunta');
+        contenedor.insertBefore(preguntaDiv, agregarPreguntaDiv);
+    });
+</script>

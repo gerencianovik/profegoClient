@@ -60,8 +60,77 @@ pruebaCtl.mostrar = async (req, res) => {
         const id = req.params.id
         const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = 1');
         const [curso] = await sql.promise().query('select * from cours where idCours = ?', [id])
-        const [pruena] = await sql.promise().query('select MAX(idCours) as maximo from cours')
-        res.render('pruebas/agregar',{listaPagina:pagina, listaCurso:curso, maximoPrueba: pruena, csrfToken: req.csrfToken()})
+        const [pruena] = await sql.promise().query('select MAX(idAssessment) as maximo from assessments')
+        res.render('pruebas/agregar', { listaPagina: pagina, listaCurso: curso, Maximo: pruena, csrfToken: req.csrfToken() })
+    } catch (error) {
+        console.error('Error al guardar el recurso:', error);
+        req.flash('message', 'Error al guardar el recurso');
+    }
+}
+
+pruebaCtl.mandar = async (req, res) => {
+    const id = req.params.id
+    try {
+        const { idEvaluaciones, nameAssessment, descriptionAssessment, timeAssessment, dateAssessment, qualification } = req.body
+        const newEnvio = {
+            nameAssessment,
+            descriptionAssessment,
+            timeAssessment,
+            dateAssessment,
+            qualification,
+            courIdCours: id,
+        }
+        await orm.assessment.create(newEnvio)
+        req.flash('success', 'Exito al Guardar')
+        res.redirect('/pruebas/cursos/' + idEvaluaciones);
+    } catch (error) {
+        console.error('Error al guardar el recurso:', error);
+        req.flash('message', 'Error al guardar el recurso');
+    }
+}
+
+pruebaCtl.lista = async (req, res) => {
+    try {
+        const id = req.params.id
+        const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = 1');
+        const [pruena] = await sql.promise().query('select * from assessments WHERE courIdCours = ?', [id])
+        res.render('pruebas/lista', { listaPagina: pagina, pruebas: pruena, csrfToken: req.csrfToken() })
+    } catch (error) {
+        console.error('Error al guardar el recurso:', error);
+        req.flash('message', 'Error al guardar el recurso');
+    }
+}
+
+pruebaCtl.traer = async (req, res) => {
+    try {
+        const id = req.params.id
+        const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = 1');
+        const [pruena] = await sql.promise().query('select * from assessments WHERE idAssessment = ?', [id])
+        res.render('pruebas/lista', { listaPagina: pagina, idAssessment: pruena, csrfToken: req.csrfToken() })
+    } catch (error) {
+        console.error('Error al guardar el recurso:', error);
+        req.flash('message', 'Error al guardar el recurso');
+    }
+}
+
+pruebaCtl.actualizar = async (req, res) => {
+    const id = req.params.id
+    try {
+        const { idEvaluaciones, nameAssessment, descriptionAssessment, timeAssessment, dateAssessment, qualification } = req.body
+        const newEnvio = {
+            nameAssessment,
+            descriptionAssessment,
+            timeAssessment,
+            dateAssessment,
+            qualification,
+            courIdCours: id,
+        }
+        await orm.assessment.findOne({ where: { idAssessment: id } })
+            .then((result) => {
+                result.update(newEnvio)
+            })
+        req.flash('success', 'Exito al Guardar')
+        res.redirect('/pruebas/cursos/' + idEvaluaciones);
     } catch (error) {
         console.error('Error al guardar el recurso:', error);
         req.flash('message', 'Error al guardar el recurso');
