@@ -80,10 +80,11 @@
     width: 82%;
     font-size: 20px;
     color: white;
+    text-align: justify;
 }
 
 #mision,
-#vision{
+#vision {
     position: absolute;
     width: 40%;
     height: 70%;
@@ -93,35 +94,38 @@
 
 #mision h1 {
     font-size: 30px;
-    color:#004D77
+    color: #004D77
 }
 
 #vision h1 {
     font-size: 30px;
-    color:#004D77
+    color: #004D77
 }
 
-#vision{
+#vision {
     left: 55%;
 }
 
 #mision img,
-#vision img{
+#vision img {
     width: 100%;
     height: 82%;
 
 }
+
 #mision p {
     font-size: 20px;
-    color:#000000
+    color: #000000;
+    text-align: justify;
 }
 
 #vision p {
     font-size: 20px;
-    color:#000000
+    color: #000000;
+    text-align: justify;
 }
 
-#historia{
+#historia {
     position: absolute;
     top: 187%;
     width: 100%;
@@ -131,7 +135,7 @@
     left: 0%;
 }
 
-#historia img{
+#historia img {
     width: 100%;
     height: 100%;
     background-repeat: no-repeat;
@@ -149,26 +153,26 @@
     left: 4.5%;
 }
 
-#datosHistoria h1{
+#datosHistoria h1 {
     color: #F29224;
     font-size: 30px;
     text-align: center;
 }
 
-#datosHistoria h2{
+#datosHistoria h2 {
     color: #18574F;
     font-size: 25px;
     text-align: center;
-    margin-top:4cqb;
+    margin-top: 4cqb;
 }
 
-#datosHistoria p{
+#datosHistoria p {
     font-size: 20px;
     line-height: 160%;
-    margin-top:4%;
+    margin-top: 4%;
 }
 
-#contenedorValores{
+#contenedorValores {
     position: absolute;
     top: 286%;
     width: 100%;
@@ -178,16 +182,17 @@
     left: 4.5%;
 }
 
-#contenedorValores h1{
+#contenedorValores h1 {
     color: #F29224;
     font-size: 30px;
 }
-#contenedorValores p{
+
+#contenedorValores p {
     color: #18574F;
     font-size: 20px;
 }
 
-#contenedorValores img{
+#contenedorValores img {
     width: 100%;
     height: 100%;
     background-repeat: no-repeat;
@@ -196,7 +201,7 @@
 }
 
 
-#cotendorPorqueElegir{
+#cotendorPorqueElegir {
     position: absolute;
     top: 418%;
     width: 100%;
@@ -204,7 +209,7 @@
     left: 0%;
 }
 
-#cotendorPorqueElegir img{
+#cotendorPorqueElegir img {
     width: 100%;
     height: 100%;
     background-repeat: no-repeat;
@@ -212,7 +217,7 @@
     background-attachment: fixed;
 }
 
-#textodiv{
+#textodiv {
     position: absolute;
     width: 19%;
     top: 29%;
@@ -220,14 +225,14 @@
     font-size: 18px;
 }
 
-#textodiv h1{
+#textodiv h1 {
     color: #FFEFDA;
     font-size: 30px;
     text-align: center;
     line-height: 40px;
 }
 
-#textodiv p{
+#textodiv p {
     color: white;
     font-size: 20px;
     line-height: 30px;
@@ -249,7 +254,7 @@
 #cajon1 h1,
 #cajon2 h1,
 #cajon3 h1,
-#cajon4 h1{
+#cajon4 h1 {
     color: white;
     font-size: 25px;
     margin-top: 4.5%;
@@ -258,14 +263,14 @@
 #cajon1 p,
 #cajon2 p,
 #cajon3 p,
-#cajon4 p{
+#cajon4 p {
     color: white;
     font-size: 16px;
     font-weight: 550;
     margin-top: -2%;
 }
 
-#cajon1 h1 img{
+#cajon1 h1 img {
     width: 10%;
 }
 
@@ -282,7 +287,7 @@
     border-radius: 10px;
 }
 
-#cajon2 h1 img{
+#cajon2 h1 img {
     width: 10%;
 }
 
@@ -299,7 +304,7 @@
     border-radius: 10px;
 }
 
-#cajon3 h1 img{
+#cajon3 h1 img {
     width: 10%;
 }
 
@@ -316,11 +321,11 @@
     border-radius: 10px;
 }
 
-#cajon4 h1 img{
+#cajon4 h1 img {
     width: 10%;
 }
 
-#footer{
+#footer {
     position: absolute;
     top: 540%;
     width: 100%;
@@ -331,7 +336,7 @@
 
 #tarjetaNosotros,
 #tarjetaUnete,
-#tarjetaLegal{
+#tarjetaLegal {
     position: absolute;
     width: 12%;
     top: 0%;
@@ -341,7 +346,7 @@
 
 #tarjetaNosotros h1,
 #tarjetaUnete h1,
-#tarjetaLegal h1{
+#tarjetaLegal h1 {
     color: #004D77;
     font-size: 20px;
     left: 4.5%;
@@ -349,7 +354,7 @@
 
 #tarjetaNosotros p,
 #tarjetaUnete p,
-#tarjetaLegal p{
+#tarjetaLegal p {
     color: #004D77;
     left: 4.5%;
     font-size: 14px;
@@ -358,11 +363,11 @@
     line-height: 13px;
 }
 
-#nosotrosFooter{
+#nosotrosFooter {
     position: relative;
     padding: 0px;
-    background: transparent; 
-    border-bottom: 5px solid transparent; 
+    background: transparent;
+    border-bottom: 5px solid transparent;
     border-image: linear-gradient(to right, #F39325, #FEEDD9);
     border-image-slice: 1;
     border-image-width: 0 0 5px 0;
@@ -370,11 +375,11 @@
     top: 4.5%;
 }
 
-#tarjetaUnete{
+#tarjetaUnete {
     left: 21%;
 }
 
-#tarjetaLegal{
+#tarjetaLegal {
     left: 38%;
 }
 
@@ -387,7 +392,7 @@
 }
 
 
-#logoImagen img{
+#logoImagen img {
     width: 100%;
     height: 100%;
     background-repeat: no-repeat;
@@ -395,7 +400,7 @@
     background-attachment: fixed;
 }
 
-#final{
+#final {
     position: absolute;
     top: 90%;
     width: 100%;
@@ -404,14 +409,14 @@
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
 }
 
-#final p{
+#final p {
     text-align: center;
     width: 40%;
     color: #004D77;
     left: 4.5%;
 }
 
-#final #finalFinal{
+#final #finalFinal {
     position: absolute;
     top: 0%;
     left: 77.5%;
