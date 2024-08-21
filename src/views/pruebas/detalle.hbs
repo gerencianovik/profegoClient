@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/css/pruebas/pruebasAgregar.css">
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -7,11 +8,12 @@
     }
 
     #contenedor {
-        width: 50%;
+        width: 70%;
         margin: 0 auto;
-        padding: 20px;
+        padding: 30px 80px;
         background-color: #fff;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 25px;
     }
 
     #titulo {
@@ -53,35 +55,38 @@
         background-color: #45a049;
     }
 </style>
-<form action="/pruebas/preguntas/{{idAssessment}}" method="post">
-    <div id="contenedor">
-        <div id="titulo">
-            <h1>Prueba</h1>
-        </div>
-        <div id="preguntas">
-            <p>Pregunta:</p>
-            <input type="text" name="questionAsk[]" class="questionAsk">
-        </div>
-        <div id="respuesta">
-            <p>Respuesta:</p>
-            <input type="text" name="aswerns[]" class="aswerns">
-        </div>
-        <div id="agregarPregunta">
-            <button type="button" id="addQuestion">Agregar otra pregunta</button>
-        </div>
-        <div id="tiempo">
-            <p>Tiempo de duración:</p>
-            <input type="text" name="timeAswerns" id="timeAswerns">
-        </div>
-        <div id="sobre">
-            <p>Porcentaje de Valor de Prueba:</p>
-            <input type="text" name="valueResult" id="valueResult">
-        </div>
-        <div id="boton">
-            <button type="submit">Crear Prueba</button>
-        </div>
+<div class="container" style="padding-bottom: 25px;">
+    <div id="titulo" class="titulo">
+        <h1>Prueba</h1>
     </div>
-</form>
+    <form action="/pruebas/preguntas/{{idAssessment}}" method="post">
+        <div id="contenedor">
+            <div id="preguntas">
+                <p>Pregunta:</p>
+                <input type="text" name="questionAsk[]" class="questionAsk">
+            </div>
+            <div id="respuesta">
+                <p>Respuesta:</p>
+                <input type="text" name="aswerns[]" class="aswerns">
+            </div>
+            <div id="agregarPregunta">
+                <button type="button" id="addQuestion">Agregar otra pregunta</button>
+            </div>
+            <div id="tiempo">
+                <p>Tiempo de duración:</p>
+                <input type="text" name="timeAswerns" id="timeAswerns">
+            </div>
+            <div id="sobre">
+                <p>Porcentaje de Valor de Prueba:</p>
+                <input type="text" name="valueResult" id="valueResult">
+            </div>
+            <div id="boton">
+                <button type="submit">Crear Prueba</button>
+            </div>
+        </div>
+    </form>
+</div>
+
 <script>
     document.getElementById('addQuestion').addEventListener('click', function () {
         const contenedor = document.getElementById('contenedor');
