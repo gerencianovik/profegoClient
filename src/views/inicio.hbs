@@ -8,7 +8,7 @@
             mañana!</p>
     </div>
     <div id="buscador">
-        <form action="/buscar" method="post">
+        <form action="/general/list/" method="post">
             <div id="busca">
                 <img src="/img/icons/busca.png">
             </div>
@@ -19,7 +19,7 @@
                 <p>¿Qué buscas?</p>
                 <select name="docentes" id="docenetes">
                     <option value="">Busco docente</option>
-                    {{#each docenetes}}
+                    {{#each profesor}}
                     <option value="{{idTeacher}}">{{nameTeacher}}</option>
                     {{/each}}
                 </select>
@@ -28,7 +28,7 @@
                 <p>Servicio o materia</p>
                 <select name="materia" id="materia">
                     <option value="">Ej: Matemática</option>
-                    {{#each materia}}
+                    {{#each materiales}}
                     <option value="{{idSubjet}}">{{idSubjet}}</option>
                     {{/each}}
                 </select>
@@ -50,7 +50,7 @@
             <div id="donde">
                 <p>¿Dónde?</p>
                 <select name="donde" id="dondes">
-                    {{#each tipo}}
+                    {{#each tipos}}
                     <option value="{{idTypeCoursClass}}">{{idTypeCoursClass}}</option>
                     {{/each}}
                 </select>

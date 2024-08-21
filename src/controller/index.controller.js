@@ -5,8 +5,11 @@ const indexCtl = {}
 
 indexCtl.mostrar = async (req, res) => {
     try {
-        const [pagina] = await sql.promise().execute('SELECT * FROM pagePolicy');
-        res.render('inicio', { listaPagina: pagina, csrfToken: req.csrfToken() })
+        const [pagina] = await sql.promise().query('SELECT * FROM pagePolicy');
+        const [teacher] = await sql.promise().query('SELECT * FROM teachers');
+        const [materias] = await sql.promise().query('SELECT * FROM subjects');
+        const [tipos] = await sql.promise().query('SELECT * FROM coursclasstypes');
+        res.render('inicio', { listaPagina: pagina, profesor: teacher, materiales: materias, tipos: tipos, csrfToken: req.csrfToken() })
     } catch (error) {
         console.error('Error en la consulta SQL:', error.message);
         res.status(500).send('Error interno del servidor');
