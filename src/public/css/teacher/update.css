@@ -30,9 +30,9 @@
   position: absolute;
   top: 7%;
   left: 0%;
-  width: 100%;
+  width: calc(100% - 140px);
   text-align: left;
-  margin-left: 140px;
+  padding-left: 140px;
   font-weight: Medium;
 }
 
@@ -130,13 +130,20 @@
 #nombreCompleto p,
 #Eleccion p,
 #fechaNacimiento p,
-#tituloEspecialidad p {
+#tituloEspecialidad p,
+#materias p,
+#edadRange p,
+#description p,
+#Cedula p,
+#Celular p,
+#Correos p {
   font-size: 20px;
   border-color: transparent;
   font-family: "Josefin Sans";
   font-style: normal;
   font-weight: bolder;
   color: #18574f;
+  margin-top: 20px;
 }
 
 #nombreCompleto input {
@@ -148,6 +155,7 @@
   width: 98%;
   height: 50%;
   font-size: 16px;
+  margin-top: 10px;
 }
 
 #direccion {
@@ -157,6 +165,7 @@
   left: 10%;
   top: 21%;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+  margin-top: 10px;
 }
 
 #map {
@@ -170,6 +179,7 @@
   height: 5%;
   left: 10%;
   top: 36%;
+  margin-top: 10px;
 }
 
 #fechaNacimiento {
@@ -178,6 +188,7 @@
   height: 5%;
   left: 50%;
   top: 36%;
+  margin-top: 10px;
 }
 
 #Eleccion select {
@@ -189,6 +200,7 @@
   width: 98%;
   height: 58%;
   font-size: 16px;
+  margin-top: 10px;
 }
 #fechaNacimiento input {
   position: absolute;
@@ -199,14 +211,16 @@
   width: 98%;
   height: 50%;
   font-size: 16px;
+  margin-top: 10px;
 }
 
 #tituloEspecialidad {
   position: absolute;
-  width: 80%;
+  width: 80.6%;
   height: 5%;
   left: 10%;
   top: 41%;
+  margin-top: 10px;
 }
 
 #tituloEspecialidad select {
@@ -218,6 +232,7 @@
   width: 100%;
   height: 58%;
   font-size: 16px;
+  margin-top: 10px;
 }
 
 #capacidad {
@@ -232,17 +247,18 @@
   position: absolute;
   left: 2%;
   top: 2%;
-  margin-top: 55px; /**/
-  margin-left: 40px; /**/
+  margin-top: 40px; /**/
+  
 }
 
 #capacidad p {
   position: absolute;
   width: 90%;
-  left: 10%;
+  left: 40px;
   font-family: "Josefin Sans";
   font-size: 18px;
   color: #004d77;
+  margin: 0;
 }
 
 #capacidad select {
@@ -261,7 +277,7 @@
   width: 80%;
   height: 10%;
   left: 10%;
-  top: 54%;
+  top: 52%;
   margin: 10px;
 }
 
@@ -278,6 +294,7 @@
   position: absolute;
   width: 90%;
   left: 0%;
+  bottom: 160px;
   font-family: "Josefin Sans";
   color: #18574f;
   font-size: 20px;
@@ -311,8 +328,8 @@
 #DocumentoAntecedentes button {
   position: absolute;
   top: 30%;
-  width: 40%;
-  left: 30%;
+  width: 20%;
+  left: 35%;
   height: 30%;
   background-color: transparent;
   border-color: transparent;
@@ -376,14 +393,14 @@
   margin: 25px;
 }
 
-#materias p {
+/*#materias p {
   position: absolute;
   width: 90%;
   left: 0%;
   font-family: "Josefin Sans";
   font-size: 18px;
   color: #004d77;
-}
+}*/
 
 #materias select {
   position: absolute;
@@ -394,6 +411,7 @@
   width: 100%;
   height: 58%;
   font-size: 16px;
+  margin-top: 10px;
 }
 
 #edadRange {
@@ -403,16 +421,17 @@
   left: 9.5%;
   top: 73%;
   margin: 25px;
+  margin-top: 20px;
 }
 
-#edadRange p {
+/* #edadRange p {
   position: absolute;
   width: 90%;
   left: 0%;
   font-family: "Josefin Sans";
   font-size: 18px;
   color: #004d77;
-}
+} */
 
 #edadRange select {
   position: absolute;
@@ -423,6 +442,7 @@
   width: 100%;
   height: 58%;
   font-size: 16px;
+  margin-top: 10px;
 }
 
 #description {
@@ -432,16 +452,17 @@
   left: 10%;
   top: 78%;
   margin: 19px;
+  margin-right: 25px;
 }
 
-#description p {
+/* #description p {
   position: absolute;
   width: 90%;
   left: 0%;
   font-family: "Josefin Sans";
   font-size: 18px;
   color: #004d77;
-}
+} */
 
 #description textarea {
   position: absolute;
@@ -449,9 +470,10 @@
   top: 40%;
   border: 4px solid #f39325;
   font-family: "Josefin Sans";
-  width: 100%;
+  width: 99%;
   height: 40%;
   font-size: 16px;
+  margin-top: 10px;
 }
 
 #Correos {
@@ -463,14 +485,14 @@
   margin: 19px;
 }
 
-#Correos p {
+/* #Correos p {
   position: absolute;
   width: 90%;
   left: 0%;
   font-family: "Josefin Sans";
   font-size: 18px;
   color: #004d77;
-}
+} */
 
 #Correos input {
   position: absolute;
@@ -478,9 +500,10 @@
   top: 40%;
   border: 4px solid #f39325;
   font-family: "Josefin Sans";
-  width: 100%;
+  width: 99%;
   height: 40%;
   font-size: 16px;
+  margin-top: 10px;
 }
 
 #Cedula {
@@ -489,17 +512,17 @@
   height: 5%;
   left: 10%;
   top: 88%;
-  margin: 25px;
+  margin: 19px;
 }
 
-#Cedula p {
+/* #Cedula p {
   position: absolute;
   width: 90%;
   left: 0%;
   font-family: "Josefin Sans";
   font-size: 18px;
   color: #004d77;
-}
+} */
 
 #Cedula input {
   position: absolute;
@@ -510,6 +533,7 @@
   width: 100%;
   height: 40%;
   font-size: 16px;
+  margin-top: 10px;
 }
 
 #Celular {
@@ -518,17 +542,17 @@
   height: 5%;
   left: 53%;
   top: 88%;
-  margin: 25px;
+  margin: 19px;
 }
 
-#Celular p {
+/* #Celular p {
   position: absolute;
   width: 90%;
   left: 0%;
   font-family: "Josefin Sans";
   font-size: 18px;
   color: #004d77;
-}
+} */
 
 #Celular input {
   position: absolute;
@@ -536,9 +560,10 @@
   top: 40%;
   border: 4px solid #f39325;
   font-family: "Josefin Sans";
-  width: 100%;
+  width: 98%;
   height: 40%;
   font-size: 16px;
+  margin-top: 10px;
 }
 
 #boton {

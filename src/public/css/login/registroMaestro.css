@@ -78,7 +78,7 @@
 #datos {
     position: absolute;
     width: 50%;
-    height: 126%;
+    height: 100%;
     background-color: white;
     left: 45%;
     top: 18%;
@@ -144,13 +144,13 @@ a{
 #Celular {
     width: 48%;
     position: absolute;
-    top: 20.7%;
+    top: 18.3%;
     left: 46.8%;
 }
 
 #botonVer {
     position: absolute;
-    top: 37.3%;
+    top: 32.5%;
     left: 81%;
     width: 9%;
     height: 3.2%;
@@ -171,8 +171,8 @@ a{
 
 #botonVer1 {
     position: absolute;
-    top: 47.6%;
-    left: 81.3%;
+    top: 41.6%;
+    left: 81%;
     width: 9%;
     height: 3.2%;
 }
@@ -362,4 +362,24 @@ a{
     top: 0%;
     left: 77.5%;
     width: 20%;
+}
+
+@media only screen and (max-width: 1366px) and (max-height: 768px) {
+    #Celular {
+        top: 21.4%;
+    }
+
+    #botonVer {
+        top: 38.5%;
+    }
+
+    #botonVer1 {
+        top: 49.5%;
+
+    }
+
+    #datos {
+        height: 142%;
+
+    }
 }
