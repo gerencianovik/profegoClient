@@ -45,6 +45,7 @@
     top: 3%;
     left: 2%;
     border-radius: 10px;
+    color:white;
 }
 
 #foto {
@@ -68,7 +69,7 @@
     position: absolute;
     width: 63%;
     height: 40%;
-    top: 17%;
+    top: 20%;
     left: 35%;
 }
 
@@ -146,7 +147,9 @@
     font-size: 17px;
 }
 
-#descripcion1 h1 {
+#descripcion1 h1,
+#contenedordocentess h1,
+#tituloTemario h1 {
     color: #18574F;
     margin-left: 1%;
     margin-top: 4%;
@@ -159,6 +162,22 @@
 #contenedordocentess {
     width: 100%;
     height: 190px;
+    position: relative;
+}
+#fotoDocente{
+    position: relative;
+    top: 73%;
+}
+
+#DataDocente{
+position: absolute;
+bottom: 50px;
+left: 200px;
+}
+
+#contenedordocentess img{
+    position: absolute;
+    bottom: 50%;
 }
 
 #docentess {
@@ -201,15 +220,19 @@
     text-align: left;
 }
 
-#tituloTemario {
-    font-size: 20px;
+#tituloTemario p{
+    color:#004d77;
+    margin-left: 15.2px;
+    margin-bottom: 19px;
 }
+
 
 #moduloTotal {
     display: flex;
     flex-wrap: wrap;
     /* Permite que los elementos se ajusten a la siguiente fila si es necesario */
     gap: 10px;
+
     /* Espacio entre los elementos */
 }
 
@@ -219,6 +242,7 @@
     margin: 0;
     /* Elimina el margen predeterminado de los <p> */
     text-align: center;
+    color: #18574F;
     /* Centra el texto dentro del <p> */
 }
 
@@ -242,10 +266,12 @@
     font-size: 20px;
 }
 
+
+
 #Curso {
     width: 33%;
     margin-left: 33%;
-    margin-top: -12.5%;
+    margin-top: -22.7%;
     font-size: 20px;
 }
 
@@ -253,16 +279,9 @@
     width: 33%;
     margin-left: 65%;
     font-size: 20px;
-    margin-top: -12.5%;
+    margin-top: -22.7%;
 }
 
-#presencial p,
-#Virtual p,
-#Cursos p,
-#Chouching p {
-    margin-top: -18%;
-    margin-left: 37%;
-}
 
 #imagenPresencial img,
 #Virtual img,
@@ -272,29 +291,34 @@
     width: 35%;
 }
 
-#edad {
-    margin-top: -51%;
-    margin-left: 46%;
+#Curso{
+    top: 500px;
 }
+
+#recursosParaClase{
+    margin-top: 20px;
+display: flex;
+justify-content: space-around;
+}
+
 
 #recursoss {
     width: 40%;
     background-image: linear-gradient(to top, #177483 32%, #004D77 100%);
-    margin-top: 5%;
     border-radius: 10px;
-    margin-left: 1%;
     font-size: 20px;
     color: white;
+    height: auto;
 }
 
 #Materiales {
+    
     width: 40%;
     background-image: linear-gradient(to top, #177483 32%, #004D77 100%);
-    margin-top: -45%;
     border-radius: 10px;
-    margin-left: 59%;
     font-size: 20px;
     color: white;
+    height: auto;
 }
 
 #recursoss p,
@@ -313,11 +337,12 @@
 #imagenRecurso img,
 #imagenRecurso img {
     width: 20%;
-    margin-left: 1%;
+    margin-left: 20%;
+
 }
 
 #tareasss {
-    margin-top: 35%;
+    margin-top: 10%;
     margin-left: 1%;
     font-size: 20px;
 }
@@ -391,10 +416,10 @@
 
 #menus {
     position: absolute;
-    width: 16%;
+    width: 25%;
     top: 57%;
     border-radius: 10px;
-    left: 68%;
+    left: 70%;
     padding-top: 1%;
     padding-left: 1%;
     padding-bottom: 1%;
@@ -402,31 +427,38 @@
 }
 
 #imagenRecursos img {
-    width: 25%;
+    width: 20%;
+    margin-left: 20px;
 }
 
 #imagenMateriales img {
-    width: 25%;
+    width: 20%;
+    margin-left: 20px;
 }
 
 #imagenTareas img {
-    width: 25%;
+    width: 20%;
+    margin-left: 20px;
 }
 
 #imagenPruebas img {
-    width: 25%;
+    width: 20%;
+    margin-left: 20px;
 }
 
 #imagenAsistencia img {
-    width: 25%;
+    width: 20%;
+    margin-left: 20px;
 }
 
 #imagenObservacion img {
-    width: 25%;
+    width: 20%;
+    margin-left: 20px;
 }
 
 #imagenCurricular img {
-    width: 25%;
+    width: 20%;
+    margin-left: 20px;
 }
 
 #recursos,
@@ -438,10 +470,11 @@
 #contenidoCurricular {
     width: 100%;
     height: 70px;
+    
 }
 
 #boton {
-    margin-top: -37px;
+    margin-top: -50px;
     margin-left: 45%;
 }
 
