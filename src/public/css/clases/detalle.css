@@ -240,6 +240,7 @@
     width: 33%;
     margin-left: 1%;
     font-size: 20px;
+    margin-top: 11%;
 }
 
 #Curso {
@@ -290,7 +291,7 @@
 #Materiales {
     width: 40%;
     background-image: linear-gradient(to top, #177483 32%, #004D77 100%);
-    margin-top: -45%;
+    margin-top: -18%;
     border-radius: 10px;
     margin-left: 59%;
     font-size: 20px;

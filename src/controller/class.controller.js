@@ -1,6 +1,10 @@
 const orm = require('../Database/dataBase.orm')
 const sql = require('../Database/dataBase.sql')
-const path = require('path')
+const FormData = require('form-data');
+const fs = require('fs');
+const path = require('path');
+const axios = require('axios');
+const { descifrarDatos, cifrarDatos } = require('../lib/encrypDates.js');
 const { validationResult } = require('express-validator');
 const classes = {}
 
@@ -98,6 +102,7 @@ classes.mandar = async (req, res) => {
             createClases: new Date().toLocaleString(),
             stateclasses: 'Activar',
             pageIdPage: id,
+            detailTeacherPageIdDetailTeacherPage: idTeacher,
             coursClassTypeIdCoursClassType: ids
         };
 
@@ -260,7 +265,6 @@ classes.detalle = async (req, res) => {
         const [tareas] = await sql.promise().query('SELECT * FROM tasks WHERE ClaseIdClases = ?', [id])
         const [pruebas] = await sql.promise().query('SELECT * FROM assessments WHERE ClaseIdClases = ?', [id])
         const datos = teacher.map(row => ({
-            idTeacher: row.idTeacher,
             photoTeacher: row.photoTeacher,
             endorsementCertificateTeacher: row.endorsementCertificateTeacher,
             pageVitalTeacher: row.pageVitalTeacher,
