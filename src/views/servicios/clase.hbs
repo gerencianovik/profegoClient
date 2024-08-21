@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="/css/cursos/lista.css">
-<form action="/general/listCurso/" method="get">
+<link rel="stylesheet" href="/css/clases/lista.css">
+<form action="/general/listClase/" method="get">
     <div id="contenedor">
         <div id="fondo">
             <img src="/img/icons/fondoLista.png">
@@ -11,66 +11,65 @@
             <div id="Cursos">
                 <div id="imagenesCursos">
                     <img src="/img/icons/cursTLS.png">
-                    <p>Curso</p>
+                    <p>Clase</p>
                 </div>
                 <div class="row">
                     {{#each lista}}
                     <div id="video">
-                        <video src="/video/cours/{{videoCours}}" controls></video>
+                        <video src="/video/clases/{{videoClases}}" controls></video>
                         <p>Ver la información completa</p>
                     </div>
                     <div id="tarjeta">
                         <div id="tarjetaInterna">
-                            <a href="/cours/detailList/{{idCours}}">
+                            <a href="/clases/detailList/{{idClases}}">
                                 <div id="foto">
-                                    <p><img src="/img/cours/{{photoCours}}" alt=""></p>
+                                    <p><img src="/img/clase/{{photoClases}}" alt=""></p>
                                 </div>
                                 <div id="pasos">
                                     <div class="espaciosTarjetaInfo">
                                         <div id="Nombre">
-                                            <p>{{nameCours}}</p>
+                                            <p>{{nameClases}}</p>
                                         </div>
                                         <div id="cupos">
-                                            <p>{{shareCours}}</p>
+                                            <p>{{shareClases}}</p>
                                         </div>
                                         <div id="estado">
-                                            <p>{{stateCours}}</p>
+                                            <p>{{stateClases}}</p>
                                         </div>
                                     </div>
                                     <div>
                                         <div id="descripcion">
-                                            <p>{{descriptionCours}}</p>
+                                            <p>{{descriptionClases}}</p>
                                         </div>
                                         <div id="fehca">
-                                            <p>{{dateCours}}</p>
+                                            <p>{{dateClases}}</p>
                                         </div>
                                         <div id="hora">
-                                            <p>{{hourCours}}</p>
+                                            <p>{{hourClases}}</p>
                                         </div>
                                         <div id="costo">
-                                            <p> <img src="/img/icons/tarifa.png" alt="Descripción del ícono"
-                                                    style="width: 30px; height: 30px;"> {{costCours}}</p>
+                                            <p><img src="/img/icons/tarifa.png" alt="Descripción del ícono"
+                                                    style="width: 30px; height: 30px;"> {{costClases}}</p>
                                         </div>
                                         <div id="calificacion">
-                                            <p>{{calificationCours}}</p>
+                                            <p>{{calificationClases}}</p>
                                         </div>
                                     </div>
                                 </div>
                             </a>
                         </div>
-
                         <div id="opcionesLista">
                             <div id="actualizar">
-                                <a href="/cours/update/{{idCours}}"><button type="button">Actualizar</button></a>
+                                <a href="/clases/update/{{idClases}}"><button type="button">Actualizar</button></a>
                             </div>
                             <div id="materialesDeClase">
-                                <a href="/material/cursos/{{idCours}}"><button type="button">Materiales</button></a>
+                                <a href="/material/clases/{{idClases}}"><button type="button">Materiales</button></a>
                             </div>
                             <div id="recursosDeClase">
-                                <a href="/recours/add/{{idCours}}"><button type="button">Recursos</button></a>
+                                <a href="/recours/clases/{{idClases}}"><button type="button">Recursos</button></a>
                             </div>
                             <div id="desavilitar">
-                                <a href="/cours/delete/{{idCours}}"><button type="button">Desabilitar</button></a>
+                                <a href="/clases/delete/{{idClases}}"><button type="button">Desabilitar</button></a>
                             </div>
                         </div>
                     </div>
@@ -81,4 +80,3 @@
         </div>
     </div>
 </form>
-<script src="/js/filtro.js"></script>

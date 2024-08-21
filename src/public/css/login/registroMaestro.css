@@ -144,13 +144,13 @@ a{
 #Celular {
     width: 48%;
     position: absolute;
-    top: 18.3%;
+    top: 29%;
     left: 46.8%;
 }
 
 #botonVer {
     position: absolute;
-    top: 32.5%;
+    top: 51%;
     left: 81%;
     width: 9%;
     height: 3.2%;
@@ -171,7 +171,7 @@ a{
 
 #botonVer1 {
     position: absolute;
-    top: 41.6%;
+    top: 65%;
     left: 81%;
     width: 9%;
     height: 3.2%;

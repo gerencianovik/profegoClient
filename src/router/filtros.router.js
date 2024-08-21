@@ -1,7 +1,8 @@
 const express = require("express");
-const { lista } = require("../controller/filtros.controller");
+const { clase, curso } = require("../controller/filtros.controller");
 const router = express.Router();
 
-router.get('/list', lista)
+router.get('/listCurso', curso)
+router.get('/listClase', clase)
 
 module.exports = router
