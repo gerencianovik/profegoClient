@@ -1,11 +1,10 @@
-<link rel="stylesheet" href="/css/assessments/add.css">
-{{#each prueba}}
-<form action="/pruebas/update/{{idAssessment}}" method="post">
-    <input type="hidden" name="_csrf" value="{{ ../csrfToken }}">
-    <div class="contenedor">
-        <div id="titulo">
-            <p>Evaluación Actualizar</p>
-        </div>
+<link rel="stylesheet" href="">
+<div id="contenedor">
+    <div id="titulo">
+        <h1>Evaluacion</h1>
+    </div>
+    <div id="datos">
+        {{#each pruebas}}
         <div id="nombre">
             <p>Nombre de la evaluación:</p>
             <textarea name="nameAssessment" id="nameAssessment" required>{{nameAssessment}}</textarea>
@@ -27,9 +26,12 @@
             <p>Calificación:</p>
             <input type="text" name="qualification" id="qualification" required value="{{qualification}}">
         </div>
-        <div id="boton">
-            <button type="submit">Actualizar</button>
+        <div id="preguntas">
+            <a href="/pruebas/preguntas/{{idAssessment}}"><button type="button">Preguntas</button></a>
         </div>
+        <div id="Actualizar">
+            <a href="/pruebas/cursosUpdate/{{idAssessment}}"><button type="button">Actualizar</button></a>
+        </div>
+        {{/each}}
     </div>
-</form>
-{{/each}}
+</div>

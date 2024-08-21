@@ -1,216 +1,192 @@
-<link rel="stylesheet" href="">
+<link rel="stylesheet" href="/css/clases/detalle.css">
 <div id="contenedor">
     {{#each lista}}
     <form action="/clases/detailList/{{idClases}}" method="get">
-        <div id="datosCurso">
+        <div id="datosClase">
             <div id="foto">
-                <p><img src="/img/clases/{{photoClases}}" alt=""></p>
-                <div id="Nombre">
-                    <p>{{nameClases}}</p>
-                </div>
-                {{#if neeClass}}
-                <input type="checkbox" name="adactacion" id="adactacion" value="si">
-                {{/if}}
+                <img src="/img/clases/{{photoClases}}" alt="Foto de la Clase">
             </div>
-            <div id="video">
-                <p><video src="/video/clases/{{videoClases}}" controls></video></p>
+            <div id="Nombre">
+                <h1>{{nameClases}}</h1>
+            </div>
+            <div id="tipoDeClase">
+                <p>{{nameClasesClassType}}</p>
             </div>
             <div id="direccion">
-                <div id="map" style="width: 100%; height: 400px;"></div>
-                <input type="text" name="ubicacion" id="ubicacion" value="{{ubicacionCurso}}">
+                <div id="map"></div>
+                <input type="text" name="ubicacion" id="ubicacion" value="{{ubicacionClase}}">
             </div>
-            <div id="cuadros2">
-                <div id="descripcion">
-                    <p>{{descriptionClases}}</p>
+            {{#if neeClases}}
+            <input type="checkbox" name="adaptacion" id="adaptacion" value="{{neeClases}}">
+            {{/if}}
+        </div>
+        <div id="video">
+            <video src="/video/clases/{{videoClases}}" controls></video>
+        </div>
+        <div id="detallesClase">
+            <div id="descripcion1">
+                <h1>Descripción</h1>
+                <p>{{descriptionClases}}</p>
+            </div>
+            <div id="contenedordocentes">
+                {{#each ../docenteLista}}
+                <div id="docente">
+                    <img src="/img/usuario/{{photoTeacher}}" alt="Foto del Docente">
+                    <h1>{{completeNameTeacher}}</h1>
+                    <p>{{descriptionTeacher}}</p>
                 </div>
-                {{#each ../temario}}
-                <div id="temario">
-                    <div id="tituloTemario">
-                        <h1>Temario educativo</h1>
-                        <p>Objetivo: {{objetivesyllabusEducational}}</p>
-                        <div id="moduloTotal">
-                            <p>{{moduleCurrucularContentCourse}} Módulos</p>
-                            <p>{{themesyllabusEducational}}Clases</p>
-                            <p>{{timesyllabusEducational}} Duración total</p>
-                        </div>
-                    </div>
-                    {{/each}}
-                    <div id="cupos">
-                        <p>{{shareClases}} Cupos disponibles</p>
-                    </div>
-                    <div id="Modalidad">
-                        <p>Modalidad</p>
-                        <input type="text" name="modalidad" id="modalidad" value="{{nameCoursClassType}}">
-                        <div id="presencial">
-                            <div id="imagenPresencial">
-                                <img src="">
-                            </div>
-                            <p>Presencial <input type="checkbox" name="" id="Presencial"></p>
-                        </div>
-                        <div id="Virtual">
-                            <div id="imagenVirtual">
-                                <img src="">
-                            </div>
-                            <p>Virtual<input type="checkbox" name="" id="virtual"></p>
-                        </div>
-                    </div>
-                    <div id="Curso">
-                        <p>Tipo</p>
-                        <input type="text" name="tipoClases" id="tipo" value="{{tipoClases}}">
-                        <div id="Cursos">
-                            <div id="imagenCursos">
-                                <img src="">
-                            </div>
-                            <p>Individual<input type="checkbox" name="" id="cursos"></p>
-                        </div>
-                        <div id="Chouching">
-                            <div id="imagenChouching">
-                                <img src="">
-                            </div>
-                            <p>Grupal<input type="checkbox" name="" id="Chouching"></p>
-                        </div>
-                    </div>
-                    <div id="Edad">
-                        <p>Edad o nivel</p>
-                        <div id="imageEdad">
-                            <img src="">
-                        </div>
-                        <div id="edad">
-                            {{#each ../listaDetalle}}
-                            <p>{{rangoEdadCurso}}</p><input type="checkbox" name="" id="" checked readonly>
-                            {{/each}}
-                        </div>
-                    </div>
-                    {{#each recursos}}
-                    <div id="recursos">
-                        <p>Recursos de la Clase</p>
-                        <div id="imagenRecurso">
-                            <img src="">
-                        </div>
-                        <div id="agregarRecurso">
-                            <div id="rec">
-                            </div>
-                        </div>
-                    </div>
-                    {{/each}}
-                    {{#each materiales}}
-                    <div id="Materiales">
-                        <p>Materiales de la Clase</p>
-                        <div id="imagenRecurso">
-                            <img src="">
-                        </div>
-                        <div id="agregarRecurso">
-                        </div>
-                    </div>
-                    {{/each}}
-                    {{#each tareas}}
-                    <div id="tareas">
-                        <p>Tareas</p>
-                        <div id="imagenTareas">
-                            <img src="">
-                        </div>
-                        <div id="botonTareas">
-                            <a href=""><button type="button">Todas las Tarea</button></a>
-                        </div>
-                    </div>
-                    {{/each}}
-                    {{#each Pruebas}}
-                    <div id="Pruebas">
-                        <p>Pruebas</p>
-                        <div id="imagenPruebas">
-                            <img src="">
-                        </div>
-                        <div id="botonPruebas">
-                            <a href=""><button type="button">Todas las Prueba</button></a>
-                        </div>
-                    </div>
-                    {{/each}}
+                {{/each}}
+            </div>
+            <div id="temario">
+                <h1>Temario Educativo</h1>
+                <p>Objetivo: {{objetivoTemario}}</p>
+                <div id="moduloTotal">
+                    <p>{{moduloCurricular}} Módulos</p>
+                    <p>{{clasesTemario}} Clases</p>
+                    <p>{{duracionTemario}} Duración Total</p>
                 </div>
-            </div>
-            <div id="fehcaInit">
-                <p>{{dateClasesInit}}</p>
-            </div>
-            <div id="fehcaFin">
-                <p>{{dateClasesFin}}</p>
-            </div>
-            <div id="hora">
-                <p>{{hourClases}}</p>
             </div>
             <div id="cupos">
-                <p>{{shareClases}}</p>
+                <p>{{cuposDisponibles}} Cupos Disponibles</p>
+            </div>
+            <div id="modalidad">
+                <p>Modalidad</p>
+                <input type="text" name="modalidad" id="modalidad" value="{{nameClasesClassType}}">
+                <div id="presencial">
+                    <img src="/img/icons/presencial.png" alt="Icono Presencial">
+                    <p>Domicilio <input type="checkbox" name="presencial" id="presencial"></p>
+                </div>
+                <div id="virtual">
+                    <img src="/img/icons/online.png" alt="Icono Virtual">
+                    <p>Online <input type="checkbox" name="virtual" id="virtual"></p>
+                </div>
+            </div>
+            <div id="recursos">
+                <p>Recursos de la Clase</p>
+                {{#each ../recursos}}
+                <p>{{nameRecours}}</p>
+                {{/each}}
+            </div>
+            <div id="materiales">
+                <p>Materiales de la Clase</p>
+                {{#each ../materiales}}
+                <p>{{nameMaterial}}</p>
+                {{/each}}
+            </div>
+            <div id="tareas">
+                <p>Tareas</p>
+                {{#each ../tareas}}
+                <a href="/tareas/detailClase/{{idTask}}">
+                    <p>{{nameTask}}</p>
+                </a>
+                {{/each}}
+            </div>
+            <div id="pruebas">
+                <p>Pruebas</p>
+                {{#each ../pruebas}}
+                <p>{{namePrueba}}</p>
+                {{/each}}
+            </div>
+        </div>
+        <div id="fechas">
+            <div id="fechaInicio">
+                <input type="text" value="{{fechaInicioClase}}" readonly>
+            </div>
+            <div id="fechaFin">
+                <input type="text" value="{{fechaFinClase}}" readonly>
+            </div>
+            <div id="hora">
+                <p>{{horaClase}}</p>
             </div>
             <div id="costo">
-                <p>{{costClases}}</p>
+                <p>{{costoClase}}</p>
             </div>
         </div>
     </form>
-    {{/each}}
 </div>
 
-<div id="menu">
-    <button type="button">Menu</button>
+<div id="menus">
     <div id="recursos">
-        <div id="imagenRecursos">
-            <img src="">
-        </div>
+        <img src="/img/icons/recursosCompleto.png" alt="Icono Recursos">
         <div id="boton">
-            <a href="/recours/clases/{{idClases}}"><button type="button">Recursos</button></a>
+            <a href="/recursos/clase/{{idClases}}"><button type="button">Recursos</button></a>
         </div>
     </div>
     <div id="materiales">
-        <div id="imagenMateriales">
-            <img src="">
-        </div>
+        <img src="/img/icons/materialesCompletos.png" alt="Icono Materiales">
         <div id="boton">
-            <a href="/material/clases/{{idClases}}"><button type="button">Recursos necesarios del
-                    estudiante</button></a>
+            <a href="/material/clase/{{idClases}}"><button type="button">Materiales del Estudiante</button></a>
         </div>
     </div>
-    <div id="Tareas">
-        <div id="imagenTareas">
-            <img src="">
-        </div>
+    <div id="tareas">
+        <img src="/img/icons/tareasCompletas.png" alt="Icono Tareas">
         <div id="boton">
-            <a href="/tareas/clases/{{idClases}}"><button type="button">Tareas</button></a>
+            <a href="/tareas/clase/{{idClases}}"><button type="button">Tareas</button></a>
         </div>
     </div>
-    <div id="Pruebas">
-        <div id="imagenPruebas">
-            <img src="">
-        </div>
+    <div id="pruebas">
+        <img src="/img/icons/pruebas.png" alt="Icono Pruebas">
         <div id="boton">
-            <a href="/pruebas/clases/{{idClases}}"><button type="button">Pruebas</button></a>
+            <a href="/pruebas/clase/{{idClases}}"><button type="button">Pruebas</button></a>
         </div>
     </div>
     <div id="asistencia">
-        <div id="imagenAsistencia">
-            <img src="">
-        </div>
+        <img src="/img/icons/asistencia.png" alt="Icono Asistencia">
         <div id="boton">
-            <a href="/asistencia/clases/{{idClases}}"><button type="button">Asistencia</button></a>
-        </div>
-    </div>
-    <div id="ObservacionesValoración">
-        <div id="imagenObservacion">
-            <img src="">
-        </div>
-        <div id="boton">
-            <a href="/observacionValoracion/clases/{{idClases}}"><button type="button">Observaciones y
-                    valoración</button></a>
-        </div>
-    </div>
-    <div id="contenidoCurricular">
-        <div id="imagenCurricular">
-            <img src="">
-        </div>
-        <div id="boton">
-            <a href="/silabus/clases/{{idClases}}"><button type="button">Contenido Curricular</button></a>
+            <a href="/asistencia/clase/{{idClases}}"><button type="button">Asistencia</button></a>
         </div>
     </div>
 </div>
 {{/each}}
 <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Q9PaOYlXpeqtj_0tHE19Zcoim25iSFg&callback=initAutocomplete&libraries=places&v=weekly"
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initAutocomplete&libraries=places&v=weekly"
     defer></script>
-<script src="/js/mapaDetalle.js"></script>
-<script src="/js/detalleCurso.js"></script>
+<script src="/js/mapaDetalleClase.js"></script>
+<script src="/js/detalleClase.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var fechaInicioClase = document.getElementById('fechaInicio').value;
+        var fechaFinClase = document.getElementById('fechaFin').value;
+
+        var startDateParts = fechaInicioClase.split('/');
+        var endDateParts = fechaFinClase.split('/');
+        var startDate = new Date(`${startDateParts[2]}-${startDateParts[1]}-${startDateParts[0]}`);
+        var endDate = new Date(`${endDateParts[2]}-${endDateParts[1]}-${endDateParts[0]}`);
+
+        function createCalendar() {
+            var calendarDiv = document.getElementById('calendar');
+            calendarDiv.innerHTML = '';
+
+            var daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            daysOfWeek.forEach(day => {
+                var dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day';
+                dayElement.textContent = day;
+                calendarDiv.appendChild(dayElement);
+            });
+
+            var currentDate = new Date(startDate.getFullYear(), startDate.getMonth(), 1);
+            var firstDay = currentDate.getDay();
+
+            for (var i = 0; i < firstDay; i++) {
+                var emptyElement = document.createElement('div');
+                calendarDiv.appendChild(emptyElement);
+            }
+
+            while (currentDate.getMonth() === startDate.getMonth()) {
+                var dateElement = document.createElement('div');
+                dateElement.className = 'calendar-day';
+                dateElement.textContent = currentDate.getDate();
+
+                if (currentDate >= startDate && currentDate <= endDate) {
+                    dateElement.classList.add('highlight');
+                }
+
+                calendarDiv.appendChild(dateElement);
+                currentDate.setDate(currentDate.getDate() + 1);
+            }
+        }
+
+        createCalendar();
+    });
+</script>

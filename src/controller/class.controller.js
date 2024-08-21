@@ -55,15 +55,15 @@ const guardarYSubirArchivo = async (archivo, filePath, columnName, idClases, url
 classes.mostrar = async (req, res) => {
     try {
         const id = req.params.id
-        const [materiales] = await sql.promise().query('SELECT * FROM materials')
-        const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = ?', [id]);
-        res.render('clases/add', { listaPagina: pagina, listaMateriales: materiales, csrfToken: req.csrfToken() });
+        const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = 1');
+        const [teacher] = await sql.promise().query('SELECT * FROM teachers where idTeacher = ?', [id]);
+        const [maxCours] = await sql.promise().query('SELECT MAX(idClases) AS Maximo FROM clases')
+        res.render('clases/add', { listaPagina: pagina, MaximoCurso: maxCours, listaTeacher: teacher, csrfToken: req.csrfToken() });
     } catch (error) {
         console.error('Error en la consulta:', error.message);
         res.status(500).send('Error al realizar la consulta');
     }
 };
-
 
 classes.mandar = async (req, res) => {
     const ids = req.params.id;
@@ -72,8 +72,17 @@ classes.mandar = async (req, res) => {
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
+
         const id = req.user.idUser;
-        const { idClases, nameClases, ubicacion, rangoEdadCurso, tipoClases, descriptionClases, dateClasesInit, dateClasesFin, neeClass, hourClases, shareClases, costClases } = req.body;
+        let idTeacher;
+
+        // Obtener el idTeacher
+        const teacher = await sql.query('SELECT * FROM detailteacherpages WHERE pageIdPage = "1"');
+        console.log(teacher[0].teacherIdTeacher)
+        if (teacher[0].teacherIdTeacher == id) {
+            idTeacher = teacherEntry.idDetailTeacherPagex;
+        }
+        const { idClases, nameClases, ubicacion, edadesEscogidas, tipoClases, descriptionClases, dateClasesInit, dateClasesFin, neeClass, hourClases, shareClases, costClases } = req.body;
         const newPage = {
             idClases,
             nameClases,
@@ -94,10 +103,9 @@ classes.mandar = async (req, res) => {
 
         await orm.clases.create(newPage);
 
-        for(let i = 0; i < rangoEdadCurso.length; i ++){
-            await sql.promise().query('INSERT INTO detalleclases(rangoEdadClase, createDetailDetalleClasee, ClaseIdClases) VALUES(?,?,?)',[rangoEdadCurso[i], new Date().toLocaleString(), idClases])
+        for (let edad of edadesEscogidas) {
+            await sql.promise().query('INSERT INTO detalleclases(rangoEdadClase, createDetailDetalleClasee, ClaseIdClases) VALUES(?,?,?)', [edad, new Date().toLocaleString(), idClases]);
         }
-
 
         if (req.files) {
             const { photoClases, videoClases } = req.files;
@@ -176,7 +184,7 @@ classes.actualizar = async (req, res) => {
             .then((result) => {
                 result.update(newPage)
             })
-            
+
         if (req.files) {
             const { photoClases, videoClases } = req.files;
 
@@ -225,5 +233,39 @@ classes.desabilitar = async (req, res) => {
     }
 }
 
+classes.detalle = async (req, res) => {
+    try {
+        const id = req.params.id
+        const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = 1');
+        const [row] = await sql.promise().query('SELECT C.*, T.* FROM clases C JOIN coursClassTypes T ON C.coursClassTypeIdCoursClassType = T.idCoursClassType where idClases = ?', [id])
+        const [silabus] = await sql.promise().query('SELECT s.*, d.* FROM syllabuseducationals s JOIN detailcurricularcontents d ON S.idsyllabusEducational = d.syllabusEducationalIdsyllabusEducational WHERE ClaseIdClases = ?', [id])
+        const [teacher] = await sql.promise().query('SELECT t.* FROM teachers t JOIN detailteacherpages d ON t.idTeacher = d.teacherIdTeacher JOIN clases c ON d.idDetailTeacherPage = c.detailTeacherPageIdDetailTeacherPage WHERE idClases = ?', [id])
+        const [detalle] = await sql.promise().query('SELECT * FROM detalleclases WHERE ClaseIdClases = ?', [id])
+        const [recursos] = await sql.promise().query('SELECT * FROM recours WHERE ClaseIdClases = ?', [id])
+        const [materiales] = await sql.promise().query('SELECT * FROM materials WHERE ClaseIdClases = ?', [id])
+        const [tareas] = await sql.promise().query('SELECT * FROM tasks WHERE ClaseIdClases = ?', [id])
+        const [pruebas] = await sql.promise().query('SELECT * FROM assessments WHERE ClaseIdClases = ?', [id])
+        const datos = teacher.map(row => ({
+            idTeacher: row.idTeacher,
+            photoTeacher: row.photoTeacher,
+            endorsementCertificateTeacher: row.endorsementCertificateTeacher,
+            pageVitalTeacher: row.pageVitalTeacher,
+            criminalRecordTeacher: row.criminalRecordTeacher,
+            completeNmeTeacher: row.completeNmeTeacher ? descifrarDatos(row.completeNmeTeacher) : '',
+            identificationCardTeacher: row.identificationCardTeacher ? descifrarDatos(row.identificationCardTeacher) : '',
+            ageTeacher: row.ageTeacher ? descifrarDatos(row.ageTeacher) : '',
+            descriptionTeacher: row.descriptionTeacher ? descifrarDatos(row.descriptionTeacher) : '',
+            emailTeacher: row.emailTeacher ? descifrarDatos(row.emailTeacher) : '',
+            addressTeacher: row.addressTeacher ? descifrarDatos(row.addressTeacher) : '',
+            phoneTeacher: row.phoneTeacher ? descifrarDatos(row.phoneTeacher) : '',
+            usernameTeahcer: row.usernameTeahcer ? descifrarDatos(row.usernameTeahcer) : '',
+            stateTeacher: row.stateTeacher
+        }));
+        res.render('clases/detalle', { lista: row, listaPagina: pagina, temario: silabus, listaDetalle: detalle, recursos: recursos, materiales: materiales, tareas: tareas, Pruebas: pruebas, docenteLista: datos })
+    } catch (error) {
+        console.error('Error en la consulta:', error.message);
+        res.status(500).send('Error al realizar la consulta');
+    }
+}
 
 module.exports = classes

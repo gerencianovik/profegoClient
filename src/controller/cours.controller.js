@@ -110,7 +110,6 @@ cours.mandar = async (req, res) => {
 
         // Crear el curso
         await orm.cours.create(newPage);
-        console.log(edadesEscogidas)
         // Insertar edades escogidas
         for (let edad of edadesEscogidas) {
             await sql.promise().query('INSERT INTO DetalleCursos(rangoEdadCurso, createDetailCurso, courIdCours) VALUES(?,?,?)', [edad, new Date().toLocaleString(), idCours]);

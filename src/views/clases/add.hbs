@@ -1,9 +1,9 @@
 <link rel="stylesheet" href="/css/clases/add.css">
-{{#each listaPagina}}
-<form action="/clases/add/{{idPage}}" method="post" enctype="multipart/form-data">
+{{#each listaTeacher}}
+<form action="/clases/add/{{idTeacher}}" method="post" enctype="multipart/form-data">
     {{/each}}
-    <div id="tiutlo">{{#each maximaClase}}
-        <p>Agregar Clase <input type="text" name="idClases" id="idClases" value="{{maximo}}"></p>{{/each}}
+    <div id="tiutlo">{{#each MaximoCurso}}
+        <p>Agregar Clase <input type="text" name="idClases" id="numero" value="{{Maximo}}"></p>{{/each}}
     </div>
     <input type="hidden" name="_csrf" value="{{ csrfToken }}">
     <div id="imagen">
@@ -40,7 +40,7 @@
             <option value="Couch">Grupal</option>
         </select>
     </div>
-   <div id="edad">
+    <div id="edad">
         <p>Edad dirigida de la Clase</p>
         <div id="Edad">
             <select name="rangeAgeTeacher" id="edadRango">

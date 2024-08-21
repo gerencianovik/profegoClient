@@ -1,0 +1,147 @@
+<link rel="stylesheet" href="">
+<style>
+    /* Contenedor de la tabla */
+    #contenedor {
+        padding: 20px;
+    }
+
+    /* Estilos generales para la tabla */
+    #tabla {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+
+    /* Estilos para el encabezado de la tabla */
+    #tabla thead {
+        background-color: #f4f4f4;
+    }
+
+    #tabla th {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    /* Estilos para las filas de la tabla */
+    #tabla tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    #tabla tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    #tabla td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
+    /* Estilos para los checkboxes */
+    .attendance-checkbox {
+        cursor: pointer;
+    }
+
+    /* Estilo para el valor total */
+    #tabla input[type="text"] {
+        width: 100%;
+        box-sizing: border-box;
+        border: 1px solid #ddd;
+        padding: 5px;
+        text-align: center;
+    }
+
+    /* Estilos para el botón de envío */
+    button[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 10px 0;
+        cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #45a049;
+    }
+</style>
+
+<div id="contenedor">
+    {{#each listaCurso}}
+    <form action="/asistencia/clase/{{idCours}}" method="post">
+        {{/each}}
+        <div id="tabla">
+            <table>
+                <thead>
+                    <tr>
+                        <td>N°</td>
+                        <td>Estudiantes</td>
+                        <td>Lunes</td>
+                        <td>Martes</td>
+                        <td>Miércoles</td>
+                        <td>Jueves</td>
+                        <td>Viernes</td>
+                        <td>Valor Total</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each estudiantes}}
+                    <tr>
+                        <td>{{idEstudent}}</td>
+                        <td>{{completeNameEstudent}}</td>
+                        <!-- Checkbox para los días de la semana -->
+                        <td><input type="checkbox" name="attendance[{{idEstudent}}][lunes]" class="attendance-checkbox"
+                                data-estudiante="{{idEstudent}}" data-day="lunes"></td>
+                        <td><input type="checkbox" name="attendance[{{idEstudent}}][martes]" class="attendance-checkbox"
+                                data-estudiante="{{idEstudent}}" data-day="martes"></td>
+                        <td><input type="checkbox" name="attendance[{{idEstudent}}][miercoles]"
+                                class="attendance-checkbox" data-estudiante="{{idEstudent}}" data-day="miercoles"></td>
+                        <td><input type="checkbox" name="attendance[{{idEstudent}}][jueves]" class="attendance-checkbox"
+                                data-estudiante="{{idEstudent}}" data-day="jueves"></td>
+                        <td><input type="checkbox" name="attendance[{{idEstudent}}][viernes]"
+                                class="attendance-checkbox" data-estudiante="{{idEstudent}}" data-day="viernes"></td>
+                        <!-- Campo para el valor total -->
+                        <td><input type="text" name="attendance[{{idEstudent}}][totalValue]"
+                                id="totalValue-{{idEstudent}}" value="0" readonly></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+        <button type="submit">Guardar Asistencia</button>
+    </form>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Obtener todos los checkboxes
+        var checkboxes = document.querySelectorAll('.attendance-checkbox');
+
+        // Evento para actualizar el valor total cuando se seleccionan los checkboxes
+        checkboxes.forEach(function (checkbox) {
+            checkbox.addEventListener('change', function () {
+                var idEstudiante = this.dataset.estudiante;
+                var totalInput = document.getElementById(`totalValue-${idEstudiante}`);
+                var currentValue = parseInt(totalInput.value, 10) || 0;
+
+                if (this.checked) {
+                    currentValue += 20; // Valor añadido por día marcado
+                } else {
+                    currentValue -= 20; // Valor descontado por día desmarcado
+                }
+
+                // Asegurarse de que el valor total no sea negativo
+                if (currentValue < 0) {
+                    currentValue = 0;
+                }
+
+                totalInput.value = currentValue;
+            });
+        });
+    });
+</script>

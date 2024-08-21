@@ -205,6 +205,9 @@ clases.belongsTo(detailTeachPage);
 detailTeachPage.hasMany(cours);
 cours.belongsTo(detailTeachPage);
 
+detailTeachPage.hasMany(clases);
+clases.belongsTo(detailTeachPage);
+
 clases.hasMany(members);
 members.belongsTo(clases);
 
