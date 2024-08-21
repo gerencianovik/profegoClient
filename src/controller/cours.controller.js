@@ -145,7 +145,7 @@ cours.lista = async (req, res) => {
         const id = req.params.id
         const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = ?', [id]);
         const [teacher] = await sql.promise().query('SELECT * FROM teachers where idTeacher = ?', [id]);
-        const [row] = await sql.promise().query('SELECT * FROM cours')
+        const [row] = await sql.promise().query('SELECT * FROM cours WHERE detailTeacherPageIdDetailTeacherPage = ?', [id])
         res.render('cours/list', { lista: row, listaPagina: pagina, listaTeacher: teacher, })
     } catch (error) {
         console.error('Error en la consulta:', error.message);

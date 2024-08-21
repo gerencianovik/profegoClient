@@ -49,7 +49,7 @@
 
 #filtrosBoton {
   position: absolute;
-  width: 17%;
+  width: 12%;
   height: 80%;
   top: 10%;
   left: 1%;
@@ -136,7 +136,7 @@
 }
 
 #foto {
-  width: 20%;
+  width: 10%;
   margin-left: 1%;
 }
 
@@ -211,7 +211,7 @@ a {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   background-color: white;
-  height: 37vh;
+  height: 40vh;
 }
 
 #tarjetaInterna{
@@ -224,7 +224,7 @@ a {
 }
 
 #pasos {
-  margin-top: -24%;
+  margin-top: -16%;
   margin-left: 23%;
   display: flex;
 }
@@ -288,13 +288,13 @@ a {
 #recursosDeClase {
   width: 20%;
   margin-left: 53%;
-  margin-top: -2.1%;
+  margin-top: -2.7%;
 }
 
 #desavilitar {
   width: 20%;
   margin-left: 76.7%;
-  margin-top: -2%;
+  margin-top: -2.7%;
 } 
 
 #opcionesLista{
@@ -380,4 +380,24 @@ margin-top: 8%;
   margin-top: 8%;
   
   }
+}
+
+#mas{
+  position: absolute;
+  width: 4%;
+  top: 11%;
+  left: 95%;
+}
+#mas button{
+  border-color: transparent;
+  background-color: transparent;
+}
+#mas img{
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding-top: 15%;
+  margin-left: 10%;
+
 }
