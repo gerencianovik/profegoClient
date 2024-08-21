@@ -1,0 +1,129 @@
+ /* Contenedor de la tabla */
+ #contenedor {
+    padding: 20px;
+}
+
+/* Estilos generales para la tabla */
+#tabla {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+/* Estilos para el encabezado de la tabla */
+#tabla thead {
+    background-color: #f4f4f4;
+}
+
+#tabla th {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+/* Estilos para las filas de la tabla */
+#tabla tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#tabla tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+#tabla td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+/* Estilos para los checkboxes */
+.attendance-checkbox {
+    cursor: pointer;
+}
+
+/* Estilo para el valor total */
+#tabla input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    padding: 5px;
+    text-align: center;
+}
+
+/* Estilos para el botón de envío */
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.container{
+    background-image: url(../../img/fondo/Tareas.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center ;
+    background-attachment: fixed;
+    min-height: 100vh;
+    font-family: 'Josefin Sans';
+}
+
+.titulo{
+    padding-top: 5%;
+    color: #F39325;
+    text-align: center;
+}
+
+.tarjeta {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+    overflow: hidden;
+    width: 250px;
+    border-radius: 30px;
+    
+    
+}
+
+.controno-verde{
+    border: 3px solid #18574F;
+    margin: 0 20px;
+}
+
+.tarjetaContenedora{
+    display: flex;
+    margin: 0 auto;
+    width: 90vw;
+    height: 70vh;
+}
+
+.flex{
+    display: flex;
+    width: 80%;
+    margin: 25px 0;
+}
+
+
+.nombresInput{
+    color: #18574F;
+    text-align: center;
+}
+
+.alinearCentro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.scroll{
+    overflow: scroll;
+}

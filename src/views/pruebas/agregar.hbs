@@ -1,36 +1,47 @@
-<link rel="stylesheet" href="/css/assessments/add.css">
-{{#each listaCurso}}
-<form action="/pruebas/curso/{{idCours}}" method="post">
-    {{/each}}
-    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
-
-    <div class="contenedor">
-        <div id="titulo">{{#each Maximo}}
-            <p>Agregar Evaluación <input type="text" name="idEvaluaciones" id="idEvaluaciones" value="{{maximo}}"></p>
-            {{/each}}
-        </div>
-        <div id="nombre">
-            <p>Nombre de la evaluación:</p>
-            <textarea name="nameAssessment" id="nameAssessment" required></textarea>
-        </div>
-        <div id="descripcion">
-            <p>Descripción de la Evaluación:</p>
-            <textarea name="descriptionAssessment" id="descriptionAssessment" required></textarea>
-        </div>
-        <div id="tiempo">
-            <p>Tiempo de evaluación:</p>
-            <input type="time" name="timeAssessment" id="timeAssessment" required>
-        </div>
-        <div id="fecha">
-            <p>Fecha de evaluación:</p>
-            <input type="date" name="dateAssessment" id="dateAssessment" required>
-        </div>
-        <div id="calificacion">
-            <p>Calificación:</p>
-            <input type="text" name="qualification" id="qualification" required>
-        </div>
-        <div id="boton">
-            <button type="submit">Guardar</button>
-        </div>
+<link rel="stylesheet" href="/css/pruebas/pruebasAgregar.css">
+<div class="container">
+    <div id="titulo" class="titulo">
+        <h1>Agregar Pruebas</h1>
     </div>
-</form>
+    {{#each listaCurso}}
+    <form action="/pruebas/curso/{{idCours}}" method="post" class="tarjeta tarjetaContenedora">
+        <div class="alinearCentro anchoForm">
+            {{/each}}
+            <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+            <div class="flex alinear">
+                <span>
+                    <div id="titulo">{{#each Maximo}}
+                        <p>Agregar Evaluación
+                        </p>
+                        <input type="text" name="idEvaluaciones" id="idEvaluaciones" value="{{maximo}}">
+                        {{/each}}
+                    </div>
+                    <div id="nombre">
+                        <p>Nombre de la evaluación:</p>
+                        <textarea name="nameAssessment" id="nameAssessment" required></textarea>
+                    </div>
+                    <div id="fecha">
+                        <p>Fecha de evaluación:</p>
+                        <input type="date" name="dateAssessment" id="dateAssessment" required>
+                    </div>
+                </span>
+                <span>
+                    <div id="tiempo">
+                        <p>Tiempo de evaluación:</p>
+                        <input type="time" name="timeAssessment" id="timeAssessment" required>
+                    </div>
+                    <div id="descripcion">
+                        <p>Descripción de la Evaluación:</p>
+                        <textarea name="descriptionAssessment" id="descriptionAssessment" required></textarea>
+                    </div>
+                    <div id="calificacion">
+                        <p>Calificación:</p>
+                        <input type="text" name="qualification" id="qualification" required>
+                    </div>
+                </span>
+            </div>
+
+        </div>
+        <button type="submit">Guardar</button>
+    </form>
+</div>
