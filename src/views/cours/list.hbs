@@ -1,9 +1,6 @@
 <link rel="stylesheet" href="/css/cursos/lista.css">
-{{#each listaCurso}}
-<form action="/cours/list/{{idCours}}" method="get">
-    <div id="mas">
-        <a href="/cours/add/{{idCours}}"><button type="button"><img src="/img/icons/mas.png"></button></a>
-    </div>
+{{#each listaTeacher}}
+<form action="/cours/list/{{idTeacher}}" method="get">
     {{/each}}
     <div id="contenedor">
         <div id="fondo">
@@ -42,7 +39,7 @@
                                             <p>{{stateCours}}</p>
                                         </div>
                                     </div>
-                                    <div >
+                                    <div>
                                         <div id="descripcion">
                                             <p>{{descriptionCours}}</p>
                                         </div>
@@ -52,19 +49,14 @@
                                         <div id="hora">
                                             <p>{{hourCours}}</p>
                                         </div>
-
                                         <div id="costo">
-
                                             <p> <img src="/img/icons/tarifa.png" alt="Descripción del ícono"
                                                     style="width: 30px; height: 30px;"> {{costCours}}</p>
                                         </div>
-
                                         <div id="calificacion">
                                             <p>{{calificationCours}}</p>
                                         </div>
                                     </div>
-
-
                                 </div>
                             </a>
                         </div>
@@ -83,7 +75,6 @@
                                 <a href="/cours/delete/{{idCours}}"><button type="button">Desabilitar</button></a>
                             </div>
                         </div>
-
                     </div>
                     <br>
                     {{/each}}
@@ -118,5 +109,9 @@
         </div>
     </div>
 </form>
-
+{{#each listaTeacher}}
+<div id="mas">
+    <a href="/cours/add/{{idTeacher}}"><button type="button"><img src="/img/icons/mas.png"></button></a>
+</div>
+{{/each}}
 <script src="/js/filtro.js"></script>

@@ -1,66 +1,74 @@
-<link rel="stylesheet" href="">
+<link rel="stylesheet" href="/css/clases/add.css">
 {{#each lista}}
 <form action="/clases/update/{{idClases}}" method="post" enctype="multipart/form-data">
     {{/each}}
-    <div id="tiutlo">
-        <input type="hidden" name="_csrf" value="{{ csrfToken }}">
-        {{#each lista}}
-        <p>Agregar Clase <input type="text" name="idClases" id="idClases" value="{{idClases}}"></p>
-    </div>
-
-    <div id="imagen">
-        <div id="cambioImagen">
-            <img src="/img/clase/{{photoClases}}" id="imagenPrevisualizacion" />
+    <div id="contenedor">
+        <div id="fondo">
+            <img src="/img/icons/fondoLista.png">
         </div>
-        <input type="file" name="photoClases" id="seleccionArchivos" accept="image/*" />
-    </div>
-    <div id="imagen">
-        <div id="cambioVideo">
-            <video src="/video/clases/{{videoClases}}" controls></video>
+        <div id="tiutlo">
+            <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+            {{#each lista}}
+            <p>Agregar Clase <input type="text" name="idClases" id="idClases" value="{{idClases}}"></p>
         </div>
-        <input type="file" name="videoClases" id="seleccionArchivos" accept="image/*" />
-    </div>
-    <div id="nombre">
-        <p>Nombre de la Clase:</p>
-        <input type="text" name="nameClases" id="nameClases" required value="{{nameClases}}">
-    </div>
-    <div id="descripcion">
-        <p>Descripción de la Clase:</p>
-        <textarea name="descriptionClases" id="descriptionClases" required>{{descriptionClases}}</textarea>
-    </div>
-    <div id="costo">
-        <p>Costo:</p>
-        <input type="text" name="costClases" id="costClases" required value="{{costClases}}">
-    </div>
-    <div id="cupos">
-        <p>Cupos:</p>
-        <input type="text" name="shareClases" id="shareClases" value="{{shareClases}}">
-    </div>
-    <div id="Hora">
-        <p>Tiempo de la Clase:</p>
-        <input type="text" name="hourClases" id="hourClases" value="{{hourClases}}">
-    </div>
-    <div id="fechaInicio">
-        <p>Fecha inicio:</p>
-        <input type="text" name="dateClasesInit" id="dateCours"  value="{{dateClasesInit}}">
-    </div>
-    <div id="fechaFin">
-        <p>Fecha Fin:</p>
-        <input type="text" name="dateClasesFin" id="dateCours" required value="{{dateClasesFin}}">
-    </div>
-    <div id="estado">
-        <p>Estado:</p>
-        <div id="Activar">
-            <input type="text" name="stateClases" id="idestado" readonly value="{{stateClases}}">
-            <button type="button" id="activarBtn">Activar</button>
+        <div id="central">
+            <div id="imagens">
+                <div id="cambioImagen">
+                    <img src="/img/clase/{{photoClases}}" id="imagenPrevisualizacion" />
+                </div>
+                <input type="file" name="photoClases" id="seleccionArchivos" accept="image/*" />
+            </div>
+            <div id="nombre">
+                <p>Nombre de la Clase:</p>
+                <input type="text" name="nameClases" id="nameClases" required value="{{nameClases}}">
+            </div>
         </div>
-        <div id="desActivar">
-            <button type="button" id="desactivarBtn">Desabilitar</button>
+        <div id="videosS">
+            <div id="cambioVideo">
+                <video src="/video/clases/{{videoClases}}" controls></video>
+            </div>
+            <input type="file" name="videoClases" id="seleccionArchivos" accept="image/*" />
         </div>
-    </div>
-    {{/each}}
-    <div id="boton">
-        <button type="submit">Actualizar</button>
+        <div id="datosGenerales">
+            <div id="descripcion">
+                <p>Descripción de la Clase:</p>
+                <textarea name="descriptionClases" id="descriptionClases" required>{{descriptionClases}}</textarea>
+            </div>
+            <div id="costo">
+                <p>Costo:</p>
+                <input type="text" name="costClases" id="costClases" required value="{{costClases}}">
+            </div>
+            <div id="cupos">
+                <p>Cupos:</p>
+                <input type="text" name="shareClases" id="shareClases" value="{{shareClases}}">
+            </div>
+            <div id="Hora">
+                <p>Tiempo de la Clase:</p>
+                <input type="text" name="hourClases" id="hourClases" value="{{hourClases}}">
+            </div>
+            <div id="fechaInicio">
+                <p>Fecha inicio:</p>
+                <input type="text" name="dateClasesInit" id="dateCours" value="{{dateClasesInit}}">
+            </div>
+            <div id="fechaFin">
+                <p>Fecha Fin:</p>
+                <input type="text" name="dateClasesFin" id="dateCours" required value="{{dateClasesFin}}">
+            </div>
+            <div id="estado">
+                <p>Estado:</p>
+                <div id="Activar">
+                    <input type="text" name="stateClases" id="idestado" readonly value="{{stateClases}}">
+                    <button type="button" id="activarBtn">Activar</button>
+                </div>
+                <div id="desActivar">
+                    <button type="button" id="desactivarBtn">Desabilitar</button>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        <div id="boton">
+            <button type="submit">Actualizar</button>
+        </div>
     </div>
 </form>
 
