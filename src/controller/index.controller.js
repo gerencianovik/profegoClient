@@ -120,7 +120,7 @@ indexCtl.loginEstudiante = (req, res, next) => {
             if (err) {
                 return next(err);
             }
-            return res.redirect("/Eleccion/" + req.user.idEstudent);
+            return res.redirect("/eleccion/" + req.user.idEstudent);
         });
     })(req, res, next);
 };

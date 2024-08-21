@@ -1,0 +1,75 @@
+<link rel="stylesheet" href="/css/teacher/update.css">
+<div id="contenidoPefil">
+    <div id="fondo">
+        <img src="/img/fondo/Postulación.png">
+    </div>
+    <div id="titulos">
+        <h1>Postulación como docente o coach</h1>
+        <p>Completa y envía el siguiente formulario para la aprobación de tu postulación.</p>
+    </div>
+    <div id="datos">
+        {{#each listaEstudent}}
+        <form action="/estudent/update/{{idEstudent}}" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="_csrf" value="{{ ../csrfToken }}">
+            {{#each ../listaPagina}}
+            <input type="text" name="idPagina" id="idPagina" value="{{idPage}}">
+            {{/each}}
+            <div id="imagenEstudent">
+                <div id="cambioImagen">
+                    {{#if photoEstudent}}
+                    <img src="/img/user/{{photoEstudent}}" id="imagenPrevisualizacion" />
+                    {{else}}
+                    <img src="/img/icons/sinImagenTeacher.png" id="imagenPrevisualizacion" />
+                    {{/if}}
+                </div>
+                <input type="file" name="photoEstudent" class="seleccionArchivos" accept="image/*" id="seleccionArchivos"
+                    style="display: none;" />
+                <button type="button" id="botonImagen"><img src="/img/icons/Subir.png"></button>
+            </div>
+            <div id="nombreCompleto">
+                <p>Nombre completo:</p>
+                <input type="text" name="completeNameEstudentTeacher" id="nombre" value="{{completeNmeTeacher}}" required>
+            </div>
+            
+            <div id="materias">
+                <p>Áreas/ asignaturas a enseñar</p>
+                <div id="meterias">
+                    <select name="subjetTeacher" id="materiasEleccion">
+                        {{#each ../listaMaterias}}
+                        <option value="{{nambeSubjects}}">{{nambeSubjects}}</option>
+                        {{/each}}
+                        <option value="materias">otros</option>
+                    </select>
+                    <div id="meteriasTotal"></div>
+                </div>
+            </div>
+            
+
+            <div id="Celular">
+                <p>Celular:</p>
+                <input type="text" name="celularEstudent" id="celular" value="{{celularEstudent}}">
+            </div>
+            <div id="Correos">
+                <p>Correo Electrónico:</p>
+                <input type="text" name="emailEstudent" id="correo" value="{{emailTeacher}}">
+            </div>
+            {{/each}}
+            <div id="boton">
+                <button type="submit">GUARDAR Y ENVÍAR</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/js/preview.js"></script>
+<script src="/js/botonImagen.js"></script>
+<script src="/js/botoncheck.js"></script>
+<script src="/js/seleccionEspecialidad.js"></script>
+<script src="/js/EdadSeleccion.js"></script>
+<script src="/js/seleccionMaterias.js"></script>
+<script src="/js/seleccionTitulo.js"></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Q9PaOYlXpeqtj_0tHE19Zcoim25iSFg&callback=initAutocomplete&libraries=places&v=weekly"
+    defer>
+    </script>
+    <script src="/js/mapa.js"></script>

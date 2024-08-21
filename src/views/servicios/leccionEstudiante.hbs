@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="/css/eleccion/servicios.css">
-{{#each listaTeacher}}
+{{#each listaEstudent}}
 <form action="/student/eleccion/{{idEstudent}}" method="get"></form>
 <div id="contenedorServicio">
     <div id="fondos">
@@ -7,7 +7,7 @@
     </div>
     <div id="contenedorImagenTitulos">
         <div id="titulo">
-            <h1>¡Bienvenido!</h1>
+            <h1>¡Bienvenido! {{completeNameEstudent}}</h1>
             <p>Elige entre servicios que puedes crear o los existentes.<br>
                 ¡Tu enseñanza, tu elección!</p>
         </div>
