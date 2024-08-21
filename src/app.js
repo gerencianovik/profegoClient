@@ -203,5 +203,6 @@ app.use(require('./router/eleccion.router'))
 app.use('/pruebas', require('./router/pruebas.router'))
 app.use('/observacionValoracion', require('./router/observaciones.router'))
 app.use('/asistencia', require('./router/asistencia.router'))
+app.use('/general', require('./router/filtros.router'))
 // Exportar la aplicación
 module.exports = app;
