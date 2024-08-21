@@ -14,7 +14,7 @@ indexCtl.mostrar = async (req, res) => {
         const [pagina] = await sql.promise().query('SELECT * FROM pagePolicy');
         const [teacher] = await sql.promise().query('SELECT * FROM teachers');
         const [materias] = await sql.promise().query('SELECT * FROM subjects');
-        const [tipos] = await sql.promise().query('SELECT * FROM coursclasstypes');
+        const [tipos] = await sql.promise().query('SELECT * FROM coursClassTypes');
         const datos = teacher.map(row => ({
             completeNmeTeacher: row.completeNmeTeacher ? descifrarDatos(row.completeNmeTeacher) : '',
         }))
