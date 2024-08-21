@@ -1,37 +1,46 @@
-<link rel="stylesheet" href="">
-<div id="contenedor">
-    <div id="titulo">
-        <h1>Evaluacion</h1>
+<link rel="stylesheet" href="/css/pruebas/pruebas.css">
+<div id="contenedor" class="container">
+    <div id="titulo" class="titulo">
+        <h1>Mis Pruebas</h1>
     </div>
-    <div id="datos">
-        {{#each pruebas}}
-        <div id="nombre">
-            <p>Nombre de la evaluación:</p>
-            <textarea name="nameAssessment" id="nameAssessment" required>{{nameAssessment}}</textarea>
+    <div id="datos" class="tarjeta tarjetaContenedora">
+        <div class="flex">
+            {{#each pruebas}}
+            <div class="tarjeta controno-verde">
+                <div id="nombre" class="alinearCentro">
+                    <p class="nombresInput">Nombre de la evaluación:</p>
+                    <textarea name="nameAssessment" id="nameAssessment" required>{{nameAssessment}}</textarea>
+                </div>
+                <div id="descripcion" class="alinearCentro">
+                    <p class="nombresInput">Descripción de la Evaluación:</p>
+                    <textarea name="descriptionAssessment" id="descriptionAssessment"
+                        required>{{descriptionAssessment}}</textarea>
+                </div>
+                <div id="tiempo" class="alinearCentro">
+                    <p class="nombresInput">Tiempo de evaluación:</p>
+                    <input type="time" name="timeAssessment" id="timeAssessment" required value="{{timeAssessment}}">
+                </div>
+                <div id="fecha" class="alinearCentro">
+                    <p class="nombresInput">Fecha de evaluación:</p>
+                    <input type="date" name="dateAssessment" id="dateAssessment" required value="{{dateAssessment}}">
+                </div>
+                <div id="calificacion" class="alinearCentro">
+                    <p class="nombresInput">Calificación:</p>
+                    <input type="text" name="qualification" id="qualification" required value="{{qualification}}">
+                </div>
+                <div id="preguntas" class="alinearCentro">
+                    <button type="button" class="alinearCentro btn-border-orange "><a href="/pruebas/preguntas/{{idAssessment}}">Preguntas</a></button>
+                </div>
+                <div id="Actualizar" class="alinearCentro">
+                    <button type="button" class="boton-background-orange"><a href="/pruebas/cursosUpdate/{{idAssessment}}">Actualizar</a></button>
+                </div>
+            </div>
+            {{/each}}
         </div>
-        <div id="descripcion">
-            <p>Descripción de la Evaluación:</p>
-            <textarea name="descriptionAssessment" id="descriptionAssessment"
-                required>{{descriptionAssessment}}</textarea>
+        <div class="opciones">
+            <button type="button" class="btn-border-orange colorgreen">Añadir</button>
+            <button type="button" class="btn-border-orange colorgreen">Eliminar</button>
+            <button type="button" class="btn-border-orange colorgreen">Lista de pruebas entregadas</button>
         </div>
-        <div id="tiempo">
-            <p>Tiempo de evaluación:</p>
-            <input type="time" name="timeAssessment" id="timeAssessment" required value="{{timeAssessment}}">
-        </div>
-        <div id="fecha">
-            <p>Fecha de evaluación:</p>
-            <input type="date" name="dateAssessment" id="dateAssessment" required value="{{dateAssessment}}">
-        </div>
-        <div id="calificacion">
-            <p>Calificación:</p>
-            <input type="text" name="qualification" id="qualification" required value="{{qualification}}">
-        </div>
-        <div id="preguntas">
-            <a href="/pruebas/preguntas/{{idAssessment}}"><button type="button">Preguntas</button></a>
-        </div>
-        <div id="Actualizar">
-            <a href="/pruebas/cursosUpdate/{{idAssessment}}"><button type="button">Actualizar</button></a>
-        </div>
-        {{/each}}
     </div>
 </div>
