@@ -8,7 +8,7 @@
             mañana!</p>
     </div>
     <div id="buscador">
-        <form action="/general/list/" method="post">
+        <form action="/general/list/listCurso" method="get">
             <div id="busca">
                 <img src="/img/icons/busca.png">
             </div>
@@ -20,7 +20,7 @@
                 <select name="docentes" id="docenetes">
                     <option value="">Busco docente</option>
                     {{#each profesor}}
-                    <option value="{{idTeacher}}">{{nameTeacher}}</option>
+                    <option value="{{idTeacher}}">{{completeNmeTeacher}}</option>
                     {{/each}}
                 </select>
             </div>
@@ -29,7 +29,7 @@
                 <select name="materia" id="materia">
                     <option value="">Ej: Matemática</option>
                     {{#each materiales}}
-                    <option value="{{idSubjet}}">{{idSubjet}}</option>
+                    <option value="{{idSubjet}}">{{nambeSubjects}}</option>
                     {{/each}}
                 </select>
             </div>
@@ -51,7 +51,7 @@
                 <p>¿Dónde?</p>
                 <select name="donde" id="dondes">
                     {{#each tipos}}
-                    <option value="{{idTypeCoursClass}}">{{idTypeCoursClass}}</option>
+                    <option value="{{idTypeCoursClass}}">{{nameCoursClassType}}</option>
                     {{/each}}
                 </select>
             </div>
@@ -215,10 +215,11 @@
         </div>
         <div id="datosNosotros">
             <a href="/RegisterStudents" style="text-decoration: none;">
-            <p>Regístrate como estudiante</a> <br>
-                <br>
-                <br>
-                <a href="/RegisterTeachers" style="text-decoration: none;">Sé docente o coach</a>
+                <p>Regístrate como estudiante
+            </a> <br>
+            <br>
+            <br>
+            <a href="/RegisterTeachers" style="text-decoration: none;">Sé docente o coach</a>
             </p>
         </div>
     </div>
@@ -228,10 +229,11 @@
         </div>
         <div id="datosNosotros">
             <a href="/seguridad" style="text-decoration: none;">
-            <p>Términos y condiciones</a> <br>
-                <br>
-                <br>
-                <a href="/seguridad" style="text-decoration: none;">Políticas de privacidad</a> 
+                <p>Términos y condiciones
+            </a> <br>
+            <br>
+            <br>
+            <a href="/seguridad" style="text-decoration: none;">Políticas de privacidad</a>
             </p>
         </div>
     </div>

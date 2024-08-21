@@ -1,6 +1,12 @@
 const passport = require('passport')
-const orm = require('../Database/dataBase.orm.js')
-const sql = require('../Database/dataBase.sql.js')
+const orm = require('../Database/dataBase.orm')
+const sql = require('../Database/dataBase.sql')
+const FormData = require('form-data');
+const fs = require('fs');
+const path = require('path');
+const axios = require('axios');
+const { descifrarDatos, cifrarDatos } = require('../lib/encrypDates.js');
+const { validationResult } = require('express-validator');
 const indexCtl = {}
 
 indexCtl.mostrar = async (req, res) => {
@@ -9,7 +15,10 @@ indexCtl.mostrar = async (req, res) => {
         const [teacher] = await sql.promise().query('SELECT * FROM teachers');
         const [materias] = await sql.promise().query('SELECT * FROM subjects');
         const [tipos] = await sql.promise().query('SELECT * FROM coursclasstypes');
-        res.render('inicio', { listaPagina: pagina, profesor: teacher, materiales: materias, tipos: tipos, csrfToken: req.csrfToken() })
+        const datos = teacher.map(row => ({
+            completeNmeTeacher: row.completeNmeTeacher ? descifrarDatos(row.completeNmeTeacher) : '',
+        }))
+        res.render('inicio', { listaPagina: pagina, profesor: datos, materiales: materias, tipos: tipos, csrfToken: req.csrfToken() })
     } catch (error) {
         console.error('Error en la consulta SQL:', error.message);
         res.status(500).send('Error interno del servidor');
