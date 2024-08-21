@@ -33,14 +33,21 @@
                 <p>{{descriptionCours}}</p>
             </div>
             <div id="contenedordocentess">
-                {{#each ../docenteLista}}
-                <div id="docentess">
-                    <img src="/img/usuario/{{photoTeacher}}">
-                    <h1>{{completeNmeTeacher}}</h1>
-                    <p>{{descriptionTeacher}}</p>
+                <h1>Docentes</h1>
+                <div id="fotoDocente">
+                    {{#each ../docenteLista}}
+                    <div id="docentess">
+                        <img src="/img/usuario/{{photoTeacher}}">
+                        <div id="DataDocente">
+                            <h1>{{completeNmeTeacher}}</h1>
+                            <p>{{descriptionTeacher}}</p>
+                        </div>
+
+                    </div>
+                    {{/each}}
+                    <img src="/img/icons/aprobado.png" id="aprobadoss">
                 </div>
-                {{/each}}
-                <img src="/img/icons/aprobado.png" id="aprobadoss">
+
             </div>
             {{#each ../temario}}
             <div id="temario">
@@ -49,15 +56,18 @@
                     <p>Objetivo: {{objetivesyllabusEducational}}</p>
                     <div id="moduloTotal">
                         <p>{{moduleCurrucularContentCourse}} Módulos</p>
+                        |
                         <p>{{themesyllabusEducational}}Clases</p>
+                        |
                         <p>{{timesyllabusEducational}} Duración total</p>
+
                     </div>
                 </div>
             </div>
             {{/each}}
-            <div id="cupos">
+            {{!-- <div id="cupos">
                 <p>{{shareCours}} Cupos disponibles</p>
-            </div>
+            </div> --}}
             <div id="Modalidad">
                 <p>Modalidad</p>
                 <input type="text" name="modalidad" id="modalidad" value="{{nameCoursClassType}}">
@@ -101,26 +111,28 @@
                     {{/each}}
                 </div>
             </div>
-            <div id="recursoss">
-                <p>Recursos del Curso</p>
-                <div id="imagenRecurso">
-                    <img src="/img/icons/Recursos.png">
+            <div id="recursosParaClase">
+                <div id="recursoss">
+                    <p>Recursos del Curso</p>
+                    <div id="imagenRecurso">
+                        <img src="/img/icons/Recursos.png">
+                    </div>
+                    <div id="listaRecursoss">
+                        {{#each ../recursos}}
+                        <p>{{nameRecours}}</p>
+                        {{/each}}
+                    </div>
                 </div>
-                <div id="listaRecursoss">
-                    {{#each ../recursos}}
-                    <p>{{nameRecours}}</p>
-                    {{/each}}
-                </div>
-            </div>
-            <div id="Materiales">
-                <p>Materiales del Curso</p>
-                <div id="imagenRecurso">
-                    <img src="/img/icons/materiales.png">
-                </div>
-                <div id="materialesCurso">
-                    {{#each ../materiales}}
-                    <p>{{nameMaterial}}</p>
-                    {{/each}}
+                <div id="Materiales">
+                    <p>Materiales del Curso</p>
+                    <div id="imagenRecurso">
+                        <img src="/img/icons/materiales.png">
+                    </div>
+                    <div id="materialesCurso">
+                        {{#each ../materiales}}
+                        <p>{{nameMaterial}}</p>
+                        {{/each}}
+                    </div>
                 </div>
             </div>
             <div id="tareasss">
