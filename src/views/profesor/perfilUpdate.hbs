@@ -3,7 +3,8 @@
     <div id="fondo">
         <img src="/img/fondo/Postulación.png">
     </div>
-    <div id="titulos">
+
+    <div id="titulos"> <br><br>
         <h1>Postulación como docente o coach</h1>
         <p>Completa y envía el siguiente formulario para la aprobación de tu postulación.</p>
     </div>
@@ -24,7 +25,7 @@
                 </div>
                 <input type="file" name="photoTeacher" class="seleccionArchivos" accept="image/*" id="seleccionArchivos"
                     style="display: none;" />
-                <button type="button" id="botonImagen"><img src="/img/icons/Subir.png"></button>
+                <button type="button" id="botonImagen"><img src="/img/icons/nuevo23.png"></button>
             </div>
             <div id="nombreCompleto">
                 <p>Nombre completo:</p>
@@ -36,7 +37,7 @@
                 <input type="text" name="ubicacion" id="ubicacion">
             </div>
             <div id="Eleccion">
-                <p>Elige:</p>
+                <p>Tipo de usuario</p>
                 <select name="eleccion" id="eleccion">
                     <option value="Docente">Docente</option>
                     <option value="Coach">Coach</option>
@@ -48,7 +49,7 @@
                 <input type="text" name="ageTeacher" id="edad" value="{{ageTeacher}}" required>
             </div>
             <div id="tituloEspecialidad">
-                <p>Nombre del título</p>
+                <p>Nombre del título o especialidad</p>
                 <select name="titulosEleccion" id="titulosEleccion">
                     {{#each ../listaTitulos}}
                     <option value="{{idSpecialType}}">{{nameSpecialType}}</option>
@@ -57,8 +58,9 @@
                 </select>
                 <div id="titulos"></div>
             </div>
+
             <div id="capacidad">
-                <input type="checkbox" name="" id="si">
+                <input type="checkbox" name="" id="si"><br><br>
                 <p>Estoy capacitado para trabajar con estudiantes que tienen Necesidades Educativas Especiales</p>
                 <div id="espesialidades">
                     <select name="specialtyTypeIdSpecialType" id="especial">
@@ -71,12 +73,13 @@
                 </div>
             </div>
             <div id="documentacion">
-                <h1>Documentación requerida</h1><p id="pdf">Sube tus archivos en formato .pdf  (Recomendado)</p>
+                <h1>Documentación requerida</h1>
                 <div id="DocumentoTitulo">
                     <p>Título profesional y/o certificados de aval de enseñanza</p>
                     <input type="file" name="endorsementCertificateTeacher" class="seleccionArchivos"
                         accept="application/pdf" id="seleccionTitulo" />
-                    <button type="button" class="botonImagen" data-input-id="seleccionTitulo"><img src="/img/icons/Subir.png"></button>
+                    <button type="button" class="botonImagen" data-input-id="seleccionTitulo"><img
+                            src="/img/icons/Subir.png"></button>
                     {{#if endorsementCertificateTeacher}}
                     <iframe id="documentoTituloPrevisualizacion"
                         src="/archivos/teacher/{{endorsementCertificateTeacher}}"></iframe>
@@ -88,7 +91,8 @@
                     <p>Hoja de vida actualizada</p>
                     <input type="file" name="pageVitalTeacher" class="seleccionArchivos" accept="application/pdf"
                         id="seleccionHojaVida" />
-                    <button type="button" class="botonImagen" data-input-id="seleccionHojaVida"><img src="/img/icons/Subir.png"></button>
+                    <button type="button" class="botonImagen" data-input-id="seleccionHojaVida"><img
+                            src="/img/icons/Subir.png"></button>
                     {{#if pageVitalTeacher}}
                     <iframe id="documentoHojaVidaPrevisualizacion"
                         src="/archivos/teacher/{{pageVitalTeacher}}"></iframe>
@@ -100,7 +104,8 @@
                     <p>Certificado de Antecedentes Penales</p>
                     <input type="file" name="criminalRecordTeacher" class="seleccionArchivos" accept="application/pdf"
                         id="seleccionAntecedentes" />
-                    <button type="button" class="botonImagen" data-input-id="seleccionAntecedentes"><img src="/img/icons/Subir.png"></button>
+                    <button type="button" class="botonImagen" data-input-id="seleccionAntecedentes"><img
+                            src="/img/icons/Subir.png"></button>
                     {{#if criminalRecordTeacher}}
                     <iframe id="documentoAntecedentesPrevisualizacion"
                         src="/archivos/teacher/{{criminalRecordTeacher}}"></iframe>
@@ -108,6 +113,7 @@
                     <iframe id="documentoAntecedentesPrevisualizacion" src=""></iframe>
                     {{/if}}
                 </div>
+                <p id="pdf">Sube tus archivos en formato .pdf (Recomendado)</p>
             </div>
             <div id="materias">
                 <p>Áreas/ asignaturas a enseñar</p>
@@ -156,12 +162,74 @@
                 <input type="text" name="emailTeacher" id="correo" value="{{emailTeacher}}">
             </div>
             {{/each}}
+
             <div id="boton">
                 <button type="submit">GUARDAR Y ENVÍAR</button>
             </div>
+            <div id="cuadroDebajoDelForm">
+                <!-- Contenido sin nada-->
+
+            </div>
         </form>
+
+    </div>
+    <!-- footer-->
+    <div id="footer">
+        <div id="tarjetaNosotros">
+            <div id="nosotrosFooter">
+                <h1>Nosotros</h1>
+            </div>
+            <div id="datosNosotros">
+                <p>¿Quiénes Somos?<br>
+                    <br>
+                    <br>
+                    ¿Cómo funciona?<br>
+                    <br>
+                    <br>
+                    Testimonios<br>
+                    <br>
+                    <br>
+                    Preguntas frecuentes<br>
+                    <br>
+                    <br>
+                    Contacto
+                </p>
+            </div>
+        </div>
+        <div id="tarjetaUnete">
+            <div id="nosotrosFooter">
+                <h1>Únete</h1>
+            </div>
+            <div id="datosNosotros">
+                <p>Regístrate como estudiante <br>
+                    <br>
+                    <br>
+                    Sé docente o coach
+                </p>
+            </div>
+        </div>
+        <div id="tarjetaLegal">
+            <div id="nosotrosFooter">
+                <h1>Legal</h1>
+            </div>
+            <div id="datosNosotros">
+                <p>Términos y condiciones <br>
+                    <br>
+                    <br>
+                    Políticas de privacidad
+                </p>
+            </div>
+        </div>
+        <div id="logoImagen">
+            <img src="/img/logo/LogoPrincipal.png">
+        </div>
+        <div id="final">
+            <p>Interconexión segura, rápida e ideal entre docentes y estudiantes.</p>
+            <p id="finalFinal">ProfeGo® EDUCONECTA S.A.S</p>
+        </div>
     </div>
 </div>
+
 
 <script src="/js/preview.js"></script>
 <script src="/js/botonImagen.js"></script>
@@ -170,8 +238,8 @@
 <script src="/js/EdadSeleccion.js"></script>
 <script src="/js/seleccionMaterias.js"></script>
 <script src="/js/seleccionTitulo.js"></script>
-<<script
+<script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Q9PaOYlXpeqtj_0tHE19Zcoim25iSFg&callback=initAutocomplete&libraries=places&v=weekly"
     defer>
     </script>
-    <script src="/js/mapa.js"></script>
+<script src="/js/mapa.js"></script>
