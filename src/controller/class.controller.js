@@ -146,6 +146,20 @@ classes.lista = async (req, res) => {
     }
 }
 
+classes.listaStudents = async (req, res) => {
+    try {
+        const id = req.params.id
+        const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = "1"',);
+        const [teacher] = await sql.promise().query('SELECT * FROM teachers where idTeacher = ?', [id]);
+        const [row] = await sql.promise().query('SELECT * FROM Clases')
+        res.render('clases/students/list', { lista: row, listaPagina: pagina, teacherLista: teacher })
+    } catch (error) {
+        console.error('Error en la consulta:', error.message);
+        res.status(500).send('Error al realizar la consulta');
+    }
+}
+
+
 classes.traerDatos = async (req, res) => {
     try {
         const id = req.params.id
@@ -262,6 +276,41 @@ classes.detalle = async (req, res) => {
             stateTeacher: row.stateTeacher
         }));
         res.render('clases/detalle', { lista: row, listaPagina: pagina, temario: silabus, listaDetalle: detalle, recursos: recursos, materiales: materiales, tareas: tareas, Pruebas: pruebas, docenteLista: datos })
+    } catch (error) {
+        console.error('Error en la consulta:', error.message);
+        res.status(500).send('Error al realizar la consulta');
+    }
+}
+
+classes.detalleStudnets = async (req, res) => {
+    try {
+        const id = req.params.id
+        const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = 1');
+        const [row] = await sql.promise().query('SELECT C.*, T.* FROM clases C JOIN coursClassTypes T ON C.coursClassTypeIdCoursClassType = T.idCoursClassType where idClases = ?', [id])
+        const [silabus] = await sql.promise().query('SELECT s.*, d.* FROM syllabuseducationals s JOIN detailcurricularcontents d ON S.idsyllabusEducational = d.syllabusEducationalIdsyllabusEducational WHERE ClaseIdClases = ?', [id])
+        const [teacher] = await sql.promise().query('SELECT t.* FROM teachers t JOIN detailteacherpages d ON t.idTeacher = d.teacherIdTeacher JOIN clases c ON d.idDetailTeacherPage = c.detailTeacherPageIdDetailTeacherPage WHERE idClases = ?', [id])
+        const [detalle] = await sql.promise().query('SELECT * FROM detalleclases WHERE ClaseIdClases = ?', [id])
+        const [recursos] = await sql.promise().query('SELECT * FROM recours WHERE ClaseIdClases = ?', [id])
+        const [materiales] = await sql.promise().query('SELECT * FROM materials WHERE ClaseIdClases = ?', [id])
+        const [tareas] = await sql.promise().query('SELECT * FROM tasks WHERE ClaseIdClases = ?', [id])
+        const [pruebas] = await sql.promise().query('SELECT * FROM assessments WHERE ClaseIdClases = ?', [id])
+        const datos = teacher.map(row => ({
+            idTeacher: row.idTeacher,
+            photoTeacher: row.photoTeacher,
+            endorsementCertificateTeacher: row.endorsementCertificateTeacher,
+            pageVitalTeacher: row.pageVitalTeacher,
+            criminalRecordTeacher: row.criminalRecordTeacher,
+            completeNmeTeacher: row.completeNmeTeacher ? descifrarDatos(row.completeNmeTeacher) : '',
+            identificationCardTeacher: row.identificationCardTeacher ? descifrarDatos(row.identificationCardTeacher) : '',
+            ageTeacher: row.ageTeacher ? descifrarDatos(row.ageTeacher) : '',
+            descriptionTeacher: row.descriptionTeacher ? descifrarDatos(row.descriptionTeacher) : '',
+            emailTeacher: row.emailTeacher ? descifrarDatos(row.emailTeacher) : '',
+            addressTeacher: row.addressTeacher ? descifrarDatos(row.addressTeacher) : '',
+            phoneTeacher: row.phoneTeacher ? descifrarDatos(row.phoneTeacher) : '',
+            usernameTeahcer: row.usernameTeahcer ? descifrarDatos(row.usernameTeahcer) : '',
+            stateTeacher: row.stateTeacher
+        }));
+        res.render('clases/students/detalle', { lista: row, listaPagina: pagina, temario: silabus, listaDetalle: detalle, recursos: recursos, materiales: materiales, tareas: tareas, Pruebas: pruebas, docenteLista: datos })
     } catch (error) {
         console.error('Error en la consulta:', error.message);
         res.status(500).send('Error al realizar la consulta');

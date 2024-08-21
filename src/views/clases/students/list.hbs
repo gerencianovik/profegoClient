@@ -1,0 +1,107 @@
+<link rel="stylesheet" href="/css/clases/lista.css">
+{{#each teacherLista}}
+<form action="/clases/list/{{idTeacher}}" method="get">
+    {{/each}}
+    <div id="contenedor">
+        <div id="fondo">
+            <img src="/img/icons/fondoLista.png">
+        </div>
+        <div id="titulo">
+            <p>Mis Servicios</p>
+        </div>
+        <div id="contenedorCursoGeneral">
+            <div id="Cursos">
+                <div id="imagenesCursos">
+                    <img src="/img/icons/cursTLS.png">
+                    <p>Clase</p>
+                </div>
+                <div class="row">
+                    {{#each lista}}
+                    <div id="video">
+                        <video src="/video/clases/{{videoClases}}" controls></video>
+                        <p>Ver la información completa</p>
+                    </div>
+                    <div id="tarjeta">
+                        <div id="tarjetaInterna">
+                            <a href="/clases/detailStudent/{{idClases}}">
+                                <div id="foto">
+                                    <p><img src="/img/clase/{{photoClases}}" alt=""></p>
+                                </div>
+                                <div id="pasos">
+                                    <div class="espaciosTarjetaInfo">
+                                        <div id="Nombre">
+                                            <p>{{nameClases}}</p>
+                                        </div>
+                                        <div id="cupos">
+                                            <p>{{shareClases}}</p>
+                                        </div>
+                                        <div id="estado">
+                                            <p>{{stateClases}}</p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div id="descripcion">
+                                            <p>{{descriptionClases}}</p>
+                                        </div>
+                                        <div id="fehca">
+                                            <p>{{dateClases}}</p>
+                                        </div>
+                                        <div id="hora">
+                                            <p>{{hourClases}}</p>
+                                        </div>
+                                        <div id="costo">
+                                            <p><img src="/img/icons/tarifa.png" alt="Descripción del ícono"
+                                                    style="width: 30px; height: 30px;"> {{costClases}}</p>
+                                        </div>
+                                        <div id="calificacion">
+                                            <p>{{calificationClases}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div id="opcionesLista">
+                            <div id="actualizar">
+                                <a href=""><button type="button">Reservar</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+        <div id="filtros">
+            <div id="filtrosBoton">
+                <button type="button" id="fil">Filtrar por <img src="/img/icons/filtro.png"></button>
+            </div>
+            <div id="serviciosFiltros">
+                <div id="serviciosGneneral">
+                    <div id="titulo1">
+                        <a href="/filtro/clases">Clases</a>
+                    </div>
+                    <div id="titulo2">
+                        <a href="/filtro/cursos">Cursos</a>
+                    </div>
+                    <div id="titulo3">
+                        <a href="/filtro/coaching">Coaching</a>
+                    </div>
+                </div>
+                <div id="modalidadFiltro">
+                    <div id="titulo1">
+                        <a href="/filtro/Online">Online</a>
+                    </div>
+                    <div id="titulo2">
+                        <a href="/filtro/Domicilio">Domicilio o presencial</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+{{#each teacherLista}}
+<div id="mas">
+    <a href="/clases/add/{{idTeacher}}"><button type="button"><img src="/img/icons/mas.png"></button></a>
+</div>
+{{/each}}
