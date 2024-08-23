@@ -83,7 +83,8 @@
     width: 70%;
     left: 21%;
 }
-#ayudar h1{
+
+#ayudar h1 {
     text-align: center;
     font-size: 25px;
     color: #147582;
@@ -313,7 +314,7 @@
     border-radius: 10px;
 }
 
-#cotendorPorqueElegir{
+#cotendorPorqueElegir {
     position: absolute;
     top: 248%;
     width: 100%;
@@ -321,7 +322,7 @@
     left: 0%;
 }
 
-#cotendorPorqueElegir img{
+#cotendorPorqueElegir img {
     width: 100%;
     height: 100%;
     background-repeat: no-repeat;
@@ -329,7 +330,7 @@
     background-attachment: fixed;
 }
 
-#textodiv{
+#textodiv {
     position: absolute;
     width: 19%;
     top: 29%;
@@ -337,14 +338,14 @@
     font-size: 18px;
 }
 
-#textodiv h1{
+#textodiv h1 {
     color: #FFEFDA;
     font-size: 30px;
     text-align: center;
     line-height: 40px;
 }
 
-#textodiv p{
+#textodiv p {
     color: white;
     font-size: 20px;
     line-height: 30px;
@@ -366,7 +367,7 @@
 #cajon1 h1,
 #cajon2 h1,
 #cajon3 h1,
-#cajon4 h1{
+#cajon4 h1 {
     color: white;
     font-size: 25px;
     margin-top: 4.5%;
@@ -375,14 +376,14 @@
 #cajon1 p,
 #cajon2 p,
 #cajon3 p,
-#cajon4 p{
+#cajon4 p {
     color: white;
     font-size: 16px;
     font-weight: 550;
     margin-top: -2%;
 }
 
-#cajon1 h1 img{
+#cajon1 h1 img {
     width: 10%;
 }
 
@@ -399,7 +400,7 @@
     border-radius: 10px;
 }
 
-#cajon2 h1 img{
+#cajon2 h1 img {
     width: 10%;
 }
 
@@ -409,14 +410,14 @@
     height: 25%;
     background-color: #F29224;
     top: 57%;
-    left: 75%;
+    left: 76%;
     text-align: center;
     opacity: 0.8;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.40);
     border-radius: 10px;
 }
 
-#cajon3 h1 img{
+#cajon3 h1 img {
     width: 10%;
 }
 
@@ -426,18 +427,18 @@
     height: 25%;
     background-color: #F29224;
     top: 11.5%;
-    left: 70.9%;
+    left: 75%;
     text-align: center;
     opacity: 0.8;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.30);
     border-radius: 10px;
 }
 
-#cajon4 h1 img{
+#cajon4 h1 img {
     width: 10%;
 }
 
-#contenedorCifras{
+#contenedorCifras {
     position: absolute;
     top: 332%;
     left: 0%;
@@ -446,12 +447,12 @@
     color: white;
 }
 
-#contenedorCifras img{
+#contenedorCifras img {
     width: 100%;
     height: 100%;
 }
 
-#tituloCifras{
+#tituloCifras {
     position: absolute;
     top: 0%;
     left: 0%;
@@ -459,12 +460,12 @@
     text-align: center;
 }
 
-#tituloCifras h1{
+#tituloCifras h1 {
     font-size: 30px;
     margin-top: 5%;
 }
 
-#tituloCifras p{
+#tituloCifras p {
     font-size: 20px;
     margin-top: 0%;
     font-weight: 600;
@@ -473,7 +474,7 @@
 #contendorDocentes,
 #contendorServiciosEducativos,
 #contendorServicioscontratados,
-#ValoracionComunidad{
+#ValoracionComunidad {
     position: absolute;
     top: 40%;
     width: 18%;
@@ -486,27 +487,34 @@
 }
 
 #contendorDocentes h1 {
-font-size: 30px;
+    font-size: 30px;
 }
-#contendorServiciosEducativos{
+
+#contendorServiciosEducativos {
     left: 28.5%;
 }
+
 #contendorServiciosEducativos h1 {
     font-size: 30px;
 }
-#contendorServicioscontratados{
+
+#contendorServicioscontratados {
     left: 52.9%;
 }
+
 #contendorServicioscontratados h1 {
     font-size: 30px;
 }
-#ValoracionComunidad{
+
+#ValoracionComunidad {
     left: 77%;
 }
+
 #ValoracionComunidad h1 {
     font-size: 30px;
 }
-#ValoracionComunidad p{
+
+#ValoracionComunidad p {
     position: absolute;
     top: 40%;
 }
@@ -518,18 +526,18 @@ font-size: 30px;
 #contendorDocentes p,
 #contendorServiciosEducativos p,
 #contendorServicioscontratados p,
-#ValoracionComunidad p{
-    color: white; 
+#ValoracionComunidad p {
+    color: white;
     font-size: 20px;
     width: 64%;
     margin-left: 18.8%;
 }
 
-#ValoracionComunidad img{
+#ValoracionComunidad img {
     width: 10%;
 }
 
-#opinionesDestacadas{
+#opinionesDestacadas {
     width: 100%;
     height: 70%;
     border-color: white;
@@ -538,7 +546,7 @@ font-size: 30px;
     left: 0%;
 }
 
-#tarjeta{
+#tarjeta {
     width: 18%;
     height: 70%;
     position: absolute;
@@ -548,11 +556,11 @@ font-size: 30px;
     border-radius: 10px;
 }
 
-#tarjeta p{
+#tarjeta p {
     font-size: 16px;
 }
 
-#informate{
+#informate {
     position: absolute;
     top: 468%;
     width: 90.5%;
@@ -562,7 +570,7 @@ font-size: 30px;
     border-radius: 10px;
 }
 
-#informate img{
+#informate img {
     position: absolute;
     left: 39%;
     top: -3%;
@@ -573,7 +581,7 @@ font-size: 30px;
     background-attachment: fixed;
 }
 
-#informacionDocente{
+#informacionDocente {
     position: absolute;
     top: 25%;
     width: 30%;
@@ -598,18 +606,18 @@ font-size: 30px;
     border-color: transparent;
 }
 
-#footer{
+#footer {
     position: absolute;
     top: 560%;
     width: 100%;
-    height: 47%;
+    height: 60%;
     background-color: #ffefdaa0;
     left: 0%;
 }
 
 #tarjetaNosotros,
 #tarjetaUnete,
-#tarjetaLegal{
+#tarjetaLegal {
     position: absolute;
     width: 12%;
     top: 0%;
@@ -619,7 +627,7 @@ font-size: 30px;
 
 #tarjetaNosotros h1,
 #tarjetaUnete h1,
-#tarjetaLegal h1{
+#tarjetaLegal h1 {
     color: #004D77;
     font-size: 20px;
     left: 4.5%;
@@ -627,7 +635,7 @@ font-size: 30px;
 
 #tarjetaNosotros p,
 #tarjetaUnete p,
-#tarjetaLegal p{
+#tarjetaLegal p {
     color: #004D77;
     left: 4.5%;
     font-size: 14px;
@@ -636,11 +644,11 @@ font-size: 30px;
     line-height: 13px;
 }
 
-#nosotrosFooter{
+#nosotrosFooter {
     position: relative;
     padding: 0px;
-    background: transparent; 
-    border-bottom: 5px solid transparent; 
+    background: transparent;
+    border-bottom: 5px solid transparent;
     border-image: linear-gradient(to right, #F39325, #FEEDD9);
     border-image-slice: 1;
     border-image-width: 0 0 5px 0;
@@ -648,11 +656,11 @@ font-size: 30px;
     top: 4.5%;
 }
 
-#tarjetaUnete{
+#tarjetaUnete {
     left: 21%;
 }
 
-#tarjetaLegal{
+#tarjetaLegal {
     left: 38%;
 }
 
@@ -665,7 +673,7 @@ font-size: 30px;
 }
 
 
-#logoImagen img{
+#logoImagen img {
     width: 100%;
     height: 100%;
     background-repeat: no-repeat;
@@ -673,7 +681,7 @@ font-size: 30px;
     background-attachment: fixed;
 }
 
-#final{
+#final {
     position: absolute;
     top: 90%;
     width: 100%;
@@ -682,21 +690,21 @@ font-size: 30px;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
 }
 
-#final p{
+#final p {
     text-align: center;
     width: 40%;
     color: #004D77;
     left: 4.5%;
 }
 
-#final #finalFinal{
+#final #finalFinal {
     position: absolute;
     top: 0%;
     left: 77.5%;
     width: 20%;
 }
 
-#footer a{
+#footer a {
     text-decoration: none;
     color: #004D77;
 }

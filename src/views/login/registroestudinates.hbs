@@ -20,10 +20,12 @@
             </div>
             <div id="imagens">
                 <div id="cambioImagen">
-                    <img src="/img/icons/perfilestudcambio.png" id="imagenPrevisualizacion" />
+                    <button type="button" id="botonImagen">
+                        <img src="/img/icons/descarga.png" id="imagenPrevisualizacion"
+                            onclick="document.getElementById('seleccionArchivos').click()" />
+                    </button>
+                    <input type="file" name="imagenCasa" id="seleccionArchivos" accept="image/*" hidden />
                 </div>
-                <input type="file" name="photoEstudent" id="seleccionArchivos" accept="image/*" />
-                <button type="button" id="botonImagen"><img src="/img/icons/Subir.png"></button>
             </div>
             {{#each lista}}
             <input type="text" name="idEstudent" id="numero" readonly value="{{Maximo}}">
@@ -68,7 +70,7 @@
                     <p id="validacion">He leído y acepto las <a href="/politicas">Políticas de Privacidad y los Términos
                             y
                             Condiciones de uso de los estudiantes</a>
-                            de ProfeGo</p>
+                        de ProfeGo</p>
                 </div>
                 <div id="boton">
                     <button type="submit">Registrarse</button>
