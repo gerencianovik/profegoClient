@@ -428,3 +428,12 @@
         top: 14%;
     }
 }
+
+@media (max-width: 1440px) {
+    #imagenNuve p {
+        top: 10%;
+    }
+    #final p {
+        width: 50%;
+    }
+}
