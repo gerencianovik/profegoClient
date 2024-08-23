@@ -610,7 +610,7 @@
     position: absolute;
     top: 560%;
     width: 100%;
-    height: 60%;
+    height: 65%;
     background-color: #ffefdaa0;
     left: 0%;
 }
@@ -707,4 +707,10 @@
 #footer a {
     text-decoration: none;
     color: #004D77;
+}
+
+@media (max-width: 1440px) {
+    #final p {
+        width: 50%;
+    }
 }
