@@ -363,23 +363,3 @@ a{
     left: 77.5%;
     width: 20%;
 }
-
-@media only screen and (max-width: 1366px) and (max-height: 768px) {
-    #Celular {
-        top: 21.4%;
-    }
-
-    #botonVer {
-        top: 38.5%;
-    }
-
-    #botonVer1 {
-        top: 49.5%;
-
-    }
-
-    #datos {
-        height: 142%;
-
-    }
-}

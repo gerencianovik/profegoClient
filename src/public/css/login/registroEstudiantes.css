@@ -1,4 +1,4 @@
-#contenedor{
+#contenedor {
     position: absolute;
     top: 0%;
     left: 0%;
@@ -8,7 +8,7 @@
     max-height: 100%;
 }
 
-#fondo{
+#fondo {
     position: absolute;
     top: 7%;
     left: 0%;
@@ -18,7 +18,7 @@
     max-height: 100%;
 }
 
-#fondo img{
+#fondo img {
     width: 100%;
     height: 100%;
 }
@@ -27,18 +27,18 @@
     position: absolute;
     top: 14.2%;
     width: 30%;
-    height: auto; 
+    height: auto;
     display: flex;
-    flex-direction: column; 
-    align-items: flex-start; 
-    gap: 10px; 
-    padding: 10px; 
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px;
     left: 3.8%;
 }
 
 #complementos h3 {
     font-size: 20px;
-    color:#18574F
+    color: #18574F
 }
 
 #complementos p {
@@ -49,28 +49,36 @@
 }
 
 #complementos p {
-    margin: 4.5%; /* Elimina el margen predeterminado del párrafo */
+    margin: 4.5%;
+    /* Elimina el margen predeterminado del párrafo */
     padding-left: 3.8px;
-    margin-left: 17%; /* Espacio entre la imagen y el texto */
+    margin-left: 17%;
+    /* Espacio entre la imagen y el texto */
 }
 
 #complementosedad {
-    width: 65px; /* Ajusta el tamaño de la imagen */
-    height: auto; /* Mantiene la proporción de la imagen */
+    width: 65px;
+    /* Ajusta el tamaño de la imagen */
+    height: auto;
+    /* Mantiene la proporción de la imagen */
     vertical-align: middle;
     margin-top: -19%;
 }
 
 #complementosdocumentos {
-    width: 52px; /* Ajusta el tamaño de la imagen */
-    height: auto; /* Mantiene la proporción de la imagen */
+    width: 52px;
+    /* Ajusta el tamaño de la imagen */
+    height: auto;
+    /* Mantiene la proporción de la imagen */
     vertical-align: middle;
     margin-top: -16.6%;
 }
 
 #complementospago {
-    width: 53px; /* Ajusta el tamaño de la imagen */
-    height: auto; /* Mantiene la proporción de la imagen */
+    width: 53px;
+    /* Ajusta el tamaño de la imagen */
+    height: auto;
+    /* Mantiene la proporción de la imagen */
     vertical-align: middle;
     margin-top: -15.8%;
 }
@@ -88,14 +96,14 @@
     border-radius: 10px;
 }
 
-#datos h1{
+#datos h1 {
     text-align: left;
     color: #18574F;
     font-size: 20px;
     margin-left: 9.2%;
 }
 
-#datos p{
+#datos p {
     text-align: left;
     color: #18574F;
 }
@@ -115,13 +123,13 @@
     color: #000000;
 }
 
-a{
+a {
     text-decoration: none;
     color: #18574F;
     font-weight: bold;
 }
 
-#datos input{
+#datos input {
     width: 80%;
     height: 44px;
     border: 3px solid #F39325;
@@ -134,7 +142,7 @@ a{
     height: 100%;
     left: 5%;
     position: absolute;
-    top:30%;
+    top: 30%;
 }
 
 #Cedula {
@@ -157,14 +165,14 @@ a{
     height: 3%;
 }
 
-#botonVer button{
+#botonVer button {
     width: 100%;
     height: 100%;
     background-color: transparent;
     border-color: transparent;
 }
 
-#botonVer button img{
+#botonVer button img {
     width: 100%;
     height: 100%;
 }
@@ -178,14 +186,14 @@ a{
     height: 3%;
 }
 
-#botonVer1 button{
+#botonVer1 button {
     width: 100%;
     height: 100%;
     background-color: transparent;
     border-color: transparent;
 }
 
-#botonVer1 button img{
+#botonVer1 button img {
     width: 100%;
     height: 100%;
 }
@@ -201,7 +209,7 @@ a{
     border: 3px solid
 }
 
-#validacion{
+#validacion {
     width: 77.5%;
     margin-left: 14%;
     font-size: 14px;
@@ -209,7 +217,7 @@ a{
     margin-top: 4%;
 }
 
-#boton{
+#boton {
     width: 40%;
     height: 7%;
     position: absolute;
@@ -217,7 +225,7 @@ a{
     left: 30%;
 }
 
-#boton button{
+#boton button {
     width: 100%;
     height: 100%;
     background: #004D77;
@@ -229,7 +237,7 @@ a{
     border: transparent;
 }
 
-#imagens{
+#imagens {
     position: absolute;
     top: 13%;
     width: 26%;
@@ -237,7 +245,7 @@ a{
     left: 37.3%;
 }
 
-#imagens img{
+#imagens img {
     width: 100%;
     height: 100%;
     background-size: cover;
@@ -245,7 +253,7 @@ a{
     background-attachment: fixed;
 }
 
-#seleccionArchivos{
+#seleccionArchivos {
     display: none;
 }
 
@@ -259,7 +267,7 @@ a{
     border-color: transparent;
 }
 
-#botonImagen img{
+#botonImagen img {
     width: 100%;
     height: 100%;
 }
@@ -302,18 +310,18 @@ a{
     margin-left: 9.6%;
 }
 
-#footer{
+#footer {
     position: absolute;
     top: 198%;
     width: 100%;
-    height: 47%;
+    height: 65%;
     background-color: #ffefdaa0;
     left: 0%;
 }
 
 #tarjetaNosotros,
 #tarjetaUnete,
-#tarjetaLegal{
+#tarjetaLegal {
     position: absolute;
     width: 12%;
     top: 0%;
@@ -323,7 +331,7 @@ a{
 
 #tarjetaNosotros h1,
 #tarjetaUnete h1,
-#tarjetaLegal h1{
+#tarjetaLegal h1 {
     color: #004D77;
     font-size: 20px;
     left: 4.5%;
@@ -331,7 +339,7 @@ a{
 
 #tarjetaNosotros p,
 #tarjetaUnete p,
-#tarjetaLegal p{
+#tarjetaLegal p {
     color: #004D77;
     left: 4.5%;
     font-size: 14px;
@@ -340,11 +348,11 @@ a{
     line-height: 13px;
 }
 
-#nosotrosFooter{
+#nosotrosFooter {
     position: relative;
     padding: 0px;
-    background: transparent; 
-    border-bottom: 5px solid transparent; 
+    background: transparent;
+    border-bottom: 5px solid transparent;
     border-image: linear-gradient(to right, #F39325, #FEEDD9);
     border-image-slice: 1;
     border-image-width: 0 0 5px 0;
@@ -352,11 +360,11 @@ a{
     top: 4.5%;
 }
 
-#tarjetaUnete{
+#tarjetaUnete {
     left: 21%;
 }
 
-#tarjetaLegal{
+#tarjetaLegal {
     left: 38%;
 }
 
@@ -369,7 +377,7 @@ a{
 }
 
 
-#logoImagen img{
+#logoImagen img {
     width: 100%;
     height: 100%;
     background-repeat: no-repeat;
@@ -377,7 +385,7 @@ a{
     background-attachment: fixed;
 }
 
-#final{
+#final {
     position: absolute;
     top: 90%;
     width: 100%;
@@ -386,16 +394,25 @@ a{
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
 }
 
-#final p{
+#final p {
     text-align: center;
     width: 40%;
     color: #004D77;
     left: 4.5%;
 }
 
-#final #finalFinal{
+#final #finalFinal {
     position: absolute;
     top: 0%;
     left: 77.5%;
     width: 20%;
+}
+
+@media (max-width: 1440px) {
+    #datos {
+        width: 180%;
+    }
+    #footer {
+        top: 215%;
+    }
 }
