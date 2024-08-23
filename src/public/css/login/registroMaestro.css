@@ -78,7 +78,7 @@
 #datos {
     position: absolute;
     width: 50%;
-    height: 100%;
+    height: 155%;
     background-color: white;
     left: 45%;
     top: 18%;
@@ -270,7 +270,7 @@ a{
     position: absolute;
     top: 166%;
     width: 100%;
-    height: 47%;
+    height: 65%;
     background-color: #ffefdaa0;
     left: 0%;
 }
@@ -362,4 +362,10 @@ a{
     top: 0%;
     left: 77.5%;
     width: 20%;
+}
+
+@media (max-width: 1440px) {
+    #footer {
+        top: 215%;
+    }
 }
