@@ -297,7 +297,7 @@
     height: 25%;
     background-color: #F29224;
     top: 57%;
-    left: 70%;
+    left: 75%;
     text-align: center;
     opacity: 0.8;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.40);
@@ -314,7 +314,7 @@
     height: 25%;
     background-color: #F29224;
     top: 11.5%;
-    left: 70.9%;
+    left: 75%;
     text-align: center;
     opacity: 0.8;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.30);
@@ -421,4 +421,10 @@
     top: 0%;
     left: 77.5%;
     width: 20%;
+}
+
+@media (max-width: 1440px) {
+    #imagenNuve p {
+        top: 14%;
+    }
 }
