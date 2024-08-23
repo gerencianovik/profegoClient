@@ -410,7 +410,7 @@ a {
 
 @media (max-width: 1440px) {
     #datos {
-        width: 180%;
+        height: 180%;
     }
     #footer {
         top: 215%;
