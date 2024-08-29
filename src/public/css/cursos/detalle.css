@@ -600,3 +600,98 @@ justify-content: space-around;
 #fehcaFin{
     display: none;
 }
+
+@media (max-width: 768px){
+    #fondoVerde{
+        width: 95%;
+        position: relative;
+    }
+
+    #video{
+        position: relative;
+        height: auto;
+        width: 95%;
+        left: auto;
+        margin-left: 2%;
+    }
+
+    #cuadros2{
+        position: relative;
+        top: auto;
+        margin-top: 50px;
+        width: 95%;
+    }
+
+    #menus{
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 95%;
+        left: 2%;
+    }
+
+    #boton{
+        margin-top: 0;
+        margin-left: 0;
+        width: 50%;
+    }
+
+    #recursos,#materiales, #Tareas,#Pruebas,#asistencia, #ObservacionesValoración, #contenidoCurricular{
+        display: flex;
+        height: auto;
+    }
+
+    #menus div{
+        width: 100%;
+    }
+
+    #menus div #boton{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+
+    #menus div #boton a{
+        width: 100%;
+    }
+
+    #calendarios{
+        position: relative;
+        top: 450%;
+        left: 2%;
+        width: 95%;
+    }
+
+    #disponibilidad{
+        display: flex;
+        height: 20px;
+        margin-top: 20px;
+    }
+
+    #disponibilidad div{
+        position: relative;
+        left: auto;
+        display: flex;
+        justify-content: center;
+    }
+
+    #disponibilidad div p{
+        position: relative;
+        left: auto;
+        top: auto;
+        margin: 0;
+    }
+
+    #disponibilidad div h1{
+        margin: 0;
+    }
+
+    #contenedorBotonPanico{
+        position: relative;
+        top: 3000px;
+        left: auto;
+        width: 250px;
+        margin-left: 20%;
+    }
+}
