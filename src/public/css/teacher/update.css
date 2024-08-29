@@ -691,3 +691,148 @@
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
+
+
+/*responsive*/
+
+@media (max-width: 576px){
+  #titulos{
+    padding: 0 2px;
+    width: auto;
+    text-align: center;
+  }
+
+  #datos{
+    width: 98%;
+    left: 1%;
+    top: 300px;
+  }
+
+  #nombreCompleto{
+    top: 370px;
+  }
+
+  #direccion{
+    top: 520px;
+    height: 200px;
+  }
+
+  #Eleccion, #fechaNacimiento{
+    top: 725px;
+  }
+
+  #tituloEspecialidad{
+    top: 845px;
+  }
+
+  #capacidad{
+    top: 950px;
+  }
+
+  #imagenTeacher{
+    width: 370px;
+    left: 20%;
+    height: 370px;
+  }
+
+  #documentacion{
+    top: 1040px;
+  }
+
+  #documentacion h1{
+    bottom: 190px;
+  }
+
+  #DocumentoHojaVida{
+    top: 75%;
+    left: 0;
+  }
+
+  #DocumentoHojaVida p, #DocumentoAntecedentes p, #DocumentoTitulo p{
+    margin-bottom: 0;
+    top: 15%;
+  }
+
+  #DocumentoAntecedentes{
+    top: 140%;
+    left: 0;
+  }
+
+  #DocumentoTitulo p, #DocumentoHojaVida p, #DocumentoAntecedentes p{
+    width: 100%;
+  }
+
+  #DocumentoTitulo, #DocumentoHojaVida, #DocumentoAntecedentes{
+    width: 100%;
+  }
+
+  #DocumentoTitulo iframe, #DocumentoHojaVida iframe, #DocumentoAntecedentes iframe{
+    width: 100%;
+  }
+
+  #documentacion #pdf{
+    top: 420px;
+    left: 5px;
+    text-align: center;
+    width: 100%;
+  }
+
+  #materias{
+    top: 1750px;
+  }
+
+  #edadRange{
+    top: 1890px;
+  }
+
+  #description{
+    top: 2010px;
+  }
+
+  #Correos{
+    top: 2140px;
+  }
+
+  #Celular,#Cedula{
+    top: 2270px;
+  }
+
+  #boton{
+    top: 2450px;
+  }
+
+  #footer{
+    top: 450%;
+  }
+
+  #datos{
+    height: 390%;
+  }
+
+  #datos input, #datos select, #datos textarea{
+    height: 50px;
+  }
+
+  #fechaNacimiento input{
+    height: 40px;
+  }
+
+  #boton{
+    width: auto;
+  }
+
+  #final #finalFinal{
+    left: 75%;
+  }
+
+  #final{
+    height: 70px;
+  }
+
+  #logoImagen{
+    width: 100px;
+    height: auto;
+    left: 70%;
+  }
+}
+

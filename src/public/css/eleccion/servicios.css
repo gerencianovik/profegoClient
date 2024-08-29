@@ -153,3 +153,47 @@
     position: absolute;
     top: 100%;
 }
+
+
+@media (max-width: 768px){
+    #fondos{
+        position: relative;
+        height: auto;
+    }
+    #fondos img{
+        height: 200px;
+    }
+
+    #contenedorImagenTitulos{
+        position: relative;
+        top: auto;
+        left: auto;
+    }
+
+    #titulo,#imagens{
+        position: relative;
+        width: auto;
+        left: auto;
+    }
+
+    #titulo p,#titulo h1{
+        text-align: center;
+    }
+
+    #botonClase{
+        width: 95%;
+        left: 10px;
+        top: 70%;
+    }
+
+    #botonCuros{
+        width: 95%;
+        left: 10px;
+        top: 125%;
+    }
+
+    #encontraras p{
+        text-align: center;
+        color: rgb(66, 66, 66);
+    }
+}
