@@ -7,6 +7,7 @@ class Nosotros {
         this.subNav3 = document.getElementById('subNav3');
         this.subNav2 = document.getElementById('subNav2');
         this.subNav1 = document.getElementById('subNav1');
+        this.responsiveOnlyContainer= document.getElementById('responsiveOnlyContainer');
     }
 
     inicio() {
@@ -15,6 +16,7 @@ class Nosotros {
         this.subNav3.style.display = 'none';
         this.subNav2.style.display = 'none';
         this.subNav1.style.display = 'none';
+        this.responsiveOnlyContainer.style.display = 'none';
     }
 
     cerrarTodos() {
@@ -23,6 +25,16 @@ class Nosotros {
         this.subNav3.style.display = 'none';
         this.subNav2.style.display = 'none';
         this.subNav1.style.display = 'none';
+        this.responsiveOnlyContainer.style.display = 'none';
+    }
+
+    responsive(){
+        if (this.responsiveOnlyContainer.style.display == 'none') {
+            this.cerrarTodos();
+            this.responsiveOnlyContainer.style.display = 'block';
+        } else {
+            this.responsiveOnlyContainer.style.display = 'none';
+        }
     }
 
     cambio1() {
@@ -88,6 +100,10 @@ window.onload = function() {
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('bajar0').addEventListener('click', function () {
         nosotro.cambio1();
+    });
+
+    document.getElementById('responsiveOnly').addEventListener('click', function () {
+        nosotro.responsive();
     });
 
     document.getElementById('bajar1').addEventListener('click', function () {

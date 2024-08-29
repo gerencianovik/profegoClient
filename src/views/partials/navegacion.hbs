@@ -1,63 +1,260 @@
-<link rel="stylesheet" href="/css/navegacion.css">
+<link rel="stylesheet" href="/css/navegacion.css" />
 <nav id="nav">
-    {{#if user}}
-    <div id="eleccionCursoCLases">
-        {{#each listaTeacher}}
-        <a href="/teacher/eleccion/{{idTeacher}}"><button type="button">Eleccion Servicios</button></a>
-        {{/each}}
-        {{#each listaEstudents}}
-        <a href="/teacher/eleccion/{{idEstudent}}"><button type="button">Eleccion Servicios</button></a>
-        {{/each}}
+    <div class="enlinea espacioLateral letra">
+        <div style="position: relative;" class="responsiveOnly">
+            <div class="icono" id="responsiveOnly">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-list"
+                    viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+                </svg>
+            </div>
+            <div class="responsive" id="responsiveOnlyContainer">
+                <h2 style="text-align: center; color: #F39325;">Mas Opciones</h2>
+                <div class="accordion">
+                    <div id="nosotros" class="accordion-item">
+                        <input type="checkbox" id="accordion-1" class="accordion-checkbox" />
+                        <label for="accordion-1" id="nosots" class="accordion-label azul">
+                            <p>Nosotros</p>
+                            <img src="/img/icons/baja.png" class="imagenresponsive" />
+
+                        </label>
+
+                        <div class="accordion-content">
+                            <div class="flex center">
+                                <img src="/img/icons/somos.png" class="imgResponsive" />
+                                <div class="textoanineado">
+                                    <a href="/somos" style="text-decoration: none; color:black">
+                                        <p>¿Quiénes somos?</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="flex center">
+                                <img src="/img/icons/funciona.png" class="imgResponsive" />
+                                <div class="textoanineado">
+                                    <a href="/funciona" style="text-decoration: none; color:black">
+                                        <p>¿Cómo funciona?</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="flex center">
+                                <img src="/img/icons/seguridad.png" class="imgResponsive" />
+                                <div class="textoanineado">
+                                    <a href="/seguridad" style="text-decoration: none; color:black">
+                                        <p>Nuestra seguridad</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="flex center">
+                                <img src="/img/icons/testimonio.png" class="imgResponsive" />
+                                <div class="textoanineado">
+                                    <a href="/" style="text-decoration: none; color:black">
+                                        <p>Testimonios</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div id="servicios" class="accordion-item">
+                        <input type="checkbox" id="accordion-2" class="accordion-checkbox" />
+                        <label for="accordion-2" id="nosots" class="accordion-label azul">
+                            <p>Servicios</p>
+                            <img src="/img/icons/baja.png" class="imagenresponsive" />
+
+                        </label>
+
+                        <div class="accordion-content">
+                            <div class="flex center">
+                                <img src="/img/icons/clases.png" class="imgResponsive" />
+                                <div class="textoanineado">
+                                    <a href="/general/listClase" style="text-decoration: none; color:black">
+                                        <p>Clases particulares</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="flex center">
+                                <img src="/img/icons/grupales.png" class="imgResponsive" />
+                                <div class="textoanineado">
+                                    <a href="/general/listClase" style="text-decoration: none; color:black">
+                                        <p>Clases grupales</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="flex center">
+                                <img src="/img/icons/Cursos.png" class="imgResponsive" />
+                                <div class="textoanineado">
+                                    <a href="/general/listCurso" style="text-decoration: none; color:black">
+                                        <p>Cursos</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="flex center">
+                                <img src="/img/icons/Couching.png" class="imgResponsive" />
+                                <div class="textoanineado">
+                                    <a href="/general/listCurso" style="text-decoration: none; color:black">
+                                        <p>Coaching para docentes</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div id="contactos" class="accordion-item">
+                        <input type="checkbox" id="accordion-3" class="accordion-checkbox" />
+                        <label for="accordion-3" id="nosots" class="accordion-label azul">
+                            <p>Contactos</p>
+                            <img src="/img/icons/baja.png" class="imagenresponsive" />
+
+                        </label>
+
+                        <div class="accordion-content">
+                            <div class="flex center">
+                                <img src="/img/icons/contactos.png" class="imgResponsive" />
+                                <div class="textoanineado">
+                                    <a href="/contactos" style="text-decoration: none; color:black">
+                                        <p>Contactos</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="flex center">
+                                <img src="/img/icons/frecuentes.png" class="imgResponsive" />
+                                <div class="textoanineado">
+                                    <a href="#" style="text-decoration: none; color:black">
+                                        <p>Preguntas frecuentes</p>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                    {{#if user}}
+                    <div id="eleccionCursoCLases">
+                        {{#each listaTeacher}}
+                        <a href="/teacher/eleccion/{{idTeacher}}"><button type="button">Eleccion Servicios</button></a>
+                        {{/each}}
+                        {{#each listaEstudents}}
+                        <a href="/teacher/eleccion/{{idEstudent}}"><button type="button">Eleccion Servicios</button></a>
+                        {{/each}}
+                    </div>
+                    {{else}}
+                    <h3 style="text-align: center; color: #F39325;">Inicio de Sesión</h3>
+                    <div class="flex">
+                        <div class="accordion-item" style="width: 50%;">
+                            <input type="checkbox" id="accordion-5" class="accordion-checkbox" />
+                            <label for="accordion-5" id="nosots" class="accordion-label azul">
+                                <p>Docente/Coach</p>
+                                <img src="/img/icons/baja.png" class="imagenresponsive" />
+                            </label>
+                            <div class="accordion-content">
+                                <div class="inicio text-center">
+                                    <a href="/loginTeachers">Iniciar sesión</a>
+                                </div>
+                                <hr>
+                                <div class="inicioregistro text-center">
+                                    <a href="/RegisterTeachers">Registro</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item" style="width: 50%;">
+                            <input type="checkbox" id="accordion-4" class="accordion-checkbox" />
+                            <label for="accordion-4" id="nosots" class="accordion-label azul">
+                                <p>Estudiante</p>
+                                <img src="/img/icons/baja.png" class="imagenresponsive" />
+
+                            </label>
+                            <div class="accordion-content">
+                                <div class="inicio text-center">
+                                    <a href="/loginStudents">Iniciar sesión</a>
+                                </div>
+                                <hr>
+                                <div class="inicioregistro text-center">
+                                    <a href="/RegisterStudents">Registro</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{/if}}
+                </div>
+            </div>
+
+        </div>
+        <div id="nosotros" class="enlinea alinear esconderResponsive">
+            <div id="nosots" class="azul">
+                <p>Nosotros</p>
+            </div>
+            <div id="bajar" class="bajar-icono">
+                <button type="button" id="bajar0"><img src="/img/icons/baja.png" /></button>
+            </div>
+        </div>
+
+        <div id="servicios" class="enlinea esconderResponsive">
+            <div id="servisiosTitulo" class="azul">
+                <p>Servicios</p>
+            </div>
+            <div id="bajar" class="bajar-icono">
+                <button type="button" id="bajar1"><img src="/img/icons/baja.png" /></button>
+            </div>
+        </div>
+        <div id="contactos" class="enlinea esconderResponsive">
+            <div id="contactosTitulo" class="azul">
+                <p>Contactos</p>
+            </div>
+            <div id="bajar" class="bajar-icono">
+                <button type="button" id="bajar2"><img src="/img/icons/baja.png" /></button>
+            </div>
+        </div>
     </div>
-    {{else}}
-    <div id="estudiantes">
-        <div id="estudiante">
-            <button type="button">Estudiante</button>
+    <div class="enlinea letra">
+        {{#if user}}
+        <div id="eleccionCursoCLases">
+            {{#each listaTeacher}}
+            <a href="/teacher/eleccion/{{idTeacher}}"><button type="button">Eleccion Servicios</button></a>
+            {{/each}}
+            {{#each listaEstudents}}
+            <a href="/teacher/eleccion/{{idEstudent}}"><button type="button">Eleccion Servicios</button></a>
+            {{/each}}
         </div>
-        <div id="bajares">
-            <button type="button" id="bajar3"><img src="/img/icons/estudiantes.png"></button>
-        </div>
-    </div>
-    <div id="docentes">
-        <div id="couch">
-            <button type="button">Docente/Coach</button>
-        </div>
-        <div id="bajardocen">
-            <button type="button" id="bajar4"><img src="/img/icons/estudiantes.png"></button>
-        </div>
-    </div>
-    {{/if}}
-    <div id="logo">
-        {{#each listaPagina}}
-        <a href="/"><img src="/img/logo/{{photoPage}}"></a>
         {{else}}
-        <a href="/"><img src="/img/logo/Variantelogoprofego.png"></a>
-        {{/each}}
+        <div id="estudiantes" class="enlinea esconderResponsive">
+            <div id="estudiante">
+                <button type="button" class="verde">Estudiante</button>
+            </div>
+            <div id="bajares">
+                <button type="button" id="bajar3"><img src="/img/icons/estudiantes.png" /></button>
+            </div>
+        </div>
+        <div id="docentes" class="enlinea esconderResponsive">
+            <div id="couch">
+                <button type="button" class="verde">Docente/Coach</button>
+            </div>
+            <div id="bajardocen">
+                <button type="button" id="bajar4"><img src="/img/icons/estudiantes.png" /></button>
+            </div>
+        </div>
+        {{/if}}
     </div>
-    <div id="nosotros">
-        <div id="nosots">
-            <p>Nosotros</p>
-        </div>
-        <div id="bajar">
-            <button type="button" id="bajar0"><img src="/img/icons/baja.png"></button>
-        </div>
-    </div>
-    <div id="servicios">
-        <div id="servisiosTitulo">
-            <p>Servicios</p>
-        </div>
-        <div id="bajar">
-            <button type="button" id="bajar1"><img src="/img/icons/baja.png"></button>
+    <div class="enlinea espacioLateral">
+
+        <div id="logo" class="logo">
+            {{#each listaPagina}}
+            <a href="/"><img src="/img/logo/{{photoPage}}" /></a>
+            {{else}}
+            <a href="/"><img src="/img/logo/Variantelogoprofego.png" /></a>
+            {{/each}}
         </div>
     </div>
-    <div id="contactos">
-        <div id="contactosTitulo">
-            <p>Contactos</p>
-        </div>
-        <div id="bajar">
-            <button type="button" id="bajar2"><img src="/img/icons/baja.png"></button>
-        </div>
-    </div>
+
 </nav>
 <div id="subNav4">
     <div id="login">
@@ -80,17 +277,18 @@
     <div id="contenedorImagenInformacion">
         <div id="contenedorImagen">
             <div id="imagen">
-                <img src="/img/icons/centroAyuda.png">
+                <img src="/img/icons/centroAyuda.png" />
             </div>
             <div id="nosotros1">
                 <h1>Centro de ayuda</h1>
-                <p>Encuentra respuestas a tus dudas y ponte en comunicación con nosotros para más información.</p>
+                <p>Encuentra respuestas a tus dudas y ponte en comunicación con nosotros
+                    para más información.</p>
             </div>
         </div>
         <div id="contenedorInformacion1">
             <div id="somos">
                 <div id="somosImagen">
-                    <img src="/img/icons/contactos.png">
+                    <img src="/img/icons/contactos.png" />
                 </div>
                 <div id="informacion">
                     <a href="/contactos">
@@ -100,7 +298,7 @@
             </div>
             <div id="funciona">
                 <div id="imagenFunciona">
-                    <img src="/img/icons/frecuentes.png">
+                    <img src="/img/icons/frecuentes.png" />
                 </div>
                 <div id="informacion1">
                     <h1>Preguntas frecuentes</h1>
@@ -113,18 +311,18 @@
     <div id="contenedorImagenInformacion">
         <div id="contenedorImagen">
             <div id="imagen">
-                <img src="/img/icons/imagenServicios.png">
+                <img src="/img/icons/imagenServicios.png" />
             </div>
             <div id="nosotros1">
                 <h1>Servicios</h1>
-                <p>Explora nuestros servicios, desde clases grupales y particulares hasta cursos, coaching para docentes
-                    y mucho más.</p>
+                <p>Explora nuestros servicios, desde clases grupales y particulares
+                    hasta cursos, coaching para docentes y mucho más.</p>
             </div>
         </div>
         <div id="contenedorInformacion1">
             <div id="somos">
                 <div id="somosImagen">
-                    <img src="/img/icons/clases.png">
+                    <img src="/img/icons/clases.png" />
                 </div>
                 <div id="informacion">
                     <a href="/general/listClase">
@@ -134,7 +332,7 @@
             </div>
             <div id="funciona">
                 <div id="imagenFunciona">
-                    <img src="/img/icons/grupales.png">
+                    <img src="/img/icons/grupales.png" />
                 </div>
                 <div id="informacion1">
                     <a href="/general/listClase">
@@ -144,7 +342,7 @@
             </div>
             <div id="seguridad">
                 <div id="imagenSeguridad">
-                    <img src="/img/icons/Cursos.png">
+                    <img src="/img/icons/Cursos.png" />
                 </div>
                 <div id="informacion2">
                     <a href="/general/listCurso">
@@ -154,7 +352,7 @@
             </div>
             <div id="testimonio">
                 <div id="imagentestiminio">
-                    <img src="/img/icons/Couching.png">
+                    <img src="/img/icons/Couching.png" />
                 </div>
                 <div id="informacion3">
                     <a href="/general/listCurso">
@@ -169,18 +367,18 @@
     <div id="contenedorImagenInformacion">
         <div id="contenedorImagen">
             <div id="imagen">
-                <img src="/img/icons/imagenNosotros.png">
+                <img src="/img/icons/imagenNosotros.png" />
             </div>
             <div id="nosotros1">
                 <h1>Nosotros</h1>
-                <p>Descubre quiénes somos,
-                    por qué elegirnos y cuáles son nuestros estándares de calidad en la educación.</p>
+                <p>Descubre quiénes somos, por qué elegirnos y cuáles son nuestros
+                    estándares de calidad en la educación.</p>
             </div>
         </div>
         <div id="contenedorInformacion1">
             <div id="somos">
                 <div id="somosImagen">
-                    <img src="/img/icons/somos.png">
+                    <img src="/img/icons/somos.png" />
                 </div>
                 <div id="informacion">
                     <a href="/somos" style="text-decoration: none; color:black">
@@ -190,7 +388,7 @@
             </div>
             <div id="funciona">
                 <div id="imagenFunciona">
-                    <img src="/img/icons/funciona.png">
+                    <img src="/img/icons/funciona.png" />
                 </div>
                 <div id="informacion1">
                     <a href="/funciona" style="text-decoration: none; color:black">
@@ -200,7 +398,7 @@
             </div>
             <div id="seguridad">
                 <div id="imagenSeguridad">
-                    <img src="/img/icons/seguridad.png">
+                    <img src="/img/icons/seguridad.png" />
                 </div>
                 <div id="informacion2">
                     <a href="/seguridad" style="text-decoration: none; color:black">
@@ -210,7 +408,7 @@
             </div>
             <div id="testimonio">
                 <div id="imagentestiminio">
-                    <img src="/img/icons/testimonio.png">
+                    <img src="/img/icons/testimonio.png" />
                 </div>
                 <div id="informacion3">
                     <a href="/" style="text-decoration: none; color:black">
