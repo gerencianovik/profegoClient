@@ -15,7 +15,7 @@
     width: 100%;
 }
 
-#contactosVista h1{
+#contactosVista h1 {
     color: #F39325;
     font-size: 30px;
 }
@@ -25,7 +25,7 @@
     font-weight: 600;
 }
 
-#celular h1{
+#celular h1 {
     color: #18574F;
     font-size: 30px;
     text-align: left;
@@ -33,14 +33,14 @@
     margin-top: 9%;
 }
 
-#celular p{
+#celular p {
     font-size: 20px;
     text-align: left;
     margin-left: 18%;
     margin-top: -3%;
 }
 
-#direcciones h1{
+#direcciones h1 {
     color: #18574F;
     font-size: 30px;
     text-align: left;
@@ -48,14 +48,14 @@
     margin-top: 12%;
 }
 
-#direcciones p{
+#direcciones p {
     font-size: 20px;
     text-align: left;
     margin-left: 18%;
     margin-top: -3%;
 }
 
-#correos h1{
+#correos h1 {
     color: #18574F;
     font-size: 30px;
     text-align: left;
@@ -63,7 +63,7 @@
     margin-top: 16%;
 }
 
-#correos p{
+#correos p {
     font-size: 20px;
     text-align: left;
     margin-left: 18%;
@@ -97,7 +97,7 @@
     margin-left: -77.5%;
 }
 
-#envioDatos p{
+#envioDatos p {
     color: #18574F;
 }
 
@@ -117,7 +117,7 @@
     font-size: 20px;
 }
 
-#Teléfono{
+#Teléfono {
     position: absolute;
     width: 40%;
     height: 20%;
@@ -127,7 +127,7 @@
     top: 10.9%;
 }
 
-#cORREO{
+#cORREO {
     position: absolute;
     width: 94%;
     height: 20%;
@@ -137,7 +137,7 @@
     top: 40%;
 }
 
-#mensjaes{
+#mensjaes {
     position: absolute;
     width: 94%;
     text-align: left;
@@ -145,11 +145,12 @@
     font-size: 20px;
     top: 70%;
 }
+
 #nombre input,
 #Teléfono input,
 #cORREO input,
 #mensjaes textarea,
-#botonEnviar button{
+#botonEnviar button {
     width: 100%;
     height: 60px;
     font-size: 20px;
@@ -166,9 +167,9 @@
 
 }
 
-#botonEnviar button{
+#botonEnviar button {
     background-color: #18574F;
-    color:white;
+    color: white;
     font-family: 'Josefin Sans';
     font-size: 20px;
 }
@@ -187,7 +188,7 @@
     background-attachment: fixed;
 }
 
-#footer{
+#footer {
     position: absolute;
     top: 420%;
     width: 100%;
@@ -198,7 +199,7 @@
 
 #tarjetaNosotros,
 #tarjetaUnete,
-#tarjetaLegal{
+#tarjetaLegal {
     position: absolute;
     width: 12%;
     top: 0%;
@@ -208,7 +209,7 @@
 
 #tarjetaNosotros h1,
 #tarjetaUnete h1,
-#tarjetaLegal h1{
+#tarjetaLegal h1 {
     color: #004D77;
     font-size: 20px;
     left: 4.5%;
@@ -216,7 +217,7 @@
 
 #tarjetaNosotros p,
 #tarjetaUnete p,
-#tarjetaLegal p{
+#tarjetaLegal p {
     color: #004D77;
     left: 4.5%;
     font-size: 14px;
@@ -225,11 +226,11 @@
     line-height: 13px;
 }
 
-#nosotrosFooter{
+#nosotrosFooter {
     position: relative;
     padding: 0px;
-    background: transparent; 
-    border-bottom: 5px solid transparent; 
+    background: transparent;
+    border-bottom: 5px solid transparent;
     border-image: linear-gradient(to right, #F39325, #FEEDD9);
     border-image-slice: 1;
     border-image-width: 0 0 5px 0;
@@ -237,11 +238,11 @@
     top: 4.5%;
 }
 
-#tarjetaUnete{
+#tarjetaUnete {
     left: 21%;
 }
 
-#tarjetaLegal{
+#tarjetaLegal {
     left: 38%;
 }
 
@@ -254,7 +255,7 @@
 }
 
 
-#logoImagen img{
+#logoImagen img {
     width: 100%;
     height: 100%;
     background-repeat: no-repeat;
@@ -262,7 +263,7 @@
     background-attachment: fixed;
 }
 
-#final{
+#final {
     position: absolute;
     top: 90%;
     width: 100%;
@@ -271,14 +272,14 @@
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
 }
 
-#final p{
+#final p {
     text-align: center;
     width: 40%;
     color: #004D77;
     left: 4.5%;
 }
 
-#final #finalFinal{
+#final #finalFinal {
     position: absolute;
     top: 0%;
     left: 77.5%;
@@ -286,8 +287,117 @@
 }
 
 
-@media (max-width: 1440px) {
+@media (max-width: 2560px) and (min-width: 1985px) {
+    #contactosVista h1 {
+        font-size: 50px;
+    }
+
+    #contactosVista p {
+        font-size: 35px;
+    }
+
+    #cORREO {
+        top: 55%;
+    }
+
+    #mensjaes {
+        top: 90%;
+    }
+
+    #botonEnviar {
+        top: 140%;
+    }
+
+    #botonEnviar button {
+        font-size: 45px;
+    }
+
+    #tarjeta p {
+        font-size: 25px;
+    }
+
+    #tarjetaNosotros h1,
+    #tarjetaUnete h1,
+    #tarjetaLegal h1 {
+        font-size: 30px;
+    }
+
+    #tarjetaNosotros p,
+    #tarjetaUnete p,
+    #tarjetaLegal p {
+        font-size: 22px;
+    }
+
+    #footer a {
+        font-size: 22px;
+    }
+
+    #final {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 1144px) {
+
     #final p {
-        width: 50%;
+        width: 65%;
+    }
+
+    #final #finalFinal {
+        left: 66%;
+        width: 33%;
+    }
+
+    #logoImagen {
+        height: 60%;
+    }
+}
+
+@media (max-width: 876px) {
+
+    #contactosVista h1 {
+        font-size: 20px;
+    }
+
+    
+    #contactosVista p {
+        font-size: 15px;
+    }
+
+    #Teléfono {
+        top: 7%;
+    }
+
+    #cORREO {
+        top: 35%;
+    }
+
+    #mensjaes {
+        top: 60%;
+    }
+
+    #botonEnviar {
+        top: 87%;
+    }
+
+    #footer {
+        top: 285%;
+    }
+
+    #final p {
+        font-size: 12px;
+    }
+
+    #logoImagen {
+        height: 50%;
+    }
+
+    #final p {
+        width: 65%;
+    }
+
+    #datosNosotros p,
+    #datosNosotros a {
+        font-size: 10px;
     }
 }

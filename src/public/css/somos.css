@@ -564,10 +564,8 @@
         font-size: 15px;
     }
 
-    #cajon1 p,
-    #cajon2 p,
-    #cajon3 p,
-    #cajon4 p {
+    #vision p,
+    #mision p {
         font-size: 15px;
     }
 
@@ -575,22 +573,13 @@
     #cajon2 h1,
     #cajon3 h1,
     #cajon4 h1 {
-        font-size: 20px;
-    }
-
-    #vision p,
-    #mision p {
-        font-size: 15px;
-    }
-}
-
-@media (max-width: 875px) {
-
-    #cajon1 h1, #cajon2 h1, #cajon3 h1, #cajon4 h1 {
         font-size: 15px;
     }
 
-    #cajon1 p, #cajon2 p, #cajon3 p, #cajon4 p {
+    #cajon1 p,
+    #cajon2 p,
+    #cajon3 p,
+    #cajon4 p {
         font-size: 12px;
     }
 
@@ -611,7 +600,7 @@
     }
 
     #datosNosotros p,
-    #datosNosotros a{
+    #datosNosotros a {
         font-size: 10px;
     }
 

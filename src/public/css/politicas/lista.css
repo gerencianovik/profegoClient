@@ -1,30 +1,3 @@
-#mas {
-    position: absolute;
-    width: 5%;
-    height: 8%;
-    left: 90%;
-    top: 12%;
-}
-
-#mas button {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0%;
-    top: 0%;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
-    background-color: transparent;
-    border-color: transparent;
-}
-
-#mas img {
-    width: 100%;
-    height: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-}
-
 #contendorPoliticas {
     position: absolute;
     top: 15%;
@@ -43,15 +16,6 @@
     margin-left: 1%;
 }
 
-#titulo {
-    width: 100%;
-    max-width: 100%;
-}
-
-#titulo h1 {
-    width: 100%;
-}
-
 #politica {
     width: 100%;
     max-width: 100%;
@@ -59,25 +23,36 @@
 
 #politica h1 {
     width: 100%;
+    color: #18574F;
+    font-size: 30px;
 }
 
-#politica p {
-    width: 100%;
+#politica img {
+    width: 15%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#listaPolitica {
     text-align: left;
-    border: 1px solid #F39325;
-}
-
-#boton {
-    width: 100%;
-    text-align: center;
-}
-
-#boton button {
     font-size: 20px;
-    width: 20%;
-    font-family: 'Josefin Sans';
-    font-style: normal;
-    background: #147582;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
-    border-color: transparent;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 2%;
+    border: 3px solid #F39325;
+}
+
+#listaPolitica p {
+    margin-left: 1%;
+}
+
+@media (max-width: 2560px) and (min-width: 1985px) {
+    #politica h1 {
+        font-size: 50px;
+    }
+
+    #listaPolitica {
+        font-size: 30px;
+    }
 }

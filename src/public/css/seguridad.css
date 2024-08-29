@@ -187,8 +187,127 @@
     width: 20%;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 2560px) and (min-width: 1985px) {
+
+    #Nuestra h1 {
+        font-size: 50px;
+    }
+
+    #Nuestra p {
+        font-size: 35px;
+    }
+
+    #consejosServicios h1 {
+        font-size: 50px;
+    }
+
+    #docentesConsejo h1 {
+        font-size: 35px;
+    }
+
+    #politicasPrivacidad {
+        width: 89%;
+        top: 260%;
+    }
+
+    #tarjeta p {
+        font-size: 25px;
+    }
+
+    #tarjetaNosotros h1,
+    #tarjetaUnete h1,
+    #tarjetaLegal h1 {
+        font-size: 30px;
+    }
+
+    #tarjetaNosotros p,
+    #tarjetaUnete p,
+    #tarjetaLegal p {
+        font-size: 22px;
+    }
+
+    #footer a {
+        font-size: 22px;
+    }
+
+    #final {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 1985px) {
+    #politicasPrivacidad {
+        width: 96%;
+        top: 276%;
+    }
+
+    #terminosCondiciones {
+        top: 362%;
+    }
+
+    #footer {
+        top: 513%;
+    }
+}
+
+@media (max-width: 1144px) {
+
+    #politicasPrivacidad {
+        width: 96%;
+        top: 240%;
+    }
+
+    #terminosCondiciones {
+        top: 315%;
+    }
+
+    #footer{
+        top: 435%;
+    }
+
     #final p {
-        width: 50%;
+        width: 65%;
+    }
+
+    #final #finalFinal {
+        left: 66%;
+        width: 33%;
+    }
+
+    #logoImagen {
+        height: 60%;
+    }
+}
+
+@media (max-width: 876px) {
+
+    #politicasPrivacidad {
+        width: 96%;
+        top: 205%;
+    }
+
+    #terminosCondiciones {
+        top: 260%;
+    }
+
+    #footer{
+        top: 350%;
+    }
+
+    #final p {
+        font-size: 12px;
+    }
+
+    #logoImagen {
+        height: 50%;
+    }
+
+    #final p {
+        width: 65%;
+    }
+
+    #datosNosotros p,
+    #datosNosotros a {
+        font-size: 10px;
     }
 }

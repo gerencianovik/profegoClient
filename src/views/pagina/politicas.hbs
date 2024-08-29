@@ -2,16 +2,13 @@
 <form action="/policyList" method="get"></form>
 <div id="contendorPoliticas">
     <div id="datos">
-        <div id="titulo">
-            <h1>Lista Politicas</h1>
-        </div>
         <div id="politica">
             {{#each politicas}}
             <h1>{{namePolicy}}</h1>
             <img src="/img/logo/LogoPrincipal.png">
-            <p>
+            <div id="listaPolitica">
                 {{{formattedDescription}}}
-            </p>
+            </div>
             {{/each}}
         </div>
     </div>
