@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="/css/politicas/lista.css">
+<form action="/policyList" method="get"></form>
+<div id="contendorPoliticas">
+    <div id="datos">
+        <div id="titulo">
+            <h1>Lista Politicas</h1>
+        </div>
+        <div id="politica">
+            {{#each politicas}}
+            <h1>{{namePolicy}}</h1>
+            <img src="/img/logo/LogoPrincipal.png">
+            <p>
+                {{{formattedDescription}}}
+            </p>
+            {{/each}}
+        </div>
+    </div>
+</div>

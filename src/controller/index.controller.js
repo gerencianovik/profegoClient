@@ -164,4 +164,18 @@ indexCtl.CerrarSesion = (req, res, next) => {
     });
 };
 
+indexCtl.listaPoliticas = async (req, res) => {
+    try {
+        const [row] = await sql.promise().query('SELECT * FROM pages where idPage = 1')
+        const [rows] = await sql.promise().query('SELECT * FROM policies where pageIdPage = 1')
+        rows.forEach(policy => {
+            policy.formattedDescription = policy.descriptionPolicy.split('\n').map(line => `<p>${line.trim()}</p>`).join('');
+        });
+        res.render('pagina/politicas', { listaPagina: row, politicas: rows, csrfToken: req.csrfToken() })
+    } catch (error) {
+        console.error('Error en la consulta:', error.message);
+        res.status(500).send('Error al realizar la consulta');
+    }
+}
+
 module.exports = indexCtl

@@ -1,0 +1,83 @@
+#mas {
+    position: absolute;
+    width: 5%;
+    height: 8%;
+    left: 90%;
+    top: 12%;
+}
+
+#mas button {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    background-color: transparent;
+    border-color: transparent;
+}
+
+#mas img {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#contendorPoliticas {
+    position: absolute;
+    top: 15%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    overflow: auto;
+    text-align: center;
+}
+
+#datos {
+    width: 100%;
+    max-width: 98%;
+    margin-left: 1%;
+}
+
+#titulo {
+    width: 100%;
+    max-width: 100%;
+}
+
+#titulo h1 {
+    width: 100%;
+}
+
+#politica {
+    width: 100%;
+    max-width: 100%;
+}
+
+#politica h1 {
+    width: 100%;
+}
+
+#politica p {
+    width: 100%;
+    text-align: left;
+    border: 1px solid #F39325;
+}
+
+#boton {
+    width: 100%;
+    text-align: center;
+}
+
+#boton button {
+    font-size: 20px;
+    width: 20%;
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    background: #147582;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    border-color: transparent;
+}

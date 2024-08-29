@@ -423,17 +423,215 @@
     width: 20%;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 2560px) and (min-width: 1985px) {
+
+    #imagenContenedorCentarl h1 {
+        font-size: 50px;
+    }
+
     #imagenNuve p {
-        top: 14%;
+        font-size: 32px;
+    }
+
+    #vision h1,
+    #mision h1 {
+        font-size: 50px;
+    }
+
+    #vision p,
+    #mision p {
+        font-size: 30px;
+    }
+
+    #datosHistoria h1 {
+        font-size: 60px;
+    }
+
+    #datosHistoria h2 {
+        font-size: 50px;
+    }
+
+    #datosHistoria p {
+        font-size: 30px;
+    }
+
+    #contenedorValores h1 {
+        font-size: 50px;
+    }
+
+    #contenedorValores p {
+        font-size: 30px;
+    }
+
+    #cajon1 h1,
+    #cajon2 h1,
+    #cajon3 h1,
+    #cajon4 h1 {
+        font-size: 30px;
+    }
+
+    #cajon1 p,
+    #cajon2 p,
+    #cajon3 p,
+    #cajon4 p {
+        font-size: 26px;
+    }
+
+    #textodiv p {
+        font-size: 30px;
+    }
+
+    #textodiv h1 {
+        font-size: 37px;
+    }
+
+    #tituloCifras h1 {
+        font-size: 40px;
+    }
+
+    #tituloCifras p {
+        font-size: 35px;
+    }
+
+    #contendorDocentes h1,
+    #contendorServiciosEducativos h1,
+    #contendorServicioscontratados h1,
+    #ValoracionComunidad h1 {
+        font-size: 40px;
+    }
+
+    #contendorDocentes p,
+    #contendorServiciosEducativos p,
+    #contendorServicioscontratados p,
+    #ValoracionComunidad p {
+        font-size: 35px;
+    }
+
+    #tarjeta p {
+        font-size: 25px;
+    }
+
+    #tarjetaNosotros h1,
+    #tarjetaUnete h1,
+    #tarjetaLegal h1 {
+        font-size: 30px;
+    }
+
+    #tarjetaNosotros p,
+    #tarjetaUnete p,
+    #tarjetaLegal p {
+        font-size: 22px;
+    }
+
+    #footer a {
+        font-size: 22px;
+    }
+
+    #final {
+        font-size: 22px;
     }
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1144px) {
     #imagenNuve p {
-        top: 10%;
+        top: 9%;
+        font-size: 18px;
     }
+
     #final p {
-        width: 50%;
+        width: 65%;
+    }
+
+    #final #finalFinal {
+        left: 66%;
+        width: 33%;
+    }
+}
+
+@media (max-width: 991px) {
+    #historia {
+        top: 200%;
+    }
+
+    #datosHistoria p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 875px) {
+    #imagenNuve p {
+        top: 9%;
+        font-size: 15px;
+    }
+
+    #cajon1 p,
+    #cajon2 p,
+    #cajon3 p,
+    #cajon4 p {
+        font-size: 15px;
+    }
+
+    #cajon1 h1,
+    #cajon2 h1,
+    #cajon3 h1,
+    #cajon4 h1 {
+        font-size: 20px;
+    }
+
+    #vision p,
+    #mision p {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 875px) {
+
+    #cajon1 h1, #cajon2 h1, #cajon3 h1, #cajon4 h1 {
+        font-size: 15px;
+    }
+
+    #cajon1 p, #cajon2 p, #cajon3 p, #cajon4 p {
+        font-size: 12px;
+    }
+
+    #imagenNuve p {
+        font-size: 13px;
+    }
+
+    #final p {
+        font-size: 12px;
+    }
+
+    #logoImagen {
+        height: 50%;
+    }
+
+    #final p {
+        width: 65%;
+    }
+
+    #datosNosotros p,
+    #datosNosotros a{
+        font-size: 10px;
+    }
+
+    #textodiv h1 {
+        font-size: 20px;
+    }
+
+    #textodiv p {
+        font-size: 15px;
+    }
+
+    #datosHistoria h1 {
+        font-size: 25px;
+    }
+
+    #datosHistoria h2 {
+        font-size: 20px;
+    }
+
+    #datosHistoria p {
+        font-size: 12px;
     }
 }
