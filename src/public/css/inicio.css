@@ -991,4 +991,42 @@
     #cajon4 p {
         font-size: 14px;
     }
+
+    #logoImagen {
+        height: 50%;
+    }
+}
+
+@media (max-width: 679px) {
+    #final p {
+        width: 65%;
+    }
+
+    #datosNosotros p,
+    #datosNosotros a {
+        font-size: 10px;
+    }
+
+    #tarjetaClaseParticular h1,
+    #tarjetaClaseGrupales h1,
+    #tarjetaCursos h1,
+    #tarjetaCoaching h1 {
+        font-size: 12px;
+    }
+
+    #datos {
+        font-size: 12px;
+    }
+
+    #datos #tarjeta p {
+        font-size: 11px;
+    }
+
+    #textodiv h1 {
+        font-size: 20px;
+    }
+
+    #textodiv p {
+        font-size: 15px;
+    }
 }

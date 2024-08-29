@@ -408,11 +408,180 @@ a {
     width: 20%;
 }
 
-@media (max-width: 1440px) {
-    #datos {
-        height: 180%;
+@media (max-width: 2560px) and (min-width: 1985px) {
+
+    #complementos h3 {
+        font-size: 35px;
     }
-    #footer {
-        top: 215%;
+
+    #complementos p {
+        margin: 8%;
+        font-size: 30px;
+    }
+
+    #registro h1 {
+        font-size: 50px;
+    }
+
+    #datos h1 {
+        font-size: 46px;
+    }
+
+    #datos input {
+        height: 55px;
+    }
+
+    #Celular {
+        top: 19%;
+    }
+
+    #botonVer {
+        top: 36%;
+    }
+
+    #botonVer1 {
+        top: 45%;
+    }
+
+    #boton button {
+        font-size: 55px;
+    }
+
+    #noCuenta {
+        margin-top: 13.4%;
+    }
+
+    #noCuenta p {
+        font-size: 29px;
+    }
+
+    #noCuenta a {
+        font-size: 29px;
+    }
+
+    #botonImagen {
+        top: 1%;
+        width: 80%;
+        height: 80%;
+    }
+
+    #registro p {
+        font-size: 35px;
+    }
+
+    #tarjeta p {
+        font-size: 25px;
+    }
+
+    #tarjetaNosotros h1,
+    #tarjetaUnete h1,
+    #tarjetaLegal h1 {
+        font-size: 30px;
+    }
+
+    #tarjetaNosotros p,
+    #tarjetaUnete p,
+    #tarjetaLegal p {
+        font-size: 22px;
+    }
+
+    #footer a {
+        font-size: 22px;
+    }
+
+    #final {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 1985px) {
+    #Celular {
+        top: 15%;
+    }
+
+    #botonVer {
+        top: 27%;
+    }
+
+    #botonVer1 {
+        top: 35%;
+    }
+}
+
+@media (max-width: 1144px) {
+    #datos h1 {
+        font-size: 16px;
+    }
+
+    #Celular {
+        top: 18%;
+    }
+
+    #datos input {
+        height: 42px;
+    }
+
+    #botonVer {
+        top: 32%;
+    }
+
+    #botonVer1 {
+        top: 41%;
+    }
+
+    #noCuenta {
+        width: 90%;
+    }
+
+    #botonImagen {
+        top: 0;
+        width: 100%;
+        height: 100%;
+        left: 5%;
+    }
+
+    #complementos p {
+        width: 330px;
+    }
+
+    #final p {
+        width: 65%;
+    }
+
+    #final #finalFinal {
+        left: 66%;
+        width: 33%;
+    }
+
+    #logoImagen {
+        height: 60%;
+    }
+}
+
+@media (max-width: 876px) {
+    #noCuenta {
+        margin-top: 19.4%;
+        margin-left: 8.5%;
+    }
+
+    #complementos p {
+        width: 300px;
+    }
+    
+    #final p {
+        font-size: 12px;
+    }
+
+    #logoImagen {
+        height: 50%;
+    }
+
+    #final p {
+        width: 65%;
+    }
+
+    #datosNosotros p,
+    #datosNosotros a {
+        font-size: 10px;
     }
 }

@@ -204,8 +204,89 @@
     width: 20%;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 2560px) and (min-width: 1985px) {
+    #estudiantesFunciona h1 {
+        color: #F39325;
+        font-size: 50px;
+    }
+
+    #estudiantesFunciona p {
+        font-size: 30px;
+    }
+
+    #importante {
+        font-size: 35px;
+    }    
+
+    #calidificacion h1 {
+        font-size: 50px;
+    }
+
+    #calidificacion p {
+        font-size: 35px;
+    }
+
+    #tarjeta p {
+        font-size: 25px;
+    }
+
+    #tarjetaNosotros h1,
+    #tarjetaUnete h1,
+    #tarjetaLegal h1 {
+        font-size: 30px;
+    }
+
+    #tarjetaNosotros p,
+    #tarjetaUnete p,
+    #tarjetaLegal p {
+        font-size: 22px;
+    }
+
+    #footer a {
+        font-size: 22px;
+    }
+
+    #final {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 1144px) {
     #final p {
-        width: 50%;
+        width: 65%;
+    }
+
+    #final #finalFinal {
+        left: 66%;
+        width: 33%;
+    }
+
+    #logoImagen {
+        height: 60%;
+    }
+}
+
+@media (max-width: 992px) {
+    #importante {
+        font-size: 15px;
+    } 
+}
+
+@media (max-width: 875px) {
+    #final p {
+        font-size: 12px;
+    }
+
+    #logoImagen {
+        height: 50%;
+    }
+
+    #final p {
+        width: 65%;
+    }
+
+    #datosNosotros p,
+    #datosNosotros a {
+        font-size: 10px;
     }
 }
