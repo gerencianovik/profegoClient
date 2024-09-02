@@ -16,7 +16,10 @@ class Nosotros {
         this.subNav3.style.display = 'none';
         this.subNav2.style.display = 'none';
         this.subNav1.style.display = 'none';
-        this.responsiveOnlyContainer.style.display = 'none';
+        if(this.responsiveOnlyContainer){
+            this.responsiveOnlyContainer.style.display = 'none';
+        }
+        
     }
 
     cerrarTodos() {
@@ -101,10 +104,13 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('bajar0').addEventListener('click', function () {
         nosotro.cambio1();
     });
-
-    document.getElementById('responsiveOnly').addEventListener('click', function () {
-        nosotro.responsive();
-    });
+    
+    if(document.getElementById('responsiveOnly')){
+        document.getElementById('responsiveOnly').addEventListener('click', function () {
+            nosotro.responsive();
+        });
+    }
+    
 
     document.getElementById('bajar1').addEventListener('click', function () {
         nosotro.cambio2();
