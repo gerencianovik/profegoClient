@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/css/clases/lista.css">
+<link rel="stylesheet" href="/css/cursos/lista.css">
 {{#each teacherLista}}
 <form action="/clases/list/{{idTeacher}}" method="get">
     {{/each}}
@@ -17,65 +17,68 @@
                 </div>
                 <div class="row">
                     {{#each lista}}
-                    <div id="video">
-                        <video src="/video/clases/{{videoClases}}" controls></video>
-                        <p>Ver la información completa</p>
-                    </div>
-                    <div id="tarjeta">
-                        <div id="tarjetaInterna">
-                            <a href="/clases/detailList/{{idClases}}">
-                                <div id="foto">
-                                    <p><img src="/img/clase/{{photoClases}}" alt=""></p>
-                                </div>
-                                <div id="pasos">
-                                    <div class="espaciosTarjetaInfo">
-                                        <div id="Nombre">
-                                            <p>{{nameClases}}</p>
+                    <div class="flex">
+                        <div id="tarjeta">
+                            <div id="tarjetaInterna">
+                                <a href="/clases/detailList/{{idClases}}">
+                                    <div id="foto">
+                                        <p><img src="/img/clase/{{photoClases}}" alt=""></p>
+                                    </div>
+                                    <div id="pasos">
+                                        <div class="espaciosTarjetaInfo">
+                                            <div id="Nombre">
+                                                <p>{{nameClases}}</p>
+                                            </div>
+                                            <div id="cupos">
+                                                <p>{{shareClases}}</p>
+                                            </div>
+                                            <div id="estado">
+                                                <p>{{stateClases}}</p>
+                                            </div>
                                         </div>
-                                        <div id="cupos">
-                                            <p>{{shareClases}}</p>
-                                        </div>
-                                        <div id="estado">
-                                            <p>{{stateClases}}</p>
+                                        <div>
+                                            <div id="descripcion">
+                                                <p>{{descriptionClases}}</p>
+                                            </div>
+                                            <div id="fehca">
+                                                <p>{{dateClases}}</p>
+                                            </div>
+                                            <div id="hora">
+                                                <p>{{hourClases}}</p>
+                                            </div>
+                                            <div id="costo">
+                                                <p><img src="/img/icons/tarifa.png" alt="Descripción del ícono"
+                                                        style="width: 30px; height: 30px;"> {{costClases}}</p>
+                                            </div>
+                                            <div id="calificacion">
+                                                <p>{{calificationClases}}</p>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div>
-                                        <div id="descripcion">
-                                            <p>{{descriptionClases}}</p>
-                                        </div>
-                                        <div id="fehca">
-                                            <p>{{dateClases}}</p>
-                                        </div>
-                                        <div id="hora">
-                                            <p>{{hourClases}}</p>
-                                        </div>
-                                        <div id="costo">
-                                            <p><img src="/img/icons/tarifa.png" alt="Descripción del ícono"
-                                                    style="width: 30px; height: 30px;"> {{costClases}}</p>
-                                        </div>
-                                        <div id="calificacion">
-                                            <p>{{calificationClases}}</p>
-                                        </div>
-                                    </div>
+                                </a>
+                            </div>
+                            <div id="opcionesLista">
+                                <div id="actualizar">
+                                    <a href="/clases/update/{{idClases}}"><button type="button">Actualizar</button></a>
                                 </div>
-                            </a>
+                                <div id="materialesDeClase">
+                                    <a href="/material/clases/{{idClases}}"><button
+                                            type="button">Materiales</button></a>
+                                </div>
+                                <div id="recursosDeClase">
+                                    <a href="/recours/clases/{{idClases}}"><button type="button">Recursos</button></a>
+                                </div>
+                                <div id="desavilitar">
+                                    <a href="/clases/delete/{{idClases}}"><button type="button">Desabilitar</button></a>
+                                </div>
+                            </div>
                         </div>
-                        <div id="opcionesLista">
-                            <div id="actualizar">
-                                <a href="/clases/update/{{idClases}}"><button type="button">Actualizar</button></a>
-                            </div>
-                            <div id="materialesDeClase">
-                                <a href="/material/clases/{{idClases}}"><button type="button">Materiales</button></a>
-                            </div>
-                            <div id="recursosDeClase">
-                                <a href="/recours/clases/{{idClases}}"><button type="button">Recursos</button></a>
-                            </div>
-                            <div id="desavilitar">
-                                <a href="/clases/delete/{{idClases}}"><button type="button">Desabilitar</button></a>
-                            </div>
+                        <div id="video">
+                            <video src="/video/clases/{{videoClases}}" controls></video>
                         </div>
                     </div>
                     <br>
+                    <hr>
                     {{/each}}
                 </div>
             </div>
