@@ -17,6 +17,7 @@
     height: 100%;
     max-width: 100%;
     max-height: 165%;
+    z-index: -50;
 }
 
 #fondo img {
@@ -27,455 +28,98 @@
     background-attachment: fixed;
 }
 
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.m-nav {
+    margin-top: 80px;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.space-around {
+    justify-content: space-around;
+}
+
+.center-dos{
+    align-items: center;
+}
+
+.center-uno{
+    justify-content: center;
+}
+
 #datosCurso {
-    width: 100%;
-    height: 100vh;
-    max-width: 100%;
-    max-height: 100vh;
-    position: absolute;
-    top: 10%;
-    left: 0%;
+    margin: 80px 10px;
 }
 
 #fondoVerde {
-    width: 65%;
-    height: 50%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px;
     background-color: #147582;
-    position: absolute;
-    top: 3%;
-    left: 2%;
-    border-radius: 10px;
+    width: 60%;
+    min-height: 250px;
 }
 
-#foto {
-    position: absolute;
-    width: 30%;
-    height: 90%;
-    top: 5%;
-    left: 2%;
+#fondoVerde img{
+    width: 200px;
 }
 
-#foto img {
+#video{
+    width: 35%;
+    margin-top: 20px;
+}
+
+#video video{
     width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    border-radius: 10px;
 }
 
-#direccion {
-    position: absolute;
-    width: 63%;
-    height: 40%;
-    top: 17%;
-    left: 35%;
+.cuadro{
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    background-color: #ffffff;
+    width: 60%;
+    padding: 20px;
 }
 
-#direccion #ubicacion {
-    display: none;
+#menus img{
+    width: 70px;
 }
 
-#direccion #map {
-    width: 100%;
-    height: 100%;
+.espacio{
+    margin-top: 20px;
 }
 
-#Nombre {
-    position: absolute;
-    left: 35%;
-    width: 64%;
-    text-align: center;
-    top: 1%;
-    font-size: 15px;
+#data{
+    width: 57%;
 }
 
-#tipoDeCurso {
-    position: absolute;
-    left: 35%;
-    width: 64%;
-    text-align: left;
-    top: 57%;
-    font-size: 20px;
-    margin-left: 1%;
-}
-
-#adactacion {
-    position: absolute;
-    left: 35%;
-    width: 64%;
-    text-align: left;
-    top: 67%;
-    font-size: 20px;
-    margin-left: 1%;
-}
-
-#video {
-    position: absolute;
-    left: 68%;
-    width: 30%;
-    height: 100%;
-    top: 2%;
-    border-radius: 10px;
-}
-
-#video video {
-    width: 100%;
-    height: 312px;
-    background-size: cover;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-}
-
-#cuadros2 {
-    width: 65%;
-    position: absolute;
-    left: 2%;
-    top: 57%;
-    background-color: white;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-}
-
-#descripcion1 {
-    width: 100%;
-    height: 100px;
-    margin-top: -2.5%;
-    border-radius: 10px;
-    text-align: left;
-    font-size: 17px;
-}
-
-#descripcion1 h1 {
-    color: #18574F;
-    margin-left: 1%;
-    margin-top: 4%;
-}
-
-#descripcion1 p {
-    margin-left: 3%;
-}
-
-#contenedordocentess {
-    width: 100%;
-    height: 190px;
-}
-
-#docentess {
-    width: 94%;
-    height: 100%;
-    margin-left: 5%;
-}
-
-#docentess img {
-    width: 11%;
-    margin-top: 1.5%;
-    margin-left: 1%;
-    border-radius: 50%;
-}
-
-#docentess h1 {
-    margin-top: -18%;
-    margin-left: 22%;
-    font-size: 20px;
-    color: #F39325;
-}
-
-#docentess p {
-    width: 77%;
-    height: 73%;
-    margin-left: 23%;
-    margin-top: 0%;
-    font-size: 20px;
-}
-
-#aprobadoss {
-    width: 5%;
-    margin-top: -5%;
-    margin-left: 5%;
-}
-
-#temario {
-    width: 100%;
-    margin-left: 1%;
-    text-align: left;
-}
-
-#tituloTemario {
-    font-size: 20px;
-}
-
-#moduloTotal {
-    display: flex;
-    flex-wrap: wrap;
-    /* Permite que los elementos se ajusten a la siguiente fila si es necesario */
-    gap: 10px;
-    /* Espacio entre los elementos */
-}
-
-#moduloTotal p {
-    flex: 1 1 30%;
-    /* Cada <p> ocupa el 30% del ancho del contenedor */
-    margin: 0;
-    /* Elimina el margen predeterminado de los <p> */
-    text-align: center;
-    /* Centra el texto dentro del <p> */
-}
-
-#cupos {
-    font-size: 20px;
-    margin-left: 1%;
-    margin-top: 3%;
-}
-
-#modalidad {
-    display: none;
-}
-
-#curso {
-    display: none;
-}
-
-#Modalidad {
-    width: 33%;
-    margin-left: 1%;
-    font-size: 20px;
-    margin-top: 11%;
-}
-
-#Curso {
-    width: 33%;
-    margin-left: 33%;
-    margin-top: -12.5%;
-    font-size: 20px;
-}
-
-#Edad {
-    width: 33%;
-    margin-left: 65%;
-    font-size: 20px;
-    margin-top: -12.5%;
-}
-
-#presencial p,
-#Virtual p,
-#Cursos p,
-#Chouching p {
-    margin-top: -18%;
-    margin-left: 37%;
-}
-
-#imagenPresencial img,
-#Virtual img,
-#Cursos img,
-#Chouching img,
-#imageEdad img {
+#menu{
     width: 35%;
 }
 
-#edad {
-    margin-top: -51%;
-    margin-left: 46%;
+#menu #menus{
+    width: 87%;
+    margin-right: 0;
+    padding-right: 0;
 }
 
-#recursoss {
-    width: 40%;
-    background-image: linear-gradient(to top, #177483 32%, #004D77 100%);
-    margin-top: 5%;
-    border-radius: 10px;
-    margin-left: 1%;
-    font-size: 20px;
-    color: white;
-}
-
-#Materiales {
-    width: 40%;
-    background-image: linear-gradient(to top, #177483 32%, #004D77 100%);
-    margin-top: -18%;
-    border-radius: 10px;
-    margin-left: 59%;
-    font-size: 20px;
-    color: white;
-}
-
-#recursoss p,
-#Materiales p {
-    font-size: 25px;
-    padding-top: 5%;
-    margin-left: 11%;
-}
-
-#listaRecursoss,
-#materialesCurso {
-    margin-top: -25%;
-    margin-left: 41%;
-}
-
-#imagenRecurso img,
-#imagenRecurso img {
-    width: 20%;
-    margin-left: 1%;
-}
-
-#tareasss {
-    margin-top: 35%;
-    margin-left: 1%;
-    font-size: 20px;
-}
-
-#Pruebass {
-    margin-top: 10%;
-    width: 100%;
-    font-size: 20px;
-    margin-left: 1%;
-}
-
-#imagenTareass img {
-    width: 10%;
-}
-
-#imagenPruebass img {
-    width: 10%;
-}
-
-#tareass {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: -10%;
-    margin-left: 14%;
-}
-
-#tareass a {
-    text-decoration: none;
-}
-
-#tareass p {
-    flex: 1 1 30%;
-    margin: 0;
-    text-align: center;
-    border: 2px solid #165851;
-    color: #18574F;
-    border-color: transparent;
-}
-
-#pruebasCursos {
-    display: flex;
-    flex-wrap: wrap;
-    /* Permite que los elementos se ajusten a la siguiente fila si es necesario */
-    gap: 10px;
-    width: 80%;
-    /* Espacio entre los elementos */
-}
-
-#pruebasCursos a {
-    text-decoration: none;
-}
-
-#pruebasCursos p {
-    flex: 1 1 30%;
-    /* Cada <p> ocupa el 30% del ancho del contenedor */
-    margin: 0;
-    /* Elimina el margen predeterminado de los <p> */
-    text-align: center;
-    border: 2px solid #165851;
-    color: #18574F;
-    border-color: transparent;
-    /* Centra el texto dentro del <p> */
-}
-
-#totaldatos {
-    font-size: 20px;
-    margin-left: 2%;
-    color: #18574F;
-}
-
-#menus {
-    position: absolute;
-    width: 16%;
-    top: 57%;
-    border-radius: 10px;
-    left: 68%;
-    padding-top: 1%;
-    padding-left: 1%;
-    padding-bottom: 1%;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
-}
-
-#imagenRecursos img {
-    width: 25%;
-}
-
-#imagenMateriales img {
-    width: 25%;
-}
-
-#imagenTareas img {
-    width: 25%;
-}
-
-#imagenPruebas img {
-    width: 25%;
-}
-
-#imagenAsistencia img {
-    width: 25%;
-}
-
-#imagenObservacion img {
-    width: 25%;
-}
-
-#imagenCurricular img {
-    width: 25%;
-}
-
-#recursos,
-#materiales,
-#Tareas,
-#Pruebas,
-#asistencia,
-#ObservacionesValoración,
-#contenidoCurricular {
-    width: 100%;
-    height: 70px;
-}
-
-#boton {
-    margin-top: -37px;
-    margin-left: 45%;
-}
-
-#boton button {
-    width: 90%;
-    font-size: 15px;
-    background-color: transparent;
-    border: 3px solid #F39325;
-    border-radius: 10px;
-}
-
-#contenedorBotonPanico {
-    position: absolute;
-    left: 70%;
-    top: 148%;
-    width: 20%;
-    height: 40%;
-    background-color: red;
-    border-radius: 50%;
-}
-
-#contenedorBotonPanico button {
-    width: 100%;
-    height: 100%;
-    background-color: red;
-    border-radius: 50%;
-}
-
-#calendarios {
-    position: absolute;
-    left: 70%;
-    background-color: white;
-    top: 192%;
+#boton button{
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 5px;
+    height: 40px;
+    width: 200px;
+    margin-left: 10px;
+    border-color: #F39325;
+    cursor: pointer;
 }
 
 #calendar {
@@ -485,71 +129,6 @@
     font-family: Arial, sans-serif;
     width: 100%;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
-}
-
-#disponibilidad {
-    width: 100%;
-    height: 30px;
-}
-
-#verde{
-    width: 20%;
-}
-
-#verde h1 {
-    width: 20%;
-    background-color: green;
-    height: 15px;
-}
-
-#verde p{
-    position: absolute;
-    top: 2%;
-    left: 6%;
-}
-
-#naranja{
-    width: 20%;
-    position: absolute;
-    left: 34%;
-    top: 0%;
-}
-
-#naranja h1 {
-    width: 20%;
-    background-color: green;
-    height: 15px;
-}
-
-#naranja p{
-    position: absolute;
-    top: 15%;
-    left: 24%;
-}
-
-#naranja h1 {
-    width: 20%;
-    background-color: #F39325;
-    height: 15px;
-}
-
-#rojo{
-    width: 35%;
-    position: absolute;
-    left: 61%;
-    top: 0%;
-}
-
-#rojo h1 {
-    width: 12%;
-    background-color: red;
-    height: 15px;
-}
-
-#rojo p{
-    position: absolute;
-    top: 14%;
-    left: 16%;
 }
 
 .calendar-day {
@@ -564,7 +143,150 @@
     font-weight: bold;
 }
 
-#fehcaInit,
-#fehcaFin{
+
+#verde h1 {
+    width: 15px;
+    background-color: green;
+    height: 15px;
+    margin-right: 10px;
+}
+
+#naranja h1 {
+    width: 15px;
+    background-color: #F39325;
+    height: 15px;
+    margin-right: 10px;
+}
+
+#rojo h1 {
+    width: 15px;
+    background-color: red;
+    height: 15px;
+    margin-right: 10px;
+}
+
+#contenedorBotonPanico {
+    width: 350px;
+    height: 350px;
+    background-color: red;
+    border-radius: 50%;
+    margin-top: 50px;
+}
+
+#contenedorBotonPanico button {
+    width: 100%;
+    height: 100%;
+    background-color: red;
+    border-radius: 50%;
+}
+
+#data h1{
+    color: #18574F;
+}
+
+#direccion {
+    width: 90%;
+    height: 90px;
+    margin-bottom: 20px;
+}
+
+#direccion #ubicacion {
     display: none;
 }
+
+#direccion #map {
+    width: 100%;
+    height: 100%;
+}
+#docentess {
+    position: relative;
+}
+#contenedordocentess #aprobadoss{
+    position: absolute;
+    right: 60%;
+    top: 70%;
+}
+
+#docentess .imgPrincipal {
+    width: 100px;
+    border-radius: 50%;
+}
+#aprobadoss {
+    width: 45px;
+}
+
+#DataDocente{
+    margin-left: 45px;
+}
+
+.temarioEduca{
+    margin-top: 20px;
+}
+
+.temarioEduca img{
+    width: 100px;
+    
+}
+
+#recursosParaClase{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+#recursosParaClase .tarjeta{
+    width: 40%;
+background-image: linear-gradient(to top, #177483 32%, #004D77 100%);
+border-radius: 10px;
+font-size: 20px;
+color: white;
+height: auto;
+}
+
+#recursosParaClase img{
+    width: 100px;
+}
+
+
+@media only screen and (max-width: 660px){
+    
+}
+
+@media only screen and (min-width: 600px ) and (max-width: 900px){
+    
+}
+
+@media only screen and (min-width: 900px){
+    .titulos{
+        max-width: 50%;
+    }
+
+}
+@media only screen and (max-width: 1061px){
+
+    #menu{
+        width: 100vw;
+    }
+
+    #menu #menus{
+        width: 92%;
+    }
+
+    #data{
+        width: 92%;
+    }
+
+    #video{
+        width: 94%;
+        margin-left: 20px;
+    }
+    #fondoVerde{
+        width: 94%;
+        justify-content: center;
+        padding-top: 10px;
+    }
+}
+
+
+
+

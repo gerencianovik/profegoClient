@@ -1,264 +1,283 @@
-<link rel="stylesheet" href="/css/cursos/detalle.css">
+<link rel="stylesheet" href="/css/clases/detalle.css">
+
 <div id="contenedor">
     <div id="fondo">
         <img src="/img/fondo/fondo1.png">
     </div>
     {{#each lista}}
     <form action="/cursos/detailList/{{idCours}}" method="get"></form>
-    <div id="datosCurso">
-        <div id="fondoVerde">
-            <div id="foto">
-                <img src="/img/cours/{{photoCours}}">
+    <div id="datosCurso" class="m-nav">
+        <div class="flex space-between">
+            <div id="fondoVerde" class="flex">
+                <div id="foto">
+                    <img src="/img/cours/{{photoCours}}">
+                </div>
+                <div style=" margin-left: 50px;" class="titulos">
+                    <div id="Nombre">
+                        <h1>{{nameCours}}</h1>
+                    </div>
+                    <div id="tipoDeCurso">
+                        <p>{{nameCoursClassType}}</p>
+                    </div>
+                    <div id="direccion">
+                        <div id="map"></div>
+                        <input type="text" name="ubicacion" id="ubicacion" value="{{ubicacionCurso}}">
+                    </div>
+                    {{#if neeCours}}
+                    <input type="checkbox" name="adactacion" id="adactacion" value="{{	neeCours}}">
+                    {{/if}}
+                </div>
             </div>
-            <div id="Nombre">
-                <h1>{{nameCours}}</h1>
+            <div id="video">
+                <video src="/video/cours/{{videoCours}}" controls></video>
             </div>
-            <div id="tipoDeCurso">
-                <p>{{nameCoursClassType}}</p>
-            </div>
-            <div id="direccion">
-                <div id="map"></div>
-                <input type="text" name="ubicacion" id="ubicacion" value="{{ubicacionCurso}}">
-            </div>
-            {{#if neeCours}}
-            <input type="checkbox" name="adactacion" id="adactacion" value="{{	neeCours}}">
-            {{/if}}
         </div>
-        <div id="video">
-            <p><video src="/video/cours/{{videoCours}}" controls></video></p>
-        </div>
-        <div id="cuadros2">
-            <div id="descripcion1">
-                <h1>Descripción</h1>
-                <p>{{descriptionCours}}</p>
-            </div>
-            <div id="contenedordocentess">
-                <h1>Docentes</h1>
-                <div id="fotoDocente">
-                    {{#each ../docenteLista}}
-                    <div id="docentess">
-                        <img src="/img/usuario/{{photoTeacher}}">
+
+        <div id="cuadros2" class="flex">
+            <div class="cuadro" id="data">
+                <div id="descripcion1">
+                    <h1>Descripción</h1>
+                    <p>{{descriptionCours}}</p>
+                </div>
+                <div id="contenedordocentess">
+                    <h1>Docentes</h1>
+                    <div id="fotoDocente" class="flex">
+                        {{#each ../docenteLista}}
+                        <div id="docentess">
+                            <img src="/img/usuario/{{photoTeacher}}" class="imgPrincipal">
+                            <img src="/img/icons/aprobado.png" id="aprobadoss">
+                        </div>
                         <div id="DataDocente">
                             <h1>{{completeNmeTeacher}}</h1>
                             <p>{{descriptionTeacher}}</p>
                         </div>
-                    </div>
-                    {{/each}}
-                    <img src="/img/icons/aprobado.png" id="aprobadoss">
-                </div>
-            </div>
-            {{#each ../temario}}
-            <div id="temario">
-                <div id="tituloTemario">
-                    <h1>Temario educativo</h1>
-                    <p>Objetivo: {{objetivesyllabusEducational}}</p>
-                    <div id="moduloTotal">
-                        <p>{{moduleCurrucularContentCourse}} Módulos</p>
-                        |
-                        <p>{{themesyllabusEducational}}Clases</p>
-                        |
-                        <p>{{timesyllabusEducational}} Duración total</p>
+                        {{/each}}
+
 
                     </div>
                 </div>
-            </div>
-            {{/each}}
-            {{!-- <div id="cupos">
-                <p>{{shareCours}} Cupos disponibles</p>
-            </div> --}}
-            <div id="Modalidad">
-                <p>Modalidad</p>
-                <input type="text" name="modalidad" id="modalidad" value="{{nameCoursClassType}}">
-                <div id="presencial">
-                    <div id="imagenPresencial">
-                        <img src="/img/icons/presencial.png">
+                {{#each ../temario}}
+                <div id="temario">
+                    <div id="tituloTemario">
+                        <h1>Temario educativo</h1>
+                        <p style="color:#004d77;">Objetivo: {{objetivesyllabusEducational}}</p>
+                        <div id="moduloTotal" class="flex">
+                            <div style="color: #18574F; margin: 0px 10px;">{{moduleCurrucularContentCourse}} Módulos
+                            </div>
+                            |
+                            <div style="color: #18574F; margin: 0px 10px;">{{themesyllabusEducational}}Clases</div>
+                            |
+                            <div style="color: #18574F; margin-left: 10px;">{{timesyllabusEducational}} Duración total
+                            </div>
+
+                        </div>
                     </div>
-                    <p>Domicilio <input type="checkbox" name="" id="Presencial"></p>
                 </div>
-                <div id="Virtual">
-                    <div id="imagenVirtual">
-                        <img src="/img/icons/online.png">
+                {{/each}}
+                {{!-- <div id="cupos">
+                    <p>{{shareCours}} Cupos disponibles</p>
+                </div> --}}
+                <div class="flex temarioEduca space-around">
+                    <div id="Modalidad">
+                        <p>Modalidad</p>
+                        <input type="text" name="modalidad" id="modalidad" value="{{nameCoursClassType}}">
+                        <div id="presencial">
+                            <div id="imagenPresencial">
+                                <img src="/img/icons/presencial.png">
+                            </div>
+                            <p>Domicilio <input type="checkbox" name="" id="Presencial"></p>
+                        </div>
+                        <div id="Virtual">
+                            <div id="imagenVirtual">
+                                <img src="/img/icons/online.png">
+                            </div>
+                            <p>Online<input type="checkbox" name="" id="virtual"></p>
+                        </div>
                     </div>
-                    <p>Online<input type="checkbox" name="" id="virtual"></p>
-                </div>
-            </div>
-            <div id="Curso">
-                <p>Tipo</p>
-                <input type="text" name="curso" id="curso" value="{{tipoCurso}}">
-                <div id="Cursos">
-                    <div id="imagenCursos">
-                        <img src="/img/icons/Cursos.png">
+                    <div id="Curso">
+                        <p>Tipo</p>
+                        <input type="text" name="curso" id="curso" value="{{tipoCurso}}">
+                        <div id="Cursos">
+                            <div id="imagenCursos">
+                                <img src="/img/icons/Cursos.png">
+                            </div>
+                            <p>Cursos <input type="checkbox" name="" id="cursos"></p>
+                        </div>
+                        <div id="Chouching">
+                            <div id="imagenChouching">
+                                <img src="/img/icons/Couching.png">
+                            </div>
+                            <p>Coaching para docentes<input type="checkbox" name="" id="Chouching"></p>
+                        </div>
                     </div>
-                    <p>Cursos <input type="checkbox" name="" id="cursos"></p>
-                </div>
-                <div id="Chouching">
-                    <div id="imagenChouching">
-                        <img src="/img/icons/Couching.png">
+                    <div id="Edad">
+                        <p>Edad o nivel</p>
+                        <div id="imageEdad">
+                            <img src="/img/icons/edad.png">
+                        </div>
+                        <div id="edad">
+                            {{#each ../listaDetalle}}
+                            <p>{{rangoEdadCurso}}</p>
+                            {{/each}}
+                        </div>
                     </div>
-                    <p>Coaching para docentes<input type="checkbox" name="" id="Chouching"></p>
                 </div>
-            </div>
-            <div id="Edad">
-                <p>Edad o nivel</p>
-                <div id="imageEdad">
-                    <img src="/img/icons/edad.png">
-                </div>
-                <div id="edad">
-                    {{#each ../listaDetalle}}
-                    <p>{{rangoEdadCurso}}</p>
-                    {{/each}}
-                </div>
-            </div>
-            <div id="recursosParaClase">
-                <div id="recursoss">
-                    <p>Recursos del Curso</p>
-                    <div id="imagenRecurso">
-                        <img src="/img/icons/Recursos.png">
+                <div id="recursosParaClase">
+                    <div id="recursoss" class="tarjeta">
+                        <p>Recursos del Curso</p>
+                        <div id="imagenRecurso">
+                            <img src="/img/icons/Recursos.png">
+                        </div>
+                        <div id="listaRecursoss">
+                            {{#each ../recursos}}
+                            <p>{{nameRecours}}</p>
+                            {{/each}}
+                        </div>
                     </div>
-                    <div id="listaRecursoss">
-                        {{#each ../recursos}}
-                        <p>{{nameRecours}}</p>
+                    <div id="Materiales" class="tarjeta">
+                        <p>Materiales del Curso</p>
+                        <div id="imagenRecurso">
+                            <img src="/img/icons/materiales.png">
+                        </div>
+                        <div id="materialesCurso">
+                            {{#each ../materiales}}
+                            <p>{{nameMaterial}}</p>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+                <div id="tareasss">
+                    <p>Tareas</p>
+                    <div id="imagenTareass">
+                        <img src="/img/icons/Tareas.png">
+                    </div>
+                    <div id="tareass">
+                        {{#each ../tareas}}
+                        <a href="/tareas/detailCurso/{{idTask}}" style="color: #18574F;">
+                            <p>{{nameTask}}</p>
+                        </a>
                         {{/each}}
                     </div>
                 </div>
-                <div id="Materiales">
-                    <p>Materiales del Curso</p>
-                    <div id="imagenRecurso">
-                        <img src="/img/icons/materiales.png">
+
+                <div id="Pruebass">
+                    <p>Pruebas</p>
+                    <div id="imagenPruebass">
+                        <img src="/img/icons/pruebas.png">
                     </div>
-                    <div id="materialesCurso">
-                        {{#each ../materiales}}
-                        <p>{{nameMaterial}}</p>
+                    <div id="pruebasCursos">
+                        {{#each ../Pruebas}}
+                        <p style="color: #18574F;"></p>
                         {{/each}}
                     </div>
                 </div>
-            </div>
-            <div id="tareasss">
-                <p>Tareas</p>
-                <div id="imagenTareass">
-                    <img src="/img/icons/Tareas.png">
-                </div>
-                <div id="tareass">
-                    {{#each ../tareas}}
-                    <a href="/tareas/detailCurso/{{idTask}}">
-                        <p>{{nameTask}}</p>
-                    </a>
-                    {{/each}}
+                <div id="totaldatos" style="color: #18574F;">
+                    <div id="fehcaInit">
+                        <input type="text" id="fechaInicio" value="{{dateCoursInit}}" readonly>
+                    </div>
+                    <div id="fehcaFin">
+                        <input type="text" id="fechaFin" value="{{dateCoursFin}}" readonly>
+                    </div>
+                    <div id="hora">
+                        <p>{{hourCours}}</p>
+                    </div>
+                    <div id="cupos">
+                        <p>{{shareCours}}</p>
+                    </div>
+                    <div id="costo">
+                        <p>{{costCours}}</p>
+                    </div>
                 </div>
             </div>
 
-            <div id="Pruebass">
-                <p>Pruebas</p>
-                <div id="imagenPruebass">
-                    <img src="/img/icons/pruebas.png">
+            <div id="menu">
+                <div id="menus" class="cuadro">
+                    <div id="recursos" class="flex center-dos">
+                        <div id="imagenRecursos">
+                            <img src="/img/icons/recursosCompleto.png">
+                        </div>
+                        <div id="boton">
+                            <a href="/recours/curso/{{idCours}}"><button type="button">Recursos</button></a>
+                        </div>
+                    </div>
+                    <div id="materiales" class="flex espacio center-dos">
+                        <div id="imagenMateriales">
+                            <img src="/img/icons/materialesCompletos.png">
+                        </div>
+                        <div id="boton">
+                            <a href="/material/curso/{{idCours}}"><button type="button">Recursos necesarios del
+                                    estudiante</button></a>
+                        </div>
+                    </div>
+                    <div id="Tareas" class="flex espacio center-dos">
+                        <div id="imagenTareas">
+                            <img src="/img/icons/TareasCompletas.png">
+                        </div>
+                        <div id="boton">
+                            <a href="/tareas/curso/{{idCours}}"><button type="button">Tareas</button></a>
+                        </div>
+                    </div>
+                    <div id="Pruebas" class="flex espacio center-dos">
+                        <div id="imagenPruebas">
+                            <img src="/img/icons/pruebas.png">
+                        </div>
+                        <div id="boton">
+                            <a href="/pruebas/curso/{{idCours}}"><button type="button">Pruebas</button></a>
+                        </div>
+                    </div>
+                    <div id="asistencia" class="flex espacio center-dos">
+                        <div id="imagenAsistencia">
+                            <img src="/img/icons/asistencia.png">
+                        </div>
+                        <div id="boton">
+                            <a href="/asistencia/curso/{{idCours}}"><button type="button">Asistencia</button></a>
+                        </div>
+                    </div>
+                    <div id="ObservacionesValoración" class="flex espacio center-dos">
+                        <div id="imagenObservacion">
+                            <img src="/img/icons/observaciones.png">
+                        </div>
+                        <div id="boton">
+                            <a href="/observacionValoracion/curso/{{idCours}}"><button type="button">Observaciones y
+                                    valoración</button></a>
+                        </div>
+                    </div>
+                    <div id="contenidoCurricular" class="flex espacio center-dos">
+                        <div id="imagenCurricular">
+                            <img src="/img/icons/somos.png">
+                        </div>
+                        <div id="boton">
+                            <a href="/silabus/curso/{{idCours}}"><button type="button">Contenido Curricular</button></a>
+                        </div>
+                    </div>
                 </div>
-                <div id="pruebasCursos">
-                    {{#each ../Pruebas}}
-                    <p></p>
-                    {{/each}}
+
+                <div id="calendarios">
+                    <div id="disponibilidad" class="flex space-around">
+                        <div id="verde" class="flex center-dos">
+                            <h1></h1>
+                            <p>Libre</p>
+                        </div>
+                        <div id="naranja" class="flex center-dos">
+                            <h1></h1>
+                            <p>Ocupado</p>
+                        </div>
+                        <div id="rojo" class="flex center-dos">
+                            <h1></h1>
+                            <p>No disponible</p>
+                        </div>
+                    </div>
+                    <div id="calendar"></div>
+                </div>
+                <div id="contenedorBotonPanico">
+                    <button type="button"></button>
                 </div>
             </div>
-            <div id="totaldatos">
-                <div id="fehcaInit">
-                    <input type="text" id="fechaInicio" value="{{dateCoursInit}}" readonly>
-                </div>
-                <div id="fehcaFin">
-                    <input type="text" id="fechaFin" value="{{dateCoursFin}}" readonly>
-                </div>
-                <div id="hora">
-                    <p>{{hourCours}}</p>
-                </div>
-                <div id="cupos">
-                    <p>{{shareCours}}</p>
-                </div>
-                <div id="costo">
-                    <p>{{costCours}}</p>
-                </div>
-            </div>
+
         </div>
-        <div id="menus">
-            <div id="recursos">
-                <div id="imagenRecursos">
-                    <img src="/img/icons/recursosCompleto.png">
-                </div>
-                <div id="boton">
-                    <a href="/recours/curso/{{idCours}}"><button type="button">Recursos</button></a>
-                </div>
-            </div>
-            <div id="materiales">
-                <div id="imagenMateriales">
-                    <img src="/img/icons/materialesCompletos.png">
-                </div>
-                <div id="boton">
-                    <a href="/material/curso/{{idCours}}"><button type="button">Recursos necesarios del
-                            estudiante</button></a>
-                </div>
-            </div>
-            <div id="Tareas">
-                <div id="imagenTareas">
-                    <img src="/img/icons/TareasCompletas.png">
-                </div>
-                <div id="boton">
-                    <a href="/tareas/curso/{{idCours}}"><button type="button">Tareas</button></a>
-                </div>
-            </div>
-            <div id="Pruebas">
-                <div id="imagenPruebas">
-                    <img src="/img/icons/pruebas.png">
-                </div>
-                <div id="boton">
-                    <a href="/pruebas/curso/{{idCours}}"><button type="button">Pruebas</button></a>
-                </div>
-            </div>
-            <div id="asistencia">
-                <div id="imagenAsistencia">
-                    <img src="/img/icons/asistencia.png">
-                </div>
-                <div id="boton">
-                    <a href="/asistencia/curso/{{idCours}}"><button type="button">Asistencia</button></a>
-                </div>
-            </div>
-            <div id="ObservacionesValoración">
-                <div id="imagenObservacion">
-                    <img src="/img/icons/observaciones.png">
-                </div>
-                <div id="boton">
-                    <a href="/observacionValoracion/curso/{{idCours}}"><button type="button">Observaciones y
-                            valoración</button></a>
-                </div>
-            </div>
-            <div id="contenidoCurricular">
-                <div id="imagenCurricular">
-                    <img src="/img/icons/somos.png">
-                </div>
-                <div id="boton">
-                    <a href="/silabus/curso/{{idCours}}"><button type="button">Contenido Curricular</button></a>
-                </div>
-            </div>
-        </div>
-        {{/each}}
-    </div>
-    <div id="calendarios">
-        <div id="disponibilidad">
-            <div id="verde">
-                <h1></h1>
-                <p>Libre</p>
-            </div>
-            <div id="naranja">
-                <h1></h1>
-                <p>Ocupado</p>
-            </div>
-            <div id="rojo">
-                <h1></h1>
-                <p>No disponible</p>
-            </div>
-        </div>
-        <div id="calendar"></div>
-    </div>
-    <div id="contenedorBotonPanico">
-        <button type="button"></button>
     </div>
 </div>
+{{/each}}
 <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Q9PaOYlXpeqtj_0tHE19Zcoim25iSFg&callback=initAutocomplete&libraries=places&v=weekly"
     defer></script>
