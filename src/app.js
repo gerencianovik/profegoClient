@@ -32,15 +32,14 @@ app.use(helmet({
     contentSecurityPolicy: {
         directives: {
             ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-            "script-src": ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://maps.googleapis.com", "https://cdnjs.cloudflare.com", "https://cdn.jsdelivr.net"],
-            "style-src": ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+            "script-src": ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://maps.googleapis.com"],
             "img-src": ["'self'", "data:", "blob:", "https://maps.gstatic.com", "https://*.googleapis.com"],
             "frame-src": ["'self'", "blob:", "https://www.google.com"],
             "connect-src": ["'self'", "https://maps.googleapis.com"],
             "object-src": ["'none'"],
             "default-src": ["'self'"]
         }
-    }
+    },
 }));
 
 // Configurar almacenamiento de sesiones MySQL
