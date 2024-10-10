@@ -6,17 +6,17 @@ const detailCurricularContent = (sequelize, type) =>{
             primaryKey: true,
             comment: 'Camnpo unico de Detalle del Contenido Curricular del Curso'
         },
-        moduleCurrucularContentCourse: {
+        subTopicsDetailCurricularContent: {
             type: type.STRING,
-            comment: 'Modulo de Contenido Curricular'
+            comment: 'SubTemas de Detalle del Contenido Curricular del Curso'
         },
-        themesyllabusEducational: {
-            type: type.STRING,
-            comment: 'Tema de Contenido Curricular'
+        activitisDetailCurricularContent: {
+            type: type.TEXT,
+            comment: 'Actividades de Detalle del Contenido Curricular del Curso'
         },
-        timesyllabusEducational: {
-            type: type.STRING,
-            comment: 'Tiempo de Contenido Curricular'
+        abilitisDetailCurricularContent: {
+            type: type.TEXT,
+            comment: 'Habilidades de Detalle del Contenido Curricular del Curso'
         },
         createDetailCurrilarContentCours: {
             type: type.STRING,

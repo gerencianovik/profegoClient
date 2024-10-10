@@ -6,9 +6,29 @@ const syllabusEducational = (sequelize, type) =>{
             primaryKey: true,
             comment: 'Campo unico de Contenido Curricular'
         },
+        namesyllabusEducational: {
+            type: type.STRING,
+            comment: 'Nombre de Contenido Curricular'
+        },
         objetivesyllabusEducational:{
             type: type.TEXT,
             comment: 'objetivo de Contenido Curricular'
+        },
+        moduleCurrucularContentCourse: {
+            type: type.STRING,
+            comment: 'Modulo de Contenido Curricular'
+        },
+        themesyllabusEducational: {
+            type: type.STRING,
+            comment: 'Tema de Contenido Curricular'
+        },
+        timesyllabusEducational: {
+            type: type.STRING,
+            comment: 'Tiempo de Contenido Curricular'
+        },
+        datesyllabusEducational: {
+            type: type.STRING,
+            comment: 'Date de Contenido Curricular'
         },
         observationsyllabusEducational: {
             type: type.STRING,

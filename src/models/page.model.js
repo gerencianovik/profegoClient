@@ -14,10 +14,6 @@ const page = (sequelize, type) =>{
             type: type.STRING,
             comment: 'ruc pagina'
         },
-        Historia: {
-            type: type.TEXT,
-            comment: 'historia de Pagina'
-        },
         namePage: {
             type: type.STRING,
             comment: 'Nombre de Pagina'
@@ -25,6 +21,10 @@ const page = (sequelize, type) =>{
         descriptionPage: {
             type: type.TEXT,
             comment: 'Description de Pagina'
+        },
+        Historia: {
+            type: type.TEXT,
+            comment: 'historia de Pagina'
         },
         misonPage: {
             type: type.TEXT,

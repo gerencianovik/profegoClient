@@ -14,10 +14,6 @@ const task = (sequelize, type) =>{
             type: type.TEXT,
             comment: 'Descripcion de Tareas de clase'
         },
-        fechaEntrega: {
-            type: type.TEXT,
-            comment: 'Descripcion de Tareas de clase'
-        },
         stateTask: {
             type: type.STRING,
             comment: 'Estado de Tareas de clase'
