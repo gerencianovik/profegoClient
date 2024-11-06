@@ -1,21 +1,15 @@
-const crypto = require('crypto');
+const CryptoJS = require('crypto-js')
 
-// Credenciales de Paymentez
-const CLIENT_ID = 'NUVEISTG-EC-CLIENT';  // Reemplaza con tus credenciales
-const SERVER_ID = 'NUVEISTG-EC-SERVER';  // Reemplaza con tus credenciales
-const SECRET = 'rvpKAv2tc49x6YL38fvtv5jJxRRiPs';  // Reemplaza con tu secreto
+let paymentez_server_application_code = 'LINKTOPAY01-EC-SERVER';
+let paymentez_server_app_key = 'G8vwvaASAZHQgoVuF2eKZyZF5hJmvx';
+let unix_timestamp = String(Math.floor(new Date().getTime() / 1000));
+// unix_timestamp = String("1546543146"); 
+console.log("UNIX TIMESTAMP:", unix_timestamp);
+let uniq_token_string = paymentez_server_app_key + unix_timestamp;
+console.log('UNIQ STRING:', uniq_token_string);
+let uniq_token_hash = CryptoJS.SHA256(uniq_token_string);
+console.log('UNIQ STRING:', uniq_token_hash);
+let string_auth_token = btoa(paymentez_server_application_code + ";" + unix_timestamp + ";" + uniq_token_hash);
+console.log('AUTH TOKEN:', string_auth_token);
 
-// Función para generar el token de autenticación
-function generateAuthToken() {
-    const timestamp = Math.floor(Date.now() / 1000); // Tiempo actual en segundos
-
-    // Crear la firma con el secret
-    const signature = crypto.createHmac('sha256', SECRET)
-        .update(`${CLIENT_ID}${SERVER_ID}${timestamp}`)
-        .digest('hex');
-
-    // Retornar el token de autenticación
-    return `${CLIENT_ID}:${SERVER_ID}:${timestamp}:${signature}`;
-}
-
-module.exports = generateAuthToken;
+module.exports = { string_auth_token }

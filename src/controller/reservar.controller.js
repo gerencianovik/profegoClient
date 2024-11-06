@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const generateAuthToken = require('./authService'); // Servicio para generar el auth token
+const {string_auth_token} = require('./authService'); // Servicio para generar el auth token
 const orm = require('../Database/dataBase.orm')
 const sql = require('../Database/dataBase.sql')
 const { descifrarDatos, cifrarDatos } = require('../lib/encrypDates.js');
@@ -30,43 +30,45 @@ exports.reservar = async (req, res) => {
         stateEstudent: row.stateEstudent
     }));
 
-    res.render('reservas/reservar/reservas', {pagina, estudiante: datos, curso, csrfToken: req.csrfToken()});
+    res.render('reservas/reservar/reservas', { pagina, estudiante: datos, curso, csrfToken: req.csrfToken() });
 }
 
 // Controlador que procesa la reserva y el pago
 exports.procesarReserva = async (req, res) => {
     try {
-        // Obtener los datos del formulario
-        const { nombre, email, telefono, curso, precio, numero_tarjeta, cvv, fecha_vencimiento } = req.body;
-
-        // Validar datos (nombre, email, tarjeta, etc.)
-        if (!nombre || !email || !numero_tarjeta || !cvv || !fecha_vencimiento) {
-            return res.status(400).send('Todos los campos son obligatorios');
-        }
-
         // Generar el token de autenticación para la API de Paymentez
-        const authToken = generateAuthToken(); // Asegúrate de tener este servicio configurado
-
+        const authToken = string_auth_token; // Asegúrate de tener este servicio configurado
+        console.log(authToken)
         // Procesar el pago directamente usando la API de Paymentez
-        const url = 'https://ccapi-stg.paymentez.com/v2/transaction/debit';
+        const url = 'https://noccapi-stg.paymentez.com/linktopay/init_order/';
 
         const payload = {
             "user": {
-                "id": email, // Puedes usar el email como identificador único del usuario
-                "email": email,
-                "name": nombre
+                "id": "007",
+                "email": "test@test.com",
+                "name": "TEST",
+                "last_name": "TEST"
             },
             "order": {
-                "amount": precio,
-                "description": `Reserva para ${curso}`,
-                "dev_reference": "ReferenciaDeTuSistema"
+                "dev_reference": "001",
+                "description": "TEST",
+                "amount": 212,
+                "vat": 12,
+                "tax_percentage": 12,
+                "taxable_amount": 100,
+                "installments_type": 0,
+                "currency": "USD"
             },
-            "card": {
-                "number": numero_tarjeta,
-                "holder_name": nombre,
-                "expiry_month": fecha_vencimiento.split("/")[0], // MM
-                "expiry_year": "20" + fecha_vencimiento.split("/")[1], // YY -> YYYY
-                "cvc": cvv
+            "configuration": {
+                "partial_payment": false,
+                "expiration_time": 36000,
+                "allowed_payment_methods": [
+                    "All"
+                ],
+                "success_url": "https://www.paymentez.com.ec/inicio",
+                "failure_url": "https://www.paymentez.com.ec/inicio",
+                "pending_url": "http://192.168.13.53:4200/summary",
+                "review_url": "http://192.168.13.53:4200/summary"
             }
         };
 
@@ -80,19 +82,14 @@ exports.procesarReserva = async (req, res) => {
         });
 
         const data = await response.json();
-        if (data.transaction.status === 'success') {
-            // Aquí puedes registrar la reserva en la base de datos
-            return res.status(200).send('Reserva realizada con éxito');
-        } else {
-            return res.status(500).send(`Error al procesar el pago: ${data.transaction.message}`);
-        }
+        res.json(data)
     } catch (error) {
         console.error('Error al procesar la reserva:', error);
         return res.status(500).send('Hubo un error en el servidor');
     }
 };
 
-exports.reservas =  async(req, res) =>{
+exports.reservas = async (req, res) => {
     const id = req.params.id
     const ids = req.user.idEstudent
     const newEnvio = {
@@ -100,8 +97,33 @@ exports.reservas =  async(req, res) =>{
         courIdCours: id,
         createDetailBooking: new Date().toLocaleString('es-EC', { timeZone: 'America/Guayaquil' })
     }
-    
+
     await orm.detailBooking.create(newEnvio)
     req.flash('success', 'reserva consedida')
-    res.redirect('/reservar/'+ id);
+    res.redirect('/reservar/' + id);
 }
+
+// Este es el controlador para recibir notificaciones de Paymentez
+exports.notificacionPago = async (req, res) => {
+    try {
+        // Extrae los detalles de la transacción desde la notificación de Paymentez
+        const { transaction, status } = req.body;
+
+        // Verifica que tienes la información necesaria
+        if (!transaction || !status) {
+            return res.status(400).send('Datos incompletos en la notificación');
+        }
+
+        const transactionId = transaction.id;
+        const transactionStatus = status;
+
+        // Aquí puedes actualizar el estado de la transacción en tu base de datos
+        console.log(`Recibida notificación de transacción ${transactionId} con estado: ${transactionStatus}`);
+
+        // Responde a Paymentez confirmando que recibiste la notificación correctamente
+        res.status(200).send('Webhook recibido y procesado');
+    } catch (error) {
+        console.error('Error al procesar el webhook de pago:', error);
+        res.status(500).send('Error al procesar el webhook');
+    }
+};

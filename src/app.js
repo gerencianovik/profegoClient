@@ -28,19 +28,50 @@ require('./lib/passport');
 const app = express();
 
 // Configurar helmet y Content Security Policy
-app.use(helmet({
-    contentSecurityPolicy: {
-        directives: {
-            ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-            "script-src": ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://maps.googleapis.com"],
-            "img-src": ["'self'", "data:", "blob:", "https://maps.gstatic.com", "https://*.googleapis.com"],
-            "frame-src": ["'self'", "blob:", "https://www.google.com"],
-            "connect-src": ["'self'", "https://maps.googleapis.com"],
-            "object-src": ["'none'"],
-            "default-src": ["'self'"]
-        }
-    },
-}));
+app.use(
+    helmet({
+        contentSecurityPolicy: {
+            directives: {
+                ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+                "script-src": [
+                    "'self'",
+                    "'unsafe-inline'",  // Permite scripts inline para la ejecución de JavaScript
+                    "'unsafe-eval'",
+                    "https://maps.googleapis.com",
+                    "https://cdnjs.cloudflare.com",
+                    "https://cdn.jsdelivr.net"
+                ],
+                "style-src": [
+                    "'self'",
+                    "'unsafe-inline'",  // Permite estilos inline
+                    "https://fonts.googleapis.com",
+                    "https://cdn.jsdelivr.net"
+                ],
+                "img-src": [
+                    "'self'",
+                    "data:",
+                    "blob:",  // Permite blobs en las imágenes
+                    "https://maps.gstatic.com",
+                    "https://*.googleapis.com"
+                ],
+                "connect-src": [
+                    "'self'",  // Permite que fetch funcione desde el mismo origen
+                    "https://maps.googleapis.com"
+                ],
+                "frame-src": [
+                    "'self'", 
+                    "blob:", 
+                    "https://www.google.com", 
+                    "https://link-stg.paymentez.com"  // Permite cargar iframes de este dominio
+                ],
+                "object-src": ["'none'"],
+                "default-src": ["'self'"]
+            }
+        },
+        referrerPolicy: { policy: "strict-origin-when-cross-origin" }
+    })
+);
+
 
 // Configurar almacenamiento de sesiones MySQL
 const mysqlOptions = {
