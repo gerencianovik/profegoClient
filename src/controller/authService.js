@@ -1,7 +1,7 @@
 const CryptoJS = require('crypto-js')
 
 let paymentez_server_application_code = 'LINKTOPAY01-EC-SERVER';
-let paymentez_server_app_key = 'G8vwvaASAZHQgoVuF2eKZyZF5hJmvx';
+let paymentez_server_app_key = 'IqtB3TOFLvFXzMdWmDLPP4W5KZFyaQ';
 let unix_timestamp = String(Math.floor(new Date().getTime() / 1000));
 // unix_timestamp = String("1546543146"); 
 console.log("UNIX TIMESTAMP:", unix_timestamp);
