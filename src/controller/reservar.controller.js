@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const { string_auth_token } = require('./authService'); // Servicio para generar el auth token
+
 const orm = require('../Database/dataBase.orm')
 const CryptoJS = require('crypto-js')
 const sql = require('../Database/dataBase.sql')
@@ -49,7 +49,7 @@ exports.procesarReserva = async (req, res) => {
         let string_auth_token = btoa(paymentez_server_application_code + ";" + unix_timestamp + ";" + uniq_token_hash);
         console.log('AUTH TOKEN:', string_auth_token);
         const authToken = string_auth_token; // Asegúrate de tener este servicio configurado
-        
+
         console.log(authToken)
         // Procesar el pago directamente usando la API de Paymentez
         const url = 'https://noccapi-stg.paymentez.com/linktopay/init_order/';
