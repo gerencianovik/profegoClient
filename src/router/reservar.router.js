@@ -7,5 +7,5 @@ router.get('/reservas/:id', reservaController.reservas);
 router.get('/reservar', reservaController.procesarReserva);
 router.get('/reservar/:id', reservaController.reservar);
 router.post('/notificacionPago', reservaController.notificacionPago);
-
+router.get('/notificacionPago', reservaController.notificacionPago);
 module.exports = router;

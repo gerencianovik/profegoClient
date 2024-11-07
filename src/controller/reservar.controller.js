@@ -119,25 +119,13 @@ exports.reservas = async (req, res) => {
 // Este es el controlador para recibir notificaciones de Paymentez
 exports.notificacionPago = async (req, res) => {
     try {
-        // Extrae los detalles de la transacción desde la notificación de Paymentez
-        const { transaction, status } = req.body;
-
-        // Verifica que tienes la información necesaria
-        if (!transaction || !status) {
-            return res.status(400).send('Datos incompletos en la notificación');
-        }
-
-        const transactionId = transaction.id;
-        const transactionStatus = status;
-
-        // Aquí puedes actualizar el estado de la transacción en tu base de datos
-        console.log(`Recibida notificación de transacción ${transactionId} con estado: ${transactionStatus}`);
-
-        // Responde a Paymentez confirmando que recibiste la notificación correctamente
-        res.status(200).send('Webhook recibido y procesado');
-        res.json('Webhook recibido y procesado')
+        const { transaction } = req.body;
+        res.json({
+            message: 'Webhook recibido y procesado',
+            transaction: transaction
+        });
     } catch (error) {
         console.error('Error al procesar el webhook de pago:', error);
-        res.status(500).send('Error al procesar el webhook');
+        res.status(500).json({ error: 'Error al procesar el webhook de pago' });
     }
 };
