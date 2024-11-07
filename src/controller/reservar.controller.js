@@ -15,11 +15,10 @@ function safeDecrypt(data) {
 }
 
 exports.reservar = async (req, res) => {
-    const id = req.user.idEstudent
     const ids = req.params.id
     const [pagina] = await sql.promise().query('SELECT * FROM pages')
-    const [estudiante] = await sql.promise().query('SELECT * FROM students WHERE idEstudent = ?', [id])
-    const [reservar] = await sql.promise().query('SELECT * FROM detailBookings WHERE courIdCours  = ?', [id])
+    const [estudiante] = await sql.promise().query('SELECT * FROM students ')
+    const [reservar] = await sql.promise().query('SELECT * FROM detailBookings WHERE courIdCours ')
     const [curso] = await sql.promise().query('SELECT * FROM cours WHERE idCours = ?', [reservar[0].courIdCours])
     const datos = estudiante.map(row => ({
         idEstudent: row.idEstudent,
