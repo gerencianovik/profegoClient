@@ -1,6 +1,7 @@
 const fetch = require('node-fetch');
-const {string_auth_token} = require('./authService'); // Servicio para generar el auth token
+const { string_auth_token } = require('./authService'); // Servicio para generar el auth token
 const orm = require('../Database/dataBase.orm')
+const CryptoJS = require('crypto-js')
 const sql = require('../Database/dataBase.sql')
 const { descifrarDatos, cifrarDatos } = require('../lib/encrypDates.js');
 
@@ -36,7 +37,19 @@ exports.reservar = async (req, res) => {
 exports.procesarReserva = async (req, res) => {
     try {
         // Generar el token de autenticación para la API de Paymentez
+        let paymentez_server_application_code = 'LINKTOPAY01-EC-SERVER';
+        let paymentez_server_app_key = 'IqtB3TOFLvFXzMdWmDLPP4W5KZFyaQ';
+        let unix_timestamp = String(Math.floor(new Date().getTime() / 1000));
+        // unix_timestamp = String("1546543146"); 
+        console.log("UNIX TIMESTAMP:", unix_timestamp);
+        let uniq_token_string = paymentez_server_app_key + unix_timestamp;
+        console.log('UNIQ STRING:', uniq_token_string);
+        let uniq_token_hash = CryptoJS.SHA256(uniq_token_string);
+        console.log('UNIQ STRING:', uniq_token_hash);
+        let string_auth_token = btoa(paymentez_server_application_code + ";" + unix_timestamp + ";" + uniq_token_hash);
+        console.log('AUTH TOKEN:', string_auth_token);
         const authToken = string_auth_token; // Asegúrate de tener este servicio configurado
+        
         console.log(authToken)
         // Procesar el pago directamente usando la API de Paymentez
         const url = 'https://noccapi-stg.paymentez.com/linktopay/init_order/';
