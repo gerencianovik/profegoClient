@@ -122,6 +122,7 @@ exports.notificacionPago = async (req, res) => {
 
         // Responde a Paymentez confirmando que recibiste la notificación correctamente
         res.status(200).send('Webhook recibido y procesado');
+        res.json('Webhook recibido y procesado')
     } catch (error) {
         console.error('Error al procesar el webhook de pago:', error);
         res.status(500).send('Error al procesar el webhook');
