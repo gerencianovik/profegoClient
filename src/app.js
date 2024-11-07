@@ -154,7 +154,7 @@ const loginLimiter = rateLimit({
 app.use('/loginTeachers', loginLimiter);
 app.use('/loginStudents', loginLimiter);
 
-// Middleware de manejo de errores
+/*// Middleware de manejo de errores
 app.use((err, req, res, next) => {
     if (res.headersSent) {
         return next(err);
@@ -170,7 +170,7 @@ app.use((err, req, res, next) => {
         console.error(err.stack);
         res.status(500).send('Error interno del servidor');
     }
-});
+});*/
 
 // Configurar variables globales
 app.use((req, res, next) => {
@@ -179,7 +179,7 @@ app.use((req, res, next) => {
     app.locals.user = req.user || null;
     next();
 });
-
+/*
 // Middleware de protección CSRF
 const csrfMiddleware = csrf({ cookie: true });
 app.use(cookieParser());
@@ -196,13 +196,13 @@ app.use((err, req, res, next) => {
     res.status(403);
     res.send('La validación del token CSRF ha fallado. Por favor, recarga la página.');
 });
-
+*/
 // Configurar archivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/src/public', express.static(path.join(__dirname, 'src/public')));
 
 // Configurar sistema de logging
-const logger = winston.createLogger({
+/*const logger = winston.createLogger({
     level: 'info',
     format: winston.format.json(),
     transports: [
@@ -218,7 +218,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 app.use(morgan('combined', { stream: { write: message => logger.info(message.trim()) } }));
-
+*/
 // Rutas - Definir tus rutas aquí
 app.use(require('./router/index.router'));
 app.use(require('./router/envio.router'));
