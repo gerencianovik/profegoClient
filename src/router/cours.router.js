@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/add/:id', isLoggedIn, mostrar)
 router.post('/add/:id', isLoggedIn, mandar)
 router.get('/list/:id', isLoggedIn, lista)
-router.get('/listStudent/:id', isLoggedIn, studentLista)
+router.get('/listStudent/:id', studentLista)
 router.get('/update/:id', isLoggedIn, traerDatos)
 router.post('/update/:id', isLoggedIn, actualizar)
 router.get('/delete/:id', isLoggedIn, desabilitar)
