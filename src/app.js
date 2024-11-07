@@ -189,7 +189,7 @@ app.use((req, res, next) => {
     res.locals.csrfToken = req.csrfToken();
     next();
 });
-/*
+
 app.use((err, req, res, next) => {
     if (err.code !== 'EBADCSRFTOKEN') return next(err);
 
@@ -197,7 +197,7 @@ app.use((err, req, res, next) => {
     res.status(403);
     res.send('La validación del token CSRF ha fallado. Por favor, recarga la página.');
 });
-*/
+
 // Configurar archivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/src/public', express.static(path.join(__dirname, 'src/public')));
