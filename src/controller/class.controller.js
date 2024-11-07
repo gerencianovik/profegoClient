@@ -81,7 +81,7 @@ classes.mandar = async (req, res) => {
         let idTeacher;
 
         // Obtener el idTeacher
-        const teacher = await sql.query('SELECT * FROM detailteacherpages WHERE pageIdPage = "1"');
+        const teacher = await sql.query('SELECT * FROM detailTeacherPages WHERE pageIdPage = "1"');
         console.log(teacher[0].teacherIdTeacher)
         if (teacher[0].teacherIdTeacher == id) {
             idTeacher = teacherEntry.idDetailTeacherPagex;
@@ -258,7 +258,7 @@ classes.detalle = async (req, res) => {
         const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = 1');
         const [row] = await sql.promise().query('SELECT C.*, T.* FROM clases C JOIN coursClassTypes T ON C.coursClassTypeIdCoursClassType = T.idCoursClassType where idClases = ?', [id])
         const [silabus] = await sql.promise().query('SELECT s.*, d.* FROM syllabuseducationals s JOIN detailcurricularcontents d ON S.idsyllabusEducational = d.syllabusEducationalIdsyllabusEducational WHERE ClaseIdClases = ?', [id])
-        const [teacher] = await sql.promise().query('SELECT t.* FROM teachers t JOIN detailteacherpages d ON t.idTeacher = d.teacherIdTeacher JOIN clases c ON d.idDetailTeacherPage = c.detailTeacherPageIdDetailTeacherPage WHERE idClases = ?', [id])
+        const [teacher] = await sql.promise().query('SELECT t.* FROM teachers t JOIN detailTeacherPages d ON t.idTeacher = d.teacherIdTeacher JOIN clases c ON d.idDetailTeacherPage = c.detailTeacherPageIdDetailTeacherPage WHERE idClases = ?', [id])
         const [detalle] = await sql.promise().query('SELECT * FROM detalleclases WHERE ClaseIdClases = ?', [id])
         const [recursos] = await sql.promise().query('SELECT * FROM recours WHERE ClaseIdClases = ?', [id])
         const [materiales] = await sql.promise().query('SELECT * FROM materials WHERE ClaseIdClases = ?', [id])
@@ -292,7 +292,7 @@ classes.detalleStudnets = async (req, res) => {
         const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = 1');
         const [row] = await sql.promise().query('SELECT C.*, T.* FROM clases C JOIN coursClassTypes T ON C.coursClassTypeIdCoursClassType = T.idCoursClassType where idClases = ?', [id])
         const [silabus] = await sql.promise().query('SELECT s.*, d.* FROM syllabuseducationals s JOIN detailcurricularcontents d ON S.idsyllabusEducational = d.syllabusEducationalIdsyllabusEducational WHERE ClaseIdClases = ?', [id])
-        const [teacher] = await sql.promise().query('SELECT t.* FROM teachers t JOIN detailteacherpages d ON t.idTeacher = d.teacherIdTeacher JOIN clases c ON d.idDetailTeacherPage = c.detailTeacherPageIdDetailTeacherPage WHERE idClases = ?', [id])
+        const [teacher] = await sql.promise().query('SELECT t.* FROM teachers t JOIN detailTeacherPages d ON t.idTeacher = d.teacherIdTeacher JOIN clases c ON d.idDetailTeacherPage = c.detailTeacherPageIdDetailTeacherPage WHERE idClases = ?', [id])
         const [detalle] = await sql.promise().query('SELECT * FROM detalleclases WHERE ClaseIdClases = ?', [id])
         const [recursos] = await sql.promise().query('SELECT * FROM recours WHERE ClaseIdClases = ?', [id])
         const [materiales] = await sql.promise().query('SELECT * FROM materials WHERE ClaseIdClases = ?', [id])

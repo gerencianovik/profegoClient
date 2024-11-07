@@ -19,7 +19,7 @@ exports.reservar = async (req, res) => {
     const ids = req.params.id
     const [pagina] = await sql.promise().query('SELECT * FROM pages')
     const [estudiante] = await sql.promise().query('SELECT * FROM students WHERE idEstudent = ?', [id])
-    const [reservar] = await sql.promise().query('SELECT * FROM detailbookings WHERE courIdCours  = ?', [id])
+    const [reservar] = await sql.promise().query('SELECT * FROM detailBookings WHERE courIdCours  = ?', [id])
     const [curso] = await sql.promise().query('SELECT * FROM cours WHERE idCours = ?', [reservar[0].courIdCours])
     const datos = estudiante.map(row => ({
         idEstudent: row.idEstudent,
