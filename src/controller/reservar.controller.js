@@ -37,7 +37,7 @@ exports.reservar = async (req, res) => {
 exports.procesarReserva = async (req, res) => {
     try {
         // Generar el token de autenticación para la API de Paymentez
-        let paymentez_server_application_code = 'LINKTOPAY01-EC-SERVER';
+        let paymentez_server_application_code = 'LINKTOPAY02-EC-SERVER';
         let paymentez_server_app_key = 'IqtB3TOFLvFXzMdWmDLPP4W5KZFyaQ';
         let unix_timestamp = String(Math.floor(new Date().getTime() / 1000));
         // unix_timestamp = String("1546543146"); 
@@ -94,6 +94,7 @@ exports.procesarReserva = async (req, res) => {
         });
 
         const data = await response.json();
+        console.log(data)
         res.json(data)
     } catch (error) {
         console.error('Error al procesar la reserva:', error);
