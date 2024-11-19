@@ -119,19 +119,11 @@ exports.reservas = async (req, res) => {
 // Este es el controlador para recibir notificaciones de Paymentez
 exports.notificacionPago2 = async (req, res) => {
     try {
-      // Recuperar el parámetro 'transaction' desde req.query
-      const { transaction } = req.query;
-  
-      if (transaction) {
-        return res.status(200).json({
-          message: 'Notificación recibida y guardada',
-          data: transaction,
-        });
-      }
-  
-      res.status(400).json({ message: 'No se proporcionó ninguna transacción' });
+        // Recuperar los datos de la transacción desde req.query
+        const transaction = req.query.transaction;
+        res.json(transaction)
     } catch (error) {
-      console.error('Error al guardar la notificación:', error);
-      res.status(500).json({ error: 'Error al guardar la notificación' });
+        console.error('Error al procesar la notificación:', error);
+        return res.status(500).json({ message: 'Error al procesar la notificación', error: error.message });
     }
-  };  
+};
