@@ -119,7 +119,7 @@ exports.reservas = async (req, res) => {
 // Este es el controlador para recibir notificaciones de Paymentez
 exports.notificacionPago2 = async (req, res) => {
     try {
-        const { transaction } = req.body;
+        const { transaction } = req.params;
 
         res.status(200).json({ message: 'Notificación recibida y guardada', data: transaction });
     } catch (error) {
