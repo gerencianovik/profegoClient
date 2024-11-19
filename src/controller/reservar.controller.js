@@ -117,15 +117,13 @@ exports.reservas = async (req, res) => {
 }
 
 // Este es el controlador para recibir notificaciones de Paymentez
-exports.notificacionPago = async (req, res) => {
+exports.notificacionPago2 = async (req, res) => {
     try {
         const { transaction } = req.body;
-        res.json({
-            message: 'Webhook recibido y procesado',
-            transaction: transaction
-        });
+
+        res.status(200).json({ message: 'Notificación recibida y guardada', data: transaction });
     } catch (error) {
-        console.error('Error al procesar el webhook de pago:', error);
-        res.status(500).json({ error: 'Error al procesar el webhook de pago' });
+        console.error('Error al guardar la notificación:', error);
+        res.status(500).json({ error: 'Error al guardar la notificación' });
     }
 };

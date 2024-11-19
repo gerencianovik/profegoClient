@@ -1,16 +1,16 @@
 const detailGrpoups = (sequelize, type) =>{
     return sequelize.define('detailGroups',{
-        iddetailGroups: {
+        idDetailGroups: {
             type: type.INTEGER,
             primaryKey: true,
             autoIncrement: true,
             comment: 'Campo unico de Detalle de grupo'
         },
-        createdetailGroups: {
+        createDetailGroups: {
             type: type.STRING,
             comment: 'Create de Detalle de grupo'
         },
-        updatedetailGroups: {
+        updateDetailGroups: {
             type: type.STRING,
             comment: 'Update de Detalle de grupo'
         }
