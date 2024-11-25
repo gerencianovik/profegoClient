@@ -1,9 +1,13 @@
 const fetch = require('node-fetch');
-
+const nodemailer = require('nodemailer');
 const orm = require('../Database/dataBase.orm')
 const CryptoJS = require('crypto-js')
 const sql = require('../Database/dataBase.sql')
 const { descifrarDatos, cifrarDatos } = require('../lib/encrypDates.js');
+
+
+
+
 
 function safeDecrypt(data) {
     try {
@@ -17,8 +21,8 @@ function safeDecrypt(data) {
 
 exports.reservar = async (req, res) => {
     const ids = req.params.id
-    const [pagina] = await sql.promise().query('SELECT * FROM pages')
-    const [estudiante] = await sql.promise().query('SELECT * FROM students ')
+    const [pagina] = await sql.promise().query('SELECT * FROM pages WHERE idPage = 1')
+    const [estudiante] = await sql.promise().query('SELECT * FROM students WHERE idEstudent = ?', [req.user.idEstudent])
     const [reservar] = await sql.promise().query('SELECT * FROM detailBookings WHERE courIdCours ')
     const [curso] = await sql.promise().query('SELECT * FROM cours WHERE idCours = ?', [reservar[0].courIdCours])
     const datos = estudiante.map(row => ({
@@ -54,20 +58,23 @@ exports.procesarReserva = async (req, res) => {
         // Procesar el pago directamente usando la API de Paymentez
         const url = 'https://noccapi-stg.paymentez.com/linktopay/init_order/';
 
+        const { idUsuario, nombreUsuario, emailUsuario, celular, costoCurso, respaldoIva, costoTotal } = req.query;
+        console.log(idUsuario, nombreUsuario, emailUsuario, celular, costoCurso, respaldoIva, costoTotal);
+
         const payload = {
             "user": {
-                "id": "007",
-                "email": "test@test.com",
-                "name": "TEST",
-                "last_name": "TEST"
+                "id": idUsuario,
+                "email": emailUsuario,
+                "name": nombreUsuario,
+                "last_name": "N/A"
             },
             "order": {
                 "dev_reference": "001",
-                "description": "TEST",
-                "amount": 212,
-                "vat": 12,
-                "tax_percentage": 12,
-                "taxable_amount": 100,
+                "description": "reserva de un curso",
+                "amount": costoTotal,
+                "vat": 15,
+                "tax_percentage": respaldoIva,
+                "taxable_amount": costoCurso,
                 "installments_type": 0,
                 "currency": "USD"
             },
@@ -92,6 +99,8 @@ exports.procesarReserva = async (req, res) => {
             },
             body: JSON.stringify(payload)
         });
+
+
 
         const data = await response.json();
         console.log(data)
@@ -120,8 +129,63 @@ exports.reservas = async (req, res) => {
 exports.notificacionPago2 = async (req, res) => {
     try {
         // Recuperar los datos de la transacción desde req.query
-        const transaction = req.query.transaction;
-        res.json(transaction)
+        const [estudiante] = await sql.promise().query('SELECT * FROM students WHERE idEstudent = ?', [req.user.idEstudent])
+        const datos = estudiante.map(row => ({
+            idEstudent: row.idEstudent,
+            photoEstudent: row.photoEstudent,
+            completeNameEstudent: safeDecrypt(row.completeNameEstudent),
+            emailEstudent: safeDecrypt(row.emailEstudent),
+            celularEstudent: safeDecrypt(row.celularEstudent),
+            stateEstudent: row.stateEstudent
+        }));
+    
+        const transaction = req.query;
+        console.log('Transacción completa:', JSON.stringify(transaction, null, 2));
+
+        // Configura el transporte de correo con Nodemailer utilizando Gmail
+        const transporter = nodemailer.createTransport({
+            host: process.env.SMTP_HOST || 'smtp.gmail.com',
+            port: process.env.SMTP_PORT || 465,
+            secure: true,
+            auth: {
+                user: process.env.SMTP_USER || 'gerencianovik@gmail.com',
+                pass: process.env.SMTP_PASS || 'aqsqzcveokpcbxtx'
+            }
+        });
+
+        // Crear el cuerpo del mensaje con la información de la transacción
+        const mailOptions = {
+            from: 'educonecta2@gmail.com',  // Remitente
+            to: datos[0].emailEstudent,  // Destinatario
+            subject: 'Pago realizado',
+            text: `El pago fue realizado correctamente para la orden ${transaction.transaction.id}.
+                   Detalles de la transacción:
+                   - Estatus: ${transaction.transaction.status}
+                   - Número de lote: ${transaction.transaction.lot_number}
+                   - Monto pagado: $${transaction.transaction.amount}
+                   - Descripción: ${transaction.transaction.order_description}
+                   - Fecha de pago: ${transaction.transaction.paid_date}`,
+            html: `<p><strong>El pago fue realizado correctamente para la orden ${transaction.transaction.id}.</strong></p>
+                   <p><strong>Detalles de la transacción:</strong></p>
+                   <ul>
+                       <li><strong>Estatus:</strong> ${transaction.transaction.status}</li>
+                       <li><strong>Número de lote:</strong> ${transaction.transaction.lot_number}</li>
+                       <li><strong>Monto pagado:</strong> $${transaction.transaction.amount}</li>
+                       <li><strong>Descripción:</strong> ${transaction.transaction.order_description}</li>
+                       <li><strong>Fecha de pago:</strong> ${transaction.transaction.paid_date}</li>
+                   </ul>`
+        };
+
+        // Enviar el correo
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.error('Error al enviar el correo:', error);
+                return res.status(500).json({ message: 'Error al enviar el correo', error: error.message });
+            }
+            console.log('Correo enviado:', info.response);
+            res.status(200).json({ message: 'Notificación procesada y correo enviado', transaction });
+        });
+
     } catch (error) {
         console.error('Error al procesar la notificación:', error);
         return res.status(500).json({ message: 'Error al procesar la notificación', error: error.message });

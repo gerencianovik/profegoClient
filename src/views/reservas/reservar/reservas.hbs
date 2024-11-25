@@ -66,6 +66,10 @@
             <div class="col-md-6 text-end">
                 <h5>Datos del Cliente</h5>
                 {{#each estudiante}}
+                <input type="hidden" name="" id="idUsuarios" value="{{idEstudent}}">
+                <input type="hidden" name="" id="nombreUsuario" value="{{completeNameEstudent}}">
+                <input type="hidden" name="" id="emailUusairo" value="{{emailEstudent}}">
+                <input type="hidden" name="" id="celular" value="{{celularEstudent}}">
                 <p><strong>Nombre Completo:</strong> {{completeNameEstudent}}</p>
                 <p><strong>Correo Electrónico:</strong> {{emailEstudent}}</p>
                 <p><strong>Teléfono:</strong> {{celularEstudent}}</p>
@@ -99,6 +103,9 @@
                     <th colspan="3" class="text-end">Total a Pagar</th>
                     {{#each curso}}
                     <th>{{costCours}}</th>
+                    <input type="hidden" name="" id="costoCurso" value="{{costCours}}">
+                    <input type="hidden" name="" id="respaldoIva">
+                    <input type="hidden" name="" id="costoTotal">
                     {{/each}}
                 </tr>
             </tfoot>
@@ -116,20 +123,29 @@
         </div>
     </div>
 </div>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
     document.getElementById('abrirModalBtn').addEventListener('click', function (event) {
-        event.preventDefault(); // Evita que el formulario se envíe automáticamente
+        event.preventDefault();
+
+        // Obtén los valores de los inputs ocultos
+        const data = {
+            idUsuario: document.getElementById('idUsuarios').value,
+            nombreUsuario: document.getElementById('nombreUsuario').value,
+            emailUsuario: document.getElementById('emailUusairo').value,
+            celular: document.getElementById('celular').value,
+            costoCurso: document.getElementById('costoCurso').value,
+            respaldoIva: document.getElementById('respaldoIva').value,
+            costoTotal: document.getElementById('costoTotal').value
+        };
 
         // Realiza la solicitud a la ruta '/reservar'
-        axios.get('/reservar')
+        axios.get('/reservar', { params: data })
             .then(response => {
-                const paymentUrl = response.data;
-                console.log(response.data?.data?.payment?.payment_url)
+                const paymentUrl = response.data?.data?.payment?.payment_url;
                 if (paymentUrl) {
-                    console.log("Payment URL:", paymentUrl); // Muestra la URL de pago en la consola
-                    // Coloca la URL de pago en el iframe
-                    document.querySelector('#respuesta iframe').src = response.data?.data?.payment?.payment_url;
+                    console.log("Payment URL:", paymentUrl);
+                    document.querySelector('#respuesta iframe').src = paymentUrl;
                 } else {
                     console.error('No se pudo obtener la URL de pago');
                 }
@@ -138,4 +154,18 @@
                 console.error('Error al obtener la URL de pago:', error);
             });
     });
+</script>
+<script>
+    let a = document.getElementById('costoCurso')
+    let valor
+    let total
+    function calularValor() {
+        valor =  parseInt(a.value)
+        total = valor / (1 - 0.15)
+        total = parseFloat(total.toFixed(2)); 
+        document.getElementById('respaldoIva').value = parseFloat((total - valor).toFixed(2));
+        document.getElementById('costoTotal').value = total
+    }
+
+    window.onload = calularValor()
 </script>
