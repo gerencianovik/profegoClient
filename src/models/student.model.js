@@ -23,7 +23,7 @@ const estudent = (sequelize, type) =>{
             comment: 'Celular de Estudinates'
         },
         usernameEstudent: {
-            type: type.STRING,
+            type: type.STRING(99),
             comment: 'Sub nombre de Estudinates'
         },
         passwordEstudent: {
