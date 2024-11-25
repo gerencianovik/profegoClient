@@ -66,14 +66,14 @@ exports.procesarReserva = async (req, res) => {
                 "id": idUsuario,
                 "email": emailUsuario,
                 "name": nombreUsuario,
-                "last_name": "N/A"
+                "last_name": "TEST"
             },
             "order": {
-                "dev_reference": "001",
+                "dev_reference": "002",
                 "description": "reserva de un curso",
                 "amount": costoTotal,
-                "vat": 15,
-                "tax_percentage": respaldoIva,
+                "vat": respaldoIva,
+                "tax_percentage": 15,
                 "taxable_amount": costoCurso,
                 "installments_type": 0,
                 "currency": "USD"
@@ -164,6 +164,7 @@ exports.notificacionPago2 = async (req, res) => {
                    - Número de lote: ${transaction.transaction.lot_number}
                    - Monto pagado: $${transaction.transaction.amount}
                    - Descripción: ${transaction.transaction.order_description}
+                   - Autorizacion: ${transaction.transaction.authorization_code}
                    - Fecha de pago: ${transaction.transaction.paid_date}`,
             html: `<p><strong>El pago fue realizado correctamente para la orden ${transaction.transaction.id}.</strong></p>
                    <p><strong>Detalles de la transacción:</strong></p>

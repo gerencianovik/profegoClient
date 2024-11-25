@@ -161,10 +161,10 @@
     let total
     function calularValor() {
         valor =  parseInt(a.value)
-        total = valor / (1 - 0.15)
+        total = valor * 0.15
         total = parseFloat(total.toFixed(2)); 
-        document.getElementById('respaldoIva').value = parseFloat((total - valor).toFixed(2));
-        document.getElementById('costoTotal').value = total
+        document.getElementById('respaldoIva').value = total;
+        document.getElementById('costoTotal').value = valor + total
     }
 
     window.onload = calularValor()
