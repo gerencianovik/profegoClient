@@ -146,13 +146,6 @@ app.use(async (req, res, next) => {
     next();
 });
 
-const loginLimiter = rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: 5, // Limitar a 5 intentos de inicio de sesión por ventana por IP
-    message: 'Demasiados intentos de inicio de sesión desde esta IP, por favor intente nuevamente después de 15 minutos.'
-});
-app.use('/loginTeachers', loginLimiter);
-app.use('/loginStudents', loginLimiter);
 
 // Middleware de manejo de errores
 app.use((err, req, res, next) => {
