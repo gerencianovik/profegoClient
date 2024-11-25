@@ -41,8 +41,8 @@ exports.reservar = async (req, res) => {
 exports.procesarReserva = async (req, res) => {
     try {
         // Generar el token de autenticación para la API de Paymentez
-        let paymentez_server_application_code = 'LINKTOPAY02-EC-SERVER';
-        let paymentez_server_app_key = 'IqtB3TOFLvFXzMdWmDLPP4W5KZFyaQ';
+        let paymentez_server_application_code = 'PROFEGO-EC-SERVER';
+        let paymentez_server_app_key = '3SuXYxqdrr8DSRJAEJe4MCEPYXXFNL';
         let unix_timestamp = String(Math.floor(new Date().getTime() / 1000));
         // unix_timestamp = String("1546543146"); 
         console.log("UNIX TIMESTAMP:", unix_timestamp);
@@ -56,7 +56,7 @@ exports.procesarReserva = async (req, res) => {
 
         console.log(authToken)
         // Procesar el pago directamente usando la API de Paymentez
-        const url = 'https://noccapi-stg.paymentez.com/linktopay/init_order/';
+        const url = 'https://noccapi.paymentez.com/linktopay/init_order/';
 
         const { idUsuario, nombreUsuario, emailUsuario, celular, costoCurso, respaldoIva, costoTotal } = req.query;
         console.log(idUsuario, nombreUsuario, emailUsuario, celular, costoCurso, respaldoIva, costoTotal);
