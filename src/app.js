@@ -62,7 +62,8 @@ app.use(
                     "'self'", 
                     "blob:", 
                     "https://www.google.com", 
-                    "https://link-stg.paymentez.com"  // Permite cargar iframes de este dominio
+                    "https://link-stg.paymentez.com",
+                    "https://link.paymentez.com"  // Permite cargar iframes de este dominio
                 ],
                 "object-src": ["'none'"],
                 "default-src": ["'self'"]
