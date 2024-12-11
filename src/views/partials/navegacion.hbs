@@ -1,419 +1,181 @@
-<link rel="stylesheet" href="/css/navegacion.css" />
-<nav id="nav">
-    <div class="enlinea espacioLateral letra">
-        <div style="position: relative;" class="responsiveOnly">
-            <div class="icono" id="responsiveOnly">
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-list"
-                    viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
-                </svg>
-            </div>
-            <div class="responsive" id="responsiveOnlyContainer">
-                <h2 style="text-align: center; color: #F39325;">Mas Opciones</h2>
-                <div class="accordion">
-                    <div id="nosotros" class="accordion-item">
-                        <input type="checkbox" id="accordion-1" class="accordion-checkbox" />
-                        <label for="accordion-1" id="nosots" class="accordion-label azul">
-                            <p>Nosotros</p>
-                            <img src="/img/icons/baja.png" class="imagenresponsive" />
+<link rel="stylesheet" href="/css/navegacion.css">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src="/img/logo/Variantelogoprofego.png" alt="Logo" height="40">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-                        </label>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <!-- Dropdown Nosotros -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="nosotrosDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">Nosotros</a>
+                    <ul class="dropdown-menu p-4 custom-dropdown-menu">
+                        <li>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img src="/img/icons/imagenNosotros.png" class="img-fluid" id="Nosotros" alt="Nosotros">
+                                    <h5>Nosotros</h5>
+                                    <p>Descubre quiénes somos, por qué elegirnos y cuáles son nuestros estándares de
+                                        calidad en la educación.</p>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="">
+                                        <div class="col-md-6">
+                                            <a href="/somos" class="dropdown-item animate__animated animate__fadeIn">
+                                                <img src="/img/icons/somos.png" class="img-fluid" alt="Somos">
+                                                <h6>¿Quiénes somos?</h6>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a href="/funciona" class="dropdown-item animate__animated animate__fadeIn">
+                                                <img src="/img/icons/funciona.png" class="img-fluid" alt="Funciona">
+                                                <h6>¿Cómo funciona?</h6>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a href="/seguridad"
+                                                class="dropdown-item animate__animated animate__fadeIn">
+                                                <img src="/img/icons/seguridad.png" class="img-fluid" alt="Seguridad">
+                                                <h6>Nuestra seguridad</h6>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a href="/" class="dropdown-item animate__animated animate__fadeIn">
+                                                <img src="/img/icons/testimonio.png" class="img-fluid"
+                                                    alt="Testimonios">
+                                                <h6>Testimonios</h6>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
 
-                        <div class="accordion-content">
-                            <div class="flex center">
-                                <img src="/img/icons/somos.png" class="imgResponsive" />
-                                <div class="textoanineado">
-                                    <a href="/somos" style="text-decoration: none; color:black">
-                                        <p>¿Quiénes somos?</p>
+                <!-- Dropdown Servicios -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="serviciosDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">Servicios</a>
+                    <ul class="dropdown-menu p-4 custom-dropdown-menu">
+                        <li>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img src="/img/icons/imagenServicios.png" id="Nosotros" class="img-fluid" alt="Servicios">
+                                    <h5>Servicios</h5>
+                                    <p>Explora nuestros servicios, desde clases grupales y particulares hasta cursos y
+                                        coaching para docentes.</p>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="">
+                                        <div class="col-md-6">
+                                            <a href="/general/listClase"
+                                                class="dropdown-item animate__animated animate__fadeIn">
+                                                <img src="/img/icons/clases.png" class="img-fluid" alt="Clases">
+                                                <h6>Clases particulares</h6>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a href="/general/listClase"
+                                                class="dropdown-item animate__animated animate__fadeIn">
+                                                <img src="/img/icons/grupales.png" class="img-fluid" alt="Grupales">
+                                                <h6>Clases grupales</h6>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a href="/general/listCurso"
+                                                class="dropdown-item animate__animated animate__fadeIn">
+                                                <img src="/img/icons/Cursos.png" class="img-fluid" alt="Cursos">
+                                                <h6>Cursos</h6>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a href="/general/listCurso"
+                                                class="dropdown-item animate__animated animate__fadeIn">
+                                                <img src="/img/icons/Couching.png" class="img-fluid" alt="Coaching">
+                                                <h6>Coaching para docentes</h6>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Dropdown Centro de Ayuda -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="ayudaDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">Centro de Ayuda</a>
+                    <ul class="dropdown-menu p-4 custom-dropdown-menu">
+                        <li>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img src="/img/icons/centroAyuda.png" id="Nosotros" class="img-fluid" alt="Centro de Ayuda">
+                                    <h5>Centro de Ayuda</h5>
+                                    <p>Encuentra respuestas a tus dudas y ponte en comunicación con nosotros para más
+                                        información.</p>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="">
+                                        <div class="col-md-6">
+                                            <a href="/contactos"
+                                                class="dropdown-item animate__animated animate__fadeIn">
+                                                <img src="/img/icons/contactos.png" class="img-fluid" alt="Contactos">
+                                                <h6>Contactos</h6>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a href="#" class="dropdown-item animate__animated animate__fadeIn">
+                                                <img src="/img/icons/frecuentes.png" class="img-fluid" alt="Preguntas">
+                                                <h6>Preguntas frecuentes</h6>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Dropdown Iniciar sesión -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="authDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">Iniciar sesión</a>
+                    <ul class="dropdown-menu p-4 custom-dropdown-menu" id="login">
+                        <li>
+                            <div class="row">
+                                <!-- Docente/Coach -->
+                                <div class="col-md-6" id="opcionesLogin">
+                                    <a href="/loginTeachers" class="dropdown-item animate__animated animate__fadeIn">
+                                        <h6>Docente/Coach</h6>
+                                    </a>
+                                    <hr>
+                                    <a href="/RegisterTeachers" class="dropdown-item animate__animated animate__fadeIn">
+                                        <h6>Registro Docente/Coach</h6>
+                                    </a>
+                                </div>
+                                <!-- Estudiante -->
+                                <div class="col-md-6" id="opcionesLogin">
+                                    <a href="/loginStudents" class="dropdown-item animate__animated animate__fadeIn">
+                                        <h6>Estudiante</h6>
+                                    </a>
+                                    <hr>
+                                    <a href="/RegisterStudents" class="dropdown-item animate__animated animate__fadeIn">
+                                        <h6>Registro Estudiante</h6>
                                     </a>
                                 </div>
                             </div>
-                            <hr>
-                            <div class="flex center">
-                                <img src="/img/icons/funciona.png" class="imgResponsive" />
-                                <div class="textoanineado">
-                                    <a href="/funciona" style="text-decoration: none; color:black">
-                                        <p>¿Cómo funciona?</p>
-                                    </a>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="flex center">
-                                <img src="/img/icons/seguridad.png" class="imgResponsive" />
-                                <div class="textoanineado">
-                                    <a href="/seguridad" style="text-decoration: none; color:black">
-                                        <p>Nuestra seguridad</p>
-                                    </a>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="flex center">
-                                <img src="/img/icons/testimonio.png" class="imgResponsive" />
-                                <div class="textoanineado">
-                                    <a href="/" style="text-decoration: none; color:black">
-                                        <p>Testimonios</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div id="servicios" class="accordion-item">
-                        <input type="checkbox" id="accordion-2" class="accordion-checkbox" />
-                        <label for="accordion-2" id="nosots" class="accordion-label azul">
-                            <p>Servicios</p>
-                            <img src="/img/icons/baja.png" class="imagenresponsive" />
-
-                        </label>
-
-                        <div class="accordion-content">
-                            <div class="flex center">
-                                <img src="/img/icons/clases.png" class="imgResponsive" />
-                                <div class="textoanineado">
-                                    <a href="/general/listClase" style="text-decoration: none; color:black">
-                                        <p>Clases particulares</p>
-                                    </a>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="flex center">
-                                <img src="/img/icons/grupales.png" class="imgResponsive" />
-                                <div class="textoanineado">
-                                    <a href="/general/listClase" style="text-decoration: none; color:black">
-                                        <p>Clases grupales</p>
-                                    </a>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="flex center">
-                                <img src="/img/icons/Cursos.png" class="imgResponsive" />
-                                <div class="textoanineado">
-                                    <a href="/general/listCurso" style="text-decoration: none; color:black">
-                                        <p>Cursos</p>
-                                    </a>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="flex center">
-                                <img src="/img/icons/Couching.png" class="imgResponsive" />
-                                <div class="textoanineado">
-                                    <a href="/general/listCurso" style="text-decoration: none; color:black">
-                                        <p>Coaching para docentes</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div id="contactos" class="accordion-item">
-                        <input type="checkbox" id="accordion-3" class="accordion-checkbox" />
-                        <label for="accordion-3" id="nosots" class="accordion-label azul">
-                            <p>Contactos</p>
-                            <img src="/img/icons/baja.png" class="imagenresponsive" />
-
-                        </label>
-
-                        <div class="accordion-content">
-                            <div class="flex center">
-                                <img src="/img/icons/contactos.png" class="imgResponsive" />
-                                <div class="textoanineado">
-                                    <a href="/contactos" style="text-decoration: none; color:black">
-                                        <p>Contactos</p>
-                                    </a>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="flex center">
-                                <img src="/img/icons/frecuentes.png" class="imgResponsive" />
-                                <div class="textoanineado">
-                                    <a href="#" style="text-decoration: none; color:black">
-                                        <p>Preguntas frecuentes</p>
-                                    </a>
-                                </div>
-                            </div>
-                            
-                        </div>
-
-                    </div>
-                    {{#if user}}
-                    <div id="eleccionCursoCLases">
-                        {{#each listaTeacher}}
-                        <a href="/teacher/eleccion/{{idTeacher}}"><button type="button">Eleccion Servicios</button></a>
-                        {{/each}}
-                        {{#each listaEstudents}}
-                        <a href="/teacher/eleccion/{{idEstudent}}"><button type="button">Eleccion Servicios</button></a>
-                        {{/each}}
-                    </div>
-                    {{else}}
-                    <h3 style="text-align: center; color: #F39325;">Inicio de Sesión</h3>
-                    <div class="flex">
-                        <div class="accordion-item" style="width: 50%;">
-                            <input type="checkbox" id="accordion-5" class="accordion-checkbox" />
-                            <label for="accordion-5" id="nosots" class="accordion-label azul">
-                                <p>Docente/Coach</p>
-                                <img src="/img/icons/baja.png" class="imagenresponsive" />
-                            </label>
-                            <div class="accordion-content">
-                                <div class="inicio text-center">
-                                    <a href="/loginTeachers">Iniciar sesión</a>
-                                </div>
-                                <hr>
-                                <div class="inicioregistro text-center">
-                                    <a href="/RegisterTeachers">Registro</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item" style="width: 50%;">
-                            <input type="checkbox" id="accordion-4" class="accordion-checkbox" />
-                            <label for="accordion-4" id="nosots" class="accordion-label azul">
-                                <p>Estudiante</p>
-                                <img src="/img/icons/baja.png" class="imagenresponsive" />
-
-                            </label>
-                            <div class="accordion-content">
-                                <div class="inicio text-center">
-                                    <a href="/loginStudents">Iniciar sesión</a>
-                                </div>
-                                <hr>
-                                <div class="inicioregistro text-center">
-                                    <a href="/RegisterStudents">Registro</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {{/if}}
-                </div>
-            </div>
-
-        </div>
-        <div id="nosotros" class="enlinea alinear esconderResponsive">
-            <div id="nosots" class="azul">
-                <p>Nosotros</p>
-            </div>
-            <div id="bajar" class="bajar-icono">
-                <button type="button" id="bajar0"><img src="/img/icons/baja.png" /></button>
-            </div>
-        </div>
-
-        <div id="servicios" class="enlinea esconderResponsive">
-            <div id="servisiosTitulo" class="azul">
-                <p>Servicios</p>
-            </div>
-            <div id="bajar" class="bajar-icono">
-                <button type="button" id="bajar1"><img src="/img/icons/baja.png" /></button>
-            </div>
-        </div>
-        <div id="contactos" class="enlinea esconderResponsive">
-            <div id="contactosTitulo" class="azul">
-                <p>Contactos</p>
-            </div>
-            <div id="bajar" class="bajar-icono">
-                <button type="button" id="bajar2"><img src="/img/icons/baja.png" /></button>
-            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </div>
     </div>
-    <div class="enlinea letra">
-        {{#if user}}
-        <div id="eleccionCursoCLases">
-            {{#each listaTeacher}}
-            <a href="/teacher/eleccion/{{idTeacher}}"><button type="button">Eleccion Servicios</button></a>
-            {{/each}}
-            {{#each listaEstudents}}
-            <a href="/teacher/eleccion/{{idEstudent}}"><button type="button">Eleccion Servicios</button></a>
-            {{/each}}
-        </div>
-        {{else}}
-        <div id="estudiantes" class="enlinea esconderResponsive">
-            <div id="estudiante">
-                <button type="button" class="verde">Estudiante</button>
-            </div>
-            <div id="bajares">
-                <button type="button" id="bajar3"><img src="/img/icons/estudiantes.png" /></button>
-            </div>
-        </div>
-        <div id="docentes" class="enlinea esconderResponsive">
-            <div id="couch">
-                <button type="button" class="verde">Docente/Coach</button>
-            </div>
-            <div id="bajardocen">
-                <button type="button" id="bajar4"><img src="/img/icons/estudiantes.png" /></button>
-            </div>
-        </div>
-        {{/if}}
-    </div>
-    <div class="enlinea espacioLateral">
-
-        <div id="logo" class="logo">
-            <a href="/"><img src="/img/logo/Variantelogoprofego.png" /></a>
-        </div>
-    </div>
-
 </nav>
-<div id="subNav4">
-    <div id="login">
-        <a href="/loginStudents">Iniciar sesión</a>
-    </div>
-    <div id="registro">
-        <a href="/RegisterStudents">Registro</a>
-    </div>
-</div>
-<div id="subNav5">
-    <div id="login">
-        <a href="/loginTeachers">Iniciar sesión</a>
-    </div>
-    <div id="registro">
-        <a href="/RegisterTeachers">Registro</a>
-    </div>
-</div>
-
-<div id="subNav3">
-    <div id="contenedorImagenInformacion">
-        <div id="contenedorImagen">
-            <div id="imagen">
-                <img src="/img/icons/centroAyuda.png" />
-            </div>
-            <div id="nosotros1">
-                <h1>Centro de ayuda</h1>
-                <p>Encuentra respuestas a tus dudas y ponte en comunicación con nosotros
-                    para más información.</p>
-            </div>
-        </div>
-        <div id="contenedorInformacion1">
-            <div id="somos">
-                <div id="somosImagen">
-                    <img src="/img/icons/contactos.png" />
-                </div>
-                <div id="informacion">
-                    <a href="/contactos">
-                        <h1>Contactos</h1>
-                    </a>
-                </div>
-            </div>
-            <div id="funciona">
-                <div id="imagenFunciona">
-                    <img src="/img/icons/frecuentes.png" />
-                </div>
-                <div id="informacion1">
-                    <h1>Preguntas frecuentes</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="subNav2">
-    <div id="contenedorImagenInformacion">
-        <div id="contenedorImagen">
-            <div id="imagen">
-                <img src="/img/icons/imagenServicios.png" />
-            </div>
-            <div id="nosotros1">
-                <h1>Servicios</h1>
-                <p>Explora nuestros servicios, desde clases grupales y particulares
-                    hasta cursos, coaching para docentes y mucho más.</p>
-            </div>
-        </div>
-        <div id="contenedorInformacion1">
-            <div id="somos">
-                <div id="somosImagen">
-                    <img src="/img/icons/clases.png" />
-                </div>
-                <div id="informacion">
-                    <a href="/general/listClase">
-                        <h1>Clases particulares</h1>
-                    </a>
-                </div>
-            </div>
-            <div id="funciona">
-                <div id="imagenFunciona">
-                    <img src="/img/icons/grupales.png" />
-                </div>
-                <div id="informacion1">
-                    <a href="/general/listClase">
-                        <h1>Clases grupales</h1>
-                    </a>
-                </div>
-            </div>
-            <div id="seguridad">
-                <div id="imagenSeguridad">
-                    <img src="/img/icons/Cursos.png" />
-                </div>
-                <div id="informacion2">
-                    <a href="/general/listCurso">
-                        <h1>Cursos</h1>
-                    </a>
-                </div>
-            </div>
-            <div id="testimonio">
-                <div id="imagentestiminio">
-                    <img src="/img/icons/Couching.png" />
-                </div>
-                <div id="informacion3">
-                    <a href="/general/listCurso">
-                        <h1>Coaching para docentes</h1>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="subNav1">
-    <div id="contenedorImagenInformacion">
-        <div id="contenedorImagen">
-            <div id="imagen">
-                <img src="/img/icons/imagenNosotros.png" />
-            </div>
-            <div id="nosotros1">
-                <h1>Nosotros</h1>
-                <p>Descubre quiénes somos, por qué elegirnos y cuáles son nuestros
-                    estándares de calidad en la educación.</p>
-            </div>
-        </div>
-        <div id="contenedorInformacion1">
-            <div id="somos">
-                <div id="somosImagen">
-                    <img src="/img/icons/somos.png" />
-                </div>
-                <div id="informacion">
-                    <a href="/somos" style="text-decoration: none; color:black">
-                        <h1>¿Quiénes somos?</h1>
-                    </a>
-                </div>
-            </div>
-            <div id="funciona">
-                <div id="imagenFunciona">
-                    <img src="/img/icons/funciona.png" />
-                </div>
-                <div id="informacion1">
-                    <a href="/funciona" style="text-decoration: none; color:black">
-                        <h1>¿Cómo funciona?</h1>
-                    </a>
-                </div>
-            </div>
-            <div id="seguridad">
-                <div id="imagenSeguridad">
-                    <img src="/img/icons/seguridad.png" />
-                </div>
-                <div id="informacion2">
-                    <a href="/seguridad" style="text-decoration: none; color:black">
-                        <h1>Nuestra seguridad</h1>
-                    </a>
-                </div>
-            </div>
-            <div id="testimonio">
-                <div id="imagentestiminio">
-                    <img src="/img/icons/testimonio.png" />
-                </div>
-                <div id="informacion3">
-                    <a href="/" style="text-decoration: none; color:black">
-                        <h1>Testimonios</h1>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script src="/js/navegacion.js"></script>

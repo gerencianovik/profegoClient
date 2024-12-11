@@ -73,7 +73,6 @@ app.use(
     })
 );
 
-
 // Configurar almacenamiento de sesiones MySQL
 const mysqlOptions = {
     host: MYSQLHOST,
@@ -103,7 +102,9 @@ const handlebars = exphbs.create({
     layoutsDir: path.join(__dirname, 'views', 'layouts'),
     partialsDir: path.join(__dirname, 'views', 'partials'),
     extname: '.hbs',
-    helpers: require('./lib/handlebars')
+    helpers: {
+        eq: (a, b) => a === b,
+    }
 });
 
 // Configurar motor de vistas
@@ -124,7 +125,7 @@ app.use(passport.session());
 
 // Middleware de seguridad y rendimiento
 app.use(helmet.referrerPolicy({ policy: 'strict-origin-when-cross-origin' }));
-app.use(compression());
+app.use(compression()); // Comprensión de respuesta para optimizar el tamaño
 
 // Middleware para minificar HTML
 app.use(async (req, res, next) => {
@@ -147,6 +148,14 @@ app.use(async (req, res, next) => {
     next();
 });
 
+// Configurar rate limiter para prevenir ataques de fuerza bruta
+const loginLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutos
+    max: 5, // Limitar a 5 intentos de inicio de sesión por ventana por IP
+    message: 'Demasiados intentos de inicio de sesión desde esta IP, por favor intente nuevamente después de 15 minutos.'
+});
+app.use('/loginTeachers', loginLimiter);
+app.use('/loginStudents', loginLimiter);
 
 // Middleware de manejo de errores
 app.use((err, req, res, next) => {
@@ -183,18 +192,16 @@ app.use((req, res, next) => {
     res.locals.csrfToken = req.csrfToken();
     next();
 });
-
 app.use((err, req, res, next) => {
     if (err.code !== 'EBADCSRFTOKEN') return next(err);
 
-    // Manejo del error CSRF aquí
     res.status(403);
     res.send('La validación del token CSRF ha fallado. Por favor, recarga la página.');
 });
 
 // Configurar archivos estáticos
-app.use(express.static(path.join(__dirname, 'public')));
-app.use('/src/public', express.static(path.join(__dirname, 'src/public')));
+app.use(express.static(path.join(__dirname, 'public'), { maxAge: '1d' })); // Cacheo de archivos estáticos
+app.use('/src/public', express.static(path.join(__dirname, 'src/public'), { maxAge: '1d' }));
 
 // Configurar sistema de logging
 const logger = winston.createLogger({
