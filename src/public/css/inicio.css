@@ -92,10 +92,7 @@
 }
 
 #ayudar img {
-    position: absolute;
     width: 4%;
-    top: 23%;
-    left: 79%;
 }
 
 #Quebuscas {
@@ -709,188 +706,84 @@
     color: #004D77;
 }
 
-@media (max-width: 2560px) and (min-width: 1985px) {
+@media (max-width: 1025px) {
+    #tarjeta {
+        width: 30%;
+    }
+
     #primerTitulo #primerparte {
-        font-size: 51px;
+        left: 70%;
+        width: 23%;
+    }
+
+    #primerTitulo #logoPrincipal {
+        position: absolute;
+        top: 28%;
+        left: 71%;
+        width: 20%;
+        height: 25%;
     }
 
     #primerTitulo #segundaparte {
-        font-size: 52px;
-    }
-
-    #primerTitulo #logoPrincipal {
-        top: 28%;
-    }
-
-    #ayudar h1 {
-        font-size: 35px;
-    }
-
-    #Quebuscas {
-        font-size: 30px;
-    }
-
-    #ServicoMateria {
-        font-size: 30px;
-    }
-
-    #edad {
-        font-size: 30px;
-    }
-
-    #donde {
-        font-size: 30px;
-    }
-
-    #BotonBusacar button {
-        font-size: 30px;
-    }
-
-    #tituloPopular h1 {
-        font-size: 45px;
-    }
-
-    #tituloPopular {
-        font-size: 30px;
-    }
-
-    #Quebuscas select,
-    #ServicoMateria select,
-    #edad select,
-    #donde select {
-        font-size: 30px;
-        text-align: center;
-    }
-
-    #tarjetaClaseParticular h1,
-    #tarjetaClaseGrupales h1,
-    #tarjetaCursos h1,
-    #tarjetaCoaching h1 {
-        font-size: 35px;
-    }
-
-    #datos {
-        font-size: 30px;
-    }
-
-    #cajon1 h1,
-    #cajon2 h1,
-    #cajon3 h1,
-    #cajon4 h1 {
-        font-size: 30px;
-    }
-
-    #cajon1 p,
-    #cajon2 p,
-    #cajon3 p,
-    #cajon4 p {
-        font-size: 26px;
-    }
-
-    #textodiv p {
-        font-size: 30px;
-    }
-
-    #textodiv h1 {
-        font-size: 37px;
-    }
-
-    #tituloCifras h1 {
-        font-size: 40px;
-    }
-
-    #tituloCifras p {
-        font-size: 35px;
-    }
-
-    #contendorDocentes h1,
-    #contendorServiciosEducativos h1,
-    #contendorServicioscontratados h1,
-    #ValoracionComunidad h1 {
-        font-size: 40px;
-    }
-
-    #contendorDocentes p,
-    #contendorServiciosEducativos p,
-    #contendorServicioscontratados p,
-    #ValoracionComunidad p {
-        font-size: 35px;
-    }
-
-    #tarjeta p {
-        font-size: 25px;
-    }
-
-    #tarjetaNosotros h1,
-    #tarjetaUnete h1,
-    #tarjetaLegal h1 {
-        font-size: 30px;
-    }
-
-    #tarjetaNosotros p,
-    #tarjetaUnete p,
-    #tarjetaLegal p {
-        font-size: 22px;
-    }
-
-    #footer a {
-        font-size: 22px;
-    }
-
-    #final {
-        font-size: 22px;
-    }
-}
-
-@media (max-width: 1144px) and (min-width: 1066px) {
-    #primerTitulo #logoPrincipal {
-        top: 31%;
-    }
-
-    #ayudar img {
-        left: 90%;
-    }
-
-    #datos {
-        top: 65%;
-    }
-
-    #opinionesDestacadas #datos {
-        top: 43%;
-    }
-}
-
-@media (max-width: 1066px) {
-    #primerTitulo #logoPrincipal {
-        top: 31%;
-    }
-
-    #ayudar img {
-        left: 95%;
-    }
-
-    #tarjetaClaseParticular h1,
-    #tarjetaClaseGrupales h1,
-    #tarjetaCursos h1,
-    #tarjetaCoaching h1 {
-        font-size: 20px;
-    }
-
-    #datos {
-        top: 52%;
-    }
-
-    #opinionesDestacadas #datos {
-        top: 43%;
+        top: 60%;
+        left: 70%;
     }
 
     #final #finalFinal {
+        top: 0%;
         left: 70%;
         width: 30%;
     }
+
+    #final p {
+        margin-top: 1%;
+    }
+
+    #tarjetaClaseParticular {
+        width: 22%;
+    }
+
+    #tarjetaClaseGrupales {
+        width: 22%;
+    }
+
+    #tarjetaCursos {
+        width: 22%;
+    }
+
+    #tarjetaCoaching {
+        width: 22%;
+    }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 769px) {
+    #tarjeta {
+        width: 30%;
+    }
+
+    #primerTitulo #primerparte {
+        left: 70%;
+        width: 23%;
+    }
+
+    #primerTitulo #logoPrincipal {
+        top: 34%;
+    }
+
+    #primerTitulo #segundaparte {
+        top: 60%;
+        left: 70%;
+    }
+
+    #buscador {
+        width: 98%;
+        left: 1%;
+    }
+
+    #ayudar {
+        width: 85%;
+        left: 15%;
+    }
 
     #tarjetaClaseParticular h1,
     #tarjetaClaseGrupales h1,
@@ -899,134 +792,210 @@
         font-size: 18px;
     }
 
-    #datos {
-        top: 48%;
-    }
-
-    #final p {
-        width: 60%;
-    }
-}
-
-@media (max-width: 905px) {
-    #ayudar img {
-        left: 100%;
-    }
-
-    #tarjetaClaseParticular h1,
-    #tarjetaClaseGrupales h1,
-    #tarjetaCursos h1,
-    #tarjetaCoaching h1 {
-        font-size: 15px;
-    }
-
-    #datos {
-        font-size: 14px;
-    }
-
-    #tarjeta p {
-        font-size: 14px;
-    }
-
-    #informacionDocente button {
-        font-size: 15px;
-    }
-
-    #ayudar h1 {
-        font-size: 15px;
-    }
-
-    #Quebuscas {
-        font-size: 15px;
-    }
-
-    #ServicoMateria {
-        font-size: 15px;
-    }
-
-    #edad {
-        font-size: 15px;
-    }
-
-    #donde {
-        font-size: 15px;
-    }
-
-    #BotonBusacar button {
-        font-size: 15px;
-    }
-
-    #Quebuscas select,
-    #ServicoMateria select,
-    #edad select,
-    #donde select {
-        font-size: 15px;
-        text-align: center;
-    }
-}
-
-@media (max-width: 875px) {
-    #primerTitulo #primerparte {
-        font-size: 25px;
-    }
-
-    #primerTitulo #segundaparte {
-        font-size: 25px;
-    }
-
-    #final p {
-        font-size: 14px;
+    #datos p {
+        font-size: 12px;
     }
 
     #cajon1 h1,
     #cajon2 h1,
     #cajon3 h1,
     #cajon4 h1 {
-        font-size: 15px;
+        font-size: 18px;
     }
 
     #cajon1 p,
     #cajon2 p,
     #cajon3 p,
     #cajon4 p {
-        font-size: 14px;
-    }
-
-    #logoImagen {
-        height: 50%;
-    }
-}
-
-@media (max-width: 679px) {
-    #final p {
-        width: 65%;
-    }
-
-    #datosNosotros p,
-    #datosNosotros a {
-        font-size: 10px;
-    }
-
-    #tarjetaClaseParticular h1,
-    #tarjetaClaseGrupales h1,
-    #tarjetaCursos h1,
-    #tarjetaCoaching h1 {
         font-size: 12px;
     }
 
-    #datos {
+    #contendorDocentes p,
+    #contendorServiciosEducativos p,
+    #contendorServicioscontratados p,
+    #ValoracionComunidad p {
+        font-size: 16px;
+        margin-left: 15.8%;
+    }
+
+    #tarjeta p {
         font-size: 12px;
     }
 
-    #datos #tarjeta p {
-        font-size: 11px;
-    }
-
-    #textodiv h1 {
+    #informacionDocente p {
         font-size: 20px;
     }
 
+    #informacionDocente button {
+        font-size: 20px;
+    }
+
+    #final #finalFinal {
+        top: 0%;
+        left: 70%;
+        width: 30%;
+    }
+
+    #final p {
+        width: 63%;
+        font-size: 12px;
+    }
+
+    #tarjetaClaseParticular {
+        width: 22%;
+    }
+
+    #tarjetaClaseGrupales {
+        width: 22%;
+    }
+
+    #tarjetaCursos {
+        width: 22%;
+    }
+
+    #tarjetaCoaching {
+        width: 22%;
+    }
+}
+
+@media (max-width: 426px) {
+    #primerTitulo {
+        height: 50%;
+        top: 80px;
+    }
+
+    #primerTitulo #primerparte {
+        font-size: 12px;
+    }
+    #primerTitulo #segundaparte {
+        font-size: 12px;
+    }
+
+    #primerTitulo #logoPrincipal {
+        top: 28%;
+    }
+
+    #buscador {
+    top: 68%;
+    }
+
+    #ayudar h1 {
+        font-size: 12px;
+    }
+
+    #Quebuscas p{
+        font-size: 12px;
+    }
+
+    #ServicoMateria p{
+        font-size: 12px;
+    }
+
+    #edad p{
+        font-size: 12px;
+    }
+
+    #donde p{
+        font-size: 12px;
+    }
+
+    #BotonBusacar button{
+        font-size: 12px;
+    }
+
+    
+    #Quebuscas select{
+        font-size: 12px;
+    }
+
+    #ServicoMateria select{
+        font-size: 12px;
+    }
+
+    #edad select{
+        font-size: 12px;
+    }
+
+    #donde select{
+        font-size: 12px;
+    }
+
+    #masPopular {
+        top: 125%;
+    }
+
+    #datos p{
+        font-size: 10px;
+    }
+
+    #tarjetaClaseParticular h1, #tarjetaClaseGrupales h1, #tarjetaCursos h1, #tarjetaCoaching h1 {
+        font-size: 12px;
+    }
+
+    #cotendorPorqueElegir {
+        top: 200%;
+    }
+
+    #textodiv{
+        top: 10%;
+    }
+    #textodiv h1 {
+    font-size: 18px;
+    }
+
     #textodiv p {
-        font-size: 15px;
+        font-size: 12px;
+    }
+
+    #cajon1 h1, #cajon2 h1, #cajon3 h1, #cajon4 h1 {
+        font-size: 12px;
+    }
+
+    #cajon1 p, #cajon2 p, #cajon3 p, #cajon4 p {
+        font-size: 10px;
+    }
+    #tarjeta p {
+        font-size: 9px;
+    }
+    #contenedorCifras {
+        top: 228%;
+    }
+
+    #opinionesDestacadas {
+        top: 360px;
+    }
+
+    #informate {
+        top: 442%;
+    }
+
+    #informacionDocente p {
+        font-size: 12px;
+    }
+
+    #informacionDocente button {
+        font-size: 12px;
+    }
+
+    #tarjetaNosotros h1, #tarjetaUnete h1, #tarjetaLegal h1 {
+        font-size: 12px;
+    }
+    #tarjetaNosotros p, #tarjetaUnete p, #tarjetaLegal p {
+        font-size: 10px;
+        margin-top: 35%;
+    }
+    #datosNosotros a{
+        font-size: 10px;
+    }    
+    #datosNosotros{
+        height: 30%;
+    }
+
+    #footer {
+        height: 55%;
+    }
+
+    #final p {
+        font-size: 8px;
     }
 }
