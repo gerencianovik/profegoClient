@@ -1,240 +1,331 @@
 <link rel="stylesheet" href="/css/inicio.css">
-<div id="contenedor">
-    <div id="primerTitulo">
-        <img src="/img/icons/inicioimagen1.png">
-        <p id="primerparte">La mejor educación a tu alcance, solo en </p>
-        <img src="/img/icons/Logoprincipal.png" id="logoPrincipal">
-        <p id="segundaparte">¡Aprende hoy, lidera<br>
-            mañana!</p>
+
+<div class="position-relative p-0 m-0 overflow-hidden">
+    <img src="/img/icons/inicioimagen1.png" class="img-fluid w-100">
+
+    <div
+        class="fs-1 fw-bold position-absolute text-white text-center d-flex flex-column justify-content-center align-items-center right-text">
+        <p class="responsive-text" style="color: #FFEFDA;">La mejor educación a tu alcance, solo en</p>
+        <img src="/img/icons/Logoprincipal.png" class="img-fluid m-1" style="max-width: 50%;">
+        <p class="responsive-text" style="color: #FFEFDA;">¡Aprende hoy, lidera mañana!</p>
     </div>
-    <div id="buscador">
-        <form action="/general/list/listCurso" method="get">
-            <div id="busca">
-                <img src="/img/icons/busca.png">
+</div>
+
+<div class="p-5">
+    <div class="card border-0" style="background-color: #ffefda;">
+        <form action="/general/list/listCurso" method="get" class="row g-0" style="height: 100%;">
+            <div class="col-md-2 p-0">
+                <img src="/img/icons/busca.png" class="img-fluid" style="height: 100%; object-fit: cover; width: 100%;">
             </div>
-            <div id="ayudar">
-                <h1>Queremos ayudarte a encontrar lo que buscas<img src="/img/icons/busqueda.png"></h1>
-            </div>
-            <div id="Quebuscas">
-                <p>¿Qué buscas?</p>
-                <select name="docentes" id="docenetes">
-                    <option value="">Busco docente</option>
-                    {{#each profesor}}
-                    <option value="{{idTeacher}}">{{completeNmeTeacher}}</option>
-                    {{/each}}
-                </select>
-            </div>
-            <div id="ServicoMateria">
-                <p>Servicio o materia</p>
-                <select name="materia" id="materia">
-                    <option value="">Ej: Matemática</option>
-                    {{#each materiales}}
-                    <option value="{{idSubjet}}">{{nambeSubjects}}</option>
-                    {{/each}}
-                </select>
-            </div>
-            <input type="hidden" name="_csrf" value="{{ csrfToken }}">
-            <div id="edad">
-                <p>Nivel o edad</p>
-                <select name="rangeAgeTeacher" id="edadRango">
-                    <option value="3-5 años">3-5 años</option>
-                    <option value="5-7 años">5-7 años</option>
-                    <option value="7-9 años">7-9 años</option>
-                    <option value="9-12 años">9-12 años</option>
-                    <option value="12-16 años">12-16 años</option>
-                    <option value="16-18 años">16-18 años</option>
-                    <option value="Universitarios">Universitarios</option>
-                    <option value="Docentes">Docentes</option>
-                    <option value="Profecionales">Profecionales</option>
-                    <option value="TerceraEdad">Tercera Edad</option>
-                </select>
-            </div>
-            <div id="donde">
-                <p>¿Dónde?</p>
-                <select name="donde" id="dondes">
-                    {{#each tipos}}
-                    <option value="{{idTypeCoursClass}}">{{nameCoursClassType}}</option>
-                    {{/each}}
-                </select>
-            </div>
-            <div id="BotonBusacar">
-                <button type="submit">Buscar ahora</button>
+            <div class="col-md-10 mx-auto d-flex flex-column" style="height: 100%;">
+                <div class="card-body p-0 mt-2 d-flex flex-column justify-content-between"
+                    style="height: 100%; transform: scale(0.8);">
+                    <div class="text-center" id="ayudar">
+                        <h1 style="color: #318086;">Queremos ayudarte a encontrar lo que buscas
+                            <img style="width: 31px;" src="/img/icons/busqueda.png">
+                        </h1>
+                    </div>
+
+                    <div class="row justify-content-center mt-2" style="flex-grow: 1;">
+                        <div class="col-12 col-md d-flex flex-column mb-2">
+                            <div class="flex-grow-1 my-4" id="Quebuscas" style="color: #318086;">
+                                <h3 class="m-0">¿Qué buscas?</h3>
+                                <select name="docentes" class="form-select" style="font-size: 1.4rem; color: #318086;">
+                                    <option value="">Busco docente</option>
+                                    {{#each profesor}}
+                                    <option value="{{idTeacher}}">{{completeNmeTeacher}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                            <div class="flex-grow-1 my-4" id="ServicoMateria">
+                                <h3 style="color: #318086;" class="m-0">Servicio o materia</h3>
+                                <select name="materia" id="materia" class="form-select"
+                                    style="font-size: 1.4rem; color: #318086;">
+                                    <option value="">Ej: Matemática</option>
+                                    {{#each materiales}}
+                                    <option value="{{idSubjet}}">{{nambeSubjects}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md d-flex flex-column mb-2">
+                            <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+                            <div class="flex-grow-1 my-4" id="edad">
+                                <h3 style="color: #318086;" class="m-0">Nivel o edad</h3>
+                                <select name="rangeAgeTeacher" id="edadRango" class="form-select"
+                                    style="font-size: 1.4rem; color: #318086;">
+                                    <option value="3-5 años">3-5 años</option>
+                                    <option value="5-7 años">5-7 años</option>
+                                    <option value="7-9 años">7-9 años</option>
+                                    <option value="9-12 años">9-12 años</option>
+                                    <option value="12-16 años">12-16 años</option>
+                                    <option value="16-18 años">16-18 años</option>
+                                    <option value="Universitarios">Universitarios</option>
+                                    <option value="Docentes">Docentes</option>
+                                    <option value="Profecionales">Profecionales</option>
+                                    <option value="TerceraEdad">Tercera Edad</option>
+                                </select>
+                            </div>
+
+                            <div class="flex-grow-1 my-4" id="donde">
+                                <h3 style="color: #318086;" class="m-0">¿Dónde?</h3>
+                                <select name="donde" id="dondes" class="form-select" style="font-size: 1.5rem;">
+                                    {{#each tipos}}
+                                    <option value="{{idTypeCoursClass}}">{{nameCoursClassType}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-auto d-flex align-items-center justify-content-center">
+                            <button type="submit" class="btn"
+                                style="font-size: 1.5rem; background-color: #f39425; color: white;">Buscar
+                                ahora</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </form>
     </div>
 </div>
 
-<div id="masPopular">
-    <div id="tituloPopular">
-        <h1>Lo más popular en <span class="highlight">ProfeGo</span></h1>
-        <p>Descubre los servicios más solicitados</p>
+<div class="px-4">
+    <div class="text-center">
+        <h1 style="color: #215f59;">Lo más popular en <span class="fw-bold" style="color: #f49426;">ProfeGo</span></h1>
+        <h4>Descubre los servicios más solicitados</h4>
     </div>
-    <div id="tarjetaClaseParticular">
-        <div id="imagenClase">
-            <img src="/img/icons/claseParticular.png">
-        </div>
-        <h1>Clases particulares</h1>
-        <div id="datos">
-            <p>Clases de Inglés</p>
-            <p>Clases de Matemáticas</p>
-            <p>Clases de Química</p>
-        </div>
-    </div>
-    <div id="tarjetaClaseGrupales">
-        <div id="imagenClase">
-            <img src="/img/icons/claseGrupal.png">
-        </div>
-        <h1>Clases grupales</h1>
-        <div id="datos">
-            <p>Clases de Francés</p>
-            <p>Clases de Matemáticas</p>
-            <p>Clases de Química</p>
-        </div>
-    </div>
-    <div id="tarjetaCursos">
-        <div id="imagenClase">
-            <img src="/img/icons/cursoTarjeta.png">
-        </div>
-        <h1>Cursos</h1>
-        <div id="datos">
-            <p>Curso de ciencias</p>
-            <p>Curso de guitarra</p>
-            <p>Curso de cocina</p>
-        </div>
-    </div>
-    <div id="tarjetaCoaching">
-        <div id="imagenClase">
-            <img src="/img/icons/couchingTarjeta.png">
-        </div>
-        <h1>Coaching</h1>
-        <div id="datos">
-            <p>Coaching motivacional</p>
-            <p>Coaching de inclusión</p>
-            <p>Coaching de competencias</p>
-        </div>
-    </div>
-</div>
-<div id="cotendorPorqueElegir">
-    <img src="/img/icons/fondos2.png">
-    <div id="textodiv">
-        <h1>¿Por qué elegir a ProfeGo?</h1>
-        <p>Aprendizaje flexible, asequible y seguro con los mejores docentes y coaches.</p>
-    </div>
-    <div id="cajon1">
-        <h1>Profesores expertos <img src="/img/icons/conetenido1.png"></h1>
-        <p>Aprende de profesionales calificados y apasionados por enseñar.</p>
-    </div>
-    <div id="cajon2">
-        <h1>Diversidad <img src="/img/icons/contenido2.png"></h1>
-        <p>Desde ciencias y matemáticas hasta idiomas y artes, tenemos algo para todos.</p>
-    </div>
-    <div id="cajon3">
-        <h1>Seguridad <img src="/img/icons/contenido3.png"></h1>
-        <p>Pagos seguros, profesionales verificados, datos protegidos y soporte continuo todo el tiempo.</p>
-    </div>
-    <div id="cajon4">
-        <h1>Flexibilidad <img src="/img/icons/contenido4.png"></h1>
-        <p>Accede a nuestros servicios en cualquier momento y lugar, adaptándose a tu ritmo de vida.</p>
-    </div>
-</div>
 
-<div id="contenedorCifras">
-    <img src="/img/icons/mediaNube.png">
-    <div id="tituloCifras">
-        <h1>Nuesto impacto en cifras</h1>
-        <p>¡La comunidad educativa favorita de muchos te espera!</p>
-    </div>
-    <div id="contendorDocentes">
-        <h1>+ 200</h1>
-        <p>Docentes y
-            Coaches</p>
-    </div>
-    <div id="contendorServiciosEducativos">
-        <h1>+ 1000</h1>
-        <p>Servicios educativos</p>
-    </div>
-    <div id="contendorServicioscontratados">
-        <h1>+ 3000</h1>
-        <p>Servicios contratados</p>
-    </div>
-    <div id="ValoracionComunidad">
-        <h1><img src="/img/icons/estrella.png"> 5</h1>
-        <p>Valoración de nuestra comunidad</p>
-    </div>
-</div>
+    <div class="row row-cols-1 row-cols-md-4 g-5 px-4 py-4">
+        <div class="col">
+            <div class="card py-2 h-auto border-2" style="border-color: #235e85;">
+                <img src="/img/icons/claseParticular.png" class="card-img-top" alt="Clase Particular"
+                    style="width: 40%; display: block; margin: 0 auto;">
+                <div class="card-body text-center p-1">
+                    <h5 style="color: #215f59;" class="card-title">Clases particulares</h5>
+                    <p class="card-text">Clases de Inglés<br>Clases de Matemáticas<br>Clases
+                        de Química</p>
+                </div>
+            </div>
 
-<div id="opinionesDestacadas">
-    <div id="tituloPopular">
-        <h1>Opiniones destacadas</h1>
-        <p>Conoce las experiencias de quiénes han confiado en nosotros</p>
-    </div>
-    <div id="tarjeta">
-        <div id="imagenClase">
-            <img src="/img/icons/docenteperfilTarjeta.png">
         </div>
-        <div id="datos">
-            <p>Clases de Francés</p>
-            <p>Plataforma 100% recomendable. Encontré una profesora particular de Francés que me ayudó a mejorar mi
-                conversación.</p>
+        <div class="col">
+            <div class="card py-2 h-auto border-2" style="border-color: #235e85;">
+                <img src="/img/icons/claseGrupal.png" class="card-img-top" alt="Clases grupales"
+                    style="width: 40%; display: block; margin: 0 auto;">
+                <div class="card-body text-center p-1">
+                    <h5 style="color: #215f59;" class="card-title">Clases grupales</h5>
+                    <p class="card-text">Clases de Francés<br>Clases de Matemáticas<br>Clases de Química</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card py-2 h-auto border-2" style="border-color: #235e85;">
+                <img src="/img/icons/cursoTarjeta.png" class="card-img-top" alt="Cursos"
+                    style="width: 40%; display: block; margin: 0 auto;">
+                <div class="card-body text-center p-1">
+                    <h5 style="color: #215f59;" class="card-title">Cursos</h5>
+                    <p class="card-text">Curso de ciencias<br>Curso de guitarra<br>Curso de cocina</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card py-2 h-auto border-2" style="border-color: #235e85;">
+                <img src="/img/icons/couchingTarjeta.png" class="card-img-top" alt="Coaching"
+                    style="width: 40%; display: block; margin: 0 auto;">
+                <div class="card-body text-center p-1">
+                    <h5 style="color: #215f59;" class="card-title">Coaching</h5>
+                    <p class="card-text">Coaching motivacional<br>Coaching de inclusión<br>Coaching de competencias</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-<div id="informate">
-    <img src="/img/icons/imagenUltima.png">
-    <div id="informacionDocente">
-        <p>¿Quiéres ser docente o coach en ProfeGo?</p>
-        <a href="/RegisterTeachers"><button type="button">¡Informáte aquí!</button></a>
+<div class="p-0 m-0 position-relative bg-fondo">
+    <div class="row mx-0 position-absolute top-50 start-50 translate-middle text-center w-100 container-fluid">
+        <div class="col-12 col-md-5 d-flex align-items-center px-4 m-0">
+            <div class="text-center text-white">
+                <h1>¿Por qué elegir a ProfeGo?</h1>
+                <h4>Aprendizaje flexible, asequible y seguro con los mejores docentes y coaches.</h4>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-7 d-flex justify-content-center align-items-center m-0 p-0 text-center">
+            <div class="w-100">
+                <div class="mb-3 text-start rounded-3 shadow pt-2 px-1 ms-auto text-center col-sm-5"
+                    style="background-color: rgba(244, 148, 38, 0.8);">
+                    <h4>Flexibilidad <img style="width: 30px;" src="/img/icons/contenido4.png"></h4>
+                    <p>Accede a nuestros servicios en cualquier momento y lugar, adaptándose a tu ritmo de vida.</p>
+                </div>
+                <div class="mb-3 text-end rounded-3 shadow pt-2 px-1 me-auto text-center col-sm-5"
+                    style="background-color: rgba(244, 148, 38, 0.8);">
+                    <h4>Profesores expertos <img style="width: 30px;" src="/img/icons/conetenido1.png"></h4>
+                    <p>Aprende de profesionales calificados y apasionados por enseñar.</p>
+                </div>
+                <div class="mb-3 text-end rounded-3 shadow pt-2 px-1 ms-auto text-center col-sm-5"
+                    style="background-color: rgba(244, 148, 38, 0.8);">
+                    <h4>Seguridad <img style="width: 30px;" src="/img/icons/contenido3.png"></h4>
+                    <p>Pagos seguros, profesionales verificados, datos protegidos y soporte continuo todo el tiempo.</p>
+                </div>
+                <div class="mb-3 text-start rounded-3 shadow pt-2 px-1 me-auto text-center col-sm-5"
+                    style="background-color: rgba(244, 148, 38, 0.8);">
+                    <h4>Diversidad <img style="width: 30px;" src="/img/icons/contenido2.png"></h4>
+                    <p>Desde ciencias y matemáticas hasta idiomas y artes, tenemos algo para todos.</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
-<div id="footer">
-    <div id="tarjetaNosotros">
-        <div id="nosotrosFooter">
-            <h1>Nosotros</h1>
+<div class="m-0 p-0 position-relative bg-fondo2 d-flex align-items-center justify-content-center">
+    <div class="container-fluid justify-content-center m-0 p-0">
+        <div class="text-center text-white">
+            <h1 class="mt-1">Nuestro impacto en cifras</h1>
+            <p style="font-size: 1.5rem;">¡La comunidad educativa favorita de muchos te espera!</p>
         </div>
-        <div id="datosNosotros">
-            <a href="/somos" style="text-decoration: none;">
-                <p>¿Quiénes Somos?
-            </a>
-            <a href="/somos" style="text-decoration: none;">¿Cómo funciona?</a><br>
-            <br>
-            <a href="/" style="text-decoration: none;">Testimonios</a><br>
-            <br>
-            <a href="/contactos" style="text-decoration: none;">Preguntas frecuentes</a><br>
-            <br>
-            <a href="/contactos" style="text-decoration: none;">Contacto</a></p>
+        <div class="row row-cols-1 row-cols-md-4 g-4 px-4 mx-4 mb-0 mt-2">
+            <div class="col">
+                <div class="card h-100 text-white rounded-4" style="background-color: #147582;">
+                    <div class="card-body p-0 pb-3 d-flex flex-column justify-content-center text-center">
+                        <h5 class="card-title">+ 200</h5>
+                        <h4 class="card-text">Docentes y Coaches</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 text-white rounded-4" style="background-color: #147582;">
+                    <div class="card-body p-0 pb-3 d-flex flex-column justify-content-center text-center">
+                        <h5 class="card-title">+ 1000</h5>
+                        <h4 class="card-text">Servicios educativos</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 text-white rounded-4" style="background-color: #147582;">
+                    <div class="card-body p-0 pb-3 d-flex flex-column justify-content-center text-center">
+                        <h5 class="card-title">+ 3000</h5>
+                        <h4 class="card-text">Servicios contratados</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 text-white rounded-4" style="background-color: #147582;">
+                    <div class="card-body p-0 pb-3 d-flex flex-column justify-content-center text-center">
+                        <h5 class="card-title d-flex align-items-center justify-content-center">
+                            <img style="width: 30px; margin-right: 5px;" src="/img/icons/estrella.png"> 5
+                        </h5>
+                        <h4 class="card-text">Valoración de nuestra comunidad</h4>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div id="tarjetaUnete">
-        <div id="nosotrosFooter">
-            <h1>Únete</h1>
-        </div>
-        <div id="datosNosotros">
-            <a href="/RegisterStudents" style="text-decoration: none;">
-                <p>Regístrate como estudiante
-            </a>
-            <a href="/RegisterTeachers" style="text-decoration: none;">Sé docente o coach</a>
-            </p>
+</div>
+
+<div class="p-0 mt-3">
+    <div class="text-center">
+        <h1 style="color: #f49426;" class="fw-bold">Opiniones destacadas</h1>
+        <h4>Conoce las experiencias de quiénes han confiado en nosotros</h4>
+    </div>
+    <div class="row row-cols-1 row-cols-md-4 g-4 px-4 mb-5 mx-3 mt-2">
+        <div class="col">
+            <div class="card h-100 rounded-4 border-5" style="border-color: #144566;">
+                <div class="card-body p-2 pb-3 d-flex flex-column justify-content-center text-center">
+                    <img src="/img/icons/docenteperfilTarjeta.png" class="card-img-top" alt="Clase Particular"
+                        style="width: 50%; display: block; margin: 0 auto;">
+                    <h5 style="color: #000000;">Clases de Francés</h5>
+                    <p class="card-text">Plataforma 100% recomendable. Encontré una profesora particular de Francés que
+                        me ayudó a mejorar mi
+                        conversación.</p>
+                </div>
+            </div>
         </div>
     </div>
-    <div id="tarjetaLegal">
-        <div id="nosotrosFooter">
-            <h1>Legal</h1>
-        </div>
-        <div id="datosNosotros">
-            <a href="/policyList" style="text-decoration: none;">
-                <p>Términos y condiciones
-            </a>
-            <a href="/policyList" style="text-decoration: none;">Políticas de privacidad</a>
-            </p>
+</div>
+
+<div class="mb-5 d-flex align-items-center justify-content-center">
+    <div class="container-sm rounded-4" style="background-color: #f49426; max-width: 75%;">
+        <div class="row align-items-center text-center">
+            <div class="col-12 col-md-5 d-flex flex-column align-items-center justify-content-center p-3">
+                <div class="text-white">
+                    <h2>¿Quieres ser docente o coach en ProfeGo?</h2>
+                    <a href="/RegisterTeachers">
+                        <button type="button" class="btn text-white btn-lg px-4 py-2"
+                            style="background-color: #054c74; font-size: 1.2rem;">
+                            ¡Infórmate aquí!
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <div class="col-12 col-md-7 d-flex align-items-center justify-content-center p-0">
+                <img src="/img/icons/imagenUltima.png" class="img-fluid object-fit-cover w-100 h-100">
+            </div>
         </div>
     </div>
-    <div id="logoImagen">
-        <img src="/img/logo/LogoPrincipal.png">
+</div>
+
+<div class="p-5" style="background-color: #fff9f0;">
+    <div class="row">
+        <div class="col-md-2">
+            <div style="color: #236388;">
+                <h1 class="mb-0">Nosotros</h1>
+                <hr class="linea mt-0">
+            </div>
+            <div class="lh-1">
+                <a href="/somos">
+                    <p>¿Quiénes Somos?
+                </a>
+                <a href="/somos">¿Cómo funciona?</a><br>
+                <br>
+                <a href="/">Testimonios</a><br>
+                <br>
+                <a href="/contactos">Preguntas frecuentes</a><br>
+                <br>
+                <a href="/contactos">Contacto</a></p>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div style="color: #236388;">
+                <h1 class="mb-0">Únete</h1>
+                <hr class="linea mt-0">
+            </div>
+            <div class="lh-1">
+                <a href="/RegisterStudents">
+                    <p>Regístrate como estudiante
+                </a>
+                <a href="/RegisterTeachers">Sé docente o coach</a>
+                </p>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div style="color: #236388;">
+                <h1 class="mb-0">Legal</h1>
+                <hr class="linea mt-0">
+            </div>
+            <div class="lh-1">
+                <a href="/policyList">
+                    <p>Términos y condiciones
+                </a>
+                <a href="/policyList">Políticas de privacidad</a>
+                </p>
+            </div>
+        </div>
+        <div class="col-md-3 text-center">
+            <div class="d-flex justify-content-center">
+                <div class="qr-placeholder"></div>
+                <div class="qr-placeholder"></div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <img src="/img/logo/LogoPrincipal.png" class="img-fluid">
+        </div>
     </div>
-    <div id="final">
-        <p>Interconexión segura, rápida e ideal entre docentes y estudiantes.</p>
-        <p id="finalFinal">ProfeGo® EDUCONECTA S.A.S</p>
+</div>
+
+<div style="background-color: #fbf1e3; color: #236388;" class="p-3">
+    <div class="d-flex justify-content-between align-items-center mx-3">
+        <p class="fs-5 m-0 text-start">Interconexión segura, rápida e ideal entre docentes y estudiantes.</p>
+        <p class="fs-5 m-0 text-end">ProfeGo® EDUCONECTA S.A.S</p>
     </div>
 </div>
