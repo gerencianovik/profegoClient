@@ -2,12 +2,12 @@
     width: 565px;
 }
 
-.col-md-8 {
+.col8 {
     width: 40%;
     background-color: #FFEFDA;
 }
 
-.col-md-4 {
+.col4 {
     width: 60%;
     text-align: left;
     background: #F29224;
@@ -17,21 +17,25 @@
     color: #F29224;
 }
 
-.p-4 {
+.p4 {
     background-color: #F29224;
 }
 
-.col-md-6 {
+.col6 {
     width: 100% !important;
     border-bottom: 2px solid;
 }
 
-.dropdown-item {
+.dropdownItem {
     width: 100% !important;
 }
 
 #login{
     width: 254px;
+}
+
+.imgNav{
+    max-width: 50% !important;
 }
 
 #opcionesLogin{
@@ -44,7 +48,7 @@
     max-width: 100% !important;
 }
 
-.h5, h5 {
+.h5-text {
     font-size: 30px !important;
     color: white;
     margin-top: 20px;
