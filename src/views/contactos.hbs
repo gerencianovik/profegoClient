@@ -1,102 +1,238 @@
 <link rel="stylesheet" href="/css/contactos.css">
-<div id="contenedor">
-    <div id="contactosVista">
-        <h1>Contactos</h1>
-        <p>Estamos aquí para ayudarte. ¡Escríbenos si tienes preguntas o necesitas asistencia!</p>
-        <div id="numeros">
-            <img src="/img/icons/contactosVista.png">
-        </div>
-        <div id="datosNumeros">
-            <div id="celular">
-                <h1>Teléfonos</h1>
-                <p>0962900677<br>
-                    Movistar</p>
-            </div>
-            <div id="direcciones">
-                <h1>Dirección</h1>
-                <p>República del Salvador y Suecia</p>
-            </div>
-            <div id="correos">
-                <h1>Correo electrónico</h1>
-                <p>educonecta2@gmail.com</p>
-            </div>
-        </div>
-        <div id="envioDatos">
-            <h1>Escríbenos</h1>
-            <div id="nombre">
-                <p>Nombre</p>
-                <input type="text" name="" id="">
-            </div>
-            <div id="Teléfono">
-                <p>Teléfono</p>
-                <input type="text" name="" id="">
-            </div>
-            <div id="cORREO">
-                <p>Correo electrónico</p>
-                <input type="text" name="" id="">
-            </div>
-            <div id="mensjaes">
-                <p>Mensaje</p>
-                <textarea name="" id=""></textarea>
-            </div>
-            <div id="botonEnviar">
-                <button type="submit">Enviar</button>
-            </div>
-        </div>
+<div class="mt-4">
+    <div class="text-center container-sm rounded-2 mb-4">
+        <h1 style="color: #f49426;">Contactos</h1>
+        <h4>Estamos aquí para ayudarte. ¡Escríbenos si tienes preguntas o necesitas asistencia!</h4>
     </div>
-    <div id="imagenPreguntas">
-        <img src="/img/icons/frecuetes.png">
+    <div class="container-sm">
+        <div class="row align-items-center">
+            <div class="col-12 col-md-5">
+                <div class="row">
+                    <div class="row my-3">
+                        <div class="col-3">
+                            <img style="width: 75px;" class="img-fluid" src="/img/icons/telefono.png" alt="Teléfono">
+                        </div>
+                        <div class="col-9">
+                            <h3 style="color: #2d4d57;">Teléfonos</h3>
+                            <h5>0962900677<br>Movistar</h5>
+                        </div>
+                    </div>
+                    <div class="row my-3">
+                        <div class="col-3">
+                            <img style="width: 75px;" class="img-fluid" src="/img/icons/direccion.png" alt="Teléfono">
+                        </div>
+                        <div class="col-9">
+                            <h3 style="color: #2d4d57;">Dirección</h3>
+                            <h5>República del Salvador y Suecia</h5>
+                        </div>
+                    </div>
+                    <div class="row my-3">
+                        <div class="col-3">
+                            <img style="width: 75px;" class="img-fluid" src="/img/icons/correo.png" alt="Teléfono">
+                        </div>
+                        <div class="col-9">
+                            <h3 style="color: #2d4d57;">Correo electrónico</h3>
+                            <h5>educonecta2@gmail.com</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-7">
+                <h2 style="color: #e39a42;">Escríbenos</h2>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 col-md-6 mb-4">
+                            <label class="form-label">Nombre</label>
+                            <div class="input-group input-group-lg">
+                                <input style="background-color: #ffefda;" type="text" class="form-control" name=""
+                                    id="">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 mb-4">
+                            <label class="form-label">Teléfono</label>
+                            <div class="input-group input-group-lg">
+                                <input style="background-color: #ffefda;" type="text" class="form-control" name=""
+                                    id="">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Correo electrónico</label>
+                        <div class="input-group input-group-lg">
+                            <input style="background-color: #ffefda;" type="email" class="form-control " name="" id="">
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Mensaje</label>
+                        <textarea style="background-color: #ffefda;" class="form-control" rows="3" name=""
+                            id=""></textarea>
+                    </div>
+                    <div class="d-grid d-md-flex justify-content-md-end">
+                        <button class="btn btn-lg px-4 text-white" type="submit"
+                            style="background-color: #18574f;">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
+<div class="my-4">
+    <div class="position-relative bg-fondo text-white">
+        <div class="row m-0">
+            <div class="col-12 col-md-5 text-center">
+                <div class="container-sm justify-content-center mt-4">
+                    <h1 class="fw-bold">Preguntas frecuentes</h1>
+                    <p class="fs-5">¡Encuentra respuestas rápidas a tus preguntas aquí!</p>
+                </div>
+                <div class="container-sm">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-9 border border-3 rounded-3 mb-4 text-dark bg-white custom-border"
+                            type="button" data-bs-toggle="collapse" data-bs-target="#ayudaReservar"
+                            aria-expanded="false">
+                            <p class="my-2 fs-4"><img class="img-fluid" style="width: 75px;" src="/img/icons/reserva.png"> Ayuda a
+                                reservar</p>
+                        </div>
+                        <div class="col-12 col-md-9 border border-3 rounded-3 mb-4 text-dark bg-white custom-border"
+                            type="button" data-bs-toggle="collapse" data-bs-target="#problemasServicio"
+                            aria-expanded="false">
+                            <p class="my-2 fs-4"><img class="img-fluid" style="width: 75px;" src="/img/icons/problema.png"> Problemas con
+                                el servicio</p>
+                        </div>
+                        <div class="col-12 col-md-9 border border-3 rounded-3 mb-4 text-dark bg-white custom-border"
+                            type="button" data-bs-toggle="collapse" data-bs-target="#pagosDevoluciones"
+                            aria-expanded="false">
+                            <p class="my-2 fs-4"><img class="img-fluid" style="width: 75px;" src="/img/icons/paga.png"> Pagos y
+                                devoluciones</p>
+                        </div>
+                        <div class="col-12 col-md-9 border border-3 rounded-3 mb-4 text-dark bg-white custom-border"
+                            type="button" data-bs-toggle="collapse" data-bs-target="#otraConsulta"
+                            aria-expanded="false">
+                            <p class="my-2 fs-4"><img class="img-fluid" style="width: 75px;" src="/img/icons/frecuentes.png"> Otra
+                                consulta</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-sm my-4">
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="collapse multi-collapse" id="ayudaReservar">
+                    <div class="shadow pb-0 py-1 card card-body border-3 custom-border2">
+                        <p class="fs-4 fw-bold" style="color: #354845;">¿Puedo cancelar o modificar una reserva una vez
+                            confirmada?</p>
+                        <p>Sí, puedes cancelar o modificar una reserva antes de la fecha y hora programadas. Para
+                            hacerlo, inicia sesión en tu cuenta, ve a la sección de reservas y selecciona la opción
+                            correspondiente para cancelar o modificar. Asegúrate de revisar nuestras políticas de
+                            cancelación para conocer los términos aplicables.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="collapse multi-collapse" id="problemasServicio">
+                    <div class="shadow pb-0 py-1 card card-body border-3 custom-border2">
+                        <p class="fs-4 fw-bold" style="color: #354845;">¿Cómo puedo verificar la disponibilidad de
+                            horarios para realizar una reserva?</p>
+                        <p>Para verificar la disponibilidad de horarios, navega hasta la sección de servicios en nuestra
+                            plataforma y marca en el filtro los horarios que deseas, aparecerán los servicios
+                            disponibles en ese horario. Además, puedes ingresar a cada servicio dónde encontrarás un
+                            calendario con los horarios disponibles resaltados. Selecciona la fecha y hora que prefieras
+                            y procede con el proceso de reserva.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="collapse multi-collapse" id="pagosDevoluciones">
+                    <div class="shadow pb-0 py-1 card card-body border-3 custom-border2">
+                        <p class="fs-4 fw-bold" style="color: #354845;">¿Qué métodos de pago se aceptan para realizar
+                            una reserva?</p>
+                        <p>Aceptamos pagos con tarjeta de crédito/débito. Puedes completar el pago durante el proceso de
+                            reserva en línea de manera segura y confiable.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="collapse multi-collapse" id="otraConsulta">
+                    <div class="shadow pb-0 py-1 card card-body border-3 custom-border2">
+                        <p class="fs-4 fw-bold" style="color: #354845;">¿Puedo recibir notificaciones o recordatorios de
+                            mis reservas?
 
-<div id="footer">
-    <div id="tarjetaNosotros">
-        <div id="nosotrosFooter">
-            <h1>Nosotros</h1>
+                        </p>
+                        <p>Sí, recibirás notificaciones por correo electrónico o mensajes en la plataforma con detalles
+                            de tu reserva una vez confirmada. Además, puedes configurar recordatorios automáticos para
+                            no perder tus servicios programados.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="datosNosotros">
-            <a href="/somos" style="text-decoration: none;">
-                <p>¿Quiénes Somos?
-            </a>
-            <a href="/somos" style="text-decoration: none;">¿Cómo funciona?</a><br>
-            <br>
-            <a href="/" style="text-decoration: none;">Testimonios</a><br>
-            <br>
-            <a href="/contactos" style="text-decoration: none;">Preguntas frecuentes</a><br>
-            <br>
-            <a href="/contactos" style="text-decoration: none;">Contacto</a></p>
-        </div>
-    </div>
-    <div id="tarjetaUnete">
-        <div id="nosotrosFooter">
-            <h1>Únete</h1>
-        </div>
-        <div id="datosNosotros">
-            <a href="/RegisterStudents" style="text-decoration: none;">
-                <p>Regístrate como estudiante
-            </a>
-            <a href="/RegisterTeachers" style="text-decoration: none;">Sé docente o coach</a>
-            </p>
-        </div>
-    </div>
-    <div id="tarjetaLegal">
-        <div id="nosotrosFooter">
-            <h1>Legal</h1>
-        </div>
-        <div id="datosNosotros">
-            <a href="/seguridad" style="text-decoration: none;">
-                <p>Términos y condiciones
-            </a>
-            <a href="/seguridad" style="text-decoration: none;">Políticas de privacidad</a>
-            </p>
-        </div>
-    </div>
-    <div id="logoImagen">
-        <img src="/img/logo/LogoPrincipal.png">
-    </div>
-    <div id="final">
-        <p>Interconexión segura, rápida e ideal entre docentes y estudiantes.</p>
-        <p id="finalFinal">ProfeGo® EDUCONECTA S.A.S</p>
     </div>
 </div>
+
+<div class="p-5" style="background-color: #fff9f0;">
+    <div class="row">
+        <div class="col-md-2">
+            <div style="color: #236388;">
+                <h1 class="mb-0">Nosotros</h1>
+                <hr class="linea mt-0">
+            </div>
+            <div class="lh-1">
+                <a href="/somos">
+                    <p>¿Quiénes Somos?
+                </a>
+                <a href="/somos">¿Cómo funciona?</a><br>
+                <br>
+                <a href="/">Testimonios</a><br>
+                <br>
+                <a href="/contactos">Preguntas frecuentes</a><br>
+                <br>
+                <a href="/contactos">Contacto</a></p>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div style="color: #236388;">
+                <h1 class="mb-0">Únete</h1>
+                <hr class="linea mt-0">
+            </div>
+            <div class="lh-1">
+                <a href="/RegisterStudents">
+                    <p>Regístrate como estudiante
+                </a>
+                <a href="/RegisterTeachers">Sé docente o coach</a>
+                </p>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div style="color: #236388;">
+                <h1 class="mb-0">Legal</h1>
+                <hr class="linea mt-0">
+            </div>
+            <div class="lh-1">
+                <a href="/policyList">
+                    <p>Términos y condiciones
+                </a>
+                <a href="/policyList">Políticas de privacidad</a>
+                </p>
+            </div>
+        </div>
+        <div class="col-md-3 text-center">
+            <div class="d-flex justify-content-center">
+                <div class="qr-placeholder"></div>
+                <div class="qr-placeholder"></div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <img src="/img/logo/LogoPrincipal.png" class="img-fluid">
+        </div>
+    </div>
+</div>
+<div style="background-color: #fbf1e3; color: #236388;" class="p-3">
+    <div class="d-flex justify-content-between align-items-center mx-3">
+        <p class="fs-5 m-0 text-start">Interconexión segura, rápida e ideal entre docentes y estudiantes.</p>
+        <p class="fs-5 m-0 text-end">ProfeGo® EDUCONECTA S.A.S</p>
+    </div>
+</div>
+
+<script src="/js/contactos.js"></script>
