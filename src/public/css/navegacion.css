@@ -1,15 +1,14 @@
 .custom-dropdown-menu {
-    width: 565px;
+    width: 95vw;
+    max-width: 565px;
 }
 
 .col8 {
-    width: 40%;
     background-color: #FFEFDA;
+    overflow: hidden;
 }
 
 .col4 {
-    width: 60%;
-    text-align: left;
     background: #F29224;
 }
 
@@ -23,33 +22,48 @@
 
 .col6 {
     width: 100% !important;
-    border-bottom: 2px solid;
 }
 
 .dropdownItem {
     width: 100% !important;
 }
 
-#login{
-    width: 254px;
-}
-
-.imgNav{
-    max-width: 50% !important;
-}
-
-#opcionesLogin{
-    width: 100% !important;
-    padding-top: 3%;
-    border-bottom: 2px solid;
-}
-
-#Nosotros{
-    max-width: 100% !important;
+.imgNav {
+    max-width: 22% !important;
 }
 
 .h5-text {
     font-size: 30px !important;
     color: white;
-    margin-top: 20px;
+}
+
+.color-icon {
+    color: #F29224;
+}
+
+.custom-dropdown-menu-user-coach {
+    width: 95vw;
+    max-width: 220px;
+}
+
+.btn-custom-orange {
+    background-color: #ffffff;
+    color: #f29224;
+    border: 1px solid #f29224;
+}
+
+.btn-custom-orange:hover {
+    color: black;
+    background-color: #f29224;
+}
+
+.btn-custom-blue {
+    background-color: #004d77;
+    color: #ffffff;
+}
+
+.btn-custom-blue:hover {
+    color: black;
+    background-color:#ffffff;
+    border-color: #004d77;
 }
