@@ -1,0 +1,23 @@
+.bg-fondo-login {
+    background-image: url('/img/fondo/fondo1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 90vh;
+    display: flex;
+}
+
+@media (max-width: 600px) {
+    .bg-fondo-login {
+        min-height: 70vh; 
+    }
+}
+
+.linea {
+    width: auto;
+    height: 3px;
+    background: linear-gradient(to right, #ff8800, #f2dabf);
+    border: none;
+    margin-top: 5px;
+}

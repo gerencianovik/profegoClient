@@ -9,9 +9,9 @@ class Comparar {
 
     comparativo() {
         if (this.contrasenas.value === this.contraseñaRepetir.value) {
-            this.mensajesa.innerHTML = '<p>Contraseña coincide</p>';
+            this.mensajesa.innerHTML = '<p class="text-success">Contraseña coincide</p>';
         } else {
-            this.mensajesa.innerHTML = '<p>Contraseña no coincide</p>';
+            this.mensajesa.innerHTML = '<p class="text-danger">Contraseña no coincide</p>';
         }
     }
 }

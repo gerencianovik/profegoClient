@@ -1,0 +1,25 @@
+.bg-fondo-registro {
+    background-image: url('/img/icons/registro.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+}
+
+.imgRegistro{
+    max-width: 50px !important;
+}
+
+.imgReg{
+    max-width: 30% !important;
+}
+
+.linea {
+    width: auto;
+    height: 3px;
+    background: linear-gradient(to right, #ff8800, #f2dabf);
+    border: none;
+    margin-top: 5px;
+}

@@ -1,92 +1,125 @@
-<link rel="stylesheet" href="/css/login/loginProfe.css">
-<div id="contenedorLogin">
-    <div id="fondo">
-        <img src="/img/fondo/fondo1.png">
-    </div>
-    <div id="datos">
-        <form action="/loginTeachers" method="post">
-            <div id="titulo">
-                <h1>Iniciar sesión</h1>
-                <p style="color: #165851;">¡Hola de nuevo a ProfeGo!</p>
+<link rel="stylesheet" href="/css/login/login.css">
+
+<div class="bg-fondo-login d-flex justify-content-center align-items-center">
+    <div class="card shadow mx-1" style="width: 32rem;">
+        <form class="card-body p-0" action="/loginTeachers" method="post">
+            <div class="text-center mt-2">
+                <h1 style="color: #f39323;">Iniciar sesión</h1>
+                <h4 style="color: #23615b;">¡Hola de nuevo a ProfeGo!</h4>
             </div>
-            <input type="hidden" name="_csrf" value="{{ csrfToken }}">
-            <div id="Cedula">
-                <p>Cedula:</p>
-                <input type="text" name="username" id="cedula" required>
+            <div class="container-sm col-12 col-md-10 mt-4">
+                <div class="mb-3">
+                    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+                    <label for="exampleInputEmail1" class="form-label m-0">
+                        <h5 class="fw-bold" style="color: #23615b;">Cédula</h5>
+                    </label>
+                    <div class="input-group input-group-lg m-0">
+                        <input type="text" class="form-control border-3" style="border-color: #f39325;"
+                            aria-describedby="inputGroup-sizing-lg" name="username" id="cedula" required>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label m-0">
+                        <h5 class="fw-bold" style="color: #23615b;">Contraseña</h5>
+                    </label>
+                    <div class="input-group input-group-lg m-0">
+                        <input type="password" class="form-control border-3" style="border-color: #f39325;"
+                            aria-describedby="inputGroup-sizing-lg" name="password" id="contrasena" required>
+                        <span class="input-group-text p-0 border-start-0 border-3" style="border-color: #f39325;">
+                            <div id="botonVer">
+                                <button type="button" id="ver" class="btn btn-link p-0 m-0">
+                                    <img class="" src="/img/icons/login/ojoCerrado.png" alt="Ojo Cerrado"
+                                        style="width: 40px; height:40px;">
+                                </button>
+                                <button type="button" id="nover" class="btn btn-link p-0 m-0">
+                                    <img class="" src="/img/icons/login/ojoAbierto.png" alt="Ojo Abierto"
+                                        style="width: 40px; height:40px;">
+                                </button>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+                <div class="text-end fw-bold">
+                    <a href="">
+                        <p>¿Olvidaste tu contraseña?</p>
+                    </a>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-lg text-white px-5 py-3 fs-4 fw-bold shadow"
+                        style="background-color: #f39323;">Ingresar</button>
+                    <p class="mt-3 fw-bold" style="color:#23615b;">¿No tienes una cuenta? <a style="color:#f39323;"
+                            href="/RegisterTeachers">Regístrate aquí</a></p>
+                </div>
             </div>
-            <div id="Contraseña">
-                <p>Contraseña:</p>
-                <input type="password" name="password" id="contrasena" required>
-            </div>
-            <div id="botonVer">
-                <button type="button" id="ver"><img src="/img/icons/login/ojoCerrado.png"></button>
-                <button type="button" id="nover"><img src="/img/icons/login/ojoAbierto.png"></button>
-            </div>
-            <div id="olvidarContraseña">
-                <a href="">
-                    <p>¿Olvidaste tu contraseña?</p>
-                </a>
-            </div>
-            <div id="boton">
-                <button type="submit">Ingresar</button>
-            </div>
-            <div id="noCuenta">
-                <p>¿No tienes una cuenta? <a href="/RegisterTeachers">Regístrate aquí</a></p>
-            </div>
+            <div class="rounded-bottom" style="background-color: #004d77; height: 50px;"></div>
+
         </form>
-        <div id="colores">
-            <p></p>
-        </div>
     </div>
 </div>
-<div id="footer">
-    <div id="tarjetaNosotros">
-        <div id="nosotrosFooter">
-            <h1>Nosotros</h1>
-        </div>
-        <div id="datosNosotros">
-            <a href="/somos" style="text-decoration: none;">
-                <p>¿Quiénes Somos?
-            </a>
-            <a href="/somos" style="text-decoration: none;">¿Cómo funciona?</a><br>
-            <br>
-            <a href="/" style="text-decoration: none;">Testimonios</a><br>
-            <br>
-            <a href="/contactos" style="text-decoration: none;">Preguntas frecuentes</a><br>
-            <br>
-            <a href="/contactos" style="text-decoration: none;">Contacto</a></p>
+
+<div>
+    <div class="p-5" style="background-color: #fff9f0;">
+        <div class="row">
+            <div class="col-md-2">
+                <div style="color: #236388;">
+                    <h1 class="mb-0">Nosotros</h1>
+                    <hr class="linea mt-0">
+                </div>
+                <div class="lh-1">
+                    <a href="/somos">
+                        <p>¿Quiénes Somos?
+                    </a>
+                    <a href="/somos">¿Cómo funciona?</a><br>
+                    <br>
+                    <a href="/">Testimonios</a><br>
+                    <br>
+                    <a href="/contactos">Preguntas frecuentes</a><br>
+                    <br>
+                    <a href="/contactos">Contacto</a></p>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div style="color: #236388;">
+                    <h1 class="mb-0">Únete</h1>
+                    <hr class="linea mt-0">
+                </div>
+                <div class="lh-1">
+                    <a href="/RegisterStudents">
+                        <p>Regístrate como estudiante
+                    </a>
+                    <a href="/RegisterTeachers">Sé docente o coach</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div style="color: #236388;">
+                    <h1 class="mb-0">Legal</h1>
+                    <hr class="linea mt-0">
+                </div>
+                <div class="lh-1">
+                    <a href="/policyList">
+                        <p>Términos y condiciones
+                    </a>
+                    <a href="/policyList">Políticas de privacidad</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3 text-center">
+                <div class="d-flex justify-content-center">
+                    <div class="qr-placeholder"></div>
+                    <div class="qr-placeholder"></div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <img src="/img/logo/LogoPrincipal.png" class="img-fluid">
+            </div>
         </div>
     </div>
-    <div id="tarjetaUnete">
-        <div id="nosotrosFooter">
-            <h1>Únete</h1>
+    <div style="background-color: #fbf1e3; color: #236388;" class="p-3">
+        <div class="d-flex justify-content-between align-items-center mx-3">
+            <p class="fs-5 m-0 text-start">Interconexión segura, rápida e ideal entre docentes y estudiantes.</p>
+            <p class="fs-5 m-0 text-end">ProfeGo® EDUCONECTA S.A.S</p>
         </div>
-        <div id="datosNosotros">
-            <a href="/RegisterStudents" style="text-decoration: none;">
-                <p>Regístrate como estudiante
-            </a>
-            <a href="/RegisterTeachers" style="text-decoration: none;">Sé docente o coach</a>
-            </p>
-        </div>
-    </div>
-    <div id="tarjetaLegal">
-        <div id="nosotrosFooter">
-            <h1>Legal</h1>
-        </div>
-        <div id="datosNosotros">
-            <a href="/seguridad" style="text-decoration: none;">
-                <p>Términos y condiciones
-            </a>
-            <a href="/seguridad" style="text-decoration: none;">Políticas de privacidad</a>
-            </p>
-        </div>
-    </div>
-    <div id="logoImagen">
-        <img src="/img/logo/LogoPrincipal.png">
-    </div>
-    <div id="final">
-        <p>Interconexión segura, rápida e ideal entre docentes y estudiantes.</p>
-        <p id="finalFinal">ProfeGo® EDUCONECTA S.A.S</p>
     </div>
 </div>
 <script src="/js/verNoVer.js"></script>
