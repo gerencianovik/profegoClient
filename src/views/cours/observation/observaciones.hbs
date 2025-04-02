@@ -1,5 +1,13 @@
-<link rel="stylesheet" href="">
 <style>
+    .bg-fondo {
+        background-image: url('/img/fondo/Tareas.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+        min-height: 100vh;
+    }
+
     /* Modal */
     .modal {
         display: none;
@@ -52,58 +60,59 @@
         margin: 0 2px;
     }
 </style>
-<div id="contenedor">
-    {{#each listaCurso}}
-    <form action="/observacionValoracion/curso/{{idCours}}" method="post">
-        {{/each}}
-        <div id="titulo">
-            <h1>Observaciones</h1>
-        </div>
-        <div id="estudiantes">
-            <div class="row">
-                {{#each estudiantes}}
-                <div id="tarjeta" class="col">
-                    <div id="informacionTarjeta">
-                        <div id="idEstudiante">
-                            <p>N°{{idEstudent}}</p>
-                            <input type="text" name="idEstudent" id="idEstudent" value="{{idEstudent}}">
-                        </div>
-                        <div id="foto">
-                            <img src="/img/usuario/{{photoEstudent}}">
-                        </div>
-                        <div id="nombre">
-                            <p>{{completeNameEstudent}}</p>
-                        </div>
-                        <div id="valorar">
-                            <button type="button" class="btn-valoracion" data-id="{{idEstudent}}"
-                                data-nombre="{{completeNameEstudent}}">Valoracion</button>
+<div class="bg-fondo pt-3">
+    <div class="container pb-3">
+        {{#each listaCurso}}
+        <form action="/observacionValoracion/curso/{{idCours}}" method="post">
+            {{/each}}
+            <h1 class="text-center fw-bold mb-3" style="color: #f39325;">Observaciones<input type="text" name="idTask"
+                    id="numero"></h1>
+            <div id="estudiantes">
+                <div class="row">
+                    {{#each estudiantes}}
+                    <div id="tarjeta" class="col">
+                        <div id="informacionTarjeta">
+                            <div id="idEstudiante">
+                                <p>N°{{idEstudent}}</p>
+                                <input type="text" name="idEstudent" id="idEstudent" value="{{idEstudent}}">
+                            </div>
+                            <div id="foto">
+                                <img src="/img/usuario/{{photoEstudent}}">
+                            </div>
+                            <div id="nombre">
+                                <p>{{completeNameEstudent}}</p>
+                            </div>
+                            <div id="valorar">
+                                <button type="button" class="btn-valoracion" data-id="{{idEstudent}}"
+                                    data-nombre="{{completeNameEstudent}}">Valoracion</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                {{/each}}
-            </div>
-        </div>
-
-        <!-- Modal -->
-        <div id="modalDatosValorados" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2>Valorar a <span id="nombreEstudiante"></span></h2>
-                <div id="observaciones">
-                    <textarea name="observations" id="observations"></textarea>
-                </div>
-                <div id="valoracion">
-                    <p>Puntaje de valoración:</p>
-                    <input type="text" name="valorObservacion" id="valorObservacion">
-                    <div id="estrellas"></div> <!-- Contenedor para las estrellas -->
-                </div>
-
-                <div id="boton">
-                    <button type="submit">Valorar</button>
+                    {{/each}}
                 </div>
             </div>
-        </div>
-    </form>
+
+            <!-- Modal -->
+            <div id="modalDatosValorados" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Valorar a <span id="nombreEstudiante"></span></h2>
+                    <div id="observaciones">
+                        <textarea name="observations" id="observations"></textarea>
+                    </div>
+                    <div id="valoracion">
+                        <p>Puntaje de valoración:</p>
+                        <input type="text" name="valorObservacion" id="valorObservacion">
+                        <div id="estrellas"></div> <!-- Contenedor para las estrellas -->
+                    </div>
+
+                    <div id="boton">
+                        <button type="submit">Valorar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
 <script>
     document.addEventListener('DOMContentLoaded', function () {

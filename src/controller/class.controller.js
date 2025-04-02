@@ -100,7 +100,7 @@ classes.mandar = async (req, res) => {
             costClases,
             tipoClases,
             createClases: new Date().toLocaleString(),
-            stateclasses: 'Activar',
+            stateClases: 'Activar',
             pageIdPage: id,
             detailTeacherPageIdDetailTeacherPage: idTeacher,
             coursClassTypeIdCoursClassType: ids
@@ -129,7 +129,7 @@ classes.mandar = async (req, res) => {
         }
 
         req.flash('success', 'Exito al guardar');
-        res.redirect('/clases/list/' + id);
+        res.redirect('/clases/list/' + ids);
     } catch (error) {
         // Manejo de errores mejorado
         console.error(error);
@@ -183,8 +183,7 @@ classes.actualizar = async (req, res) => {
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
-        const id = req.user.idUser;
-        const { idClases, nameClases, ubicacion, descriptionClases, stateclasses, dateClasesInit, dateClasesFin, neeClass, hourClases, shareClases, costClases } = req.body;
+        const { idClases, nameClases, ubicacion, descriptionClases, stateClases, dateClasesInit, dateClasesFin, neeClass, hourClases, shareClases, costClases } = req.body;
         const newPage = {
             idClases,
             nameClases,
@@ -197,7 +196,7 @@ classes.actualizar = async (req, res) => {
             shareClases,
             costClases,
             updateClases: new Date().toLocaleString(),
-            stateclasses
+            stateClases
         };
         await orm.clases.findOne({ where: { idClases: ids } })
             .then((result) => {
@@ -221,7 +220,7 @@ classes.actualizar = async (req, res) => {
         }
 
         req.flash('success', 'Exito al guardar');
-        res.redirect('/clases/list/' + id);
+        res.redirect('/clases/list/' + req.user.idTeacher);
     } catch (error) {
         console.error(error);
         req.flash('message', 'Error al Actualizar');
@@ -241,14 +240,37 @@ classes.desabilitar = async (req, res) => {
             updateClases: new Date().toLocaleString(),
         }
         await orm.clases.findOne({ where: { idClases: ids } })
-            .then((result) => {
-                result.update(newSpeciality)
-                req.flash('success', 'Se Desabilito la Clase')
-                res.redirect('/clases/list/' + ids);
+            .then(async (result) => {
+                await result.update(newSpeciality);
+                res.redirect('/clases/list/' + req.user.idTeacher);
+                req.flash('success', 'Se Desabilitó la Clase');
             })
     } catch (error) {
         req.flash('message', 'Error al Desabilitar la Clase')
-        res.redirect('/clases/update/' + ids);
+        res.redirect('/clases/list/' + req.user.idTeacher);
+    }
+}
+
+classes.habilitar = async (req, res) => {
+    const ids = req.params.id;
+    try {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+        const newSpeciality = {
+            stateClases: 'Activar',
+            updateClases: new Date().toLocaleString(),
+        }
+        await orm.clases.findOne({ where: { idClases: ids } })
+            .then(async (result) => {
+                await result.update(newSpeciality);
+                res.redirect('/clases/list/' + req.user.idTeacher);
+                req.flash('success', 'Se Habilitó la Clase');
+            })
+    } catch (error) {
+        req.flash('message', 'Error al Habilitar la Clase')
+        res.redirect('/clases/list/' + req.user.idTeacher);
     }
 }
 

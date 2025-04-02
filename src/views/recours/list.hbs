@@ -1,87 +1,155 @@
-<link rel="stylesheet" href="/css/recours/list.css">
-<div id="contenedor">
-    <div id="fondo">
-        <img src="/img/fondo/Tareas.png">
-    </div>
-    <div id="titulo">
-        <h1>Lista de Recursos</h1>
-    </div>
-    <div id="Datos">
-        <div class="row">
-            {{#each lista}}
-            <div id="tarjeta" class="col">
-                <div id="nombre">
-                    <p>{{nameRecours}}</p>
-                </div>
-                <div id="descripcion">
-                    <p>{{descriptionRecourse}}</p>
-                </div>
-                <div id="cantidad">
-                    <p>{{quantyRecours}}</p>
-                </div>
-                <div id="valor">
-                    <p>{{valueRecours}}</p>
-                </div>
-                <div id="estado">
-                    <p>{{stateRecours}}</p>
-                </div>
-                <div id="actualizar">
-                    <a href="/recours/updateCurso/{{idRecours}}"><button type="button">Actualizar</button></a>
-                </div>
-                <div id="desavilitar">
-                    <a href="/recours/deleteCurso/{{idRecours}}"><button type="button">Desabilitar</button></a>
-                </div>
+<link rel="stylesheet" href="/css/recours/add.css">
+{{#each listaClase}}
+<form action="/recours/clases/{{idClases}}" method="post">
+    <div class="bg-fondo pt-3">
+        <div class="col mb-3">
+            <div class="text-center">
+                <p class="fw-bold fs-1" style="color: #f39325;">Lista de Recursos</p>
             </div>
-            {{/each}}
-        </div>
-    </div>
-    {{#each listaClase}}
-    <form action="/recours/clases/{{idClases}}" method="post">
-        <div id="mas">
-            <a href="/recours/clase/{{idClases}}">+</a>
-        </div>
-        {{/each}}
-        <div id="contenedor">
-            <div id="titulo">
-                <h1>Lista de Recursos</h1>
+            <div class="col-12 col-md-2 ms-auto">
+                <a href="/recours/clase/{{idClases}}">
+                    <button type="button" class="rounded-4 fs-4 ms-2 btn btn-success d-flex align-items-center">
+                        Añadir
+                        <img class="img-fluid ms-2" style="width: 50px;" src="/img/icons/mas.png">
+                    </button>
+                </a>
             </div>
-            <div id="Datos">
-                <div class="row">
-                    {{#each lista}}
-                    <div id="tarjeta" class="col">
-                        <div id="nombre">
-                            <p>{{nameRecours}}</p>
-                        </div>
-                        <div id="descripcion">
-                            <p>{{descriptionRecourse}}</p>
-                        </div>
-                        <div id="cantidad">
-                            <p>{{quantyRecours}}</p>
-                        </div>
-                        <div id="valor">
-                            <p>{{valueRecours}}</p>
-                        </div>
-                        <div id="estado">
-                            <p>{{stateRecours}}</p>
-                        </div>
-                        <div id="actualizar">
-                            <a href="/recours/updateClase/{{idRecours}}"><button type="button">Actualizar</button></a>
-                        </div>
-                        <div id="desavilitar">
-                            <a href="/recours/deleteClases/{{idRecours}}"><button type="button">Desabilitar</button></a>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row row-cols-1 row-cols-md-4 g-2 pb-2">
+                {{#each ../lista}}
+                <div class="col-12 col-md-3 p-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12 text-center fs-4">
+                                    <p>{{nameRecours}}</p>
+                                </div>
+                                <div class="col-12">
+                                    <p>{{descriptionRecourse}}</p>
+                                </div>
+                                <div class="col-6">
+                                    <p class="text-break">Cantidad: {{quantyRecours}}</p>
+                                </div>
+                                <div class="col-6">
+                                    <p class="text-break">Valor: {{valueRecours}}</p>
+                                </div>
+                                <div class="col-12 mb-4">
+                                    <div class="text-center">
+                                        <input id="estado" type="text" value="{{stateRecours}}" hidden>
+                                        <span id="estadoActivo" class="bg-success bg-opacity-75 text-white p-2 fw-bold"
+                                            style="display: none;">Activo</span>
+                                        <span id="estadoDesactivo"
+                                            class="bg-danger bg-opacity-75 text-white p-2 fw-bold"
+                                            style="display: none;">Desactivo</span>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="row justify-content-evenly">
+                                        <div class="col-12 col-sm-6 mb-2">
+                                            <a href="/recours/updateClase/{{idRecours}}">
+                                                <button class="btn btn-primary w-100" type="button">Actualizar</button>
+                                            </a>
+                                        </div>
+                                        <div class="col-12 col-sm-6 deshabilitarButton" style="display: none;">
+                                            <a href="/recours/deleteClase/{{idRecours}}/{{ClaseIdClases}}">
+                                                <button class="btn btn-danger w-100" type="button">Deshabilitar</button>
+                                            </a>
+                                        </div>
+                                        <div class="col-12 col-sm-6 habilitarButton" style="display: none;">
+                                            <a href="/recours/enableClase/{{idRecours}}/{{ClaseIdClases}}">
+                                                <button class="btn btn-success w-100" type="button">Habilitar</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    {{/each}}
                 </div>
+                {{/each}}
             </div>
         </div>
-    </form>
-    {{#each listaCurso}}
-    <form action="/recours/cursos/{{idCours}}" method="post">
-        <div id="mas">
-            <a href="/recours/curso/{{idCours}}">Mas Recursos</a>
-        </div>
-        {{/each}}
-    </form>
+    </div>
+</form>
+{{/each}}
 
-</div>
+{{#each listaCurso}}
+<form action="/recours/cursos/{{idCours}}" method="post">
+    <div class="bg-fondo pt-3">
+        <div class="col mb-3">
+            <div class="text-center">
+                <p class="fw-bold fs-1" style="color: #f39325;">Lista de Recursos</p>
+            </div>
+            <div class="col-12 col-md-2 ms-auto">
+                <a href="/recours/curso/{{idCours}}">
+
+                    <button type="button" class="rounded-4 fs-4 ms-2 btn btn-success d-flex align-items-center">
+                        Añadir
+                        <img class="img-fluid ms-2" style="width: 50px;" src="/img/icons/mas.png">
+                    </button>
+                </a>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row row-cols-1 row-cols-md-4 g-2 pb-2">
+                {{#each ../lista}}
+                <div class="col-12 col-md-3 p-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12 text-center fs-4">
+                                    <p>{{nameRecours}}</p>
+                                </div>
+                                <div class="col-12">
+                                    <p>{{descriptionRecourse}}</p>
+                                </div>
+                                <div class="col-6">
+                                    <p class="text-break">Cantidad: {{quantyRecours}}</p>
+                                </div>
+                                <div class="col-6">
+                                    <p class="text-break">Valor: {{valueRecours}}</p>
+                                </div>
+                                <div class="col-12 mb-4">
+                                    <div class="text-center">
+                                        <input id="estado" type="text" value="{{stateRecours}}" hidden>
+                                        <span id="estadoActivo" class="bg-success bg-opacity-75 text-white p-2 fw-bold"
+                                            style="display: none;">Activo</span>
+                                        <span id="estadoDesactivo"
+                                            class="bg-danger bg-opacity-75 text-white p-2 fw-bold"
+                                            style="display: none;">Desactivo</span>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="row justify-content-evenly">
+                                        <div class="col-12 col-sm-6 mb-2">
+                                            <a href="/recours/updateCurso/{{idRecours}}">
+                                                <button class="btn btn-primary w-100" type="button">Actualizar</button>
+                                            </a>
+                                        </div>
+                                        <div class="col-12 col-sm-6 deshabilitarButton" style="display: none;">
+                                            <a href="/recours/deleteCurso/{{idRecours}}/{{courIdCours}}">
+                                                <button class="btn btn-danger w-100" type="button">Deshabilitar</button>
+                                            </a>
+                                        </div>
+                                        <div class="col-12 col-sm-6 habilitarButton" style="display: none;">
+                                            <a href="/recours/enableCurso/{{idRecours}}/{{courIdCours}}">
+                                                <button class="btn btn-success w-100" type="button">Habilitar</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</form>
+{{/each}}
+
+<script src="/js/activo-desactivo-lista.js"></script>

@@ -1,25 +1,17 @@
 <link rel="stylesheet" href="/css/mensajes/mensajes.css">
 {{#if message}}
-<div id="contenedorMensaje" class="contenedorMensaje">
-    <div id="mensaje">
-        <p>{{message}}</p>
-        <div id="cerrar">
-            <!-- Asegúrate de que el ID aquí coincida con el que buscas en tu JS -->
-            <button type="button" class="botonCerrar">x</button>
-        </div>
-    </div>
+<div class="alert alert-danger alert-dismissible fade show position-fixed top-50 start-50 translate-middle-x translate-middle-y w-auto z-index-1050"
+    role="alert">
+    <strong>{{message}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 {{/if}}
 
 {{#if success}}
-<div id="contenedorMensaje" class="contenedorMensaje">
-    <div id="mensaje">
-        <p>{{success}}</p>
-        <div id="cerrar">
-            <!-- Asegúrate de que el ID aquí coincida con el que buscas en tu JS -->
-            <button type="button" class="botonCerrar">x</button>
-        </div>
-    </div>
+<div class="alert alert-success alert-dismissible fade show position-fixed top-50 start-50 translate-middle-x translate-middle-y w-auto z-index-1050"
+    role="alert">
+    <strong>{{success}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 {{/if}}
 

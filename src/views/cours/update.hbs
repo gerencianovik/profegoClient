@@ -1,86 +1,163 @@
-<link rel="stylesheet" href="/css/cursos/add.css">
-{{#each lista}}
-<form action="/cours/update/{{idCours}}" method="post" enctype="multipart/form-data">
-    <div id="contenedor">
-        <div id="fondo">
-            <img src="/img/icons/fondoLista.png">
-        </div>
-        <div id="tiutlo">
-            <p>Actualizar Curso <input type="text" name="idCours" id="idCours" value="{{idCours}}"></p>
-        </div>
-        <input type="hidden" name="_csrf" value="{{ ../csrfToken }}">
-        <div id="central">
-            <div id="imagens">
-                <div id="cambioImagen">
-                    <img src="/img/cours/{{photoCours}}" id="imagenPrevisualizacion" />
-                </div>
-                <input type="file" name="photoCours" id="seleccionArchivos" accept="image/*" />
-                <button type="button" id="botonImagen"><img src="/img/icons/Subir.png"></button>
-            </div>
-            <div id="nombre">
-                <p>Nombre del Curso:</p>
-                <input type="text" name="nameCours" id="nameCours" required value="{{nameCours}}">
-            </div>
-            <div id="direccion">
-                <div id="map"></div>
-                <input type="text" name="ubicacion" id="ubicacion" value="{{ubicacionCurso}}">
-            </div>
-        </div>
-        <div id="videosS">
-            <div id="cambioVideo">
-                <video src="/video/cours/{{videoCours}}" controls></video>
-            </div>
-            <input type="file" name="videoCours" id="idVideo" accept="image/*" />
-        </div>
-        <div id="datosGenerales">
-            <div id="descripcion">
-                <p>Descripción del Curso:</p>
-                <textarea name="descriptionCours" id="descriptionCours" required>{{descriptionCours}}</textarea>
-            </div>
-            <div id="fechaInicio">
-                <p>Fecha inicio:</p>
-                <input type="text" name="dateCoursInit" id="dateCours" value="{{dateCoursInit}}">
-            </div>
-            <div id="fechaFin">
-                <p>Fecha Fin:</p>
-                <input type="text" name="dateCoursFin" id="dateCours" required value="{{dateCoursFin}}">
-            </div>
-            <div id="costo">
-                <p>Costo:</p>
-                <input type="text" name="costCours" id="costCours" required value="{{costCours}}">
-            </div>
-            <div id="cupos">
-                <p>Cupos:</p>
-                <input type="text" name="shareCours" id="shareCours" value="{{shareCours}}">
-            </div>
-            <div id="Hora">
-                <p>Tiempo del Curso:</p>
-                <input type="text" name="hourCours" id="hourCours" value="{{hourCours}}">
-            </div>
-            <div id="estado">
-                <p>Estado:</p>
+<link rel="stylesheet" href="/css/clases/add.css">
 
-                <div id="desActivar">
-                    <div id="Activar">
+<div class="bg-curso">
+    <div class="container-fluid w-100 pt-2">
+        {{#each lista}}
+        <form action="/cours/update/{{idCours}}" method="post" enctype="multipart/form-data">
+            <div class="col fs-3">
+                <input type="hidden" name="_csrf" value="{{ ../csrfToken }}">
+                <p class="ms-3 mt-2 fw-bold text-white">Actualizar Curso
+                    <span name="idCours" id="idCours">{{idCours}}</span>
+                </p>
+            </div>
 
-                        <input type="text" name="stateCours" id="idestado" readonly value="{{stateCours}}">
-                        <button type="button" id="activarBtn">Activar</button>
+            <div class="row mb-3" style="background-color: #147582;">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12 col-md-3 d-flex justify-content-center align-items-center">
+                            <button class="btn btn-light fs-4 p-0 m-4" type="button" id="botonImagen">
+                                <img class="img-fluid" {{#if photoCours}} src="/img/clase/{{photoCours}}" {{else}}
+                                    src="/img/icons/noImagen.png" {{/if}} id="imagenPrevisualizacion" />
+                                Cambiar Imagen
+                            </button>
+                            <input type="file" name="photoCours" id="seleccionArchivos" accept="image/*" hidden />
+                        </div>
+
+                        <div class="col-12 col-md-5 py-3">
+                            <label class="form-label text-white fs-4">Nombre del Curso</label>
+                            <input class="form-control mb-3 w-100" type="text" name="nameCours" id="nameCours" required
+                                value="{{nameCours}}">
+
+                            <div class="mb-3">
+                                <div style="width: 100%; height: 220px;" id="map"></div>
+                                <input id="pac-input" class="controls" type="text" placeholder="Buscar" />
+                                <input type="text" name="ubicacion" id="ubicacion" value="{{ubicacionCurso}}">
+                            </div>
+                            
+                            <p class="text-white fs-5 m-0"><input type="checkbox" name="neeCours"
+                                    id="adactacion" value="on" {{#if neeCours}}checked{{/if}}> Adaptado para NEE</p>
+                        </div>
+
+                        <div class="col-12 col-md-4 my-4">
+                            <div id="cambioVideo" class="position-relative" style="max-width: 100%; max-height: auto;">
+                                <video id="videoPreview" class="w-100" style="height: 320px; object-fit: contain;" {{#if
+                                    videoCours}} src="/video/clases/{{videoCours}}" {{else}}
+                                    src="/video/clase/noVideo.mp4" {{/if}} controls></video>
+                            </div>
+                            <div class="px-3">
+                                <input type="file" name="videoClases" id="seleccionvideo" class="form-control"
+                                    accept="video/*" />
+                            </div>
+                        </div>
                     </div>
-                    <button type="button" id="desactivarBtn">Deshabilitar</button>
                 </div>
             </div>
-        </div>
-        {{/each}}
-        <div id="boton">
-            <button type="submit">Actualizar</button>
-        </div>
-    </div>
-</form>
 
-<script src="/js/preview.js"></script>
+            <div class="container-fluid mb-5">
+                <div class="col-12 col-md-7">
+                    <div class="card">
+                        <div class="card-body p-4">
+                            <div class="row">
+                                <div class="col-12 col-md-6 mb-5">
+                                    <label class="form-label m-0 w-100">
+                                        <h5 class="text-center mb-0" style="color: #23615b;">Descripción del Curso
+                                        </h5>
+                                    </label>
+                                    <textarea class="form-control border-1 shadow" rows="5" name="descriptionCours"
+                                        id="descriptionCours" required>{{descriptionCours}}</textarea>
+                                </div>
+                                <div class="col-12 col-md-6 mb-5">
+                                    <label class="form-label m-0 w-100">
+                                        <h5 class="text-center mb-0" style="color: #23615b;">Costo</h5>
+                                    </label>
+                                    <div class="input-group input-group-lg m-0">
+                                        <input type="number" class="form-control border-1 shadow"
+                                            aria-describedby="inputGroup-sizing-lg" name="costCours" id="costCours"
+                                            required value="{{costCours}}">
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-6 mb-5">
+                                    <label class="form-label m-0 w-100">
+                                        <h5 class="text-center mb-0" style="color: #23615b;">Cupos</h5>
+                                    </label>
+                                    <div class="input-group input-group-lg m-0">
+                                        <input type="number" class="form-control border-1 shadow"
+                                            aria-describedby="inputGroup-sizing-lg" name="shareCours" id="shareCours"
+                                            value="{{shareCours}}" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-6 mb-5">
+                                    <label class="form-label m-0 w-100">
+                                        <h5 class="text-center mb-0" style="color: #23615b;">Tiempo del Curso</h5>
+                                    </label>
+                                    <div class="input-group input-group-lg m-0">
+                                        <input type="time" class="form-control border-1 shadow"
+                                            aria-describedby="inputGroup-sizing-lg" name="hourCours" id="hourCours"
+                                            value="{{hourCours}}" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-6 mb-5">
+                                    <label class="form-label m-0 w-100">
+                                        <h5 class="text-center mb-0" style="color: #23615b;">Fecha inicio</h5>
+                                    </label>
+                                    <div class="input-group input-group-lg m-0">
+                                        <input type="date" class="form-control border-1 shadow"
+                                            aria-describedby="inputGroup-sizing-lg" name="dateCoursInit" id="dateCours"
+                                            required value="{{dateCoursInit}}">
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-6 mb-5">
+                                    <label class="form-label m-0 w-100">
+                                        <h5 class="text-center mb-0" style="color: #23615b;">Fecha fin</h5>
+                                    </label>
+                                    <div class="input-group input-group-lg m-0">
+                                        <input type="date" class="form-control border-1 shadow"
+                                            aria-describedby="inputGroup-sizing-lg" name="dateCoursFin" id="dateCours"
+                                            required value="{{dateCoursFin}}">
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-6 mb-5">
+                                    <label class="form-label m-0 w-100">Estado</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control border-1 shadow" name="stateCours"
+                                            id="idestado" value="{{stateCours}}" readonly>
+
+                                        <span class="input-group-text p-0 shadow">
+                                            <button id="activarBtn" style="display: none;" type="button"
+                                                class="btn btn-primary fw-bold">
+                                                Activar</button>
+                                            <button id="desactivarBtn" style="display: none;" type="button"
+                                                class="btn btn-secondary fw-bold">
+                                                Desactivar</button>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                {{/each}}
+                                <div class="text-end">
+                                    <button style="background-color: #0b4e71;" class="btn btn-lg text-white"
+                                        type="submit">Actualizar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
 <script src="/js/estados.js"></script>
+<script src="/js/preview.js"></script>
+<script src="/js/preview-video.js"></script>
+<script src="/js/botonImagen.js"></script>
 <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Q9PaOYlXpeqtj_0tHE19Zcoim25iSFg&callback=initAutocomplete&libraries=places&v=weekly"
     defer></script>
-<script src="/js/mapaDetalle.js"></script>
-<script src="/js/botonImagen.js"></script>
+
+<script src="/js/mapa.js"></script>

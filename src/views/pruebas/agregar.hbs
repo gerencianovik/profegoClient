@@ -1,47 +1,66 @@
-<link rel="stylesheet" href="/css/pruebas/pruebasAgregar.css">
-<div class="container">
-    <div id="titulo" class="titulo">
-        <h1>Agregar Pruebas</h1>
-    </div>
-    {{#each listaCurso}}
-    <form action="/pruebas/curso/{{idCours}}" method="post" class="tarjeta tarjetaContenedora">
-        <div class="alinearCentro anchoForm">
+<link rel="stylesheet" href="/css/recours/add.css">
+
+{{#each listaCurso}}
+<form action="/pruebas/curso/{{idCours}}" method="post">
+    <div class="bg-fondo pt-3">
+        <div class="container pb-3">
+            <h1 class="text-center fw-bold mb-3" style="color: #f39325;">Agregar Prueba<input type="text" name="idTask"
+                    id="numero"></h1>
             {{/each}}
             <input type="hidden" name="_csrf" value="{{ csrfToken }}">
-            <div class="flex alinear">
-                <span>
-                    <div id="titulo">{{#each Maximo}}
-                        <p>Agregar Evaluación
-                        </p>
-                        <input type="text" name="idEvaluaciones" id="idEvaluaciones" value="{{maximo}}">
-                        {{/each}}
+            <div class="card text-start fs-5 shadow border-0 p-0 rounded-5" style="overflow: hidden;">
+                <div class="row g-0">
+                    <div class="col-12 col-md-10">
+                        <div class="card-body">
+                            <div class="col-10 col-md-10 mx-auto my-5">
+                                <div class="row g-5">
+                                    <div class="col-12 col-md-6">
+                                        <div class="mb-3">
+                                            {{#each Maximo}}
+                                            <label class="form-label">Agregar Evaluación</label>
+                                            <input type="text" class="form-control" name="idEvaluaciones"
+                                                id="idEvaluaciones" value="{{maximo}}">
+                                            {{/each}}
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Nombre de la evaluación</label>
+                                            <textarea rows="3" class="form-control" name="nameAssessment"
+                                                id="nameAssessment" required></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Fecha de evaluación</label>
+                                            <input class="form-control" type="date" name="dateAssessment"
+                                                id="dateAssessment" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Tiempo de evaluación</label>
+                                            <input class="form-control" type="text" name="timeAssessment"
+                                                id="timeAssessment" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Descripción de la evaluación</label>
+                                            <textarea class="form-control" rows="3" name="descriptionAssessment"
+                                                id="descriptionAssessment" required></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Calificación</label>
+                                            <input class="form-control" type="text" name="qualificationAssessment"
+                                                id="qualification" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div id="nombre">
-                        <p>Nombre de la evaluación:</p>
-                        <textarea name="nameAssessment" id="nameAssessment" required></textarea>
+                    <div class="col-12 col-md-2 bg-success d-flex justify-content-center align-items-center text-white">
+                        <button class="btn btn-success w-100 h-100 fs-3 px-0 pt-3 pb-2" type="submit">
+                            Guardar
+                        </button>
                     </div>
-                    <div id="fecha">
-                        <p>Fecha de evaluación:</p>
-                        <input type="date" name="dateAssessment" id="dateAssessment" required>
-                    </div>
-                </span>
-                <span>
-                    <div id="tiempo">
-                        <p>Tiempo de evaluación:</p>
-                        <input type="time" name="timeAssessment" id="timeAssessment" required>
-                    </div>
-                    <div id="descripcion">
-                        <p>Descripción de la Evaluación:</p>
-                        <textarea name="descriptionAssessment" id="descriptionAssessment" required></textarea>
-                    </div>
-                    <div id="calificacion">
-                        <p>Calificación:</p>
-                        <input type="text" name="qualification" id="qualification" required>
-                    </div>
-                </span>
+                </div>
             </div>
-
         </div>
-        <button type="submit">Guardar</button>
-    </form>
-</div>
+    </div>
+</form>

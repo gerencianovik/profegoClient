@@ -89,8 +89,6 @@ tareasCtl.mandarCurso = async (req, res) => {
             return res.status(400).json({ errors: errors.array() });
         }
 
-        const id = req.user.idUser;
-
         const { idTask, nameTask, descriptionTask, fechaEntrega, idMultimediaTask, linkMultimediaTask, otherMultimediaTask } = req.body;
 
         const newMultimedia = {
@@ -130,7 +128,7 @@ tareasCtl.mandarCurso = async (req, res) => {
         }
 
         req.flash('success', 'Éxito al guardar');
-        res.redirect('/cours/detailList/' + id);
+        res.redirect('/cours/detailList/' + ids);
     } catch (error) {
         console.error(error);
         req.flash('message', 'Error al guardar');
@@ -187,7 +185,7 @@ tareasCtl.mandarClase = async (req, res) => {
         }
 
         req.flash('success', 'Éxito al guardar');
-        res.redirect('/clase/list/' + id);
+        res.redirect('/clase/list/' + ids);
     } catch (error) {
         console.error(error);
         req.flash('message', 'Error al guardar');

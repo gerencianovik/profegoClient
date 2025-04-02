@@ -1,44 +1,62 @@
-<link rel="stylesheet" href="/css/recours/update.css">
+<link rel="stylesheet" href="/css/recours/add.css">
 {{#each listaCurso}}
 <form action="/recours/updateCurso/{{idRecours}}" method="post">
-    <div id="contenedor">
-        <div id="fondo">
-            <img src="/img/fondos/Tareas.png" alt="Fondo">
-        </div>
-        <div id="titulo">
-            <p>Actualizar Recurso N° <input type="text" name="idRecours" id="numero" required value="{{idRecours}}"></p>
-        </div>
-        <input type="hidden" name="_csrf" value="{{ ../csrfToken }}">
-        <div id="datos">
-            <div id="nombre">
-                <p>Nombre del Recurso:</p>
-                <input type="text" name="nameRecours" id="nameRecours" required value="{{nameRecours}}">
-            </div>
-            <div id="descripcion">
-                <p>Descripcion del Recurso:</p>
-                <textarea type="text" name="descriptionRecourse" id="descriptionRecourse"
-                    required>{{descriptionRecourse}}</textarea>
-            </div>
-            <div id="cantidad">
-                <p>Cantidad del Recurso:</p>
-                <input type="text" name="quantyRecours" id="quantyRecours" required value="{{quantyRecours}}">
-            </div>
-            <div id="valor">
-                <p>Precio del Recurso</p>
-                <input type="text" name="valueRecours" id="valueRecours" required value="{{valueRecours}}">
-            </div>
-            <div id="estado">
-                <p>Estado:</p>
-                <div id="Activar">
-                    <input type="text" name="stateRecours" id="idestado" readonly value="{{stateRecours}}">
-                    <button type="button" id="activarBtn">Activar</button>
+    <div class="bg-fondo pt-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 mx-auto mb-2">
+                    <div class="card text-white text-center shadow"
+                        style="background: linear-gradient(to bottom, #014f78, #167283);">
+                        <div class="card-body">
+                            <h1 class="card-title mb-3">Actualizar Recurso N° <input type="text" name="idMaterial"
+                                    id="numero" required value="{{idRecours}}"></h1>
+                            <input type="hidden" name="_csrf" value="{{ ../csrfToken }}">
+                            <input type="hidden" name="courIdCours" value="{{courIdCours}}">
+
+                            <div class="mb-4">
+                                <label class="form-label fs-5 m-0">Nombre del Recurso</label>
+                                <input type="text" class="form-control border-warning border-2" name="nameRecours"
+                                    id="nameRecours" required value="{{nameRecours}}">
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label fs-5 m-0">Descripcion del Recurso</label>
+                                <textarea rows="3" type="text" class="form-control border-warning border-2"
+                                    name="descriptionRecourse" id="descriptionRecourse"
+                                    required>{{descriptionRecourse}}</textarea>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label fs-5 m-0">Cantidad del Recurso</label>
+                                <input type="text" class="form-control border-warning border-2" name="quantyRecours"
+                                    id="quantyRecours" required value="{{quantyRecours}}">
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label fs-5 m-0">Precio del Recurso</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control border-warning border-2" name="valueRecours"
+                                        id="valueRecours" required value="{{valueRecours}}">
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label fs-5 m-0">Estado</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control border-warning border-2" name="stateRecours"
+                                        id="idestado" value="{{stateRecours}}" readonly>
+
+                                    <span class="input-group-text p-0">
+                                        <button id="activarBtn" style="display: none;" type="button"
+                                            class="btn fw-bold">
+                                            Activar</button>
+                                        <button id="desactivarBtn" style="display: none;" type="button"
+                                            class="btn fw-bold">
+                                            Desactivar</button>
+                                    </span>
+                                </div>
+                            </div>
+                            <button class="py-1 btn bg-info border-5" type="submit"><span
+                                    class="px-4 fw-bold">Actualizar</span></button>
+                        </div>
+                    </div>
                 </div>
-                <div id="desActivar">
-                    <button type="button" id="desactivarBtn">Desabilitar</button>
-                </div>
-            </div>
-            <div id="boton">
-                <button type="submit">Actualizar</button>
             </div>
         </div>
     </div>
@@ -47,44 +65,61 @@
 
 {{#each listaClase}}
 <form action="/recours/updateClase/{{idRecours}}" method="post">
-    <div id="contenedor">
-        <div id="fondo">
-            <img src="/img/fondo/Tareas.png" alt="Fondo">
-        </div>
-        <div id="titulo">
-            <p>Actualizar Recurso N° <input type="text" name="idRecours" id="numero" required value="{{idRecours}}"></p>
-        </div>
-        <input type="hidden" name="_csrf" value="{{ ../csrfToken }}">
-        <div id="datos">
-            <div id="nombre">
-                <p>Nombre del Recurso:</p>
-                <input type="text" name="nameRecours" id="nameRecours" required value="{{nameRecours}}">
-            </div>
-            <div id="descripcion">
-                <p>Descripcion del Recurso:</p>
-                <textarea type="text" name="descriptionRecourse" id="descriptionRecourse"
-                    required>{{descriptionRecourse}}</textarea>
-            </div>
-            <div id="cantidad">
-                <p>Cantidad del Recurso:</p>
-                <input type="text" name="quantyRecours" id="quantyRecours" required value="{{quantyRecours}}">
-            </div>
-            <div id="valor">
-                <p>Precio del Recurso</p>
-                <input type="text" name="valueRecours" id="valueRecours" required value="{{valueRecours}}">
-            </div>
-            <div id="estado">
-                <p>Estado:</p>
-                <div id="Activar">
-                    <input type="text" name="stateRecours" id="idestado" readonly value="{{stateRecours}}">
-                    <button type="button" id="activarBtn">Activar</button>
+    <div class="bg-fondo pt-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 mx-auto mb-2">
+                    <div class="card text-white text-center shadow"
+                        style="background: linear-gradient(to bottom, #014f78, #167283);">
+                        <div class="card-body">
+                            <h5 class="card-title fs-3 mb-3">Actualizar Recurso N° <input type="text" name="idMaterial"
+                                    id="numero" required value="{{idRecours}}"></h5>
+                            <input type="hidden" name="_csrf" value="{{ ../csrfToken }}">
+                            <input type="hidden" name="ClaseIdClases" value="{{ClaseIdClases}}">
+                            <div class="mb-4">
+                                <label class="form-label fs-5 m-0">Nombre del Recurso</label>
+                                <input type="text" class="form-control border-warning border-2" name="nameRecours"
+                                    id="nameRecours" required value="{{nameRecours}}">
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label fs-5 m-0">Descripcion del Recurso</label>
+                                <textarea rows="3" type="text" class="form-control border-warning border-2"
+                                    name="descriptionRecourse" id="descriptionRecourse"
+                                    required>{{descriptionRecourse}}</textarea>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label fs-5 m-0">Cantidad del Recurso</label>
+                                <input type="text" class="form-control border-warning border-2" name="quantyRecours"
+                                    id="quantyRecours" required value="{{quantyRecours}}">
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label fs-5 m-0">Precio del Recurso</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control border-warning border-2" name="valueRecours"
+                                        id="valueRecours" required value="{{valueRecours}}">
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label fs-5 m-0">Estado</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control border-warning border-2" name="stateRecours"
+                                        id="idestado" value="{{stateRecours}}" readonly>
+
+                                    <span class="input-group-text p-0">
+                                        <button id="activarBtn" style="display: none;" type="button"
+                                            class="btn fw-bold">
+                                            Activar</button>
+                                        <button id="desactivarBtn" style="display: none;" type="button"
+                                            class="btn fw-bold">
+                                            Desactivar</button>
+                                    </span>
+                                </div>
+                            </div>
+                            <button class="py-1 btn bg-info border-5" type="submit"><span
+                                    class="px-4 fw-bold">Actualizar</span></button>
+                        </div>
+                    </div>
                 </div>
-                <div id="desActivar">
-                    <button type="button" id="desactivarBtn">Desabilitar</button>
-                </div>
-            </div>
-            <div id="boton">
-                <button type="submit">Actualizar</button>
             </div>
         </div>
     </div>

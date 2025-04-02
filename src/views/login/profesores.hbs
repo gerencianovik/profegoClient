@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/css/login/login.css">
 
-<div class="bg-fondo-login d-flex justify-content-center align-items-center">
+<div class="bg-login d-flex justify-content-center align-items-center">
     <div class="card shadow mx-1" style="width: 32rem;">
         <form class="card-body p-0" action="/loginTeachers" method="post">
             <div class="text-center mt-2">
@@ -10,7 +10,7 @@
             <div class="container-sm col-12 col-md-10 mt-4">
                 <div class="mb-3">
                     <input type="hidden" name="_csrf" value="{{ csrfToken }}">
-                    <label for="exampleInputEmail1" class="form-label m-0">
+                    <label class="form-label m-0">
                         <h5 class="fw-bold" style="color: #23615b;">Cédula</h5>
                     </label>
                     <div class="input-group input-group-lg m-0">
@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label m-0">
+                    <label class="form-label m-0">
                         <h5 class="fw-bold" style="color: #23615b;">Contraseña</h5>
                     </label>
                     <div class="input-group input-group-lg m-0">

@@ -1,187 +1,252 @@
 <link rel="stylesheet" href="/css/teacher/lista.css">
-<div id="contenidoPefil">
-    <div id="fondo">
-        <img src="/img/fondo/Postulación.png">
-    </div>
-    {{#each listaTeacher}}
-    <form action="/teacher/lista/{{idTeacher}}" method="get">
-        <div id="datos">
-            <div class="titulo">
-                <h1 style="text-align: center;">Mi Perfil</h1>
-            </div>
-            <div id="imagenTeacher">
-                <div id="cambioImagen">
-                    <div class="imagen">
-                        <img src="/img/usuario/{{photoTeacher}}" id="imagenPrevisualizacion">
-                    </div>
-                    <h3 class="nombre">Mi nombre es: {{completeNmeTeacher}}</h3>
-                </div>
-            </div>
-            <div id="direccion">
-                <div id="map"></div>
-                <input type="text" name="addressTeacher" id="ubicacion" placeholder="Dirección"
-                    value="{{addressTeacher}}" required>
-            </div>
-            <div class="flex" style="margin-top: 25px;">
-                <div id="Eleccion">
-                    <h5>Especialidad:</h5>
-                    <div>
-                        {{#each ../listaChouch}}
-                        <div id="tarjeta" class="col">
-                            <p>{{stateTeachCouch}}</p>
+
+<div class="bg-lista">
+    <div class="container-sm my-4">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-12 col-md-11">
+                {{#each listaTeacher}}
+                <form action="/teacher/lista/{{idTeacher}}" method="get">
+                    <div class="card d-flex justify-content-center align-items-center"
+                        style="border-bottom-left-radius: 0;border-bottom-right-radius: 0;">
+                        <div class="card-body col-md-10">
+                            <div class="row">
+                                <div class="col-12 my-4 text-center">
+                                    <h1>Mi Perfil</h1>
+                                    <div class="image-container">
+                                        <img class="img-fluid imgReg" src="/img/user/{{photoTeacher}}"
+                                            id="imagenPrevisualizacion">
+                                    </div>
+                                    <h3 class="nombre">Mi nombre es: {{completeNmeTeacher}}</h3>
+                                </div>
+
+                                <div class="col-12 mb-3">
+                                    <div id="direccion">
+                                        <div id="map"></div>
+                                    </div>
+                                    <input type="text" name="addressTeacher" id="ubicacion" placeholder="Dirección"
+                                        value="{{addressTeacher}}" readonly>
+                                </div>
+
+                                <div class="col-12 col-md-6 mb-3 text-center">
+                                    <label class="form-label m-0">
+                                        <h5 class="fw-bold" style="color: #23615b;">Especialidad</h5>
+                                    </label>
+                                    {{#each ../listaChouch}}
+                                    <div class="card border-3 col-12 col-md-6 shadow fst-italic"
+                                        style="border-color: #f39325;">
+                                        <div class="card-body text-center">
+                                            <p class="fs-3 m-0">{{stateTeachCouch}}</p>
+                                        </div>
+                                    </div>
+                                    {{/each}}
+                                </div>
+
+                                <div class="col-12 col-md-6 mb-3 text-center d-flex justify-content-center">
+                                    <div>
+                                        <label class="form-label m-0">
+                                            <h5 class="fw-bold" style="color: #23615b;">Fecha Nacimineto</h5>
+                                        </label>
+                                        <p>{{ageTeacher}}</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 mb-3 text-center">
+                                    <label class="form-label m-0">
+                                        <h5 class="fw-bold" style="color: #23615b;">Titulos</h5>
+                                    </label>
+                                    <div class="flex">
+                                        {{#each ../listaMaterias}}
+                                        <div class="card border-3 col-12 col-md-6 shadow fst-italic"
+                                            style="border-color: #f39325;">
+                                            <div class="card-body text-center">
+                                                <p class="fs-3 m-0">{{nameSpecialType}}</p>
+                                            </div>
+                                        </div>
+                                        {{/each}}
+                                    </div>
+                                </div>
+
+                                <div class="col-12 mb-3 text-center">
+                                    <label class="form-label m-0">
+                                        <h5 class="fw-bold" style="color: #23615b;">Documentación</h5>
+                                    </label>
+                                    <div class="row">
+                                        <div class="col-12 col-md-4 card border-0">
+                                            <iframe id="documentoTituloPrevisualizacion"
+                                                src="/archivos/teacher/{{endorsementCertificateTeacher}}"></iframe>
+                                        </div>
+                                        <div class="col-12 col-md-4 card border-0">
+                                            <iframe id="documentoTituloPrevisualizacion"
+                                                src="/archivos/teacher/{{pageVitalTeacher}}"></iframe>
+                                        </div>
+                                        <div class="col-12 col-md-4 card border-0">
+                                            <iframe id="documentoTituloPrevisualizacion"
+                                                src="/archivos/teacher/{{criminalRecordTeacher}}"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 mb-3 text-center">
+                                    <label class="form-label m-0">
+                                        <h5 class="fw-bold" style="color: #23615b;">Materias</h5>
+                                    </label>
+                                    <div class="flex">
+                                        {{#each ../listaDetalle}}
+                                        <div class="card border-3 col-12 col-md-6 shadow fst-italic"
+                                            style="border-color: #f39325;">
+                                            <div class="card-body text-center">
+                                                <p class="fs-3 m-0">{{subjetTeacher}}</p>
+                                            </div>
+                                        </div>
+                                        {{/each}}
+                                    </div>
+                                </div>
+
+                                <div class="col-12 mb-3  text-center d-flex justify-content-center">
+                                    <div>
+                                        <label class="form-label m-0">
+                                            <h5 class="fw-bold" style="color: #23615b;">Edad</h5>
+                                        </label>
+                                        {{#each ../listaDetalle}}
+                                        <div class="card border-3 col-12 col-md-3 shadow fst-italic"
+                                            style="border-color: #f39325;">
+                                            <div class="card-body text-center">
+                                                <p class="fs-3 m-0">{{rangeAgeTeacher}}</p>
+                                            </div>
+                                        </div>
+                                        {{/each}}
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-6 mb-3 text-center d-flex justify-content-center">
+                                    <div>
+                                        <label class="form-label m-0">
+                                            <h5 class="fw-bold" style="color: #23615b;">Cedula</h5>
+                                        </label>
+                                        <p>{{identificationCardTeacher}}</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-6 mb-3 text-center d-flex justify-content-center">
+                                    <div>
+                                        <label class="form-label m-0">
+                                            <h5 class="fw-bold" style="color: #23615b;">Celular</h5>
+                                        </label>
+                                        <p>{{phoneTeacher}}</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-6 mb-3 text-center d-flex justify-content-center">
+                                    <div>
+                                        <label class="form-label m-0">
+                                            <h5 class="fw-bold" style="color: #23615b;">Correos</h5>
+                                        </label>
+                                        <p>{{emailTeacher}}</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-6 mb-3 text-center d-flex justify-content-center">
+                                    <div>
+                                        <label class="form-label m-0">
+                                            <h5 class="fw-bold" style="color: #23615b;">Estado</h5>
+                                        </label>
+                                        <p>{{stateTeacher}}</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 mb-3 text-center d-flex justify-content-center">
+                                    <div>
+                                        <label class="form-label m-0">
+                                            <h5 class="fw-bold" style="color: #23615b;">Description</h5>
+                                        </label>
+                                        <p>{{descriptionTeacher}}</p>
+                                    </div>
+                                </div>
+
+                                <div class="text-center my-3">
+                                    <a href="/teacher/update/{{idTeacher}}" style="background-color: #0b4e71;"
+                                        class="btn btn-lg text-white" type="button">Actualizar Sus
+                                        Datos</butaton>
+                                </div>
+                            </div>
                         </div>
-                        {{/each}}
-                    </div>
-                </div>
-                <div id="fechaNacimiento">
-                    <h5>Fecha Nacimineto:</h5>
-                    <p>{{ageTeacher}}</p>
-                </div>
-            </div>
-
-            <div id="tituloEspecialidad">
-                <h5>Titulos:</h5>
-                <div class="flex">
-                    {{#each ../listaMaterias}}
-                    <div id="tarjeta" class="col">
-                        <p>{{nameSpecialType}}</p>
-                    </div>
-                    {{/each}}
-                </div>
-            </div>
-            <div id="documentacion">
-                <h5>Documentación:</h5>
-                <div class="flex">
-                    <div id="DocumentoTitulo" class="documentos">
-                        <iframe id="documentoTituloPrevisualizacion"
-                            src="/archivos/teacher/{{endorsementCertificateTeacher}}"></iframe>
-                    </div>
-                    <div id="DocumentoHojaVida" class="documentos">
-                        <iframe id="documentoHojaVidaPrevisualizacion"
-                            src="/archivos/teacher/{{pageVitalTeacher}}"></iframe>
-                    </div>
-                    <div id="DocumentoAntecedentes" class="documentos">
-                        <iframe id="documentoAntecedentesPrevisualizacion"
-                            src="/archivos/teacher/{{criminalRecordTeacher}}"></iframe>
-                    </div>
-                </div>
-
-            </div>
-            <div id="materias">
-                <h5>Materias:</h5>
-                <div class="flex">
-                    {{#each ../listaDetalle}}
-                    <div id="tarjeta" class="col">
-                        <p>{{subjetTeacher}}</p>
-                    </div>
-                    {{/each}}
-                </div>
-            </div>
-            <div id="edadRange">
-                <h5>Edad:</h5>
-                <div class="flex">
-                    {{#each ../listaDetalle}}
-                    <div id="tarjeta" class="col">
-                        <p>{{rangeAgeTeacher}}</p>
-                    </div>
-                    {{/each}}
-                </div>
-            </div>
-            <div class="flex">
-                <div id="Cedula">
-                    <h5>Cedula:</h5>
-                    <p>{{identificationCardTeacher}}</p>
-                </div>
-                <div id="Celular">
-                    <h5>Celular:</h5>
-                    <p>{{phoneTeacher}}</p>
-                </div>
-            </div>
-            <div class="flex">
-                 <div id="Correos">
-                <h5>Correos:</h5>
-                <p>{{emailTeacher}}</p>
-            </div>
-            <div id="estado">
-                <h5>Estado:</h5>
-                <p>{{stateTeacher}}</p>
-            </div>
-            </div>
-
-            <div id="description">
-                <h5>Description:</h5>
-                <p>{{descriptionTeacher}}</p>
-            </div>
-           
-            <div id="boton">
-                <a href="/teacher/update/{{idTeacher}}"><button type="button">Actualizar Sus Datos</button></a>
+                </form>
+                {{/each}}
+                <div class="rounded-bottom" style="background-color: #f39323; height: 50px;"></div>
             </div>
         </div>
-        <div id="cuadroDebajoDelForm">
-            <!-- Contenido sin nada-->
-
-        </div>
-    </form>
-    {{/each}}
-</div>
-<!-- footer-->
-<div id="footer">
-    <div id="tarjetaNosotros">
-        <div id="nosotrosFooter">
-            <h1>Nosotros</h1>
-        </div>
-        <div id="datosNosotros">
-            <p>¿Quiénes Somos?<br>
-                <br>
-                <br>
-                ¿Cómo funciona?<br>
-                <br>
-                <br>
-                Testimonios<br>
-                <br>
-                <br>
-                Preguntas frecuentes<br>
-                <br>
-                <br>
-                Contacto
-            </p>
-        </div>
-    </div>
-    <div id="tarjetaUnete">
-        <div id="nosotrosFooter">
-            <h1>Únete</h1>
-        </div>
-        <div id="datosNosotros">
-            <p>Regístrate como estudiante <br>
-                <br>
-                <br>
-                Sé docente o coach
-            </p>
-        </div>
-    </div>
-    <div id="tarjetaLegal">
-        <div id="nosotrosFooter">
-            <h1>Legal</h1>
-        </div>
-        <div id="datosNosotros">
-            <p>Términos y condiciones <br>
-                <br>
-                <br>
-                Políticas de privacidad
-            </p>
-        </div>
-    </div>
-    <div id="logoImagen">
-        <img src="/img/logo/LogoPrincipal.png">
-    </div>
-    <div id="final">
-        <p>Interconexión segura, rápida e ideal entre docentes y estudiantes.</p>
-        <p id="finalFinal">ProfeGo® EDUCONECTA S.A.S</p>
     </div>
 </div>
+</div>
+
+<div>
+    <div class="p-5" style="background-color: #fff9f0;">
+        <div class="row">
+            <div class="col-md-2">
+                <div style="color: #236388;">
+                    <h1 class="mb-0">Nosotros</h1>
+                    <hr class="linea mt-0">
+                </div>
+                <div class="lh-1">
+                    <a href="/somos">
+                        <p>¿Quiénes Somos?
+                    </a>
+                    <a href="/somos">¿Cómo funciona?</a><br>
+                    <br>
+                    <a href="/">Testimonios</a><br>
+                    <br>
+                    <a href="/contactos">Preguntas frecuentes</a><br>
+                    <br>
+                    <a href="/contactos">Contacto</a></p>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div style="color: #236388;">
+                    <h1 class="mb-0">Únete</h1>
+                    <hr class="linea mt-0">
+                </div>
+                <div class="lh-1">
+                    <a href="/RegisterStudents">
+                        <p>Regístrate como estudiante
+                    </a>
+                    <a href="/RegisterTeachers">Sé docente o coach</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div style="color: #236388;">
+                    <h1 class="mb-0">Legal</h1>
+                    <hr class="linea mt-0">
+                </div>
+                <div class="lh-1">
+                    <a href="/policyList">
+                        <p>Términos y condiciones
+                    </a>
+                    <a href="/policyList">Políticas de privacidad</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3 text-center">
+                <div class="d-flex justify-content-center">
+                    <div class="qr-placeholder"></div>
+                    <div class="qr-placeholder"></div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <img src="/img/logo/LogoPrincipal.png" class="img-fluid">
+            </div>
+        </div>
+    </div>
+    <div style="background-color: #fbf1e3; color: #236388;" class="p-3">
+        <div class="d-flex justify-content-between align-items-center mx-3">
+            <p class="fs-5 m-0 text-start">Interconexión segura, rápida e ideal entre docentes y estudiantes.</p>
+            <p class="fs-5 m-0 text-end">ProfeGo® EDUCONECTA S.A.S</p>
+        </div>
+    </div>
 </div>
 
 <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Q9PaOYlXpeqtj_0tHE19Zcoim25iSFg&callback=initAutocomplete&libraries=places&v=weekly"
-    defer></script>
+    defer>
+    </script>
 <script src="/js/mapaDetalle.js"></script>

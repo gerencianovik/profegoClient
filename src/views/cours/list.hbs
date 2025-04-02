@@ -1,120 +1,169 @@
-<link rel="stylesheet" href="/css/cursos/lista.css">
-{{#each listaTeacher}}
-<form action="/cours/list/{{idTeacher}}" method="get">
-    {{/each}}
-    <div id="contenedor">
-        <div id="fondo">
-            <img src="/img/icons/fondoLista.png">
-        </div>
-        <div id="titulo">
-            <p>Mis Servicios</p>
-        </div>
-        <div id="contenedorCursoGeneral">
-            <div id="Cursos">
-                <div id="imagenesCursos">
-                    <img src="/img/icons/cursTLS.png">
-                    <p>Curso</p>
+<link rel="stylesheet" href="/css/clases/add.css">
+
+<div class="bg-curso">
+    <div class="container-fluid w-100 pt-2">
+        {{#each listaTeacher}}
+        <form action="/cours/list/{{idTeacher}}" method="get">
+            <div class="col mb-3 my-3">
+                <div class="text-center text-white">
+                    <p class="fw-bold fs-1 m-0">Mis Servicios</p>
                 </div>
-                <div class="row">
-                    {{#each lista}}
-                    <div class="flex">
-                        
-                        <div id="tarjeta">
-                            <div id="tarjetaInterna">
-                                <a href="/cours/detailList/{{idCours}}">
-                                    <div id="foto">
-                                        <p><img src="/img/cours/{{photoCours}}" alt=""></p>
-                                    </div>
-                                    <div id="pasos">
-                                        <div class="espaciosTarjetaInfo">
-                                            <div id="Nombre">
-                                                <p>{{nameCours}}</p>
-                                            </div>
-                                            <div id="cupos">
-                                                <p>{{shareCours}}</p>
-                                            </div>
-                                            <div id="estado">
-                                                <p>{{stateCours}}</p>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div id="descripcion">
-                                                <p>{{descriptionCours}}</p>
-                                            </div>
-                                            <div id="fehca">
-                                                <p>{{dateCours}}</p>
-                                            </div>
-                                            <div id="hora">
-                                                <p>{{hourCours}}</p>
-                                            </div>
-                                            <div id="costo">
-                                                <p> <img src="/img/icons/tarifa.png" alt="Descripción del ícono"
-                                                        style="width: 30px; height: 30px;"> {{costCours}}</p>
-                                            </div>
-                                            <div id="calificacion">
-                                                <p>{{calificationCours}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
+                <div class="col-12 col-md-2 ms-auto">
+                    <a href="/cours/add/{{idTeacher}}">
+                        <button type="button" class="rounded-4 fs-4 ms-2 btn btn-success d-flex align-items-center">
+                            Añadir
+                            <img class="img-fluid ms-2" style="width: 50px;" src="/img/icons/mas.png">
+                        </button>
+                    </a>
+                </div>
+                {{/each}}
+            </div>
+
+            <div class="row">
+                <div class="col-12 mb-3">
+                    <div class="card mx-4">
+                        <div class="row p-1">
+                            <div class="dropdown col-12 col-md-2 d-flex align-items-center mb-2 mb-md-0">
+                                <div id="fil" class="d-flex align-items-center fs-5 rounded-2 border border-1 w-100"
+                                    style="font-size: 12px; padding: 5px 10px; background-color: #ffefdc; color: #2f6760;">
+                                    Filtrar por <img class="img-fluid" src="/img/icons/filtro.png" alt="Filtro"
+                                        style="margin-left: 5px; height: 16px;">
+                                </div>
                             </div>
 
-                            <div id="opcionesLista">
-                                <div id="actualizar">
-                                    <a href="/cours/update/{{idCours}}"><button type="button">Actualizar</button></a>
-                                </div>
-                                <div id="materialesDeClase">
-                                    <a href="/material/cursos/{{idCours}}"><button type="button">Materiales</button></a>
-                                </div>
-                                <div id="recursosDeClase">
-                                    <a href="/recours/add/{{idCours}}"><button type="button">Recursos</button></a>
-                                </div>
-                                <div id="desavilitar">
-                                    <a href="/cours/delete/{{idCours}}"><button type="button">Desabilitar</button></a>
-                                </div>
+                            <div class="dropdown col-12 col-md-3 mb-2 mb-md-0">
+                                <button class="btn btn-secondary dropdown-toggle w-100 fs-5" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Servicios
+                                </button>
+                                <ul class="dropdown-menu w-100" style="background-color: #ffefdc;">
+                                    <li><a class="dropdown-item" href="/filtro/clases">Clases</a></li>
+                                    <li><a class="dropdown-item" href="/filtro/cursos">Cursos</a></li>
+                                    <li><a class="dropdown-item" href="/filtro/coaching">Coaching</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="dropdown col-12 col-md-3 mb-2 mb-md-0">
+                                <button class="btn btn-secondary dropdown-toggle w-100 fs-5" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Modalidad
+                                </button>
+                                <ul class="dropdown-menu w-100" style="background-color: #ffefdc;">
+                                    <li><a class="dropdown-item" href="/filtro/Online">Online</a></li>
+                                    <li><a class="dropdown-item" href="/filtro/Domicilio">Domicilio o presencial</a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-                        <div id="video">
-                            <video src="/video/cours/{{videoCours}}" controls></video>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 col-md-2 mb-3 text-center text-white fs-3 rounded-3 p-1"
+                        style="background-color: #f29224;">
+                        <img class="img-fluid" src="/img/icons/cursTLS.png">
+                        <p>Curso</p>
+                    </div>
+
+                    <div class="col-12 col-md-10 mb-3">
+                        <div class="row">
+                            {{#each lista}}
+                            <div class="col-12 col-md-8 mb-4">
+                                <div class="card">
+                                    <div class="card-body mb-3" style="background-color: #147582;">
+                                        <div class="row">
+                                            <div class="col-12 col-md-4 my-auto">
+                                                <img class="img-fluid m-2" style="width: 90%;"
+                                                    src="/img/cours/{{photoCours}}" alt="">
+                                            </div>
+
+                                            <div class="col-12 col-md-8 p-2 fs-6">
+                                                <div class="row p-2 text-white">
+                                                    <div class="col-12 col-md-6">
+                                                        <p>Nombre: {{nameCours}}</p>
+                                                    </div>
+                                                    <div class="col-12 col-md-6">
+                                                        <p>Descripción: {{descriptionCours}}</p>
+                                                    </div>
+                                                    <div class="col-12 col-md-6">
+                                                        <p>Cupo del Curso: {{shareCours}}</p>
+                                                    </div>
+                                                    <div class="col-12 col-md-6">
+                                                        <p>Estado del Curso
+                                                            <input id="estado" type="text" value="{{stateCours}}"
+                                                                hidden>
+                                                            <span id="estadoActivo" class="fw-bold"
+                                                                style="display: none;">Activo</span>
+                                                            <span id="estadoDesactivo" class="fw-bold"
+                                                                style="display: none;">Desactivo</span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-12 col-md-6">
+                                                        <p>Fecha: {{dateCoursInit}}</p>
+                                                    </div>
+                                                    <div class="col-12 col-md-6">
+                                                        <p>Hora: {{hourCours}}</p>
+                                                    </div>
+                                                    <div class="col-12 col-md-6">
+                                                        <p><img class="img-fluid" src="/img/icons/tarifa.png"
+                                                                alt="Precio" style="width: 30px; height: 30px;">
+                                                            {{costCours}}
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-12 col-md-6">
+                                                        <p>Calificación: {{calificationCours}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row my-2 d-flex flex-wrap px-2 mt-3">
+                                        <div class="col-12 col-md-3 mb-2 ">
+                                            <a href="/cours/update/{{idCours}}" class="btn text-white w-100 shadow"
+                                                style="background-color: #008000;">Actualizar</a>
+                                        </div>
+                                        <div class="col-12 col-md-3 mb-2">
+                                            <a href="/material/cursos/{{idCours}}" class="btn text-white w-100 shadow"
+                                                style="background-color: #147582;">Materiales</a>
+                                        </div>
+                                        <div class="col-12 col-md-3 mb-2">
+                                            <a href="/recours/cursos/{{idCours}}" class="btn text-white w-100 shadow"
+                                                style="background-color: #826814;">Recursos</a>
+                                        </div>
+                                        <div class="col-12 col-md-3 mb-2 habilitarButton" style="display: none;">
+                                            <a href="/cours/enable/{{idCours}}">
+                                                <button class="btn btn-success w-100" type="button">Habilitar</button>
+                                            </a>
+                                        </div>
+                                        <div class="col-12 col-md-3 mb-2 deshabilitarButton" style="display: none;">
+                                            <a href="/cours/delete/{{idCours}}">
+                                                <button class="btn btn-danger w-100" type="button">Deshabilitar</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4 mb-5">
+                                <div class="position-relative" style="max-width: 100%; max-height: auto;">
+                                    <video id="videoPreview" class="w-100" style="height: 250px; object-fit: contain;"
+                                        src="/video/cours/{{videoCours}}" controls></video>
+                                </div>
+                                <a href="/cours/detailList/{{idCours}}"><button type="button"
+                                        class="border border-1 shadow btn w-100 p-4 fs-4"
+                                        style="background-color: #ffffff;">Ver
+                                        información completa</button></a>
+                            </div>
+                            <hr style="border: 2px solid #000;">
+                            {{/each}}
                         </div>
                     </div>
-                    <br>
-                    <hr>
-                    {{/each}}
                 </div>
             </div>
-        </div>
-        <div id="filtros">
-            <div id="filtrosBoton">
-                <button type="button" id="fil">Filtrar por <img src="/img/icons/filtro.png"></button>
-            </div>
-            <div id="serviciosFiltros">
-                <div id="serviciosGneneral">
-                    <div id="titulo1">
-                        <a href="/filtro/clases">Clases</a>
-                    </div>
-                    <div id="titulo2">
-                        <a href="/filtro/cursos">Cursos</a>
-                    </div>
-                    <div id="titulo3">
-                        <a href="/filtro/coaching">Coaching</a>
-                    </div>
-                </div>
-                <div id="modalidadFiltro">
-                    <div id="titulo1">
-                        <a href="/filtro/Online">Online</a>
-                    </div>
-                    <div id="titulo2">
-                        <a href="/filtro/Domicilio">Domicilio o presencial</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </form>
     </div>
-</form>
-{{#each listaTeacher}}
-<div id="mas">
-    <a href="/cours/add/{{idTeacher}}"><button type="button"><img src="/img/icons/mas.png"></button></a>
 </div>
-{{/each}}
+
 <script src="/js/filtro.js"></script>
+<script src="/js/activo-desactivo-lista.js"></script>

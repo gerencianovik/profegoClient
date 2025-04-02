@@ -1,6 +1,6 @@
 const express = require('express');
 const isLoggedIn = require('../lib/auth');
-const { mostrar, mandar, lista, traerDatos, actualizar, desabilitar } = require('../controller/recours.controller');
+const { mostrar, mandar, lista, traerDatos, actualizar, desabilitar, habilitar } = require('../controller/recours.controller');
 const router = express.Router();
 
 router.get('/clase/:id', isLoggedIn, mostrar)
@@ -18,8 +18,9 @@ router.get('/updateClase/:id', isLoggedIn, traerDatos)
 router.post('/updateClase/:id', isLoggedIn, actualizar)
 router.get('/update/:id', isLoggedIn, traerDatos)
 router.post('/update/:id', isLoggedIn, actualizar)
-router.get('/deleteClase/:id', isLoggedIn, desabilitar)
-router.get('/deleteCurso/:id', isLoggedIn, desabilitar)
-router.get('/deleteClases/:id', isLoggedIn, desabilitar)
+router.get('/deleteClase/:ids/:id', isLoggedIn, desabilitar)
+router.get('/enableClase/:ids/:id', isLoggedIn, habilitar)
+router.get('/deleteCurso/:ids/:id', isLoggedIn, desabilitar)
+router.get('/enableCurso/:ids/:id', isLoggedIn, habilitar)
 
 module.exports = router

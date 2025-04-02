@@ -119,7 +119,7 @@ materialCours.mandar = async (req, res) => {
                 }
                 await orm.material.create(newSpeciality)
                 req.flash('success', 'Se creo la materia')
-                res.redirect('/cours/detailList/' + ids);
+                res.redirect('/material/cursos/' + ids);
             } catch (error) {
                 req.flash('message', 'Error al guardar la materia')
                 res.redirect('/material/curso/' + ids);
@@ -223,7 +223,7 @@ materialCours.actualizar = async (req, res) => {
             if (!errors.isEmpty()) {
                 return res.status(400).json({ errors: errors.array() });
             }
-            const { nameMaterial, descriptionMaterial, quantyMaterailClass, valueMaterial, stateMaterial } = req.body
+            const { nameMaterial, descriptionMaterial, quantyMaterailClass, valueMaterial, stateMaterial, courIdCours } = req.body
             const newSpeciality = {
                 nameMaterial,
                 descriptionMaterial,
@@ -235,12 +235,12 @@ materialCours.actualizar = async (req, res) => {
             await orm.material.findOne({ where: { idMaterial: ids } })
                 .then((result) => {
                     result.update(newSpeciality)
+                    res.redirect('/material/cursos/' + courIdCours);
                     req.flash('success', 'Se Actualizo la materia')
-                    res.redirect('/material/cursos/' + ids);
                 })
         } catch (error) {
-            req.flash('message', 'Error al Actualizar la materia')
             res.redirect('/material/updateCurso/' + ids);
+            req.flash('message', 'Error al Actualizar la materia')
         }
     } else if (tipoEleccion == 'updateClase') {
         try {
@@ -248,7 +248,7 @@ materialCours.actualizar = async (req, res) => {
             if (!errors.isEmpty()) {
                 return res.status(400).json({ errors: errors.array() });
             }
-            const { nameMaterial, descriptionMaterial, quantyMaterailClass, valueMaterial, stateMaterial } = req.body
+            const { nameMaterial, descriptionMaterial, quantyMaterailClass, valueMaterial, stateMaterial, ClaseIdClases } = req.body
             const newSpeciality = {
                 nameMaterial,
                 descriptionMaterial,
@@ -260,12 +260,12 @@ materialCours.actualizar = async (req, res) => {
             await orm.material.findOne({ where: { idMaterial: ids } })
                 .then((result) => {
                     result.update(newSpeciality)
+                    res.redirect('/material/clases/' + ClaseIdClases);
                     req.flash('success', 'Se Actualizo la materia')
-                    res.redirect('/material/clases/' + ids);
                 })
         } catch (error) {
-            req.flash('message', 'Error al Actualizar la materia')
             res.redirect('/material/updateClase/' + ids);
+            req.flash('message', 'Error al Actualizar la materia')
         }
     } else {
         try {
@@ -283,8 +283,8 @@ materialCours.actualizar = async (req, res) => {
                 updateMaterial: new Date().toLocaleString(),
             }
             await orm.material.findOne({ where: { idMaterial: ids } })
-                .then((result) => {
-                    result.update(newSpeciality)
+                .then(async (result) => {
+                    await result.update(newSpeciality)
                     req.flash('success', 'Se Actualizo la materia')
                     res.redirect('/material/list/' + ids);
                 })
@@ -296,7 +296,7 @@ materialCours.actualizar = async (req, res) => {
 }
 
 materialCours.desabilitar = async (req, res) => {
-    const ids = req.params.id;
+    const { ids, id } = req.params;
     const parts = req.originalUrl.split('/').filter(part => part !== '');
     let tipoEleccion
     if (parts.length >= 3) {
@@ -312,17 +312,17 @@ materialCours.desabilitar = async (req, res) => {
                 stateMaterial: 'Desactivar',
                 updateMaterial: new Date().toLocaleString(),
             }
-            await orm.material.findOne({ where: { idRecours: ids } })
-                .then((result) => {
-                    result.update(newSpeciality)
+            await orm.material.findOne({ where: { idMaterial: ids } })
+                .then(async (result) => {
+                    await result.update(newSpeciality)
                     req.flash('success', 'Se Desabilito la materia')
-                    res.redirect('/recours/cursos/' + ids);
+                    res.redirect('/material/cursos/' + id);
                 })
         } catch (error) {
             req.flash('message', 'Error al Desabilitar la materia')
-            res.redirect('/recours/cursos/' + ids);
+            res.redirect('/material/cursos/' + id);
         }
-    } else if (tipoEleccion == 'deleteClases') {
+    } else if (tipoEleccion == 'deleteClase') {
         try {
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
@@ -332,15 +332,15 @@ materialCours.desabilitar = async (req, res) => {
                 stateMaterial: 'Desactivar',
                 updateMaterial: new Date().toLocaleString(),
             }
-            await orm.material.findOne({ where: { idRecours: ids } })
-                .then((result) => {
-                    result.update(newSpeciality)
-                    req.flash('success', 'Se Desabilito la materia')
-                    res.redirect('/recours/clases/' + ids);
+            await orm.material.findOne({ where: { idMaterial: ids } })
+                .then(async (result) => {
+                    await result.update(newSpeciality);
+                    res.redirect('/material/clases/' + id);
+                    req.flash('success', 'Se Desabilitó la materia');
                 })
         } catch (error) {
+            res.redirect('/material/clases/' + id);
             req.flash('message', 'Error al Desabilitar la materia')
-            res.redirect('/recours/clases/' + ids);
         }
     } else {
         try {
@@ -361,6 +361,58 @@ materialCours.desabilitar = async (req, res) => {
         } catch (error) {
             req.flash('message', 'Error al Desabilitar la materia')
             res.redirect('/recours/update/' + ids);
+        }
+    }
+}
+
+materialCours.enable = async (req, res) => {
+    const { ids, id } = req.params;
+    const parts = req.originalUrl.split('/').filter(part => part !== '');
+    let tipoEleccion
+    if (parts.length >= 3) {
+        tipoEleccion = parts[1];
+    }
+    if (tipoEleccion == 'enableClase') {
+        try {
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+                return res.status(400).json({ errors: errors.array() });
+            }
+            const newSpeciality = {
+                stateMaterial: 'Activar',
+                updateMaterial: new Date().toLocaleString(),
+            }
+            await orm.material.findOne({ where: { idMaterial: ids } })
+                .then(async (result) => {
+                    await result.update(newSpeciality);
+                    res.redirect('/material/clases/' + id);
+                    req.flash('success', 'Se habilitó la materia');
+                })
+        } catch (error) {
+            console.error('Error al Deshabilitar la materia:', error);
+            req.flash('message', 'Error al Habilitar la materia');
+            res.redirect('/material/clases/' + id);
+        }
+    } else if (tipoEleccion == 'enableCurso') {
+        try {
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+                return res.status(400).json({ errors: errors.array() });
+            }
+            const newSpeciality = {
+                stateMaterial: 'Activar',
+                updateMaterial: new Date().toLocaleString(),
+            }
+            await orm.material.findOne({ where: { idMaterial: ids } })
+                .then(async (result) => {
+                    await result.update(newSpeciality);
+                    res.redirect('/material/cursos/' + id);
+                    req.flash('success', 'Se habilitó la materia');
+                })
+        } catch (error) {
+            console.error('Error al Deshabilitar la materia:', error);
+            req.flash('message', 'Error al Habilitar la materia');
+            res.redirect('/material/cursos/' + id);
         }
     }
 }

@@ -35,7 +35,7 @@ app.use(
                 ...helmet.contentSecurityPolicy.getDefaultDirectives(),
                 "script-src": [
                     "'self'",
-                    "'unsafe-inline'",  // Permite scripts inline para la ejecución de JavaScript
+                    "'unsafe-inline'",
                     "'unsafe-eval'",
                     "https://maps.googleapis.com",
                     "https://cdnjs.cloudflare.com",
@@ -50,9 +50,13 @@ app.use(
                 "img-src": [
                     "'self'",
                     "data:",
-                    "blob:",  // Permite blobs en las imágenes
+                    "blob:",
                     "https://maps.gstatic.com",
                     "https://*.googleapis.com"
+                ],
+                "media-src": [
+                    "'self'",
+                    "blob:" 
                 ],
                 "connect-src": [
                     "'self'",  // Permite que fetch funcione desde el mismo origen

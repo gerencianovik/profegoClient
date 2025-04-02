@@ -16,7 +16,7 @@ recoursCours.mostrar = async (req, res) => {
         let curso = [];
         let clase = [];
         let pagina = []
-        
+
         if (tipoEleccion == 'curso') {
             const [resultadoCurso] = await sql.promise().query('SELECT * FROM cours WHERE idCours = ?', [id]);
             curso = resultadoCurso;
@@ -95,8 +95,8 @@ recoursCours.mandar = async (req, res) => {
 
                 // Crear el recurso en la base de datos
                 await orm.recours.create(newResource);
+                res.redirect('/recours/clases/' + ids);
                 req.flash('success', 'Se creó el recurso');
-                res.redirect('/recours/clases/' + idClases);
             } else {
                 // Si el recurso se va a asociar a un curso
                 const newResource = {
@@ -135,7 +135,7 @@ recoursCours.lista = async (req, res) => {
         let clase = [];
         let row = [];
         let pagina = []
-        
+
         if (tipoEleccion == 'cursos') {
             const [resultadoCurso] = await sql.promise().query('SELECT * FROM cours WHERE idCours = ?', [id]);
             curso = resultadoCurso;
@@ -147,8 +147,9 @@ recoursCours.lista = async (req, res) => {
             const [resultadoClase] = await sql.promise().query('SELECT * FROM Clases WHERE idClases = ?', [id]);
             clase = resultadoClase;
 
-            const [resultadoRecursos] = await sql.promise().query('SELECT * FROM recours WHERE ClaseIdClases = ?', [id, id]);
+            const [resultadoRecursos] = await sql.promise().query('SELECT * FROM recours WHERE ClaseIdClases = ?', [id]);
             row = resultadoRecursos;
+
         } else {
             const [resultadoRecursos] = await sql.promise().query('SELECT * FROM recours');
             row = resultadoRecursos;
@@ -220,7 +221,7 @@ recoursCours.actualizar = async (req, res) => {
             if (!errors.isEmpty()) {
                 return res.status(400).json({ errors: errors.array() });
             }
-            const { nameRecours, descriptionRecourse, quantyRecours, valueRecours, stateRecours } = req.body
+            const { nameRecours, descriptionRecourse, quantyRecours, valueRecours, stateRecours, courIdCours } = req.body
             const newSpeciality = {
                 nameRecours,
                 descriptionRecourse,
@@ -230,10 +231,10 @@ recoursCours.actualizar = async (req, res) => {
                 updateRecursCourse: new Date().toLocaleString(),
             }
             await orm.recours.findOne({ where: { idRecours: ids } })
-                .then((result) => {
-                    result.update(newSpeciality)
+                .then(async (result) => {
+                    await result.update(newSpeciality)
                     req.flash('success', 'Se Actualizo la materia')
-                    res.redirect('/recours/cursos/' + ids);
+                    res.redirect('/recours/cursos/' + courIdCours);
                 })
         } catch (error) {
             req.flash('message', 'Error al Actualizar la materia')
@@ -245,7 +246,7 @@ recoursCours.actualizar = async (req, res) => {
             if (!errors.isEmpty()) {
                 return res.status(400).json({ errors: errors.array() });
             }
-            const { nameRecours, descriptionRecourse, quantyRecours, valueRecours, stateRecours } = req.body
+            const { nameRecours, descriptionRecourse, quantyRecours, valueRecours, stateRecours, ClaseIdClases } = req.body
             const newSpeciality = {
                 nameRecours,
                 descriptionRecourse,
@@ -255,10 +256,10 @@ recoursCours.actualizar = async (req, res) => {
                 updateRecursCourse: new Date().toLocaleString(),
             }
             await orm.recours.findOne({ where: { idRecours: ids } })
-                .then((result) => {
-                    result.update(newSpeciality)
+                .then(async (result) => {
+                    await result.update(newSpeciality)
                     req.flash('success', 'Se Actualizo la materia')
-                    res.redirect('/recours/clases/' + ids);
+                    res.redirect('/recours/clases/' + ClaseIdClases);
                 })
         } catch (error) {
             req.flash('message', 'Error al Actualizar la materia')
@@ -293,8 +294,7 @@ recoursCours.actualizar = async (req, res) => {
 }
 
 recoursCours.desabilitar = async (req, res) => {
-    const ids = req.params.id;
-    const id = req.user.idUser
+    const { ids, id } = req.params;
     const parts = req.originalUrl.split('/').filter(part => part !== '');
     let tipoEleccion
     if (parts.length >= 3) {
@@ -311,16 +311,16 @@ recoursCours.desabilitar = async (req, res) => {
                 updateRecursCourse: new Date().toLocaleString(),
             }
             await orm.recours.findOne({ where: { idRecours: ids } })
-                .then((result) => {
-                    result.update(newSpeciality)
+                .then(async (result) => {
+                    await result.update(newSpeciality)
                     req.flash('success', 'Se Desabilito la materia')
-                    res.redirect('/recours/cursos/' + ids);
+                    res.redirect('/recours/cursos/' + id);
                 })
         } catch (error) {
             req.flash('message', 'Error al Desabilitar la materia')
-            res.redirect('/recours/cursos/' + ids);
+            res.redirect('/recours/cursos/' + id);
         }
-    } else if (tipoEleccion == 'deleteClases') {
+    } else if (tipoEleccion == 'deleteClase') {
         try {
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
@@ -331,14 +331,14 @@ recoursCours.desabilitar = async (req, res) => {
                 updateRecursCourse: new Date().toLocaleString(),
             }
             await orm.recours.findOne({ where: { idRecours: ids } })
-                .then((result) => {
-                    result.update(newSpeciality)
-                    req.flash('success', 'Se Desabilito la materia')
-                    res.redirect('/recours/clases/' + ids);
+                .then(async (result) => {
+                    await result.update(newSpeciality)
+                    req.flash('success', 'Se Desabilitó el recurso')
+                    res.redirect('/recours/clases/' + id);
                 })
         } catch (error) {
-            req.flash('message', 'Error al Desabilitar la materia')
-            res.redirect('/recours/clases/' + ids);
+            req.flash('message', 'Error al Desabilitar el recurso')
+            res.redirect('/recours/clases/' + id);
         }
     } else {
         try {
@@ -359,6 +359,56 @@ recoursCours.desabilitar = async (req, res) => {
         } catch (error) {
             req.flash('message', 'Error al Desabilitar la materia')
             res.redirect('/recours/update/' + ids);
+        }
+    }
+}
+
+recoursCours.habilitar = async (req, res) => {
+    const { ids, id } = req.params;
+    const parts = req.originalUrl.split('/').filter(part => part !== '');
+    let tipoEleccion
+    if (parts.length >= 3) {
+        tipoEleccion = parts[1]; // La parte intermedia
+    }
+    if (tipoEleccion == 'enableClase') {
+        try {
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+                return res.status(400).json({ errors: errors.array() });
+            }
+            const newSpeciality = {
+                stateRecours: 'Activar',
+                updateRecursCourse: new Date().toLocaleString(),
+            }
+            await orm.recours.findOne({ where: { idRecours: ids } })
+                .then(async (result) => {
+                    await result.update(newSpeciality)
+                    req.flash('success', 'Se Habilitó el recurso')
+                    res.redirect('/recours/clases/' + id);
+                })
+        } catch (error) {
+            req.flash('message', 'Error al Habilitar el recurso')
+            res.redirect('/recours/clases/' + id);
+        }
+    } else if (tipoEleccion == 'enableCurso') {
+        try {
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+                return res.status(400).json({ errors: errors.array() });
+            }
+            const newSpeciality = {
+                stateRecours: 'Activar',
+                updateRecursCourse: new Date().toLocaleString(),
+            }
+            await orm.recours.findOne({ where: { idRecours: ids } })
+                .then(async (result) => {
+                    await result.update(newSpeciality)
+                    req.flash('success', 'Se Habilitó el recurso')
+                    res.redirect('/recours/cursos/' + id);
+                })
+        } catch (error) {
+            req.flash('message', 'Error al Habilitar el recurso')
+            res.redirect('/recours/cursos/' + id);
         }
     }
 }

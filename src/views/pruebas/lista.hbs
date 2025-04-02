@@ -1,46 +1,72 @@
-<link rel="stylesheet" href="/css/pruebas/pruebas.css">
-<div id="contenedor" class="container">
-    <div id="titulo" class="titulo">
-        <h1>Mis Pruebas</h1>
-    </div>
-    <div id="datos" class="tarjeta tarjetaContenedora">
-        <div class="flex">
-            {{#each pruebas}}
-            <div class="tarjeta controno-verde">
-                <div id="nombre" class="alinearCentro">
-                    <p class="nombresInput">Nombre de la evaluación:</p>
-                    <textarea name="nameAssessment" id="nameAssessment" required>{{nameAssessment}}</textarea>
-                </div>
-                <div id="descripcion" class="alinearCentro">
-                    <p class="nombresInput">Descripción de la Evaluación:</p>
-                    <textarea name="descriptionAssessment" id="descriptionAssessment"
-                        required>{{descriptionAssessment}}</textarea>
-                </div>
-                <div id="tiempo" class="alinearCentro">
-                    <p class="nombresInput">Tiempo de evaluación:</p>
-                    <input type="time" name="timeAssessment" id="timeAssessment" required value="{{timeAssessment}}">
-                </div>
-                <div id="fecha" class="alinearCentro">
-                    <p class="nombresInput">Fecha de evaluación:</p>
-                    <input type="date" name="dateAssessment" id="dateAssessment" required value="{{dateAssessment}}">
-                </div>
-                <div id="calificacion" class="alinearCentro">
-                    <p class="nombresInput">Calificación:</p>
-                    <input type="text" name="qualification" id="qualification" required value="{{qualification}}">
-                </div>
-                <div id="preguntas" class="alinearCentro">
-                    <button type="button" class="alinearCentro btn-border-orange "><a href="/pruebas/preguntas/{{idAssessment}}">Preguntas</a></button>
-                </div>
-                <div id="Actualizar" class="alinearCentro">
-                    <button type="button" class="boton-background-orange"><a href="/pruebas/cursosUpdate/{{idAssessment}}">Actualizar</a></button>
+<link rel="stylesheet" href="/css/recours/add.css">
+<div class="bg-fondo py-3">
+    <div class="container-fluid px-3">
+        <h1 class="text-center fw-bold mb-2" style="color: #f39325;">Mis Pruebas<input type="text" name="idTask"
+                id="numero"></h1>
+        <div class="card text-start fs-6 shadow border-0 p-0 rounded-5">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-md-9">
+                        <div class="row">
+                            {{#each pruebas}}
+                            <div class="col-12 col-md-4 px-2 py-3">
+                                <div class="card"
+                                    style="border: 3px solid #18574f; border-radius: 30px; color:#18574f;">
+                                    <div class="card-body text-center">
+                                        <div class="mb-2">
+                                            <p class="p-0 m-0">Nombre de la evaluación</p>
+                                            <textarea class="form-control" name="nameAssessment" id="nameAssessment"
+                                                readonly>{{nameAssessment}}</textarea>
+                                        </div>
+                                        <div class="mb-2">
+                                            <p class="p-0 m-0">Descripción de la Evaluación</p>
+                                            <textarea rows="4" class="form-control" name="descriptionAssessment"
+                                                id="descriptionAssessment" readonly>{{descriptionAssessment}}</textarea>
+                                        </div>
+                                        <div class="mb-2">
+                                            <p class="p-0 m-0">Tiempo de evaluación:</p>
+                                            <p class="text-secondary p-0 m-0" type="text" name="timeAssessment"
+                                                id="timeAssessment" readonly>{{timeAssessment}}</p>
+                                        </div>
+                                        <div class="mb-2">
+                                            <p class="p-0 m-0">Fecha de evaluación:</p>
+                                            <input type="date" name="dateAssessment" id="dateAssessment" readonly
+                                                value="{{dateAssessment}}">
+                                        </div>
+                                        <div class="mb-2">
+                                            <p class="p-0 m-0">Calificación:</p>
+                                            <p class="text-secondary p-0 m-0">{{qualificationAssessment}}</p>
+                                        </div>
+                                        <div class="mb-2 d-flex flex-column gap-2">
+                                            <a href="/pruebas/preguntas/{{idAssessment}}" class="w-100">
+                                                <button style="color: red !important;" type="button"
+                                                    class="btn btn-outline-warning rounded-4 border-2 w-100">
+                                                    Preguntas
+                                                </button>
+                                            </a>
+                                            <a href="/pruebas/cursosUpdate/{{idAssessment}}" class="w-100">
+                                                <button type="button" style="color: red !important;"
+                                                    class="btn btn-warning rounded-4 w-100">
+                                                    Actualizar
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-3 text-center">
+                        <button type="button" class="btn btn-outline-warning rounded-pill border-3 mb-2 w-75 fs-5"
+                            style=" color:#18574f; !important">Añadir</button>
+                        <button type="button" class="btn btn-outline-warning rounded-pill border-3 mb-2 w-75 fs-5"
+                            style=" color:#18574f; !important">Eliminar</button>
+                        <button type="button" class="btn btn-outline-warning rounded-pill border-3 mb-2 w-75 fs-5"
+                            style=" color:#18574f; !important">Lista de pruebas entregadas</button>
+                    </div>
                 </div>
             </div>
-            {{/each}}
-        </div>
-        <div class="opciones">
-            <button type="button" class="btn-border-orange colorgreen">Añadir</button>
-            <button type="button" class="btn-border-orange colorgreen">Eliminar</button>
-            <button type="button" class="btn-border-orange colorgreen">Lista de pruebas entregadas</button>
         </div>
     </div>
 </div>

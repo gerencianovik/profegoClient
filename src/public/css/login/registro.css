@@ -1,4 +1,4 @@
-.bg-fondo-registro {
+.bg-registro {
     background-image: url('/img/icons/registro.png');
     background-size: cover;
     background-position: center;
@@ -8,12 +8,15 @@
     display: flex;
 }
 
-.imgRegistro{
+.imgRegistro {
     max-width: 50px !important;
 }
 
-.imgReg{
+.imgReg {
     max-width: 30% !important;
+    object-fit: cover;
+    border-radius: 50%;
+    overflow: hidden;
 }
 
 .linea {

@@ -1,34 +1,51 @@
 <link rel="stylesheet" href="/css/recours/add.css">
 {{#each listaCurso}}
 <form action="/material/curso/{{idCours}}" method="post">
-    <div id="contenedor">
-        <div id="fondo">
-            <img src="/img/fondo/Tareas.png" alt="Fondo">
-        </div>
-        <div id="titulo">{{#each ../maximo}}
-            <h1>Agregar Material de Curso <input type="text" name="idMaterial" id="numero" required
-                    value="{{Maximo}}"></h1>{{/each}}
-        </div>
-        <input type="hidden" name="_csrf" value="{{ ../csrfToken }}">
-        <div id="datos">
-            <div id="nombre">
-                <p>Nombre del Material Curso:</p>
-                <input type="text" name="nameMaterial" id="nameRecours" required>
-            </div>
-            <div id="descripcion">
-                <p>Descripcion del Material:</p>
-                <textarea type="text" name="descriptionMaterial" id="descriptionRecourse" required></textarea>
-            </div>
-            <div id="cantidad">
-                <p>Cantidad del Material:</p>
-                <input type="text" name="quantyMaterailClass" id="quantyRecours" required>
-            </div>
-            <div id="valor">
-                <p>Precio del Material</p>
-                <input type="text" name="valueMaterial" id="valueRecours" required>
-            </div>
-            <div id="boton">
-                <button type="submit">Guardar</button>
+    <div class="bg-fondo pt-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 mx-auto">
+                    {{#each ../maximo}}
+                    <h1 class="text-center fw-bold mb-3" style="color: #f39325;">Agregar Material<input type="text"
+                            name="idMaterial" id="numero" required value="{{Maximo}}"></h1>
+                    {{/each}}
+
+                    <div class="card text-white text-start fs-5 shadow"
+                        style="background: linear-gradient(to bottom, #014f78, #167283);">
+                        <div class="card-body">
+                            <input type="hidden" name="_csrf" value="{{ ../csrfToken }}">
+
+                            <div class="mb-4">
+                                <label class="form-label m-0">Nombre</label>
+                                <input type="text" class="form-control border-warning border-2" name="nameMaterial"
+                                    id="nameRecours" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label m-0">Descripcion</label>
+                                <textarea rows="3" type="text" class="form-control border-warning border-2"
+                                    name="descriptionMaterial" id="descriptionRecourse" required></textarea>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label m-0">Cantidad</label>
+                                <input type="number" class="form-control border-warning border-2"
+                                    name="quantyMaterailClass" id="quantyRecours" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label m-0">Precio</label>
+                                <input type="number" class="form-control border-warning border-2" name="valueMaterial"
+                                    id="valueRecours" required>
+                            </div>
+
+                            <div class="text-center">
+                                <button class="py-2" style="background-color: #f39325; border-radius:10px;"
+                                    type="submit"><span class="px-4 mx-3">Guardar</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -38,34 +55,50 @@
 
 {{#each listaClase}}
 <form action="/material/clase/{{idClases}}" method="post">
-    <div id="contenedor">
-        <div id="fondo">
-            <img src="/img/fondo/Tareas.png" alt="Fondo">
-        </div>
-        <div id="titulo">{{#each ../lista}}
-            <h1>Agregar Material de Clase N° <input type="text" name="idMaterial" id="numero" required
-                    value="{{Maximo}}"></h1>{{/each}}
-        </div>
-        <input type="hidden" name="_csrf" value="{{ ../csrfToken }}">
-        <div id="datos">
-            <div id="nombre">
-                <p>Nombre del Material Curso:</p>
-                <input type="text" name="nameMaterial" id="nameRecours" required>
-            </div>
-            <div id="descripcion">
-                <p>Descripcion del Material:</p>
-                <textarea type="text" name="descriptionMaterial" id="descriptionRecourse" required></textarea>
-            </div>
-            <div id="cantidad">
-                <p>Cantidad del Material:</p>
-                <input type="text" name="quantyMaterailClass" id="quantyRecours" required>
-            </div>
-            <div id="valor">
-                <p>Precio del Material</p>
-                <input type="text" name="valueMaterial" id="valueRecours" required>
-            </div>
-            <div id="boton">
-                <button type="submit">Guardar</button>
+    <div class="bg-fondo pt-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 mx-auto">
+                    {{#each ../maximo}}
+                    <h1 class="text-center fw-bold mb-3" style="color: #f39325;">Agregar Material<input type="text"
+                            name="idMaterial" id="numero" required value="{{Maximo}}"></h1>
+                    {{/each}}
+
+                    <div class="card text-white text-start fs-5 shadow"
+                        style="background: linear-gradient(to bottom, #014f78, #167283);">
+                        <div class="card-body">
+                            <input type="hidden" name="_csrf" value="{{ ../csrfToken }}">
+
+                            <div class="mb-4">
+                                <label class="form-label m-0">Nombre</label>
+                                <input type="text" class="form-control border-warning border-2" name="nameMaterial"
+                                    id="nameRecours" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label m-0">Descripcion</label>
+                                <textarea rows="3" type="text" class="form-control border-warning border-2"
+                                    name="descriptionMaterial" id="descriptionRecourse" required></textarea>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label m-0">Cantidad</label>
+                                <input type="number" class="form-control border-warning border-2"
+                                    name="quantyMaterailClass" id="quantyRecours" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label m-0">Precio</label>
+                                <input type="number" class="form-control border-warning border-2" name="valueMaterial"
+                                    id="valueRecours" required>
+                            </div>
+                            <div class="text-center">
+                                <button class="py-2" style="background-color: #f39325; border-radius:10px;"
+                                    type="submit"><span class="px-4 mx-3">Guardar</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

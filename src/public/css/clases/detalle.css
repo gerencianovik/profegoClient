@@ -1,292 +1,61 @@
-#contenedor {
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-    max-width: 100%;
-    max-height: 100vh;
-    position: absolute;
-    top: 0%;
-    left: 0%;
-}
-
-#fondo {
-    position: absolute;
-    top: 10%;
-    left: 0%;
-    width: 100%;
-    height: 100%;
-    max-width: 100%;
-    max-height: 165%;
-    z-index: -50;
-}
-
-#fondo img {
-    width: 100%;
-    height: 165%;
-    background-size: cover;
+.bg-curso-detalle {
+    background-image: url('/img/fondo/fondo1.png');
+    background-size: contain;
+    background-position: top center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-
-.flex {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.m-nav {
-    margin-top: 80px;
-}
-
-.space-between {
-    justify-content: space-between;
-}
-
-.space-around {
-    justify-content: space-around;
-}
-
-.center-dos{
-    align-items: center;
-}
-
-.center-uno{
-    justify-content: center;
-}
-
-#datosCurso {
-    margin: 80px 10px;
-}
-
-#fondoVerde {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-    background-color: #147582;
-    width: 60%;
-    min-height: 250px;
-}
-
-#fondoVerde img{
-    width: 200px;
-}
-
-#video{
-    width: 35%;
-    margin-top: 20px;
-}
-
-#video video{
     width: 100%;
-}
-
-.cuadro{
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-    background-color: #ffffff;
-    width: 60%;
-    padding: 20px;
-}
-
-#menus img{
-    width: 70px;
-}
-
-.espacio{
-    margin-top: 20px;
-}
-
-#data{
-    width: 57%;
-}
-
-#menu{
-    width: 35%;
-}
-
-#menu #menus{
-    width: 87%;
-    margin-right: 0;
-    padding-right: 0;
-}
-
-#boton button{
-    background-color: rgba(0, 0, 0, 0);
-    border-radius: 5px;
-    height: 40px;
-    width: 200px;
-    margin-left: 10px;
-    border-color: #F39325;
-    cursor: pointer;
+    min-height: 160vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #calendar {
     display: grid;
-    grid-template-columns: repeat(7, 1fr); /* 7 columnas para los días de la semana */
-    gap: 2px;
-    font-family: Arial, sans-serif;
-    width: 100%;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin: 20px auto;
+    max-width: 300px;
 }
 
 .calendar-day {
-    padding: 10px;
-    text-align: center;
-    border: 1px solid #ddd;
-    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+    border-radius: 10%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
 .calendar-day.highlight {
-    background-color: red; /* Color para los días resaltados */
-    font-weight: bold;
+    background-color:  #A7F1F5;
 }
 
-
-#verde h1 {
-    width: 15px;
-    background-color: green;
-    height: 15px;
-    margin-right: 10px;
-}
-
-#naranja h1 {
-    width: 15px;
-    background-color: #F39325;
-    height: 15px;
-    margin-right: 10px;
-}
-
-#rojo h1 {
-    width: 15px;
-    background-color: red;
-    height: 15px;
-    margin-right: 10px;
-}
-
-#contenedorBotonPanico {
-    width: 350px;
-    height: 350px;
-    background-color: red;
-    border-radius: 50%;
-    margin-top: 50px;
-}
-
-#contenedorBotonPanico button {
-    width: 100%;
-    height: 100%;
-    background-color: red;
-    border-radius: 50%;
-}
-
-#data h1{
-    color: #18574F;
-}
-
-#direccion {
-    width: 90%;
-    height: 90px;
-    margin-bottom: 20px;
-}
-
-#direccion #ubicacion {
-    display: none;
-}
-
-#direccion #map {
-    width: 100%;
-    height: 100%;
-}
-#docentess {
-    position: relative;
-}
-#contenedordocentess #aprobadoss{
-    position: absolute;
-    right: 60%;
-    top: 70%;
-}
-
-#docentess .imgPrincipal {
-    width: 100px;
-    border-radius: 50%;
-}
-#aprobadoss {
-    width: 45px;
-}
-
-#DataDocente{
-    margin-left: 45px;
-}
-
-.temarioEduca{
-    margin-top: 20px;
-}
-
-.temarioEduca img{
-    width: 100px;
-    
-}
-
-#recursosParaClase{
+.botonPanico {
     display: flex;
-    justify-content: space-between;
-    text-align: center;
+    justify-content: center;
 }
 
-#recursosParaClase .tarjeta{
-    width: 40%;
-background-image: linear-gradient(to top, #177483 32%, #004D77 100%);
-border-radius: 10px;
-font-size: 20px;
-color: white;
-height: auto;
+.boton-panico {
+    width: 60%;
+    height: 0;
+    padding-bottom: 60%;
+    border-radius: 50%;
+    background-color: red;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-#recursosParaClase img{
-    width: 100px;
+.boton-panico:hover {
+    background-color: rgb(158, 7, 7);
+    transform: scale(1.06);
 }
-
-
-@media only screen and (max-width: 660px){
-    
-}
-
-@media only screen and (min-width: 600px ) and (max-width: 900px){
-    
-}
-
-@media only screen and (min-width: 900px){
-    .titulos{
-        max-width: 50%;
-    }
-
-}
-@media only screen and (max-width: 1061px){
-
-    #menu{
-        width: 100vw;
-    }
-
-    #menu #menus{
-        width: 92%;
-    }
-
-    #data{
-        width: 92%;
-    }
-
-    #video{
-        width: 94%;
-        margin-left: 20px;
-    }
-    #fondoVerde{
-        width: 94%;
-        justify-content: center;
-        padding-top: 10px;
-    }
-}
-
-
-
-

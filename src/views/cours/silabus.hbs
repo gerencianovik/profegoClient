@@ -1,56 +1,103 @@
-<link rel="stylesheet" href="/css/silabus/agregar.css">
-<div id="contenedor">
+<div class="container pt-3">
     {{#each listaPagina}}
     <form action="/silabus/curso/{{idCours}}" method="post">
         {{/each}}
         <div id="titulo">
             {{#each listaSilabus}}
-            <h1>Temario educativo <input type="text" name="idsyllabusEducational" id="numero" value="{{Maximo}}"></h1>
+            <h1 style="color: #f29224;">Temario educativo <input type="text" name="idsyllabusEducational" id="numero"
+                    value="{{Maximo}}"></h1>
             {{/each}}
         </div>
         <input type="hidden" name="_csrf" value="{{ csrfToken }}">
-        <div id="objetivo">
-            <p>Objetivo:</p>
-            <input type="text" name="objetivesyllabusEducational" id="objetivesyllabusEducational"
+        <div class="container-sm mb-3">
+            <p class="fs-5 m-0">Objetivo:</p>
+            <input class="shadow w-100 form-control form-control-lg text-center" type="text"
+                name="objetivesyllabusEducational" id="objetivesyllabusEducational"
                 value="{{objetivesyllabusEducational}}">
         </div>
-        <div id="contenedorContador">
-            <div id="contador">
-                <input type="text" name="ContadorModulos" id="ContadorModulos" readonly>
-                <p>Modulos</p>
-            </div>
-            <div id="Clases">
-                <input type="text" name="contadorClases" id="contadorClases" readonly>
-                <p>Clases</p>
-            </div>
-            <div id="Duracion">
-                <input type="text" name="contadorDuracion" id="contadorDuracion" readonly>
-                <p>Duración total</p>
-            </div>
-        </div>
-        <div id="modulo">
-            <div id="mas">
-                <button type="button" id="moduloBoton"><img src="/img/icons/mas.png"></button>
-            </div>
-            <div id="moduleCurrucularContentCourse">
-            </div>
-        </div>
-        <div id="tema">
-            <div id="mas">
-                <button type="button" id="temaBoton"><img src="/img/icons/mas.png"></button>
-            </div>
-            <div id="themesyllabusEducational">
+        <div class="col-12 col-md-11 mx-auto mb-5">
+            <div class="row text-center" id="contenedorContador">
+                <div class="col-12 col-md-4 mb-2" id="contador" style="border-right: 4px solid #23615b;">
+                    <p class="m-0 fs-4" style="color: #165148;">№ Modulos</p>
+                    <input class="rounded-4 fs-3 py-1 text-center w-25"
+                        style="color: #f29224;border: 3px solid #f29224;" type="text" name="ContadorModulos"
+                        id="ContadorModulos" readonly>
+                </div>
+                <div class="col-12 col-md-4 mb-2" id="Clases" style="border-right: 4px solid #23615b;">
+                    <p class="m-0 fs-4" style="color: #165148;">№ Clases</p>
+                    <input class="rounded-4 fs-3 py-1 text-center w-25"
+                        style="color: #f29224;border: 3px solid #f29224;" type="text" name="contadorClases"
+                        id="contadorClases" readonly>
+                </div>
+                <div class="col-12 col-md-4 mb-2" id="Duracion">
+                    <p class="m-0 fs-4" style="color: #165148;">Duración total</p>
+                    <input class="rounded-4 fs-3 py-1 text-center w-25"
+                        style="color: #f29224;border: 3px solid #f29224;" type="text" name="contadorDuracion"
+                        id="contadorDuracion" readonly>
+                </div>
             </div>
         </div>
-        <div id="tiempo">
-            <div id="mas">
-                <button type="button" id="tiempoBoton"><img src="/img/icons/mas.png"></button>
+        <div class="col-12 col-md-8 mx-auto">
+            <div class="mb-4" id="modulo">
+                <div class="row">
+                    <div class="col-12 col-md-10 mb-2 text-center">
+                        <p class="m-0 fs-3" style="color: #165148;">Modulo</p>
+                    </div>
+                    <div class="col-4 col-md-2 mb-2 mx-auto">
+                        <div id="mas">
+                            <button class="btn" type="button" id="moduloBoton">
+                                <img class="img-fluid" src="/img/icons/mas.png">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-12 mb-2">
+                        <div id="moduleCurrucularContentCourse">
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div id="timesyllabusEducational">
+            <div class="mb-4" id="tema">
+                <div class="row">
+                    <div class="col-12 col-md-10 mb-2 text-center">
+                        <p class="m-0 fs-3" style="color: #165148;">Tema</p>
+                    </div>
+                    <div class="col-4 col-md-2 mb-2 mx-auto">
+                        <div id="mas">
+                            <button class="btn" type="button" id="temaBoton">
+                                <img class="img-fluid" src="/img/icons/mas.png">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-12 mb-2">
+                        <div id="themesyllabusEducational">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-4" id="tema">
+                <div class="row">
+                    <div class="col-12 col-md-10 mb-2 text-center">
+                        <p class="m-0 fs-3" style="color: #165148;">Tiempo</p>
+                    </div>
+                    <div class="col-4 col-md-2 mb-2 mx-auto">
+                        <div id="mas">
+                            <button class="btn" type="button" id="tiempoBoton">
+                                <img class="img-fluid" src="/img/icons/mas.png">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-12 mb-2">
+                        <div id="timesyllabusEducational">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div id="boton">
-            <button type="submit">Guardar<img src="/img/icons/save.png"></button>
+        <div id="boton" class="text-end mb-3">
+            <button class="text-white p-2 fs-5 rounded-3" type="submit" style="background-color: #f29224;">
+                Guardar
+                <img class="img-fluid" src="/img/icons/save.png" style="width: 40px; height: auto;">
+            </button>
         </div>
     </form>
 </div>

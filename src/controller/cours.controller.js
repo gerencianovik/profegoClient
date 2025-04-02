@@ -78,7 +78,7 @@ cours.mandar = async (req, res) => {
             return res.status(400).json({ errors: errors.array() });
         }
 
-        const id = req.user.idUser;
+        const id = req.user.idTeacher;
         let idTeacher;
 
 
@@ -235,11 +235,11 @@ cours.actualizar = async (req, res) => {
             return res.status(400).json({ errors: errors.array() });
         }
 
-        const { idCours, ubicacion, neeCours, nameCours, descriptionCours, dateCoursInit, dateCoursFin, hourCours, shareCours, costCours, stateCours } = req.body;
+        const { idCours, ubicacion, neeCours, nameCours, descriptionCours, dateCoursInit, dateCoursFin, hourCours, shareCours, costCours, stateCours} = req.body;
         const newPage = {
             idCours,
             ubicacionCurso: ubicacion,
-            neeCours: neeCours,
+            neeCours,
             nameCours,
             descriptionCours,
             dateCoursInit,
@@ -250,7 +250,7 @@ cours.actualizar = async (req, res) => {
             updateCours: new Date().toLocaleString(),
             stateCours,
         };
-        await orm.cours.findOne({ where: { idCours: idCours } })
+        await orm.cours.findOne({ where: { idCours: ids } })
             .then((result) => {
                 result.update(newPage)
             })
@@ -292,14 +292,37 @@ cours.desabilitar = async (req, res) => {
             updateCours: new Date().toLocaleString(),
         }
         await orm.cours.findOne({ where: { idCours: ids } })
-            .then((result) => {
-                result.update(newSpeciality)
-                req.flash('success', 'Se Desabilito la materia')
-                res.redirect('/cours/list/' + ids);
+            .then(async (result) => {
+                await result.update(newSpeciality)
+                req.flash('success', 'Se Desabilitó el Curso')
+                res.redirect('/cours/list/' + req.user.idTeacher);
             })
     } catch (error) {
-        req.flash('message', 'Error al Desabilitar la materia')
-        res.redirect('/cours/update/' + ids);
+        req.flash('message', 'Error al Desabilitar el Curso')
+        res.redirect('/cours/list/' + req.user.idTeacher);
+    }
+}
+
+cours.habilitar = async (req, res) => {
+    const ids = req.params.id;
+    try {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+        const newSpeciality = {
+            stateCours: 'Activar',
+            updateCours: new Date().toLocaleString(),
+        }
+        await orm.cours.findOne({ where: { idCours: ids } })
+            .then(async (result) => {
+                await result.update(newSpeciality)
+                req.flash('success', 'Se Habilitó el Curso')
+                res.redirect('/cours/list/' + req.user.idTeacher);
+            })
+    } catch (error) {
+        req.flash('message', 'Error al Habilitar el Curso')
+        res.redirect('/cours/list/' + req.user.idTeacher);
     }
 }
 

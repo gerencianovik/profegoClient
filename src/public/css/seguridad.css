@@ -2,7 +2,8 @@
     width: auto; 
     height: 3px; 
     background: linear-gradient(to right, #ff8800, #f2dabf);
-    border: none; margin-top: 5px;
+    border: none; 
+    margin-top: 5px;
 }
 
 .bg-fondo {

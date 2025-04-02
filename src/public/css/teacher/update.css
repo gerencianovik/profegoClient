@@ -1,838 +1,117 @@
-#contenidoPefil {
-  position: absolute;
-  top: 0%;
-  left: 0%;
+.bg-registro {
+  background-image: url('/img/fondo/postulacion.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   width: 100%;
-  height: 100%;
-  max-width: 100%;
-  max-height: 100%;
-}
-
-#fondo {
-  position: absolute;
-  top: 5%;
-  left: 0%;
-  width: 100%;
-  height: 150%;
-  max-width: 100%;
-  max-height: 150%;
-}
-
-#fondo img {
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  width: 100%;
-  height: 150%;
-}
-
-#titulos {
-  position: absolute;
-  top: 7%;
-  left: 0%;
-  width: calc(100% - 140px);
-  text-align: left;
-  padding-left: 140px;
-  font-weight: Medium;
-}
-
-#titulos h1,
-#titulos p {
-  font-size: 30px;
-  color: white;
-}
-
-#datos {
-  position: absolute;
-  width: 80%;
-  left: 10%;
-  height: 300%;
-  top: 30%;
-  background-color: white;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
-  margin-top: 10px;
-  font-weight: normal;
-  border-top-left-radius: 10px; 
-  border-top-right-radius: 10px
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #idPagina {
   display: none;
 }
 
-#datos input,
-#datos select,
-#datos textarea {
-  text-align: center;
-  font-size: 15px;
+.imgReg {
+  max-width: 100%;
+  height: auto;
 }
 
-#imagenTeacher {
-  position: absolute;
-  top: 1%;
-  left: 35%;
-  width: 30%;
-  height: 15%;
+.image-container {
+  position: relative;
+  display: inline-block;
+  width: 100vw;
+  height: 100vw;
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+#imagenPrevisualizacion,
+#botonImagen img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: cover;
   border-radius: 50%;
 }
 
-#cambioImagen {
-  position: absolute;
-  top: 0%;
-  left: 0%;
+#imagenPrevisualizacion {
+  display: block;
   width: 100%;
   height: 100%;
-}
-
-#cambioImagen #imagenPrevisualizacion {
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  width: 100%;
-  height: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
   border-radius: 50%;
 }
 
 #botonImagen {
   position: absolute;
-  margin-top: 10%;
-  width: 40%;
-  left: 30%;
-  height: 30%;
-  background-color: transparent;
-  border-color: transparent;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: none;
+  border: none;
+  padding: 0;
   cursor: pointer;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 #botonImagen img {
-  position: absolute;
-  top: 0%;
-  left: 0%;
+  opacity: 0.2;
+}
+
+.linea {
+  width: auto;
+  height: 3px;
+  background: linear-gradient(to right, #ff8800, #f2dabf);
+  border: none;
+  margin-top: 5px;
+}
+
+.image-wrapper {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-wrapper img {
   width: 100%;
-  height: 150%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  background-color: transparent;
-}
-
-#nombreCompleto {
-  position: absolute;
-  width: 80%;
-  height: 5%;
-  left: 10%;
-  top: 15%;
-}
-
-#nombreCompleto p,
-#Eleccion p,
-#fechaNacimiento p,
-#tituloEspecialidad p,
-#materias p,
-#edadRange p,
-#description p,
-#Cedula p,
-#Celular p,
-#Correos p {
-  font-size: 20px;
-  border-color: transparent;
-  font-family: "Josefin Sans";
-  font-style: normal;
-  font-weight: bolder;
-  color: #18574f;
-  margin-top: 20px;
-}
-
-#nombreCompleto input {
-  position: absolute;
-  left: 0%;
-  top: 40%;
-  border: 4px solid #f39325;
-  font-family: "Josefin Sans";
-  width: 98%;
-  height: 50%;
-  font-size: 16px;
-  margin-top: 10px;
+  height: 100%;
+  object-fit: cover;
 }
 
 #direccion {
-  position: absolute;
-  width: 80%;
-  height: 15%;
-  left: 10%;
-  top: 21%;
+  position: relative;
+  width: 100%;
+  height: 40vh;
+  max-height: 500px;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
-  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  #direccion {
+    height: 30vh;
+  }
+}
+
+@media (min-width: 1024px) {
+  #direccion {
+    height: 50vh;
+  }
 }
 
 #map {
   width: 100%;
   height: 100%;
-}
-
-#Eleccion {
-  position: absolute;
-  width: 40%;
-  height: 5%;
-  left: 10%;
-  top: 36%;
-  margin-top: 10px;
-}
-
-#fechaNacimiento {
-  position: absolute;
-  width: 40%;
-  height: 5%;
-  left: 50%;
-  top: 36%;
-  margin-top: 10px;
-}
-
-#Eleccion select {
-  position: absolute;
-  left: 0%;
-  top: 40%;
-  border: 4px solid #f39325;
-  font-family: "Josefin Sans";
-  width: 98%;
-  height: 58%;
-  font-size: 16px;
-  margin-top: 10px;
-}
-#fechaNacimiento input {
-  position: absolute;
-  left: 0%;
-  top: 40%;
-  border: 4px solid #f39325;
-  font-family: "Josefin Sans";
-  width: 98%;
-  height: 50%;
-  font-size: 16px;
-  margin-top: 10px;
-}
-
-#tituloEspecialidad {
-  position: absolute;
-  width: 80.6%;
-  height: 5%;
-  left: 10%;
-  top: 41%;
-  margin-top: 10px;
-}
-
-#tituloEspecialidad select {
-  position: absolute;
-  left: 0%;
-  top: 40%;
-  border: 4px solid #f39325;
-  font-family: "Josefin Sans";
-  width: 100%;
-  height: 58%;
-  font-size: 16px;
-  margin-top: 10px;
-}
-
-#capacidad {
-  position: absolute;
-  width: 78%;
-  height: 2%;
-  left: 10%;
-  top: 46%;
-}
-
-#capacidad input {
-  position: absolute;
-  left: 2%;
-  top: 2%;
-  margin-top: 40px; /**/
-  
-}
-
-#capacidad p {
-  position: absolute;
-  width: 90%;
-  left: 40px;
-  font-family: "Josefin Sans";
-  font-size: 18px;
-  color: #004d77;
-  margin: 0;
-}
-
-#capacidad select {
-  position: absolute;
-  left: 0%;
-  top: 40%;
-  border: 4px solid #f39325;
-  font-family: "Josefin Sans";
-  width: 100%;
-  height: 58%;
-  font-size: 16px;
-}
-
-#documentacion {
-  position: absolute;
-  width: 80%;
-  height: 10%;
-  left: 10%;
-  top: 52%;
-  margin: 10px;
-}
-
-#documentacion p {
-  position: absolute;
-  width: 90%;
-  font-family: "Josefin Sans";
-  color: #18574f;
-  font-size: 20px;
-  left: 20%;
-  top: 20%;
-}
-#documentacion h1 {
-  position: absolute;
-  width: 90%;
-  left: 0%;
-  bottom: 160px;
-  font-family: "Josefin Sans";
-  color: #18574f;
-  font-size: 20px;
-}
-
-#documentacion input {
-  display: none;
-}
-
-#DocumentoTitulo,
-#DocumentoHojaVida,
-#DocumentoAntecedentes {
-  position: absolute;
-  width: 33.33%;
-  left: 0%;
-  top: 10%;
-  height: 100%;
-  margin: 5px;
-}
-
-#DocumentoHojaVida {
-  left: 33.33%;
-}
-
-#DocumentoAntecedentes {
-  left: 66.66%;
-}
-
-#DocumentoTitulo button,
-#DocumentoHojaVida button,
-#DocumentoAntecedentes button {
-  position: absolute;
-  top: 30%;
-  width: 20%;
-  left: 35%;
-  height: 30%;
-  background-color: transparent;
-  border-color: transparent;
-  z-index: 1;
-}
-
-#DocumentoTitulo button img,
-#DocumentoHojaVida button img,
-#DocumentoAntecedentes button img {
-  position: absolute;
-  top: 50%;
-  left: 0%;
-  width: 100%;
-  height: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  z-index: 1;
-  cursor: pointer;
-}
-
-#DocumentoTitulo p,
-#DocumentoHojaVida p,
-#DocumentoAntecedentes p {
-  position: absolute;
-  width: 90%;
-  left: 5%;
-  top: 0%;
-  font-family: "Josefin Sans";
-  font-size: 18px;
-  color: #004d77;
-}
-
-#DocumentoTitulo iframe,
-#DocumentoHojaVida iframe,
-#DocumentoAntecedentes iframe {
-  position: absolute;
-  top: 40%;
-  border: 4px solid #f39325;
-  margin-bottom: 10px;
-  width: 250px;
-  height: 100px;
-  border-radius: 10px;
-}
-
-#pdf {
-  position: absolute;
-  left: 40%;
-  font-family: "Josefin Sans";
-  font-size: 18px;
-  color: #004d77;
-  margin-top: 210px;
-}
-
-#materias {
-  position: absolute;
-  width: 80%;
-  height: 5%;
-  left: 9.5%;
-  top: 68%;
-  margin: 25px;
-}
-
-/*#materias p {
-  position: absolute;
-  width: 90%;
-  left: 0%;
-  font-family: "Josefin Sans";
-  font-size: 18px;
-  color: #004d77;
-}*/
-
-#materias select {
-  position: absolute;
-  left: 0%;
-  top: 40%;
-  border: 4px solid #f39325;
-  font-family: "Josefin Sans";
-  width: 100%;
-  height: 58%;
-  font-size: 16px;
-  margin-top: 10px;
-}
-
-#edadRange {
-  position: absolute;
-  width: 80%;
-  height: 5%;
-  left: 9.5%;
-  top: 73%;
-  margin: 25px;
-  margin-top: 20px;
-}
-
-/* #edadRange p {
-  position: absolute;
-  width: 90%;
-  left: 0%;
-  font-family: "Josefin Sans";
-  font-size: 18px;
-  color: #004d77;
-} */
-
-#edadRange select {
-  position: absolute;
-  left: 0%;
-  top: 40%;
-  border: 4px solid #f39325;
-  font-family: "Josefin Sans";
-  width: 100%;
-  height: 58%;
-  font-size: 16px;
-  margin-top: 10px;
-}
-
-#description {
-  position: absolute;
-  width: 80%;
-  height: 5%;
-  left: 10%;
-  top: 78%;
-  margin: 19px;
-  margin-right: 25px;
-}
-
-/* #description p {
-  position: absolute;
-  width: 90%;
-  left: 0%;
-  font-family: "Josefin Sans";
-  font-size: 18px;
-  color: #004d77;
-} */
-
-#description textarea {
-  position: absolute;
-  left: 0%;
-  top: 40%;
-  border: 4px solid #f39325;
-  font-family: "Josefin Sans";
-  width: 99%;
-  height: 40%;
-  font-size: 16px;
-  margin-top: 10px;
-}
-
-#Correos {
-  position: absolute;
-  width: 80%;
-  height: 5%;
-  left: 10%;
-  top: 83%;
-  margin: 19px;
-}
-
-/* #Correos p {
-  position: absolute;
-  width: 90%;
-  left: 0%;
-  font-family: "Josefin Sans";
-  font-size: 18px;
-  color: #004d77;
-} */
-
-#Correos input {
-  position: absolute;
-  left: 0%;
-  top: 40%;
-  border: 4px solid #f39325;
-  font-family: "Josefin Sans";
-  width: 99%;
-  height: 40%;
-  font-size: 16px;
-  margin-top: 10px;
-}
-
-#Cedula {
-  position: absolute;
-  width: 37%;
-  height: 5%;
-  left: 10%;
-  top: 88%;
-  margin: 19px;
-}
-
-/* #Cedula p {
-  position: absolute;
-  width: 90%;
-  left: 0%;
-  font-family: "Josefin Sans";
-  font-size: 18px;
-  color: #004d77;
-} */
-
-#Cedula input {
-  position: absolute;
-  left: 0%;
-  top: 40%;
-  border: 4px solid #f39325;
-  font-family: "Josefin Sans";
-  width: 100%;
-  height: 40%;
-  font-size: 16px;
-  margin-top: 10px;
-}
-
-#Celular {
-  position: absolute;
-  width: 37%;
-  height: 5%;
-  left: 53%;
-  top: 88%;
-  margin: 19px;
-}
-
-/* #Celular p {
-  position: absolute;
-  width: 90%;
-  left: 0%;
-  font-family: "Josefin Sans";
-  font-size: 18px;
-  color: #004d77;
-} */
-
-#Celular input {
-  position: absolute;
-  left: 0%;
-  top: 40%;
-  border: 4px solid #f39325;
-  font-family: "Josefin Sans";
-  width: 98%;
-  height: 40%;
-  font-size: 16px;
-  margin-top: 10px;
-}
-
-#boton {
-  position: absolute;
-  width: 30%;
-  height: 2.5%;
-  bottom: 0.5%;
-  left: 35%;
-  top: 96%;
-}
-
-#boton button {
-  background-color: #004d77;
-  color: #ffffff;
-  width: 100%;
-  height: 100%;
-  font-size: 20px;
-  border-radius: 10px;
-  cursor: pointer;
-}
-/*footer*/
-#footer {
-  position: absolute;
-  top: 350%;
-  width: 100%;
-  height: 47%;
-  background-color: #ffefdaa0;
-  left: 0%;
-}
-
-#tarjetaNosotros,
-#tarjetaUnete,
-#tarjetaLegal {
-  position: absolute;
-  width: 12%;
-  top: 0%;
-  left: 4.5%;
-  height: 100%;
-}
-
-#tarjetaNosotros h1,
-#tarjetaUnete h1,
-#tarjetaLegal h1 {
-  color: #004d77;
-  font-size: 20px;
-  left: 4.5%;
-}
-
-#tarjetaNosotros p,
-#tarjetaUnete p,
-#tarjetaLegal p {
-  color: #004d77;
-  left: 4.5%;
-  font-size: 14px;
-  margin-top: 25%;
-  font-weight: 600;
-  line-height: 13px;
-}
-
-#nosotrosFooter {
-  position: relative;
-  padding: 0px;
-  background: transparent;
-  border-bottom: 5px solid transparent;
-  border-image: linear-gradient(to right, #f39325, #feedd9);
-  border-image-slice: 1;
-  border-image-width: 0 0 5px 0;
-  left: 0%;
-  top: 4.5%;
-}
-
-#tarjetaUnete {
-  left: 21%;
-}
-
-#tarjetaLegal {
-  left: 38%;
-}
-
-#logoImagen {
-  position: absolute;
-  top: 7%;
-  left: 75%;
-  width: 20%;
-  height: 69%;
-}
-
-#logoImagen img {
-  width: 100%;
-  height: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-}
-
-#final {
-  position: absolute;
-  top: 90%;
-  width: 100%;
-  height: 15%;
-  background-color: #ffefda;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
-}
-
-#final p {
-  text-align: center;
-  width: 40%;
-  color: #004d77;
-  left: 4.5%;
-}
-
-#final #finalFinal {
-  position: absolute;
-  top: 0%;
-  left: 77.5%;
-  width: 20%;
-}
-#cuadroDebajoDelForm {
-  background-color: #f39325;
-  position: absolute;
-  top: 100%;
-  width: 100%;
-  height: 40px;
-  left: 0%;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-
-
-/*responsive*/
-
-@media (max-width: 768px){
-  #titulos{
-    padding: 0 2px;
-    width: auto;
-    text-align: center;
-  }
-
-  #datos{
-    width: 98%;
-    left: 1%;
-    top: 300px;
-  }
-
-  #nombreCompleto{
-    top: 370px;
-  }
-
-  #direccion{
-    top: 520px;
-    height: 200px;
-  }
-
-  #Eleccion, #fechaNacimiento{
-    top: 725px;
-  }
-
-  #tituloEspecialidad{
-    top: 845px;
-  }
-
-  #capacidad{
-    top: 950px;
-  }
-
-  #imagenTeacher{
-    width: 370px;
-    left: 20%;
-    height: 370px;
-  }
-
-  #documentacion{
-    top: 1040px;
-  }
-
-  #documentacion h1{
-    bottom: 190px;
-  }
-
-  #DocumentoHojaVida{
-    top: 75%;
-    left: 0;
-  }
-
-  #DocumentoHojaVida p, #DocumentoAntecedentes p, #DocumentoTitulo p{
-    margin-bottom: 0;
-    top: 15%;
-  }
-
-  #DocumentoAntecedentes{
-    top: 140%;
-    left: 0;
-  }
-
-  #DocumentoTitulo p, #DocumentoHojaVida p, #DocumentoAntecedentes p{
-    width: 100%;
-  }
-
-  #DocumentoTitulo, #DocumentoHojaVida, #DocumentoAntecedentes{
-    width: 100%;
-  }
-
-  #DocumentoTitulo iframe, #DocumentoHojaVida iframe, #DocumentoAntecedentes iframe{
-    width: 100%;
-  }
-
-  #documentacion #pdf{
-    top: 420px;
-    left: 5px;
-    text-align: center;
-    width: 100%;
-  }
-
-  #materias{
-    top: 1750px;
-  }
-
-  #edadRange{
-    top: 1890px;
-  }
-
-  #description{
-    top: 2010px;
-  }
-
-  #Correos{
-    top: 2140px;
-  }
-
-  #Celular,#Cedula{
-    top: 2270px;
-  }
-
-  #boton{
-    top: 2450px;
-  }
-
-  #footer{
-    top: 450%;
-  }
-
-  #datos{
-    height: 390%;
-  }
-
-  #datos input, #datos select, #datos textarea{
-    height: 50px;
-  }
-
-  #fechaNacimiento input{
-    height: 40px;
-  }
-
-  #boton{
-    width: auto;
-  }
-
-  #final #finalFinal{
-    left: 75%;
-  }
-
-  #final{
-    height: 70px;
-  }
-
-  #logoImagen{
-    width: 100px;
-    height: auto;
-    left: 70%;
-  }
 }
 

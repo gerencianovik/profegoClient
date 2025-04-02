@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/css/login/registro.css">
 
-<div class="bg-fondo-registro d-flex justify-content-center align-items-center">
+<div class="bg-registro d-flex justify-content-center align-items-center">
     <div class="container-fluid border-0" style="width: 100%;">
         <div class="row">
             <div class="col-12 col-md-5 ms-auto pt-5">
@@ -28,7 +28,7 @@
                                 <h1 style="color: #f39323;">Registro</h1>
                                 <h4 style="color: #23615b;">¡Estás a un paso de unirte a nuestra comunidad!</h4>
                             </div>
-                            <div class="mx-auto">
+                            <div class="d-flex justify-content-center">
                                 <button class="btn btn-light" type="button" id="botonImagen">
                                     <img class="img-fluid imgReg" src="/img/icons/subirFoto.png"
                                         id="imagenPrevisualizacion"
@@ -36,6 +36,7 @@
                                 </button>
                                 <input type="file" name="imagenCasa" id="seleccionArchivos" accept="image/*" hidden />
                             </div>
+
                             {{#each lista}}
                             <input type="text" name="idEstudent" id="numero" readonly value="{{Maximo}}">
                             {{/each}}
@@ -135,8 +136,7 @@
                                 </div>
                                 <div id="mensajesa"></div>
                                 <div class="col-12 mb-3 mt-2 form-check">
-                                    <input type="checkbox" name="" id="valirdar" class="form-check-input"
-                                        id="exampleCheck1">
+                                    <input type="checkbox" name="" id="valirdar" class="form-check-input" required>
                                     <label class="form-check-label" for="exampleCheck1">He leído y acepto las <a
                                             href="/policyList">Políticas de
                                             Privacidad y

@@ -1,75 +1,164 @@
 <link rel="stylesheet" href="/css/clases/add.css">
-{{#each lista}}
-<form action="/clases/update/{{idClases}}" method="post" enctype="multipart/form-data">
-    {{/each}}
-    <div id="contenedor">
-        <div id="fondo">
-            <img src="/img/icons/fondoLista.png">
-        </div>
-        <div id="tiutlo">
-            <input type="hidden" name="_csrf" value="{{ csrfToken }}">
-            {{#each lista}}
-            <p>Agregar Clase <input type="text" name="idClases" id="idClases" value="{{idClases}}"></p>
-        </div>
-        <div id="central">
-            <div id="imagens">
-                <div id="cambioImagen">
-                    <img src="/img/clase/{{photoClases}}" id="imagenPrevisualizacion" />
-                </div>
-                <input type="file" name="photoClases" id="seleccionArchivos" accept="image/*" />
+
+<div class="bg-curso">
+    <div class="container-fluid w-100 pt-2">
+        {{#each lista}}
+        <form action="/clases/update/{{idClases}}" method="post" enctype="multipart/form-data">
+            <div class="col fs-3">
+                <input type="hidden" name="_csrf" value="{{  ../csrfToken }}">
+                <p class="ms-3 mt-2 fw-bold text-white">Actualizar Clase
+                    <span name="idClases" id="idClases">{{idClases}}</span>
+                </p>
             </div>
-            <div id="nombre">
-                <p>Nombre de la Clase:</p>
-                <input type="text" name="nameClases" id="nameClases" required value="{{nameClases}}">
-            </div>
-        </div>
-        <div id="videosS">
-            <div id="cambioVideo">
-                <video src="/video/clases/{{videoClases}}" controls></video>
-            </div>
-            <input type="file" name="videoClases" id="seleccionArchivos" accept="image/*" />
-        </div>
-        <div id="datosGenerales">
-            <div id="descripcion">
-                <p>Descripción de la Clase:</p>
-                <textarea name="descriptionClases" id="descriptionClases" required>{{descriptionClases}}</textarea>
-            </div>
-            <div id="costo">
-                <p>Costo:</p>
-                <input type="text" name="costClases" id="costClases" required value="{{costClases}}">
-            </div>
-            <div id="cupos">
-                <p>Cupos:</p>
-                <input type="text" name="shareClases" id="shareClases" value="{{shareClases}}">
-            </div>
-            <div id="Hora">
-                <p>Tiempo de la Clase:</p>
-                <input type="text" name="hourClases" id="hourClases" value="{{hourClases}}">
-            </div>
-            <div id="fechaInicio">
-                <p>Fecha inicio:</p>
-                <input type="text" name="dateClasesInit" id="dateCours" value="{{dateClasesInit}}">
-            </div>
-            <div id="fechaFin">
-                <p>Fecha Fin:</p>
-                <input type="text" name="dateClasesFin" id="dateCours" required value="{{dateClasesFin}}">
-            </div>
-            <div id="estado">
-                <p>Estado:</p>
-                <div id="Activar">
-                    <input type="text" name="stateClases" id="idestado" readonly value="{{stateClases}}">
-                    <button type="button" id="activarBtn">Activar</button>
-                </div>
-                <div id="desActivar">
-                    <button type="button" id="desactivarBtn">Desabilitar</button>
+
+            <div class="row mb-3" style="background-color: #147582;">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12 col-md-3 d-flex justify-content-center align-items-center">
+                            <button class="btn btn-light fs-4 p-0 m-4" type="button" id="botonImagen">
+                                <img class="img-fluid" {{#if photoClases}} src="/img/clase/{{photoClases}}" {{else}}
+                                    src="/img/icons/noImagen.png" {{/if}} id="imagenPrevisualizacion" />
+                                Cambiar Imagen
+                            </button>
+                            <input type="file" name="photoClases" id="seleccionArchivos" accept="image/*" hidden />
+                        </div>
+
+                        <div class="col-12 col-md-5 py-3">
+                            <label class="form-label text-white fs-4">Nombre de la Clase</label>
+                            <input class="form-control mb-3 w-100" type="text" name="nameClases" id="nameClases"
+                                required value="{{nameClases}}">
+
+                            <div class="mb-3">
+                                <div style="width: 100%; height: 220px;" id="map"></div>
+                                <input id="pac-input" class="controls" type="text" placeholder="Buscar" />
+                                <input type="text" name="ubicacion" id="ubicacion" value="{{ubicacionClase}}" required>
+                            </div>
+
+                            <p class="text-white fs-5 m-0"><input type="checkbox" name="neeClass" id="adactacion"
+                                    value="on" {{#if neeClass}}checked{{/if}}> Adaptado para NEE</p>
+
+                        </div>
+
+                        <div class="col-12 col-md-4 my-4">
+                            <div id="cambioVideo" class="position-relative" style="max-width: 100%; max-height: auto;">
+                                <video id="videoPreview" class="w-100" style="height: 320px; object-fit: contain;" {{#if
+                                    videoClases}} src="/video/clases/{{videoClases}}" {{else}}
+                                    src="/video/clase/noVideo.mp4" {{/if}} controls></video>
+                            </div>
+                            <div class="px-3">
+                                <input type="file" name="videoClases" id="seleccionvideo" class="form-control"
+                                    accept="video/*" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            {{/each}}
-        </div>
-        <div id="boton">
-            <button type="submit">Actualizar</button>
-        </div>
+
+            <div class="container-fluid mb-5">
+                <div class="col-12 col-md-7">
+                    <div class="card">
+                        <div class="card-body p-4">
+                            <div class="row">
+                                <div class="col-12 col-md-6 mb-5">
+                                    <label class="form-label m-0 w-100">
+                                        <h5 class="text-center mb-0" style="color: #23615b;">Descripción de la Clase
+                                        </h5>
+                                    </label>
+                                    <textarea class="form-control border-1 shadow" rows="5" name="descriptionClases"
+                                        id="descriptionClases" required>{{descriptionClases}}</textarea>
+                                </div>
+
+                                <div class="col-12 col-md-6 mb-5">
+                                    <label class="form-label m-0 w-100">
+                                        <h5 class="text-center mb-0" style="color: #23615b;">Costo</h5>
+                                    </label>
+                                    <div class="input-group input-group-lg m-0">
+                                        <input type="number" class="form-control border-1 shadow"
+                                            aria-describedby="inputGroup-sizing-lg" name="costClases" id="costClases"
+                                            required value="{{costClases}}">
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-6 mb-5">
+                                    <label class="form-label m-0 w-100">
+                                        <h5 class="text-center mb-0" style="color: #23615b;">Cupos</h5>
+                                    </label>
+                                    <div class="input-group input-group-lg m-0">
+                                        <input type="number" class="form-control border-1 shadow"
+                                            aria-describedby="inputGroup-sizing-lg" name="shareClases" id="shareClases"
+                                            required value="{{shareClases}}">
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-6 mb-5">
+                                    <label class="form-label m-0 w-100">
+                                        <h5 class="text-center mb-0" style="color: #23615b;">Tiempo de la Clase</h5>
+                                    </label>
+                                    <div class="input-group input-group-lg m-0">
+                                        <input type="time" class="form-control border-1 shadow"
+                                            aria-describedby="inputGroup-sizing-lg" name="hourClases" id="hourClases"
+                                            required value="{{hourClases}}">
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-6 mb-5">
+                                    <label class="form-label m-0 w-100">
+                                        <h5 class="text-center mb-0" style="color: #23615b;">Fecha inicio</h5>
+                                    </label>
+                                    <div class="input-group input-group-lg m-0">
+                                        <input type="date" class="form-control border-1 shadow"
+                                            aria-describedby="inputGroup-sizing-lg" name="dateClasesInit" id="dateCours"
+                                            required value="{{dateClasesInit}}">
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-6 mb-5">
+                                    <label class="form-label m-0 w-100">
+                                        <h5 class="text-center mb-0" style="color: #23615b;">Fecha fin</h5>
+                                    </label>
+                                    <div class="input-group input-group-lg m-0">
+                                        <input type="date" class="form-control border-1 shadow"
+                                            aria-describedby="inputGroup-sizing-lg" name="dateClasesFin" id="dateCours"
+                                            required value="{{dateClasesFin}}">
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-6 mb-5">
+                                    <label class="form-label m-0 w-100">Estado</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control border-1 shadow" name="stateClases"
+                                            id="idestado" value="{{stateClases}}" readonly>
+
+                                        <span class="input-group-text p-0 shadow">
+                                            <button id="activarBtn" style="display: none;" type="button"
+                                                class="btn btn-primary fw-bold">
+                                                Activar</button>
+                                            <button id="desactivarBtn" style="display: none;" type="button"
+                                                class="btn btn-secondary fw-bold">
+                                                Desactivar</button>
+                                        </span>
+                                    </div>
+                                </div>
+                                {{/each}}
+
+                                <div class="text-end">
+                                    <button style="background-color: #0b4e71;" class="btn btn-lg text-white"
+                                        type="submit">Actualizar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
-</form>
+</div>
 
 <script src="/js/estados.js"></script>
+<script src="/js/preview.js"></script>
+<script src="/js/preview-video.js"></script>
+<script src="/js/botonImagen.js"></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Q9PaOYlXpeqtj_0tHE19Zcoim25iSFg&callback=initAutocomplete&libraries=places&v=weekly"
+    defer></script>
+<script src="/js/mapa.js"></script>

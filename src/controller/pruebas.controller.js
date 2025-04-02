@@ -71,18 +71,18 @@ pruebaCtl.mostrar = async (req, res) => {
 pruebaCtl.mandar = async (req, res) => {
     const id = req.params.id
     try {
-        const { idEvaluaciones, nameAssessment, descriptionAssessment, timeAssessment, dateAssessment, qualification } = req.body
+        const { idEvaluaciones, nameAssessment, descriptionAssessment, timeAssessment, dateAssessment, qualificationAssessment } = req.body
         const newEnvio = {
             nameAssessment,
             descriptionAssessment,
             timeAssessment,
             dateAssessment,
-            qualification,
+            qualificationAssessment,
             courIdCours: id,
         }
         await orm.assessment.create(newEnvio)
         req.flash('success', 'Exito al Guardar')
-        res.redirect('/pruebas/cursos/' + idEvaluaciones);
+        res.redirect('/pruebas/cursos/' + id);
     } catch (error) {
         console.error('Error al guardar el recurso:', error);
         req.flash('message', 'Error al guardar el recurso');
@@ -116,13 +116,13 @@ pruebaCtl.traer = async (req, res) => {
 pruebaCtl.actualizar = async (req, res) => {
     const id = req.params.id
     try {
-        const { idEvaluaciones, nameAssessment, descriptionAssessment, timeAssessment, dateAssessment, qualification } = req.body
+        const { idEvaluaciones, nameAssessment, descriptionAssessment, timeAssessment, dateAssessment, qualificationAssessment } = req.body
         const newEnvio = {
             nameAssessment,
             descriptionAssessment,
             timeAssessment,
             dateAssessment,
-            qualification,
+            qualificationAssessment,
             courIdCours: id,
         }
         await orm.assessment.findOne({ where: { idAssessment: id } })

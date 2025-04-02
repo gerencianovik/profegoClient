@@ -1,37 +1,71 @@
-<link rel="stylesheet" href="">
+<link rel="stylesheet" href="/css/recours/add.css">
 {{#each listaCurso}}
 <form action="/material/cursos/{{idCours}}" method="post">
-    <div id="mas">
-        <a href="/material/curso/{{idCours}}">+</a>
-    </div>
-    <div id="contenedor">
-        <div id="titulo">
-            <p>Lista de Material de Curso </p>
+    <div class="bg-fondo pt-3">
+        <div class="col mb-3">
+            <div class="text-center">
+                <h1 class="fw-bold" style="color: #f39325;">Lista de Materiales</h1>
+            </div>
+            <div class="col-12 col-md-2 ms-auto">
+                <a href="/material/curso/{{idCours}}">
+                    <button type="button" class="rounded-4 fs-4 ms-2 btn btn-success d-flex align-items-center">
+                        Añadir
+                        <img class="img-fluid ms-2" style="width: 50px;" src="/img/icons/mas.png">
+                    </button>
+                </a>
+            </div>
         </div>
-        <div id="Datos">
-            <div class="row">
+        <div class="container-fluid">
+            <div class="row row-cols-1 row-cols-md-4 g-2 pb-2">
                 {{#each ../lista}}
-                <div id="tarjeta">
-                    <div id="nombre">
-                        <p>{{nameMaterial}}</p>
-                    </div>
-                    <div id="descripcion">
-                        <p>{{descriptionMaterial}}</p>
-                    </div>
-                    <div id="cantidad">
-                        <p>{{quantyMaterailClass}}</p>
-                    </div>
-                    <div id="valor">
-                        <p>{{valueMaterialCourse}}</p>
-                    </div>
-                    <div id="estado">
-                        <p>{{stateMaterial}}</p>
-                    </div>
-                    <div id="actualizar">
-                        <a href="/material/updateCurso/{{idMaterial}}"><button type="button">Actualizar</button></a>
-                    </div>
-                    <div id="desavilitar">
-                        <a href="/material/updateClase/{{idMaterial}}"><button type="button">Desabilitar</button></a>
+                <div class="col-12 col-md-3 p-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12 text-center fs-4">
+                                    <p>{{nameMaterial}}</p>
+                                </div>
+                                <div class="col-12">
+                                    <p>{{descriptionMaterial}}</p>
+                                </div>
+                                <div class="col-6">
+                                    <p class="text-break">Cantidad: {{quantyMaterailClass}}</p>
+                                </div>
+                                <div class="col-6">
+                                    <p class="text-break">Valor: {{valueMaterial}}</p>
+                                </div>
+                                <div class="col-12 mb-4">
+                                    <div class="text-center">
+                                        <input id="estado" type="text" value="{{stateMaterial}}" hidden>
+                                        <span id="estadoActivo" class="bg-success bg-opacity-75 text-white p-2 fw-bold"
+                                            style="display: none;">Activo</span>
+                                        <span id="estadoDesactivo"
+                                            class="bg-danger bg-opacity-75 text-white p-2 fw-bold"
+                                            style="display: none;">Desactivo</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="row justify-content-evenly">
+                                        <div class="col-12 col-sm-6 mb-2">
+                                            <a href="/material/updateCurso/{{idMaterial}}">
+                                                <button class="btn btn-primary w-100" type="button">Actualizar</button>
+                                            </a>
+                                        </div>
+                                        <div class="col-12 col-sm-6 deshabilitarButton" style="display: none;">
+                                            <a href="/material/deleteCurso/{{idMaterial}}/{{courIdCours}}">
+                                                <button class="btn btn-danger w-100" type="button">Deshabilitar</button>
+                                            </a>
+                                        </div>
+                                        <div class="col-12 col-sm-6 habilitarButton" style="display: none;">
+                                            <a href="/material/enableCurso/{{idMaterial}}/{{courIdCours}}">
+                                                <button class="btn btn-success w-100" type="button">Habilitar</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 {{/each}}
@@ -41,40 +75,73 @@
 </form>
 {{/each}}
 
-<link rel="stylesheet" href="">
 {{#each listaClase}}
 <form action="/material/clases/{{idClases}}" method="post">
-    <div id="mas">
-        <a href="/material/clase/{{idClases}}">+</a>
-    </div>
-    <div id="contenedor">
-        <div id="titulo">
-            <p>Lista de Material de Curso </p>
+    <div class="bg-fondo pt-3">
+        <div class="col mb-3">
+            <div class="text-center">
+                <p class="fw-bold fs-1" style="color: #f39325;">Lista de Materiales</p>
+            </div>
+            <div class="col-12 col-md-2 ms-auto">
+                <a href="/material/clase/{{idClases}}">
+                    <button type="button" class="rounded-4 fs-4 ms-2 btn btn-success d-flex align-items-center">
+                        Añadir
+                        <img class="img-fluid ms-2" style="width: 50px;" src="/img/icons/mas.png">
+                    </button>
+                </a>
+            </div>
         </div>
-        <div id="Datos">
-            <div class="row">
+
+        <div class="container-fluid">
+            <div class="row row-cols-1 row-cols-md-4 g-2 pb-2">
                 {{#each ../lista}}
-                <div id="tarjeta">
-                    <div id="nombre">
-                        <p>{{nameMaterial}}</p>
-                    </div>
-                    <div id="descripcion">
-                        <p>{{descriptionMaterial}}</p>
-                    </div>
-                    <div id="cantidad">
-                        <p>{{quantyMaterailClass}}</p>
-                    </div>
-                    <div id="valor">
-                        <p>{{valueMaterialCourse}}</p>
-                    </div>
-                    <div id="estado">
-                        <p>{{stateMaterial}}</p>
-                    </div>
-                    <div id="actualizar">
-                        <a href="/material/updateClase/{{idMaterial}}"><button type="button">Actualizar</button></a>
-                    </div>
-                    <div id="desavilitar">
-                        <a href="/material/delete/{{idMaterial}}"><button type="button">Desabilitar</button></a>
+                <div class="col-12 col-md-3 p-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12 text-center fs-4">
+                                    <p>{{nameMaterial}}</p>
+                                </div>
+                                <div class="col-12">
+                                    <p>{{descriptionMaterial}}</p>
+                                </div>
+                                <div class="col-6">
+                                    <p class="text-break">Cantidad:  {{quantyMaterailClass}}</p>
+                                </div>
+                                <div class="col-6">
+                                    <p class="text-break">Valor:  {{valueMaterial}}</p>
+                                </div>
+                                <div class="col-12 mb-4">
+                                    <div class="text-center">
+                                        <input id="estado" type="text" value="{{stateMaterial}}" hidden>
+                                        <span id="estadoActivo" class="bg-success bg-opacity-75 text-white p-2 fw-bold"
+                                            style="display: none;">Activo</span>
+                                        <span id="estadoDesactivo"
+                                            class="bg-danger bg-opacity-75 text-white p-2 fw-bold"
+                                            style="display: none;">Desactivo</span>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="row justify-content-evenly">
+                                        <div class="col-12 col-sm-6 mb-2">
+                                            <a href="/material/updateClase/{{idMaterial}}">
+                                                <button class="btn btn-primary w-100" type="button">Actualizar</button>
+                                            </a>
+                                        </div>
+                                        <div class="col-12 col-sm-6 deshabilitarButton" style="display: none;">
+                                            <a href="/material/deleteClase/{{idMaterial}}/{{ClaseIdClases}}">
+                                                <button class="btn btn-danger w-100" type="button">Deshabilitar</button>
+                                            </a>
+                                        </div>
+                                        <div class="col-12 col-sm-6 habilitarButton" style="display: none;">
+                                            <a href="/material/enableClase/{{idMaterial}}/{{ClaseIdClases}}">
+                                                <button class="btn btn-success w-100" type="button">Habilitar</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 {{/each}}
@@ -83,3 +150,5 @@
     </div>
 </form>
 {{/each}}
+
+<script src="/js/activo-desactivo-lista.js"></script>

@@ -1,44 +1,59 @@
-<link rel="stylesheet" href="/css/tareas/actualizar.css">
-<div id="contenedor">
-    {{#each listaTarea}}
-    <form action="/tareas/detailCurso/{{idTask}}" method="post">
-        <div id="fondo">
-            <img src="/img/fondo/Tareas.png">
-        </div>
-        <input type="hidden" name="_csrf" value="{{ ../csrfToken }}">
-        <div id="datosLogin">
-            <div id="titulo">
-                <h1>Tarea</h1>
-            </div>
-            <div id="datos">
-                <div id="nombre">
-                    <p>Nombre Tarea:</p>
-                    <input type="text" name="nameTask" id="nameTask" value="{{nameTask}}">
-                </div>
-                <div id="descriptionTask">
-                    <p>Descipción Tarea:</p>
-                    <input type="text" name="descriptionTask" id="descriptionTask" value="{{descriptionTask}}">
-                </div>
-                <div id="fechaEntrega">
-                    <p>Fecha máxima de entrega:</p>
-                    <input type="date" name="fechaEntrega" id="fechaEntrega" value="{{fechaEntrega}}">
-                </div>
-                <div id="estado">
-                    <p>Estado:</p>
-                    <div id="Activar">
-                        <input type="text" name="stateCours" id="idestado" readonly value="{{stateTask}}">
-                        <button type="button" id="activarBtn">Activar</button>
+<link rel="stylesheet" href="/css/recours/add.css">
+{{#each listaTarea}}
+<form action="/tareas/detailCurso/{{idTask}}" method="post">
+    <input type="hidden" name="_csrf" value="{{ ../csrfToken }}">
+    <div class="bg-fondo pt-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 mx-auto">
+                    <h1 class="text-center fw-bold mb-3" style="color: #f39325;">Actualizar Tarea<input type="text"
+                            name="idTask" id="numero" value="{{Maximo}}"></h1>
+                    <div class="card text-start fs-5 shadow border-0">
+                        <div class="card-body">
+                            <div class="mb-4">
+                                <label class="form-label m-0" style="color: #2f5f6f;">Nombre Tarea</label>
+                                <input type="text" class="form-control shadow" name="nameTask" id="nameTask"
+                                    value="{{nameTask}}">
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label m-0" style="color: #2f5f6f;">Descripcion Tarea</label>
+                                <textarea rows="3" type="text" class="form-control shadow" name="descriptionTask"
+                                    id="descriptionTask">{{descriptionTask}}</textarea>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label m-0" style="color: #2f5f6f;">Fecha máxima de entrega</label>
+                                <input type="date" class="form-control shadow" name="fechaEntrega" id="fechaEntrega"
+                                    value="{{fechaEntrega}}" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label m-0" style="color: #2f5f6f;">Estado</label>
+                                <div class="input-group">
+                                    <input type="text" name="stateCours" id="idestado" readonly value="{{stateTask}}"
+                                        class="form-control">
+                                    <span class="input-group-text p-0 shadow">
+                                        <div id="Activar">
+                                            <button type="button" id="activarBtn"
+                                                class="btn btn-primary">Activar</button>
+                                        </div>
+                                        <div id="desActivar">
+                                            <button type="button" id="desactivarBtn"
+                                                class="btn btn-secondary">Desabilitar</button>
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" style="background-color: #f39325;" class="text-white px-3 py-2 rounded-3">Actualizar</button>
+                            </div>
+                        </div>
                     </div>
-                    <div id="desActivar">
-                        <button type="button" id="desactivarBtn">Desabilitar</button>
-                    </div>
-                </div>
-                <div id="Boton">
-                    <button type="submit">Actualizar</button>
                 </div>
             </div>
         </div>
-    </form>
-    {{/each}}
-</div>
+    </div>
+</form>
+{{/each}}
 <script src="/js/estados.js"></script>

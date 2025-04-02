@@ -13,72 +13,50 @@ class Silabus {
 
     actualizarModulos() {
         this._listaValoresModulo.push('');
-        const listaHTML = this._listaValoresModulo.map(() => {
-            return `
-                <div class="mod">
-                    <input name="moduleCurrucularContentCourse" placeholder="Escriba su Modulo">
-                    <button type="button" class="btn-eliminar"><img src="/img/icons/borrador.png"></button>
-                </div>
-            `;
-        }).join('');
-        this.moduleCurrucularContentCourse.innerHTML = listaHTML;
-        this.agregarEventosEliminar('moduleCurrucularContentCourse', this._listaValoresModulo);
-        this.contador.contadorTotalModulo();
+        this.renderizarLista('moduleCurrucularContentCourse', this._listaValoresModulo, 'Modulo');
     }
 
     actualizarTema() {
         this._listaValoresTema.push('');
-        const listaHTML = this._listaValoresTema.map(() => {
-            return `
-                <div class="tems">
-                    <input name="themesyllabusEducational" placeholder="Escriba su Tema">
-                    <button type="button" class="btn-eliminar"><img src="/img/icons/borrador.png"></button>
-                </div>
-            `;
-        }).join('');
-        this.themesyllabusEducational.innerHTML = listaHTML;
-        this.agregarEventosEliminar('themesyllabusEducational', this._listaValoresTema);
-        this.contador.contadorTemaModulo();
+        this.renderizarLista('themesyllabusEducational', this._listaValoresTema, 'Tema');
     }
 
     actualizarTiempo() {
         this._listaValoresTiempo.push('');
-        const listaHTML = this._listaValoresTiempo.map(() => {
+        this.renderizarLista('timesyllabusEducational', this._listaValoresTiempo, 'Tiempo de Duracion');
+    }
+
+    renderizarLista(name, listaValores, tipo) {
+        const listaHTML = listaValores.map((_, index) => {
             return `
-                <div class="tim">
-                    <input name="timesyllabusEducational" placeholder="Escriba su Tiempo de Duracion">
-                    <button type="button" class="btn-eliminar"><img src="/img/icons/borrador.png"></button>
+            <div class="${name} mod col-11" data-index="${index}">
+                <div class="row align-items-center">
+                    <div class="col-10 mb-2">
+                        <input class="w-100 form-control" name="${name}" placeholder="Escriba su ${tipo}">
+                    </div>
+                    <div class="col-2 mb-2">
+                        <button type="button" class="shadow btn-eliminar p-1"><img class="img-fluid" src="/img/icons/borrador.png"></button>
+                    </div>
                 </div>
-            `;
+            </div>
+        `;
         }).join('');
-        this.timesyllabusEducational.innerHTML = listaHTML;
-        this.agregarEventosEliminar('timesyllabusEducational', this._listaValoresTiempo);
-        this.contador.contadorDuracionModulo();
+        document.getElementById(name).innerHTML = listaHTML;
+        this.agregarEventosEliminar(name, listaValores);
+        this.actualizarContadores();
     }
 
     agregarEventosEliminar(name, listaValores) {
         const botonesEliminar = document.querySelectorAll('.btn-eliminar');
         botonesEliminar.forEach((boton, index) => {
-            boton.addEventListener('click', () => {
-                listaValores.splice(index, 1);
-                this.reiniciarHTML(name, listaValores);
+            boton.addEventListener('click', (e) => {
+                const divEliminado = e.target.closest(`.${name}`);
+                const indexEliminado = divEliminado.getAttribute('data-index');
+                listaValores.splice(indexEliminado, 1);
+                divEliminado.remove();
                 this.actualizarContadores();
             });
         });
-    }
-
-    reiniciarHTML(name, listaValores) {
-        const targetElement = document.getElementById(name);
-        const listaHTML = listaValores.map(() => {
-            return `
-                <div class="${name}">
-                    <input name="${name}" placeholder="Escriba su ${name === 'moduleCurrucularContentCourse' ? 'Modulo' : name === 'themesyllabusEducational' ? 'Tema' : 'Tiempo'}">
-                    <button type="button" class="btn-eliminar"><img src="/img/icons/borrador.png"></button>
-                </div>
-            `;
-        }).join('');
-        targetElement.innerHTML = listaHTML;
-        this.agregarEventosEliminar(name, listaValores);
     }
 
     actualizarContadores() {
@@ -111,7 +89,6 @@ class Contador {
     }
 }
 
-// Instancia de la clase
 document.addEventListener('DOMContentLoaded', function () {
     const silabusTotal = new Silabus();
     document.getElementById('moduloBoton').addEventListener('click', function () {

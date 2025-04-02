@@ -1,52 +1,72 @@
 <link rel="stylesheet" href="/css/asistencias/asistencias.css">
-<div id="contenedor" class="container">
-    <div id="titulo" class="titulo">
-        <h1>Asistencia</h1>
-    </div>
-    {{#each listaCurso}}
-    <form action="/asistencia/curso/{{idCours}}" method="post" class="tarjeta tarjetaContenedora">
-        {{/each}}
-        <div id="tabla" class="scroll alinearCentro anchoForm">
-            <table >
-                <thead>
-                    <tr>
-                        <td>N°</td>
-                        <td>Estudiantes</td>
-                        <td>Lunes</td>
-                        <td>Martes</td>
-                        <td>Miércoles</td>
-                        <td>Jueves</td>
-                        <td>Viernes</td>
-                        <td>Valor Total</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#each estudiantes}}
-                    <tr>
-                        <td>{{idEstudent}}</td>
-                        <td>{{completeNameEstudent}}</td>
-                        <!-- Checkbox para los días de la semana -->
-                        <td><input type="checkbox" name="attendance[{{idEstudent}}][lunes]" class="attendance-checkbox"
-                                data-estudiante="{{idEstudent}}" data-day="lunes"></td>
-                        <td><input type="checkbox" name="attendance[{{idEstudent}}][martes]" class="attendance-checkbox"
-                                data-estudiante="{{idEstudent}}" data-day="martes"></td>
-                        <td><input type="checkbox" name="attendance[{{idEstudent}}][miercoles]"
-                                class="attendance-checkbox" data-estudiante="{{idEstudent}}" data-day="miercoles"></td>
-                        <td><input type="checkbox" name="attendance[{{idEstudent}}][jueves]" class="attendance-checkbox"
-                                data-estudiante="{{idEstudent}}" data-day="jueves"></td>
-                        <td><input type="checkbox" name="attendance[{{idEstudent}}][viernes]"
-                                class="attendance-checkbox" data-estudiante="{{idEstudent}}" data-day="viernes"></td>
-                        <!-- Campo para el valor total -->
-                        <td><input type="text" name="attendance[{{idEstudent}}][totalValue]"
-                                id="totalValue-{{idEstudent}}" value="0" readonly></td>
-                    </tr>
-                    {{/each}}
-                </tbody>
-            </table>
+
+{{#each listaCurso}}
+<form action="/asistencia/curso/{{idCours}}" method="post">
+    {{/each}}
+    <div class="bg-fondo pt-3">
+        <div class="container pb-3">
+            <h1 class="text-center fw-bold mb-3" style="color: #f39325;">Asistencia</h1>
+            <div class="card text-start fs-5 shadow border-0 p-0 rounded-5" style="overflow: hidden;">
+                <div class="row g-0">
+                    <div class="col-12 col-md-10">
+                        <div class="card-body p-4 tabla" style="height: 33rem; overflow: auto;">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <td>N°</td>
+                                        <td>Estudiantes</td>
+                                        <td>Lunes</td>
+                                        <td>Martes</td>
+                                        <td>Miércoles</td>
+                                        <td>Jueves</td>
+                                        <td>Viernes</td>
+                                        <td>Valor Total</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each estudiantes}}
+                                    <tr>
+                                        <td>{{idEstudent}}</td>
+                                        <td>{{completeNameEstudent}}</td>
+                                        <!-- Checkbox para los días de la semana -->
+                                        <td><input type="checkbox" name="attendance[{{idEstudent}}][lunes]"
+                                                class="attendance-checkbox" data-estudiante="{{idEstudent}}"
+                                                data-day="lunes">
+                                        </td>
+                                        <td><input type="checkbox" name="attendance[{{idEstudent}}][martes]"
+                                                class="attendance-checkbox" data-estudiante="{{idEstudent}}"
+                                                data-day="martes">
+                                        </td>
+                                        <td><input type="checkbox" name="attendance[{{idEstudent}}][miercoles]"
+                                                class="attendance-checkbox" data-estudiante="{{idEstudent}}"
+                                                data-day="miercoles"></td>
+                                        <td><input type="checkbox" name="attendance[{{idEstudent}}][jueves]"
+                                                class="attendance-checkbox" data-estudiante="{{idEstudent}}"
+                                                data-day="jueves">
+                                        </td>
+                                        <td><input type="checkbox" name="attendance[{{idEstudent}}][viernes]"
+                                                class="attendance-checkbox" data-estudiante="{{idEstudent}}"
+                                                data-day="viernes">
+                                        </td>
+                                        <!-- Campo para el valor total -->
+                                        <td><input type="text" name="attendance[{{idEstudent}}][totalValue]"
+                                                id="totalValue-{{idEstudent}}" value="0" readonly></td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-2 bg-success d-flex justify-content-center align-items-center text-white">
+                        <button class="btn btn-success w-100 h-100 fs-3 px-0 pt-3 pb-2" type="submit">
+                            Guardar
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <button type="submit" >Guardar Asistencia</button>
-    </form>
-</div>
+    </div>
+</form>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
