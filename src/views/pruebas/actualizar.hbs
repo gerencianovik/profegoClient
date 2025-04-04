@@ -1,13 +1,14 @@
 <link rel="stylesheet" href="/css/recours/add.css">
 
 {{#each prueba}}
-<form action="/pruebas/update/{{idAssessment}}" method="post">
+<form action="/pruebas/cursosUpdate/{{idAssessment}}" method="post">
     <div class="bg-fondo pt-3">
         <div class="container">
             <div class="row">
                 <h1 class="text-center fw-bold mb-3" style="color: #f39325;">Editar Prueba<input type="text"
                         name="idTask" id="numero"></h1>
                 <input type="hidden" name="_csrf" value="{{ ../csrfToken }}">
+                <input type="hidden" name="courIdCours" value="{{ courIdCours }}">
                 <div class="card text-start fs-5 shadow border-0 p-0 rounded-5" style="overflow: hidden;">
                     <div class="row g-0">
                         <div class="col-12 col-md-10">

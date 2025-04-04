@@ -71,7 +71,7 @@ pruebaCtl.mostrar = async (req, res) => {
 pruebaCtl.mandar = async (req, res) => {
     const id = req.params.id
     try {
-        const { idEvaluaciones, nameAssessment, descriptionAssessment, timeAssessment, dateAssessment, qualificationAssessment } = req.body
+        const { nameAssessment, descriptionAssessment, timeAssessment, dateAssessment, qualificationAssessment } = req.body
         const newEnvio = {
             nameAssessment,
             descriptionAssessment,
@@ -116,21 +116,20 @@ pruebaCtl.traer = async (req, res) => {
 pruebaCtl.actualizar = async (req, res) => {
     const id = req.params.id
     try {
-        const { idEvaluaciones, nameAssessment, descriptionAssessment, timeAssessment, dateAssessment, qualificationAssessment } = req.body
+        const { nameAssessment, descriptionAssessment, timeAssessment, dateAssessment, qualificationAssessment,courIdCours } = req.body
         const newEnvio = {
             nameAssessment,
             descriptionAssessment,
             timeAssessment,
             dateAssessment,
             qualificationAssessment,
-            courIdCours: id,
         }
         await orm.assessment.findOne({ where: { idAssessment: id } })
             .then((result) => {
                 result.update(newEnvio)
             })
         req.flash('success', 'Exito al Guardar')
-        res.redirect('/pruebas/cursos/' + idEvaluaciones);
+        res.redirect('/pruebas/cursos/' + courIdCours);
     } catch (error) {
         console.error('Error al guardar el recurso:', error);
         req.flash('message', 'Error al guardar el recurso');
