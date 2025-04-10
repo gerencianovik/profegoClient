@@ -27,7 +27,7 @@ const user = (sequelize, type) => {
             comment: 'Celular de usuario'
         },
         usernameUser: {
-            type: type.STRING,
+            type: type.STRING(99),
             comment: 'sobre nombre de usuario'
         },
         passwordUser: {

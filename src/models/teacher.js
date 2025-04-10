@@ -19,7 +19,7 @@ const teacher = (sequelize, type) => {
             comment: 'Nombre completo de Profesor'
         },
         identificationCardTeacher: {
-            type: type.STRING,
+            type: type.STRING(99),
             comment: 'Identificacion de Profesor'
         },
         ageTeacher: {
@@ -59,7 +59,7 @@ const teacher = (sequelize, type) => {
             comment: 'Calificacion de Profesor'
         },
         usernameTeahcer: {
-            type: type.STRING,
+            type: type.STRING(99),
             comment: 'Sobre nombre de Profesor'
         },
         passwordTeacher: {
