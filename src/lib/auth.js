@@ -1,11 +1,12 @@
 const isLoggedIn = (req, res, next) => {
+    console.log(req.isAuthenticated())
     if (req.isAuthenticated()) {
-        console.log('Usuario autenticado');
         return next();
+    } else {
+        console.log('Usuario no autenticado, redirigiendo a inicio de sesión');
+        req.session.returnTo = req.originalUrl;
+        return res.redirect('/');
     }
-    console.log('Usuario no autenticado, redirigiendo a inicio de sesión');
-    req.session.returnTo = req.originalUrl;
-    res.redirect('/');
-}
+};
 
 module.exports = isLoggedIn;
