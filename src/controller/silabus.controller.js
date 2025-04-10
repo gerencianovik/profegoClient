@@ -7,8 +7,9 @@ const path = require('path')
 silabusCtl.mostrarCurso = async (req, res) => {
     try {
         const id = req.params.id
-        const [pagina] = await sql.promise().query('SELECT * FROM cours c JOIN pages p ON p.idPage = c.pageIdPage where idCours = ?', [id]);
-        const [silabus] = await sql.promise().query('SELECT MAX(idsyllabusEducational) AS Maximo FROM syllabuseducationals')
+        const [pagina] = await sql.promise().query('SELECT * FROM cours where idCours = ?', [id]);
+        console.log(pagina)
+        const [silabus] = await sql.promise().query('SELECT MAX(idsyllabusEducational) AS Maximo FROM syllabusEducationals')
         res.render('cours/silabus', { listaPagina: pagina, listaSilabus: silabus, csrfToken: req.csrfToken() })
     } catch (error) {
         console.error('Error en la consulta:', error.message);

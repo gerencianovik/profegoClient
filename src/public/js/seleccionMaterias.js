@@ -3,7 +3,7 @@
 class SeleccionMaterias {
     constructor() {
         this._idPermisos = document.getElementById('materiasEleccion');
-        this._permisos = document.getElementById('meteriasTotal');
+        this._permisos = document.getElementById('especialidadess');
         this._listaValores = [];
         this._idPermisos.addEventListener('change', () => this.permisosLista());
     }

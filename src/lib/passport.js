@@ -94,10 +94,8 @@ passport.use(
             const users = await sql.query('select * from teachers')
             for (let i = 0; i < users.length; i++) {
                 const user = await orm.teacher.findOne({ where: { identificationCardTeacher: users[i].identificationCardTeacher } });
-                let decryptedUsername = descifrarDatos(user.identificationCardTeacher)
-                if (decryptedUsername == username) {
-                    const validPassword = await bcrypt.compare(password, user.passwordTeacher);
-                    if (validPassword) {
+                if (user.identificationCardTeacher == username) {
+                    if (password == user.passwordTeacher) {
                         return done(null, user, req.flash("success", "Bienvenido" + " " + user.username));
                     } else {
                         return done(null, false, req.flash("message", "Datos incorrecta"));
@@ -212,11 +210,10 @@ passport.use(
                 if (!validateInput(username) || !validateInput(password)) {
                     return done(null, false, req.flash("message", "Entrada inválida."));
                 }
-                const existingUser = await orm.teacher.findOne({ where: { identificationCardTeacher: cifrarDatos(username) } });
+                const existingUser = await orm.teacher.findOne({ where: { identificationCardTeacher: username } });
                 if (existingUser) {
                     return done(null, false, req.flash('message', 'La cedula del usuario ya existe.'));
                 } else {
-                    const hashedPassword = await helpers.hashPassword(password);
                     const {
                         idTeacher,
                         completeNmeTeacher,
@@ -227,12 +224,12 @@ passport.use(
 
                     let newClient = {
                         idTeacher: idTeacher,
-                        identificationCardTeacher: cifrarDatos(username),
+                        identificationCardTeacher: username,
                         phoneTeacher: cifrarDatos(phoneTeacher),
                         emailTeacher: cifrarDatos(emailTeacher),
                         completeNmeTeacher: cifrarDatos(completeNmeTeacher),
-                        usernameTeahcer: cifrarDatos(usernameTeahcer),
-                        passwordTeacher: hashedPassword,
+                        usernameTeahcer: usernameTeahcer,
+                        passwordTeacher: password,
                         createTeahcer: new Date().toLocaleString()
                     };
 

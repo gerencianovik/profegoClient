@@ -21,13 +21,14 @@
                                 <div class="col-12 mx-auto d-flex justify-content-center align-items-center my-3">
                                     <div class="image-container" id="cambioImagen">
                                         {{#if photoTeacher}}
-                                        <img class="img-fluid imgReg" src="/img/user/{{photoTeacher}}" id="imagenPrevisualizacion" />
+                                        <img class="img-fluid imgReg" src="/img/user/{{photoTeacher}}"
+                                            id="imagenPrevisualizacion" />
                                         {{else}}
-                                        <img class="img-fluid imgReg" src="/img/icons/sinImagenTeacher.png" id="imagenPrevisualizacion" />
+                                        <img class="img-fluid imgReg" src="/img/icons/sinImagenTeacher.png"
+                                            id="imagenPrevisualizacion" />
                                         {{/if}}
-                                        <input type="file" name="photoTeacher"
-                                            class="seleccionArchivos" accept="image/*"
-                                            id="seleccionArchivos" style="display: none;" />
+                                        <input type="file" name="photoTeacher" class="seleccionArchivos"
+                                            accept="image/*" id="seleccionArchivos" style="display: none;" />
                                         <button type="button" id="botonImagen">
                                             <img src="/img/icons/nuevo23.png">
                                         </button>
@@ -81,14 +82,14 @@
                                         <h5 class="fw-bold" style="color: #23615b;">Nombre del título o especialidad
                                         </h5>
                                     </label>
-                                    <select name="titulosEleccion" id="titulosEleccion" class="form-select border-3"
+                                    <select name="titulosEleccion" id="titulosElecciones" class="form-select border-3"
                                         style="font-size: 1.5rem;border-color: #f39325;">
                                         {{#each ../listaTitulos}}
                                         <option value="{{idSpecialType}}">{{nameSpecialType}}</option>
                                         {{/each}}
                                         <option value="titulo">otros</option>
-                                        <div id="titulos"></div>
                                     </select>
+                                    <div id="titulosss"></div>
                                 </div>
 
                                 <div class="col-12 mb-3">
@@ -211,7 +212,7 @@
                                             {{/each}}
                                             <option value="materias">otros</option>
                                         </select>
-                                        <div id="especialidad"></div>
+                                        <div id="especialidadess"></div>
                                     </div>
                                 </div>
 

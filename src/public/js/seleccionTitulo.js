@@ -2,8 +2,8 @@
 
 class SeleccionTitulos {
     constructor() {
-        this._idPermisos = document.getElementById('titulosEleccion');
-        this._permisos = document.getElementById('titulos');
+        this._idPermisos = document.getElementById('titulosElecciones');
+        this._permisos = document.getElementById('titulosss');
         this._listaValores = [];
         this._idPermisos.addEventListener('change', () => this.permisosLista());
     }
