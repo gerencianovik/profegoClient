@@ -123,16 +123,20 @@ indexCtl.registroEstudiante = passport.authenticate("local.studentSignup", {
 indexCtl.loginEstudiante = (req, res, next) => {
     passport.authenticate("local.studentSignin", (err, user, info) => {
         if (err) {
-            return next(err);
+            console.error('Error en autenticación estudiante:', err);
+            return res.status(500).json({ error: 'Error interno del servidor' });
         }
         if (!user) {
+            req.flash('error', info.message || 'Credenciales inválidas');
             return res.redirect("/RegisterStudents");
         }
         req.logIn(user, (err) => {
             if (err) {
-                return next(err);
+                console.error('Error en login estudiante:', err);
+                return res.status(500).json({ error: 'Error al iniciar sesión' });
             }
-            return res.redirect("/students/eleccion/" + req.user.idEstudent);
+            
+            return res.redirect("/students/eleccion/" + user.idEstudent);
         });
     })(req, res, next);
 };
@@ -140,16 +144,20 @@ indexCtl.loginEstudiante = (req, res, next) => {
 indexCtl.login = (req, res, next) => {
     passport.authenticate("local.teacherSignin", (err, user, info) => {
         if (err) {
-            return next(err);
+            console.error('Error en autenticación profesor:', err);
+            return res.status(500).json({ error: 'Error interno del servidor' });
         }
         if (!user) {
+            req.flash('error', info.message || 'Credenciales inválidas');
             return res.redirect("/RegisterTeachers");
         }
         req.logIn(user, (err) => {
             if (err) {
-                return next(err);
+                console.error('Error en login profesor:', err);
+                return res.status(500).json({ error: 'Error al iniciar sesión' });
             }
-            return res.redirect("/teacher/update/" + req.user.idTeacher);
+            
+            return res.redirect("/teacher/update/" + user.idTeacher);
         });
     })(req, res, next);
 };
