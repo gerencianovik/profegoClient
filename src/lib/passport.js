@@ -87,19 +87,12 @@ passport.use(
             passReqToCallback: true,
         },
         async (req, username, password, done) => {
-            if (!validateInput(username) || !validateInput(password)) {
-                return done(null, false, req.flash("message", "Entrada inválida."));
-            }
-
-            const users = await sql.query('select * from teachers')
-            for (let i = 0; i < users.length; i++) {
-                const user = await orm.teacher.findOne({ where: { identificationCardTeacher: users[i].identificationCardTeacher } });
-                if (user.identificationCardTeacher == username) {
-                    if (password == user.passwordTeacher) {
-                        return done(null, user, req.flash("success", "Bienvenido" + " " + user.username));
-                    } else {
-                        return done(null, false, req.flash("message", "Datos incorrecta"));
-                    }
+            const users = await orm.teacher.findOne({ where: { identificationCardTeacher: username } });
+            if (users.identificationCardTeacher == username) {
+                if (password == users.passwordTeacher) {
+                    return done(null, users, req.flash("success", "Bienvenido" + " " + users.username));
+                } else {
+                    return done(null, false, req.flash("message", "Datos incorrecta"));
                 }
             }
             return done(null, false, req.flash("message", "El nombre de usuario no existe."));

@@ -8,21 +8,19 @@ const session = require('express-session');
 const passport = require('passport');
 const flash = require('connect-flash');
 const MySQLStore = require('express-mysql-session')(session);
-const bodyparser = require('body-parser');
 const fileUpload = require("express-fileupload");
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const csrf = require('csurf');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
-const { minify } = require('html-minifier-terser');
+const minify = require('html-minifier-terser').minify;
 const winston = require('winston');
-
-const { Loader } = require('@googlemaps/js-api-loader')
-
+const cors = require('cors');
 // Importar módulos locales
 const { MYSQLHOST, MYSQLUSER, MYSQLPASSWORD, MYSQLDATABASE, MYSQLPORT } = require('./keys');
 require('./lib/passport');
+
 
 // Crear aplicación Express
 const app = express();
@@ -77,6 +75,7 @@ app.use(
     })
 );
 
+
 // Configurar almacenamiento de sesiones MySQL
 const mysqlOptions = {
     host: MYSQLHOST,
@@ -93,11 +92,6 @@ app.use(session({
     secret: "SESSION_SECRET",
     resave: false,
     saveUninitialized: false,
-    cookie: {
-        secure: process.env.NODE_ENV === 'production',
-        httpOnly: true,
-        sameSite: 'Strict'
-    }
 }));
 
 // Configurar Handlebars
@@ -106,13 +100,11 @@ const handlebars = exphbs.create({
     layoutsDir: path.join(__dirname, 'views', 'layouts'),
     partialsDir: path.join(__dirname, 'views', 'partials'),
     extname: '.hbs',
-    helpers: {
-        eq: (a, b) => a === b,
-    }
+    helpers: require('./lib/handlebars')
 });
 
 // Configurar motor de vistas
-app.set('port', process.env.PORT || 5000);
+app.set('port', process.env.PORT || 4500);
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.hbs', handlebars.engine);
 app.set('view engine', '.hbs');
@@ -129,28 +121,11 @@ app.use(passport.session());
 
 // Middleware de seguridad y rendimiento
 app.use(helmet.referrerPolicy({ policy: 'strict-origin-when-cross-origin' }));
-app.use(compression()); // Comprensión de respuesta para optimizar el tamaño
+app.use(compression());
 
 // Middleware para minificar HTML
-app.use(async (req, res, next) => {
-    const originalSend = res.send.bind(res);
-    res.send = async function (body) {
-        if (typeof body === 'string') {
-            try {
-                body = await minify(body, {
-                    removeComments: true,
-                    collapseWhitespace: true,
-                    minifyCSS: true,
-                    minifyJS: true,
-                });
-            } catch (err) {
-                console.error('Error minifying HTML:', err);
-            }
-        }
-        return originalSend(body);
-    };
-    next();
-});
+
+
 // Middleware de manejo de errores
 app.use((err, req, res, next) => {
     if (res.headersSent) {
@@ -189,13 +164,14 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) => {
     if (err.code !== 'EBADCSRFTOKEN') return next(err);
 
+    // Manejo del error CSRF aquí
     res.status(403);
     res.send('La validación del token CSRF ha fallado. Por favor, recarga la página.');
 });
 
 // Configurar archivos estáticos
-app.use(express.static(path.join(__dirname, 'public'), { maxAge: '1d' })); // Cacheo de archivos estáticos
-app.use('/src/public', express.static(path.join(__dirname, 'src/public'), { maxAge: '1d' }));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/src/public', express.static(path.join(__dirname, 'src/public')));
 
 // Configurar sistema de logging
 const logger = winston.createLogger({
@@ -214,7 +190,6 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 app.use(morgan('combined', { stream: { write: message => logger.info(message.trim()) } }));
-
 // Rutas - Definir tus rutas aquí
 app.use(require('./router/index.router'));
 app.use(require('./router/envio.router'));
