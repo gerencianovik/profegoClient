@@ -2,9 +2,6 @@
 require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
-require('dotenv').config();
-const express = require('express');
-const morgan = require('morgan');
 const path = require('path');
 const exphbs = require('express-handlebars');
 const session = require('express-session');
@@ -20,7 +17,7 @@ const cookieParser = require('cookie-parser');
 const compression = require('compression');
 const { minify } = require('html-minifier-terser');
 const winston = require('winston');
-const cors = require('cors');
+
 const { Loader } = require('@googlemaps/js-api-loader')
 
 // Importar módulos locales
@@ -76,53 +73,31 @@ app.use(
                 "default-src": ["'self'"]
             }
         },
-        hsts: {
-            maxAge: 63072000,
-            includeSubDomains: true,
-            preload: true
-        },
         referrerPolicy: { policy: "strict-origin-when-cross-origin" }
     })
 );
 
-const corsOptions = {
-    origin: process.env.NODE_ENV === 'production' ? 
-        ['https://www.profego-edu.com', 'https://profego-edu.com'] : 
-        ['http://localhost:3000'],
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'X-CSRF-Token']
-};
-app.use(cors(corsOptions));
-
-// Configuración de almacenamiento de sesiones MySQL mejorada
+// Configurar almacenamiento de sesiones MySQL
 const mysqlOptions = {
     host: MYSQLHOST,
     port: MYSQLPORT,
     user: MYSQLUSER,
     password: MYSQLPASSWORD,
     database: MYSQLDATABASE,
-    createDatabaseTable: true,
-    clearExpired: true,
-    checkExpirationInterval: 900000, // 15 minutos
-    expiration: 86400000 // 1 día
+    createDatabaseTable: true
 };
 const sessionStore = new MySQLStore(mysqlOptions);
 
 app.use(session({
     store: sessionStore,
-    secret: process.env.SESSION_SECRET || "fallback_secret_but_change_in_production",
+    secret: "SESSION_SECRET",
     resave: false,
     saveUninitialized: false,
-    proxy: true, // Necesario cuando hay un proxy inverso
     cookie: {
-        secure: process.env.NODE_ENV === 'production', // true en producción
+        secure: process.env.NODE_ENV === 'production',
         httpOnly: true,
-        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-        domain: process.env.NODE_ENV === 'production' ? '.profego-edu.com' : undefined,
-        maxAge: 86400000 // 1 día
-    },
-    rolling: true // Renueva la cookie con cada petición
+        sameSite: 'Strict'
+    }
 }));
 
 // Configurar Handlebars
@@ -142,19 +117,40 @@ app.set('views', path.join(__dirname, 'views'));
 app.engine('.hbs', handlebars.engine);
 app.set('view engine', '.hbs');
 
-
-// Middlewares esenciales
+// Configurar middleware
 app.use(cookieParser());
 app.use(fileUpload({ createParentPath: true }));
 app.use(morgan('dev'));
 app.use(express.json({ limit: '300mb' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(flash());
-
-// Inicialización de Passport (DEBE ir después de session)
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Middleware de seguridad y rendimiento
+app.use(helmet.referrerPolicy({ policy: 'strict-origin-when-cross-origin' }));
+app.use(compression()); // Comprensión de respuesta para optimizar el tamaño
+
+// Middleware para minificar HTML
+app.use(async (req, res, next) => {
+    const originalSend = res.send.bind(res);
+    res.send = async function (body) {
+        if (typeof body === 'string') {
+            try {
+                body = await minify(body, {
+                    removeComments: true,
+                    collapseWhitespace: true,
+                    minifyCSS: true,
+                    minifyJS: true,
+                });
+            } catch (err) {
+                console.error('Error minifying HTML:', err);
+            }
+        }
+        return originalSend(body);
+    };
+    next();
+});
 // Middleware de manejo de errores
 app.use((err, req, res, next) => {
     if (res.headersSent) {
@@ -200,6 +196,16 @@ app.use((err, req, res, next) => {
 // Configurar archivos estáticos
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: '1d' })); // Cacheo de archivos estáticos
 app.use('/src/public', express.static(path.join(__dirname, 'src/public'), { maxAge: '1d' }));
+
+// Configurar sistema de logging
+const logger = winston.createLogger({
+    level: 'info',
+    format: winston.format.json(),
+    transports: [
+        new winston.transports.File({ filename: 'error.log', level: 'error' }),
+        new winston.transports.File({ filename: 'combined.log' })
+    ]
+});
 
 if (process.env.NODE_ENV !== 'production') {
     logger.add(new winston.transports.Console({
