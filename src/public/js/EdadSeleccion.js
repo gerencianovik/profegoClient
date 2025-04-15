@@ -18,9 +18,9 @@ class SeleccionEdades {
 
     actualizarLista() {
         const listaHTML = this._listaValores.map(valor => `
-            <li>
-                <input name="edadesEscogidas" value="${valor}" readonly>
-                <button type="button" class="btn-eliminar">Eliminar</button>
+            <li class="input-group mt-1 w-75">
+                <input name="edadesEscogidas" class="form-control" value="${valor}" readonly>
+                <button type="button" class="btn-eliminar btn btn-danger input-group-text">Eliminar</button>
             </li>
         `).join('');
         this._permisos.innerHTML = `<ul>${listaHTML}</ul>`;

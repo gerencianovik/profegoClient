@@ -16,9 +16,12 @@
             <div class="row mb-3" style="background-color: #147582;">
                 <div class="col-12">
                     <div class="row">
-                        <div class="col-12 col-md-3 d-flex justify-content-center align-items-center">
-                            <button class="btn btn-light fs-4 p-0 m-4" type="button" id="botonImagen">
-                                <img class="img-fluid" src="/img/icons/noImagen.png" id="imagenPrevisualizacion" />
+                        <div class="col-12 col-md-3 d-flex flex-column justify-content-center align-items-center my-auto"
+                            style="height: 300px; overflow: hidden;">
+                            <button class="btn btn-light fs-4 p-0" type="button" id="botonImagen"
+                                style="width: 90%; height: 90%; max-width: 100%; max-height: 100%;">
+                                <img class="img-fluid bg-white w-100 h-100" style="object-fit: contain; display: block;"
+                                    src="/img/icons/noImagen.png" id="imagenPrevisualizacion" />
                             </button>
                             <input type="file" name="photoCours" id="seleccionArchivos" accept="image/*" hidden />
                         </div>

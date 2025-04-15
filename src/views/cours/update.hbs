@@ -14,11 +14,15 @@
             <div class="row mb-3" style="background-color: #147582;">
                 <div class="col-12">
                     <div class="row">
-                        <div class="col-12 col-md-3 d-flex justify-content-center align-items-center">
-                            <button class="btn btn-light fs-4 p-0 m-4" type="button" id="botonImagen">
-                                <img class="img-fluid" {{#if photoCours}} src="/img/clase/{{photoCours}}" {{else}}
-                                    src="/img/icons/noImagen.png" {{/if}} id="imagenPrevisualizacion" />
-                                Cambiar Imagen
+                        <div class="col-12 col-md-3 my-auto"
+                            style="height: 300px; display: flex; justify-content: center; align-items: center;">
+                            <button
+                                class="btn btn-light p-0 rounded-4 my-auto d-flex flex-column align-items-center justify-content-center"
+                                type="button" id="botonImagen" style="width: 100%; height: 100%;">
+                                <img id="imagenPrevisualizacion" class="img-fluid mb-3"
+                                    style="max-height: 80%; max-width: 100%; object-fit: contain;" {{#if photoCours}}
+                                    src="/img/cours/{{photoCours}}" {{else}} src="/img/icons/noImagen.png" {{/if}} />
+                                <p class="m-0">Cambiar Imagen</p>
                             </button>
                             <input type="file" name="photoCours" id="seleccionArchivos" accept="image/*" hidden />
                         </div>
@@ -33,9 +37,9 @@
                                 <input id="pac-input" class="controls" type="text" placeholder="Buscar" />
                                 <input type="text" name="ubicacion" id="ubicacion" value="{{ubicacionCurso}}">
                             </div>
-                            
-                            <p class="text-white fs-5 m-0"><input type="checkbox" name="neeCours"
-                                    id="adactacion" value="on" {{#if neeCours}}checked{{/if}}> Adaptado para NEE</p>
+
+                            <p class="text-white fs-5 m-0"><input type="checkbox" name="neeCours" id="adactacion"
+                                    value="on" {{#if neeCours}}checked{{/if}}> Adaptado para NEE</p>
                         </div>
 
                         <div class="col-12 col-md-4 my-4">

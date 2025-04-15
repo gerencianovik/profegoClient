@@ -149,7 +149,7 @@
                                                 <div class="card-body pe-1">
                                                     <p class="fs-4 m-0" style="color: #127481;">Innovación</p>
                                                     <p class="m-0 p-0">Mejoramos y personalizamos las experiencias con
-                                                        el uso de la texnología.</p>
+                                                        el uso de la tecnología.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -325,17 +325,24 @@
                 </div>
                 <div class="lh-1">
                     <a href="/somos">
-                        <p>¿Quiénes Somos?
+                        <p>¿Quiénes Somos?</p>
                     </a>
-                    <a href="/funciona">¿Cómo funciona?</a><br>
-                    <br>
-                    <a href="/">Testimonios</a><br>
-                    <br>
-                    <a href="/contactos#preguntas-frecuentes">Preguntas frecuentes</a><br>
-                    <br>
-                    <a href="/contactos">Contacto</a></p>
+                    <a href="/funciona">
+                        <p>¿Cómo funciona?</p>
+                    </a>
+                    <a href="/">
+                        <p>Testimonios
+                    </a>
+                    <a href="/contactos#preguntas-frecuentes">
+                        <p>Preguntas frecuentes</p>
+                    </a>
+                    <a href="/contactos">
+                        <p>Contacto</p>
+                    </a>
                 </div>
             </div>
+            {{#if user}}
+            {{else}}
             <div class="col-md-2">
                 <div style="color: #236388;">
                     <h1 class="mb-0">Únete</h1>
@@ -343,12 +350,14 @@
                 </div>
                 <div class="lh-1">
                     <a href="/RegisterStudents">
-                        <p>Regístrate como estudiante
+                        <p>Regístrate como estudiante</p>
                     </a>
-                    <a href="/RegisterTeachers">Sé docente o coach</a>
-                    </p>
+                    <a href="/RegisterTeachers">
+                        <p>Sé docente o coach</p>
+                    </a>
                 </div>
             </div>
+            {{/if}}
             <div class="col-md-2">
                 <div style="color: #236388;">
                     <h1 class="mb-0">Legal</h1>
@@ -356,10 +365,12 @@
                 </div>
                 <div class="lh-1">
                     <a href="/policyList">
-                        <p>Términos y condiciones
+                        <p>Términos y condiciones</p>
                     </a>
-                    <a href="/policyList">Políticas de privacidad</a>
-                    </p>
+                    <a href="/policyList">
+                        <p>Políticas de privacidad</p>
+                    </a>
+
                 </div>
             </div>
             <div class="col-md-3 text-center">

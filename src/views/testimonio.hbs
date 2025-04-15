@@ -1,50 +1,76 @@
-<div id="footer">
-    <div id="tarjetaNosotros">
-        <div id="nosotrosFooter">
-            <h1>Nosotros</h1>
-        </div>
-        <div id="datosNosotros">
-            <a href="/somos" style="text-decoration: none;">
-                <p>¿Quiénes Somos?
-            </a>
-            <a href="/somos" style="text-decoration: none;">¿Cómo funciona?</a><br>
-            <br>
-            <a href="/" style="text-decoration: none;">Testimonios</a><br>
-            <br>
-            <a href="/contactos" style="text-decoration: none;">Preguntas frecuentes</a><br>
-            <br>
-            <a href="/contactos" style="text-decoration: none;">Contacto</a></p>
+<div>
+    <div class="p-5" style="background-color: #fff9f0;">
+        <div class="row">
+            <div class="col-md-2">
+                <div style="color: #236388;">
+                    <h1 class="mb-0">Nosotros</h1>
+                    <hr class="linea mt-0">
+                </div>
+                <div class="lh-1">
+                    <a href="/somos">
+                        <p>¿Quiénes Somos?</p>
+                    </a>
+                    <a href="/funciona">
+                        <p>¿Cómo funciona?</p>
+                    </a>
+                    <a href="/">
+                        <p>Testimonios
+                    </a>
+                    <a href="/contactos#preguntas-frecuentes">
+                        <p>Preguntas frecuentes</p>
+                    </a>
+                    <a href="/contactos">
+                        <p>Contacto</p>
+                    </a>
+                </div>
+            </div>
+            {{#if user}}
+            {{else}}
+            <div class="col-md-2">
+                <div style="color: #236388;">
+                    <h1 class="mb-0">Únete</h1>
+                    <hr class="linea mt-0">
+                </div>
+                <div class="lh-1">
+                    <a href="/RegisterStudents">
+                        <p>Regístrate como estudiante</p>
+                    </a>
+                    <a href="/RegisterTeachers">
+                        <p>Sé docente o coach</p>
+                    </a>
+                </div>
+            </div>
+            {{/if}}
+            <div class="col-md-2">
+                <div style="color: #236388;">
+                    <h1 class="mb-0">Legal</h1>
+                    <hr class="linea mt-0">
+                </div>
+                <div class="lh-1">
+                    <a href="/policyList">
+                        <p>Términos y condiciones</p>
+                    </a>
+                    <a href="/policyList">
+                        <p>Políticas de privacidad</p>
+                    </a>
+
+                </div>
+            </div>
+            <div class="col-md-3 text-center">
+                <div class="d-flex justify-content-center">
+                    <div class="qr-placeholder"></div>
+                    <div class="qr-placeholder"></div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <img src="/img/logo/LogoPrincipal.png" class="img-fluid">
+            </div>
         </div>
     </div>
-    <div id="tarjetaUnete">
-        <div id="nosotrosFooter">
-            <h1>Únete</h1>
+    <div style="background-color: #fbf1e3; color: #236388;" class="p-3">
+        <div class="d-flex justify-content-between align-items-center mx-3">
+            <p class="fs-5 m-0 text-start">Interconexión segura, rápida e ideal entre docentes y estudiantes.</p>
+            <p class="fs-5 m-0 text-end">ProfeGo® EDUCONECTA S.A.S</p>
         </div>
-        <div id="datosNosotros">
-            <a href="/RegisterStudents" style="text-decoration: none;">
-                <p>Regístrate como estudiante
-            </a>
-            <a href="/RegisterTeachers" style="text-decoration: none;">Sé docente o coach</a>
-            </p>
-        </div>
-    </div>
-    <div id="tarjetaLegal">
-        <div id="nosotrosFooter">
-            <h1>Legal</h1>
-        </div>
-        <div id="datosNosotros">
-            <a href="/seguridad" style="text-decoration: none;">
-                <p>Términos y condiciones
-            </a>
-            <a href="/seguridad" style="text-decoration: none;">Políticas de privacidad</a>
-            </p>
-        </div>
-    </div>
-    <div id="logoImagen">
-        <img src="/img/logo/LogoPrincipal.png">
-    </div>
-    <div id="final">
-        <p>Interconexión segura, rápida e ideal entre docentes y estudiantes.</p>
-        <p id="finalFinal">ProfeGo® EDUCONECTA S.A.S</p>
     </div>
 </div>

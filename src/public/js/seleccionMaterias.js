@@ -20,16 +20,16 @@ class SeleccionMaterias {
         const listaHTML = this._listaValores.map(valor => {
             if (valor === 'materias') {
                 return `
-                    <li>
-                        <input name="materiasEscogidas" placeholder="Escriba su materia">
-                        <button type="button" class="btn-eliminar">Eliminar</button>
+                    <li class="input-group mt-1 w-75">
+                        <input name="materiasEscogidas" class="form-control" placeholder="Escriba su materia">
+                        <button type="button" class="btn-eliminar btn btn-danger input-group-text">Eliminar</button>
                     </li>
                 `;
             } else {
                 return `
-                    <li>
-                        <input name="materiasEscogidas" value="${valor}" readonly>
-                        <button type="button" class="btn-eliminar">Eliminar</button>
+                    <li class="input-group mt-1 w-75">
+                        <input name="materiasEscogidas" class="form-control" value="${valor}" readonly>
+                        <button type="button" class="btn-eliminar btn btn-danger input-group-text">Eliminar</button>
                     </li>
                 `;
             }

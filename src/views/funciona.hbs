@@ -2,7 +2,7 @@
 <div class="mt-4">
     <div class="text-center container-sm rounded-2">
         <h1 style="color: #f49426;">¿Cómo funciona?</h1>
-        <h4>Todo lo que debes saber para aprobechar al máximo nuestros servicios.</h4>
+        <h4>Todo lo que debes saber para aprovechar al máximo nuestros servicios.</h4>
         <div class="col-12 text-white shadow rounded-3 py-2" style="background-color: #f49426;">
             <h3 class="p-t m-0">Estudiantes <img style="width: 30px;" src="/img/icons/estudianteperfilTarjeta.png"></h3>
         </div>
@@ -106,7 +106,7 @@
                     <div class="card-body rounded-bottom-4 text-center p-1" style="background-color: #feedd9;">
                         <h5 style="color: #215f59;" class="card-title pt-1">3 Aprobación</h5>
                         <p class="card-text">Nuestro equipo analizará tu postulación. Si recibes la notificación de
-                            aprobación de nuestro equip, puedes continuar.</p>
+                            aprobación de nuestro equipo, puedes continuar.</p>
                     </div>
                 </div>
             </div>
@@ -189,21 +189,25 @@
         <div class="position-absolute top-0 start-50 translate-middle-x mt-3 container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-4">
-                    <div class="rounded-3 m-3 p-2 d-flex align-items-center justify-content-center"
-                        style="background-color: #f49426; border: 2px solid white;">
-                        <h4 class="p-1 mb-0 mx-3 text-white">Estudiante
-                            <img style="width: 30px;" src="/img/icons/estudianteperfilTarjeta.png">
-                        </h4>
-                    </div>
+                    <a {{#if user}} href="/contactos" {{else}} href="/RegisterStudents" {{/if}}>
+                        <div class="rounded-3 m-3 p-2 d-flex align-items-center justify-content-center"
+                            style="background-color: #f49426; border: 2px solid white;">
+                            <h4 class="p-1 mb-0 mx-3 text-white">Estudiante
+                                <img style="width: 30px;" src="/img/icons/estudianteperfilTarjeta.png">
+                            </h4>
+                        </div>
+                    </a>
                 </div>
 
                 <div class="col-12 col-md-4">
-                    <div class="rounded-3 m-3 p-2 d-flex align-items-center justify-content-center"
-                        style="background-color: #004d77; border: 2px solid white;">
-                        <h4 class="p-1 mb-0 mx-3 text-white">Docente/Coach
-                            <img style="width: 30px;" src="/img/icons/docenteperfilTarjeta.png">
-                        </h4>
-                    </div>
+                    <a {{#if user}} href="/contactos" {{else}} href="/RegisterTeachers" {{/if}}>
+                        <div class="rounded-3 m-3 p-2 d-flex align-items-center justify-content-center"
+                            style="background-color: #004d77; border: 2px solid white;">
+                            <h4 class="p-1 mb-0 mx-3 text-white">Docente/Coach
+                                <img style="width: 30px;" src="/img/icons/docenteperfilTarjeta.png">
+                            </h4>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -220,17 +224,24 @@
                 </div>
                 <div class="lh-1">
                     <a href="/somos">
-                        <p>¿Quiénes Somos?
+                        <p>¿Quiénes Somos?</p>
                     </a>
-                    <a href="/funciona">¿Cómo funciona?</a><br>
-                    <br>
-                    <a href="/">Testimonios</a><br>
-                    <br>
-                    <a href="/contactos#preguntas-frecuentes">Preguntas frecuentes</a><br>
-                    <br>
-                    <a href="/contactos">Contacto</a></p>
+                    <a href="/funciona">
+                        <p>¿Cómo funciona?</p>
+                    </a>
+                    <a href="/">
+                        <p>Testimonios
+                    </a>
+                    <a href="/contactos#preguntas-frecuentes">
+                        <p>Preguntas frecuentes</p>
+                    </a>
+                    <a href="/contactos">
+                        <p>Contacto</p>
+                    </a>
                 </div>
             </div>
+            {{#if user}}
+            {{else}}
             <div class="col-md-2">
                 <div style="color: #236388;">
                     <h1 class="mb-0">Únete</h1>
@@ -238,12 +249,14 @@
                 </div>
                 <div class="lh-1">
                     <a href="/RegisterStudents">
-                        <p>Regístrate como estudiante
+                        <p>Regístrate como estudiante</p>
                     </a>
-                    <a href="/RegisterTeachers">Sé docente o coach</a>
-                    </p>
+                    <a href="/RegisterTeachers">
+                        <p>Sé docente o coach</p>
+                    </a>
                 </div>
             </div>
+            {{/if}}
             <div class="col-md-2">
                 <div style="color: #236388;">
                     <h1 class="mb-0">Legal</h1>
@@ -251,10 +264,12 @@
                 </div>
                 <div class="lh-1">
                     <a href="/policyList">
-                        <p>Términos y condiciones
+                        <p>Términos y condiciones</p>
                     </a>
-                    <a href="/policyList">Políticas de privacidad</a>
-                    </p>
+                    <a href="/policyList">
+                        <p>Políticas de privacidad</p>
+                    </a>
+
                 </div>
             </div>
             <div class="col-md-3 text-center">

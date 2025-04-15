@@ -85,7 +85,7 @@
                                     <select name="titulosEleccion" id="titulosElecciones" class="form-select border-3"
                                         style="font-size: 1.5rem;border-color: #f39325;">
                                         {{#each ../listaTitulos}}
-                                        <option value="{{idSpecialType}}">{{nameSpecialType}}</option>
+                                        <option value="{{nameSpecialType}}">{{nameSpecialType}}</option>
                                         {{/each}}
                                         <option value="titulo">otros</option>
                                     </select>
@@ -98,12 +98,12 @@
                                         estudiantes que tienen Necesidades Educativas
                                         Especiales
                                     </p>
-                                    <div id="espesialidades" class="col-12 col-md-4">
+                                    <div id="espesialidades" class="col-12 col-md-11">
                                         <select name="specialtyTypeIdSpecialType" id="especial"
                                             class="form-select border-3"
                                             style="font-size: 1.5rem;border-color: #f39325;">
                                             {{#each ../listaEspecialidades}}
-                                            <option value="{{idSpecialType}}">{{nameSpecialType}}</option>
+                                            <option value="{{nameSpecialType}}">{{nameSpecialType}}</option>
                                             {{/each}}
                                             <option value="especial">otros</option>
                                         </select>
@@ -364,7 +364,7 @@
 <script src="/js/preview.js"></script>
 <script src="/js/botonImagen.js"></script>
 <script src="/js/botoncheck.js"></script>
-<script src="/js/seleccionEspecialidad.js"></script>
+<script src="/js/seleccionEspecialidad.js"></script> 
 <script src="/js/EdadSeleccion.js"></script>
 <script src="/js/seleccionMaterias.js"></script>
 <script src="/js/seleccionTitulo.js"></script>

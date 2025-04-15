@@ -57,7 +57,8 @@
                                                 class="dropdown-item dropdownItem rounded-2 animate__animated animate__fadeIn">
                                                 <h6 class="d-flex align-items-start"><img
                                                         src="/img/icons/testimonio.png" class="img-fluid imgNav me-2"
-                                                        alt="Testimonios"><span class="text-wrap my-auto">Testimonios</span>
+                                                        alt="Testimonios"><span
+                                                        class="text-wrap my-auto">Testimonios</span>
                                                 </h6>
                                             </a>
                                         </div>
@@ -145,15 +146,18 @@
                                         <div class="col-md-6 col6 mb-1 shadow rounded-2 border border-secondary-subtle">
                                             <a href="/contactos"
                                                 class="dropdown-item dropdownItem animate__animated animate__fadeIn">
-                                                <h6 class="d-flex align-items-start"><img src="/img/icons/contactos.png" class="img-fluid imgNav me-2"
-                                                        alt="Contactos"><span class="text-wrap my-auto">Contactos</span></h6>
+                                                <h6 class="d-flex align-items-start"><img src="/img/icons/contactos.png"
+                                                        class="img-fluid imgNav me-2" alt="Contactos"><span
+                                                        class="text-wrap my-auto">Contactos</span></h6>
                                             </a>
                                         </div>
                                         <div class="col-md-6 col6 mb-1 shadow rounded-2 border border-secondary-subtle">
                                             <a href="#"
                                                 class="dropdown-item dropdownItem animate__animated animate__fadeIn">
-                                                <h6 class="d-flex align-items-start"><img src="/img/icons/frecuentes.png" class="img-fluid imgNav me-2"
-                                                        alt="Preguntas"><span class="text-wrap my-auto">Preguntas frecuentes</span></h6>
+                                                <h6 class="d-flex align-items-start"><img
+                                                        src="/img/icons/frecuentes.png" class="img-fluid imgNav me-2"
+                                                        alt="Preguntas"><span class="text-wrap my-auto">Preguntas
+                                                        frecuentes</span></h6>
                                             </a>
                                         </div>
                                     </div>
@@ -165,6 +169,9 @@
             </ul>
 
             <ul class="navbar-nav mb-2 mb-lg-0">
+                {{#if user}}
+                <a class="nav-link" href="#" role="button">Panel principal</a>
+                {{else}}
                 <!-- Estudiante -->
                 <li class="nav-item dropdown">
                     <a class="nav-link d-flex align-items-center" href="#" id="estudianteDropdown" role="button"
@@ -221,6 +228,8 @@
                         </li>
                     </ul>
                 </li>
+
+                {{/if}}
             </ul>
         </div>
     </div>
