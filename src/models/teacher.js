@@ -1,5 +1,5 @@
 const teacher = (sequelize, type) => {
-    return sequelize.define('teachers',{
+    return sequelize.define('teachers', {
         idTeacher: {
             type: type.INTEGER,
             autoIncrement: true,
@@ -19,7 +19,7 @@ const teacher = (sequelize, type) => {
             comment: 'Nombre completo de Profesor'
         },
         identificationCardTeacher: {
-            type: type.STRING(99),
+            type: type.STRING,
             comment: 'Identificacion de Profesor'
         },
         ageTeacher: {
@@ -59,12 +59,16 @@ const teacher = (sequelize, type) => {
             comment: 'Calificacion de Profesor'
         },
         usernameTeahcer: {
-            type: type.STRING(99),
+            type: type.STRING,
             comment: 'Sobre nombre de Profesor'
         },
         passwordTeacher: {
             type: type.STRING,
             comment: 'Contraseña de Profesor'
+        },
+        rolTeacher: {
+            type: type.STRING,
+            comment: 'Rol de Profesor'
         },
         stateTeacher: {
             type: type.STRING,

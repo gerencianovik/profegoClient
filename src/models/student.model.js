@@ -30,6 +30,10 @@ const estudent = (sequelize, type) =>{
             type: type.STRING,
             comment: 'Contraseña de Estudinates'
         },
+        rolStudent: {
+            type: type.STRING,
+            comment: 'Rol de Estudinates'
+        },
         stateEstudent: {
             type: type.STRING,
             comment: 'Estado de Estudinates'
