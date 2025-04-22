@@ -164,6 +164,7 @@ passport.use(
                         completeNameEstudent: cifrarDatos(completeNameEstudent),
                         usernameEstudent: cifrarDatos(username),
                         passwordEstudent: hashedPassword,
+                        rolStudent: 'student',
                         stateEstudent: 'Activar',
                         createStudent: new Date().toLocaleString()
                     };
@@ -223,6 +224,7 @@ passport.use(
                         completeNmeTeacher: cifrarDatos(completeNmeTeacher),
                         usernameTeahcer: usernameTeahcer,
                         passwordTeacher: password,
+                        rolTeacher: 'teacher',
                         createTeahcer: new Date().toLocaleString()
                     };
 
