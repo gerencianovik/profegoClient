@@ -1,0 +1,212 @@
+<link rel="stylesheet" href="/css/eleccion/servicios.css">
+
+<div class="container-fluid p-0">
+    {{#each listaTeacher}}
+    <form action="/teacher/eleccion/{{idTeacher}}" method="get"></form>
+    <img class="img-fluid" src="/img/icons/study.png">
+
+    <div class="mb-3" style="background-color: #fff2e1;">
+        <div class="container-sm">
+            <div class="row p-5">
+                <div class="col-12 col-md-7">
+                    <h1 class="mb-4" style="color: #ec922f;">¡Bienvenido! {{completeNmeTeacher}}</h1>
+                    <p class="fs-4">Elige entre servicios que puedes crear o los existentes.<br>
+                        ¡Tu enseñanza, tu elección!</p>
+                </div>
+                <div class="col-12 col-md-5">
+                    <img class="img-fluid" src="/img/icons/guntosEstudiantes.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-sm">
+        <div class="row">
+            <div class="col-12 col-md-6 mb-3">
+                <div class="text-center mb-3">
+                    <a href="/clases/list/{{idTeacher}}"><button type="button"
+                            class="btn btn-lg px-5 text-white" style="background-color: #147582;">
+                            <p class="fs-2 my-0 px-5 mx-5">Clases</p>
+                        </button></a>
+                </div>
+
+                <div class="container-sm">
+                    <p class="fs-5">¿Qué encontrarás?</p>
+                    <div class="row">
+                        <div class="col-12 col-md-9 mb-3 shadow p-0 rounded-3" style="overflow: hidden;">
+                            <a href="#" class="dropdown-item dropdownItemtudent animate__animated animate__fadeIn">
+                                <p class="fs-5 m-0 d-flex align-items-start" style="color: #215d56;"><img
+                                        style="background-color: #f29224; max-width: 22% !important;"
+                                        src="/img/fondo/casaLibro.png" class="img-fluid me-3 p-3"><span
+                                        class="text-wrap my-auto">Clases
+                                        particulares</span></p>
+                            </a>
+                        </div>
+
+                        <div class="col-12 col-md-9 mb-3 shadow p-0 rounded-3" style="overflow: hidden;">
+                            <a href="#" class="dropdown-item dropdownItemtudent animate__animated animate__fadeIn">
+                                <p class="fs-5 m-0 d-flex align-items-start" style="color: #215d56;"><img
+                                        style="background-color: #f29224; max-width: 22% !important;"
+                                        src="/img/fondo/casaAbc.png" class="img-fluid me-3 p-3"><span
+                                        class="text-wrap my-auto">Clases
+                                        grupales</span></p>
+                            </a>
+                        </div>
+
+                        <div class="col-12 col-md-9 mb-3 shadow p-0 rounded-3" style="overflow: hidden;">
+                            <a href="#" class="dropdown-item dropdownItemtudent animate__animated animate__fadeIn">
+                                <p class="fs-5 m-0 d-flex align-items-start" style="color: #215d56;"><img
+                                        style="background-color: #f29224; max-width: 22% !important;"
+                                        src="/img/fondo/casaBrillos.png" class="img-fluid me-3 p-3"><span
+                                        class="text-wrap my-auto">Coaching
+                                        individual para docentes</span></p>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 mb-3">
+                <div class="text-center mb-3">
+                    <a href="/cours/list/{{idTeacher}}"><button type="button" class="btn btn-lg px-5 text-white"
+                            style="background-color: #004d77;">
+                            <p class="fs-2 my-0 px-5 mx-5">Cursos</p>
+                        </button></a>
+                </div>
+                <div class="container-sm">
+                    <p class="fs-5">¿Qué encontrarás?</p>
+                    <div class="row">
+                        <div class="col-12 col-md-9 mb-3 shadow p-0 rounded-3" style="overflow: hidden;">
+                            <a href="#" class="dropdown-item dropdownItemtudent animate__animated animate__fadeIn">
+                                <p class="fs-5 m-0 d-flex align-items-start" style="color: #215d56;"><img
+                                        style="background-color: #f29224; max-width: 22% !important;"
+                                        src="/img/fondo/compuLista.png" class="img-fluid me-3 p-3"><span
+                                        class="text-wrap my-auto">Cursos</span></p>
+                            </a>
+                        </div>
+
+                        <div class="col-12 col-md-9 mb-3 shadow p-0 rounded-3" style="overflow: hidden;">
+                            <a href="#" class="dropdown-item dropdownItemtudent animate__animated animate__fadeIn">
+                                <p class="fs-5 m-0 d-flex align-items-start" style="color: #215d56;"><img
+                                        style="background-color: #f29224; max-width: 22% !important;"
+                                        src="/img/fondo/compuMusica.png" class="img-fluid me-3 p-3"><span
+                                        class="text-wrap my-auto">Coaching
+                                        grupal para docentes</span></p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--<div id="servis">
+        <p>¡Elige tu mejor modalidad, en línea o a domicilio!</p>
+        <div id="imagen2">
+            <img src="">
+        </div>
+        <div id="imagen3">
+            <img src="">
+        </div>
+        <div id="catalogos">
+            <h1>Catálogo de servicios existentes</h1>
+            <p>¿Te gustaría impartir alguno de los servicios creados por el equipo de ProfeGo? Explora y selecciona los
+                mejores programas para ti o crea los tuyos propios.</p>
+        </div>
+    </div>-->
+    <div id="curso">
+        {{#each ../listaCursos}}
+        <div id="imagenCursoClase">
+            <img src="">
+        </div>
+        <div id="datos">
+            <div id="nombreCurso">
+                <p>{{nameCours}}</p>
+            </div>
+            <div id="ubicacion">
+                <div id="imagenUbicacion">
+                    <div id="mapa"></div>
+                    <input type="text" name="cordenadas" id="ubicacion" value="{{ubicacionCurso}}">
+                </div>
+            </div>
+            <div id="modalidad">
+                <div id="imagenModalidad">
+                    <img src="">
+                </div>
+                <p>{{nameCoursClassType}}</p>
+            </div>
+            <div id="costo">
+                <div id="imagenCosto">
+                    <img src="">
+                </div>
+                <p>{{costCours}}</p>
+            </div>
+            <div id="necesidadesEducativas">
+                <div id="imagenNececidades">
+                    <img src="">
+                </div>
+                <p>{{neeCours}}</p>
+            </div>
+            <div id="descripcion">
+                <h1>Descripción:</h1>
+                <p>{{descriptionCours}}</p>
+            </div>
+            <div id="detalle">
+                <a href=""><button type="button">Ver detalle</button></a>
+            </div>
+            <div id="impartir">
+                <a href=""><button type="button">Impartir</button></a>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    <div id="clase">
+        {{#each ../listaClases}}
+        <div id="imagenCursoClase">
+            <img src="">
+        </div>
+        <div id="datos">
+            <div id="nombreCurso">
+                <p>{{nameClases}}</p>
+            </div>
+            <div id="ubicacion">
+                <div id="imagenUbicacion">
+                    <div id="mapa"></div>
+                    <input type="text" name="cordenadas" id="ubicacion" value="{{ubicacionClase}}">
+                </div>
+            </div>
+            <div id="modalidad">
+                <div id="imagenModalidad">
+                    <img src="">
+                </div>
+                <p>{{nameCoursClassType}}</p>
+            </div>
+            <div id="necesidadesEducativas">
+                <div id="imagenNececidades">
+                    <img src="">
+                </div>
+                <p>{{neeClass}}</p>
+            </div>
+            <div id="costo">
+                <div id="imagenCosto">
+                    <img src="">
+                </div>
+                <p>{{costClases}}</p>
+            </div>
+            <div id="descripcion">
+                <h1>Descripción:</h1>
+                <p>{{descriptionClases}}</p>
+            </div>
+            <div id="detalle">
+                <a href=""><button type="button">Ver detalle</button></a>
+            </div>
+            <div id="impartir">
+                <a href=""><button type="button">Impartir</button></a>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+
+    {{/each}}
+</div>

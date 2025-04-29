@@ -87,8 +87,8 @@ passport.use(
             passReqToCallback: true,
         },
         async (req, username, password, done) => {
-            const users = await orm.teacher.findOne({ where: { identificationCardTeacher: username } });
-            if (users.identificationCardTeacher == username) {
+            const users = await orm.teacher.findOne({ where: { usernameTeahcer: username } });
+            if (username == users.dataValues.usernameTeahcer) {
                 if (password == users.passwordTeacher) {
                     return done(null, users, req.flash("success", "Bienvenido" + " " + users.username));
                 } else {
@@ -218,11 +218,11 @@ passport.use(
 
                     let newClient = {
                         idTeacher: idTeacher,
-                        identificationCardTeacher: username,
+                        identificationCardTeacher: cifrarDatos(username),
                         phoneTeacher: cifrarDatos(phoneTeacher),
                         emailTeacher: cifrarDatos(emailTeacher),
                         completeNmeTeacher: cifrarDatos(completeNmeTeacher),
-                        usernameTeahcer: usernameTeahcer,
+                        usernameTeahcer: username,
                         passwordTeacher: password,
                         rolTeacher: 'teacher',
                         createTeahcer: new Date().toLocaleString()

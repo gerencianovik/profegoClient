@@ -11,7 +11,7 @@ const teacher = {};
 // Función para guardar y subir archivos
 const guardarYSubirArchivo = async (archivo, filePath, columnName, idTeacher, url, req) => {
     const validaciones = {
-        imagen: [".PNG", ".JPG", ".JPEG", ".GIF", ".TIF", ".png", ".jpg", ".jpeg", ".gif", ".tif", ".ico", ".ICO"],
+        imagen: [".PNG", ".JPG", ".JPEG", ".GIF", ".TIF", ".png", ".jpg", ".jpeg", ".gif", ".tif", ".ico", ".ICO", ".webp", ".WEBP"],
         pdf: [".pdf", ".PDF"]
     };
     const tipoArchivo = columnName === 'photoTeacher' ? 'imagen' : 'pdf';
@@ -152,10 +152,17 @@ teacher.update = async (req, res) => {
         }
 
         // Actualizar profesor
+        const teacherDetails = await orm.detailTeachPage.findOne({ where: { teacherIdTeacher: id } });
+        if (teacherDetails !== null) {
+            console.log('Ya existe el detalle del profesor');
+            await teacherDetails.update(newUnion);
+        } else {
+            console.log('No existe el detalle del profesor, creando uno nuevo');
+            await orm.detailTeachPage.create(newUnion);
+        }
+
         const teacherResult = await orm.teacher.findOne({ where: { idTeacher: id } });
         await teacherResult.update(updateTeacher);
-
-        await orm.detailTeachPage.create(newUnion)
 
         const existingTeachCouch = await orm.teachCouch.findOne({ where: { teacherIdTeacher: id } });
 
@@ -166,8 +173,8 @@ teacher.update = async (req, res) => {
             });
         } else {
             await orm.teachCouch.create(newchouTeacher);
-    }
-        // Insertar títulos escogidos con validación
+        }
+
         const tituloPromises = tituloEscogidas.map(async (titulo, i) => {
             const [results] = await sql.promise().query(
                 'SELECT * FROM teacherDetails WHERE rangeAgeTeacher = ? AND subjetTeacher = ? AND teacherIdTeacher = ? AND specialtyTypeIdSpecialType = ?',

@@ -84,8 +84,9 @@
                                     </label>
                                     <select name="titulosEleccion" id="titulosElecciones" class="form-select border-3"
                                         style="font-size: 1.5rem;border-color: #f39325;">
+                                        <option value="">Selecione su titulo</option>
                                         {{#each ../listaTitulos}}
-                                        <option value="{{nameSpecialType}}">{{nameSpecialType}}</option>
+                                        <option value="{{idSpecialType}}">{{nameSpecialType}}</option>
                                         {{/each}}
                                         <option value="titulo">otros</option>
                                     </select>
@@ -102,6 +103,7 @@
                                         <select name="specialtyTypeIdSpecialType" id="especial"
                                             class="form-select border-3"
                                             style="font-size: 1.5rem;border-color: #f39325;">
+                                            <option value="">Selecione su titulo</option>
                                             {{#each ../listaEspecialidades}}
                                             <option value="{{nameSpecialType}}">{{nameSpecialType}}</option>
                                             {{/each}}
@@ -207,6 +209,7 @@
                                     <div id="meterias" class="col-12">
                                         <select name="subjetTeacher" id="materiasEleccion" class="form-select border-3"
                                             style="font-size: 1.5rem;border-color: #f39325;">
+                                            <option value="">Selecione su asignatura</option>
                                             {{#each ../listaMaterias}}
                                             <option value="{{nambeSubjects}}">{{nambeSubjects}}</option>
                                             {{/each}}
@@ -224,6 +227,7 @@
                                     <div id="edadRange" class="col-12">
                                         <select name="rangeAgeTeacher" id="edadRango" class="form-select border-3"
                                             style="font-size: 1.5rem;border-color: #f39325;">
+                                            <option value="">Selecione su rango de edad</option>
                                             <option value="3-5 años">3-5 años</option>
                                             <option value="5-7 años">5-7 años</option>
                                             <option value="7-9 años">7-9 años</option>

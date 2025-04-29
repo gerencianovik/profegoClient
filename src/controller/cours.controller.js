@@ -10,7 +10,7 @@ const cours = {}
 
 const guardarYSubirArchivo = async (archivo, filePath, columnName, idTeacher, url, req) => {
     const validaciones = {
-        imagen: [".PNG", ".JPG", ".JPEG", ".GIF", ".TIF", ".png", ".jpg", ".jpeg", ".gif", ".tif", ".ico", ".ICO"],
+        imagen: [".PNG", ".JPG", ".JPEG", ".GIF", ".TIF", ".png", ".jpg", ".jpeg", ".gif", ".tif", ".ico", ".ICO", '.webp', ".WEBP"],
         video: [".mp4", ".avi", ".mov", ".wmv", ".flv", ".mkv", ".MP4", ".AVI", ".MOV", ".WMV", ".FLV"]
     };
     const tipoArchivo = columnName === 'photoCours' ? 'imagen' : 'video';
@@ -61,8 +61,9 @@ cours.mostrar = async (req, res) => {
         const id = req.params.id
         const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = 1');
         const [teacher] = await sql.promise().query('SELECT * FROM teachers where idTeacher = ?', [id]);
-        const [maxCours] = await sql.promise().query('SELECT MAX(idCours) AS Maximo FROM cours')
-        res.render('cours/add', { listaPagina: pagina, MaximoCurso: maxCours, listaTeacher: teacher, csrfToken: req.csrfToken() });
+        const [maxCours] = await sql.promise().query('SELECT MAX(idCours) AS Maximo FROM cours');
+        const [tipoCurso] = await sql.promise().query('SELECT * FROM coursClassTypes');
+        res.render('cours/add', {listaTipoCurso:tipoCurso, listaPagina: pagina, MaximoCurso: maxCours, listaTeacher: teacher, csrfToken: req.csrfToken() });
     } catch (error) {
         console.error('Error en la consulta:', error.message);
         res.status(500).send('Error al realizar la consulta');
@@ -79,9 +80,9 @@ cours.mandar = async (req, res) => {
         }
 
         const id = req.user.idTeacher;
-        let idTeacher;
-
-
+        const [detailTeacher] = await sql.promise().query('SELECT * FROM detailTeacherPages WHERE teacherIdTeacher = ?', [id]);
+        const teacherDetail = detailTeacher[0]
+        console.log('holabs',teacherDetail.idDetailTeacherPage);
         const { idCours, ubicacion, neeCours, edadesEscogidas, tipoCurso, nameCours, descriptionCours, dateCoursInit, dateCoursFin, hourCours, shareCours, costCours } = req.body;
         const newPage = {
             idCours,
@@ -97,7 +98,7 @@ cours.mandar = async (req, res) => {
             costCours,
             createCours: new Date().toLocaleString(),
             stateCours: 'Activar',
-            detailTeacherPageIdDetailTeacherPage: idTeacher,
+            detailTeacherPageIdDetailTeacherPage: teacherDetail.idDetailTeacherPage,
             coursClassTypeIdCoursClassType: ids
         };
 
@@ -114,12 +115,12 @@ cours.mandar = async (req, res) => {
 
             if (photoCours) {
                 const photoFilePath = path.join(__dirname, '/../public/img/cours/', photoCours.name);
-                await guardarYSubirArchivo(photoCours, photoFilePath, 'photoCours', idCours, 'http://localhost:5000/imagenCours', req);
+                await guardarYSubirArchivo(photoCours, photoFilePath, 'photoCours', idCours, 'http://localhost:9000/imagenCours', req);
             }
 
             if (videoCours) {
                 const endorsementFilePath = path.join(__dirname, '/../public/video/cours/', videoCours.name);
-                await guardarYSubirArchivo(videoCours, endorsementFilePath, 'videoCours', idCours, 'http://localhost:5000/videoCours', req);
+                await guardarYSubirArchivo(videoCours, endorsementFilePath, 'videoCours', idCours, 'http://localhost:9000/videoCours', req);
             }
         }
 
@@ -138,7 +139,8 @@ cours.lista = async (req, res) => {
         const id = req.params.id
         const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = ?', [id]);
         const [teacher] = await sql.promise().query('SELECT * FROM teachers where idTeacher = ?', [id]);
-        const [row] = await sql.promise().query('SELECT * FROM cours ', [id])
+        const [detailTeacher] = await sql.promise().query('SELECT * FROM detailTeacherPages WHERE teacherIdTeacher = ?', [id]);
+        const [row] = await sql.promise().query('SELECT * FROM cours WHERE detailTeacherPageIdDetailTeacherPage = ?', [detailTeacher[0].idDetailTeacherPage]);
         res.render('cours/list', { lista: row, listaPagina: pagina, listaTeacher: teacher, })
     } catch (error) {
         console.error('Error en la consulta:', error.message);

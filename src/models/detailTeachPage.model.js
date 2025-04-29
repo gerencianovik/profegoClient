@@ -1,5 +1,5 @@
 const detailTeacherPage = (sequelize, type) =>{
-    return sequelize.define('detailTeacherPage',{
+    return sequelize.define('detailTeacherPages',{
         idDetailTeacherPage: {
             type: type.INTEGER,
             autoIncrement: true,

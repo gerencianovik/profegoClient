@@ -1,15 +1,308 @@
-.dropdownItemStudent {
-    transition: background-color 0.3s ease, transform 0.2s ease;
+
+:root {
+    --primary-color: #147582;
+    --secondary-color: #ec922f;
+    --light-bg: #fff2e1;
+    --dark-text: #215d56;
+    --blue-dark: #004d77;
 }
 
-.dropdownItemtudent:hover {
-    transform: scale(1.05);
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom, var(--light-bg) 61%, white 32%) !important;
+    color: #333;
 }
 
-.linea {
-    width: auto;
-    height: 3px;
-    background: linear-gradient(to right, #ff8800, #f2dabf);
+/* Imagen de cabecera (full width) */
+.header-image-container {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.header-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    min-height: 300px;
+}
+
+/* Contenedor principal con márgenes */
+.main-content-container {
+    padding: 0 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Sección de bienvenida */
+.welcome-section {
+    background: linear-gradient(to bottom, var(--light-bg) 0%, rgba(255,242,225,0) 100%);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.welcome-title {
+    color: var(--secondary-color);
+    font-weight: 700;
+    font-size: 2.7rem;
+}
+
+.welcome-text {
+    color: var(--dark-text);
+    font-size: 1.6rem;
+    line-height: 1.6;
+}
+
+.welcome-image {
+    max-height: 300px;
+    width: 100%;
+    object-fit: contain;
+}
+
+/* Botones principales */
+.btn-service-classes, 
+.btn-service-courses {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 120px;
     border: none;
-    margin-top: 5px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-service-classes {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #0d5c68 100%);
+}
+
+.btn-service-courses {
+    background: linear-gradient(135deg, var(--blue-dark) 0%, #003350 100%);
+}
+
+.service-btn-content {
+    text-align: center;
+    color: white;
+    z-index: 2;
+}
+
+.service-btn-icon {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.service-btn-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+    color: white;
+}
+
+/* Efectos hover */
+.btn-service-classes:hover, 
+.btn-service-courses:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.btn-service-classes:after, 
+.btn-service-courses:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+.btn-service-classes:hover:after, 
+.btn-service-courses:hover:after {
+    left: 100%;
+}
+
+/* Tarjetas de servicio */
+.service-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+    border: none;
+    overflow: hidden;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.service-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.service-icon img {
+    max-width: 100%;
+    height: auto;
+}
+
+.service-title {
+    color: var(--dark-text);
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+/* Sección de catálogo */
+.featured-courses {
+    background-color: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-top: 30px;
+}
+
+.section-title {
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-title:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--secondary-color);
+}
+
+/* Tarjetas de curso */
+.course-card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+    background-color: white;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.course-img {
+    height: 180px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.course-title {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.course-author {
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+}
+
+.course-modalidad {
+    background-color: var(--light-bg);
+    color: var(--secondary-color);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+/* Botones de acción */
+.action-btn {
+    border-radius: 50px;
+    padding: 8px 20px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.action-btn.detail {
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.action-btn.teach {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-content-container {
+        padding: 0 15px;
+    }
+    
+    .header-image {
+        min-height: 200px;
+    }
+    
+    .welcome-section {
+        text-align: center;
+    }
+    
+    .welcome-image {
+        margin-top: 20px;
+        max-height: 200px;
+    }
+    
+    .btn-service-classes, 
+    .btn-service-courses {
+        height: 100px;
+    }
+    
+    .service-btn-icon {
+        font-size: 2rem;
+    }
+    
+    .service-btn-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 1600px) {
+    .header-image {
+        min-height: 400px;
+    }
+    
+    .welcome-image {
+        max-height: 400px;
+    }
+}
+
+.p-4 {
+    padding: 0rem !important;
+}
+.mb-5 {
+    margin-bottom: 0rem !important;
 }

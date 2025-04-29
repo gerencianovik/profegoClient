@@ -5,7 +5,7 @@ const { descifrarDatos, cifrarDatos } = require('../lib/encrypDates.js');
 
 eleccionServicios.mostrarEleccion = async (req, res) => {
     try {
-        const ids = req.params.id;
+        const ids = req.user.idTeacher;
 
         // Consultas a la base de datos
         const [pagina] = await sql.promise().execute('SELECT * FROM pagePolicy');
@@ -69,7 +69,7 @@ eleccionServicios.mostrarEleccionEstudiante = async (req, res) => {
         celularEstudent: row.celularEstudent ? descifrarDatos(row.celularEstudent) : '',
         usernameEstudent: row.usernameEstudent ? descifrarDatos(row.usernameEstudent) : '',
     }));
-    res.render('servicios/leccionEstudiante', { listaPagina: pagina, listaEstudent: datos, listaCursos: cursos, listaClases: clases, csrfToken: req.csrfToken() });
+    res.render('servicios/eleccionServiciosEstudiante', { listaPagina: pagina, listaEstudent: datos, listaCursos: cursos, listaClases: clases, csrfToken: req.csrfToken() });
 }
 
 eleccionServicios.clasesCursos = async (req, res) => {

@@ -1,182 +1,150 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="/css/teacher/lista.css">
 
-<div class="bg-lista">
-    <div class="container-sm my-4">
-        <div class="row d-flex justify-content-center align-items-center">
-            <div class="col-12 col-md-11">
-                {{#each listaTeacher}}
-                <form action="/teacher/lista/{{idTeacher}}" method="get">
-                    <div class="card d-flex justify-content-center align-items-center"
-                        style="border-bottom-left-radius: 0;border-bottom-right-radius: 0;">
-                        <div class="card-body col-md-10">
-                            <div class="row">
-                                <div class="col-12 my-4 text-center">
-                                    <h1>Mi Perfil</h1>
-                                    <div class="image-container">
-                                        <img class="img-fluid imgReg" src="/img/user/{{photoTeacher}}"
-                                            id="imagenPrevisualizacion">
-                                    </div>
-                                    <h3 class="nombre">Mi nombre es: {{completeNmeTeacher}}</h3>
+<div class="teacher-profile-container">
+    <div class="profile-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    {{#each listaTeacher}}
+                    <div class="profile-card">
+                        <!-- Sección superior con foto y datos básicos -->
+                        <div class="profile-top-section">
+                            <div class="profile-image-container">
+                                <img src="/img/user/{{photoTeacher}}" alt="Foto de perfil" class="profile-image">
+                                <div
+                                    class="profile-status-badge {{#ifCond stateTeacher '==' 'Activo'}}active{{else}}inactive{{/ifCond}}">
+                                    {{stateTeacher}}
+                                </div>
+                            </div>
+
+                            <div class="profile-basic-info">
+                                <h1 class="profile-name">{{completeNmeTeacher}}</h1>
+                                <div class="profile-meta">
+                                    <span><i class="fas fa-id-card"></i> {{identificationCardTeacher}}</span>
+                                    <span><i class="fas fa-birthday-cake"></i> {{ageTeacher}}</span>
+                                    <span><i class="fas fa-phone"></i> {{phoneTeacher}}</span>
+                                    <span><i class="fas fa-envelope"></i> {{emailTeacher}}</span>
                                 </div>
 
-                                <div class="col-12 mb-3">
-                                    <div id="direccion">
-                                        <div id="map"></div>
-                                    </div>
-                                    <input type="text" name="addressTeacher" id="ubicacion" placeholder="Dirección"
-                                        value="{{addressTeacher}}" readonly>
+                                <div class="profile-description">
+                                    <p>{{descriptionTeacher}}</p>
                                 </div>
 
-                                <div class="col-12 col-md-6 mb-3 text-center">
-                                    <label class="form-label m-0">
-                                        <h5 class="fw-bold" style="color: #23615b;">Especialidad</h5>
-                                    </label>
-                                    {{#each ../listaChouch}}
-                                    <div class="card border-3 col-12 col-md-6 shadow fst-italic"
-                                        style="border-color: #f39325;">
-                                        <div class="card-body text-center">
-                                            <p class="fs-3 m-0">{{stateTeachCouch}}</p>
+                                <a href="/teacher/update/{{idTeacher}}" class="btn btn-update-profile">
+                                    <i class="fas fa-user-edit"></i> Actualizar Perfil
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Sección de contenido organizado en pestañas -->
+                        <div class="profile-content-tabs">
+                            <ul class="nav nav-tabs" id="profileTabs" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="specialties-tab" data-bs-toggle="tab"
+                                        data-bs-target="#specialties" type="button" role="tab">Especialidades</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="subjects-tab" data-bs-toggle="tab"
+                                        data-bs-target="#subjects" type="button" role="tab">Materias</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="subjects-tab" data-bs-toggle="tab"
+                                        data-bs-target="#ages" type="button" role="tab">Edades</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="location-tab" data-bs-toggle="tab"
+                                        data-bs-target="#location" type="button" role="tab">Ubicación</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="documents-tab" data-bs-toggle="tab"
+                                        data-bs-target="#documents" type="button" role="tab">Documentos</button>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content" id="profileTabsContent">
+                                <!-- Pestaña de Especialidades -->
+                                <div class="tab-pane fade show active" id="specialties" role="tabpanel">
+                                    <div class="skills-container">
+                                        {{#each ../listaChouch}}
+                                        <div class="skill-badge">
+                                            <i class="fas fa-certificate"></i> {{stateTeachCouch}}
                                         </div>
-                                    </div>
-                                    {{/each}}
-                                </div>
+                                        {{/each}}
 
-                                <div class="col-12 col-md-6 mb-3 text-center d-flex justify-content-center">
-                                    <div>
-                                        <label class="form-label m-0">
-                                            <h5 class="fw-bold" style="color: #23615b;">Fecha Nacimineto</h5>
-                                        </label>
-                                        <p>{{ageTeacher}}</p>
-                                    </div>
-                                </div>
-
-                                <div class="col-12 mb-3 text-center">
-                                    <label class="form-label m-0">
-                                        <h5 class="fw-bold" style="color: #23615b;">Titulos</h5>
-                                    </label>
-                                    <div class="flex">
                                         {{#each ../listaMaterias}}
-                                        <div class="card border-3 col-12 col-md-6 shadow fst-italic"
-                                            style="border-color: #f39325;">
-                                            <div class="card-body text-center">
-                                                <p class="fs-3 m-0">{{nameSpecialType}}</p>
-                                            </div>
+                                        <div class="skill-badge">
+                                            <i class="fas fa-graduation-cap"></i> {{nameSpecialType}}
                                         </div>
                                         {{/each}}
                                     </div>
                                 </div>
 
-                                <div class="col-12 mb-3 text-center">
-                                    <label class="form-label m-0">
-                                        <h5 class="fw-bold" style="color: #23615b;">Documentación</h5>
-                                    </label>
-                                    <div class="row">
-                                        <div class="col-12 col-md-4 card border-0">
-                                            <iframe id="documentoTituloPrevisualizacion"
-                                                src="/archivos/teacher/{{endorsementCertificateTeacher}}"></iframe>
-                                        </div>
-                                        <div class="col-12 col-md-4 card border-0">
-                                            <iframe id="documentoTituloPrevisualizacion"
-                                                src="/archivos/teacher/{{pageVitalTeacher}}"></iframe>
-                                        </div>
-                                        <div class="col-12 col-md-4 card border-0">
-                                            <iframe id="documentoTituloPrevisualizacion"
-                                                src="/archivos/teacher/{{criminalRecordTeacher}}"></iframe>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-12 mb-3 text-center">
-                                    <label class="form-label m-0">
-                                        <h5 class="fw-bold" style="color: #23615b;">Materias</h5>
-                                    </label>
-                                    <div class="flex">
+                                <!-- Pestaña de Materias -->
+                                <div class="tab-pane fade" id="subjects" role="tabpanel">
+                                    <div class="subjects-container">
                                         {{#each ../listaDetalle}}
-                                        <div class="card border-3 col-12 col-md-6 shadow fst-italic"
-                                            style="border-color: #f39325;">
-                                            <div class="card-body text-center">
-                                                <p class="fs-3 m-0">{{subjetTeacher}}</p>
+                                        <div class="subject-card">
+                                            <div class="subject-info">
+                                                <h4>{{subjetTeacher}}</h4>
                                             </div>
                                         </div>
                                         {{/each}}
                                     </div>
                                 </div>
 
-                                <div class="col-12 mb-3  text-center d-flex justify-content-center">
-                                    <div>
-                                        <label class="form-label m-0">
-                                            <h5 class="fw-bold" style="color: #23615b;">Edad</h5>
-                                        </label>
+                                <!-- Pestaña de Edades -->
+                                <div class="tab-pane fade" id="ages" role="tabpanel">
+                                    <div class="subjects-container">
                                         {{#each ../listaDetalle}}
-                                        <div class="card border-3 col-12 col-md-3 shadow fst-italic"
-                                            style="border-color: #f39325;">
-                                            <div class="card-body text-center">
-                                                <p class="fs-3 m-0">{{rangeAgeTeacher}}</p>
+                                        <div class="subject-card">
+                                            <div class="subject-info">
+                                                <h4>Edad: {{rangeAgeTeacher}}</h4>
                                             </div>
                                         </div>
                                         {{/each}}
                                     </div>
                                 </div>
 
-                                <div class="col-12 col-md-6 mb-3 text-center d-flex justify-content-center">
-                                    <div>
-                                        <label class="form-label m-0">
-                                            <h5 class="fw-bold" style="color: #23615b;">Cedula</h5>
-                                        </label>
-                                        <p>{{identificationCardTeacher}}</p>
+                                <!-- Pestaña de Ubicación -->
+                                <div class="tab-pane fade" id="location" role="tabpanel">
+                                    <div class="location-container">
+                                        <div id="map"></div>
+                                        <div class="address-info">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                            <input type="text" name="addressTeacher" id="ubicacion"
+                                                value="{{addressTeacher}}" readonly>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="col-12 col-md-6 mb-3 text-center d-flex justify-content-center">
-                                    <div>
-                                        <label class="form-label m-0">
-                                            <h5 class="fw-bold" style="color: #23615b;">Celular</h5>
-                                        </label>
-                                        <p>{{phoneTeacher}}</p>
-                                    </div>
-                                </div>
+                                <!-- Pestaña de Documentos -->
+                                <div class="tab-pane fade" id="documents" role="tabpanel">
+                                    <div class="documents-container">
+                                        <div class="document-card">
+                                            <h5><i class="fas fa-file-certificate"></i> Certificado de Endoso</h5>
+                                            <iframe src="/archivos/teacher/{{endorsementCertificateTeacher}}"></iframe>
+                                        </div>
 
-                                <div class="col-12 col-md-6 mb-3 text-center d-flex justify-content-center">
-                                    <div>
-                                        <label class="form-label m-0">
-                                            <h5 class="fw-bold" style="color: #23615b;">Correos</h5>
-                                        </label>
-                                        <p>{{emailTeacher}}</p>
-                                    </div>
-                                </div>
+                                        <div class="document-card">
+                                            <h5><i class="fas fa-id-card"></i> Página Vital</h5>
+                                            <iframe src="/archivos/teacher/{{pageVitalTeacher}}"></iframe>
+                                        </div>
 
-                                <div class="col-12 col-md-6 mb-3 text-center d-flex justify-content-center">
-                                    <div>
-                                        <label class="form-label m-0">
-                                            <h5 class="fw-bold" style="color: #23615b;">Estado</h5>
-                                        </label>
-                                        <p>{{stateTeacher}}</p>
+                                        <div class="document-card">
+                                            <h5><i class="fas fa-file-contract"></i> Antecedentes Penales</h5>
+                                            <iframe src="/archivos/teacher/{{criminalRecordTeacher}}"></iframe>
+                                        </div>
                                     </div>
-                                </div>
-
-                                <div class="col-12 mb-3 text-center d-flex justify-content-center">
-                                    <div>
-                                        <label class="form-label m-0">
-                                            <h5 class="fw-bold" style="color: #23615b;">Description</h5>
-                                        </label>
-                                        <p>{{descriptionTeacher}}</p>
-                                    </div>
-                                </div>
-
-                                <div class="text-center my-3">
-                                    <a href="/teacher/update/{{idTeacher}}" style="background-color: #0b4e71;"
-                                        class="btn btn-lg text-white" type="button">Actualizar Sus
-                                        Datos</a>
                                 </div>
                             </div>
                         </div>
-                </form>
-                {{/each}}
-                <div class="rounded-bottom" style="background-color: #f39323; height: 50px;"></div>
+                    </div>
+                    {{/each}}
+                </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 <div>
@@ -227,10 +195,6 @@
                 </div>
             </div>
             <div class="col-md-3 text-center">
-                <div class="d-flex justify-content-center">
-                    <div class="qr-placeholder"></div>
-                    <div class="qr-placeholder"></div>
-                </div>
             </div>
             <div class="col-md-3">
                 <img src="/img/logo/LogoPrincipal.png" class="img-fluid">

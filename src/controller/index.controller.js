@@ -145,10 +145,10 @@ indexCtl.login = (req, res, next) => {
     passport.authenticate("local.teacherSignin", (err, user, info) => {
         if (err) {
             console.error('Error en autenticación profesor:', err);
-            return res.status(500).json({ error: 'Error interno del servidor' });
+            return res.status(500).json({ error: 'Error en autenticación profesor' });
         }
         if (!user) {
-            req.flash('error', info.message || 'Credenciales inválidas');
+            req.flash('error', 'Credenciales inválidas');
             return res.redirect("/RegisterTeachers");
         }
         req.logIn(user, (err) => {

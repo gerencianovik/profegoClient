@@ -8,10 +8,9 @@ router.get('/general', isLoggedIn, clasesCursos)
 
 router.get('/eleccion', isLoggedIn, async (req, res) => {
     const user = req.user;
-
-    if (user.rol === 'profesor') {
-        return res.redirect(`/eleccion/${user.id}`);
-    } else if (user.rol === 'estudiante') {
+    if (user.rolTeacher == 'teacher') {
+        return res.redirect(`/eleccion/${user.idTeacher}`);
+    } else if (user.rolStudent === 'student') {
         return res.redirect(`/eleccion-estudiante/${user.id}`);
     } else {
         return res.status(403).send('Rol no autorizado');

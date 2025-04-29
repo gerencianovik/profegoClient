@@ -1,4 +1,6 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="/css/navegacion.css">
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">
@@ -168,9 +170,56 @@
                 </li>
             </ul>
 
-            <ul class="navbar-nav mb-2 mb-lg-0">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
                 {{#if user}}
-                <a class="nav-link" href="#" role="button">Panel principal</a>
+                <!-- Menú de perfil del usuario -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="me-2 d-none d-sm-inline">{{descifrar user.completeNmeTeacher}}</span>
+                        <div class="profile-image-nav">
+                            {{#if user.photoTeacher}}
+                            <img src="/img/user/{{user.photoTeacher}}" alt="Foto de perfil" class="rounded-circle">
+                            {{else}}
+                            <div class="profile-initials">{{getInitials user.completeNmeTeacher}}</div>
+                            {{/if}}
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end p-0 m-0 custom-dropdown-menu-user">
+                        <li>
+                            <div class="d-flex flex-column rounded-2 p-0">
+                                <div class="profile-dropdown-header p-3 text-left">
+                                    <div class="profile-image-nav-large mb-2 mx-auto">
+                                        {{#if user.photoTeacher}}
+                                        <img src="/img/user/{{user.photoTeacher}}" alt="Foto de perfil" class="rounded-circle">
+                                        {{else}}
+                                        <div class="profile-initials-large">{{getInitials user.completeNmeTeacher}}</div>
+                                        {{/if}}
+                                    </div>
+                                    <h6 class="mb-0">{{descifrar user.completeNmeTeacher}}</h6>
+                                    <small class="text-muted">{{descifrar user.emailTeacher}}</small>
+                                    <h6 class="mb-0">Docente</h6>
+                                </div>
+                                <div class="dropdown-divider m-0"></div>
+                                <a class="dropdown-item" href="/teacher/lista/{{user.idTeacher}}">
+                                    <i class="fas fa-user me-2"></i> Mi perfil
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cog me-2"></i> Configuración
+                                </a>
+                                {{#if user.rolTeacher}}
+                                <a class="dropdown-item" href="/eleccion">
+                                    <i class="fas fa-chalkboard-teacher me-2"></i> Mis servicios
+                                </a>
+                                {{/if}}
+                                <div class="dropdown-divider m-0"></div>
+                                <a class="dropdown-item" href="/closeSection">
+                                    <i class="fas fa-sign-out-alt me-2"></i> Cerrar sesión
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
                 {{else}}
                 <!-- Estudiante -->
                 <li class="nav-item dropdown">
@@ -223,12 +272,10 @@
                                         </a>
                                     </div>
                                 </div>
-
                             </div>
                         </li>
                     </ul>
                 </li>
-
                 {{/if}}
             </ul>
         </div>
