@@ -63,7 +63,7 @@ cours.mostrar = async (req, res) => {
         const [teacher] = await sql.promise().query('SELECT * FROM teachers where idTeacher = ?', [id]);
         const [maxCours] = await sql.promise().query('SELECT MAX(idCours) AS Maximo FROM cours');
         const [tipoCurso] = await sql.promise().query('SELECT * FROM coursClassTypes');
-        res.render('cours/add', {listaTipoCurso:tipoCurso, listaPagina: pagina, MaximoCurso: maxCours, listaTeacher: teacher, csrfToken: req.csrfToken() });
+        res.render('cours/add', { listaTipoCurso: tipoCurso, listaPagina: pagina, MaximoCurso: maxCours, listaTeacher: teacher, csrfToken: req.csrfToken() });
     } catch (error) {
         console.error('Error en la consulta:', error.message);
         res.status(500).send('Error al realizar la consulta');
@@ -82,7 +82,7 @@ cours.mandar = async (req, res) => {
         const id = req.user.idTeacher;
         const [detailTeacher] = await sql.promise().query('SELECT * FROM detailTeacherPages WHERE teacherIdTeacher = ?', [id]);
         const teacherDetail = detailTeacher[0]
-        console.log('holabs',teacherDetail.idDetailTeacherPage);
+        console.log('holabs', teacherDetail.idDetailTeacherPage);
         const { idCours, ubicacion, neeCours, edadesEscogidas, tipoCurso, nameCours, descriptionCours, dateCoursInit, dateCoursFin, hourCours, shareCours, costCours } = req.body;
         const newPage = {
             idCours,
@@ -133,6 +133,14 @@ cours.mandar = async (req, res) => {
     }
 }
 
+function safeDecrypt(data) {
+    try {
+        return descifrarDatos(data);
+    } catch (error) {
+        console.error('Error al descifrar datos:', error.message);
+        return ''; // Devolver una cadena vacía si ocurre un error
+    }
+}
 
 cours.lista = async (req, res) => {
     try {
@@ -140,8 +148,24 @@ cours.lista = async (req, res) => {
         const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = ?', [id]);
         const [teacher] = await sql.promise().query('SELECT * FROM teachers where idTeacher = ?', [id]);
         const [detailTeacher] = await sql.promise().query('SELECT * FROM detailTeacherPages WHERE teacherIdTeacher = ?', [id]);
+        const [tipoCurso] = await sql.promise().query('SELECT * FROM coursClassTypes');
         const [row] = await sql.promise().query('SELECT * FROM cours WHERE detailTeacherPageIdDetailTeacherPage = ?', [detailTeacher[0].idDetailTeacherPage]);
-        res.render('cours/list', { lista: row, listaPagina: pagina, listaTeacher: teacher, })
+        const datos = teacher.map(row => ({
+            idTeacher: row.idTeacher,
+            photoTeacher: row.photoTeacher,
+            endorsementCertificateTeacher: row.endorsementCertificateTeacher,
+            pageVitalTeacher: row.pageVitalTeacher,
+            criminalRecordTeacher: row.criminalRecordTeacher,
+            completeNmeTeacher: row.completeNmeTeacher ? safeDecrypt(row.completeNmeTeacher) : '',
+            identificationCardTeacher: row.identificationCardTeacher ? safeDecrypt(row.identificationCardTeacher) : '',
+            ageTeacher: row.ageTeacher ? safeDecrypt(row.ageTeacher) : '',
+            descriptionTeacher: row.descriptionTeacher ? safeDecrypt(row.descriptionTeacher) : '',
+            emailTeacher: row.emailTeacher ? safeDecrypt(row.emailTeacher) : '',
+            addressTeacher: row.addressTeacher ? safeDecrypt(row.addressTeacher) : '',
+            phoneTeacher: row.phoneTeacher ? safeDecrypt(row.phoneTeacher) : '',
+            usernameTeahcer: row.usernameTeahcer ? safeDecrypt(row.usernameTeahcer) : ''
+        }));
+        res.render('cours/list', { lista: row, listaPagina: pagina, listaTeacher: datos, listaTipoCurso: tipoCurso, })
     } catch (error) {
         console.error('Error en la consulta:', error.message);
         res.status(500).send('Error al realizar la consulta');
@@ -221,8 +245,10 @@ cours.traerDatos = async (req, res) => {
     try {
         const id = req.params.id
         const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = ?', [id]);
-        const [row] = await sql.promise().query('SELECT * FROM cours WHERE idCours = ?', [id])
-        res.render('cours/update', { lista: row, listaPagina: pagina, csrfToken: req.csrfToken() })
+        const [row] = await sql.promise().query('SELECT * FROM cours WHERE idCours = ?', [id]);
+        const [detalleCurso] = await sql.promise().query('SELECT * FROM DetalleCursos WHERE courIdCours = ?', [id])
+        const [tipoCurso] = await sql.promise().query('SELECT * FROM coursClassTypes');
+        res.render('cours/update', {listaTipoCurso:tipoCurso, edadesArray: detalleCurso, lista: row, listaPagina: pagina, csrfToken: req.csrfToken() })
     } catch (error) {
         console.error('Error en la consulta:', error.message);
         res.status(500).send('Error al realizar la consulta');
@@ -237,7 +263,7 @@ cours.actualizar = async (req, res) => {
             return res.status(400).json({ errors: errors.array() });
         }
 
-        const { idCours, ubicacion, neeCours, nameCours, descriptionCours, dateCoursInit, dateCoursFin, hourCours, shareCours, costCours, stateCours} = req.body;
+        const { idCours, ubicacion, neeCours, nameCours, descriptionCours, dateCoursInit, dateCoursFin, hourCours, shareCours, costCours, stateCours } = req.body;
         const newPage = {
             idCours,
             ubicacionCurso: ubicacion,

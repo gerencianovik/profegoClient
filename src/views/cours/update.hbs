@@ -1,167 +1,363 @@
-<link rel="stylesheet" href="/css/clases/add.css">
+<!DOCTYPE html>
+<html lang="es">
 
-<div class="bg-curso">
-    <div class="container-fluid w-100 pt-2">
-        {{#each lista}}
-        <form action="/cours/update/{{idCours}}" method="post" enctype="multipart/form-data">
-            <div class="col fs-3">
-                <input type="hidden" name="_csrf" value="{{ ../csrfToken }}">
-                <p class="ms-3 mt-2 fw-bold text-white">Actualizar Curso
-                    <span name="idCours" id="idCours">{{idCours}}</span>
-                </p>
-            </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Curso</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/cursos/add.css">
+    <style>
+        /* Estilos adicionales específicos para actualización */
+        .update-section {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .btn-update {
+            background-color: #0b4e71;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        .btn-update:hover {
+            background-color: #147582;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
 
-            <div class="row mb-3" style="background-color: #147582;">
-                <div class="col-12">
-                    <div class="row">
-                        <div class="col-12 col-md-3 my-auto"
-                            style="height: 300px; display: flex; justify-content: center; align-items: center;">
-                            <button
-                                class="btn btn-light p-0 rounded-4 my-auto d-flex flex-column align-items-center justify-content-center"
-                                type="button" id="botonImagen" style="width: 100%; height: 100%;">
-                                <img id="imagenPrevisualizacion" class="img-fluid mb-3"
-                                    style="max-height: 80%; max-width: 100%; object-fit: contain;" {{#if photoCours}}
-                                    src="/img/cours/{{photoCours}}" {{else}} src="/img/icons/noImagen.png" {{/if}} />
-                                <p class="m-0">Cambiar Imagen</p>
-                            </button>
-                            <input type="file" name="photoCours" id="seleccionArchivos" accept="image/*" hidden />
+<body>
+    <div class="bg-curso">
+        <div class="floating-shapes">
+            <div style="width: 100px; height: 100px; top: 20%; left: 10%; animation-delay: 0s;"></div>
+            <div style="width: 80px; height: 80px; top: 60%; left: 80%; animation-delay: 2s;"></div>
+            <div style="width: 120px; height: 120px; top: 40%; left: 70%; animation-delay: 4s;"></div>
+        </div>
+
+        <div class="container-fluid">
+            <!-- Encabezado -->
+            <div class="header-section" data-aos="fade-down">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h1 class="page-title animate__animated animate__fadeInDown">Actualizar Curso</h1>
                         </div>
-
-                        <div class="col-12 col-md-5 py-3">
-                            <label class="form-label text-white fs-4">Nombre del Curso</label>
-                            <input class="form-control mb-3 w-100" type="text" name="nameCours" id="nameCours" required
-                                value="{{nameCours}}">
-
-                            <div class="mb-3">
-                                <div style="width: 100%; height: 220px;" id="map"></div>
-                                <input id="pac-input" class="controls" type="text" placeholder="Buscar" />
-                                <input type="text" name="ubicacion" id="ubicacion" value="{{ubicacionCurso}}">
-                            </div>
-
-                            <p class="text-white fs-5 m-0"><input type="checkbox" name="neeCours" id="adactacion"
-                                    value="on" {{#if neeCours}}checked{{/if}}> Adaptado para NEE</p>
-                        </div>
-
-                        <div class="col-12 col-md-4 my-4">
-                            <div id="cambioVideo" class="position-relative" style="max-width: 100%; max-height: auto;">
-                                <video id="videoPreview" class="w-100" style="height: 320px; object-fit: contain;" {{#if
-                                    videoCours}} src="/video/clases/{{videoCours}}" {{else}}
-                                    src="/video/clase/noVideo.mp4" {{/if}} controls></video>
-                            </div>
-                            <div class="px-3">
-                                <input type="file" name="videoClases" id="seleccionvideo" class="form-control"
-                                    accept="video/*" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container-fluid mb-5">
-                <div class="col-12 col-md-7">
-                    <div class="card">
-                        <div class="card-body p-4">
-                            <div class="row">
-                                <div class="col-12 col-md-6 mb-5">
-                                    <label class="form-label m-0 w-100">
-                                        <h5 class="text-center mb-0" style="color: #23615b;">Descripción del Curso
-                                        </h5>
-                                    </label>
-                                    <textarea class="form-control border-1 shadow" rows="5" name="descriptionCours"
-                                        id="descriptionCours" required>{{descriptionCours}}</textarea>
-                                </div>
-                                <div class="col-12 col-md-6 mb-5">
-                                    <label class="form-label m-0 w-100">
-                                        <h5 class="text-center mb-0" style="color: #23615b;">Costo</h5>
-                                    </label>
-                                    <div class="input-group input-group-lg m-0">
-                                        <input type="number" class="form-control border-1 shadow"
-                                            aria-describedby="inputGroup-sizing-lg" name="costCours" id="costCours"
-                                            required value="{{costCours}}">
-                                    </div>
-                                </div>
-
-                                <div class="col-12 col-md-6 mb-5">
-                                    <label class="form-label m-0 w-100">
-                                        <h5 class="text-center mb-0" style="color: #23615b;">Cupos</h5>
-                                    </label>
-                                    <div class="input-group input-group-lg m-0">
-                                        <input type="number" class="form-control border-1 shadow"
-                                            aria-describedby="inputGroup-sizing-lg" name="shareCours" id="shareCours"
-                                            value="{{shareCours}}" required>
-                                    </div>
-                                </div>
-
-                                <div class="col-12 col-md-6 mb-5">
-                                    <label class="form-label m-0 w-100">
-                                        <h5 class="text-center mb-0" style="color: #23615b;">Tiempo del Curso</h5>
-                                    </label>
-                                    <div class="input-group input-group-lg m-0">
-                                        <input type="time" class="form-control border-1 shadow"
-                                            aria-describedby="inputGroup-sizing-lg" name="hourCours" id="hourCours"
-                                            value="{{hourCours}}" required>
-                                    </div>
-                                </div>
-
-                                <div class="col-12 col-md-6 mb-5">
-                                    <label class="form-label m-0 w-100">
-                                        <h5 class="text-center mb-0" style="color: #23615b;">Fecha inicio</h5>
-                                    </label>
-                                    <div class="input-group input-group-lg m-0">
-                                        <input type="date" class="form-control border-1 shadow"
-                                            aria-describedby="inputGroup-sizing-lg" name="dateCoursInit" id="dateCours"
-                                            required value="{{dateCoursInit}}">
-                                    </div>
-                                </div>
-
-                                <div class="col-12 col-md-6 mb-5">
-                                    <label class="form-label m-0 w-100">
-                                        <h5 class="text-center mb-0" style="color: #23615b;">Fecha fin</h5>
-                                    </label>
-                                    <div class="input-group input-group-lg m-0">
-                                        <input type="date" class="form-control border-1 shadow"
-                                            aria-describedby="inputGroup-sizing-lg" name="dateCoursFin" id="dateCours"
-                                            required value="{{dateCoursFin}}">
-                                    </div>
-                                </div>
-
-                                <div class="col-12 col-md-6 mb-5">
-                                    <label class="form-label m-0 w-100">Estado</label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control border-1 shadow" name="stateCours"
-                                            id="idestado" value="{{stateCours}}" readonly>
-
-                                        <span class="input-group-text p-0 shadow">
-                                            <button id="activarBtn" style="display: none;" type="button"
-                                                class="btn btn-primary fw-bold">
-                                                Activar</button>
-                                            <button id="desactivarBtn" style="display: none;" type="button"
-                                                class="btn btn-secondary fw-bold">
-                                                Desactivar</button>
-                                        </span>
-                                    </div>
-                                </div>
-
-                                {{/each}}
-                                <div class="text-end">
-                                    <button style="background-color: #0b4e71;" class="btn btn-lg text-white"
-                                        type="submit">Actualizar</button>
-                                </div>
-                            </div>
+                        <div class="col-md-4 text-md-end">
+                            <a href="/cours/list/{{idTeacher}}"
+                                class="btn btn-light btn-lg pulse animate__animated animate__fadeIn ripple-effect">
+                                <i class="fas fa-arrow-left me-2"></i> Volver
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-        </form>
+
+            <!-- Formulario -->
+            <div class="container">
+                {{#each lista}}
+                <form action="/cours/update/{{idCours}}" method="post" enctype="multipart/form-data" class="animate-fade-in">
+                    <input type="hidden" name="_csrf" value="{{ ../csrfToken }}">
+                    <input type="hidden" name="idCours" value="{{idCours}}">
+
+                    <!-- Sección 1: Información básica -->
+                    <div class="form-section" data-aos="fade-right">
+                        <h3 class="section-title"><i class="fas fa-info-circle me-2"></i>Información básica</h3>
+
+                        <div class="row">
+                            <div class="col-md-4 mb-4">
+                                <label class="form-label-custom"><i class="fas fa-image me-2"></i>Imagen del curso</label>
+                                <div class="image-upload-container" id="imageUploadContainer">
+                                    <button class="btn btn-light fs-4 p-0" type="button" id="botonImagen">
+                                        <img src="{{#if photoCours}}/img/cours/{{photoCours}}{{else}}/img/icons/noImagen.png{{/if}}" 
+                                             id="imagenPrevisualizacion" class="image-preview">
+                                    </button>
+                                    <input type="file" name="photoCours" id="seleccionArchivos" accept="image/*" hidden>
+                                </div>
+                                <small class="text-muted d-block mt-2">Formatos: JPG, PNG (Máx. 5MB)</small>
+                            </div>
+
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-12 mb-4" data-aos="fade-up">
+                                        <label for="nameCours" class="form-label-custom"><i class="fas fa-book me-2"></i>Nombre del curso</label>
+                                        <input type="text" class="form-control-custom" name="nameCours" id="nameCours"
+                                            required value="{{nameCours}}">
+                                    </div>
+
+                                    <div class="col-md-12 mb-4" data-aos="fade-up">
+                                        <label class="form-label-custom"><i class="fas fa-map-marker-alt me-2"></i>Ubicación del curso</label>
+                                        <div class="map-container" id="map"></div>
+                                        <input id="pac-input" class="form-control-custom mb-2" type="text"
+                                            placeholder="Buscar ubicación" value="{{ubicacionCurso}}">
+                                        <input type="text" class="form-control-custom" name="ubicacion" id="ubicacion"
+                                            value="{{ubicacionCurso}}">
+                                    </div>
+
+                                    <div class="col-md-12" data-aos="fade-up">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="neeCours" class="checkbox-custom" {{#if neeCours}}checked{{/if}}>
+                                            <span><i class="fas fa-universal-access me-2"></i>Adaptado para necesidades educativas especiales (NEE)</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sección 2: Video y descripción -->
+                    <div class="form-section" data-aos="fade-left">
+                        <h3 class="section-title"><i class="fas fa-video me-2"></i>Video promocional y descripción</h3>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-4" data-aos="zoom-in">
+                                <label class="form-label-custom"><i class="fas fa-film me-2"></i>Video promocional</label>
+                                <div class="video-upload-container">
+                                    <video id="videoPreview" class="video-preview" 
+                                           src="{{#if videoCours}}/video/cours/{{videoCours}}{{else}}/video/clase/noVideo.mp4{{/if}}" 
+                                           controls></video>
+                                    <div class="video-overlay d-flex justify-content-center align-items-center">
+                                        <i class="fas fa-play-circle fa-3x text-white opacity-75"></i>
+                                    </div>
+                                </div>
+                                <input type="file" name="videoCours" id="seleccionvideo"
+                                    class="form-control-custom mt-2" accept="video/*">
+                                <small class="text-muted d-block mt-1">Formatos: MP4, MOV (Máx. 50MB)</small>
+                            </div>
+
+                            <div class="col-md-6 mb-4" data-aos="zoom-in">
+                                <label for="descriptionCours" class="form-label-custom"><i
+                                        class="fas fa-align-left me-2"></i>Descripción del curso</label>
+                                <textarea class="form-control-custom" rows="6" name="descriptionCours"
+                                    id="descriptionCours" required>{{descriptionCours}}</textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sección 3: Detalles del curso -->
+                    <div class="form-section" data-aos="fade-up">
+                        <h3 class="section-title"><i class="fas fa-cogs me-2"></i>Detalles del curso</h3>
+
+                        <div class="row">
+                            <div class="col-md-4 mb-4" data-aos="flip-left">
+                                <label for="tipoCurso" class="form-label-custom"><i
+                                        class="fas fa-graduation-cap me-2"></i>Tipo de curso</label>
+                                <select name="tipoCurso" id="tipoCurso" class="form-control-custom" required>
+                                    {{#each ../listaTipoCurso}}
+                                    <option value="{{nameCoursClassType}}" {{#eq nameCoursClassType ../tipoCurso}}selected{{/eq}}>
+                                        {{nameCoursClassType}}
+                                    </option>
+                                    {{/each}}
+                                </select>
+                            </div>
+
+                            <div class="col-md-8 mb-4" data-aos="flip-right">
+                                <label class="form-label-custom"><i class="fas fa-users me-2"></i>Edad dirigida</label>
+                                <div id="rangeAgeTeacher" class="age-selector">
+                                    {{#each ../edadesArray}}
+                                    <div class="age-option">
+                                        <input type="checkbox" id="age{{@index}}" name="edadesEscogidas" value="{{this}}"
+                                            class="age-checkbox" {{rangoEdadCurso}}checked>
+                                        <label for="age{{@index}}" class="age-label">{{rangoEdadCurso}}</label>
+                                    </div>
+                                    {{/each}}
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-4" data-aos="fade-up">
+                                <label for="dateCoursInit" class="form-label-custom"><i
+                                        class="fas fa-calendar-alt me-2"></i>Fecha de inicio</label>
+                                <input type="date" class="form-control-custom" name="dateCoursInit" id="dateCoursInit"
+                                    required value="{{dateCoursInit}}">
+                            </div>
+
+                            <div class="col-md-4 mb-4" data-aos="fade-up">
+                                <label for="dateCoursFin" class="form-label-custom"><i
+                                        class="fas fa-calendar-alt me-2"></i>Fecha de finalización</label>
+                                <input type="date" class="form-control-custom" name="dateCoursFin" id="dateCoursFin"
+                                    required value="{{dateCoursFin}}">
+                            </div>
+
+                            <div class="col-md-4 mb-4" data-aos="fade-up">
+                                <label for="hourCours" class="form-label-custom"><i
+                                        class="fas fa-clock me-2"></i>Horario de clases</label>
+                                <input type="time" class="form-control-custom" name="hourCours" id="hourCours" required value="{{hourCours}}">
+                            </div>
+
+                            <div class="col-md-4 mb-4" data-aos="fade-up">
+                                <label for="shareCours" class="form-label-custom"><i class="fas fa-users me-2"></i>Cupos
+                                    disponibles</label>
+                                <input type="number" class="form-control-custom" name="shareCours" id="shareCours"
+                                    required min="1" value="{{shareCours}}">
+                            </div>
+
+                            <div class="col-md-4 mb-4" data-aos="fade-up">
+                                <label for="costCours" class="form-label-custom"><i
+                                        class="fas fa-dollar-sign me-2"></i>Tarifa total del curso</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input type="number" class="form-control-custom" name="costCours" id="costCours"
+                                        required min="0" step="0.01" value="{{costCours}}">
+                                    <span class="input-group-text">/h</span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-4" data-aos="fade-up">
+                                <label class="form-label-custom"><i class="fas fa-power-off me-2"></i>Estado del curso</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control-custom" value="{{#if stateCours}}Activo{{else}}Inactivo{{/if}}" readonly>
+                                    <span class="input-group-text p-0">
+                                        {{#if stateCours}}
+                                        <button type="button" class="btn btn-secondary fw-bold" onclick="desactivarCurso()">
+                                            Desactivar
+                                        </button>
+                                        {{else}}
+                                        <button type="button" class="btn btn-primary fw-bold" onclick="activarCurso()">
+                                            Activar
+                                        </button>
+                                        {{/if}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botón de envío -->
+                    <div class="text-center mt-4" data-aos="zoom-in">
+                        <button type="submit" class="btn-update ripple-effect">
+                            <i class="fas fa-save me-2"></i> Actualizar Curso
+                        </button>
+                    </div>
+                </form>
+                {{/each}}
+            </div>
+        </div>
     </div>
-</div>
 
-<script src="/js/estados.js"></script>
-<script src="/js/preview.js"></script>
-<script src="/js/preview-video.js"></script>
-<script src="/js/botonImagen.js"></script>
-<script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Q9PaOYlXpeqtj_0tHE19Zcoim25iSFg&callback=initAutocomplete&libraries=places&v=weekly"
-    defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inicializar animaciones
+        AOS.init({
+            duration: 800,
+            once: false,
+            easing: 'ease-in-out-quad'
+        });
 
-<script src="/js/mapa.js"></script>
+        // Mostrar contenido con fade-in
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('.bg-curso').style.opacity = '1';
+        });
+
+        // Previsualización de imagen
+        document.getElementById('imageUploadContainer').addEventListener('click', function () {
+            document.getElementById('seleccionArchivos').click();
+        });
+
+        document.getElementById('seleccionArchivos').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('El archivo es demasiado grande. El tamaño máximo permitido es 5MB.');
+                    this.value = '';
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    const preview = document.getElementById('imagenPrevisualizacion');
+                    preview.src = event.target.result;
+                    preview.classList.add('animate__animated', 'animate__pulse');
+                    setTimeout(() => {
+                        preview.classList.remove('animate__animated', 'animate__pulse');
+                    }, 1000);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Previsualización de video
+        document.getElementById('seleccionvideo').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                if (file.size > 50 * 1024 * 1024) {
+                    alert('El archivo es demasiado grande. El tamaño máximo permitido es 50MB.');
+                    this.value = '';
+                    return;
+                }
+
+                const videoPreview = document.getElementById('videoPreview');
+                const videoURL = URL.createObjectURL(file);
+                videoPreview.src = videoURL;
+                videoPreview.parentElement.classList.add('animate__animated', 'animate__pulse');
+                setTimeout(() => {
+                    videoPreview.parentElement.classList.remove('animate__animated', 'animate__pulse');
+                }, 1000);
+            }
+        });
+
+        // Validación de fechas
+        document.getElementById('dateCoursFin').addEventListener('change', function () {
+            const startDate = new Date(document.getElementById('dateCoursInit').value);
+            const endDate = new Date(this.value);
+
+            if (startDate > endDate) {
+                alert('La fecha de finalización no puede ser anterior a la fecha de inicio');
+                this.value = '';
+            }
+        });
+
+        // Efecto ripple para botones
+        document.querySelectorAll('.ripple-effect').forEach(button => {
+            button.addEventListener('click', function (e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const ripple = document.createElement('span');
+                ripple.className = 'ripple';
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+
+                this.appendChild(ripple);
+
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Funciones para activar/desactivar curso
+        function activarCurso() {
+            if (confirm('¿Estás seguro de activar este curso?')) {
+                window.location.href = `/cours/enable/{{idCours}}`;
+            }
+        }
+
+        function desactivarCurso() {
+            if (confirm('¿Estás seguro de desactivar este curso?')) {
+                window.location.href = `/cours/delete/{{idCours}}`;
+            }
+        }
+    </script>
+    <script src="/js/preview.js"></script>
+    <script src="/js/preview-video.js"></script>
+    <script src="/js/botonImagen.js"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Q9PaOYlXpeqtj_0tHE19Zcoim25iSFg&callback=initAutocomplete&libraries=places&v=weekly"
+        defer></script>
+    <script src="/js/mapa.js"></script>
+</body>
+
+</html>

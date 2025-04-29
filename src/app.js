@@ -31,50 +31,64 @@ app.use(
         contentSecurityPolicy: {
             directives: {
                 ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-                "script-src": [
+                "script-src": [ 
                     "'self'",
-                    "'unsafe-inline'",
-                    "'unsafe-eval'",
+                    "'unsafe-inline'",    // Necesario para algunos widgets y códigos embebidos
+                    "'unsafe-eval'",      // Solo si usas eval() (evitar si es posible)
                     "https://maps.googleapis.com",
                     "https://cdnjs.cloudflare.com",
                     "https://cdn.jsdelivr.net"
                 ],
                 "style-src": [
                     "'self'",
-                    "'unsafe-inline'",  // Permite estilos inline
+                    "'unsafe-inline'",    // Permite estilos inline
                     "https://fonts.googleapis.com",
-                    "https://cdn.jsdelivr.net"
+                    "https://cdn.jsdelivr.net",
+                    "https://cdnjs.cloudflare.com"  // Añadido para Font Awesome
                 ],
                 "img-src": [
                     "'self'",
                     "data:",
                     "blob:",
                     "https://maps.gstatic.com",
-                    "https://*.googleapis.com"
+                    "https://*.googleapis.com",
+                    "https://cdnjs.cloudflare.com"  // Si usas imágenes de este dominio
+                ],
+                "font-src": [
+                    "'self'",
+                    "data:",
+                    "https://fonts.gstatic.com",
+                    "https://cdnjs.cloudflare.com"  // Para Font Awesome
+                ],
+                "connect-src": [
+                    "'self'",
+                    "https://maps.googleapis.com",
+                    "https://cdnjs.cloudflare.com"  // Si haces requests a esta URL
                 ],
                 "media-src": [
                     "'self'",
-                    "blob:" 
-                ],
-                "connect-src": [
-                    "'self'",  // Permite que fetch funcione desde el mismo origen
-                    "https://maps.googleapis.com"
+                    "blob:",
+                    "https://cdnjs.cloudflare.com"  // Si alojas medios aquí
                 ],
                 "frame-src": [
-                    "'self'", 
-                    "blob:", 
-                    "https://www.google.com", 
+                    "'self'",
+                    "blob:",
+                    "https://www.google.com",
                     "https://link-stg.paymentez.com",
-                    "https://link.paymentez.com"  // Permite cargar iframes de este dominio
+                    "https://link.paymentez.com"
+                ],
+                "script-src-attr": [
+                    "'self'",
+                    "'unsafe-inline'"  // Permite manejadores de eventos inline
                 ],
                 "object-src": ["'none'"],
                 "default-src": ["'self'"]
-            }
+            },
+            reportOnly: false  // Cambiar a true para modo report-only inicialmente
         },
         referrerPolicy: { policy: "strict-origin-when-cross-origin" }
     })
 );
-
 
 // Configurar almacenamiento de sesiones MySQL
 const mysqlOptions = {
