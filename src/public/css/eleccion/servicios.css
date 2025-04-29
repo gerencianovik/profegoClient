@@ -1,67 +1,95 @@
-
 :root {
     --primary-color: #147582;
     --secondary-color: #ec922f;
     --light-bg: #fff2e1;
     --dark-text: #215d56;
     --blue-dark: #004d77;
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+/* Reset y estilos base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(to bottom, var(--light-bg) 61%, white 32%) !important;
+    background: linear-gradient(to bottom, var(--light-bg) 61%, white 32%);
     color: #333;
+    overflow-x: hidden;
+    line-height: 1.6;
 }
 
-/* Imagen de cabecera (full width) */
+/* Contenedor de imagen de cabecera - Solución definitiva */
 .header-image-container {
+    position: relative;
     width: 100%;
+    height: auto;
+    min-height: 200px;
+    max-height: 600px;
     overflow: hidden;
-    margin-bottom: 30px;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--light-bg);
 }
 
 .header-image {
     width: 100%;
     height: auto;
-    object-fit: cover;
-    min-height: 300px;
+    object-fit: contain;
+    object-position: center top;
+    display: block;
+    padding: 0 10px;
 }
 
-/* Contenedor principal con márgenes */
+/* Contenedor principal */
 .main-content-container {
-    padding: 0 5%;
+    padding: 0 1rem;
     max-width: 1400px;
     margin: 0 auto;
+    width: 100%;
 }
 
 /* Sección de bienvenida */
 .welcome-section {
     background: linear-gradient(to bottom, var(--light-bg) 0%, rgba(255,242,225,0) 100%);
     border-radius: 15px;
-    padding: 2rem;
-    margin-bottom: 30px;
+    padding: 1.5rem;
+    margin: 1rem auto 1.5rem;
     position: relative;
+    width: 100%;
+    box-shadow: var(--box-shadow);
 }
 
 .welcome-title {
     color: var(--secondary-color);
     font-weight: 700;
-    font-size: 2.7rem;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
 }
 
 .welcome-text {
     color: var(--dark-text);
-    font-size: 1.6rem;
-    line-height: 1.6;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
 }
 
 .welcome-image {
-    max-height: 300px;
-    width: 100%;
-    object-fit: contain;
+    max-height: 250px;
+    width: auto;
+    margin: 1rem auto 0;
+    display: block;
+    border-radius: 10px;
 }
 
-/* Botones principales */
+/* Botones de servicio */
 .btn-service-classes, 
 .btn-service-courses {
     display: flex;
@@ -72,10 +100,11 @@ body {
     border: none;
     border-radius: 12px;
     text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+    box-shadow: var(--box-shadow);
     position: relative;
     overflow: hidden;
+    margin-bottom: 1.5rem;
 }
 
 .btn-service-classes {
@@ -90,16 +119,17 @@ body {
     text-align: center;
     color: white;
     z-index: 2;
+    padding: 1rem;
 }
 
 .service-btn-icon {
     font-size: 2.5rem;
-    margin-bottom: 10px;
+    margin-bottom: 0.5rem;
     display: block;
 }
 
 .service-btn-title {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: 700;
     margin: 0;
     color: white;
@@ -109,7 +139,7 @@ body {
 .btn-service-classes:hover, 
 .btn-service-courses:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .btn-service-classes:after, 
@@ -133,16 +163,20 @@ body {
 .service-card {
     background-color: white;
     border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-    margin-bottom: 20px;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+    margin-bottom: 1rem;
     border: none;
     overflow: hidden;
 }
 
 .service-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.service-card .card-body {
+    padding: 1.25rem;
 }
 
 .service-icon {
@@ -151,34 +185,37 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
+    margin-right: 1rem;
 }
 
 .service-icon img {
     max-width: 100%;
     height: auto;
+    object-fit: contain;
 }
 
 .service-title {
     color: var(--dark-text);
     font-weight: 600;
-    margin-bottom: 5px;
+    margin-bottom: 0.5rem;
 }
 
 /* Sección de catálogo */
 .featured-courses {
     background-color: white;
     border-radius: 15px;
-    padding: 25px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    margin-top: 30px;
+    padding: 1.5rem;
+    box-shadow: var(--box-shadow);
+    margin-top: 2rem;
 }
 
 .section-title {
     color: var(--primary-color);
     font-weight: 700;
-    margin-bottom: 20px;
+    margin-bottom: 1.5rem;
     position: relative;
-    padding-bottom: 10px;
+    padding-bottom: 0.75rem;
 }
 
 .section-title:after {
@@ -187,23 +224,24 @@ body {
     left: 0;
     bottom: 0;
     width: 50px;
-    height: 3px;
+    height: 4px;
     background-color: var(--secondary-color);
+    border-radius: 2px;
 }
 
 /* Tarjetas de curso */
 .course-card {
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-    margin-bottom: 20px;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+    margin-bottom: 1.5rem;
     background-color: white;
 }
 
 .course-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .course-img {
@@ -215,41 +253,49 @@ body {
 .course-title {
     color: var(--primary-color);
     font-weight: 600;
+    margin-bottom: 0.5rem;
 }
 
 .course-author {
     color: var(--secondary-color);
     font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    display: block;
 }
 
 .course-modalidad {
     background-color: var(--light-bg);
     color: var(--secondary-color);
-    padding: 3px 10px;
+    padding: 0.25rem 0.75rem;
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: 500;
     display: inline-block;
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
 }
 
 /* Botones de acción */
 .action-btn {
     border-radius: 50px;
-    padding: 8px 20px;
+    padding: 0.5rem 1.25rem;
     font-weight: 500;
     font-size: 0.9rem;
-    transition: all 0.3s ease;
+    transition: var(--transition);
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
 }
 
 .action-btn.detail {
     border: 1px solid var(--primary-color);
     color: var(--primary-color);
+    background: transparent;
 }
 
 .action-btn.teach {
     background-color: var(--secondary-color);
     color: white;
+    border: 1px solid var(--secondary-color);
 }
 
 .action-btn:hover {
@@ -257,28 +303,64 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive */
+/* Layout y grid */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -0.75rem;
+}
+
+.col-md-6, .col-lg-6 {
+    padding: 0 0.75rem;
+    width: 100%;
+}
+
+/* Animaciones */
+.animate__animated {
+    opacity: 0;
+    animation-fill-mode: both;
+}
+
+/* Media Queries para móvil */
 @media (max-width: 768px) {
-    .main-content-container {
-        padding: 0 15px;
+    body {
+        background: linear-gradient(to bottom, var(--light-bg) 50%, white 50%);
+    }
+    
+    .header-image-container {
+        min-height: 180px;
+        max-height: 70vh;
+        padding: 0;
     }
     
     .header-image {
-        min-height: 200px;
+        padding: 0 15px;
+        object-position: center top;
     }
     
     .welcome-section {
         text-align: center;
+        padding: 1.25rem !important;
+        margin: 1rem auto;
+    }
+    
+    .welcome-title {
+        font-size: 1.6rem;
+    }
+    
+    .welcome-text {
+        font-size: 1rem;
     }
     
     .welcome-image {
-        margin-top: 20px;
-        max-height: 200px;
+        max-height: 180px;
+        width: 90%;
     }
     
     .btn-service-classes, 
     .btn-service-courses {
         height: 100px;
+        margin-bottom: 1rem;
     }
     
     .service-btn-icon {
@@ -286,23 +368,170 @@ body {
     }
     
     .service-btn-title {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
+    }
+    
+    .col-md-6 {
+        margin-bottom: 1.5rem;
+    }
+    
+    .featured-courses {
+        margin-top: 1.5rem;
+        padding: 1.25rem;
+    }
+    
+    .course-card {
+        margin-bottom: 1.25rem;
+    }
+    
+    .action-btn {
+        padding: 0.4rem 1rem;
+        font-size: 0.85rem;
     }
 }
 
+@media (max-width: 426px) {
+    .header-image-container {
+        min-height: 150px;
+        max-height: 60vh;
+    }
+    
+    .header-image {
+        object-position: center top;
+        padding: 0 10px;
+    }
+    
+    .welcome-title {
+        font-size: 1.4rem;
+    }
+    
+    .welcome-text {
+        font-size: 0.95rem;
+    }
+    
+    .welcome-image {
+        max-height: 160px;
+    }
+}
+
+@media (max-width: 320px) {
+    .header-image-container {
+        min-height: 130px;
+        max-height: 55vh;
+    }
+    
+    .welcome-title {
+        font-size: 1.3rem;
+    }
+    
+    .welcome-text {
+        font-size: 0.9rem;
+    }
+}
+
+/* Media Queries para tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .header-image {
+        min-height: 250px;
+    }
+    
+    .welcome-title {
+        font-size: 2.2rem;
+    }
+    
+    .welcome-text {
+        font-size: 1.3rem;
+    }
+    
+    .welcome-image {
+        max-height: 220px;
+    }
+    
+    .col-lg-6 {
+        width: 50%;
+    }
+}
+
+/* Media Queries para escritorio */
+@media (min-width: 1025px) {
+    .main-content-container {
+        padding: 0 2rem;
+    }
+    
+    .header-image {
+        min-height: 300px;
+    }
+    
+    .welcome-section {
+        padding: 2rem !important;
+    }
+    
+    .welcome-title {
+        font-size: 2.5rem;
+    }
+    
+    .welcome-text {
+        font-size: 1.5rem;
+    }
+    
+    .welcome-image {
+        max-height: 300px;
+    }
+    
+    .col-lg-6 {
+        width: 50%;
+    }
+}
+
+/* Media Queries para pantallas grandes */
 @media (min-width: 1600px) {
     .header-image {
         min-height: 400px;
     }
     
     .welcome-image {
-        max-height: 400px;
+        max-height: 350px;
     }
 }
 
-.p-4 {
-    padding: 0rem !important;
+/* Utilidades */
+.text-center {
+    text-align: center;
 }
+
+.mb-3 {
+    margin-bottom: 1rem !important;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem !important;
+}
+
 .mb-5 {
-    margin-bottom: 0rem !important;
+    margin-bottom: 2rem !important;
+}
+
+.p-4 {
+    padding: 1.5rem !important;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.w-100 {
+    width: 100% !important;
 }
