@@ -87,9 +87,11 @@ passport.use(
             passReqToCallback: true,
         },
         async (req, username, password, done) => {
-            const users = await orm.teacher.findOne({ where: { usernameTeahcer: username } });
-            if (username == users.dataValues.usernameTeahcer) {
-                if (password == users.passwordTeacher) {
+            console.log('username', username)
+            const [users] = await sql.promise().query('SELECT * FROM teachers WHERE usernameTeahcer = ?', [username]);
+            const usuario = users[0]
+            if (usuario.usernameTeahcer == username) {
+                if (password == usuario.passwordTeacher) {
                     return done(null, users, req.flash("success", "Bienvenido" + " " + users.username));
                 } else {
                     return done(null, false, req.flash("message", "Datos incorrecta"));
@@ -162,8 +164,8 @@ passport.use(
                         celularEstudent: cifrarDatos(celularEstudent),
                         emailEstudent: cifrarDatos(emailEstudent),
                         completeNameEstudent: cifrarDatos(completeNameEstudent),
-                        usernameEstudent: cifrarDatos(username),
-                        passwordEstudent: hashedPassword,
+                        usernameEstudent: username,
+                        passwordEstudent: password,
                         rolStudent: 'student',
                         stateEstudent: 'Activar',
                         createStudent: new Date().toLocaleString()
@@ -227,7 +229,7 @@ passport.use(
                         rolTeacher: 'teacher',
                         createTeahcer: new Date().toLocaleString()
                     };
-
+                    console.log('cas',newClient)
                     const guardar = await orm.teacher.create(newClient);
                     newClient.id = guardar.insertId
                     return done(null, newClient);
