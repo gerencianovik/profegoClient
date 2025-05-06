@@ -156,8 +156,7 @@ indexCtl.login = (req, res, next) => {
                 console.error('Error en login profesor:', err);
                 return res.status(500).json({ error: 'Error al iniciar sesión' });
             }
-            
-            return res.redirect("/teacher/update/" + user.idTeacher);
+            return res.redirect("/teacher/update/" + user[0].idTeacher);
         });
     })(req, res, next);
 };

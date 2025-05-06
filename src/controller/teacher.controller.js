@@ -108,17 +108,17 @@ function safeDecrypt(data) {
 
 teacher.update = async (req, res) => {
     const id = req.params.id;
-
     try {
+        // 1. Obtener datos del formulario
         const {
             completeNmeTeacher,
             ubicacion,
             eleccion,
             ageTeacher,
-            tituloEscogidas = [],
-            especialidadesEscogidas = [],
-            materiasEscogidas = [],
-            edadesEscogidas = [],
+            tituloEscogidas,
+            especialidadesEscogidas,
+            materiasEscogidas,
+            edadesEscogidas,
             descriptionTeacher,
             identificationCardTeacher,
             phoneTeacher,
@@ -126,7 +126,30 @@ teacher.update = async (req, res) => {
             idPagina,
         } = req.body;
 
-        console.log(id)
+        // 2. Procesamiento de datos recibidos (manteniendo el orden exacto)
+        const titulosArray = tituloEscogidas
+            ? (Array.isArray(tituloEscogidas) ? tituloEscogidas : [tituloEscogidas]).filter(t => t !== '')
+            : [];
+
+        const materiasArray = materiasEscogidas
+            ? (Array.isArray(materiasEscogidas)
+                ? materiasEscogidas.map(m => m.trim()).filter(m => m !== '')
+                : [materiasEscogidas.trim()].filter(m => m !== ''))
+            : [];
+
+        const edadesArray = edadesEscogidas
+            ? (Array.isArray(edadesEscogidas)
+                ? edadesEscogidas.filter(e => e !== '')
+                : [edadesEscogidas].filter(e => e !== ''))
+            : [];
+
+        console.log('Datos recibidos en orden:', {
+            titulos: titulosArray,
+            materias: materiasArray,
+            edades: edadesArray
+        });
+
+        // 3. Actualización de información básica del profesor
         const updateTeacher = {
             completeNmeTeacher: cifrarDatos(completeNmeTeacher),
             addressTeacher: cifrarDatos(ubicacion),
@@ -139,111 +162,94 @@ teacher.update = async (req, res) => {
             updateTeacher: new Date().toLocaleString()
         };
 
-        const newchouTeacher = {
-            stateTeachCouch: cifrarDatos(eleccion),
-            createTeachCouch: new Date().toLocaleString(),
-            teacherIdTeacher: id
-        };
-
-        const newUnion = {
-            crearDetailTeacherPage: Date().toLocaleString(),
-            pageIdPage: idPagina,
-            teacherIdTeacher: id
-        }
-
-        // Actualizar profesor
-        const teacherDetails = await orm.detailTeachPage.findOne({ where: { teacherIdTeacher: id } });
-        if (teacherDetails !== null) {
-            console.log('Ya existe el detalle del profesor');
-            await teacherDetails.update(newUnion);
-        } else {
-            console.log('No existe el detalle del profesor, creando uno nuevo');
-            await orm.detailTeachPage.create(newUnion);
-        }
-
         const teacherResult = await orm.teacher.findOne({ where: { idTeacher: id } });
         await teacherResult.update(updateTeacher);
 
+        // 4. Actualización de tipo (docente/coach)
         const existingTeachCouch = await orm.teachCouch.findOne({ where: { teacherIdTeacher: id } });
-
         if (existingTeachCouch) {
             await existingTeachCouch.update({
                 stateTeachCouch: cifrarDatos(eleccion),
                 updateTeachCouch: new Date().toLocaleString()
             });
         } else {
-            await orm.teachCouch.create(newchouTeacher);
-        }
-
-        const tituloPromises = tituloEscogidas.map(async (titulo, i) => {
-            const [results] = await sql.promise().query(
-                'SELECT * FROM teacherDetails WHERE rangeAgeTeacher = ? AND subjetTeacher = ? AND teacherIdTeacher = ? AND specialtyTypeIdSpecialType = ?',
-                [edadesEscogidas[i], materiasEscogidas[i], id, titulo]
-            );
-            if (results.length > 0) {
-                console.log('Título ya existe');
-                return Promise.reject('Título ya existe');
-            } else {
-                return sql.promise().query(
-                    'INSERT INTO teacherDetails(rangeAgeTeacher, subjetTeacher, teacherIdTeacher, specialtyTypeIdSpecialType) VALUES (?,?,?,?)',
-                    [edadesEscogidas[i], materiasEscogidas[i], id, titulo]
-                );
-            }
-        });
-        await Promise.all(tituloPromises);
-
-        // Insertar especialidades escogidas si existen en el cuerpo de la solicitud
-        if (especialidadesEscogidas.length > 0) {
-            const especialidadPromises = especialidadesEscogidas.map(async (especialidad, i) => {
-                const [results] = await sql.promise().query(
-                    'SELECT * FROM teacherDetails WHERE rangeAgeTeacher = ? AND subjetTeacher = ? AND teacherIdTeacher = ? AND specialtyTypeIdSpecialType = ?',
-                    [edadesEscogidas[i], materiasEscogidas[i], id, especialidad]
-                );
-                if (results.length > 0) {
-                    console.log('Especialidad ya existe');
-                } else {
-                    return sql.promise().query(
-                        'INSERT INTO teacherDetails(rangeAgeTeacher, subjetTeacher, teacherIdTeacher, specialtyTypeIdSpecialType) VALUES (?,?,?,?)',
-                        [edadesEscogidas[i], materiasEscogidas[i], id, especialidad]
-                    );
-                }
+            await orm.teachCouch.create({
+                stateTeachCouch: cifrarDatos(eleccion),
+                createTeachCouch: new Date().toLocaleString(),
+                teacherIdTeacher: id
             });
-            await Promise.all(especialidadPromises);
         }
 
-        // Manejo de archivos
+        // 5. Actualización de relación con la página
+        const teacherDetails = await orm.detailTeachPage.findOne({ where: { teacherIdTeacher: id } });
+        if (teacherDetails) {
+            await teacherDetails.update({
+                pageIdPage: idPagina,
+                updateDetailTeacherPage: new Date().toLocaleString()
+            });
+        } else {
+            await orm.detailTeachPage.create({
+                crearDetailTeacherPage: new Date().toLocaleString(),
+                pageIdPage: idPagina,
+                teacherIdTeacher: id
+            });
+        }
+
+        // 6. Procesamiento de teacherDetails (manteniendo orden exacto)
+        await sql.promise().query('DELETE FROM teacherDetails WHERE teacherIdTeacher = ?', [id]);
+
+        // Determinar la longitud máxima de los arrays
+        const maxLength = Math.max(
+            titulosArray.length,
+            materiasArray.length,
+            edadesArray.length
+        );
+
+        // Insertar datos en el orden exacto recibido
+        for (let i = 0; i < maxLength; i++) {
+            const titulo = titulosArray[i] || null;
+            const materia = materiasArray[i] || null;
+            const edad = edadesArray[i] || null;
+
+            await sql.promise().query(
+                'INSERT INTO teacherDetails (rangeAgeTeacher, subjetTeacher, teacherIdTeacher, specialtyTypeIdSpecialType) VALUES (?, ?, ?, ?)',
+                [edad, materia, id, titulo]
+            );
+        }
+
+        // 7. Manejo de archivos (opcional)
         if (req.files) {
             const { photoTeacher, endorsementCertificateTeacher, pageVitalTeacher, criminalRecordTeacher } = req.files;
 
-            // Guardar y subir foto del profesor
-            if (photoTeacher) {
-                const photoFilePath = path.join(__dirname, '/../public/img/user/', photoTeacher.name);
-                await guardarYSubirArchivo(photoTeacher, photoFilePath, 'photoTeacher', id, 'http://localhost:9000/imagenTeacher', req);
-            }
+            const handleFile = async (file, fieldName, folder) => {
+                if (file) {
+                    const filePath = path.join(__dirname, `/../public/${folder}/`, file.name);
+                    await guardarYSubirArchivo(
+                        file,
+                        filePath,
+                        fieldName,
+                        id,
+                        `https://www.central.profego-edu.com/${folder === 'img/user' ? 'imagenTeacher' : 'archivosTeacher'}`,
+                        req
+                    );
+                    console.log(`${fieldName} guardado correctamente`);
+                }
+            };
 
-            // Guardar y subir certificado de aval de enseñanza
-            if (endorsementCertificateTeacher) {
-                const endorsementFilePath = path.join(__dirname, '/../public/archivos/teacher/', endorsementCertificateTeacher.name);
-                await guardarYSubirArchivo(endorsementCertificateTeacher, endorsementFilePath, 'endorsementCertificateTeacher', id, 'http://localhost:9000/archivosTeacher', req);
-            }
-
-            // Guardar y subir hoja de vida
-            if (pageVitalTeacher) {
-                const pageVitalFilePath = path.join(__dirname, '/../public/archivos/teacher/', pageVitalTeacher.name);
-                await guardarYSubirArchivo(pageVitalTeacher, pageVitalFilePath, 'pageVitalTeacher', id, 'http://localhost:9000/archivosTeacher', req);
-            }
-
-            // Guardar y subir certificado de antecedentes penales
+            await handleFile(photoTeacher, 'photoTeacher', 'img/user');
+            await handleFile(endorsementCertificateTeacher, 'endorsementCertificateTeacher', 'archivos/teacher');
+            await handleFile(pageVitalTeacher, 'pageVitalTeacher', 'archivos/teacher');
+            
             if (criminalRecordTeacher) {
-                const criminalRecordFilePath = path.join(__dirname, '/../public/archivos/teacher/', criminalRecordTeacher.name);
-                await guardarYSubirArchivo(criminalRecordTeacher, criminalRecordFilePath, 'criminalRecordTeacher', id, 'http://localhost:9000/archivosTeacher', req);
+                await handleFile(criminalRecordTeacher, 'criminalRecordTeacher', 'archivos/teacher');
             }
         }
 
         res.redirect('/teacher/lista/' + id);
     } catch (error) {
-        console.error('Error en la consulta SQL:', error.message);
-        res.status(500).send('Error al realizar la consulta');
+        console.error('Error en la actualización:', error);
+        req.flash('error', 'Error al actualizar: ' + error.message);
+        res.redirect(`/teacher/update/${id}`);
     }
 };
 

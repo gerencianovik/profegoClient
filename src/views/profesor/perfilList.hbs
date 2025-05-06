@@ -84,11 +84,13 @@
                                 <div class="tab-pane fade" id="subjects" role="tabpanel">
                                     <div class="subjects-container">
                                         {{#each ../listaDetalle}}
+                                        {{#if subjetTeacher}}
                                         <div class="subject-card">
                                             <div class="subject-info">
                                                 <h4>{{subjetTeacher}}</h4>
                                             </div>
                                         </div>
+                                        {{/if}}
                                         {{/each}}
                                     </div>
                                 </div>
@@ -97,11 +99,13 @@
                                 <div class="tab-pane fade" id="ages" role="tabpanel">
                                     <div class="subjects-container">
                                         {{#each ../listaDetalle}}
+                                        {{#if rangeAgeTeacher}}
                                         <div class="subject-card">
                                             <div class="subject-info">
                                                 <h4>Edad: {{rangeAgeTeacher}}</h4>
                                             </div>
                                         </div>
+                                        {{/if}}
                                         {{/each}}
                                     </div>
                                 </div>
@@ -208,9 +212,3 @@
         </div>
     </div>
 </div>
-
-<script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Q9PaOYlXpeqtj_0tHE19Zcoim25iSFg&callback=initAutocomplete&libraries=places&v=weekly"
-    defer>
-    </script>
-<script src="/js/mapaDetalle.js"></script>

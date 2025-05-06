@@ -203,9 +203,6 @@ passport.use(
         },
         async (req, username, password, done) => {
             try {
-                if (!validateInput(username) || !validateInput(password)) {
-                    return done(null, false, req.flash("message", "Entrada inválida."));
-                }
                 const existingUser = await orm.teacher.findOne({ where: { identificationCardTeacher: username } });
                 if (existingUser) {
                     return done(null, false, req.flash('message', 'La cedula del usuario ya existe.'));
@@ -213,7 +210,6 @@ passport.use(
                     const {
                         idTeacher,
                         completeNmeTeacher,
-                        usernameTeahcer,
                         emailTeacher,
                         phoneTeacher
                     } = req.body;
@@ -246,7 +242,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((user, done) => {
-    done(null, user);
+    done(null, user[0]);
 });
 
 module.exports = passport;
