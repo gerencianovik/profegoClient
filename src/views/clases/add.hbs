@@ -1,173 +1,331 @@
 <link rel="stylesheet" href="/css/clases/add.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 <div class="bg-curso">
-    <div class="w-100 container-fluid pt-2">
-        {{#each listaTeacher}}
-        <form action="/clases/add/{{idTeacher}}" method="post" enctype="multipart/form-data">
-            {{/each}}
-            <div class="col fs-3">
-                {{#each MaximoCurso}}
-                <p class="ms-3 fw-bold text-white">Agregar Clase<input type="text" name="idClases" id="numero"
-                        value="{{Maximo}}"></p>
+    <div class="floating-shapes">
+        <div style="width: 100px; height: 100px; top: 20%; left: 10%; animation-delay: 0s;"></div>
+        <div style="width: 80px; height: 80px; top: 60%; left: 80%; animation-delay: 2s;"></div>
+        <div style="width: 120px; height: 120px; top: 40%; left: 70%; animation-delay: 4s;"></div>
+    </div>
+
+    <div class="container-fluid">
+        <!-- Encabezado -->
+        <div class="header-section" data-aos="fade-down">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h1 class="page-title animate__animated animate__fadeInDown">Crear Nueva Clase</h1>
+                    </div>
+                    <div class="col-md-4 text-md-end">
+                        {{#each listaTeacher}}
+                        <a href="/clases/list/{{idTeacher}}"
+                            class="btn btn-light btn-lg pulse animate__animated animate__fadeIn ripple-effect">
+                            <i class="fas fa-arrow-left me-2"></i> Volver
+                        </a>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Formulario -->
+        <div class="container">
+            {{#each listaTeacher}}
+            <form action="/clases/add/{{idTeacher}}" method="post" enctype="multipart/form-data" class="animate-fade-in">
                 {{/each}}
                 <input type="hidden" name="_csrf" value="{{ csrfToken }}">
-            </div>
-            <div class="row mb-3" style="background-color: #147582;">
-                <div class="col-12">
+
+                {{#each MaximoCurso}}
+                <input type="hidden" name="idClases" id="numero" value="{{Maximo}}">
+                {{/each}}
+
+                <!-- Sección 1: Información básica -->
+                <div class="form-section" data-aos="fade-right">
+                    <h3 class="section-title"><i class="fas fa-info-circle me-2"></i>Información básica</h3>
+
                     <div class="row">
-                        <div class="col-12 col-md-3 d-flex flex-column justify-content-center align-items-center my-auto"
-                            style="height: 300px; overflow: hidden;">
-                            <button class="btn btn-light fs-4 p-0" type="button" id="botonImagen"
-                                style="width: 90%; height: 90%; max-width: 100%; max-height: 100%;">
-                                <img class="img-fluid bg-white w-100 h-100" style="object-fit: contain; display: block;" src="/img/icons/noImagen.png" id="imagenPrevisualizacion" />
-                            </button>
-                            <input type="file" name="photoClases" id="seleccionArchivos" accept="image/*" hidden />
-                        </div>
-
-                        <div class="col-12 col-md-5 py-3">
-                            <label class="form-label text-white fs-4">Nombre de la Clase</label>
-                            <input class="form-control mb-3 w-100" type="text" name="nameClases" id="nameClases"
-                                required>
-
-                            <div style="width: 100%; height: 220px;" id="map"></div>
-                            <input id="pac-input" class="controls" type="text" placeholder="Buscar" />
-                            <input class="mb-3" type="text" name="ubicacion" id="ubicacion"><br>
-
-                            <p id="check" class="form-label text-white fs-4"><input type="checkbox" name="neeClass"
-                                    id="check"> Adaptado para NEE</p>
-                        </div>
-
-                        <div class="col-12 col-md-4 my-4">
-                            <div id="cambioVideo" class="position-relative" style="max-width: 100%; max-height: auto;">
-                                <video id="videoPreview" class="w-100" style="height: 320px; object-fit: contain;"
-                                    src="/video/clase/noVideo.mp4" controls></video>
+                        <div class="col-md-4 mb-4">
+                            <label class="form-label-custom"><i class="fas fa-image me-2"></i>Imagen de la clase</label>
+                            <div class="image-upload-container" id="imageUploadContainer">
+                                <button class="btn btn-light fs-4 p-0" type="button" id="botonImagen">
+                                    <img src="/img/icons/noImagen.png" id="imagenPrevisualizacion" class="image-preview">
+                                </button>
+                                <input type="file" name="photoClases" id="seleccionArchivos" accept="image/*" hidden>
                             </div>
-                            <div class="px-3">
-                                <input type="file" name="videoClases" id="seleccionvideo" class="form-control"
-                                    accept="video/*" />
-                            </div>
+                            <small class="text-muted d-block mt-2">Formatos: JPG, PNG (Máx. 5MB)</small>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container-fluid mb-5">
-                <div class="col-12 col-md-7">
-                    <div class="card">
-                        <div class="card-body p-4">
+
+                        <div class="col-md-8">
                             <div class="row">
-                                <div class="col-12 col-md-6 mb-5">
-                                    <label class="form-label m-0 w-100">
-                                        <h5 class="text-center mb-0" style="color: #23615b;">Descripción de la Clase
-                                        </h5>
+                                <div class="col-md-12 mb-4" data-aos="fade-up">
+                                    <label for="nameClases" class="form-label-custom"><i
+                                            class="fas fa-book me-2"></i>Nombre de la clase</label>
+                                    <input type="text" class="form-control-custom" name="nameClases" id="nameClases"
+                                        required placeholder="Ej: Introducción al Álgebra">
+                                </div>
+
+                                <div class="col-md-12 mb-4" data-aos="fade-up">
+                                    <label class="form-label-custom"><i
+                                            class="fas fa-map-marker-alt me-2"></i>Ubicación de la clase</label>
+                                    <div class="map-container" id="map"></div>
+                                    <input id="pac-input" class="form-control-custom mb-2" type="text"
+                                        placeholder="Buscar ubicación">
+                                    <input type="text" class="form-control-custom" name="ubicacion" id="ubicacion"
+                                        placeholder="Dirección exacta de la clase">
+                                </div>
+
+                                <div class="col-md-12" data-aos="fade-up">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="neeClass" class="checkbox-custom">
+                                        <span><i class="fas fa-universal-access me-2"></i>Adaptado para necesidades
+                                            educativas especiales (NEE)</span>
                                     </label>
-                                    <textarea class="form-control border-1 shadow" rows="4" name="descriptionClases"
-                                        id="descriptionClases" required></textarea>
                                 </div>
-
-                                <div class="col-12 col-md-6 mb-5">
-                                    <label class="form-label m-0 w-100">
-                                        <h5 class="text-center mb-0" style="color: #23615b;">Clase para</h5>
-                                    </label>
-
-                                    <div class="col-12 ">
-                                        <select required name="tipoClases" id="tipoClases"
-                                            class="form-select form-select-lg border-1 shadow">
-                                            <option value="Individual">Individual</option>
-                                            <option value="Grupal">Grupal</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="col-12 col-md-6 mb-5">
-                                    <label class="form-label m-0 w-100">
-                                        <h5 class="text-center mb-0" style="color: #23615b;">Edad dirigida de la Clase
-                                        </h5>
-                                    </label>
-                                    <div id="Edad" class="col-12">
-                                        <select required name="rangeAgeTeacher" id="edadRango"
-                                            class="form-select form-select-lg border-1 shadow">
-                                            <option value="3-5 años">3-5 años</option>
-                                            <option value="5-7 años">5-7 años</option>
-                                            <option value="7-9 años">7-9 años</option>
-                                            <option value="9-12 años">9-12 años</option>
-                                            <option value="12-16 años">12-16 años</option>
-                                            <option value="16-18 años">16-18 años</option>
-                                            <option value="Universitarios">Universitarios</option>
-                                            <option value="Docentes">Docentes</option>
-                                        </select>
-                                        <div id="rangeAgeTeacher"></div>
-                                    </div>
-                                </div>
-
-                                <div class="col-12 col-md-6 mb-5">
-                                    <label class="form-label m-0 w-100">
-                                        <h5 class="text-center mb-0" style="color: #23615b;">Fecha inicio</h5>
-                                    </label>
-                                    <div class="input-group input-group-lg m-0">
-                                        <input type="date" class="form-control border-1 shadow"
-                                            aria-describedby="inputGroup-sizing-lg" name="dateClasesInit" id="dateCours"
-                                            required>
-                                    </div>
-                                </div>
-
-                                <div class="col-12 col-md-6 mb-5">
-                                    <label class="form-label m-0 w-100">
-                                        <h5 class="text-center mb-0" style="color: #23615b;">Fecha fin</h5>
-                                    </label>
-                                    <div class="input-group input-group-lg m-0">
-                                        <input type="date" class="form-control border-1 shadow"
-                                            aria-describedby="inputGroup-sizing-lg" name="dateClasesFin" id="dateCours"
-                                            required>
-                                    </div>
-                                </div>
-
-                                <div class="col-12 col-md-6 mb-5">
-                                    <label class="form-label m-0 w-100">
-                                        <h5 class="text-center mb-0" style="color: #23615b;">Costo</h5>
-                                    </label>
-                                    <div class="input-group input-group-lg m-0">
-                                        <input type="number" class="form-control border-1 shadow"
-                                            aria-describedby="inputGroup-sizing-lg" name="costClases" id="costClases"
-                                            required>
-                                    </div>
-                                </div>
-
-                                <div class="col-12 col-md-6 mb-5">
-                                    <label class="form-label m-0 w-100">
-                                        <h5 class="text-center mb-0" style="color: #23615b;">Cupos</h5>
-                                    </label>
-                                    <div class="input-group input-group-lg m-0">
-                                        <input type="number" class="form-control border-1 shadow"
-                                            aria-describedby="inputGroup-sizing-lg" name="shareClases" id="shareClases"
-                                            required>
-                                    </div>
-                                </div>
-
-                                <div class="col-12 col-md-6 mb-5">
-                                    <label class="form-label m-0 w-100">
-                                        <h5 class="text-center mb-0" style="color: #23615b;">Tiempo de la Clase</h5>
-                                    </label>
-                                    <div class="input-group input-group-lg m-0">
-                                        <input type="time" class="form-control border-1 shadow"
-                                            aria-describedby="inputGroup-sizing-lg" name="hourClases" id="hourClases"
-                                            required>
-                                    </div>
-                                </div>
-
-                                <div class="text-end">
-                                    <button style="background-color: #0b4e71;" class="btn btn-lg text-white"
-                                        type="submit">Guardar</button>
-                                </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </form>
+
+                <!-- Sección 2: Video y descripción -->
+                <div class="form-section" data-aos="fade-left">
+                    <h3 class="section-title"><i class="fas fa-video me-2"></i>Video promocional y descripción</h3>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-4" data-aos="zoom-in">
+                            <label class="form-label-custom"><i class="fas fa-film me-2"></i>Video
+                                promocional</label>
+                            <div class="video-upload-container">
+                                <video id="videoPreview" class="video-preview" src="/video/clase/noVideo.mp4"
+                                    controls></video>
+                                <div class="video-overlay d-flex justify-content-center align-items-center">
+                                    <i class="fas fa-play-circle fa-3x text-white opacity-75"></i>
+                                </div>
+                            </div>
+                            <input type="file" name="videoClases" id="seleccionvideo"
+                                class="form-control-custom mt-2" accept="video/*">
+                            <small class="text-muted d-block mt-1">Formatos: MP4, MOV (Máx. 50MB)</small>
+                        </div>
+
+                        <div class="col-md-6 mb-4" data-aos="zoom-in">
+                            <label for="descriptionClases" class="form-label-custom"><i
+                                    class="fas fa-align-left me-2"></i>Descripción de la clase</label>
+                            <textarea class="form-control-custom" rows="6" name="descriptionClases"
+                                id="descriptionClases" required
+                                placeholder="Describe detalladamente el contenido, objetivos y metodología de la clase"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección 3: Detalles de la clase -->
+                <div class="form-section" data-aos="fade-up">
+                    <h3 class="section-title"><i class="fas fa-cogs me-2"></i>Detalles de la clase</h3>
+
+                    <div class="row">
+                        <div class="col-md-4 mb-4" data-aos="flip-left">
+                            <label for="tipoClases" class="form-label-custom"><i
+                                    class="fas fa-graduation-cap me-2"></i>Tipo de clase</label>
+                            <select name="tipoClases" id="tipoClases" class="form-control-custom" required>
+                                <option value="" disabled selected>Seleccione un tipo</option>
+                                <option value="Individual">Individual</option>
+                                <option value="Grupal">Grupal</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-8 mb-4" data-aos="flip-right">
+                            <label class="form-label-custom"><i class="fas fa-users me-2"></i>Edad dirigida</label>
+                            <select name="rangeAgeTeacher" id="edadRango" class="form-control-custom" required>
+                                <option value="3-5 años">3-5 años</option>
+                                <option value="5-7 años">5-7 años</option>
+                                <option value="7-9 años">7-9 años</option>
+                                <option value="9-12 años">9-12 años</option>
+                                <option value="12-16 años">12-16 años</option>
+                                <option value="16-18 años">16-18 años</option>
+                                <option value="Universitarios">Universitarios</option>
+                                <option value="Docentes">Docentes</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4 mb-4" data-aos="fade-up">
+                            <label for="dateClasesInit" class="form-label-custom"><i
+                                    class="fas fa-calendar-alt me-2"></i>Fecha de inicio</label>
+                            <input type="date" class="form-control-custom" name="dateClasesInit" id="dateClasesInit"
+                                required>
+                        </div>
+
+                        <div class="col-md-4 mb-4" data-aos="fade-up">
+                            <label for="dateClasesFin" class="form-label-custom"><i
+                                    class="fas fa-calendar-alt me-2"></i>Fecha de finalización</label>
+                            <input type="date" class="form-control-custom" name="dateClasesFin" id="dateClasesFin"
+                                required>
+                        </div>
+
+                        <div class="col-md-4 mb-4" data-aos="fade-up">
+                            <label for="hourClases" class="form-label-custom"><i
+                                    class="fas fa-clock me-2"></i>Horario de la clase</label>
+                            <input type="time" class="form-control-custom" name="hourClases" id="hourClases" required>
+                        </div>
+
+                        <div class="col-md-4 mb-4" data-aos="fade-up">
+                            <label for="shareClases" class="form-label-custom"><i class="fas fa-users me-2"></i>Cupos
+                                disponibles</label>
+                            <input type="number" class="form-control-custom" name="shareClases" id="shareClases"
+                                required min="1" placeholder="Ej: 15">
+                        </div>
+
+                        <div class="col-md-4 mb-4" data-aos="fade-up">
+                            <label for="costClases" class="form-label-custom"><i
+                                    class="fas fa-dollar-sign me-2"></i>Tarifa por clase</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="number" class="form-control-custom" name="costClases" id="costClases"
+                                    required min="0" step="0.01" placeholder="Ej: 25.00">
+                                <span class="input-group-text">/h</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botón de envío -->
+                <div class="text-center mt-4" data-aos="zoom-in">
+                    <button type="submit" class="btn-submit ripple-effect">
+                        <i class="fas fa-paper-plane me-2"></i> Publicar Clase
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    // Inicializar animaciones
+    AOS.init({
+        duration: 800,
+        once: false,
+        easing: 'ease-in-out-quad'
+    });
+
+    // Mostrar contenido con fade-in
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelector('.bg-curso').style.opacity = '1';
+
+        // Crear más formas flotantes dinámicamente
+        const floatingContainer = document.querySelector('.floating-shapes');
+        for (let i = 0; i < 3; i++) {
+            const shape = document.createElement('div');
+            const size = Math.random() * 80 + 40;
+            const top = Math.random() * 100;
+            const left = Math.random() * 100;
+            const delay = Math.random() * 5;
+            const duration = Math.random() * 10 + 10;
+
+            shape.style.width = `${size}px`;
+            shape.style.height = `${size}px`;
+            shape.style.top = `${top}%`;
+            shape.style.left = `${left}%`;
+            shape.style.animationDelay = `${delay}s`;
+            shape.style.animationDuration = `${duration}s`;
+
+            floatingContainer.appendChild(shape);
+        }
+    });
+
+    // Previsualización de imagen
+    document.getElementById('imageUploadContainer').addEventListener('click', function () {
+        document.getElementById('seleccionArchivos').click();
+    });
+
+    document.getElementById('seleccionArchivos').addEventListener('change', function (e) {
+        const file = e.target.files[0];
+        if (file) {
+            if (file.size > 5 * 1024 * 1024) {
+                alert('El archivo es demasiado grande. El tamaño máximo permitido es 5MB.');
+                this.value = '';
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                const preview = document.getElementById('imagenPrevisualizacion');
+                preview.src = event.target.result;
+                preview.classList.add('animate__animated', 'animate__pulse');
+                setTimeout(() => {
+                    preview.classList.remove('animate__animated', 'animate__pulse');
+                }, 1000);
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Previsualización de video
+    document.getElementById('seleccionvideo').addEventListener('change', function (e) {
+        const file = e.target.files[0];
+        if (file) {
+            if (file.size > 50 * 1024 * 1024) {
+                alert('El archivo es demasiado grande. El tamaño máximo permitido es 50MB.');
+                this.value = '';
+                return;
+            }
+
+            const videoPreview = document.getElementById('videoPreview');
+            const videoURL = URL.createObjectURL(file);
+            videoPreview.src = videoURL;
+            videoPreview.parentElement.classList.add('animate__animated', 'animate__pulse');
+            setTimeout(() => {
+                videoPreview.parentElement.classList.remove('animate__animated', 'animate__pulse');
+            }, 1000);
+        }
+    });
+
+    // Validación de fechas
+    document.getElementById('dateClasesFin').addEventListener('change', function () {
+        const startDate = new Date(document.getElementById('dateClasesInit').value);
+        const endDate = new Date(this.value);
+
+        if (startDate > endDate) {
+            alert('La fecha de finalización no puede ser anterior a la fecha de inicio');
+            this.value = '';
+        }
+    });
+
+    // Efecto parallax para formas flotantes
+    window.addEventListener('mousemove', (e) => {
+        const shapes = document.querySelectorAll('.floating-shapes div');
+        const x = e.clientX / window.innerWidth;
+        const y = e.clientY / window.innerHeight;
+
+        shapes.forEach((shape, index) => {
+            const speed = (index + 1) * 0.5;
+            const xOffset = (x - 0.5) * 15 * speed;
+            const yOffset = (y - 0.5) * 15 * speed;
+            shape.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+        });
+    });
+
+    // Efecto ripple para botones
+    document.querySelectorAll('.ripple-effect').forEach(button => {
+        button.addEventListener('click', function (e) {
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+
+            this.appendChild(ripple);
+
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+</script>
 <script src="/js/preview.js"></script>
 <script src="/js/preview-video.js"></script>
 <script src="/js/botonImagen.js"></script>

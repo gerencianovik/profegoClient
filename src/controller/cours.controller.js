@@ -98,8 +98,7 @@ cours.mandar = async (req, res) => {
             costCours,
             createCours: new Date().toLocaleString(),
             stateCours: 'Activar',
-            detailTeacherPageIdDetailTeacherPage: teacherDetail.idDetailTeacherPage,
-            coursClassTypeIdCoursClassType: ids
+            detailTeacherPageIdDetailTeacherPage: teacherDetail.idDetailTeacherPage
         };
 
         // Crear el curso
@@ -115,12 +114,12 @@ cours.mandar = async (req, res) => {
 
             if (photoCours) {
                 const photoFilePath = path.join(__dirname, '/../public/img/cours/', photoCours.name);
-                await guardarYSubirArchivo(photoCours, photoFilePath, 'photoCours', idCours, 'http://localhost:9000/imagenCours', req);
+                await guardarYSubirArchivo(photoCours, photoFilePath, 'photoCours', idCours, 'https://central.profego-edu.com/imagenCours', req);
             }
 
             if (videoCours) {
                 const endorsementFilePath = path.join(__dirname, '/../public/video/cours/', videoCours.name);
-                await guardarYSubirArchivo(videoCours, endorsementFilePath, 'videoCours', idCours, 'http://localhost:9000/videoCours', req);
+                await guardarYSubirArchivo(videoCours, endorsementFilePath, 'videoCours', idCours, 'https://central.profego-edu.com/videoCours', req);
             }
         }
 
@@ -248,7 +247,7 @@ cours.traerDatos = async (req, res) => {
         const [row] = await sql.promise().query('SELECT * FROM cours WHERE idCours = ?', [id]);
         const [detalleCurso] = await sql.promise().query('SELECT * FROM DetalleCursos WHERE courIdCours = ?', [id])
         const [tipoCurso] = await sql.promise().query('SELECT * FROM coursClassTypes');
-        res.render('cours/update', {listaTipoCurso:tipoCurso, edadesArray: detalleCurso, lista: row, listaPagina: pagina, csrfToken: req.csrfToken() })
+        res.render('cours/update', { listaTipoCurso: tipoCurso, edadesArray: detalleCurso, lista: row, listaPagina: pagina, csrfToken: req.csrfToken() })
     } catch (error) {
         console.error('Error en la consulta:', error.message);
         res.status(500).send('Error al realizar la consulta');
@@ -289,13 +288,13 @@ cours.actualizar = async (req, res) => {
             // Guardar y subir foto del profesor
             if (photoCours) {
                 const photoFilePath = path.join(__dirname, '/../public/img/cours/', photoCours.name);
-                await guardarYSubirArchivo(photoCours, photoFilePath, 'photoCours', idCours, 'http://localhost:5000/imagenCours', req);
+                await guardarYSubirArchivo(photoCours, photoFilePath, 'photoCours', idCours, 'https://central.profego-edu.com/imagenCours', req);
             }
 
             // Guardar y subir certificado de aval de enseñanza
             if (videoCours) {
                 const endorsementFilePath = path.join(__dirname, '/../public/video/cours/', videoCours.name);
-                await guardarYSubirArchivo(videoCours, endorsementFilePath, 'videoCours', idCours, 'http://localhost:5000/videoCours', req);
+                await guardarYSubirArchivo(videoCours, endorsementFilePath, 'videoCours', idCours, 'https://central.profego-edu.com/videoCours', req);
             }
         }
         req.flash('success', 'Exito al guardar');

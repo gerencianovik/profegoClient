@@ -1,169 +1,464 @@
-<link rel="stylesheet" href="/css/clases/add.css">
+<!DOCTYPE html>
+<html lang="es">
 
-<div class="bg-curso">
-    <div class="container-fluid w-100 pt-2">
-        {{#each teacherLista}}
-        <form action="/clases/list/{{idTeacher}}" method="get">
-            <div class="col mb-3 my-3">
-                <div class="text-center text-white">
-                    <p class="fw-bold fs-1 m-0">Mis Servicios</p>
-                </div>
-                <div class="col-12 col-md-2 ms-auto">
-                    <a href="/clases/add/{{idTeacher}}">
-                        <button type="button" class="rounded-4 fs-4 ms-2 btn btn-success d-flex align-items-center">
-                            Añadir
-                            <img class="img-fluid ms-2" style="width: 50px;" src="/img/icons/mas.png">
-                        </button>
-                    </a>
-                </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Clases Interactivo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #147582;
+            --secondary-color: #28a745;
+            --accent-color: #ff6b6b;
+            --light-bg: #fff9f0;
+            --dark-text: white;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--light-bg);
+            color: #215d56;
+            overflow-x: hidden;
+        }
+
+        .floating-shapes {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .floating-shapes div {
+            position: absolute;
+            background: rgba(236, 146, 47, 0.1);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+        }
+
+        .main-header {
+            background: linear-gradient(135deg, var(--primary-color), #0d5c68);
+            padding: 1rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            position: relative;
+        }
+
+        .page-title {
+            color: white;
+            font-weight: 800;
+            font-size: 2rem;
+        }
+
+        .filter-section {
+            background: white;
+            border-radius: 16px;
+            padding: 1rem;
+            margin: 1.5rem auto;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .class-card {
+            background: white;
+            border-radius: 15px;
+            margin: 1rem 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        #tarjetaCompleta {
+            background: var(--primary-color);
+            padding: 1rem;
+            position: relative;
+        }
+
+        .image-section {
+            width: 100%;
+            height: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .class-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: white;
+            border-radius: 12px;
+        }
+
+        .status-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            z-index: 2;
+        }
+
+        .active {
+            background: #28a745;
+        }
+
+        .inactive {
+            background: #dc3545;
+        }
+
+        .content-section {
+            overflow-y: auto;
+            max-height: 180px;
+            padding-right: 8px;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+        }
+
+        .content-section::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .content-section::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .content-section::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+        }
+
+        .content-section::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .class-title {
+            color: var(--dark-text);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .class-description {
+            color: var(--dark-text);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .class-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 0.8rem;
+        }
+
+        .meta-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+        }
+
+        .video-section {
+            padding: 1rem;
+            background: #f8f9fa;
+        }
+
+        .video-container {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .class-video {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+
+        #botonesTarjeta {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: white;
+            left: 0;
+            padding: 5%;
+        }
+
+        .btn-action {
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to left, #177483 10%, #004D77 100%);
+        }
+
+        .btn-danger {
+            background: linear-gradient(to left, #FD2E00 10%, #F39325 100%);
+        }
+
+        .btn-success {
+            background: #28a745;
+        }
+
+        .btn-secondary-custom {
+            background: #18574F;
+            color: white;
+        }
+
+        #descripcionCompleta {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .class-card {
+                display: flex;
+                min-height: 350px;
+            }
+
+            #tarjetaCompleta {
+                flex: 0 0 65%;
+                display: flex;
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+
+            .image-section {
+                width: 40%;
+                height: auto;
+            }
+
+            .content-section {
+                flex: 1;
+                padding: 0;
+            }
+
+            .video-section {
+                flex: 0 0 35%;
+                padding: 1.5rem;
+            }
+
+            .class-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .main-header {
+                padding: 0.5rem 0;
+            }
+
+            .page-title {
+                font-size: 1.5rem;
+            }
+
+            .filter-section .row {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                padding-bottom: 0.5rem;
+            }
+
+            .filter-section .col-md-2 {
+                min-width: 140px;
+            }
+
+            .meta-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .content-section {
+                margin-bottom: 25%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="floating-shapes">
+        <div style="width: 150px; height: 150px; top: 20%; left: 10%"></div>
+        <div style="width: 100px; height: 100px; top: 60%; right: 15%"></div>
+    </div>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center py-2">
+                <h1 class="page-title">Mis Clases</h1>
+                {{#each teacherLista}}
+                <a href="/clases/add/{{idTeacher}}" class="btn btn-sm text-white filter-btn" style="background: var(--secondary-color);">
+                    <i class="fas fa-plus me-1"></i>Nueva Clase
+                </a>
                 {{/each}}
             </div>
+        </div>
+    </header>
 
-            <div class="row">
-                <div class="col-12 mb-3">
-                    <div class="card mx-4">
-                        <div class="row p-1">
-                            <div class="dropdown col-12 col-md-2 d-flex align-items-center mb-2 mb-md-0">
-                                <div id="fil" class="d-flex align-items-center fs-5 rounded-2 border border-1 w-100"
-                                    style="font-size: 12px; padding: 5px 10px; background-color: #ffefdc; color: #2f6760;">
-                                    Filtrar por <img class="img-fluid" src="/img/icons/filtro.png" alt="Filtro"
-                                        style="margin-left: 5px; height: 16px;">
+    <main class="container py-3">
+        <section class="filter-section">
+            <div class="row g-2">
+                <div class="col-12 col-md-4">
+                    <input type="text" id="searchInput" class="form-control" placeholder="🔍 Buscar...">
+                </div>
+                <div class="col-6 col-md-2">
+                    <select class="form-select" id="typeFilter">
+                        <option value="">Tipo</option>
+                        <option value="Individual">Individual</option>
+                        <option value="Grupal">Grupal</option>
+                    </select>
+                </div>
+                <div class="col-6 col-md-2">
+                    <select class="form-select" id="statusFilter">
+                        <option value="">Estado</option>
+                        <option value="Activar">Activo</option>
+                        <option value="Desactivar">Inactivo</option>
+                    </select>
+                </div>
+                <div class="col-6 col-md-2">
+                    <button class="btn btn-secondary-custom w-100" onclick="resetFilters()">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <div class="row" id="classContainer">
+            {{#each lista}}
+            <div class="col-12 class-item" data-type="{{tipoClases}}" data-status="{{stateClases}}" data-name="{{nameClases}}">
+                <div class="class-card">
+                    <div id="tarjetaCompleta">
+                        <div class="image-section">
+                            <img src="/img/clase/{{photoClases}}" class="class-image" alt="Imagen de la clase">
+                            <span class="status-badge {{#if stateClases}}active{{else}}inactive{{/if}}">
+                                {{#if stateClases}}Activo{{else}}Inactivo{{/if}}
+                            </span>
+                        </div>
+
+                        <div class="content-section">
+                            <h3 class="class-title">{{nameClases}}</h3>
+                            <p class="class-description">{{descriptionClases}}</p>
+                            <div class="class-meta">
+                                <div class="meta-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>{{tipoClases}}</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>{{dateClasesInit}}</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>{{hourClases}}</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>{{shareClases}} cupos</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-dollar-sign"></i>
+                                    <span>${{costClases}}</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-star"></i>
+                                    <span>Calificación: {{calificationClases}}</span>
                                 </div>
                             </div>
-
-                            <div class="dropdown col-12 col-md-3 mb-2 mb-md-0">
-                                <button class="btn btn-secondary dropdown-toggle w-100 fs-5" type="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Servicios
-                                </button>
-                                <ul class="dropdown-menu w-100" style="background-color: #ffefdc;">
-                                    <li><a class="dropdown-item" href="/filtro/clases">Clases</a></li>
-                                    <li><a class="dropdown-item" href="/filtro/cursos">Cursos</a></li>
-                                    <li><a class="dropdown-item" href="/filtro/coaching">Coaching</a></li>
-                                </ul>
+                        </div>
+                        <div id="botonesTarjeta">
+                            <div class="d-flex flex-wrap gap-2">
+                                <a href="/clases/update/{{idClases}}" class="btn btn-primary btn-action">
+                                    <i class="fas fa-edit"></i> Actualizar
+                                </a>
+                                <a href="/material/clases/{{idClases}}" class="btn btn-secondary-custom btn-action">
+                                    <i class="fas fa-book"></i> Materiales
+                                </a>
+                                <a href="/recours/clases/{{idClases}}" class="btn btn-secondary-custom btn-action" style="background: #826814;">
+                                    <i class="fas fa-tools"></i> Recursos
+                                </a>
+                                {{#if stateClases}}
+                                <a href="/clases/delete/{{idClases}}" class="btn btn-danger btn-action">
+                                    <i class="fas fa-toggle-off"></i> Desactivar
+                                </a>
+                                {{else}}
+                                <a href="/clases/enable/{{idClases}}" class="btn btn-success btn-action">
+                                    <i class="fas fa-toggle-on"></i> Activar
+                                </a>
+                                {{/if}}
                             </div>
+                        </div>
+                    </div>
 
-                            <div class="dropdown col-12 col-md-3 mb-2 mb-md-0">
-                                <button class="btn btn-secondary dropdown-toggle w-100 fs-5" type="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Modalidad
+                    <div class="video-section">
+                        <div class="video-container">
+                            <video class="class-video" src="/video/clases/{{videoClases}}" controls></video>
+                        </div>
+                        <div id="descripcionCompleta">
+                            <a href="/clases/detailList/{{idClases}}" class="d-block mt-2">
+                                <button class="btn btn-secondary-custom w-100">
+                                    Ver información completa
                                 </button>
-                                <ul class="dropdown-menu w-100" style="background-color: #ffefdc;">
-                                    <li><a class="dropdown-item" href="/filtro/Online">Online</a></li>
-                                    <li><a class="dropdown-item" href="/filtro/Domicilio">Domicilio o presencial</a>
-                                    </li>
-                                </ul>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
+            {{/each}}
+        </div>
+    </main>
 
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12 col-md-2 mb-3 text-center text-white fs-3 rounded-3 p-1"
-                        style="background-color: #f29224;">
-                        <img class="img-fluid" src="/img/icons/cursTLS.png">
-                        <p>Clase</p>
-                    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function filterClasses() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const typeFilter = document.getElementById('typeFilter').value;
+            const statusFilter = document.getElementById('statusFilter').value;
 
-                    <div class="col-12 col-md-10 mb-3">
-                        <div class="row">
-                            {{#each lista}}
-                            <div class="col-12 col-md-8 mb-4">
-                                <div class="card">
-                                    <div class="card-body mb-3" style="background-color: #147582;">
-                                        <div class="row">
-                                            <div class="col-12 col-md-4 bg-white rounded-4 my-auto"
-                                            style="height: 200px; display: flex; justify-content: center; align-items: center;">
-                                                <img class="img-fluid m-2"
-                                                    style="max-width: 100%; max-height: 100%; object-fit: contain;"
-                                                    src="/img/clase/{{photoClases}}" alt="">
-                                            </div>
+            document.querySelectorAll('.class-item').forEach(card => {
+                const name = card.dataset.name.toLowerCase();
+                const type = card.dataset.type;
+                const status = card.dataset.status;
 
-                                            <div class="col-12 col-md-8 p-2 fs-6">
-                                                <div class="row p-2 text-white">
-                                                    <div class="col-12 col-md-6">
-                                                        <p>Nombre: {{nameClases}}</p>
-                                                    </div>
-                                                    <div class="col-12 col-md-6">
-                                                        <p>Descripción: {{descriptionClases}}</p>
-                                                    </div>
-                                                    <div class="col-12 col-md-6">
-                                                        <p>Cupo de la Clase: {{shareClases}}</p>
-                                                    </div>
-                                                    <div class="col-12 col-md-6">
-                                                        <p>Estado de la Clase:
-                                                            <input id="estado" type="text" value="{{stateClases}}"
-                                                                hidden>
-                                                            <span id="estadoActivo" class="fw-bold"
-                                                                style="display: none;">Activo</span>
-                                                            <span id="estadoDesactivo" class="fw-bold"
-                                                                style="display: none;">Desactivo</span>
-                                                        </p>
-                                                    </div>
-                                                    <div class="col-12 col-md-6">
-                                                        <p>Fecha: {{dateClasesInit}}</p>
-                                                    </div>
-                                                    <div class="col-12 col-md-6">
-                                                        <p>Hora: {{hourClases}}</p>
-                                                    </div>
-                                                    <div class="col-12 col-md-6">
-                                                        <p><img class="img-fluid" src="/img/icons/tarifa.png"
-                                                                alt="Precio" style="width: 30px; height: 30px;">
-                                                            {{costClases}}
-                                                        </p>
-                                                    </div>
-                                                    <div class="col-12 col-md-6">
-                                                        <p>Calificación: {{calificationClases}}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row my-2 d-flex flex-wrap px-2 mt-3">
-                                        <div class="col-12 col-md-3 mb-2 ">
-                                            <a href="/clases/update/{{idClases}}" class="btn text-white w-100 shadow"
-                                                style="background-color: #008000;">Actualizar</a>
-                                        </div>
-                                        <div class="col-12 col-md-3 mb-2">
-                                            <a href="/material/clases/{{idClases}}" class="btn text-white w-100 shadow"
-                                                style="background-color: #147582;">Materiales</a>
-                                        </div>
-                                        <div class="col-12 col-md-3 mb-2">
-                                            <a href="/recours/clases/{{idClases}}" class="btn text-white w-100 shadow"
-                                                style="background-color: #826814;">Recursos</a>
-                                        </div>
-                                        <div class="col-12 col-md-3 mb-2 habilitarButton" style="display: none;">
-                                            <a href="/clases/enable/{{idClases}}">
-                                                <button class="btn btn-success w-100" type="button">Habilitar</button>
-                                            </a>
-                                        </div>
-                                        <div class="col-12 col-md-3 mb-2 deshabilitarButton" style="display: none;">
-                                            <a href="/clases/delete/{{idClases}}">
-                                                <button class="btn btn-danger w-100" type="button">Deshabilitar</button>
-                                            </a>
-                                        </div>
+                const matchesSearch = name.includes(searchTerm);
+                const matchesType = typeFilter ? type === typeFilter : true;
+                const matchesStatus = statusFilter === '' ? true :
+                    (statusFilter === 'Activar' && status === 'true') ||
+                    (statusFilter === 'Desactivar' && status === 'false');
 
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4 mb-5">
-                                <div class="position-relative" style="max-width: 100%; max-height: auto;">
-                                    <video id="videoPreview" class="w-100" style="height: 250px; object-fit: contain;"
-                                        src="/video/clases/{{videoClases}}" controls></video>
-                                </div>
-                                <a href="/clases/detailList/{{idClases}}"><button type="button"
-                                        class="border border-1 shadow btn w-100 p-4 fs-4"
-                                        style="background-color: #ffffff;">Ver información completa</button></a>
-                            </div>
-                            <hr style="border: 2px solid #000;">
-                            {{/each}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-<script src="/js/activo-desactivo-lista.js"></script>
+                card.style.display = (matchesSearch && matchesType && matchesStatus) ? 'block' : 'none';
+            });
+        }
+
+        function resetFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('typeFilter').value = '';
+            document.getElementById('statusFilter').value = '';
+            filterClasses();
+        }
+
+        document.getElementById('searchInput').addEventListener('input', filterClasses);
+        document.getElementById('typeFilter').addEventListener('change', filterClasses);
+        document.getElementById('statusFilter').addEventListener('change', filterClasses);
+        filterClasses();
+    </script>
+</body>
+
+</html>

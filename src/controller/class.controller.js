@@ -61,7 +61,7 @@ classes.mostrar = async (req, res) => {
         const id = req.params.id
         const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = 1');
         const [teacher] = await sql.promise().query('SELECT * FROM teachers where idTeacher = ?', [id]);
-        const [maxCours] = await sql.promise().query('SELECT MAX(idClases) AS Maximo FROM clases')
+        const [maxCours] = await sql.promise().query('SELECT MAX(idClases) AS Maximo FROM Clases')
         res.render('clases/add', { listaPagina: pagina, MaximoCurso: maxCours, listaTeacher: teacher, csrfToken: req.csrfToken() });
     } catch (error) {
         console.error('Error en la consulta:', error.message);
@@ -102,8 +102,7 @@ classes.mandar = async (req, res) => {
             createClases: new Date().toLocaleString(),
             stateClases: 'Activar',
             pageIdPage: id,
-            detailTeacherPageIdDetailTeacherPage: idTeacher,
-            coursClassTypeIdCoursClassType: ids
+            detailTeacherPageIdDetailTeacherPage: idTeacher
         };
 
         await orm.clases.create(newPage);
@@ -118,13 +117,13 @@ classes.mandar = async (req, res) => {
             // Guardar y subir foto del profesor
             if (photoClases) {
                 const photoFilePath = path.join(__dirname, '/../public/img/clase/', photoClases.name);
-                await guardarYSubirArchivo(photoClases, photoFilePath, 'photoClases', idClases, 'http://localhost:5000/imagenClase', req);
+                await guardarYSubirArchivo(photoClases, photoFilePath, 'photoClases', idClases, 'https://central.profego-edu.com/imagenClase', req);
             }
 
             // Guardar y subir certificado de aval de enseñanza
             if (videoClases) {
                 const endorsementFilePath = path.join(__dirname, '/../public/video/clases/', videoClases.name);
-                await guardarYSubirArchivo(videoClases, endorsementFilePath, 'videoClases', idClases, 'http://localhost:5000/videoClases', req);
+                await guardarYSubirArchivo(videoClases, endorsementFilePath, 'videoClases', idClases, 'https://central.profego-edu.com/videoClases', req);
             }
         }
 
@@ -209,13 +208,13 @@ classes.actualizar = async (req, res) => {
             // Guardar y subir foto del profesor
             if (photoClases) {
                 const photoFilePath = path.join(__dirname, '/../public/img/clase/', photoClases.name);
-                await guardarYSubirArchivo(photoClases, photoFilePath, 'photoClases', idClases, 'http://localhost:5000/imagenClase', req);
+                await guardarYSubirArchivo(photoClases, photoFilePath, 'photoClases', idClases, 'https://central.profego-edu.com/imagenClase', req);
             }
 
             // Guardar y subir certificado de aval de enseñanza
             if (videoClases) {
                 const endorsementFilePath = path.join(__dirname, '/../public/video/clases/', videoClases.name);
-                await guardarYSubirArchivo(videoClases, endorsementFilePath, 'videoClases', idClases, 'http://localhost:5000/videoClases', req);
+                await guardarYSubirArchivo(videoClases, endorsementFilePath, 'videoClases', idClases, 'https://central.profego-edu.com/videoClases', req);
             }
         }
 
