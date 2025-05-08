@@ -1,327 +1,668 @@
 <link rel="stylesheet" href="/css/clases/detalle.css">
+<style>
+    :root {
+        --primary-color: #147582;
+        --primary-dark: #0d5c68;
+        --secondary-color: #28a745;
+        --accent-color: #ff6b6b;
+        --accent-light: #f39325;
+        --light-bg: #fff9f0;
+        --dark-text: #215d56;
+        --white: #ffffff;
+    }
+
+    /* Estilos base mejorados */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--light-bg);
+        color: var(--dark-text);
+    }
+
+    .bg-curso-detalle {
+        padding: 2rem 0;
+    }
+
+    /* Animaciones */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .curso-animado {
+        animation: fadeInUp 0.6s ease-out forwards;
+        opacity: 0;
+    }
+
+    .delay-1 {
+        animation-delay: 0.1s;
+    }
+
+    .delay-2 {
+        animation-delay: 0.2s;
+    }
+
+    .delay-3 {
+        animation-delay: 0.3s;
+    }
+
+    /* Header del curso */
+    .curso-header {
+        background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        position: relative;
+        z-index: 1;
+    }
+
+    .curso-header::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
+        z-index: -1;
+    }
+
+    /* Contenedor de imagen y mapa - AJUSTADO */
+    .media-container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .curso-imagen-container {
+        flex: 1;
+        height: 250px;
+        /* Reducido de 400px */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5rem;
+        /* Menos padding */
+        background: var(--white);
+        border-radius: 12px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .curso-imagen {
+        max-width: 100%;
+        max-height: 90%;
+        /* Más pequeño dentro del contenedor */
+        object-fit: contain;
+        transition: transform 0.5s ease;
+    }
+
+    /* Mapa mejorado */
+    .mapa-container {
+        flex: 1;
+        min-height: 250px;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        position: relative;
+    }
+
+    #map {
+        width: 100%;
+        height: 100%;
+        min-height: 250px;
+    }
+
+    /* Video del curso - AJUSTADO */
+    .video-container {
+        width: 100%;
+        height: 250px;
+        /* Reducido de 400px */
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s ease;
+    }
+
+    .video-container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .class-video {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        /* Cambiado de cover a contain */
+    }
+
+    /* Secciones de contenido */
+    .seccion-contenido {
+        background: var(--white);
+        border-radius: 16px;
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        border-left: 5px solid var(--primary-color);
+        transition: all 0.3s ease;
+    }
+
+    /* Detalles adicionales al 100% - AJUSTADO */
+    .seccion-contenido.detalles-adicionales {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .titulo-seccion {
+        color: var(--primary-color);
+        font-weight: 700;
+        position: relative;
+        padding-bottom: 0.75rem;
+        margin-bottom: 1.75rem;
+    }
+
+    .titulo-seccion::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 80px;
+        height: 4px;
+        background: var(--accent-light);
+        border-radius: 2px;
+    }
+
+    /* Tarjetas de docentes mejoradas */
+    .docentes-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .docente-card {
+        border: none;
+        border-radius: 12px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        height: 100%;
+    }
+
+    .docente-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .docente-imagen-container {
+        height: 200px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .docente-imagen {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .docente-card:hover .docente-imagen {
+        transform: scale(1.1);
+    }
+
+    .docente-badge {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .docente-info {
+        padding: 1.5rem;
+    }
+
+    /* Botones de acción */
+    .acciones-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1.2rem;
+    }
+
+    .btn-accion-curso {
+        background: var(--white);
+        border: 2px solid var(--primary-color);
+        color: var(--primary-color);
+        font-weight: 600;
+        padding: 1.2rem 1rem;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 100%;
+    }
+
+    .btn-accion-curso:hover {
+        background: var(--primary-color);
+        color: var(--white);
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(20, 117, 130, 0.3);
+    }
+
+    .btn-accion-curso img {
+        width: 40px;
+        margin-right: 12px;
+        transition: transform 0.3s ease;
+    }
+
+    .btn-accion-curso:hover img {
+        transform: scale(1.1);
+    }
+
+    /* Calendario */
+    .calendario-container {
+        background: var(--white);
+        border-radius: 16px;
+        padding: 1.5rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .leyenda-calendario {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        margin-bottom: 1.5rem;
+    }
+
+    .leyenda-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .leyenda-color {
+        width: 20px;
+        height: 20px;
+        border-radius: 4px;
+    }
+
+    /* Botón de pánico - AJUSTADO */
+    .boton-panico {
+        background: #ff4444;
+        color: white;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        box-shadow: 0 4px 15px rgba(255, 68, 68, 0.4);
+        z-index: 1000;
+        animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.1);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    /* Estado más visible - AJUSTADO */
+    .status-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .active {
+        background: var(--secondary-color);
+        color: white;
+    }
+
+    .inactive {
+        background: var(--accent-color);
+        color: white;
+    }
+
+    /* Adaptabilidad */
+    @media (max-width: 992px) {
+        .media-container {
+            flex-direction: row;
+        }
+
+        .curso-imagen-container,
+        .mapa-container {
+            min-height: 250px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .media-container {
+            flex-direction: column;
+        }
+
+        .docentes-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .acciones-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 576px) {
+        .acciones-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .video-container {
+            min-height: 250px;
+        }
+    }
+</style>
 
 <div class="bg-curso-detalle">
     {{#each lista}}
-    <div class="w-100 container-fluid pt-2">
+    <div class="container">
         <form action="/cursos/detailList/{{idCours}}" method="get"></form>
-        <div class="row mt-3 px-4">
-            <div class="col-12 col-md-8 mb-3">
-                <div class="row p-2 m-1" style="background-color: #147582;">
-                    <div class="col-12 col-md-4" style="height: 400px; display: flex; justify-content: center; align-items: center;">
-                        <img class="img-fluid bg-white rounded-4 my-auto" style="max-width: 100%; max-height: 100%; object-fit: contain;" {{#if photoCours}} src="/img/cours/{{photoCours}}" {{else}}
-                            src="/img/icons/noImagen.png" {{/if}} alt="Imagen del Curso">
-                    </div>
-                    <div class="col-12 col-md-8 mb-2">
-                        <div class="col-12 col-md-6 my-2 text-white">
-                            <p class="fs-2 m-0 fw-bold">{{nameCours}}</p>
-                            <p class="fs-5 m-0">{{nameCoursClassType}}</p>
+
+        <!-- Encabezado con mapa -->
+        <div class="row mb-4 curso-animado">
+            <div class="col-12">
+                <div class="curso-header p-4">
+                    <div class="row align-items-center">
+                        <!-- Mapa en la parte superior -->
+                        <div class="col-12 col-md-6 mb-4 mb-md-0">
+                            <div class="mapa-container">
+                                <div id="map"></div>
+                                <input type="text" name="ubicacion" id="ubicacion" value="{{ubicacionCurso}}" hidden>
+                            </div>
                         </div>
 
-                        <div id="direccion" class="mb-2">
-                            <div style="width: 100%; height: 220px;" id="map"></div>
-                            <input type="text" name="ubicacion" id="ubicacion" value="{{ubicacionCurso}}">
-                        </div>
-                        <p class="text-white fs-5 m-0"><input disabled type="checkbox" name="adactacion" id="adactacion"
-                                value="on" {{#if neeCours}}checked{{/if}}> Adaptado para NEE</p>
-                    </div>
-                </div>
-            </div>
+                        <!-- Información del curso -->
+                        <div class="col-12 col-md-6 text-white">
+                            <h1 class="display-5 fw-bold mb-3">{{nameCours}}</h1>
+                            <p class="fs-4 mb-4">{{nameCoursClassType}}</p>
 
-            <div class="col-12 col-md-4 mb-3 mt-1">
-                <div class="position-relative" style="max-width: 100%; max-height: auto;">
-                    <video id="videoPreview" class="w-100" style="height: 300px; object-fit: contain;"
-                        src="/video/cours/{{videoCours}}" controls></video>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 mb-3">
-                <div class="card p-4">
-                    <div class="mb-3">
-                        <h1 style="color: #145354;">Descripción</h1>
-                        <p>{{descriptionCours}}</p>
-                    </div>
-                    <div class="row mb-3">
-                        <h3 style="color: #145354;">Docentes</h3>
-                        {{#each ../docenteLista}}
-                        <div class="card col-12 col-md-5 mb-2" style="overflow: hidden; margin-right: 10px;">
-                            <div class="row">
-                                <div class="col-12 col-md-6" style="position: relative;">
-                                    <img src="/img/user/{{photoTeacher}}" class="img-fluid" style="width: 100%;">
-                                    <img src="/img/icons/aprobado.png" class="img-fluid"
-                                        style="position: absolute; top: 10px; left: 20px; width: 25%;">
-                                </div>
-                                <div class="col-12 col-md-6 my-auto">
-                                    <div>
-                                        <p class="fs-4">{{completeNmeTeacher}}</p>
-                                        <p class="fs-6">{{descriptionTeacher}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {{/each}}
-                    </div>
-
-                    <div class="mb-3">
-                        {{#each ../temario}}
-                        <h3 style="color: #145354;">Temario educativo</h3>
-                        <p>Objetivo: {{objetivesyllabusEducational}}</p>
-                        <div id="moduloTotal">
-                            <p>{{moduleCurrucularContentCourse}}Módulos</p>
-                            |
-                            <p>{{themesyllabusEducational}}Clases</p>
-                            |
-                            <p>{{timesyllabusEducational}}Duración total</p>
-
-                        </div>
-                        {{/each}}
-                    </div>
-
-                    {{!--
-                    <div class="mb-3">
-                        <h3 style="color: #145354;">Modalidad</h3>
-                        <div class="row">
-                            <div class="col-12 col-md-6">
-                                <div id="imagenPresencial">
-                                    <img class="img-fluid" style="width: 50%;" src="/img/icons/presencial.png">
-                                </div>
-                                <p>Domicilio <input type="checkbox" name="" id="Presencial"></p>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <div id="imagenVirtual">
-                                    <img class="img-fluid" style="width: 50%;" src="/img/icons/online.png">
-                                </div>
-                                <p>Online<input type="checkbox" name="" id="virtual"></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <h1 style="color: #145354;">Tipo</h1>
-                        <input type="text" name="curso" id="curso" value="{{tipoCurso}}">
-                        <div class="row">
-                            <div class="col-12 col-md-6">
-                                <div id="imagenCursos">
-                                    <img class="img-fluid" style="width: 50%; src=" /img/icons/Cursos.png">
-                                </div>
-                                <p>Couch <input type="checkbox" name="" id="cursos"></p>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <div id="imagenChouching">
-                                    <img class="img-fluid" style="width: 50%; src=" /img/icons/Couching.png">
-                                </div>
-                                <p>Coaching para docentes<input type="checkbox" name="" id="Chouching"></p>
-                            </div>
-                        </div>
-                    </div>--}}
-
-                    <div class="row">
-                        <div class="col-12 col-md-6 mb-3">
-                            <input type="text" id="fechaInicio" value="{{dateCoursInit}}" hidden>
-                            <h3 style="color: #145354;">Fecha inicio</h3>
-                            <p>{{dateCoursInit}}</p>
-                        </div>
-                        <div class="col-12 col-md-6 mb-3">
-                            <input type="text" id="fechaFin" value="{{dateCoursFin}}" hidden>
-                            <h3 style="color: #145354;">Fecha fin</h3>
-                            <p>{{dateCoursFin}}</p>
-                        </div>
-                        <div class="col-12 col-md-6 mb-3">
-                            <h3 style="color: #145354;">Hora</h3>
-                            <p>{{hourCours}}</p>
-                        </div>
-                        <div class="col-12 col-md-6 mb-3">
-                            <h3 style="color: #145354;">Cupos</h3>
-                            <p>{{shareCours}}</p>
-                        </div>
-                        <div class="col-12 mb-3">
-                            <h3 style="color: #145354;">Costo</h3>
-                            <p>{{costCours}}</p>
-                        </div>
-                        <div class="col-12 col-md-6 mb-3">
-                            <h3 style="color: #145354;">Edad o nivel</h3>
-                            <div class="row">
-                                <div class="col-3 col-md-4">
-                                    <img style="background-color:#f09225;" class="img-fluid mx-auto rounded-3"
-                                        src="/img/icons/edad.png">
-                                </div>
-                                <div class="col-9 col-md-8">
-                                    {{#each ../listaDetalle}}
-                                    <p>{{rangoEdadCurso}}</p>
-                                    {{/each}}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 mb-3">
-                            <h3 style="color: #145354;">Recursos del Curso</h3>
-                            <div class="row">
-                                <div class="col-3 col-md-4">
-                                    <img style="background-color:#f09225;" class="img-fluid mx-auto rounded-3"
-                                        src="/img/icons/Recursos.png">
-                                </div>
-                                <div class="col-9 col-md-8">
-                                    {{#each ../recursos}}
-                                    <p>{{nameRecours}}</p>
-                                    {{/each}}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 mb-3">
-                            <h3 style="color: #145354;">Materiales del Curso</h3>
-                            <div class="row">
-                                <div class="col-3 col-md-4">
-                                    <img style="background-color:#f09225;" class="img-fluid mx-auto rounded-3"
-                                        src="/img/icons/materiales.png">
-                                </div>
-                                <div class="col-9 col-md-8">
-                                    {{#each ../materiales}}
-                                    <p>{{nameMaterial}}</p>
-                                    {{/each}}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 mb-3">
-                            <h3 style="color: #145354;">Tareas</h3>
-                            <div class="row">
-                                <div class="col-3 col-md-4">
-                                    <img class="img-fluid mx-auto rounded-3"
-                                        src="/img/icons/Tareas.png">
-                                </div>
-                                <div class="col-9 col-md-8">
-                                    {{#each ../tareas}}
-                                    <a href="/tareas/detailCurso/{{idTask}}">
-                                        <p>{{nameTask}}</p>
-                                    </a>
-                                    {{/each}}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 mb-3">
-                            <h3 style="color: #145354;">Pruebas</h3>
-                            <div class="row">
-                                <div class="col-3 col-md-4">
-                                    <img style="background-color:#f09225;" class="img-fluid mx-auto rounded-3"
-                                        src="/img/icons/pruebas.png">
-                                </div>
-                                <div class="col-9 col-md-8">
-                                    {{#each ../Pruebas}}
-                                    <p>{{nameAssessment}}</p>
-                                    {{/each}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 mb-3">
-                <div class="row">
-                    <div class="col-12 col-md-11 ms-auto mb-3">
-                        <div class="card p-4">
-                            <div class="col-12 mb-3">
+                            <div class="d-flex flex-wrap gap-3 mb-4">
                                 <div class="d-flex align-items-center">
-                                    <img style="width: 70px;" src="/img/icons/recursosCompleto.png"
-                                        class="img-fluid imgNav me-3">
-                                    <a href="/recours/cursos/{{idCours}}" class="btn btn-lg w-100 shadow rounded-2 "
-                                        style="border: 2px solid #f09225;">
-                                        Recursos
-                                    </a>
+                                    <i class="fas fa-calendar-alt me-2 fs-5"></i>
+                                    <span>{{dateCoursInit}} - {{dateCoursFin}}</span>
+                                    <input type="hidden" id="fechaInicio" value="{{dateCoursInit}}" hidden>
+                                    <input type="hidden" id="fechaFin" value="{{dateCoursFin}}" hidden>
+                                </div>
+
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-clock me-2 fs-5"></i>
+                                    <span>{{hourCours}}</span>
+                                </div>
+
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-users me-2 fs-5"></i>
+                                    <span>{{shareCours}} cupos</span>
+                                </div>
+
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-dollar-sign me-2 fs-5"></i>
+                                    <span class="fw-bold">${{costCours}}</span>
                                 </div>
                             </div>
-                            <div class="col-12 mb-3">
-                                <div class="d-flex align-items-center">
-                                    <img style="width: 70px;" src="/img/icons/materialesCompletos.png"
-                                        class="img-fluid imgNav me-3">
-                                    <a href="/material/cursos/{{idCours}}" class="btn btn-lg w-100 shadow rounded-2 "
-                                        style="border: 2px solid #f09225;">
-                                        Materiales del
-                                        Estudiante
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-12 mb-3">
-                                <div class="d-flex align-items-center">
-                                    <img style="width: 70px;" src="/img/icons/TareasCompletas.png"
-                                        class="img-fluid imgNav me-3">
-                                    <a href="/tareas/curso/{{idCours}}" class="btn btn-lg w-100 shadow rounded-2 "
-                                        style="border: 2px solid #f09225;">
-                                        Tareas
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-12 mb-3">
-                                <div class="d-flex align-items-center">
-                                    <img style="width: 70px;" src="/img/icons/pruebas.png"
-                                        class="img-fluid imgNav me-3">
-                                    <a href="/pruebas/curso/{{idCours}}" class="btn btn-lg w-100 shadow rounded-2 "
-                                        style="border: 2px solid #f09225;">
-                                        Pruebas
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-12 mb-3">
-                                <div class="d-flex align-items-center">
-                                    <img style="width: 70px;" src="/img/icons/asistencia.png"
-                                        class="img-fluid imgNav me-3">
-                                    <a href="/asistencia/curso/{{idCours}}" class="btn btn-lg w-100 shadow rounded-2 "
-                                        style="border: 2px solid #f09225;">
-                                        Asistencia
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-12 mb-3">
-                                <div class="d-flex align-items-center">
-                                    <img style="width: 70px;" src="/img/icons/observaciones.png"
-                                        class="img-fluid imgNav me-3">
-                                    <a href="/observacionValoracion/curso/{{idCours}}"
-                                        class="btn btn-lg w-100 shadow rounded-2 " style="border: 2px solid #f09225;">
-                                        Observaciones y
-                                    valoración
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-12 mb-3">
-                                <div class="d-flex align-items-center">
-                                    <img style="width: 70px;" src="/img/icons/somos.png"
-                                        class="img-fluid imgNav me-3">
-                                    <a href="/silabus/curso/{{idCours}}"
-                                        class="btn btn-lg w-100 shadow rounded-2 " style="border: 2px solid #f09225;">
-                                        Contenido Curricular
-                                    </a>
-                                </div>
+
+                            <div class="form-check form-switch ps-0">
+                                <input class="form-check-input ms-0 me-2" type="checkbox" id="adactacion" {{#if
+                                    neeCours}}checked{{/if}} disabled>
+                                <label class="form-check-label" for="adactacion">Adaptado para NEE</label>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-12 col-md-12">
-                        <div class="row d-flex justify-content-center mb-3">
-                            <div class="col-12 col-md-3 mb-1 d-flex justify-content-center align-items-center">
-                                <span
-                                    style="background-color: #008000; width: 20px; height: 20px; margin-right: 5px;"></span>
-                                <p style="margin-bottom: 0;">Libre</p>
-                            </div>
-
-                            <div class="col-12 col-md-3 mb-1 d-flex justify-content-center align-items-center">
-                                <span
-                                    style="background-color: #f39325; width: 20px; height: 20px; margin-right: 5px;"></span>
-                                <p style="margin-bottom: 0;">Ocupado</p>
-                            </div>
-
-                            <div class="col-12 col-md-3 mb-1 d-flex justify-content-center align-items-center">
-                                <span
-                                    style="background-color: #ff0000; width: 20px; height: 20px; margin-right: 5px;"></span>
-                                <p style="margin-bottom: 0;">No disponible</p>
-                            </div>
-                        </div>
-                        <div id="calendar"></div>
-                    </div>
-
-                    <div class="col-12 mb-3 botonPanico">
-                        <button class="boton-panico" type="button"></button>
-                    </div>
-
-                    {{/each}}
                 </div>
             </div>
         </div>
+
+        <!-- Contenido principal -->
+        <div class="row g-4">
+            <!-- Sección de imagen y video -->
+            <div class="col-12 col-lg-8">
+                <div class="row g-4">
+                    <!-- Imagen del curso -->
+                    <div class="col-12 col-md-6 curso-animado delay-1">
+                        <div class="curso-imagen-container">
+                            <img class="curso-imagen" {{#if photoCours}} src="/img/cours/{{photoCours}}" {{else}}
+                                src="/img/icons/noImagen.png" {{/if}} alt="Imagen del Curso">
+                            <span class="status-badge {{#if stateCours}}active{{else}}inactive{{/if}}">
+                                {{#if stateCours}}Activo{{else}}Inactivo{{/if}}
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Video del curso -->
+                    <div class="col-12 col-md-6 curso-animado delay-2">
+                        <div class="video-container h-100">
+                            <video id="videoPreview" class="class-video" src="/video/cours/{{videoCours}}" controls
+                                poster="/img/cours/{{photoCours}}"></video>
+                        </div>
+                    </div>
+
+                    <!-- Descripción del curso -->
+                    <div class="col-12 curso-animado delay-3">
+                        <div class="seccion-contenido">
+                            <h2 class="titulo-seccion">Nuestros Docentes</h2>
+                            <div class="docentes-grid">
+                                {{#each ../docenteLista}}
+                                <div class="docente-card">
+                                    <div class="docente-imagen-container">
+                                        <img src="/img/user/{{photoTeacher}}" class="docente-imagen"
+                                            alt="{{completeNmeTeacher}}">
+                                        <img src="/img/icons/aprobado.png" class="docente-badge">
+                                    </div>
+                                    <div class="docente-info">
+                                        <h3 class="h5 mb-2">{{completeNmeTeacher}}</h3>
+                                        <p class="text-muted mb-3">{{descriptionTeacher}}</p>
+                                        <a href="#" class="btn btn-sm btn-outline-primary">Ver perfil</a>
+                                    </div>
+                                </div>
+                                {{/each}}
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección de acciones rápidas -->
+            <div class="col-12 col-lg-4 curso-animado delay-2">
+                <div class="seccion-contenido h-100">
+                    <h2 class="titulo-seccion">Acciones Rápidas</h2>
+                    <div class="acciones-grid">
+                        <a href="/recours/cursos/{{idCours}}" class="btn-accion-curso">
+                            <img src="/img/icons/recursosCompleto.png">
+                            Recursos
+                        </a>
+                        <a href="/material/cursos/{{idCours}}" class="btn-accion-curso">
+                            <img src="/img/icons/materialesCompletos.png">
+                            Materiales
+                        </a>
+                        <a href="/tareas/curso/{{idCours}}" class="btn-accion-curso">
+                            <img src="/img/icons/TareasCompletas.png">
+                            Tareas
+                        </a>
+                        <a href="/pruebas/curso/{{idCours}}" class="btn-accion-curso">
+                            <img src="/img/icons/pruebas.png">
+                            Pruebas
+                        </a>
+                        <a href="/asistencia/curso/{{idCours}}" class="btn-accion-curso">
+                            <img src="/img/icons/asistencia.png">
+                            Asistencia
+                        </a>
+                        <a href="/observacionValoracion/curso/{{idCours}}" class="btn-accion-curso">
+                            <img src="/img/icons/observaciones.png">
+                            Observaciones
+                        </a>
+                        <!-- Botón de pánico - AJUSTADO -->
+                        <button class="boton-panico">
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nuestros docentes -->
+            <div class="col-12 curso-animado delay-1">
+                <div class="seccion-contenido">
+                    <h2 class="titulo-seccion">Descripción del Curso</h2>
+                    <p class="fs-5">{{descriptionCours}}</p>
+                </div>
+            </div>
+
+            <!-- Temario educativo -->
+            {{#each ../temario}}
+            <div class="col-12 col-md-6 curso-animado delay-2">
+                <div class="seccion-contenido h-100">
+                    <h2 class="titulo-seccion">Temario Educativo</h2>
+                    <div class="alert alert-primary" role="alert">
+                        <strong>Objetivo:</strong> {{objetivesyllabusEducational}}
+                    </div>
+                    <div class="d-flex justify-content-around text-center py-3 bg-light rounded">
+                        <div>
+                            <h3 class="text-primary">{{moduleCurrucularContentCourse}}</h3>
+                            <p class="mb-0 text-muted">Módulos</p>
+                        </div>
+                        <div>
+                            <h3 class="text-primary">{{themesyllabusEducational}}</h3>
+                            <p class="mb-0 text-muted">Clases</p>
+                        </div>
+                        <div>
+                            <h3 class="text-primary">{{timesyllabusEducational}}</h3>
+                            <p class="mb-0 text-muted">Duración</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+
+            <!-- Detalles adicionales - AJUSTADO AL 100% -->
+            <div class="col-12 curso-animado delay-3 detalles-adicionales">
+                <div class="seccion-contenido" style="width: 100%;">
+                    <h2 class="titulo-seccion">Detalles Adicionales</h2>
+
+                    <div class="row g-3">
+                        <!-- Edad/Nivel -->
+                        <div class="col-12 col-md-6">
+                            <div class="d-flex align-items-start bg-light p-3 rounded h-100">
+                                <div class="me-3">
+                                    <img style="width: 50px; background-color:var(--accent-light);"
+                                        class="img-fluid rounded-3" src="/img/icons/edad.png">
+                                </div>
+                                <div>
+                                    <h5 class="mb-2">Edad o nivel</h5>
+                                    {{#each ../listaDetalle}}
+                                    <p class="mb-0">{{rangoEdadCurso}}</p>
+                                    {{/each}}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recursos -->
+                        <div class="col-12 col-md-6">
+                            <div class="d-flex align-items-start bg-light p-3 rounded h-100">
+                                <div class="me-3">
+                                    <img style="width: 50px; background-color:var(--accent-light);"
+                                        class="img-fluid rounded-3" src="/img/icons/Recursos.png">
+                                </div>
+                                <div>
+                                    <h5 class="mb-2">Recursos</h5>
+                                    {{#each ../recursos}}
+                                    <p class="mb-1">{{nameRecours}}</p>
+                                    {{/each}}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Materiales -->
+                        <div class="col-12 col-md-6">
+                            <div class="d-flex align-items-start bg-light p-3 rounded h-100">
+                                <div class="me-3">
+                                    <img style="width: 50px; background-color:var(--accent-light);"
+                                        class="img-fluid rounded-3" src="/img/icons/materiales.png">
+                                </div>
+                                <div>
+                                    <h5 class="mb-2">Materiales</h5>
+                                    {{#each ../materiales}}
+                                    <p class="mb-1">{{nameMaterial}}</p>
+                                    {{/each}}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tareas -->
+                        <div class="col-12 col-md-6">
+                            <div class="d-flex align-items-start bg-light p-3 rounded h-100">
+                                <div class="me-3">
+                                    <img style="width: 50px;" class="img-fluid rounded-3" src="/img/icons/Tareas.png">
+                                </div>
+                                <div>
+                                    <h5 class="mb-2">Tareas</h5>
+                                    {{#each ../tareas}}
+                                    <a href="/tareas/detailCurso/{{idTask}}"
+                                        class="d-block mb-1 text-decoration-none">{{nameTask}}</a>
+                                    {{/each}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calendario -->
+            <div class="col-12 curso-animado delay-3">
+                <div class="calendario-container">
+                    <h2 class="titulo-seccion">Disponibilidad</h2>
+                    <div class="leyenda-calendario">
+                        <div class="leyenda-item">
+                            <span class="leyenda-color" style="background-color: #008000;"></span>
+                            <span>Libre</span>
+                        </div>
+                        <div class="leyenda-item">
+                            <span class="leyenda-color" style="background-color: #f39325;"></span>
+                            <span>Ocupado</span>
+                        </div>
+                        <div class="leyenda-item">
+                            <span class="leyenda-color" style="background-color: #ff0000;"></span>
+                            <span>No disponible</span>
+                        </div>
+                    </div>
+                    <div id="calendar"></div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
     </div>
 </div>
 
@@ -331,3 +672,31 @@
 <script src="/js/mapaDetalle.js"></script>
 <script src="/js/detalleCurso.js"></script>
 <script src="/js/calendar.js"></script>
+
+<script>
+    // Inicialización de animaciones
+    document.addEventListener('DOMContentLoaded', function () {
+        // Activar animaciones
+        const animatedElements = document.querySelectorAll('.curso-animado');
+        animatedElements.forEach(el => {
+            el.style.opacity = '1';
+        });
+
+        // Efecto hover para el video
+        const videoContainer = document.querySelector('.video-container');
+        if (videoContainer) {
+            videoContainer.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateY(-5px)';
+            });
+            videoContainer.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateY(0)';
+            });
+        }
+
+        // Ajustar altura del mapa
+        const mapaContainer = document.querySelector('.mapa-container');
+        if (mapaContainer) {
+            mapaContainer.style.height = '300px';
+        }
+    });
+</script>

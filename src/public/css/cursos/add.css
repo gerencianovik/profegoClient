@@ -100,7 +100,7 @@ body {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
     padding: 35px;
     margin-bottom: 35px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    -o-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
     position: relative;
     overflow: hidden;
     -webkit-backdrop-filter: blur(8px);
@@ -109,7 +109,7 @@ body {
     -webkit-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
     -moz-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
     -ms-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-    -o-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
 }
 
 .form-section:hover {

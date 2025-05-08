@@ -34,7 +34,8 @@
         <!-- Formulario -->
         <div class="container">
             {{#each listaTeacher}}
-            <form action="/clases/add/{{idTeacher}}" method="post" enctype="multipart/form-data" class="animate-fade-in">
+            <form action="/clases/add/{{idTeacher}}" method="post" enctype="multipart/form-data"
+                class="animate-fade-in">
                 {{/each}}
                 <input type="hidden" name="_csrf" value="{{ csrfToken }}">
 
@@ -51,7 +52,8 @@
                             <label class="form-label-custom"><i class="fas fa-image me-2"></i>Imagen de la clase</label>
                             <div class="image-upload-container" id="imageUploadContainer">
                                 <button class="btn btn-light fs-4 p-0" type="button" id="botonImagen">
-                                    <img src="/img/icons/noImagen.png" id="imagenPrevisualizacion" class="image-preview">
+                                    <img src="/img/icons/noImagen.png" id="imagenPrevisualizacion"
+                                        class="image-preview">
                                 </button>
                                 <input type="file" name="photoClases" id="seleccionArchivos" accept="image/*" hidden>
                             </div>
@@ -68,8 +70,8 @@
                                 </div>
 
                                 <div class="col-md-12 mb-4" data-aos="fade-up">
-                                    <label class="form-label-custom"><i
-                                            class="fas fa-map-marker-alt me-2"></i>Ubicación de la clase</label>
+                                    <label class="form-label-custom"><i class="fas fa-map-marker-alt me-2"></i>Ubicación
+                                        de la clase</label>
                                     <div class="map-container" id="map"></div>
                                     <input id="pac-input" class="form-control-custom mb-2" type="text"
                                         placeholder="Buscar ubicación">
@@ -104,8 +106,8 @@
                                     <i class="fas fa-play-circle fa-3x text-white opacity-75"></i>
                                 </div>
                             </div>
-                            <input type="file" name="videoClases" id="seleccionvideo"
-                                class="form-control-custom mt-2" accept="video/*">
+                            <input type="file" name="videoClases" id="seleccionvideo" class="form-control-custom mt-2"
+                                accept="video/*">
                             <small class="text-muted d-block mt-1">Formatos: MP4, MOV (Máx. 50MB)</small>
                         </div>
 
@@ -136,16 +138,48 @@
 
                         <div class="col-md-8 mb-4" data-aos="flip-right">
                             <label class="form-label-custom"><i class="fas fa-users me-2"></i>Edad dirigida</label>
-                            <select name="rangeAgeTeacher" id="edadRango" class="form-control-custom" required>
-                                <option value="3-5 años">3-5 años</option>
-                                <option value="5-7 años">5-7 años</option>
-                                <option value="7-9 años">7-9 años</option>
-                                <option value="9-12 años">9-12 años</option>
-                                <option value="12-16 años">12-16 años</option>
-                                <option value="16-18 años">16-18 años</option>
-                                <option value="Universitarios">Universitarios</option>
-                                <option value="Docentes">Docentes</option>
-                            </select>
+                            <div id="rangeAgeTeacher" class="age-selector">
+                                <div class="age-option">
+                                    <input type="checkbox" id="age1" name="edadesEscogidas" value="3-5 años"
+                                        class="age-checkbox">
+                                    <label for="age1" class="age-label">3-5 años</label>
+                                </div>
+                                <div class="age-option">
+                                    <input type="checkbox" id="age2" name="edadesEscogidas" value="5-7 años"
+                                        class="age-checkbox">
+                                    <label for="age2" class="age-label">5-7 años</label>
+                                </div>
+                                <div class="age-option">
+                                    <input type="checkbox" id="age3" name="edadesEscogidas" value="7-9 años"
+                                        class="age-checkbox">
+                                    <label for="age3" class="age-label">7-9 años</label>
+                                </div>
+                                <div class="age-option">
+                                    <input type="checkbox" id="age4" name="edadesEscogidas" value="9-12 años"
+                                        class="age-checkbox">
+                                    <label for="age4" class="age-label">9-12 años</label>
+                                </div>
+                                <div class="age-option">
+                                    <input type="checkbox" id="age5" name="edadesEscogidas" value="12-16 años"
+                                        class="age-checkbox">
+                                    <label for="age5" class="age-label">12-16 años</label>
+                                </div>
+                                <div class="age-option">
+                                    <input type="checkbox" id="age6" name="edadesEscogidas" value="16-18 años"
+                                        class="age-checkbox">
+                                    <label for="age6" class="age-label">16-18 años</label>
+                                </div>
+                                <div class="age-option">
+                                    <input type="checkbox" id="age7" name="edadesEscogidas" value="Universitarios"
+                                        class="age-checkbox">
+                                    <label for="age7" class="age-label">Universitarios</label>
+                                </div>
+                                <div class="age-option">
+                                    <input type="checkbox" id="age8" name="edadesEscogidas" value="Docentes"
+                                        class="age-checkbox">
+                                    <label for="age8" class="age-label">Docentes</label>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="col-md-4 mb-4" data-aos="fade-up">
@@ -163,8 +197,8 @@
                         </div>
 
                         <div class="col-md-4 mb-4" data-aos="fade-up">
-                            <label for="hourClases" class="form-label-custom"><i
-                                    class="fas fa-clock me-2"></i>Horario de la clase</label>
+                            <label for="hourClases" class="form-label-custom"><i class="fas fa-clock me-2"></i>Horario
+                                de la clase</label>
                             <input type="time" class="form-control-custom" name="hourClases" id="hourClases" required>
                         </div>
 

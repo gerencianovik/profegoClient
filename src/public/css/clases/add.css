@@ -100,7 +100,7 @@ body {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
     padding: 35px;
     margin-bottom: 35px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    -o-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
     position: relative;
     overflow: hidden;
     -webkit-backdrop-filter: blur(8px);
@@ -109,7 +109,7 @@ body {
     -webkit-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
     -moz-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
     -ms-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-    -o-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
 }
 
 .form-section:hover {
@@ -472,4 +472,39 @@ select.form-control-custom {
     transform: scale(0, 0);
     opacity: .3;
     transition: 0s;
+}
+
+.age-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.age-option {
+    display: flex;
+    align-items: center;
+}
+
+.age-checkbox {
+    display: none;
+}
+
+.age-label {
+    padding: 8px 15px;
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.age-checkbox:checked + .age-label {
+    background-color: #4e73df;
+    color: white;
+}
+
+.age-label:hover {
+    background-color: #ddd;
+    transform: translateY(-2px);
 }

@@ -1,84 +1,880 @@
-<link rel="stylesheet" href="/css/cursos/lista.css">
-<form action="/general/listCurso/" method="get">
-    <div id="contenedor">
-        <div id="fondo">
-            <img src="/img/icons/fondoLista.png">
-        </div>
-        <div id="titulo">
-            <p>Mis Servicios</p>
-        </div>
-        <div id="contenedorCursoGeneral">
-            <div id="Cursos">
-                <div id="imagenesCursos">
-                    <img src="/img/icons/cursTLS.png">
-                    <p>Curso</p>
-                </div>
-                <div class="row">
-                    {{#each lista}}
-                    <div id="video">
-                        <video src="/video/cours/{{videoCours}}" controls></video>
-                        <p>Ver la información completa</p>
-                    </div>
-                    <div id="tarjeta">
-                        <div id="tarjetaInterna">
-                            <a href="/cours/detailList/{{idCours}}">
-                                <div id="foto">
-                                    <p><img src="/img/cours/{{photoCours}}" alt=""></p>
-                                </div>
-                                <div id="pasos">
-                                    <div class="espaciosTarjetaInfo">
-                                        <div id="Nombre">
-                                            <p>{{nameCours}}</p>
-                                        </div>
-                                        <div id="cupos">
-                                            <p>{{shareCours}}</p>
-                                        </div>
-                                        <div id="estado">
-                                            <p>{{stateCours}}</p>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div id="descripcion">
-                                            <p>{{descriptionCours}}</p>
-                                        </div>
-                                        <div id="fehca">
-                                            <p>{{dateCours}}</p>
-                                        </div>
-                                        <div id="hora">
-                                            <p>{{hourCours}}</p>
-                                        </div>
-                                        <div id="costo">
-                                            <p> <img src="/img/icons/tarifa.png" alt="Descripción del ícono"
-                                                    style="width: 30px; height: 30px;"> {{costCours}}</p>
-                                        </div>
-                                        <div id="calificacion">
-                                            <p>{{calificationCours}}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+<!DOCTYPE html>
+<html lang="es">
 
-                        <div id="opcionesLista">
-                            <div id="actualizar">
-                                <a href="/cours/update/{{idCours}}"><button type="button">Actualizar</button></a>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Cursos Interactivo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #147582;
+            --secondary-color: #28a745;
+            --accent-color: #ff6b6b;
+            --light-bg: #fff9f0;
+            --dark-text: white;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--light-bg);
+            color: #215d56;
+            overflow-x: hidden;
+        }
+
+        .floating-shapes {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .floating-shapes div {
+            position: absolute;
+            background: rgba(236, 146, 47, 0.1);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        .main-header {
+            background: linear-gradient(135deg, var(--primary-color), #0d5c68);
+            padding: 1rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            position: relative;
+        }
+
+        .page-title {
+            color: white;
+            font-weight: 800;
+            font-size: 2rem;
+        }
+
+        .filter-section {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 1.5rem auto;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .filter-group {
+            margin-bottom: 1rem;
+        }
+
+        .filter-group-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .filter-checkbox {
+            display: none;
+        }
+
+        .filter-label {
+            padding: 0.5rem 1rem;
+            background: #f8f9fa;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .filter-checkbox:checked + .filter-label {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .age-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .age-btn {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.8rem;
+            text-align: center;
+            flex: 1;
+            min-width: 60px;
+        }
+
+        .age-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .map-container {
+            height: 300px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        #locationMap {
+            width: 100%;
+            height: 100%;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 15px;
+            margin: 1rem 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        #tarjetaCompleta {
+            background: var(--primary-color);
+            padding: 1rem;
+            position: relative;
+        }
+
+        .image-section {
+            width: 100%;
+            height: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .course-image {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .status-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            z-index: 2;
+        }
+
+        .active {
+            background: #28a745;
+        }
+
+        .inactive {
+            background: #dc3545;
+        }
+
+        .content-section {
+            overflow-y: auto;
+            padding-right: 8px;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+        }
+
+        .content-section::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .content-section::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .content-section::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+        }
+
+        .content-section::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .course-title {
+            color: var(--dark-text);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .course-titles {
+            color: var(--dark-text);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .course-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 0.8rem;
+        }
+
+        .meta-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+        }
+
+        .video-section {
+            padding: 1rem;
+            background: #f8f9fa;
+        }
+
+        .video-container {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .course-thumbnail {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        #botonesTarjeta {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            position: absolute;
+            bottom: 0%;
+            width: 100%;
+            background-color: white;
+            left: 0%;
+            padding: 5%
+        }
+
+        .btn-action {
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to left, #177483 10%, #004D77 100%);
+        }
+
+        .btn-danger {
+            background: linear-gradient(to left, #FD2E00 10%, #F39325 100%);
+        }
+
+        .btn-success {
+            background: #28a745;
+        }
+
+        #descripcionCompleta {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .filter-container {
+                display: grid;
+                grid-template-columns: 300px 1fr;
+                gap: 1.5rem;
+            }
+            
+            .course-card {
+                display: flex;
+                min-height: 350px;
+            }
+
+            #tarjetaCompleta {
+                flex: 0 0 65%;
+                display: flex;
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+
+            .image-section {
+                width: 40%;
+                height: auto;
+            }
+
+            .content-section {
+                flex: 1;
+                padding: 0;
+            }
+
+            .video-section {
+                flex: 0 0 35%;
+                padding: 1.5rem;
+            }
+
+            .course-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .main-header {
+                padding: 0.5rem 0;
+            }
+
+            .page-title {
+                font-size: 1.5rem;
+            }
+
+            .filter-section .row {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                padding-bottom: 0.5rem;
+            }
+
+            .filter-section .col-md-2 {
+                min-width: 140px;
+            }
+
+            .meta-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .content-section {
+                margin-bottom: 25%;
+            }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="floating-shapes">
+        <div style="width: 150px; height: 150px; top: 20%; left: 10%"></div>
+        <div style="width: 100px; height: 100px; top: 60%; right: 15%"></div>
+    </div>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center py-2">
+                <h1 class="page-title">Elige el mejor curso</h1>
+            </div>
+        </div>
+    </header>
+
+    <main class="container py-3">
+        <div class="filter-container">
+            <!-- Sección de filtros -->
+            <div class="filter-section">
+                <div class="filter-group">
+                    <h5 class="filter-group-title">Tipo de clase</h5>
+                    <div class="filter-options">
+                        <input type="checkbox" id="particular" class="filter-checkbox">
+                        <label for="particular" class="filter-label">Particular</label>
+                        
+                        <input type="checkbox" id="nee" class="filter-checkbox">
+                        <label for="nee" class="filter-label">NEE</label>
+                        
+                        <input type="checkbox" id="grupal" class="filter-checkbox">
+                        <label for="grupal" class="filter-label">Grupal</label>
+                        
+                        <input type="checkbox" id="coaching" class="filter-checkbox">
+                        <label for="coaching" class="filter-label">Coaching</label>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h5 class="filter-group-title">Área o materia</h5>
+                    <input type="text" id="areaFilter" class="form-control" placeholder="Ejemplo: Programación">
+                </div>
+
+                <div class="filter-group">
+                    <h5 class="filter-group-title">Nivel o edad</h5>
+                    <input type="text" id="nivelFilter" class="form-control" placeholder="Universitarios">
+                </div>
+
+                <div class="filter-group">
+                    <h5 class="filter-group-title">¿Dónde?</h5>
+                    <div class="filter-options">
+                        <input type="checkbox" id="online" class="filter-checkbox">
+                        <label for="online" class="filter-label">Online</label>
+                        
+                        <input type="checkbox" id="domicilio" class="filter-checkbox">
+                        <label for="domicilio" class="filter-label">En mi domicilio</label>
+                        
+                        <input type="checkbox" id="desplazarme" class="filter-checkbox">
+                        <label for="desplazarme" class="filter-label">Puedo desplazarme</label>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h5 class="filter-group-title">Dirección</h5>
+                    <input type="text" id="direccionFilter" class="form-control" placeholder="Ingresa una dirección">
+                </div>
+
+                <div class="filter-group">
+                    <h5 class="filter-group-title">Precio por hora desde</h5>
+                    <div class="input-group">
+                        <span class="input-group-text">$</span>
+                        <input type="number" id="precioFilter" class="form-control" placeholder="155" min="0">
+                        <span class="input-group-text">en adelante</span>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h5 class="filter-group-title">Disponibilidad</h5>
+                    <div class="filter-options">
+                        <input type="checkbox" id="manana" class="filter-checkbox">
+                        <label for="manana" class="filter-label">Mañana (06h-13h)</label>
+                        
+                        <input type="checkbox" id="tarde" class="filter-checkbox">
+                        <label for="tarde" class="filter-label">Tarde (13h-20h)</label>
+                        
+                        <input type="checkbox" id="noche" class="filter-checkbox">
+                        <label for="noche" class="filter-label">Noche (20h-06h)</label>
+                        
+                        <input type="checkbox" id="finde" class="filter-checkbox">
+                        <label for="finde" class="filter-label">Fines de semana</label>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h5 class="filter-group-title">Edad</h5>
+                    <div class="age-filter">
+                        <button class="age-btn" data-min="3" data-max="5">3-5 años</button>
+                        <button class="age-btn" data-min="5" data-max="7">5-7 años</button>
+                        <button class="age-btn" data-min="7" data-max="9">7-9 años</button>
+                        <button class="age-btn" data-min="9" data-max="12">9-12 años</button>
+                        <button class="age-btn" data-min="12" data-max="16">12-16 años</button>
+                        <button class="age-btn" data-min="16" data-max="18">16-18 años</button>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h5 class="filter-group-title">Ubicación</h5>
+                    <div class="map-container">
+                        <div id="locationMap"></div>
+                    </div>
+                    <button class="btn btn-primary w-100 mt-2" onclick="filterByLocation()">
+                        <i class="fas fa-filter"></i> Filtrar por ubicación
+                    </button>
+                </div>
+
+                <button class="btn btn-primary w-100 mt-3" onclick="applyFilters()">
+                    <i class="fas fa-filter"></i> Aplicar Filtros
+                </button>
+                <button class="btn btn-outline-secondary w-100 mt-2" onclick="resetFilters()">
+                    <i class="fas fa-sync-alt"></i> Limpiar Filtros
+                </button>
+            </div>
+
+            <!-- Sección de resultados -->
+            <div>
+                <div class="filter-section">
+                    <div class="row g-2">
+                        <div class="col-12 col-md-4">
+                            <input type="text" id="searchInput" class="form-control" placeholder="🔍 Buscar...">
+                        </div>
+                        <div class="col-6 col-md-2">
+                            <select class="form-select" id="modalityFilter">
+                                <option value="">Modalidad</option>
+                                {{#each listaTipoCurso}}
+                                <option value="{{nameCoursClassType}}">{{nameCoursClassType}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" id="courseContainer">
+                    {{#each cursos}}
+                    <div class="col-12 course-item" 
+                        data-id="{{idCours}}"
+                        data-name="{{nameCours}}"
+                        data-description="{{descriptionCours}}"
+                        data-type="{{#if neeCours}}NEE{{else}}Particular{{/if}}"
+                        data-modality="{{tipoCurso}}"
+                        data-status="{{stateCours}}"
+                        data-location="{{ubicacionCurso}}"
+                        data-price="{{costCours}}"
+                        data-age="{{rangoEdadCurso}}"
+                        data-schedule="{{hourCours}}"
+                        data-area="{{areaCours}}"
+                        data-nivel="{{nivelCours}}"
+                        data-online="{{#if (eq tipoCurso 'Online')}}true{{else}}false{{/if}}"
+                        data-presencial="{{#if (eq tipoCurso 'Presencial')}}true{{else}}false{{/if}}"
+                        data-domicilio="{{domicilioCurso}}">
+                        <div class="course-card">
+                            <div id="tarjetaCompleta">
+                                <div class="image-section">
+                                    <img src="/img/cours/{{photoCours}}" class="course-image" alt="Imagen del curso">
+                                    <span class="status-badge {{#if stateCours}}active{{else}}inactive{{/if}}">
+                                        {{#if stateCours}}Activo{{else}}Inactivo{{/if}}
+                                    </span>
+                                </div>
+
+                                <div class="content-section">
+                                    <h3 class="course-title">{{nameCours}}</h3>
+                                    <h4 class="course-titles">{{descriptionCours}}</h4>
+                                    <div class="course-meta">
+                                        <div class="meta-item">
+                                            <i class="fas fa-user"></i>
+                                            {{#each ../listaTeacher}}
+                                            <span>{{completeNmeTeacher}}</span>
+                                            {{/each}}
+                                        </div>
+                                        <div class="meta-item">
+                                            <i class="fas fa-chalkboard"></i>
+                                            <span>{{tipoCurso}}</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <i class="fas fa-calendar-alt"></i>
+                                            <span>{{dateCoursInit}}</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <i class="fas fa-users"></i>
+                                            <span>{{shareCours}} cupos</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <i class="fas fa-dollar-sign"></i>
+                                            <span>${{costCours}}</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div id="materialesDeClase">
-                                <a href="/material/cursos/{{idCours}}"><button type="button">Materiales</button></a>
-                            </div>
-                            <div id="recursosDeClase">
-                                <a href="/recours/add/{{idCours}}"><button type="button">Recursos</button></a>
-                            </div>
-                            <div id="desavilitar">
-                                <a href="/cours/delete/{{idCours}}"><button type="button">Desabilitar</button></a>
+
+                            <div class="video-section">
+                                <div class="video-container">
+                                    <video class="course-thumbnail" src="/video/cours/{{videoCours}}" controls></video>
+                                </div>
+                                <div id="descripcionCompleta">
+                                    <a href="/cours/detailList/{{idCours}}" class="d-block mt-2">
+                                        <button class="btn btn-secondary w-100" style="background-color: #18574F;">
+                                            Ver información completa
+                                        </button>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <br>
                     {{/each}}
                 </div>
             </div>
         </div>
-    </div>
-</form>
-<script src="/js/filtro.js"></script>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Q9PaOYlXpeqtj_0tHE19Zcoim25iSFg&callback=initMap&libraries=places" async defer></script>
+    <script>
+        // Variables globales para el mapa y marcadores
+        let map;
+        let markers = [];
+        let locationCircle;
+        let locationMarker;
+        let geocoder;
+        
+        // Inicializar el mapa
+        function initMap() {
+            // Configuración inicial del mapa
+            map = new google.maps.Map(document.getElementById("locationMap"), {
+                center: { lat: -0.13097336766634235, lng: -78.45333414939553 },
+                zoom: 12,
+            });
+            
+            geocoder = new google.maps.Geocoder();
+            
+            // Agregar marcadores para los cursos existentes
+            {{#each cursos}}
+            {{#if ubicacionCurso}}
+            geocodeAddress("{{ubicacionCurso}}", "{{nameCours}}");
+            {{/if}}
+            {{/each}}
+            
+            // Permitir al usuario hacer clic en el mapa para establecer ubicación de filtro
+            map.addListener("click", (event) => {
+                setFilterLocation(event.latLng);
+            });
+        }
+        
+        // Geocodificar una dirección y agregar marcador
+        function geocodeAddress(address, title) {
+            geocoder.geocode({ address: address }, (results, status) => {
+                if (status === "OK") {
+                    const marker = new google.maps.Marker({
+                        map: map,
+                        position: results[0].geometry.location,
+                        title: title,
+                        icon: {
+                            url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+                        }
+                    });
+                    markers.push(marker);
+                    
+                    // Ajustar el zoom para mostrar todos los marcadores
+                    if (markers.length > 0) {
+                        const bounds = new google.maps.LatLngBounds();
+                        markers.forEach(marker => {
+                            bounds.extend(marker.getPosition());
+                        });
+                        map.fitBounds(bounds);
+                    }
+                } else {
+                    console.error("Geocode was not successful for the following reason: " + status);
+                }
+            });
+        }
+        
+        // Establecer ubicación para filtrar
+        function setFilterLocation(latLng) {
+            // Limpiar marcador y círculo anteriores
+            if (locationMarker) {
+                locationMarker.setMap(null);
+            }
+            if (locationCircle) {
+                locationCircle.setMap(null);
+            }
+            
+            // Crear nuevo marcador
+            locationMarker = new google.maps.Marker({
+                position: latLng,
+                map: map,
+                draggable: true,
+                title: "Ubicación de filtro",
+                icon: {
+                    url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
+                }
+            });
+            
+            // Crear círculo de radio (5km)
+            locationCircle = new google.maps.Circle({
+                strokeColor: "#FF0000",
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: "#FF0000",
+                fillOpacity: 0.35,
+                map: map,
+                center: latLng,
+                radius: 5000 // 5km en metros
+            });
+            
+            // Permitir arrastrar el marcador
+            locationMarker.addListener("dragend", (event) => {
+                locationCircle.setCenter(event.latLng);
+            });
+        }
+        
+        // Filtrar por ubicación
+        function filterByLocation() {
+            if (!locationMarker) {
+                alert("Por favor, selecciona una ubicación en el mapa primero");
+                return;
+            }
+            
+            const center = locationCircle.getCenter();
+            const radius = locationCircle.getRadius();
+            
+            // Aquí implementarías la lógica para filtrar cursos dentro del radio
+            console.log("Filtrando cursos dentro de", radius, "metros de", center.toString());
+            
+            // Ejemplo simplificado (en producción necesitarías calcular distancias reales)
+            document.querySelectorAll(".course-item").forEach(item => {
+                const courseLocation = item.dataset.location;
+                if (courseLocation) {
+                    // Simulación de filtrado por ubicación
+                    const isNearby = Math.random() > 0.5; // En producción usarías geocodificación inversa
+                    item.style.display = isNearby ? "block" : "none";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        }
+
+        // Función para verificar si un valor está en un array
+        function isInArray(value, array) {
+            return array.length === 0 || array.includes(value);
+        }
+
+        // Función para verificar si un texto contiene alguno de los valores
+        function containsAny(text, values) {
+            if (values.length === 0 || !text) return true;
+            return values.some(value => text.toLowerCase().includes(value.toLowerCase()));
+        }
+
+        // Función para verificar rango de edad
+        function checkAgeRange(age, selectedAges) {
+            if (selectedAges.length === 0 || !age) return true;
+            
+            // Extraer el rango de edad del curso (asumiendo formato "X-Y años")
+            const courseAgeMatch = age.match(/(\d+)\s*-\s*(\d+)/);
+            if (!courseAgeMatch) return false;
+            
+            const courseMin = parseInt(courseAgeMatch[1]);
+            const courseMax = parseInt(courseAgeMatch[2]);
+            
+            return selectedAges.some(ageBtn => {
+                const btnMin = parseInt(ageBtn.dataset.min);
+                const btnMax = parseInt(ageBtn.dataset.max);
+                return (courseMin >= btnMin && courseMin <= btnMax) || 
+                       (courseMax >= btnMin && courseMax <= btnMax);
+            });
+        }
+
+        // Aplicar todos los filtros
+        function applyFilters() {
+            const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+            const modalityFilter = document.getElementById("modalityFilter").value;
+            const statusFilter = document.getElementById("statusFilter").value;
+            const minPrice = parseFloat(document.getElementById("precioFilter").value) || 0;
+            const areaFilter = document.getElementById("areaFilter").value.toLowerCase();
+            const nivelFilter = document.getElementById("nivelFilter").value.toLowerCase();
+            const direccionFilter = document.getElementById("direccionFilter").value.toLowerCase();
+            
+            // Obtener tipos de clase seleccionados
+            const classTypes = [];
+            if (document.getElementById("particular").checked) classTypes.push("Particular");
+            if (document.getElementById("nee").checked) classTypes.push("NEE");
+            if (document.getElementById("grupal").checked) classTypes.push("Grupal");
+            if (document.getElementById("coaching").checked) classTypes.push("Coaching");
+            
+            // Obtener modalidades seleccionadas
+            const modalities = [];
+            if (document.getElementById("online").checked) modalities.push("Online");
+            if (document.getElementById("domicilio").checked) modalities.push("Domicilio");
+            if (document.getElementById("desplazarme").checked) modalities.push("Desplazarme");
+            
+            // Obtener disponibilidades seleccionadas
+            const schedules = [];
+            if (document.getElementById("manana").checked) schedules.push("Mañana");
+            if (document.getElementById("tarde").checked) schedules.push("Tarde");
+            if (document.getElementById("noche").checked) schedules.push("Noche");
+            if (document.getElementById("finde").checked) schedules.push("Fin de semana");
+            
+            // Obtener botones de edad activos
+            const selectedAgeBtns = Array.from(document.querySelectorAll(".age-btn.active"));
+            
+            document.querySelectorAll(".course-item").forEach(card => {
+                const name = card.dataset.name.toLowerCase();
+                const description = card.dataset.description.toLowerCase();
+                const modality = card.dataset.modality;
+                const status = card.dataset.status;
+                const price = parseFloat(card.dataset.price) || 0;
+                const type = card.dataset.type;
+                const schedule = card.dataset.schedule;
+                const age = card.dataset.age;
+                const area = card.dataset.area ? card.dataset.area.toLowerCase() : "";
+                const nivel = card.dataset.nivel ? card.dataset.nivel.toLowerCase() : "";
+                const location = card.dataset.location ? card.dataset.location.toLowerCase() : "";
+                const isOnline = card.dataset.online === "true";
+                const isPresencial = card.dataset.presencial === "true";
+                const isDomicilio = card.dataset.domicilio === "true";
+                
+                // Aplicar todos los filtros
+                const matchesSearch = searchTerm === "" || 
+                                    name.includes(searchTerm) || 
+                                    description.includes(searchTerm);
+                
+                const matchesModality = modalityFilter === "" || modality === modalityFilter;
+                const matchesStatus = statusFilter === "" || 
+                                    (statusFilter === "Activar" && status === "true") ||
+                                    (statusFilter === "Desactivar" && status === "false");
+                
+                const matchesPrice = price >= minPrice;
+                const matchesType = classTypes.length === 0 || classTypes.includes(type);
+                const matchesSchedule = schedules.length === 0 || containsAny(schedule, schedules);
+                const matchesArea = areaFilter === "" || area.includes(areaFilter);
+                const matchesNivel = nivelFilter === "" || nivel.includes(nivelFilter);
+                const matchesLocation = direccionFilter === "" || containsAny(location, [direccionFilter]);
+                const matchesAge = checkAgeRange(age, selectedAgeBtns);
+                
+                // Verificar modalidades (online, domicilio, desplazarse)
+                let matchesModalities = true;
+                if (modalities.length > 0) {
+                    matchesModalities = false;
+                    if ((modalities.includes("Online") && isOnline)) matchesModalities = true;
+                    if ((modalities.includes("Domicilio") && isDomicilio)) matchesModalities = true;
+                    if ((modalities.includes("Desplazarme") && isPresencial)) matchesModalities = true;
+                }
+                
+                // Mostrar u ocultar según coincidan todos los filtros
+                card.style.display = (matchesSearch && matchesModality && matchesStatus && 
+                                    matchesPrice && matchesType && matchesSchedule &&
+                                    matchesArea && matchesNivel && matchesLocation &&
+                                    matchesAge && matchesModalities) ? "block" : "none";
+            });
+        }
+        
+        // Resetear todos los filtros
+        function resetFilters() {
+            // Limpiar campos de texto
+            document.getElementById("searchInput").value = "";
+            document.getElementById("modalityFilter").value = "";
+            document.getElementById("statusFilter").value = "";
+            document.getElementById("areaFilter").value = "";
+            document.getElementById("nivelFilter").value = "";
+            document.getElementById("direccionFilter").value = "";
+            document.getElementById("precioFilter").value = "";
+            
+            // Desmarcar checkboxes
+            document.querySelectorAll(".filter-checkbox").forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            
+            // Desactivar botones de edad
+            document.querySelectorAll(".age-btn").forEach(btn => {
+                btn.classList.remove("active");
+            });
+            
+            // Limpiar mapa de filtro
+            if (locationMarker) locationMarker.setMap(null);
+            if (locationCircle) locationCircle.setMap(null);
+            
+            // Mostrar todos los cursos
+            document.querySelectorAll(".course-item").forEach(item => {
+                item.style.display = "block";
+            });
+        }
+        
+        // Inicializar eventos
+        document.addEventListener("DOMContentLoaded", () => {
+            // Eventos para los botones de edad
+            document.querySelectorAll(".age-btn").forEach(btn => {
+                btn.addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    applyFilters();
+                });
+            });
+            
+            // Eventos para los filtros
+            document.getElementById("searchInput").addEventListener("input", applyFilters);
+            document.getElementById("modalityFilter").addEventListener("change", applyFilters);
+            document.getElementById("statusFilter").addEventListener("change", applyFilters);
+            document.getElementById("areaFilter").addEventListener("input", applyFilters);
+            document.getElementById("nivelFilter").addEventListener("input", applyFilters);
+            document.getElementById("direccionFilter").addEventListener("input", applyFilters);
+            document.getElementById("precioFilter").addEventListener("input", applyFilters);
+            
+            document.querySelectorAll(".filter-checkbox").forEach(checkbox => {
+                checkbox.addEventListener("change", applyFilters);
+            });
+        });
+    </script>
+</body>
+
+</html>
