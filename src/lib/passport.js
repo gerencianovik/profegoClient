@@ -87,7 +87,6 @@ passport.use(
             passReqToCallback: true,
         },
         async (req, username, password, done) => {
-            console.log('username', username)
             const [users] = await sql.promise().query('SELECT * FROM teachers WHERE usernameTeahcer = ?', [username]);
             const usuario = users[0]
             if (usuario.usernameTeahcer == username) {
@@ -111,21 +110,13 @@ passport.use(
             passReqToCallback: true,
         },
         async (req, username, password, done) => {
-            if (!validateInput(username) || !validateInput(password)) {
-                return done(null, false, req.flash("message", "Entrada inválida."));
-            }
-
-            const users = await sql.query('select * from students')
-            for (let i = 0; i < users.length; i++) {
-                const user = await orm.student.findOne({ where: { usernameEstudent: users[i].usernameEstudent } });
-                let decryptedUsername = descifrarDatos(user.usernameEstudent)
-                if (decryptedUsername == username) {
-                    const validPassword = await bcrypt.compare(password, user.passwordEstudent);
-                    if (validPassword) {
-                        return done(null, user, req.flash("success", "Bienvenido" + " " + user.decryptedUsername));
-                    } else {
-                        return done(null, false, req.flash("message", "Datos incorrecta"));
-                    }
+            const [users] = await sql.promise().query('SELECT * FROM student WHERE usernameEstudent = ?', [username]);
+            const usuario = users[0]
+            if (usuario.usernameEstudent == username) {
+                if (password == usuario.passwordEstudent) {
+                    return done(null, users, req.flash("success", "Bienvenido" + " " + users.username));
+                } else {
+                    return done(null, false, req.flash("message", "Datos incorrecta"));
                 }
             }
             return done(null, false, req.flash("message", "El nombre de usuario no existe."));
@@ -143,14 +134,10 @@ passport.use(
         },
         async (req, username, password, done) => {
             try {
-                if (!validateInput(username) || !validateInput(password)) {
-                    return done(null, false, req.flash("message", "Entrada inválida."));
-                }
                 const existingUser = await orm.student.findOne({ where: { usernameEstudent: cifrarDatos(username) } });
                 if (existingUser) {
                     return done(null, false, req.flash('message', 'La cedula del usuario ya existe.'));
                 } else {
-                    const hashedPassword = await helpers.hashPassword(password);
                     const {
                         idEstudent,
                         completeNameEstudent,
@@ -225,7 +212,7 @@ passport.use(
                         rolTeacher: 'teacher',
                         createTeahcer: new Date().toLocaleString()
                     };
-                    console.log('cas',newClient)
+                    console.log('cas', newClient)
                     const guardar = await orm.teacher.create(newClient);
                     newClient.id = guardar.insertId
                     return done(null, newClient);
