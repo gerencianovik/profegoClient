@@ -166,7 +166,7 @@ passport.use(
                         // Guardar y subir foto del profesor
                         if (photoEstudent) {
                             const photoFilePath = path.join(__dirname, '/../public/img/usuario/', photoEstudent.name);
-                            await guardarYSubirArchivo(photoEstudent, photoFilePath, 'photoEstudent', idEstudent, 'http://localhost:9000/imagenEstudiante', req);
+                            await guardarYSubirArchivo(photoEstudent, photoFilePath, 'photoEstudent', idEstudent, 'https://www.central.profego-edu.com/imagenEstudiante', req);
                         }
                     }
 
@@ -210,9 +210,9 @@ passport.use(
                         usernameTeahcer: username,
                         passwordTeacher: password,
                         rolTeacher: 'teacher',
+                        stateTeacher: 'pendiente',
                         createTeahcer: new Date().toLocaleString()
                     };
-                    console.log('cas', newClient)
                     const guardar = await orm.teacher.create(newClient);
                     newClient.id = guardar.insertId
                     return done(null, newClient);

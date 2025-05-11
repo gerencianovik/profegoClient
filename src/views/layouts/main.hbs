@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="/img/logo/LogoPrincipal.png" style="background-color: #F39325;" />
+    <link rel="shortcut icon" type="image/x-icon" href="/img/logo/LogoPrincipal.png"
+        style="background-color: #F39325;" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="/css/boostrap/animate.min.css" rel="stylesheet">
@@ -17,17 +18,15 @@
 </head>
 
 <body>
-    <!-- Navegación (si tienes una barra de navegación) -->
+
     {{>navegacion}}
-
-    <script src="/js/jquery-3.7.1.slim.min.js"></script>
-    <script src="/js/popper.min.js"></script>
-    <script src="/js/pdf.min.js"></script>
-    <script src="/js/boostap/bootstrap.min.js"></script>
-
-    <!-- Contenido de la página -->
     {{{ body }}}
     {{>message}}
+
 </body>
+<script src="/js/jquery-3.7.1.slim.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/pdf.min.js"></script>
+<script src="/js/boostap/bootstrap.min.js"></script>
 
 </html>
