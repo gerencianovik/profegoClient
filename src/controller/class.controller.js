@@ -10,8 +10,75 @@ const classes = {}
 
 const guardarYSubirArchivo = async (archivo, filePath, columnName, idClases, url, req) => {
     const validaciones = {
-        imagen: [".PNG", ".JPG", ".JPEG", ".GIF", ".TIF", ".png", ".jpg", ".jpeg", ".gif", ".tif", ".ico", ".ICO", '.webp', ".WEBP"],
-        video: [".mp4", ".avi", ".mov", ".wmv", ".flv", ".mkv", ".MP4", ".AVI", ".MOV", ".WMV", ".FLV"]
+        image: [
+            // Formatos estándar web
+            ".png", ".jpg", ".jpeg", ".gif", ".webp", ".svg",
+            ".bmp", ".tif", ".tiff", ".ico", ".heic", ".heif",
+
+            // Formatos profesionales y RAW
+            ".raw", ".cr2", ".nef", ".orf", ".sr2", ".arw",
+            ".dng", ".rw2", ".raf", ".pef", ".x3f", ".crw",
+            ".erf", ".mrw", ".dcr", ".kdc", ".mos", ".iiq",
+
+            // Formatos de diseño gráfico
+            ".psd", ".ai", ".eps", ".indd", ".cdr", ".svgz",
+
+            // Formatos médicos y científicos
+            ".dcm", ".dicom", ".nii", ".nrrd",
+
+            // Formatos 3D y HDR
+            ".hdr", ".exr", ".dds", ".ktx", ".ptex",
+
+            // Formatos antiguos o especializados
+            ".pcx", ".pbm", ".pgm", ".ppm", ".pnm", ".tga",
+
+            // Extensiones en mayúsculas
+            ".PNG", ".JPG", ".JPEG", ".GIF", ".WEBP", ".SVG",
+            ".BMP", ".TIF", ".TIFF", ".ICO", ".HEIC", ".HEIF",
+            ".RAW", ".CR2", ".NEF", ".ORF", ".SR2", ".ARW",
+            ".DNG", ".RW2", ".RAF", ".PEF", ".X3F", ".CRW",
+            ".ERF", ".MRW", ".DCR", ".KDC", ".MOS", ".IIQ",
+            ".PSD", ".AI", ".EPS", ".INDD", ".CDR", ".SVGZ",
+            ".DCM", ".DICOM", ".NII", ".NRRD",
+            ".HDR", ".EXR", ".DDS", ".KTX", ".PTEX",
+            ".PCX", ".PBM", ".PGM", ".PPM", ".PNM", ".TGA",
+
+            // Formatos menos comunes
+            ".jxr", ".wdp", ".jpf", ".jpx", ".jpm", ".j2k",
+            ".j2c", ".jpc", ".pgf", ".ico", ".cur",
+
+            // Formatos de documentos como imágenes
+            ".ppt", ".pptx"
+        ],
+        video: [
+            // Formatos comunes
+            ".mp4", ".avi", ".mov", ".wmv", ".flv", ".mkv",
+            ".webm", ".mpeg", ".mpg", ".m4v", ".3gp", ".3g2",
+
+            // Formatos profesionales
+            ".prores", ".dnxhd", ".cineform", ".r3d", ".ari",
+
+            // Formatos de alta calidad
+            ".hevc", ".vp9", ".av1", ".ogv", ".yuv",
+
+            // Formatos antiguos
+            ".rm", ".rmvb", ".asf", ".vob", ".ts", ".m2ts", ".mts",
+
+            // Variantes de los formatos principales
+            ".divx", ".xvid", ".h264", ".h265", ".mp4v", ".mp4a",
+
+            // Extensiones en mayúsculas
+            ".MP4", ".AVI", ".MOV", ".WMV", ".FLV", ".MKV",
+            ".WEBM", ".MPEG", ".MPG", ".M4V", ".3GP", ".3G2",
+            ".PRORES", ".DNXHD", ".CINEFORM", ".R3D", ".ARI",
+            ".HEVC", ".VP9", ".AV1", ".OGV", ".YUV",
+            ".RM", ".RMVB", ".ASF", ".VOB", ".TS", ".M2TS", ".MTS",
+            ".DIVX", ".XVID", ".H264", ".H265", ".MP4V", ".MP4A",
+
+            // Formatos menos comunes pero existentes
+            ".nut", ".swf", ".amv", ".mxf", ".roq", ".nsv",
+            ".NUT", ".SWF", ".AMV", ".MXF", ".ROQ", ".NSV"
+        ]
     };
     const tipoArchivo = columnName === 'photoClases' ? 'imagen' : 'video';
     const validacion = path.extname(archivo.name);
