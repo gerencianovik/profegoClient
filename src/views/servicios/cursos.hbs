@@ -88,34 +88,9 @@
             font-size: 0.9rem;
         }
 
-        .filter-checkbox:checked + .filter-label {
+        .filter-checkbox:checked+.filter-label {
             background: var(--primary-color);
             color: white;
-        }
-
-        .age-filter {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .age-btn {
-            padding: 0.5rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background: white;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 0.8rem;
-            text-align: center;
-            flex: 1;
-            min-width: 60px;
-        }
-
-        .age-btn.active {
-            background: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
         }
 
         .map-container {
@@ -123,7 +98,7 @@
             border-radius: 12px;
             overflow: hidden;
             margin-bottom: 1rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         #locationMap {
@@ -178,6 +153,15 @@
             background: #dc3545;
         }
 
+        .nee-badge {
+            background-color: #6c757d;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            margin-left: 0.5rem;
+        }
+
         .content-section {
             overflow-y: auto;
             padding-right: 8px;
@@ -208,10 +192,17 @@
             margin-bottom: 1rem;
         }
 
-        .course-titles {
+        .course-description {
             color: var(--dark-text);
             font-size: 1rem;
             margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-height: 4.5em;
+            line-height: 1.5em;
         }
 
         .course-meta {
@@ -284,6 +275,11 @@
             background: #28a745;
         }
 
+        .btn-secondary-custom {
+            background: #18574F;
+            color: white;
+        }
+
         #descripcionCompleta {
             text-align: center;
             margin-top: 1rem;
@@ -295,7 +291,7 @@
                 grid-template-columns: 300px 1fr;
                 gap: 1.5rem;
             }
-            
+
             .course-card {
                 display: flex;
                 min-height: 350px;
@@ -358,9 +354,17 @@
         }
 
         @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-            100% { transform: translateY(0) rotate(0deg); }
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
         }
     </style>
 </head>
@@ -374,7 +378,7 @@
     <header class="main-header">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center py-2">
-                <h1 class="page-title">Elige el mejor curso</h1>
+                <h1 class="page-title">Cursos</h1>
             </div>
         </div>
     </header>
@@ -384,17 +388,17 @@
             <!-- Sección de filtros -->
             <div class="filter-section">
                 <div class="filter-group">
-                    <h5 class="filter-group-title">Tipo de clase</h5>
+                    <h5 class="filter-group-title">Tipo de curso</h5>
                     <div class="filter-options">
                         <input type="checkbox" id="particular" class="filter-checkbox">
                         <label for="particular" class="filter-label">Particular</label>
-                        
+
                         <input type="checkbox" id="nee" class="filter-checkbox">
                         <label for="nee" class="filter-label">NEE</label>
-                        
+
                         <input type="checkbox" id="grupal" class="filter-checkbox">
                         <label for="grupal" class="filter-label">Grupal</label>
-                        
+
                         <input type="checkbox" id="coaching" class="filter-checkbox">
                         <label for="coaching" class="filter-label">Coaching</label>
                     </div>
@@ -406,8 +410,8 @@
                 </div>
 
                 <div class="filter-group">
-                    <h5 class="filter-group-title">Nivel o edad</h5>
-                    <input type="text" id="nivelFilter" class="form-control" placeholder="Universitarios">
+                    <h5 class="filter-group-title">Nivel educativo</h5>
+                    <input type="text" id="nivelFilter" class="form-control" placeholder="Ejemplo: Universitarios">
                 </div>
 
                 <div class="filter-group">
@@ -415,25 +419,20 @@
                     <div class="filter-options">
                         <input type="checkbox" id="online" class="filter-checkbox">
                         <label for="online" class="filter-label">Online</label>
-                        
+
                         <input type="checkbox" id="domicilio" class="filter-checkbox">
                         <label for="domicilio" class="filter-label">En mi domicilio</label>
-                        
+
                         <input type="checkbox" id="desplazarme" class="filter-checkbox">
                         <label for="desplazarme" class="filter-label">Puedo desplazarme</label>
                     </div>
                 </div>
 
                 <div class="filter-group">
-                    <h5 class="filter-group-title">Dirección</h5>
-                    <input type="text" id="direccionFilter" class="form-control" placeholder="Ingresa una dirección">
-                </div>
-
-                <div class="filter-group">
                     <h5 class="filter-group-title">Precio por hora desde</h5>
                     <div class="input-group">
                         <span class="input-group-text">$</span>
-                        <input type="number" id="precioFilter" class="form-control" placeholder="155" min="0">
+                        <input type="number" id="precioFilter" class="form-control" placeholder="15" min="15">
                         <span class="input-group-text">en adelante</span>
                     </div>
                 </div>
@@ -443,27 +442,15 @@
                     <div class="filter-options">
                         <input type="checkbox" id="manana" class="filter-checkbox">
                         <label for="manana" class="filter-label">Mañana (06h-13h)</label>
-                        
+
                         <input type="checkbox" id="tarde" class="filter-checkbox">
                         <label for="tarde" class="filter-label">Tarde (13h-20h)</label>
-                        
+
                         <input type="checkbox" id="noche" class="filter-checkbox">
                         <label for="noche" class="filter-label">Noche (20h-06h)</label>
-                        
+
                         <input type="checkbox" id="finde" class="filter-checkbox">
                         <label for="finde" class="filter-label">Fines de semana</label>
-                    </div>
-                </div>
-
-                <div class="filter-group">
-                    <h5 class="filter-group-title">Edad</h5>
-                    <div class="age-filter">
-                        <button class="age-btn" data-min="3" data-max="5">3-5 años</button>
-                        <button class="age-btn" data-min="5" data-max="7">5-7 años</button>
-                        <button class="age-btn" data-min="7" data-max="9">7-9 años</button>
-                        <button class="age-btn" data-min="9" data-max="12">9-12 años</button>
-                        <button class="age-btn" data-min="12" data-max="16">12-16 años</button>
-                        <button class="age-btn" data-min="16" data-max="18">16-18 años</button>
                     </div>
                 </div>
 
@@ -472,15 +459,15 @@
                     <div class="map-container">
                         <div id="locationMap"></div>
                     </div>
-                    <button class="btn btn-primary w-100 mt-2" onclick="filterByLocation()">
+                    <button class="btn btn-primary w-100 mt-2" id="filterLocationBtn">
                         <i class="fas fa-filter"></i> Filtrar por ubicación
                     </button>
                 </div>
 
-                <button class="btn btn-primary w-100 mt-3" onclick="applyFilters()">
+                <button class="btn btn-primary w-100 mt-3" id="applyFiltersBtn">
                     <i class="fas fa-filter"></i> Aplicar Filtros
                 </button>
-                <button class="btn btn-outline-secondary w-100 mt-2" onclick="resetFilters()">
+                <button class="btn btn-outline-secondary w-100 mt-2" id="resetFiltersBtn">
                     <i class="fas fa-sync-alt"></i> Limpiar Filtros
                 </button>
             </div>
@@ -505,22 +492,14 @@
 
                 <div class="row" id="courseContainer">
                     {{#each cursos}}
-                    <div class="col-12 course-item" 
-                        data-id="{{idCours}}"
-                        data-name="{{nameCours}}"
-                        data-description="{{descriptionCours}}"
-                        data-type="{{#if neeCours}}NEE{{else}}Particular{{/if}}"
-                        data-modality="{{tipoCurso}}"
-                        data-status="{{stateCours}}"
-                        data-location="{{ubicacionCurso}}"
-                        data-price="{{costCours}}"
-                        data-age="{{rangoEdadCurso}}"
-                        data-schedule="{{hourCours}}"
-                        data-area="{{areaCours}}"
-                        data-nivel="{{nivelCours}}"
+                    <div class="col-12 course-item" data-id="{{idCours}}" data-name="{{nameCours}}"
+                        data-description="{{descriptionCours}}" data-type="{{#if neeCours}}NEE{{else}}Particular{{/if}}"
+                        data-modality="{{tipoCurso}}" data-status="{{stateCours}}" data-location="{{ubicacionCurso}}"
+                        data-price="{{costCours}}" data-schedule="{{hourCours}}"
+                        data-area="{{areaCours}}" data-nivel="{{nivelCours}}"
                         data-online="{{#if (eq tipoCurso 'Online')}}true{{else}}false{{/if}}"
                         data-presencial="{{#if (eq tipoCurso 'Presencial')}}true{{else}}false{{/if}}"
-                        data-domicilio="{{domicilioCurso}}">
+                        data-domicilio="{{domicilioCurso}}" data-nee="{{neeCours}}">
                         <div class="course-card">
                             <div id="tarjetaCompleta">
                                 <div class="image-section">
@@ -528,11 +507,16 @@
                                     <span class="status-badge {{#if stateCours}}active{{else}}inactive{{/if}}">
                                         {{#if stateCours}}Activo{{else}}Inactivo{{/if}}
                                     </span>
+                                    {{#if neeCours}}
+                                    <span class="status-badge nee-badge">NEE</span>
+                                    {{/if}}
                                 </div>
 
                                 <div class="content-section">
                                     <h3 class="course-title">{{nameCours}}</h3>
-                                    <h4 class="course-titles">{{descriptionCours}}</h4>
+                                    <p class="course-description">
+                                        {{truncate descriptionCours 100}}
+                                    </p>
                                     <div class="course-meta">
                                         <div class="meta-item">
                                             <i class="fas fa-user"></i>
@@ -566,10 +550,27 @@
                                 </div>
                                 <div id="descripcionCompleta">
                                     <a href="/cours/detailList/{{idCours}}" class="d-block mt-2">
-                                        <button class="btn btn-secondary w-100" style="background-color: #18574F;">
+                                        <button class="btn btn-secondary-custom w-100">
                                             Ver información completa
                                         </button>
                                     </a>
+                                    {{#if user}}
+                                    {{#isStudentRole user.rolStudent}}
+                                    <a href="/reservar/{{idCours}}" class="d-block mt-2">
+                                        <button class="btn btn-secondary w-100" style="background-color: #18574F;">
+                                            Reservar
+                                        </button>
+                                    </a>
+                                    {{else}}
+                                    <p class="text-muted">Solo estudiantes pueden reservar</p>
+                                    {{/isStudentRole}}
+                                    {{else}}
+                                    <a href="/loginStudents" class="d-block mt-2">
+                                        <button class="btn btn-secondary w-100" style="background-color: #18574F;">
+                                            Reservar
+                                        </button>
+                                    </a>
+                                    {{/if}}
                                 </div>
                             </div>
                         </div>
@@ -580,40 +581,57 @@
         </div>
     </main>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Q9PaOYlXpeqtj_0tHE19Zcoim25iSFg&callback=initMap&libraries=places" async defer></script>
+    <!-- Script de Google Maps con carga optimizada -->
     <script>
-        // Variables globales para el mapa y marcadores
+        // Definición de variables globales para el mapa
         let map;
-        let markers = [];
-        let locationCircle;
-        let locationMarker;
         let geocoder;
-        
-        // Inicializar el mapa
+        let markers = [];
+        let locationCircle = null;
+        let locationMarker = null;
+        let courseLocations = [];
+
+        // Función para inicializar el mapa cuando la API esté cargada
         function initMap() {
             // Configuración inicial del mapa
             map = new google.maps.Map(document.getElementById("locationMap"), {
                 center: { lat: -0.13097336766634235, lng: -78.45333414939553 },
                 zoom: 12,
+                mapTypeControl: false,
+                streetViewControl: false
             });
-            
+
             geocoder = new google.maps.Geocoder();
-            
-            // Agregar marcadores para los cursos existentes
-            {{#each cursos}}
-            {{#if ubicacionCurso}}
-            geocodeAddress("{{ubicacionCurso}}", "{{nameCours}}");
-            {{/if}}
-            {{/each}}
-            
+
+            // Procesar ubicaciones de los cursos desde Handlebars
+            courseLocations = [
+                {{#each cursos}}
+                {{#if ubicacionCurso}}
+                {
+                    address: "{{ubicacionCurso}}", 
+                    title: "{{nameCours}}",
+                    id: "{{idCours}}"
+                },
+                {{/if}}
+                {{/each}}
+            ];
+
+            // Geocodificar y agregar marcadores para cada ubicación
+            courseLocations.forEach(location => {
+                geocodeAddress(location.address, location.title, location.id);
+            });
+
             // Permitir al usuario hacer clic en el mapa para establecer ubicación de filtro
             map.addListener("click", (event) => {
                 setFilterLocation(event.latLng);
             });
+
+            // Configurar eventos después de que el mapa esté listo
+            setupMapEvents();
         }
-        
-        // Geocodificar una dirección y agregar marcador
-        function geocodeAddress(address, title) {
+
+        // Función para geocodificar una dirección y agregar marcador
+        function geocodeAddress(address, title, id) {
             geocoder.geocode({ address: address }, (results, status) => {
                 if (status === "OK") {
                     const marker = new google.maps.Marker({
@@ -622,10 +640,21 @@
                         title: title,
                         icon: {
                             url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
-                        }
+                        },
+                        courseId: id
                     });
+
+                    // InfoWindow para mostrar detalles al hacer clic
+                    const infowindow = new google.maps.InfoWindow({
+                        content: `<strong>${title}</strong><br>${address}`
+                    });
+
+                    marker.addListener("click", () => {
+                        infowindow.open(map, marker);
+                    });
+
                     markers.push(marker);
-                    
+
                     // Ajustar el zoom para mostrar todos los marcadores
                     if (markers.length > 0) {
                         const bounds = new google.maps.LatLngBounds();
@@ -635,11 +664,11 @@
                         map.fitBounds(bounds);
                     }
                 } else {
-                    console.error("Geocode was not successful for the following reason: " + status);
+                    console.error("Geocode no tuvo éxito por la siguiente razón: " + status);
                 }
             });
         }
-        
+
         // Establecer ubicación para filtrar
         function setFilterLocation(latLng) {
             // Limpiar marcador y círculo anteriores
@@ -649,7 +678,7 @@
             if (locationCircle) {
                 locationCircle.setMap(null);
             }
-            
+
             // Crear nuevo marcador
             locationMarker = new google.maps.Marker({
                 position: latLng,
@@ -660,7 +689,7 @@
                     url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
                 }
             });
-            
+
             // Crear círculo de radio (5km)
             locationCircle = new google.maps.Circle({
                 strokeColor: "#FF0000",
@@ -672,39 +701,59 @@
                 center: latLng,
                 radius: 5000 // 5km en metros
             });
-            
+
             // Permitir arrastrar el marcador
             locationMarker.addListener("dragend", (event) => {
                 locationCircle.setCenter(event.latLng);
             });
         }
-        
+
         // Filtrar por ubicación
         function filterByLocation() {
             if (!locationMarker) {
                 alert("Por favor, selecciona una ubicación en el mapa primero");
                 return;
             }
-            
+
             const center = locationCircle.getCenter();
             const radius = locationCircle.getRadius();
-            
-            // Aquí implementarías la lógica para filtrar cursos dentro del radio
-            console.log("Filtrando cursos dentro de", radius, "metros de", center.toString());
-            
-            // Ejemplo simplificado (en producción necesitarías calcular distancias reales)
+
+            // Ocultar todos los cursos primero
             document.querySelectorAll(".course-item").forEach(item => {
-                const courseLocation = item.dataset.location;
-                if (courseLocation) {
-                    // Simulación de filtrado por ubicación
-                    const isNearby = Math.random() > 0.5; // En producción usarías geocodificación inversa
-                    item.style.display = isNearby ? "block" : "none";
-                } else {
-                    item.style.display = "none";
+                item.style.display = "none";
+            });
+
+            // Mostrar solo los cursos cercanos
+            markers.forEach(marker => {
+                const distance = google.maps.geometry.spherical.computeDistanceBetween(
+                    center, 
+                    marker.getPosition()
+                );
+                
+                if (distance <= radius) {
+                    const courseElement = document.querySelector(`.course-item[data-id="${marker.courseId}"]`);
+                    if (courseElement) {
+                        courseElement.style.display = "block";
+                    }
                 }
             });
         }
 
+        // Configurar eventos del mapa
+        function setupMapEvents() {
+            document.getElementById("filterLocationBtn").addEventListener("click", filterByLocation);
+        }
+
+        // Asignar initMap al ámbito global
+        window.initMap = initMap;
+    </script>
+
+    <!-- Carga de Google Maps API con parámetros optimizados -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Q9PaOYlXpeqtj_0tHE19Zcoim25iSFg&callback=initMap&libraries=places,geometry&v=weekly&loading=async" 
+            async defer></script>
+
+    <!-- Script para manejar los filtros -->
+    <script>
         // Función para verificar si un valor está en un array
         function isInArray(value, array) {
             return array.length === 0 || array.includes(value);
@@ -716,92 +765,61 @@
             return values.some(value => text.toLowerCase().includes(value.toLowerCase()));
         }
 
-        // Función para verificar rango de edad
-        function checkAgeRange(age, selectedAges) {
-            if (selectedAges.length === 0 || !age) return true;
-            
-            // Extraer el rango de edad del curso (asumiendo formato "X-Y años")
-            const courseAgeMatch = age.match(/(\d+)\s*-\s*(\d+)/);
-            if (!courseAgeMatch) return false;
-            
-            const courseMin = parseInt(courseAgeMatch[1]);
-            const courseMax = parseInt(courseAgeMatch[2]);
-            
-            return selectedAges.some(ageBtn => {
-                const btnMin = parseInt(ageBtn.dataset.min);
-                const btnMax = parseInt(ageBtn.dataset.max);
-                return (courseMin >= btnMin && courseMin <= btnMax) || 
-                       (courseMax >= btnMin && courseMax <= btnMax);
-            });
-        }
-
         // Aplicar todos los filtros
         function applyFilters() {
             const searchTerm = document.getElementById("searchInput").value.toLowerCase();
             const modalityFilter = document.getElementById("modalityFilter").value;
-            const statusFilter = document.getElementById("statusFilter").value;
             const minPrice = parseFloat(document.getElementById("precioFilter").value) || 0;
             const areaFilter = document.getElementById("areaFilter").value.toLowerCase();
             const nivelFilter = document.getElementById("nivelFilter").value.toLowerCase();
-            const direccionFilter = document.getElementById("direccionFilter").value.toLowerCase();
-            
-            // Obtener tipos de clase seleccionados
-            const classTypes = [];
-            if (document.getElementById("particular").checked) classTypes.push("Particular");
-            if (document.getElementById("nee").checked) classTypes.push("NEE");
-            if (document.getElementById("grupal").checked) classTypes.push("Grupal");
-            if (document.getElementById("coaching").checked) classTypes.push("Coaching");
-            
+            const neeFilter = document.getElementById("nee").checked;
+
+            // Obtener tipos de curso seleccionados
+            const courseTypes = [];
+            if (document.getElementById("particular").checked) courseTypes.push("Particular");
+            if (document.getElementById("grupal").checked) courseTypes.push("Grupal");
+            if (document.getElementById("coaching").checked) courseTypes.push("Coaching");
+
             // Obtener modalidades seleccionadas
             const modalities = [];
             if (document.getElementById("online").checked) modalities.push("Online");
             if (document.getElementById("domicilio").checked) modalities.push("Domicilio");
             if (document.getElementById("desplazarme").checked) modalities.push("Desplazarme");
-            
+
             // Obtener disponibilidades seleccionadas
             const schedules = [];
             if (document.getElementById("manana").checked) schedules.push("Mañana");
             if (document.getElementById("tarde").checked) schedules.push("Tarde");
             if (document.getElementById("noche").checked) schedules.push("Noche");
             if (document.getElementById("finde").checked) schedules.push("Fin de semana");
-            
-            // Obtener botones de edad activos
-            const selectedAgeBtns = Array.from(document.querySelectorAll(".age-btn.active"));
-            
+
             document.querySelectorAll(".course-item").forEach(card => {
                 const name = card.dataset.name.toLowerCase();
                 const description = card.dataset.description.toLowerCase();
                 const modality = card.dataset.modality;
-                const status = card.dataset.status;
                 const price = parseFloat(card.dataset.price) || 0;
                 const type = card.dataset.type;
                 const schedule = card.dataset.schedule;
-                const age = card.dataset.age;
                 const area = card.dataset.area ? card.dataset.area.toLowerCase() : "";
                 const nivel = card.dataset.nivel ? card.dataset.nivel.toLowerCase() : "";
-                const location = card.dataset.location ? card.dataset.location.toLowerCase() : "";
+                const nee = card.dataset.nee === "true";
                 const isOnline = card.dataset.online === "true";
                 const isPresencial = card.dataset.presencial === "true";
                 const isDomicilio = card.dataset.domicilio === "true";
-                
+
                 // Aplicar todos los filtros
-                const matchesSearch = searchTerm === "" || 
-                                    name.includes(searchTerm) || 
-                                    description.includes(searchTerm);
-                
+                const matchesSearch = searchTerm === "" ||
+                    name.includes(searchTerm) ||
+                    description.includes(searchTerm);
+
                 const matchesModality = modalityFilter === "" || modality === modalityFilter;
-                const matchesStatus = statusFilter === "" || 
-                                    (statusFilter === "Activar" && status === "true") ||
-                                    (statusFilter === "Desactivar" && status === "false");
-                
                 const matchesPrice = price >= minPrice;
-                const matchesType = classTypes.length === 0 || classTypes.includes(type);
+                const matchesType = courseTypes.length === 0 || courseTypes.includes(type);
                 const matchesSchedule = schedules.length === 0 || containsAny(schedule, schedules);
                 const matchesArea = areaFilter === "" || area.includes(areaFilter);
                 const matchesNivel = nivelFilter === "" || nivel.includes(nivelFilter);
-                const matchesLocation = direccionFilter === "" || containsAny(location, [direccionFilter]);
-                const matchesAge = checkAgeRange(age, selectedAgeBtns);
-                
+                const matchesNEE = !neeFilter || nee;
+
                 // Verificar modalidades (online, domicilio, desplazarse)
                 let matchesModalities = true;
                 if (modalities.length > 0) {
@@ -810,70 +828,55 @@
                     if ((modalities.includes("Domicilio") && isDomicilio)) matchesModalities = true;
                     if ((modalities.includes("Desplazarme") && isPresencial)) matchesModalities = true;
                 }
-                
+
                 // Mostrar u ocultar según coincidan todos los filtros
-                card.style.display = (matchesSearch && matchesModality && matchesStatus && 
-                                    matchesPrice && matchesType && matchesSchedule &&
-                                    matchesArea && matchesNivel && matchesLocation &&
-                                    matchesAge && matchesModalities) ? "block" : "none";
+                card.style.display = (matchesSearch && matchesModality &&
+                    matchesPrice && matchesType && matchesSchedule &&
+                    matchesArea && matchesNivel && matchesModalities && matchesNEE) ? "block" : "none";
             });
         }
-        
+
         // Resetear todos los filtros
         function resetFilters() {
             // Limpiar campos de texto
             document.getElementById("searchInput").value = "";
             document.getElementById("modalityFilter").value = "";
-            document.getElementById("statusFilter").value = "";
             document.getElementById("areaFilter").value = "";
             document.getElementById("nivelFilter").value = "";
-            document.getElementById("direccionFilter").value = "";
             document.getElementById("precioFilter").value = "";
-            
+
             // Desmarcar checkboxes
             document.querySelectorAll(".filter-checkbox").forEach(checkbox => {
                 checkbox.checked = false;
             });
-            
-            // Desactivar botones de edad
-            document.querySelectorAll(".age-btn").forEach(btn => {
-                btn.classList.remove("active");
-            });
-            
+
             // Limpiar mapa de filtro
             if (locationMarker) locationMarker.setMap(null);
             if (locationCircle) locationCircle.setMap(null);
-            
+
             // Mostrar todos los cursos
             document.querySelectorAll(".course-item").forEach(item => {
                 item.style.display = "block";
             });
         }
-        
-        // Inicializar eventos
-        document.addEventListener("DOMContentLoaded", () => {
-            // Eventos para los botones de edad
-            document.querySelectorAll(".age-btn").forEach(btn => {
-                btn.addEventListener("click", function() {
-                    this.classList.toggle("active");
-                    applyFilters();
-                });
-            });
-            
+
+        // Inicializar eventos cuando el DOM esté listo
+        document.addEventListener("DOMContentLoaded", function() {
             // Eventos para los filtros
             document.getElementById("searchInput").addEventListener("input", applyFilters);
             document.getElementById("modalityFilter").addEventListener("change", applyFilters);
-            document.getElementById("statusFilter").addEventListener("change", applyFilters);
             document.getElementById("areaFilter").addEventListener("input", applyFilters);
             document.getElementById("nivelFilter").addEventListener("input", applyFilters);
-            document.getElementById("direccionFilter").addEventListener("input", applyFilters);
             document.getElementById("precioFilter").addEventListener("input", applyFilters);
-            
+
             document.querySelectorAll(".filter-checkbox").forEach(checkbox => {
                 checkbox.addEventListener("change", applyFilters);
             });
+
+            // Eventos para los botones de acción
+            document.getElementById("applyFiltersBtn").addEventListener("click", applyFilters);
+            document.getElementById("resetFiltersBtn").addEventListener("click", resetFilters);
         });
     </script>
 </body>
-
 </html>

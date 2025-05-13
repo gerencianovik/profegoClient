@@ -10,7 +10,7 @@ const student = {};
 // Función para guardar y subir archivos
 const guardarYSubirArchivo = async (archivo, filePath, columnName, idStudent, url, req) => {
     const validaciones = {
-        imagen: [".PNG", ".JPG", ".JPEG", ".GIF", ".TIF", ".png", ".jpg", ".jpeg", ".gif", ".tif", ".ico", ".ICO"],
+        imagen: [".PNG", ".JPG", ".JPEG", ".GIF", ".TIF", ".png", ".jpg", ".jpeg", ".gif", ".tif", ".ico", ".ICO", ".webp", ".WEBP"],
         pdf: [".pdf", ".PDF"]
     };
     const tipoArchivo = columnName === 'photoEstudent' ? 'imagen' : 'pdf';
@@ -74,7 +74,7 @@ student.mostrar = async (req, res) => {
             completeNameEstudent: studentData.completeNameEstudent ? descifrarDatos(studentData.completeNameEstudent) : '',
             emailEstudent: studentData.emailEstudent ? descifrarDatos(studentData.emailEstudent) : '',
             celularEstudent: studentData.celularEstudent ? descifrarDatos(studentData.celularEstudent) : '',
-            usernameEstudent: studentData.usernameEstudent ? descifrarDatos(studentData.usernameEstudent) : '',
+            usernameEstudent: studentData.usernameEstudent,
             stateEstudent: studentData.stateEstudent,
             createStudent: studentData.createStudent,
             updateStudent: studentData.updateStudent
@@ -106,7 +106,7 @@ student.update = async (req, res) => {
             completeNameEstudent: cifrarDatos(completeNameEstudent),
             emailEstudent: cifrarDatos(emailEstudent),
             celularEstudent: cifrarDatos(celularEstudent),
-            usernameEstudent: cifrarDatos(usernameEstudent),
+            usernameEstudent: usernameEstudent,
             stateEstudent: stateEstudent,
             updateStudent: new Date().toLocaleString()
         };
@@ -121,7 +121,7 @@ student.update = async (req, res) => {
             // Guardar y subir foto del estudiante
             if (photoEstudent) {
                 const photoFilePath = path.join(__dirname, '/../public/img/student/', photoEstudent.name);
-                await guardarYSubirArchivo(photoEstudent, photoFilePath, 'photoEstudent', id, 'http://localhost:9000/imagenStudent', req);
+                await guardarYSubirArchivo(photoEstudent, photoFilePath, 'photoEstudent', id, 'https://www.central.profego-edu.com/imagenStudent', req);
             }
         }
 
@@ -150,7 +150,7 @@ student.lista = async (req, res) => {
             completeNameEstudent: studentData.completeNameEstudent ? descifrarDatos(studentData.completeNameEstudent) : '',
             emailEstudent: studentData.emailEstudent ? descifrarDatos(studentData.emailEstudent) : '',
             celularEstudent: studentData.celularEstudent ? descifrarDatos(studentData.celularEstudent) : '',
-            usernameEstudent: studentData.usernameEstudent ? descifrarDatos(studentData.usernameEstudent) : '',
+            usernameEstudent: studentData.usernameEstudent,
             stateEstudent: studentData.stateEstudent,
             createStudent: studentData.createStudent,
             updateStudent: studentData.updateStudent
@@ -167,5 +167,7 @@ student.lista = async (req, res) => {
         res.status(500).send('Error interno del servidor');
     }
 };
+
+
 
 module.exports = student;

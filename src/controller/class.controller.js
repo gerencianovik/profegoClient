@@ -277,6 +277,7 @@ classes.detalle = async (req, res) => {
         const [tareas] = await sql.promise().query('SELECT * FROM tasks WHERE ClaseIdClases = ?', [id])
         const [pruebas] = await sql.promise().query('SELECT * FROM assessments WHERE ClaseIdClases = ?', [id])
         const datos = teacher.map(row => ({
+            idTeacher: row.idTeacher,
             photoTeacher: row.photoTeacher,
             endorsementCertificateTeacher: row.endorsementCertificateTeacher,
             pageVitalTeacher: row.pageVitalTeacher,

@@ -39,9 +39,17 @@
         }
 
         @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
-            100% { transform: translateY(0) rotate(360deg); }
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+
+            100% {
+                transform: translateY(0) rotate(360deg);
+            }
         }
 
         .main-header {
@@ -77,6 +85,7 @@
             background: var(--primary-color);
             padding: 1rem;
             position: relative;
+            padding-bottom: 80px; /* Espacio para los botones */
         }
 
         .image-section {
@@ -88,7 +97,7 @@
         }
 
         .class-image {
-           width: 100%;
+            width: 100%;
             height: auto;
             object-fit: cover;
             border-radius: 20px;
@@ -147,6 +156,11 @@
             color: var(--dark-text);
             font-size: 1rem;
             margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .class-meta {
@@ -186,16 +200,13 @@
         }
 
         #botonesTarjeta {
-            margin-top: 1rem;
-            display: flex;
-            gap: 0.8rem;
-            flex-wrap: wrap;
             position: absolute;
             bottom: 0;
-            width: 100%;
-            background-color: white;
             left: 0;
-            padding: 5%;
+            width: 100%;
+            padding: 1rem;
+            background-color: white;
+            border-top: 1px solid rgba(0,0,0,0.1);
         }
 
         .btn-action {
@@ -205,6 +216,10 @@
             border: none;
             border-radius: 8px;
             transition: all 0.3s ease;
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+            margin: 2px;
         }
 
         .btn-primary {
@@ -229,6 +244,13 @@
             margin-top: 1rem;
         }
 
+        .buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: space-between;
+        }
+
         @media (min-width: 768px) {
             .class-card {
                 display: flex;
@@ -240,6 +262,7 @@
                 display: flex;
                 gap: 1.5rem;
                 padding: 1.5rem;
+                padding-bottom: 80px;
             }
 
             .image-section {
@@ -259,6 +282,10 @@
 
             .class-title {
                 font-size: 1.8rem;
+            }
+
+            .btn-action {
+                flex: 1 0 calc(25% - 1rem);
             }
         }
 
@@ -289,6 +316,10 @@
             .content-section {
                 margin-bottom: 25%;
             }
+
+            .btn-action {
+                flex: 1 0 calc(50% - 0.5rem);
+            }
         }
     </style>
 </head>
@@ -304,7 +335,8 @@
             <div class="d-flex justify-content-between align-items-center py-2">
                 <h1 class="page-title">Mis Clases</h1>
                 {{#each teacherLista}}
-                <a href="/clases/add/{{idTeacher}}" class="btn btn-sm text-white filter-btn" style="background: var(--secondary-color);">
+                <a href="/clases/add/{{idTeacher}}" class="btn btn-sm text-white filter-btn"
+                    style="background: var(--secondary-color);">
                     <i class="fas fa-plus me-1"></i>Nueva Clase
                 </a>
                 {{/each}}
@@ -342,7 +374,8 @@
 
         <div class="row" id="classContainer">
             {{#each lista}}
-            <div class="col-12 class-item" data-type="{{tipoClases}}" data-status="{{stateClases}}" data-name="{{nameClases}}">
+            <div class="col-12 class-item" data-type="{{tipoClases}}" data-status="{{stateClases}}"
+                data-name="{{nameClases}}">
                 <div class="class-card">
                     <div id="tarjetaCompleta">
                         <div class="image-section">
@@ -354,7 +387,7 @@
 
                         <div class="content-section">
                             <h3 class="class-title">{{nameClases}}</h3>
-                            <p class="class-description">{{descriptionClases}}</p>
+                            <p class="class-description">{{truncate descriptionClases 100}}</p>
                             <div class="class-meta">
                                 <div class="meta-item">
                                     <i class="fas fa-users"></i>
@@ -383,14 +416,15 @@
                             </div>
                         </div>
                         <div id="botonesTarjeta">
-                            <div class="d-flex flex-wrap gap-2">
+                            <div class="buttons-container">
                                 <a href="/clases/update/{{idClases}}" class="btn btn-primary btn-action">
                                     <i class="fas fa-edit"></i> Actualizar
                                 </a>
                                 <a href="/material/clases/{{idClases}}" class="btn btn-secondary-custom btn-action">
                                     <i class="fas fa-book"></i> Materiales
                                 </a>
-                                <a href="/recours/clases/{{idClases}}" class="btn btn-secondary-custom btn-action" style="background: #826814;">
+                                <a href="/recours/clases/{{idClases}}" class="btn btn-secondary-custom btn-action"
+                                    style="background: #826814;">
                                     <i class="fas fa-tools"></i> Recursos
                                 </a>
                                 {{#if stateClases}}
@@ -424,7 +458,6 @@
         </div>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         function filterClasses() {
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();

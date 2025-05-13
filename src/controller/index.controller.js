@@ -121,42 +121,41 @@ indexCtl.registroEstudiante = passport.authenticate("local.studentSignup", {
 })
 
 indexCtl.loginEstudiante = (req, res, next) => {
-    passport.authenticate("local.studentSignin", (err, user, info) => {
+    passport.authenticate("local.studentSignin", (err, usuario, info) => {
         if (err) {
-            console.error('Error en autenticación estudiante:', err);
-            return res.status(500).json({ error: 'Error interno del servidor' });
+            console.error('Error en autenticación del Estudiante:', err);
+            return res.status(500).json({ error: 'Error en autenticación del Estudiante' });
         }
-        if (!user) {
-            req.flash('error', info.message || 'Credenciales inválidas');
+        if (!usuario) {
+            req.flash('error', 'Credenciales inválidas');
             return res.redirect("/RegisterStudents");
         }
-        req.logIn(user, (err) => {
+        req.logIn(usuario, (err) => {
             if (err) {
-                console.error('Error en login estudiante:', err);
+                console.error('Error en login del Estudiante:', err);
                 return res.status(500).json({ error: 'Error al iniciar sesión' });
             }
-            
-            return res.redirect("/students/eleccion/" + user.idEstudent);
+            return res.redirect("/eleccion-estudiante/" + usuario.idEstudent);
         });
     })(req, res, next);
 };
 
 indexCtl.login = (req, res, next) => {
-    passport.authenticate("local.teacherSignin", (err, user, info) => {
+    passport.authenticate("local.teacherSignin", (err, usuario, info) => {
         if (err) {
             console.error('Error en autenticación profesor:', err);
             return res.status(500).json({ error: 'Error en autenticación profesor' });
         }
-        if (!user) {
+        if (!usuario) {
             req.flash('error', 'Credenciales inválidas');
             return res.redirect("/RegisterTeachers");
         }
-        req.logIn(user, (err) => {
+        req.logIn(usuario, (err) => {
             if (err) {
                 console.error('Error en login profesor:', err);
                 return res.status(500).json({ error: 'Error al iniciar sesión' });
             }
-            return res.redirect("/teacher/update/" + user[0].idTeacher);
+            return res.redirect("/teacher/update/" + usuario.idTeacher);
         });
     })(req, res, next);
 };

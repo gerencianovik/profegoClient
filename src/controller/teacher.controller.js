@@ -79,7 +79,7 @@ teacher.mostrar = async (req, res) => {
             emailTeacher: row.emailTeacher ? safeDecrypt(row.emailTeacher) : '',
             addressTeacher: row.addressTeacher ? safeDecrypt(row.addressTeacher) : '',
             phoneTeacher: row.phoneTeacher ? safeDecrypt(row.phoneTeacher) : '',
-            usernameTeahcer: row.usernameTeahcer ? safeDecrypt(row.usernameTeahcer) : ''
+            usernameTeahcer: row.usernameTeahcer
         }));
 
         res.render('profesor/perfilUpdate', {
@@ -278,7 +278,7 @@ teacher.lista = async (req, res) => {
             emailTeacher: row.emailTeacher ? safeDecrypt(row.emailTeacher) : '',
             addressTeacher: row.addressTeacher ? safeDecrypt(row.addressTeacher) : '',
             phoneTeacher: row.phoneTeacher ? safeDecrypt(row.phoneTeacher) : '',
-            usernameTeahcer: row.usernameTeahcer ? safeDecrypt(row.usernameTeahcer) : '',
+            usernameTeahcer: row.usernameTeahcer,
             stateTeacher: row.stateTeacher
         }));
 

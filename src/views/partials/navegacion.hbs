@@ -3,9 +3,6 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/">
-            <img src="/img/logo/Variantelogoprofego.png" alt="Logo" height="40">
-        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -154,7 +151,7 @@
                                             </a>
                                         </div>
                                         <div class="col-md-6 col6 mb-1 shadow rounded-2 border border-secondary-subtle">
-                                            <a href="#"
+                                            <a href="/contactos"
                                                 class="dropdown-item dropdownItem animate__animated animate__fadeIn">
                                                 <h6 class="d-flex align-items-start"><img
                                                         src="/img/icons/frecuentes.png" class="img-fluid imgNav me-2"
@@ -172,10 +169,60 @@
 
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
                 {{#if user}}
-                <!-- Menú de perfil del usuario -->
+                {{#isStudentRole user.rolStudent}}
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown"
+                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="me-2 d-none d-sm-inline">{{descifrar user.completeNameEstudent}}</span>
+                        <div class="profile-image-nav">
+                            {{#if user.photoEstudent}}
+                            <img src="/img/user/{{user.photoEstudent}}" alt="Foto de perfil" class="rounded-circle">
+                            {{else}}
+                            <div class="profile-initials">{{getInitials user.completeNameEstudent}}</div>
+                            {{/if}}
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end p-0 m-0 custom-dropdown-menu-user">
+                        <li>
+                            <div class="d-flex flex-column rounded-2 p-0">
+                                <div class="profile-dropdown-header p-3 text-left">
+                                    <div class="profile-image-nav-large mb-2 mx-auto">
+                                        {{#if user.photoEstudent}}
+                                        <img src="/img/user/{{user.photoEstudent}}" alt="Foto de perfil"
+                                            class="rounded-circle">
+                                        {{else}}
+                                        <div class="profile-initials-large">{{getInitials user.completeNameEstudent}}
+                                        </div>
+                                        {{/if}}
+                                    </div>
+                                    <h6 class="mb-0">{{descifrar user.completeNameEstudent}}</h6>
+                                    <small class="text-muted">{{descifrar user.emailEstudent}}</small>
+                                    <h6 class="mb-0">Estudiante</h6>
+                                </div>
+                                <div class="dropdown-divider m-0"></div>
+                                <a class="dropdown-item" href="/teacher/lista/{{user.idEstudent}}">
+                                    <i class="fas fa-user me-2"></i> Mi perfil
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cog me-2"></i> Configuración
+                                </a>
+                                {{#if user.rolTeacher}}
+                                <a class="dropdown-item" href="/eleccion">
+                                    <i class="fas fa-chalkboard-teacher me-2"></i> Mis Cursos
+                                </a>
+                                {{/if}}
+                                <div class="dropdown-divider m-0"></div>
+                                <a class="dropdown-item" href="/closeSection">
+                                    <i class="fas fa-sign-out-alt me-2"></i> Cerrar sesión
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                {{else}}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown"
+                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <span class="me-2 d-none d-sm-inline">{{descifrar user.completeNmeTeacher}}</span>
                         <div class="profile-image-nav">
                             {{#if user.photoTeacher}}
@@ -191,9 +238,11 @@
                                 <div class="profile-dropdown-header p-3 text-left">
                                     <div class="profile-image-nav-large mb-2 mx-auto">
                                         {{#if user.photoTeacher}}
-                                        <img src="/img/user/{{user.photoTeacher}}" alt="Foto de perfil" class="rounded-circle">
+                                        <img src="/img/user/{{user.photoTeacher}}" alt="Foto de perfil"
+                                            class="rounded-circle">
                                         {{else}}
-                                        <div class="profile-initials-large">{{getInitials user.completeNmeTeacher}}</div>
+                                        <div class="profile-initials-large">{{getInitials user.completeNmeTeacher}}
+                                        </div>
                                         {{/if}}
                                     </div>
                                     <h6 class="mb-0">{{descifrar user.completeNmeTeacher}}</h6>
@@ -209,7 +258,7 @@
                                 </a>
                                 {{#if user.rolTeacher}}
                                 <a class="dropdown-item" href="/eleccion">
-                                    <i class="fas fa-chalkboard-teacher me-2"></i> Mis servicios
+                                    <i class="fas fa-chalkboard-teacher me-2"></i> Servicios Generales
                                 </a>
                                 {{/if}}
                                 <div class="dropdown-divider m-0"></div>
@@ -220,6 +269,7 @@
                         </li>
                     </ul>
                 </li>
+                {{/isStudentRole}}
                 {{else}}
                 <!-- Estudiante -->
                 <li class="nav-item dropdown">
@@ -227,7 +277,7 @@
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Estudiante<span class="ms-1 fw-bold fs-3 color-icon">&#8801;</span>
                     </a>
-                    <ul class="dropdown-menu p-0 m-0 custom-dropdown-menu-user-coach">
+                    <ul class="dropdown-menu p-0 m-0 custom-dropdown-menu-user-coach" id="bajarestudiante">
                         <li>
                             <div
                                 class="d-flex flex-column flex-md-row justify-content-center align-items-center col8 rounded-2 p-0">
@@ -255,7 +305,7 @@
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Docente/Coach<span class="ms-1 fw-bold fs-3 color-icon">&#8801;</span>
                     </a>
-                    <ul class="dropdown-menu p-0 m-0 custom-dropdown-menu-user-coach">
+                    <ul class="dropdown-menu p-0 m-0 custom-dropdown-menu-user-coach" id="bajarestudiante">
                         <li>
                             <div
                                 class="d-flex flex-column flex-md-row justify-content-center align-items-center col8 rounded-2 p-0">
@@ -280,4 +330,7 @@
             </ul>
         </div>
     </div>
+    <a class="navbar-brand" href="/">
+        <img src="/img/logo/Variantelogoprofego.png" alt="Logo" height="40">
+    </a>
 </nav>

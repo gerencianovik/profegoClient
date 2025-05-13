@@ -13,7 +13,7 @@ const { cifrarDatos, descifrarDatos } = require('./encrypDates');
 
 const guardarYSubirArchivo = async (archivo, filePath, columnName, idEstudent, url, req) => {
     const validaciones = {
-        imagen: [".PNG", ".JPG", ".JPEG", ".GIF", ".TIF", ".png", ".jpg", ".jpeg", ".gif", ".tif", ".ico", ".ICO"],
+        imagen: [".PNG", ".JPG", ".JPEG", ".GIF", ".TIF", ".png", ".jpg", ".jpeg", ".gif", ".tif", ".ico", ".ICO", ".webp", ".WEBP"],
         pdf: [".pdf", ".PDF"]
     };
     const tipoArchivo = columnName === 'photoEstudent' ? 'imagen' : 'pdf';
@@ -59,25 +59,6 @@ const guardarYSubirArchivo = async (archivo, filePath, columnName, idEstudent, u
     });
 };
 
-// Validación de entrada
-const validateInput = (input) => {
-    // Verifica que la entrada no esté vacía
-    if (!input) {
-        console.log('La entrada no puede estar vacía.');
-        return false;
-    }
-
-    // Verifica que la entrada tenga al menos 8 caracteres
-    if (input.length < 8) {
-        console.log('La entrada debe tener al menos 8 caracteres.');
-        return false;
-    }
-
-    // Si todas las validaciones pasan, la entrada es válida
-    return true;
-};
-
-
 passport.use(
     'local.teacherSignin',
     new LocalStrategy(
@@ -91,7 +72,7 @@ passport.use(
             const usuario = users[0]
             if (usuario.usernameTeahcer == username) {
                 if (password == usuario.passwordTeacher) {
-                    return done(null, users, req.flash("success", "Bienvenido" + " " + users.username));
+                    return done(null, usuario, req.flash("success", "Bienvenido" + " " + usuario.username));
                 } else {
                     return done(null, false, req.flash("message", "Datos incorrecta"));
                 }
@@ -110,11 +91,11 @@ passport.use(
             passReqToCallback: true,
         },
         async (req, username, password, done) => {
-            const [users] = await sql.promise().query('SELECT * FROM student WHERE usernameEstudent = ?', [username]);
+            const [users] = await sql.promise().query('SELECT * FROM students WHERE usernameEstudent = ?', [username]);
             const usuario = users[0]
             if (usuario.usernameEstudent == username) {
                 if (password == usuario.passwordEstudent) {
-                    return done(null, users, req.flash("success", "Bienvenido" + " " + users.username));
+                    return done(null, usuario, req.flash("success", "Bienvenido" + " " + usuario.username));
                 } else {
                     return done(null, false, req.flash("message", "Datos incorrecta"));
                 }
@@ -229,7 +210,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((user, done) => {
-    done(null, user[0]);
+    done(null, user);
 });
 
 module.exports = passport;

@@ -38,6 +38,20 @@
             animation: float 15s infinite linear;
         }
 
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+
+            100% {
+                transform: translateY(0) rotate(360deg);
+            }
+        }
+
         .main-header {
             background: linear-gradient(135deg, var(--primary-color), #0d5c68);
             padding: 1rem 0;
@@ -71,6 +85,7 @@
             background: var(--primary-color);
             padding: 1rem;
             position: relative;
+            padding-bottom: 80px; /* Espacio para los botones */
         }
 
         .image-section {
@@ -109,7 +124,6 @@
         .content-section {
             overflow-y: auto;
             max-height: 180px;
-            /* Ajusta esta altura según necesites */
             padding-right: 8px;
             scrollbar-width: thin;
             scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
@@ -142,6 +156,11 @@
             color: var(--dark-text);
             font-size: 1rem;
             margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .course-meta {
@@ -181,17 +200,20 @@
         }
 
         #botonesTarjeta {
-            margin-top: 1rem;
-            display: flex;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-
             position: absolute;
-            bottom: 0%;
+            bottom: 0;
+            left: 0;
             width: 100%;
+            padding: 1rem;
             background-color: white;
-            left: 0%;
-            padding: 5%
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .course-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: space-between;
         }
 
         .btn-action {
@@ -201,6 +223,10 @@
             border: none;
             border-radius: 8px;
             transition: all 0.3s ease;
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+            margin: 2px;
         }
 
         .btn-primary {
@@ -213,6 +239,11 @@
 
         .btn-success {
             background: #28a745;
+        }
+
+        .btn-secondary {
+            background-color: #18574F;
+            color: white;
         }
 
         #descripcionCompleta {
@@ -231,6 +262,7 @@
                 display: flex;
                 gap: 1.5rem;
                 padding: 1.5rem;
+                padding-bottom: 80px;
             }
 
             .image-section {
@@ -250,6 +282,10 @@
 
             .course-title {
                 font-size: 1.8rem;
+            }
+
+            .btn-action {
+                flex: 1 0 calc(25% - 1rem);
             }
         }
 
@@ -279,6 +315,10 @@
 
             .content-section {
                 margin-bottom: 25%;
+            }
+
+            .btn-action {
+                flex: 1 0 calc(50% - 0.5rem);
             }
         }
     </style>
@@ -324,7 +364,7 @@
                     </select>
                 </div>
                 <div class="col-6 col-md-2">
-                    <button class="btn btn-secondary w-100" onclick="resetFilters()" style="background-color: #18574F;">
+                    <button class="btn btn-secondary w-100" onclick="resetFilters()">
                         <i class="fas fa-sync-alt"></i>
                     </button>
                 </div>
@@ -346,7 +386,7 @@
 
                         <div class="content-section">
                             <h3 class="course-title">{{nameCours}}</h3>
-                            <h4 class="course-titles">{{descriptionCours}}</h4>
+                            <h4 class="course-titles">{{truncate descriptionCours 100}}</h4>
                             <div class="course-meta">
                                 <div class="meta-item">
                                     <i class="fas fa-user"></i>
@@ -396,7 +436,7 @@
                         </div>
                         <div id="descripcionCompleta">
                             <a href="/cours/detailList/{{idCours}}" class="d-block mt-2">
-                                <button class="btn btn-secondary w-100" style="background-color: #18574F;">
+                                <button class="btn btn-secondary w-100">
                                     Ver información completa
                                 </button>
                             </a>

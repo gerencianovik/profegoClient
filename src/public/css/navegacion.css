@@ -1,6 +1,16 @@
 .custom-dropdown-menu {
     width: 95vw;
     max-width: 565px;
+    top: 150% !important;
+}
+
+#bajarestudiante {
+    top: 120% !important;
+}
+
+.navbar {
+    padding-left: 6% !important;
+    padding-right: 6% !important;
 }
 
 .col8 {
@@ -47,25 +57,25 @@
 }
 
 .btn-custom-orange {
-    background-color: #ffffff;
-    color: #f29224;
-    border: 1px solid #f29224;
+    background-color: #ffffff !important;
+    color: #f29224 !important;
+    border: 1px solid #f29224 !important;
 }
 
 .btn-custom-orange:hover {
-    color: black;
-    background-color: #f29224;
+    color: black !important;
+    background-color: #f29224 !important;
 }
 
 .btn-custom-blue {
-    background-color: #004d77;
-    color: #ffffff;
+    background-color: #004d77 !important;
+    color: #ffffff !important;
 }
 
 .btn-custom-blue:hover {
-    color: black;
-    background-color:#ffffff;
-    border-color: #004d77;
+    color: black !important;
+    background-color: #ffffff !important;
+    border-color: #004d77 !important;
 }
 
 /* Estilos para el menú de perfil */
@@ -157,5 +167,17 @@
 @media (max-width: 991px) {
     .profile-image-nav {
         margin-left: auto;
+    }
+}
+
+@media (max-width: 769px) {
+    .align-items-center {
+        align-items: normal !important;
+    }
+
+    .navbar-brand {
+        position: absolute;
+        top: 5px;
+        left: 70%;
     }
 }

@@ -100,4 +100,16 @@ helpers.isTeacherRole = function(role, options) {
     return role === 'teacher' ? options.fn(this) : options.inverse(this);
 };
 
+helpers.isStudentRole = function(role, options) {
+    return role === 'student' ? options.fn(this) : options.inverse(this);
+};
+
+// Helper para truncar texto
+helpers.truncate = function(str, len) {
+    if (str && str.length > len) {
+        return str.substring(0, len) + '...';
+    }
+    return str;
+};
+
 module.exports = helpers;

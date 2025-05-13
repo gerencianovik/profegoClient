@@ -48,10 +48,10 @@ eleccionServicios.mostrarEleccion = async (req, res) => {
 // Función de descifrado segura
 function safeDecrypt(data) {
     try {
-        return JSON.parse(data); // Asegúrate de que descifrarDatos devuelva una cadena JSON válida
+        return descifrarDatos(data);
     } catch (error) {
         console.error('Error al descifrar datos:', error.message);
-        return ''; // Devuelve una cadena vacía en caso de error
+        return ''; // Devolver una cadena vacía si ocurre un error
     }
 }
 
@@ -59,17 +59,9 @@ eleccionServicios.mostrarEleccionEstudiante = async (req, res) => {
     const ids = req.params.id;
     const [pagina] = await sql.promise().execute('SELECT * FROM pagePolicy');
     const [rows] = await sql.promise().query('SELECT * FROM students WHERE idEstudent = ?', [ids]);
-    const [cursos] = await sql.promise().execute('SELECT * FROM cours');
-    const [clases] = await sql.promise().execute('SELECT * FROM Clases');
-    const datos = rows.map(row => ({
-        idEstudent: row.idEstudent,
-        photoEstudent: row.photoEstudent,
-        completeNameEstudent: row.completeNameEstudent ? descifrarDatos(row.completeNameEstudent) : '',
-        emailEstudent: row.emailEstudent ? descifrarDatos(row.emailEstudent) : '',
-        celularEstudent: row.celularEstudent ? descifrarDatos(row.celularEstudent) : '',
-        usernameEstudent: row.usernameEstudent ? descifrarDatos(row.usernameEstudent) : '',
-    }));
-    res.render('servicios/eleccionServiciosEstudiante', { listaPagina: pagina, listaEstudent: datos, listaCursos: cursos, listaClases: clases, csrfToken: req.csrfToken() });
+    const [cursos] = await sql.promise().execute('SELECT * FROM cours WHERE stateCours = "pendienteAsignacion"');
+    const [clases] = await sql.promise().execute('SELECT * FROM Clases WHERE stateClases = "pendienteAsignacion"');
+    res.render('eleccion/eleccionServiciosEstudiante', { listaPagina: pagina, listaCursos: cursos, listaClases: clases, csrfToken: req.csrfToken() });
 }
 
 eleccionServicios.clasesCursos = async (req, res) => {

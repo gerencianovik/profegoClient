@@ -1,212 +1,183 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <link rel="stylesheet" href="/css/eleccion/servicios.css">
 
-<div class="container-fluid p-0">
-    {{#each listaTeacher}}
-    <form action="/teacher/eleccion/{{idTeacher}}" method="get"></form>
-    <img class="img-fluid" src="/img/icons/study.png">
-
-    <div class="mb-3" style="background-color: #fff2e1;">
-        <div class="container-sm">
-            <div class="row p-5">
-                <div class="col-12 col-md-7">
-                    <h1 class="mb-4" style="color: #ec922f;">¡Bienvenido! {{completeNmeTeacher}}</h1>
-                    <p class="fs-4">Elige entre servicios que puedes crear o los existentes.<br>
-                        ¡Tu enseñanza, tu elección!</p>
-                </div>
-                <div class="col-12 col-md-5">
-                    <img class="img-fluid" src="/img/icons/guntosEstudiantes.png">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container-sm">
-        <div class="row">
-            <div class="col-12 col-md-6 mb-3">
-                <div class="text-center mb-3">
-                    <a href="/clases/list/{{idTeacher}}"><button type="button"
-                            class="btn btn-lg px-5 text-white" style="background-color: #147582;">
-                            <p class="fs-2 my-0 px-5 mx-5">Clases</p>
-                        </button></a>
-                </div>
-
-                <div class="container-sm">
-                    <p class="fs-5">¿Qué encontrarás?</p>
-                    <div class="row">
-                        <div class="col-12 col-md-9 mb-3 shadow p-0 rounded-3" style="overflow: hidden;">
-                            <a href="#" class="dropdown-item dropdownItemtudent animate__animated animate__fadeIn">
-                                <p class="fs-5 m-0 d-flex align-items-start" style="color: #215d56;"><img
-                                        style="background-color: #f29224; max-width: 22% !important;"
-                                        src="/img/fondo/casaLibro.png" class="img-fluid me-3 p-3"><span
-                                        class="text-wrap my-auto">Clases
-                                        particulares</span></p>
-                            </a>
-                        </div>
-
-                        <div class="col-12 col-md-9 mb-3 shadow p-0 rounded-3" style="overflow: hidden;">
-                            <a href="#" class="dropdown-item dropdownItemtudent animate__animated animate__fadeIn">
-                                <p class="fs-5 m-0 d-flex align-items-start" style="color: #215d56;"><img
-                                        style="background-color: #f29224; max-width: 22% !important;"
-                                        src="/img/fondo/casaAbc.png" class="img-fluid me-3 p-3"><span
-                                        class="text-wrap my-auto">Clases
-                                        grupales</span></p>
-                            </a>
-                        </div>
-
-                        <div class="col-12 col-md-9 mb-3 shadow p-0 rounded-3" style="overflow: hidden;">
-                            <a href="#" class="dropdown-item dropdownItemtudent animate__animated animate__fadeIn">
-                                <p class="fs-5 m-0 d-flex align-items-start" style="color: #215d56;"><img
-                                        style="background-color: #f29224; max-width: 22% !important;"
-                                        src="/img/fondo/casaBrillos.png" class="img-fluid me-3 p-3"><span
-                                        class="text-wrap my-auto">Coaching
-                                        individual para docentes</span></p>
-                            </a>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 mb-3">
-                <div class="text-center mb-3">
-                    <a href="/cours/list/{{idTeacher}}"><button type="button" class="btn btn-lg px-5 text-white"
-                            style="background-color: #004d77;">
-                            <p class="fs-2 my-0 px-5 mx-5">Cursos</p>
-                        </button></a>
-                </div>
-                <div class="container-sm">
-                    <p class="fs-5">¿Qué encontrarás?</p>
-                    <div class="row">
-                        <div class="col-12 col-md-9 mb-3 shadow p-0 rounded-3" style="overflow: hidden;">
-                            <a href="#" class="dropdown-item dropdownItemtudent animate__animated animate__fadeIn">
-                                <p class="fs-5 m-0 d-flex align-items-start" style="color: #215d56;"><img
-                                        style="background-color: #f29224; max-width: 22% !important;"
-                                        src="/img/fondo/compuLista.png" class="img-fluid me-3 p-3"><span
-                                        class="text-wrap my-auto">Cursos</span></p>
-                            </a>
-                        </div>
-
-                        <div class="col-12 col-md-9 mb-3 shadow p-0 rounded-3" style="overflow: hidden;">
-                            <a href="#" class="dropdown-item dropdownItemtudent animate__animated animate__fadeIn">
-                                <p class="fs-5 m-0 d-flex align-items-start" style="color: #215d56;"><img
-                                        style="background-color: #f29224; max-width: 22% !important;"
-                                        src="/img/fondo/compuMusica.png" class="img-fluid me-3 p-3"><span
-                                        class="text-wrap my-auto">Coaching
-                                        grupal para docentes</span></p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!--<div id="servis">
-        <p>¡Elige tu mejor modalidad, en línea o a domicilio!</p>
-        <div id="imagen2">
-            <img src="">
-        </div>
-        <div id="imagen3">
-            <img src="">
-        </div>
-        <div id="catalogos">
-            <h1>Catálogo de servicios existentes</h1>
-            <p>¿Te gustaría impartir alguno de los servicios creados por el equipo de ProfeGo? Explora y selecciona los
-                mejores programas para ti o crea los tuyos propios.</p>
-        </div>
-    </div>-->
-    <div id="curso">
-        {{#each ../listaCursos}}
-        <div id="imagenCursoClase">
-            <img src="">
-        </div>
-        <div id="datos">
-            <div id="nombreCurso">
-                <p>{{nameCours}}</p>
-            </div>
-            <div id="ubicacion">
-                <div id="imagenUbicacion">
-                    <div id="mapa"></div>
-                    <input type="text" name="cordenadas" id="ubicacion" value="{{ubicacionCurso}}">
-                </div>
-            </div>
-            <div id="modalidad">
-                <div id="imagenModalidad">
-                    <img src="">
-                </div>
-                <p>{{nameCoursClassType}}</p>
-            </div>
-            <div id="costo">
-                <div id="imagenCosto">
-                    <img src="">
-                </div>
-                <p>{{costCours}}</p>
-            </div>
-            <div id="necesidadesEducativas">
-                <div id="imagenNececidades">
-                    <img src="">
-                </div>
-                <p>{{neeCours}}</p>
-            </div>
-            <div id="descripcion">
-                <h1>Descripción:</h1>
-                <p>{{descriptionCours}}</p>
-            </div>
-            <div id="detalle">
-                <a href=""><button type="button">Ver detalle</button></a>
-            </div>
-            <div id="impartir">
-                <a href=""><button type="button">Impartir</button></a>
-            </div>
-        </div>
-        {{/each}}
-    </div>
-    <div id="clase">
-        {{#each ../listaClases}}
-        <div id="imagenCursoClase">
-            <img src="">
-        </div>
-        <div id="datos">
-            <div id="nombreCurso">
-                <p>{{nameClases}}</p>
-            </div>
-            <div id="ubicacion">
-                <div id="imagenUbicacion">
-                    <div id="mapa"></div>
-                    <input type="text" name="cordenadas" id="ubicacion" value="{{ubicacionClase}}">
-                </div>
-            </div>
-            <div id="modalidad">
-                <div id="imagenModalidad">
-                    <img src="">
-                </div>
-                <p>{{nameCoursClassType}}</p>
-            </div>
-            <div id="necesidadesEducativas">
-                <div id="imagenNececidades">
-                    <img src="">
-                </div>
-                <p>{{neeClass}}</p>
-            </div>
-            <div id="costo">
-                <div id="imagenCosto">
-                    <img src="">
-                </div>
-                <p>{{costClases}}</p>
-            </div>
-            <div id="descripcion">
-                <h1>Descripción:</h1>
-                <p>{{descriptionClases}}</p>
-            </div>
-            <div id="detalle">
-                <a href=""><button type="button">Ver detalle</button></a>
-            </div>
-            <div id="impartir">
-                <a href=""><button type="button">Impartir</button></a>
-            </div>
-        </div>
-        {{/each}}
-    </div>
-
-    {{/each}}
+<!-- Imagen de cabecera (full width) -->
+<div class="header-image-container">
+    <img src="/img/fondo/studentinicio.png" alt="Estudiante aprendiendo" class="img-fluid w-100 header-image">
 </div>
+
+<!-- Contenido principal con márgenes -->
+<div class="main-content-container">
+    <!-- Sección de Bienvenida -->
+    <div class="welcome-section p-4 mb-5">
+        <div class="row align-items-center">
+            <div class="col-md-7">
+                <h1 class="welcome-title mb-3 animate__animated animate__fadeInDown">¡Bienvenido {{descifrar
+                    user.completeNameEstudent}}!</h1>
+                <p class="welcome-text animate__animated animate__fadeIn animate__delay-1s">
+                    Explora las opciones de aprendizaje disponibles.<br>
+                    ¡Tu educación, tu elección!
+                </p>
+            </div>
+            <div class="col-md-5 text-center animate__animated animate__fadeIn">
+                <img src="/img/fondo/estudiantesGrupo.png" alt="Estudiantes" class="welcome-image">
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección de Servicios -->
+    <div class="row mb-5">
+        <!-- Columna de Clases -->
+        <div class="col-lg-6 mb-4 mb-md-0">
+            <div class="text-center mb-4">
+                <a href="/clases/studentList/{{user.idEstudent}}"
+                    class="btn btn-service-classes animate__animated animate__fadeInLeft">
+                    <div class="service-btn-content">
+                        <i class="fas fa-chalkboard-teacher service-btn-icon"></i>
+                        <h3 class="service-btn-title">Clases</h3>
+                    </div>
+                </a>
+            </div>
+
+            <h3 class="section-title animate__animated animate__fadeIn">¿Qué encontrarás?</h3>
+
+            <div class="service-card animate__animated animate__fadeIn animate__delay-1s">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="service-icon me-3">
+                            <img src="/img/icons/clases.png" alt="Clases particulares">
+                        </div>
+                        <div>
+                            <h5 class="service-title">Clases particulares</h5>
+                            <p class="text-muted mb-0">Atención personalizada 1 a 1</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card animate__animated animate__fadeIn animate__delay-1s">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="service-icon me-3">
+                            <img src="/img/icons/claseGrupal.png" alt="Clases grupales">
+                        </div>
+                        <div>
+                            <h5 class="service-title">Clases grupales</h5>
+                            <p class="text-muted mb-0">Aprende en grupos pequeños</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card animate__animated animate__fadeIn animate__delay-1s">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="service-icon me-3">
+                            <img src="/img/icons/tutorias.png" alt="Tutorías">
+                        </div>
+                        <div>
+                            <h5 class="service-title">Tutorías especializadas</h5>
+                            <p class="text-muted mb-0">Apoyo en áreas específicas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Columna de Cursos -->
+        <div class="col-lg-6">
+            <div class="text-center mb-4">
+                <a href="/cours/studentList/{{user.idEstudent}}"
+                    class="btn btn-service-courses animate__animated animate__fadeInRight">
+                    <div class="service-btn-content">
+                        <i class="fas fa-book-open service-btn-icon"></i>
+                        <h3 class="service-btn-title">Cursos</h3>
+                    </div>
+                </a>
+            </div>
+
+            <h3 class="section-title animate__animated animate__fadeIn">¿Qué encontrarás?</h3>
+
+            <div class="service-card animate__animated animate__fadeIn animate__delay-1s">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="service-icon me-3">
+                            <img src="/img/icons/Cursos.png" alt="Cursos especializados">
+                        </div>
+                        <div>
+                            <h5 class="service-title">Cursos completos</h5>
+                            <p class="text-muted mb-0">Programas estructurados de aprendizaje</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card animate__animated animate__fadeIn animate__delay-1s">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="service-icon me-3">
+                            <img src="/img/icons/talleres.png" alt="Talleres">
+                        </div>
+                        <div>
+                            <h5 class="service-title">Talleres prácticos</h5>
+                            <p class="text-muted mb-0">Aprendizaje experiencial</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Catálogo de Servicios Recomendados -->
+    <div class="featured-courses animate__animated animate__fadeInUp animate__delay-2s">
+        <h3 class="section-title">Servicios recomendados</h3>
+        <p class="mb-4">Explora los mejores programas educativos seleccionados para ti.</p>
+
+        <div class="row">
+            {{#each listaCursos}}
+            <div class="col-md-6">
+                <div class="course-card">
+                    <img src="/img/cours/{{photoCours}}" class="img-fluid course-img" alt="{{nameCours}}">
+                    <div class="p-3">
+                        <h5 class="course-title">{{nameCours}}</h5>
+                        <p class="course-author mb-2">Por {{teacherName}}</p>
+                        <span class="course-modalidad mb-3">
+                            <i
+                                class="fas fa-{{#if (eq nameCoursClassType 'Presencial')}}map-marker-alt{{else}}laptop{{/if}} me-1"></i>
+                            {{nameCoursClassType}}
+                        </span>
+                        <p class="mb-3">{{descriptionCours}}</p>
+                        <div class="d-flex justify-content-between">
+                            <a href="/course/detail/{{id}}" class="btn action-btn detail">
+                                <i class="fas fa-info-circle me-1"></i> Ver detalle
+                            </a>
+                            <a href="/course/enroll/{{id}}" class="btn action-btn enroll">
+                                <i class="fas fa-user-plus me-1"></i> Inscribirse
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
+
+<script>
+    // Animaciones adicionales al desplazarse
+    document.addEventListener('DOMContentLoaded', function () {
+        const animatedElements = document.querySelectorAll('.animate__animated');
+
+        animatedElements.forEach(element => {
+            element.style.opacity = '0';
+        });
+
+        setTimeout(() => {
+            animatedElements.forEach(element => {
+                element.style.opacity = '1';
+            });
+        }, 100);
+    });
+</script>
