@@ -389,12 +389,12 @@ cours.actualizar = async (req, res) => {
             }
         }
         req.flash('success', 'Exito al guardar');
-        res.redirect('/cours/list/' + ids);
+        res.redirect('/cours/list/' + req.user.idTeacher);
     } catch (error) {
         // Manejo de errores mejorado
         console.error(error);
         req.flash('message', 'Error al guardar');
-        res.redirect('/cours/list/' + ids);
+        res.redirect('/cours/list/' + req.user.idTeacher);
     }
 }
 

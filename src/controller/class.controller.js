@@ -184,12 +184,12 @@ classes.mandar = async (req, res) => {
         }
 
         req.flash('success', 'Exito al guardar');
-        res.redirect('/clases/list/' + ids);
+        res.redirect('/clases/list/' + req.user.idTeacher);
     } catch (error) {
         // Manejo de errores mejorado
         console.error(error);
         req.flash('message', 'Error al guardar');
-        res.redirect('/clases/add/' + ids);
+        res.redirect('/clases/add/' + req.user.idTeacher);
     }
 }
 
@@ -281,7 +281,7 @@ classes.actualizar = async (req, res) => {
     } catch (error) {
         console.error(error);
         req.flash('message', 'Error al Actualizar');
-        res.redirect('/clases/update/' + ids);
+        res.redirect('/clases/update/' + req.user.idTeacher);
     }
 }
 
