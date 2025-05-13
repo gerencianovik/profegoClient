@@ -80,10 +80,11 @@ const guardarYSubirArchivo = async (archivo, filePath, columnName, idClases, url
             ".NUT", ".SWF", ".AMV", ".MXF", ".ROQ", ".NSV"
         ]
     };
-    const tipoArchivo = columnName === 'photoClases' ? 'imagen' : 'video';
-    const validacion = path.extname(archivo.name);
+    // Corregido aquí: usar 'image' en lugar de 'imagen'
+    const tipoArchivo = columnName === 'photoClases' ? 'image' : 'video';
+    const validacion = path.extname(archivo.name).toLowerCase(); // Convertir a minúsculas para coincidir
 
-    if (!validaciones[tipoArchivo].includes(validacion)) {
+    if (!validaciones[tipoArchivo] || !validaciones[tipoArchivo].includes(validacion)) {
         throw new Error('Archivo no compatible.');
     }
 
@@ -266,7 +267,7 @@ classes.actualizar = async (req, res) => {
             // Guardar y subir foto del profesor
             if (photoClases) {
                 const photoFilePath = path.join(__dirname, '/../public/img/clase/', photoClases.name);
-                await guardarYSubirArchivo(photoClases, photoFilePath, 'photoClases', idClases, 'https://central.profego-edu.com/imagenClase', req);
+                await guardarYSubirArchivo(photoClases, photoFilePath, 'photoClases', ids, 'https://central.profego-edu.com/imagenClase', req);
             }
 
             // Guardar y subir certificado de aval de enseñanza
@@ -281,7 +282,7 @@ classes.actualizar = async (req, res) => {
     } catch (error) {
         console.error(error);
         req.flash('message', 'Error al Actualizar');
-        res.redirect('/clases/update/' + req.user.idTeacher);
+        res.redirect('/clases/update/' + ids);
     }
 }
 
