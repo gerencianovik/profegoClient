@@ -176,8 +176,23 @@ cours.studentLista = async (req, res) => {
         const id = req.params.id
         const [pagina] = await sql.promise().query('SELECT * FROM pages where idPage = ?', [id]);
         const [teacher] = await sql.promise().query('SELECT * FROM teachers where idTeacher = ?', [id]);
-        const [row] = await sql.promise().query('SELECT * FROM cours ', [id])
-        res.render('cours/students/list', { lista: row, listaPagina: pagina, listaTeacher: teacher, })
+        const [row] = await sql.promise().query('SELECT * FROM cours')
+        const datos = teacher.map(row => ({
+            idTeacher: row.idTeacher,
+            photoTeacher: row.photoTeacher,
+            endorsementCertificateTeacher: row.endorsementCertificateTeacher,
+            pageVitalTeacher: row.pageVitalTeacher,
+            criminalRecordTeacher: row.criminalRecordTeacher,
+            completeNmeTeacher: row.completeNmeTeacher ? safeDecrypt(row.completeNmeTeacher) : '',
+            identificationCardTeacher: row.identificationCardTeacher ? safeDecrypt(row.identificationCardTeacher) : '',
+            ageTeacher: row.ageTeacher ? safeDecrypt(row.ageTeacher) : '',
+            descriptionTeacher: row.descriptionTeacher ? safeDecrypt(row.descriptionTeacher) : '',
+            emailTeacher: row.emailTeacher ? safeDecrypt(row.emailTeacher) : '',
+            addressTeacher: row.addressTeacher ? safeDecrypt(row.addressTeacher) : '',
+            phoneTeacher: row.phoneTeacher ? safeDecrypt(row.phoneTeacher) : '',
+            usernameTeahcer: row.usernameTeahcer ? safeDecrypt(row.usernameTeahcer) : ''
+        }));
+        res.render('cours/students/list', { lista: row, listaPagina: pagina, listaTeacher: datos, })
     } catch (error) {
         console.error('Error en la consulta:', error.message);
         res.status(500).send('Error al realizar la consulta');
@@ -197,6 +212,7 @@ cours.detalle = async (req, res) => {
         const [tareas] = await sql.promise().query('SELECT * FROM tasks WHERE courIdCours = ?', [id])
         const [pruebas] = await sql.promise().query('SELECT * FROM assessments WHERE courIdCours = ?', [id])
         const datos = teacher.map(row => ({
+            idTeacher: row.idTeacher,
             photoTeacher: row.photoTeacher,
             endorsementCertificateTeacher: row.endorsementCertificateTeacher,
             pageVitalTeacher: row.pageVitalTeacher,
