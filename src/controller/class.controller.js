@@ -266,13 +266,13 @@ classes.actualizar = async (req, res) => {
             // Guardar y subir foto del profesor
             if (photoClases) {
                 const photoFilePath = path.join(__dirname, '/../public/img/clase/', photoClases.name);
-                await guardarYSubirArchivo(photoClases, photoFilePath, 'photoClases', idClases, 'https://central.profego-edu.com/imagenClase', req);
+                await guardarYSubirArchivo(photoClases, photoFilePath, 'photoClases', ids, 'https://central.profego-edu.com/imagenClase', req);
             }
 
             // Guardar y subir certificado de aval de enseñanza
             if (videoClases) {
                 const endorsementFilePath = path.join(__dirname, '/../public/video/clases/', videoClases.name);
-                await guardarYSubirArchivo(videoClases, endorsementFilePath, 'videoClases', idClases, 'https://central.profego-edu.com/videoClases', req);
+                await guardarYSubirArchivo(videoClases, endorsementFilePath, 'videoClases', ids, 'https://central.profego-edu.com/videoClases', req);
             }
         }
 
