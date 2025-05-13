@@ -285,6 +285,20 @@
             margin-left: 0.5rem;
         }
 
+        .select2-container--default .select2-selection--single {
+            height: 38px;
+            border: 1px solid #ced4da;
+            border-radius: 0.375rem;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            line-height: 36px;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 36px;
+        }
+
         @media (min-width: 768px) {
             .filter-container {
                 display: grid;
@@ -378,7 +392,7 @@
     <header class="main-header">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center py-2">
-                <h1 class="page-title">Clases</h1>
+                <h1 class="page-title"><i class="fas fa-chalkboard-teacher me-2"></i>Clases</h1>
             </div>
         </div>
     </header>
@@ -388,42 +402,58 @@
             <!-- Sección de filtros -->
             <div class="filter-section">
                 <div class="filter-group">
-                    <h5 class="filter-group-title">Tipo de clase</h5>
+                    <h5 class="filter-group-title"><i class="fas fa-filter me-2"></i>Filtros de Búsqueda</h5>
+                </div>
+
+                <div class="filter-group">
+                    <h5 class="filter-group-title"><i class="fas fa-users me-2"></i>Tipo de clase</h5>
                     <div class="filter-options">
                         <input type="checkbox" id="individual" class="filter-checkbox">
-                        <label for="individual" class="filter-label">Individual</label>
+                        <label for="individual" class="filter-label"><i class="fas fa-user me-1"></i> Individual</label>
 
                         <input type="checkbox" id="grupal" class="filter-checkbox">
-                        <label for="grupal" class="filter-label">Grupal</label>
+                        <label for="grupal" class="filter-label"><i class="fas fa-users me-1"></i> Grupal</label>
                     </div>
                 </div>
 
                 <div class="filter-group">
-                    <h5 class="filter-group-title">Área o materia</h5>
+                    <h5 class="filter-group-title"><i class="fas fa-book me-2"></i>Área o materia</h5>
                     <input type="text" id="areaFilter" class="form-control" placeholder="Ejemplo: Matemáticas">
                 </div>
 
                 <div class="filter-group">
-                    <h5 class="filter-group-title">Nivel educativo</h5>
-                    <input type="text" id="nivelFilter" class="form-control" placeholder="Ejemplo: Primaria">
+                    <h5 class="filter-group-title"><i class="fas fa-graduation-cap me-2"></i>Nivel educativo</h5>
+                    <select id="nivelFilter" class="form-select select2" style="width: 100%;">
+                        <option value="">Todos los niveles</option>
+                        <option value="3-5 años">3-5 años</option>
+                        <option value="5-7 años">5-7 años</option>
+                        <option value="7-9 años">7-9 años</option>
+                        <option value="9-12 años">9-12 años</option>
+                        <option value="12-16 años">12-16 años</option>
+                        <option value="16-18 años">16-18 años</option>
+                        <option value="Universitarios">Universitarios</option>
+                        <option value="Docentes">Docentes</option>
+                        <option value="Profecionales">Profecionales</option>
+                        <option value="TerceraEdad">Tercera Edad</option>
+                    </select>
                 </div>
 
                 <div class="filter-group">
-                    <h5 class="filter-group-title">¿Dónde?</h5>
+                    <h5 class="filter-group-title"><i class="fas fa-map-marker-alt me-2"></i>¿Dónde?</h5>
                     <div class="filter-options">
                         <input type="checkbox" id="online" class="filter-checkbox">
-                        <label for="online" class="filter-label">Online</label>
+                        <label for="online" class="filter-label"><i class="fas fa-laptop me-1"></i> Online</label>
 
                         <input type="checkbox" id="domicilio" class="filter-checkbox">
-                        <label for="domicilio" class="filter-label">En mi domicilio</label>
+                        <label for="domicilio" class="filter-label"><i class="fas fa-home me-1"></i> En mi domicilio</label>
 
                         <input type="checkbox" id="desplazarme" class="filter-checkbox">
-                        <label for="desplazarme" class="filter-label">Puedo desplazarme</label>
+                        <label for="desplazarme" class="filter-label"><i class="fas fa-car me-1"></i> Puedo desplazarme</label>
                     </div>
                 </div>
 
                 <div class="filter-group">
-                    <h5 class="filter-group-title">Precio por hora desde</h5>
+                    <h5 class="filter-group-title"><i class="fas fa-money-bill-wave me-2"></i>Precio por hora desde</h5>
                     <div class="input-group">
                         <span class="input-group-text">$</span>
                         <input type="number" id="precioFilter" class="form-control" placeholder="15" min="15">
@@ -432,45 +462,45 @@
                 </div>
 
                 <div class="filter-group">
-                    <h5 class="filter-group-title">Disponibilidad</h5>
+                    <h5 class="filter-group-title"><i class="fas fa-clock me-2"></i>Disponibilidad</h5>
                     <div class="filter-options">
                         <input type="checkbox" id="manana" class="filter-checkbox">
-                        <label for="manana" class="filter-label">Mañana (06h-13h)</label>
+                        <label for="manana" class="filter-label"><i class="fas fa-sun me-1"></i> Mañana (06h-13h)</label>
 
                         <input type="checkbox" id="tarde" class="filter-checkbox">
-                        <label for="tarde" class="filter-label">Tarde (13h-20h)</label>
+                        <label for="tarde" class="filter-label"><i class="fas fa-cloud-sun me-1"></i> Tarde (13h-20h)</label>
 
                         <input type="checkbox" id="noche" class="filter-checkbox">
-                        <label for="noche" class="filter-label">Noche (20h-06h)</label>
+                        <label for="noche" class="filter-label"><i class="fas fa-moon me-1"></i> Noche (20h-06h)</label>
 
                         <input type="checkbox" id="finde" class="filter-checkbox">
-                        <label for="finde" class="filter-label">Fines de semana</label>
+                        <label for="finde" class="filter-label"><i class="fas fa-calendar-week me-1"></i> Fines de semana</label>
                     </div>
                 </div>
 
                 <div class="filter-group">
-                    <h5 class="filter-group-title">Necesidades Educativas Especiales (NEE)</h5>
+                    <h5 class="filter-group-title"><i class="fas fa-universal-access me-2"></i>Necesidades Educativas Especiales (NEE)</h5>
                     <div class="filter-options">
                         <input type="checkbox" id="nee" class="filter-checkbox">
-                        <label for="nee" class="filter-label">Con NEE</label>
+                        <label for="nee" class="filter-label"><i class="fas fa-wheelchair me-1"></i> Con NEE</label>
                     </div>
                 </div>
 
                 <div class="filter-group">
-                    <h5 class="filter-group-title">Ubicación</h5>
+                    <h5 class="filter-group-title"><i class="fas fa-map-marked-alt me-2"></i>Ubicación</h5>
                     <div class="map-container">
                         <div id="locationMap"></div>
                     </div>
                     <button class="btn btn-primary w-100 mt-2" id="filterLocationBtn">
-                        <i class="fas fa-filter"></i> Filtrar por ubicación
+                        <i class="fas fa-filter me-2"></i> Filtrar por ubicación cercana
                     </button>
                 </div>
 
                 <button class="btn btn-primary w-100 mt-3" id="applyFiltersBtn">
-                    <i class="fas fa-filter"></i> Aplicar Filtros
+                    <i class="fas fa-filter me-2"></i> Aplicar Filtros
                 </button>
                 <button class="btn btn-outline-secondary w-100 mt-2" id="resetFiltersBtn">
-                    <i class="fas fa-sync-alt"></i> Limpiar Filtros
+                    <i class="fas fa-sync-alt me-2"></i> Limpiar Filtros
                 </button>
             </div>
 
@@ -479,13 +509,16 @@
                 <div class="filter-section">
                     <div class="row g-2">
                         <div class="col-12 col-md-4">
-                            <input type="text" id="searchInput" class="form-control" placeholder="🔍 Buscar...">
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-search"></i></span>
+                                <input type="text" id="searchInput" class="form-control" placeholder="Buscar...">
+                            </div>
                         </div>
                         <div class="col-6 col-md-2">
                             <select class="form-select" id="modalityFilter">
-                                <option value="">Modalidad</option>
-                                <option value="Online">Online</option>
-                                <option value="Presencial">Presencial</option>
+                                <option value=""><i class="fas fa-chalkboard me-2"></i>Todas modalidades</option>
+                                <option value="Online"><i class="fas fa-laptop me-2"></i>Online</option>
+                                <option value="Presencial"><i class="fas fa-map-marker-alt me-2"></i>Presencial</option>
                             </select>
                         </div>
                     </div>
@@ -506,11 +539,8 @@
                                 <div class="image-section">
                                     <img src="/img/clase/{{photoClases}}" class="class-image" alt="Imagen de la clase">
                                     <span class="status-badge {{#if stateClases}}active{{else}}inactive{{/if}}">
-                                        {{#if stateClases}}Activo{{else}}Inactivo{{/if}}
+                                        {{#if stateClases}}<i class="fas fa-check-circle me-1"></i>Activo{{else}}<i class="fas fa-times-circle me-1"></i>Inactivo{{/if}}
                                     </span>
-                                    {{#if neeClases}}
-                                    <span class="status-badge nee-badge">NEE</span>
-                                    {{/if}}
                                 </div>
 
                                 <div class="content-section">
@@ -552,23 +582,23 @@
                                 <div id="descripcionCompleta">
                                     <a href="/clases/detailList/{{idClases}}" class="d-block mt-2">
                                         <button class="btn btn-secondary-custom w-100">
-                                            Ver información completa
+                                            <i class="fas fa-info-circle me-2"></i>Ver información completa
                                         </button>
                                     </a>
-                                    {{#if user}}
-                                    {{#isStudentRole user.rolStudent}}
+                                    {{#if ../user}}
+                                    {{#isStudentRole ../user.rolStudent}}
                                     <a href="/reservar/{{idCours}}" class="d-block mt-2">
                                         <button class="btn btn-secondary w-100" style="background-color: #18574F;">
-                                            Reservar
+                                            <i class="fas fa-calendar-check me-2"></i>Reservar
                                         </button>
                                     </a>
                                     {{else}}
-                                    <p class="text-muted">Solo estudiantes pueden reservar</p>
+                                    <p class="text-muted"><i class="fas fa-exclamation-circle me-2"></i>Solo estudiantes pueden reservar</p>
                                     {{/isStudentRole}}
                                     {{else}}
                                     <a href="/loginStudents" class="d-block mt-2">
                                         <button class="btn btn-secondary w-100" style="background-color: #18574F;">
-                                            Reservar
+                                            <i class="fas fa-sign-in-alt me-2"></i>Iniciar sesión para reservar
                                         </button>
                                     </a>
                                     {{/if}}
@@ -753,6 +783,10 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Q9PaOYlXpeqtj_0tHE19Zcoim25iSFg&callback=initMap&libraries=places,geometry&v=weekly&loading=async" 
             async defer></script>
 
+    <!-- Select2 para búsqueda en select -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
     <!-- Script para manejar los filtros -->
     <script>
         // Función para verificar si un valor está en un array
@@ -858,15 +892,24 @@
             document.querySelectorAll(".class-item").forEach(item => {
                 item.style.display = "block";
             });
+
+            // Resetear Select2
+            $('#nivelFilter').val('').trigger('change');
         }
 
         // Inicializar eventos cuando el DOM esté listo
         document.addEventListener("DOMContentLoaded", function() {
+            // Inicializar Select2
+            $('.select2').select2({
+                placeholder: "Seleccione un nivel",
+                allowClear: true
+            });
+
             // Eventos para los filtros
             document.getElementById("searchInput").addEventListener("input", applyFilters);
             document.getElementById("modalityFilter").addEventListener("change", applyFilters);
             document.getElementById("areaFilter").addEventListener("input", applyFilters);
-            document.getElementById("nivelFilter").addEventListener("input", applyFilters);
+            document.getElementById("nivelFilter").addEventListener("change", applyFilters);
             document.getElementById("precioFilter").addEventListener("input", applyFilters);
 
             document.querySelectorAll(".filter-checkbox").forEach(checkbox => {
