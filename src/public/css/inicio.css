@@ -17,18 +17,24 @@
 }
 
 .linea {
-    width: auto; 
-    height: 3px; 
+    width: auto;
+    height: 3px;
     background: linear-gradient(to right, #ff8800, #f2dabf);
-    border: none; margin-top: 5px;
+    border: none;
+    margin-top: 5px;
+}
+
+.px-4 {
+    padding-right: 2.4rem !important;
+    padding-left: 2.8rem !important;
 }
 
 @media (min-width: 769px) {
     .right-text {
         position: absolute;
-        left: 60%;
+        left: 59%;
         width: 40%;
-        top: 50%;
+        top: 45%;
         transform: translateY(-50%);
         padding: 20px;
     }
@@ -82,6 +88,66 @@
 
     .right-text img {
         max-width: 25%;
+        margin-left: 33% !important;
+    }
+
+    #aprende {
+        width: 100% !important;
+        padding-left: 6% !important;
+    }
+
+    #buscar {
+        margin-right: -3% !important;
+        margin-top: 3% !important;
+    }
+
+    .bg-fondo {
+        min-height: 100vh;
+    }
+
+    #diversidades {
+        margin-top: 0% !important;
+        margin-left: 10% !important;
+    }
+
+    #profes {
+        margin-left: 10% !important;
+    }
+
+    #flex {
+        margin-right: 12% !important;
+    }
+
+    #porque {
+        padding-left: 0% !important;
+        margin-top: 10% !important;
+    }
+
+    #quieres {
+        font-size: 2rem !important;
+        padding-left: 10% !important;
+    }
+
+    #aqui {
+        margin-left: 1% !important;
+    }
+
+    .bg-fondo {
+        background-image: url(/img/icons/fondo3.jpg);
+    }
+
+    #interconecta {
+        display: contents !important;
+    }
+
+    #sas {
+        padding-right: 18% !important;
+        margin-top: 4% !important;
+    }
+
+    #logoFlotante {
+        min-width: 95% !important;
+        margin-top: 8% !important;
     }
 }
 

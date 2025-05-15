@@ -5,19 +5,20 @@
 
     <div
         class="fs-1 fw-bold position-absolute text-white text-center d-flex flex-column justify-content-center align-items-center right-text">
-        <p class="responsive-text" style="color: #FFEFDA;">La mejor educación a tu alcance, solo en</p>
+        <p class="responsive-text" style="color: #FFEFDA; margin-bottom: 4%;">La mejor educación a tu alcance, solo en
+        </p>
         <img src="/img/icons/Logoprincipal.png" class="img-fluid m-1" style="max-width: 40%;">
-        <p class="responsive-text" style="color: #FFEFDA;">¡Aprende hoy, lidera mañana!</p>
+        <p class="responsive-text" style="color: #FFEFDA; width: 80%; margin-top: 4%;" id="aprende">¡Aprende hoy, lidera mañana!</p>
     </div>
 </div>
 
 <div class="p-5">
-    <div class="card border-0" style="background-color: #ffefda;">
-        <form action="/general/list/listCurso" method="get" class="row g-0" style="height: 100%;">
+    <div class="card border-0" style="background-color: #ffefda; width: 95%; margin-left: 3%; min-height: 400px;">
+        <form action="/general/list/listCurso" method="get" class="row g-0" style="height: 100%; min-height: 400px;">
             <div class="col-md-2 p-0">
                 <img src="/img/icons/busca.png" class="img-fluid" style="height: 100%; object-fit: cover; width: 100%;">
             </div>
-            <div class="col-md-10 mx-auto d-flex flex-column" style="height: 100%;">
+            <div class="col-md-10 mx-auto d-flex flex-column" style="height: 100%; min-height: 400px;">
                 <div class="card-body p-0 mt-2 d-flex flex-column justify-content-between"
                     style="height: 100%; transform: scale(0.8);">
                     <div class="text-center" id="ayudar">
@@ -32,9 +33,8 @@
                                 <h3 class="m-0">¿Qué buscas?</h3>
                                 <select name="docentes" class="form-select" style="font-size: 1.4rem; color: #318086;">
                                     <option value="">Busco docente</option>
-                                    {{#each profesor}}
-                                    <option value="{{idTeacher}}">{{completeNmeTeacher}}</option>
-                                    {{/each}}
+                                    <option value="">Busco coach</option>
+                                    <option value="">Busco docente - coach</option>
                                 </select>
                             </div>
                             <div class="flex-grow-1 my-4" id="ServicoMateria">
@@ -70,7 +70,8 @@
 
                             <div class="flex-grow-1 my-4" id="donde">
                                 <h3 style="color: #318086;" class="m-0">¿Dónde?</h3>
-                                <select name="donde" id="dondes" class="form-select" style="font-size: 1.5rem;">
+                                <select name="donde" id="dondes" class="form-select"
+                                    style="font-size: 1.4rem; color: #318086;">
                                     {{#each tipos}}
                                     <option value="{{idTypeCoursClass}}">{{nameCoursClassType}}</option>
                                     {{/each}}
@@ -80,7 +81,7 @@
 
                         <div class="col-12 col-md-auto d-flex align-items-center justify-content-center">
                             <button type="submit" class="btn"
-                                style="font-size: 1.5rem; background-color: #f39425; color: white;">Buscar
+                                style="font-size: 2rem; background-color: #f39425; color: white; margin-right: -15%;" id="buscar">Buscar
                                 ahora</button>
                         </div>
                     </div>
@@ -91,7 +92,7 @@
 </div>
 
 <div class="px-4">
-    <div class="text-center">
+    <div class="text-center" style="margin-top: 4%;">
         <h1 style="color: #215f59;">Lo más popular en <span class="fw-bold" style="color: #f49426;">ProfeGo</span></h1>
         <h4>Descubre los servicios más solicitados</h4>
     </div>
@@ -142,34 +143,37 @@
     </div>
 </div>
 
-<div class="p-0 m-0 position-relative bg-fondo">
-    <div class="row mx-0 position-absolute top-50 start-50 translate-middle text-center w-100 container-fluid" style="padding: 0%;">
+<div class="p-0 m-0 position-relative bg-fondo" style="margin-top: 4% !important;">
+    <div class="row mx-0 position-absolute top-50 start-50 translate-middle text-center w-100 container-fluid"
+        style="padding: 0%;">
         <div class="col-12 col-md-5 d-flex align-items-center px-4 m-0">
-            <div class="text-center text-white">
+            <div class="text-center text-white" style="padding-left: 6%;" id="porque">
                 <h1>¿Por qué elegir a ProfeGo?</h1>
-                <h4>Aprendizaje flexible, seguro y al mejor precio del mercado, guiado por docentes y coaches de primer nivel.</h4>
+                <h4 style="text-align: left; padding-left: 2%;">Aprendizaje flexible, seguro y al mejor precio del
+                    mercado, guiado por docentes y coaches de primer
+                    nivel.</h4>
             </div>
         </div>
 
         <div class="col-12 col-md-7 d-flex justify-content-center align-items-center m-0 p-0 text-center">
             <div class="w-100">
-                <div class="mb-3 text-start rounded-3 shadow pt-2 px-1 ms-auto text-center col-sm-5"
-                    style="background-color: rgba(244, 148, 38, 0.8);">
+                <div class="mb-3 text-start rounded-3 shadow pt-2 px-1 ms-auto text-center col-sm-5" id="flex"
+                    style="background-color: rgba(244, 148, 38, 0.8); height: 130px; margin-right: 9%; width: 305px; color: white; margin-top: 7%;">
                     <h4>Flexibilidad <img style="width: 30px;" src="/img/icons/contenido4.png"></h4>
                     <p>Accede a nuestros servicios en cualquier momento y lugar, adaptándose a tu ritmo de vida.</p>
                 </div>
-                <div class="mb-3 text-end rounded-3 shadow pt-2 px-1 me-auto text-center col-sm-5"
-                    style="background-color: rgba(244, 148, 38, 0.8);">
+                <div class="mb-3 text-end rounded-3 shadow pt-2 px-1 me-auto text-center col-sm-5" id="profes"
+                    style="background-color: rgba(244, 148, 38, 0.8); height: 130px; width: 305px; color: white; margin-left: -2.5%;">
                     <h4>Profesores expertos <img style="width: 30px;" src="/img/icons/conetenido1.png"></h4>
                     <p>Aprende de profesionales calificados y apasionados por enseñar.</p>
                 </div>
                 <div class="mb-3 text-end rounded-3 shadow pt-2 px-1 ms-auto text-center col-sm-5"
-                    style="background-color: rgba(244, 148, 38, 0.8);">
+                    style="background-color: rgba(244, 148, 38, 0.8); height: 130px; margin-right: 12%; width: 305px; color: white; margin-left: -2%;">
                     <h4>Seguridad <img style="width: 30px;" src="/img/icons/contenido3.png"></h4>
                     <p>Pagos seguros, profesionales verificados, datos protegidos y soporte continuo todo el tiempo.</p>
                 </div>
-                <div class="mb-3 text-start rounded-3 shadow pt-2 px-1 me-auto text-center col-sm-5"
-                    style="background-color: rgba(244, 148, 38, 0.8);">
+                <div class="mb-3 text-start rounded-3 shadow pt-2 px-1 me-auto text-center col-sm-5" id="diversidades"
+                    style="background-color: rgba(244, 148, 38, 0.8); margin-top: -10%; height: 130px; width: 305px; color: white; margin-left: 3%;">
                     <h4>Diversidad <img style="width: 30px;" src="/img/icons/contenido2.png"></h4>
                     <p>Desde ciencias y matemáticas hasta idiomas y artes, tenemos algo para todos.</p>
                 </div>
@@ -179,7 +183,7 @@
 </div>
 
 <div class="m-0 p-0 position-relative bg-fondo2 d-flex align-items-center justify-content-center">
-    <div class="container-fluid justify-content-center mb-auto mt-5 p-0">
+    <div class="container-fluid justify-content-center mb-auto mt-5 p-0" style="margin-top: 8% !important;">
         <div class="text-center text-white">
             <h1 class="mt-1">Nuestro impacto en cifras</h1>
             <p style="font-size: 1.5rem;">¡La comunidad educativa favorita de muchos te espera!</p>
@@ -223,12 +227,12 @@
     </div>
 </div>
 
-<div class="p-0 mt-1">
+<div class="p-0 mt-1" style="margin-top: -5% !important">
     <div class="text-center">
         <h1 style="color: #f49426;" class="fw-bold">Opiniones destacadas</h1>
         <h4>Conoce las experiencias de quiénes han confiado en nosotros</h4>
     </div>
-    <div class="row row-cols-1 row-cols-md-4 g-4 px-4 mb-5 mx-3 mt-2">
+    <div class="row row-cols-1 row-cols-md-4 g-4 px-4 mb-5 mx-3 mt-2" style=" padding-left: 3.7rem !important;">
         <div class="col">
             <div class="card h-100 rounded-4 border-5" style="border-color: #144566;">
                 <div class="card-body p-2 pb-3 d-flex flex-column justify-content-center text-center">
@@ -244,15 +248,16 @@
     </div>
 </div>
 
-<div class="mb-5 d-flex align-items-center justify-content-center">
-    <div class="container-sm rounded-4" style="background-color: #f49426; max-width: 75%;">
+<div class="mb-5 d-flex align-items-center justify-content-center"
+    style="margin-top: 7% !important; margin-bottom: 7% !important;">
+    <div class="container-sm rounded-4" style="background-color: #f49426; max-width: 88%;">
         <div class="row align-items-center text-center">
             <div class="col-12 col-md-5 d-flex flex-column align-items-center justify-content-center p-3">
                 <div class="text-white">
-                    <h2>¿Quieres ser docente o coach en ProfeGo?</h2>
+                    <h2 style="padding-left: 18%; font-size: 2.5rem;" id="quieres">¿Quieres ser docente o coach en ProfeGo?</h2>
                     <a href="/RegisterTeachers">
                         <button type="button" class="btn text-white btn-lg px-4 py-2"
-                            style="background-color: #054c74; font-size: 1.2rem;">
+                            style="background-color: #054c74; font-size: 1.8rem; margin-top: 4%; margin-left: 19%;" id="aqui">
                             ¡Infórmate aquí!
                         </button>
                     </a>
@@ -266,7 +271,7 @@
 </div>
 
 <div>
-    <div class="p-5" style="background-color: #fff9f0;">
+    <div class="p-5" style="background-color: #fff9f0; padding-left: 6% !important; padding-right: 6% !important;">
         <div class="row">
             <div class="col-md-2">
                 <div style="color: #236388;">
@@ -324,20 +329,44 @@
                 </div>
             </div>
             <div class="col-md-3 text-center">
-                <div class="d-flex justify-content-center">
+                <div class="d-flex justify-content-center mb-3">
                     <div class="qr-placeholder"></div>
                     <div class="qr-placeholder"></div>
                 </div>
+                <div class="d-flex justify-content-center">
+                    <div class="row g-2">
+                        <div class="col">
+                            <a href="https://www.facebook.com/profegoedu" class="btn rounded-3 border"
+                                style="color: #236388; border-color: #236388; --bs-btn-hover-bg: rgba(35, 99, 136, 0.1); --bs-btn-hover-border-color: #236388; --bs-btn-active-bg: rgba(35, 99, 136, 0.2);">
+                                <i class="bi bi-facebook fs-5" style="font-size: 1.7rem !important;"></i>
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="https://www.instagram.com/profegoedu/" class="btn rounded-3 border"
+                                style="color: #236388; border-color: #236388; --bs-btn-hover-bg: rgba(35, 99, 136, 0.1); --bs-btn-hover-border-color: #236388; --bs-btn-active-bg: rgba(35, 99, 136, 0.2);">
+                                <i class="bi bi-instagram fs-5" style="font-size: 1.7rem !important;"></i>
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="https://www.tiktok.com/@profegoedu?is_from_webapp=1&sender_device=pc" class="btn rounded-3 border"
+                                style="color: #236388; border-color: #236388; --bs-btn-hover-bg: rgba(35, 99, 136, 0.1); --bs-btn-hover-border-color: #236388; --bs-btn-active-bg: rgba(35, 99, 136, 0.2);">
+                                <i class="bi bi-tiktok fs-5" style="font-size: 1.7rem !important;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-md-3">
-                <img src="/img/logo/LogoPrincipal.png" class="img-fluid">
+                <img src="/img/logo/LogoPrincipal.png" class="img-fluid" id="logoFlotante"
+                    style="width: 50%; display: block; margin: 0 auto;">
             </div>
         </div>
     </div>
     <div style="background-color: #fbf1e3; color: #236388;" class="p-3">
-        <div class="d-flex justify-content-between align-items-center mx-3">
-            <p class="fs-5 m-0 text-start">Interconexión segura, rápida e ideal entre docentes y estudiantes.</p>
-            <p class="fs-5 m-0 text-end">ProfeGo® EDUCONECTA S.A.S</p>
+        <div class="d-flex justify-content-between align-items-center mx-3" id="interconecta">
+            <p class="fs-5 m-0 text-start" style="padding-left: 4%;">Interconexión segura, rápida e ideal entre docentes
+                y estudiantes.</p>
+            <p class="fs-5 m-0 text-end" style="padding-right: 4%;" id="sas">ProfeGo® EDUCONECTA S.A.S</p>
         </div>
     </div>
 </div>

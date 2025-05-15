@@ -9,8 +9,8 @@
 }
 
 .navbar {
-    padding-left: 6% !important;
-    padding-right: 6% !important;
+    padding-left: 4% !important;
+    padding-right: 4% !important;
 }
 
 .col8 {
@@ -179,5 +179,9 @@
         position: absolute;
         top: 5px;
         left: 70%;
+    }
+
+    #izquierda {
+        margin-left: -6.5% !important;
     }
 }
