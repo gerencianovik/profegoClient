@@ -156,6 +156,82 @@
         font-size: 1.4rem;
     }
 
+    #flex {
+        margin-right: 8% !important;
+    }
+
+    #profes {
+        margin-left: 8% !important;
+    }
+
+    #diversidades {
+        margin-left: 9% !important;
+    }
+
+    #seguridadeasd {
+        margin-right: 7% !important;
+    }
+
+    .bg-fondo {
+        min-height: 120vh;
+    }
+
+    .bg-fondo2 {
+        min-height: 95vh;
+    }
+
+    #cifrass {
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+
+    #edufav {
+        padding-left: 12%;
+        text-align: left;
+        padding-right: 8%;
+    }
+
+    #destacados {
+        margin-top: 1% !important;
+    }
+
+    #destacadas {
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+
+    #nosotrosa {
+        padding-left: 13%;
+        padding-right: 10%;
+        text-align: left !important;
+    }
+
+    #porque h1 {
+        width: 300px;
+        text-align: center;
+        margin-left: -5%;
+    }
+
+    #aprendisajePorque {
+        text-align: left;
+        font-size: 20px;
+        margin-left: -6%;
+        width: 305px;
+        padding-left: 0%;
+    }
+
+    #quieres {
+        margin-left: -8%;
+    }
+
+
+    #sas {
+        padding-right: 0% !important;
+        padding-left: 4% !important;
+        margin-top: 4% !important;
+        text-align: left !important;
+    }
+
     .fs-1 {
         font-size: 2.4rem;
     }

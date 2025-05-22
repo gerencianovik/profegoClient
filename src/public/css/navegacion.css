@@ -182,6 +182,10 @@
     }
 
     #izquierda {
-        margin-left: -6.5% !important;
+        margin-left: -1% !important;
+    }
+
+    #navbarNav {
+        margin-left: -4%;
     }
 }
